@@ -9,4 +9,12 @@ Running on Debian 4.0 with:
 * awstats 6.95 (optionnal)
 
 
+Installation
+------------
+
+Install required system softwares (apache, mysql, php).
+
+Create a system user for the forum.
+i.e: adduser slitaz
+
 
