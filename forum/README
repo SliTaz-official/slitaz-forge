@@ -1,0 +1,12 @@
+2010-12-22 
+The forum is powered by Vanilla Forum (http://vanillaforums.org/)
+
+Running on Debian 4.0 with:
+* vanilla 2.0.16
+* apache 2.23
+* mysql 5.0.32
+* php 5.2
+* awstats 6.95 (optionnal)
+
+
+

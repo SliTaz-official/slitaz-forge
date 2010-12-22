@@ -1,0 +1,422 @@
+@charset "utf-8";
+/* CSS Document */
+
+/***--- MAIN / DEFAULT --***/
+html, body	{ height: 102%; margin: 0; }
+html, body, input, select, textarea, button {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	line-height: 17px;
+	color: #555;
+}
+a			{ color: #2f6c8e; text-decoration: none; }
+a:hover		{ color: #69a1c1; }
+a img		{ border: none; }
+ul, ol		{ margin: 0; padding: 0; list-style: none; }
+
+.clear {
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
+
+#Wrapper	{ min-height: 100%; position: relative; margin: 0 auto; }
+.Hidden		{ display: none; }
+
+/***--- HEADER(S) --***/
+
+
+#Header h1	{ padding: 15px; font-size: 2em; }
+#Header a	{ color: #69a1c1; }
+#Header a:hover	{ color: #FFF; }
+
+#Header{
+	background: #f0ba08 url(../images/header.png) repeat-x top;
+	color: black;
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-bottom: 30px;
+	position: absolute;
+	top: 0;
+}
+
+#titre {
+	position: absolute;
+	font-size: 16px;
+	font-weight: bolder ;
+	margin-left: 200px;
+	margin-top: 28px;
+}
+
+#logo {
+	position: absolute;
+	float: left;
+	margin-left: 16px;
+	margin-top: 0px;
+}
+
+/***--- NAV --***/
+#Nav { 
+	right: 0;
+	position: absolute;
+	top: 3px;
+	font-size: 10px;
+	font-weight: bold; }
+
+/* search */
+#Search { 
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px; 
+	height: 20px; 
+	float: right; 
+	background: #FFF; 
+	padding: 2px 2px; 
+	margin: 11px 95px 0 0; }
+#Search form	{ padding: 0; border: none; }
+#Nav #Search input.InputBox	{ width: 150px; border: none; }
+#Search input.Button {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	height: 17px;
+	margin: 0;
+	padding: 0; }
+
+/***--- MAIN --***/
+/*#Main	{ }*/
+
+/* If you prefer the panel on the left and content on the right, simply switch the "float" property for #Content & #Panel and set the "margin-left" to "margin-right" for the #Content */
+#Content		{ 
+	margin: 0px 320px 0px 0px;
+	padding: 86px 40px 65px 80px;
+	}
+#Panel			{
+	position: absolute;
+	top: 76px;
+	right: 80px;
+	color: #555555;
+	float: right;
+	width: 250px;
+	line-height: 1.5em;
+	text-align: left;
+	font-size: 12px;
+	 }
+.Box, #UserOptions {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	list-style-type: none;
+	margin: 10px 0;
+	padding: 10px 24px 10px 24px;
+	background-color: #eaeaea;}
+#Panel .Box ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 24px 10px 0px;
+	font-weight: bold;
+}
+
+/***--- CONTENT --***/
+.GuestBox	{ background: #eaeaea; }
+.GuestBox p	{ padding: 0; }
+.Message img	{ max-width: 100%; }
+
+/* headers */
+h1				{ margin: 0; font-size: 1.5em; }
+#Content h1, h2, #Popup h1, div.DiscussionTabs .SubTab {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	font-size: 1.1em; background: #555555; color: #fff; margin: 0 0 10px; padding: 10px; font-weight: bold;
+}
+div.DiscussionTabs .SubTab	{ margin: 0; }
+
+#Panel h4, #Panel .GuestBox h4 {
+	font-size: 110%;
+	color: #666666;
+	font-weight: bold;
+	padding: 0 0 1px 0;
+	margin: 0;
+	border-bottom: 1px solid #cecece; }
+
+div.Empty, div#Status	{ padding: 10px; }
+
+/* tabs */
+.Tabs li, .SubTab	{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background: #CECECE;
+	padding: 5px 8px;
+	font-size: 140%;
+	font-weight: bold;
+	border-bottom: 1px solid #fff; }
+.Tabs li.Active		{ background: #555; border-bottom: none; }
+.Tabs li.Active a	{ color: #fff; }
+.Tabs span			{ display: inline-block; margin: 0 10px; color: #888; }
+.SubTab				{ font-size: 1em; }
+
+/* DISCUSSIONS */
+.DataList li.Item, .Conversation li.Item {
+	border-bottom: 1px solid #ccc;
+	position: relative;
+	padding: 10px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+.Activities li.Item	{ min-height: 50px; }
+.DataList li.Item a.Title	{ display: block; font-size: 1.15em; font-weight: bold; padding: 0 0 8px; }
+
+/* discussions meta */
+.DataList .Meta span, .DataList .Meta strong {
+	min-width: 100px; display: inline-block; margin: 0 5px 0 0;
+}
+.DataList .Meta .LastCommentBy		{ width: 175px; }
+.DataList .Meta .LastCommentDate	{ width: 100px; }
+
+/* discussions highlight */
+.DataList li.Mine			{ background: #f1f1f1; border-bottom-color: #fff; }
+.DataList li.New			{ background: #d8ecbc; }
+.DataList li.Bookmarked		{ background: #ffdf5d; border-bottom-color: #fff; }
+
+.DataList li.Closed		{ background: #eee; }
+.DataList .Meta .Closed			{ color: #333; }
+.DataList li.Closed a.Title	{ text-decoration: line-through; }
+
+.DataList li.Announcement	{ background: #FFC; }
+.DataList .Meta .Announcement, .DataList .Meta .Closed {
+	width: 100px; font-weight: bold;
+}
+.DataList .Meta .Announcement	{ color: #C60; }
+
+/* DISCUSSION */
+div.DiscussionTabs li		{ font-size: 1em; }
+ul.Discussion				{ margin: 0 0 10px; }
+
+/* bookmark */
+a.Bookmark					{ width: 9px; height: 9px; position: absolute; top: 8px; right: 10px; font-size: 0; background: #fff; border: 1px dotted #ffcc00; }
+.Discussion a.Bookmark		{ top: 41px; }
+a.Bookmarked 				{ background: #ffcc00; border: 1px solid #fff; }
+div.Options a.Bookmark		{ top: 14px; }
+
+div.Comment {
+	position: relative; 
+	border-bottom: 1px dotted #ccc;
+	padding: 10px; }
+li.Even			{ background: #f8f8f8; }
+
+/* discussion meta */
+.Comment .Message, .Comment .MessageForm, .ConversationMessage .Message {
+	margin-left: 215px; line-height: 1.75em;
+}
+.Comment .Meta, .ConversationMessage .Meta {
+	width: 175px; float: left; padding: 10px; background: #FFC;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+.Comment .Meta span, .ConversationMessage .Meta span, div.Meta div.PostCount {
+	display: block; border-bottom: 1px dotted #ccc; font-size: 0.85em; padding: 1px 0; 
+}
+.Comment .Author, .ConversationMessage span.Author {
+	background: #fff; padding: 5px; border-bottom: none;
+}
+.Comment .Author img, .ConversationMessage .Author a.Photo {
+	float: left; margin: 0 10px 0 0;
+}
+.Comment .Author a, .ConversationMessage .Author a {
+	font-weight: bold; font-size: 1.1em;
+}
+blockquote	{ margin: 0; padding: 10px; background: #fff; border: 1px dotted #ccc; }
+.Odd blockquote	{ background: #F8F8F8; }
+
+/* post */
+ul.PostOptions	{ margin: 0 0 10px; }
+.Preview			{ padding: 10px; margin: 0 0 10px; border-bottom: 1px dotted #ccc; }
+
+/*- Conversations & Activities -*/
+ul.Activities .Title	{ margin: 0 0 0 60px; font-weight: bold; }
+ul.Conversations .Photo, ul.Activities .Photo {
+	width: 50px; height: 50px; float: left; font-size: 0.9em; color: #ccc; overflow: hidden; background: #eee;
+}
+ul.Conversations .Excerpt, ul.Activities .Excerpt {
+	margin: 0 0 10px 60px;
+}
+ul.Conversations .Meta, ul.Activities .Meta, .SearchResults .Meta {
+	margin: 0 0 0 60px;background: #FFC; padding: 3px 5px; 
+}
+.SearchResults .Meta	{ margin: 5px 0 0; }
+ul.ActivityComments		{ margin: 0 0 0 60px; }
+
+.ConversationMessage .Message		{ min-height: 100px; }
+.ConversationMessage span.Author	{ height: 50px; }
+.ConversationMessage span.ItemLink		{ display: none; }
+
+/***--- PANEL --***/
+.Block		{ padding: 15px; background: #ddd; margin: 0 10px 0 0; }
+.Post #Panel, .Search #Panel {
+	display: none;
+}
+
+.PanelInfo li			{ padding: 0px 0px; }
+.PanelInfo li strong	{ font-weight: normal; }
+.PanelInfo li.Active a	{ color: #c60; }
+.PanelInfo li.Parent	{ background: #ccc; padding: 2px 5px; font-size: 1.1em; font-weight: bold; }
+
+.PanelInfo a, .Box a {
+	color: #0F314E;
+	background: inherit;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.PanelInfo a:hover, .Box a:hover {
+	color: #c60;
+	text-decoration: none;
+	display: block;
+}
+/* account */
+
+#Panel .Photo		{ background: #ddd; position: absolute; right: 10px; padding: 0 0 10px 10px; }
+#Panel .Photo img	{ width: 50px; display: block; border: 5px solid #fff; border-bottom-width: 12px; }
+#Panel .Photo img:hover	{ width: auto; }
+
+#Panel dl					{ padding: 10px; background: #fff; margin: 0; }
+#Panel dt					{ font-weight: bold; padding: 2px 0 0; }
+#Panel dd					{ margin: 0; border-bottom: 1px dotted #ccc; padding: 0 0 2px; }
+
+/* inbox */
+.PanelInfo li strong		{ display: inline-block; margin: 0 5px 0 0; }
+
+/*- Form elements -*/
+form		{ padding: 0 10px 10px; border-bottom: 1px dotted #ccc; }
+fieldset	{ margin: 0; padding: 0; border: none; }
+
+form#Form_User_Register	{ margin-top: 10px; }
+
+input, textarea, select {
+	border: 1px solid #ccc; padding: 3px 5px; margin: 0;
+}
+input.InputBox		{ width: 325px; margin: 0 10px 5px 0; }
+
+input.Button, input.Cancel {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	cursor: pointer; border: none; background: #c60; color: #fff; padding: 4px;
+}
+input.Button:hover, input.Cancel:hover {
+	background: #555555; color: white;
+}
+
+a.Back, a.Cancel {
+	margin: 0 5px 0 0;
+}
+
+textarea			{ width: 95%; min-height: 100px; display: block; margin: 10px 0; }
+
+label	{ display: block; font-weight: bold; }
+label.RadioLabel, label.CheckBoxLabel {
+	font-weight: normal;
+}
+label.RadioLabel input, label.CheckBoxLabel input {
+	border: none;
+}
+
+li.Gender, li.CaptchaInput {
+	margin: 0 0 10px;
+}
+li.CreateAccount, li.Buttons {
+	margin: 5px 0 0;
+}
+.cleditorMain	{ margin: 10px 0; }
+
+.CommentForm div.Messages { margin: 8px 0 0; }
+.Errors, .Warning	{
+	color: #F00;
+}
+
+/***--- BUTTONS ---***/
+.GuestBox a.Button	{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 11px;
+	padding: 4px;
+	margin: 0 0 10px;
+	background: #c60; 
+	color: #FFF; }
+.GuestBox .Button:hover	{
+	background: #555555; }
+	
+a.BigButton	{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	display: block; 
+	background: #c60; 
+	color: #FFF; 
+	padding: 10px; 
+	font-size: 1.1em; 
+	font-weight: bold;
+	text-align: center}
+a.BigButton:hover	{ background: #555555; }
+a.ClearConversation	{ margin: 10px 0 0; }
+
+/* options */
+div.Options, div.OptionButton {
+	position: absolute; top: 12px; right: 10px;
+}
+div.OptionButton	{ font-weight: bold; color: #555; }
+ul.Options strong	{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	cursor: pointer; 
+	display: block; 
+	padding: 5px 10px;
+	background: #FFC;
+	border: 1px solid #ccc; }
+
+ul.Options				{ margin: 5px 40px 0 0; }
+ul.Options li			{ position: relative; }
+ul.Options ul			{ min-width: 125px; display: none; position: absolute; z-index: 1000; background: #FFC; right: 0; border: 1px dotted #ccc; margin-top: -1px; }
+ul.Options li:hover ul 	{ display: block; }
+ul.Options ul li		{ display: block; border-top: 1px dotted #ccc; }
+ul.Options ul li:first-child	{ border-top: none; }
+ul.Options ul li a		{ display: block; padding: 5px 10px; }
+
+/*- Pager -*/
+#PagerAfter				{ margin: 10px 0; text-align: center; background: #ddd; padding: 2px 10px; }
+#PagerAfter	a			{ display: inline-block; padding: 0 5px; }
+#PagerAfter	a.Highlight		{ color: #c60; }
+span.Previous, a.Previous	{ float: left; }
+#PagerAfter	span.Next, #PagerAfter	a.Next	{ float: right; padding: 0; }
+
+#PagerMore				{ text-align: right; padding: 5px 10px; }
+
+/***--- FOOTER --***/
+#Footer {
+	font-size: 11px ;
+	width: 100%; 
+	position: absolute; 
+	bottom: 0;
+	background: inherit;
+	color: #a8a8a8; }
+#Footer ul	{ margin: 16px 15px; }
+#Footer li	{ float: left; }
+#Footer a { text-decoration: underline; background: inherit; color: #a8a8a8; }
+#Footer a:hover	{ color: #666666; }
+
+/***--- OVERLAY ---***/
+.Overlay	{ width: 100%; position: absolute; top: 0; z-index: 10000; background: url(../images/overlayBg.png); }
+.Overlay #Popup	{ width: 720px; padding: 15px; background: #FFF; margin: 0 auto; border: 1px dotted #c60; position: relative; }
+
+.Overlay .Buttons input.Button	{ margin: 0 0 10px; }
+.Overlay p			{ padding: 0 10px; }
+.Overlay a.Close	{ position: absolute; display: block; top: 10px; right: 15px; padding: 13px; font-size: 1.5em; color: #fff; }
+.Overlay a.Close:hover	{ color: #c60; }
+.Overlay ul			{ margin: 10px 0 0; }
+
+.Overlay input.Button	{ margin: 10px 0 0; }
+.Overlay textarea		{ margin: 10px 0 0; }
+.Overlay li.Gender		{ margin: 0; }
+
+.Overlay #Form_Picture	{ margin: 0 0 10px; }
