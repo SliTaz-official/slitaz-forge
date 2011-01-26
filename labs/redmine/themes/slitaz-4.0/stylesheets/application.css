@@ -1,0 +1,176 @@
+@import url(../../../stylesheets/application.css);
+
+body {
+	background-color:#ffffff;
+	border-top: 34px solid #f1f1f1;
+}
+
+#wrapper {
+	background-color: #eeeeee;
+}
+
+#top-menu {
+	position: absolute;
+	top: 0;
+	background: transparent;
+	width: 100%;
+	font-size: 11px;
+	color: #000000;
+}
+#loggedas { color: #000000; }
+#top-menu a {
+	background: transparent;
+	color: #0F314E;
+	text-decoration: none;
+}
+#top-menu a:hover {
+	color: #b64b22;
+	text-decoration: none;
+}
+
+#header {
+	background: #351a0a url(../header-img.png) no-repeat top right;
+	color: black;
+	width: 100%;
+	height: 42px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid #999;
+	margin-bottom: 33px;
+}
+#header h1 { 
+	color: #f1f1f1;
+}
+
+#main {
+	background: white;
+	margin: 0px 0px 0px 0px;
+}
+
+#content {
+	background: #fff;
+	border: 0px;
+	margin: 0px 20px 0px 20px;
+	overflow: auto;
+}
+
+/* Footer */
+
+#footer {
+	margin: 0px 80px 80px 80px;
+	padding: 10px;
+	background: #eaeaea;
+	color: #666666;
+	height: 180px;
+	clear: both;
+	border: 0px solid #eaeaea;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-box-shadow: 0 1px 3px #666;
+	-webkit-box-shadow: 0 1px 3px #666;
+	box-shadow: 0 1px 3px #666;
+}
+#footer a { color: #666666; }
+#footer a:hover { color: #333333; }
+#footer ul { list-style-type: none; }
+#footer li { padding: 2px; }
+#footer h4 { margin: 0 20px; font-size: 125%; }
+
+/* Headers */
+h2, h3, h4, .wiki h1, .wiki h2, .wiki h3 {border-bottom: 0px;}
+
+h2 {
+    color: #DF8F06;
+    border-left: 10px solid #F3F3F3;
+    padding: 4px 0px 4px 4px;
+    margin: 0px 0px 4px 0px;
+}
+
+/* Menu */
+#main-menu li a {
+	font-size: 11px;
+	font-weight: bold;
+	color: #3E1220;
+	background: inherit;
+	padding: 0px 4px 6px 4px;
+}
+
+#main-menu li a:hover {
+	text-decoration: underline;
+	color: #DF8F06;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#main-menu li a.selected, #main-menu li a.selected:hover { background-color: transparent; }
+
+#sidebar{
+	/* background-color: #eeeeee; */
+	float: right;
+	width: 16%;
+	position: relative;
+	z-index: 9;
+	min-height: 580px;
+	padding: 0px 0px 0px 10px;
+	margin: 0;
+	border-left: 1px dotted #d7d7d7;
+}
+
+div.wiki { padding-right: 20px; }
+div.contextual { padding-right: 20px; }
+p.other-formats { padding-right: 20px; }
+
+/* Tables */
+table.list tbody td, table.list tbody tr:hover td { border: solid 1px #d7d7d7; }
+table.list thead th {
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #d7d7d7;
+    border-right-color: #d7d7d7;
+    border-left-color: #d7d7d7;
+    border-bottom-color: #999999;
+}
+
+/* Issues grid styles by priorities (provided by Wynn Netherland) */
+table.list tr.issue a { color: #666; }
+
+tr.odd.priority-5, table.list tbody tr.odd.priority-5:hover { color: #900; font-weight: bold; }
+tr.odd.priority-5 { background: #ffc4c4; }
+tr.even.priority-5, table.list tbody tr.even.priority-5:hover { color: #900; font-weight: bold; }
+tr.even.priority-5 { background: #ffd4d4; }
+tr.priority-5 a, tr.priority-5:hover a { color: #900; }
+tr.odd.priority-5 td, tr.even.priority-5 td { border-color: #ffb4b4; }
+
+tr.odd.priority-4, table.list tbody tr.odd.priority-4:hover { color: #900; }
+tr.odd.priority-4 { background: #ffc4c4; }
+tr.even.priority-4, table.list tbody tr.even.priority-4:hover { color: #900; }
+tr.even.priority-4 { background: #ffd4d4; }
+tr.priority-4 a { color: #900; }
+tr.odd.priority-4 td, tr.even.priority-4 td { border-color: #ffb4b4; }
+
+tr.odd.priority-3, table.list tbody tr.odd.priority-3:hover { color: #900; }
+tr.odd.priority-3 { background: #fee; }
+tr.even.priority-3, table.list tbody tr.even.priority-3:hover { color: #900; }
+tr.even.priority-3 { background: #fff2f2; }
+tr.priority-3 a { color: #900; }
+tr.odd.priority-3 td, tr.even.priority-3 td { border-color: #fcc; }
+
+tr.odd.priority-1, table.list tbody tr.odd.priority-1:hover { color: #559; }
+tr.odd.priority-1 { background: #eaf7ff; }
+tr.even.priority-1, table.list tbody tr.even.priority-1:hover { color: #559; }
+tr.even.priority-1 { background: #f2faff; }
+tr.priority-1 a { color: #559; }
+tr.odd.priority-1 td, tr.even.priority-1 td { border-color: #add7f3; }
+
+/* Buttons */
+input[type="button"], input[type="submit"], input[type="reset"] { background-color: #f2f2f2; color: #222222; border: 1px outset #cccccc; }
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover { background-color: #ccccbb; }
+
+/* Fields */
+input[type="text"], textarea, select { padding: 2px; border: 1px solid #d7d7d7; }
+input[type="text"] { padding: 3px; }
+input[type="text"]:focus, textarea:focus, select:focus { border: 1px solid #888866; }
+option { border-bottom: 1px dotted #d7d7d7; }
+
+/* Misc */
+.box { background-color: #fcfcfc; }
