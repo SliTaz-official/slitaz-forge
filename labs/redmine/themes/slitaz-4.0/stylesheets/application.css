@@ -1,27 +1,32 @@
 @import url(../../../stylesheets/application.css);
 
+html { overflow-y: visible;}
+
 body {
 	background-color:#ffffff;
 	border-top: 34px solid #f1f1f1;
+	margin: 0;
 }
 
 #wrapper {
-	background-color: #eeeeee;
+	background-color: white;
 }
 
 #top-menu {
 	position: absolute;
-	top: 0;
+	top: 4px;
 	background: transparent;
 	width: 100%;
 	font-size: 11px;
 	color: #000000;
+	padding: 0 4px;
 }
-#loggedas { color: #000000; }
+#loggedas { color: #351a0a; font-weight: bold; }
 #top-menu a {
 	background: transparent;
 	color: #0F314E;
 	text-decoration: none;
+	margin: 0;
 }
 #top-menu a:hover {
 	color: #b64b22;
@@ -36,10 +41,30 @@ body {
 	border-top: 1px solid black;
 	border-bottom: 1px solid #999;
 	margin-bottom: 33px;
+	padding: 0;
+	
 }
 #header h1 { 
 	color: #f1f1f1;
+	padding: 10px;
+	font-size: 18px;
 }
+
+#header h1 a:hover { 
+	color: #b64b22;
+	text-decoration: none;
+}
+
+#logo {
+	position: absolute;
+	float: left;
+	left: 16px;
+	top: -10px;
+	width: 200px;
+	height: 74px;
+}
+
+#quick-search { padding: 8px; }
 
 #main {
 	background: white;
@@ -56,6 +81,8 @@ body {
 /* Footer */
 
 #footer {
+	text-align: left;
+	font-size: 13px;
 	margin: 0px 80px 80px 80px;
 	padding: 10px;
 	background: #eaeaea;
@@ -76,33 +103,51 @@ body {
 #footer li { padding: 2px; }
 #footer h4 { margin: 0 20px; font-size: 125%; }
 
+
+.right_box { width: 48%; float: right; }
+.left_box { width: 48%; float: left; }
+
 /* Headers */
 h2, h3, h4, .wiki h1, .wiki h2, .wiki h3 {border-bottom: 0px;}
 
 h2 {
-    color: #DF8F06;
-    border-left: 10px solid #F3F3F3;
-    padding: 4px 0px 4px 4px;
-    margin: 0px 0px 4px 0px;
+	color: #b64b22;
+	padding: 0;
+	margin: 20px 0 5px 0;
+	font-size: 130%;
+	font-weight: bold;
+}
+h3 {
+	font-weight: bold;
+	color: #666666;
+	background: transparent;
 }
 
 /* Menu */
-#main-menu li a {
+
+#main-menu {
+	position: absolute;
+	top: 50px;
+	left: 20px;
 	font-size: 11px;
 	font-weight: bold;
-	color: #3E1220;
-	background: inherit;
+}
+
+#main-menu li a {
 	padding: 0px 4px 6px 4px;
+	color: #0F314E;
 }
 
 #main-menu li a:hover {
 	text-decoration: underline;
-	color: #DF8F06;
+	color: #b64b22;
 	background-color: transparent;
 	text-decoration: none;
 }
 
-#main-menu li a.selected, #main-menu li a.selected:hover { background-color: transparent; }
+#main-menu li a.selected, #main-menu li a.selected:hover {
+	color: #351a0a;
+	background-color: transparent; }
 
 #sidebar{
 	/* background-color: #eeeeee; */
@@ -174,3 +219,19 @@ option { border-bottom: 1px dotted #d7d7d7; }
 
 /* Misc */
 .box { background-color: #fcfcfc; }
+
+ul.projects div.root { 
+	margin-top: 10px;
+	background-color: #f8f8f8;
+	padding: 5px 10px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-box-shadow: 0 1px 3px #666;
+	-webkit-box-shadow: 0 1px 3px #666;
+	box-shadow: 0 1px 3px #666;
+}
+
+
+
+

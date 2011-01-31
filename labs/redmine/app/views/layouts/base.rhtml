@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title><%=h html_title %></title>
 <meta name="description" content="<%= Redmine::Info.app_name %>" />
-<meta name="keywords" content="slitaz,issue,bug,tracker" />
+<meta name="keywords" content="slitaz,issue,bug,tracker,labs" />
 <%= favicon %>
 <%= stylesheet_link_tag 'application', :media => 'all' %>
 <%= stylesheet_link_tag 'rtl', :media => 'all' if l(:direction) == 'rtl' %>
@@ -42,14 +42,6 @@
         <%= render_project_jump_box %>
     </div>
     
-    <!-- Header -->
-<div id="header">
-	<!-- Logo -->
-	<a href="http://www.slitaz.org/"><img id="logo"
-		src="pics/website/logo.png" 
-		title="www.slitaz.org" alt="www.slitaz.org" /></a>
-	<p id="titre">#!/page_header_title</p>
-</div>
     <h1><%= page_header_title %></h1>
     
     <% if display_main_menu?(@project) %>
@@ -74,7 +66,10 @@
 </div>
 
 <div id="ajax-indicator" style="display:none;"><span><%= l(:label_loading) %></span></div>
-	
+
+</div>
+</div>
+<%= call_hook :view_layouts_base_body_bottom %>
 
 <!-- Footer -->
 <div id="footer">
@@ -89,24 +84,18 @@
 			<li><a href="http://distrowatch.com/slitaz">SliTaz on DistroWatch</a></li>
 		</ul>
 	</div>
+	<div class="left_box">
 	<h4>SliTaz Website</h4>
 	<ul>
 		<li><a href="#header">Top of the page</a></li>
 		<li>Copyright &copy; <span class="year"></span>
 			<a href="http://www.slitaz.org/">SliTaz</a></li>
-		<li><a href="about/">About the project</a></li>
-		<li><a href="netmap.php">Network Map</a></li>
-		<li>Page modified the <?php echo (date( "d M Y", getlastmod())); ?></li>
-		<li><a href="http://validator.w3.org/check?uri=referer"><img
-		src="pics/website/xhtml10.png" alt="Valid XHTML 1.0"
-		title="Code validé XHTML 1.0"
-		style="width: 80px; height: 15px; vertical-align: middle;" /></a></li>
+		<li><a href="http://www.slitaz.org/en/about/">About the project</a></li>
+		<li><a href="http://www.slitaz.org/netmap.php">Network Map</a></li>
+		<li>Powered By Redmine</li>
 	</ul>
+	</div>
 </div>
 
-
-</div>
-</div>
-<%= call_hook :view_layouts_base_body_bottom %>
 </body>
 </html>
