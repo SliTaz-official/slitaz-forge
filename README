@@ -1,0 +1,13 @@
+SliTaz forge
+===============================================================================
+
+This repos provide all file and theme used by SliTaz network.
+
+ * doc:    Use Dokuwiki
+ * forum:  Use Vanilla
+ * labs:   Use Redmine
+ * people: Own php/html code
+
+
+To update or fix theme, please test it well before, commit and them notice
+<pankso at slitaz.org> who will update modified theme.
