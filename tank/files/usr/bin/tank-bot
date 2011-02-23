@@ -1,0 +1,17 @@
+#!/bin/sh
+
+sandbox=/home/slitaz/cooking/sandbox
+
+[ -d "$sandbox/proc/1" ] && exit
+
+mount -t proc proc $sandbox/proc
+mount -t sysfs sysfs $sandbox/sys
+mount -t devpts devpts $sandbox/dev/pts
+mount -t tmpfs shm $sandbox/dev/shm
+
+chroot $sandbox tank-bot
+
+umount $sandbox/dev/shm
+umount $sandbox/dev/pts
+umount $sandbox/sys
+umount $sandbox/proc

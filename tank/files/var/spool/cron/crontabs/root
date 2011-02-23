@@ -1,0 +1,26 @@
+# Update Web stats
+0 0 * * * /usr/sbin/awsupdate_all
+
+# Backup MySQL databases
+0 30 * * * /usr/bin/mybackup.sh
+
+# rotate logs daily
+0 1 * * *  /usr/sbin/logrotate /etc/logrotate.conf
+
+# Update SliTaz stuffs
+15 02 * * * /usr/bin/tazdev update-www
+20 02 * * * /usr/bin/tazpkg-web cooking
+30 02 * * * /usr/bin/tazpkg-web stable
+
+# Update RSS channels
+40 02 * * * /usr/bin/tazrss cooking
+40 02 * * * /usr/bin/tazrss stable
+
+# Update systam load graphics
+*/5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
+
+# Backup (will be sync'ed by mirror)
+0 3 * * *  /home/backups/tank/backup.sh
+
+# Send all sources to mirror
+0 23 * * *  /home/slitaz/sources/update.sh update >/dev/null 2>&1
