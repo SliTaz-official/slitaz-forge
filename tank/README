@@ -1,0 +1,19 @@
+README for Tank - SliTaz main server and build host
+===============================================================================
+
+
+Tank is the hostname for SliTaz main server and build host. This package 
+provides the web interface accessible at http://tank.slitaz.org/ and a tiny
+tool (taztank) to help maintain and administer services.
+
+Build host documentation: http://doc.slitaz.org/en:cookbook:buildhost
+
+IP's
+----
+Tank:         213.3.10.214
+Mirror:       94.23.60.116 (mirror,pizza,archives,ajaxterm)
+Forum & labs: 94.23.34.123
+
+Check /home/slitaz/www for Tank vhosts.
+
+===============================================================================

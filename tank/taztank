@@ -1,0 +1,122 @@
+#!/bin/sh
+# Taztank - Admin Tank, backup, update and give stats.
+# (C) 2011 SliTaz - GNU General Public License.
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
+
+REPOS="/home/slitaz/repos"
+WWW="/home/slitaz/www"
+VHOST="$WWW/tank"
+BACKUPS="/home/backups"
+
+usage() {
+	echo -e "\nUsage: `basename $0` [command]
+Commands:
+  stats         Display some Tank stats
+  backup        Backup files and MySQL DB
+  chroot	Move a user in a new chroot location
+  up-web        Update http://tank.slitaz.org/
+  up-people     Update http://people.slitaz.org/
+  up-web-stats  Update Awstats statistics (run by cron)
+  clean-labs    Clean Redmine Labs (no more on Tank)\n"
+}
+
+case "$1" in
+	stats)
+		# Report some stats
+		clear
+		cat << EOF
+
+Connected user
+--------------
+`who`
+
+System usage
+------------
+`df -h`
+
+`free`
+
+EOF
+		;;
+	chroot)
+		if [ -s $2/bin/sh ] && grep -qs $3: /etc/password ; then
+			grep -q ^chroot /etc/busybox.conf ||
+			echo 'chroot = ssx root.root' >> /etc/busybox.conf
+			[ -s /bin/chrootsh ] || cat > /bin/chrootsh << EOF
+#!/bin/sh
+
+#case " \$@ " in                                        
+#*rsync*) exec /bin/sh "\$@" ;;
+#esac
+
+case "\$USER" in                                        
+pankso) exec /bin/sh "\$@" ;;                      
+*) exec /usr/sbin/chroot $2 /bin/chrootsh "\$@" ;;
+esac
+EOF
+			[ -s $2/bin/chrootsh ] || cat > $2/bin/chrootsh << EOF
+#!/bin/sh
+
+export SHELL='/bin/sh'
+cd \$HOME
+. /etc/profile
+exec /bin/sh "\$@"
+EOF
+			chmod +x /bin/chrootsh $2/bin/chrootsh
+			base=$(awk -F: "/^$3:/ { print \$6 }" /etc/passwd)
+			target=$base
+			while [ -L $target ]; do
+				target=$(readlink $target)
+			done
+			mv $target $2/$base
+			[ -L $base ] && rm -f $base
+			ln -s $2/$base $base
+			if ! grep -q ^$3: $2/etc/passwd ; then
+				grep ^$3: /etc/passwd >> $2/etc/passwd
+				grep ^$3: /etc/shadow >> $2/etc/shadow		fi
+			fi
+		else
+			cat << EOF
+Usage: $0 $1 newchroot user
+Move a user in a new chroot location
+EOF
+		fi
+		;;
+	backup)
+		# Backup config files and SQL db.
+		echo "Not yet implemented..." ;;
+	up-web)
+		# Update Tank web interface: http://tank.slitaz.org/
+		echo -e "\nUpdating: tank.slitaz.org..."
+		cd $REPOS/tank
+		hg update
+		rm -rf $VHOST/*.* $VHOST/pics/website
+		cp -a web/* $VHOST ;;
+	up-people)
+		# Update People web interface: http://people.slitaz.org/
+		echo -e "\nUpdating: people.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		hg update
+		rm -rf $WWW/people/*
+		cp -a people/* $WWW/people ;;
+	up-web-stats)
+		echo -e "\nUpdating all awstats database...\n"
+		for vh in www boot pkgs
+		do
+			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
+		done ;;
+	clean-labs)
+		# Redmin need some time help
+		/etc/init.d/lighttpd stop
+		/etc/init.d/mysql stop
+		killall ruby
+		rm -rf labs/tmp/sessions
+		mkdir -p labs/tmp/sessions
+		chown www.www labs/tmp/sessions
+		/etc/init.d/mysql start
+		/etc/init.d/lighttpd start ;;
+	*)
+		usage ;;
+esac
+exit 0
