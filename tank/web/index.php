@@ -63,6 +63,14 @@
 	title="Tank RRDtool graphs" alt="graphs"
     src="pics/website/monitor.png" /></a>System stats</h2>
 
+<h4>Cpu</h4>
+
+<pre class="package">
+<?php
+system("uname -p")
+?>
+</pre>
+
 <h4>Uptime</h4>
 
 <pre class="package">
@@ -72,6 +80,7 @@ system("uptime | sed 's/^\s*//'");
 </pre>
 
 <h4>Disk usage</h4>
+
 <pre class="package">
 <?php
 system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
