@@ -1,7 +1,7 @@
 SliTaz forge
 ===============================================================================
 
-This repos provide all file and theme used by SliTaz network.
+This repos provide all files, theme and custom packages used by SliTaz network.
 
  * doc:    Use Dokuwiki
  * forum:  Use Vanilla
@@ -9,5 +9,7 @@ This repos provide all file and theme used by SliTaz network.
  * people: Own php/html code
 
 
-To update or fix theme, please test it well before, commit and them notice
+To update or fix theme, please test it well before, commit and then notice
 <pankso at slitaz.org> who will update modified theme.
+
+To update or fix packages do the same as for themes and notice <erjo at slitaz.org>.
