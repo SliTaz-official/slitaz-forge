@@ -1,0 +1,34 @@
+# SliTaz package receipt.
+
+PACKAGE="rb-i18n"
+VERSION="0.5.0"
+CATEGORY="development"
+SHORT_DESC="Internationalization support for Ruby."
+MAINTAINER="erjo@slitaz.org"
+DEPENDS="ruby activesupport"
+BUID_DEPENDS="rubygems"
+SOURCE="i18n"
+TARBALL="$SOURCE-$VERSION.gem"
+WEB_SITE="http://rubygems.org/gems/activeresource"
+WGET_URL="http://rubygems.org/downloads/$TARBALL"
+
+# Rules to configure and make the package.
+compile_rules()
+{
+	[ -d $SOURCE-$VERSION ] || mkdir $SOURCE-$VERSION
+	cd $src
+
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	gem install --no-rdoc --no-ri --ignore-dependencies \
+		--install-dir $PWD/_pkg/usr/lib/ruby/gems/${RUBY_VERSION%.*} $SOURCES_REPOSITORY/$TARBALL
+}
+
+# Rules to gen a SliTaz package suitable for Tazpkg.
+genpkg_rules()
+{
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	mkdir -p $fs/usr
+	
+	cp -a $_pkg/usr/lib $fs/usr
+}
+

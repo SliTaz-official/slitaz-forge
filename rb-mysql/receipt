@@ -1,0 +1,35 @@
+# SliTaz package receipt.
+
+PACKED_SIZE="4.0k"
+UNPACKED_SIZE="4.0k"
+PACKAGE="rb-mysql"
+VERSION="2.8.1"
+CATEGORY="development"
+SHORT_DESC="MySQL API module for Ruby"
+MAINTAINER="erjo@slitaz.org"
+DEPENDS="ruby  libmysqlclient"
+SOURCE="mysql"
+BUILD_DEPENDS="mysql-dev rubygems"
+TARBALL="$SOURCE-$VERSION.gem"
+WEB_SITE="http://rubygems.org/gems/mysql"
+WGET_URL="http://rubygems.org/downloads/$TARBALL"
+
+# Rules to configure and make the package.
+compile_rules()
+{
+	[ -d $SOURCE-$VERSION ] || mkdir $SOURCE-$VERSION
+	cd $src
+
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	gem install --no-rdoc --no-ri --ignore-dependencies \
+		--install-dir $PWD/_pkg/usr/lib/ruby/gems/${RUBY_VERSION%.*} $SOURCES_REPOSITORY/$TARBALL
+}
+
+# Rules to gen a SliTaz package suitable for Tazpkg.
+genpkg_rules()
+{
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	mkdir -p $fs/usr
+	
+	cp -a $_pkg/usr/lib $fs/usr
+}
