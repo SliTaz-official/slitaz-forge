@@ -7,10 +7,9 @@ This repos provide all files, theme and custom packages used by SliTaz network.
  * forum:  Use Vanilla
  * labs:   Use Redmine
  * people: Own php/html code
-
+ * scn:    Receipts for custom packages to use scn on tank
 
 To update or fix theme, please test it well before, commit and then notice
 <pankso at slitaz.org> who will update modified theme.
 
-Note that ‡aAll receipts was made for tazwok 3.1 and SliTaz 3.0.
 To update or fix packages do the same as for themes and notice <erjo at slitaz.org>.
