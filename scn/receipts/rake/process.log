@@ -1,7 +1,0 @@
-date 20110301 23:18:50
-package rake (compile)
-untaring rake-0.8.7.gem
-executing compile_rules
-compilation done : 20110301 23:18:50
-executing genpkg_rules
-rake-0.8.7.tazpkg (done)
