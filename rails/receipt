@@ -1,0 +1,32 @@
+# SliTaz package receipt.
+
+PACKAGE="rails"
+VERSION="2.3.5"
+CATEGORY="ddevelopment"
+SHORT_DESC="REST on Rails."
+MAINTAINER="erjo@slitaz.org"
+DEPENDS="ruby actionmailer activeresource activerecord actionpack activesupport"
+BUILD_DEPENDS="rubygems"
+TARBALL="$PACKAGE-$VERSION.gem"
+WEB_SITE="http://rubygems.org/gems/rails"
+WGET_URL="http://rubygems.org/downloads/$TARBALL"
+
+# Rules to configure and make the package.
+compile_rules()
+{
+	[ -d $PACKAGE-$VERSION ] || mkdir $PACKAGE-$VERSION
+	cd $src
+
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	gem install --no-rdoc --no-ri --ignore-dependencies \
+		--install-dir $PWD/_pkg/usr/lib/ruby/gems/${RUBY_VERSION%.*} $SOURCES_REPOSITORY/$TARBALL
+}
+
+# Rules to gen a SliTaz package suitable for Tazpkg.
+genpkg_rules()
+{
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	mkdir -p $fs/usr
+	
+	cp -a $_pkg/usr/lib $fs/usr
+}
