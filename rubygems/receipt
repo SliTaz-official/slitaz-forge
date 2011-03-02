@@ -1,0 +1,33 @@
+# SliTaz package receipt.
+
+PACKAGE="rubygems"
+VERSION="1.5.2"
+CATEGORY="development"
+SHORT_DESC="Rubx packages Manager."
+MAINTAINER="pankso@slitaz.org"
+TARBALL="$PACKAGE-$VERSION.tgz"
+DEPENDS="ruby"
+BUILD_DEPENDS="ruby"
+WEB_SITE="http://www.rubygems.org/"
+WGET_URL="http://production.cf.rubygems.org/rubygems/$TARBALL"
+TAGS="ruby"
+
+# Rules to configure and make the package.
+compile_rules()
+{
+	cd $src
+	ruby setup.rb --prefix=/usr --destdir=$PWD/_pkg
+}
+
+# Rules to gen a SliTaz package suitable for Tazpkg.
+genpkg_rules()
+{
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	
+	mkdir -p $fs/usr/lib/ruby/site_ruby/${RUBY_VERSION%.*} \
+		$fs/usr/lib/ruby/gems/${RUBY_VERSION%.*}/cache \
+		$fs/usr/lib/ruby/gems/${RUBY_VERSION%.*}/gems \
+		$fs/usr/lib/ruby/gems/${RUBY_VERSION%.*}/specifications
+	cp -a $_pkg/usr/lib/* $fs/usr/lib/ruby/site_ruby/${RUBY_VERSION%.*}
+	cp -a $_pkg/usr/bin $fs/usr
+}
