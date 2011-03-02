@@ -1,0 +1,33 @@
+# SliTaz package receipt.
+
+PACKAGE="activesupport"
+VERSION="2.3.5"
+CATEGORY="system-tools"
+SHORT_DESC="Database tables mapping to Ruby classes"
+MAINTAINER="erjo@slitaz.org"
+DEPENDS="ruby"
+BUILD_DEPENDS="rubygems"
+TARBALL="$PACKAGE-$VERSION.gem"
+WEB_SITE="http://rubygems.org/gems/activerecord"
+WGET_URL="http://rubygems.org/downloads/$TARBALL"
+
+# Rules to configure and make the package.
+compile_rules()
+{
+	[ -d $PACKAGE-$VERSION ] || mkdir $PACKAGE-$VERSION
+	#mv -f *.gem $PACKAGE-$VERSION	
+	cd $src
+	wget "http://rubygems.org/downloads/$TARBALL"
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	gem install --no-rdoc --no-ri --install-dir $PWD/_pkg/usr/lib/ruby/gems/${RUBY_VERSION%.*} $TARBALL
+}
+
+# Rules to gen a SliTaz package suitable for Tazpkg.
+genpkg_rules()
+{
+	RUBY_VERSION="$(ruby -e 'print RUBY_VERSION')"
+	mkdir -p $fs/usr
+	
+	cp -a $_pkg/usr/lib $fs/usr
+}
+
