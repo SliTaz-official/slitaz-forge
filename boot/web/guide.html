@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>boot.slitaz.org - Boot SliTaz from the Web</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
+    <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
+    <meta name="robots" content="index, follow, all" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="expires" content="never" />
+    <meta name="modified" content="2011-01-07 02:10:00" />
+    <meta name="author" content="Christophe Lincoln"/>
+    <meta name="publisher" content="www.slitaz.org" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="slitaz.css" />
+    <link rel="Content" href="#content" />
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+    <a href="http://boot.slitaz.org/"><img id="logo"
+		src="pics/website/logo.png" 
+		title="boot.slitaz.org" alt="boot.slitaz.org" /></a>
+    <p id="titre">#!/Web/Boot</p>
+</div>
+
+<!-- Content -->
+<div id="content-full">
+
+<!-- Block begin -->
+<div class="block">
+	<!-- Nav block begin -->
+	<div id="block_nav">
+		<h3><img src="pics/website/users.png" alt="users.png" />Community</h3>
+		<ul>
+			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
+			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
+		</ul>
+		<h3>Quick Download</h3>
+		<div class="button">
+			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+		</div>
+	<!-- Nav block end -->
+	</div>
+	<!-- Top block begin -->
+	<div id="block_top">
+		<h1>Web Boot guide</h1>
+		<p>
+			Learn how to easily boot SliTaz from the web. 
+		</p>
+		<h3><img src="pics/website/locale.png" alt="locale.png" />Guide Language</h3>
+		<p>
+			<a href="#en">English</a> | <a href="#fr">Français</a>
+		</p>
+	<!-- Top block end -->
+	</div>
+<!-- Block end -->
+</div>
+
+<a name="en"></a>
+<h2>[en] Short guide</h2>
+<p>
+To boot from the internet you'll need a working DHCP server, DNS server/cache
+and a default internet route. This is usually the case if you have a router
+for network connection.
+</p>
+<ul>
+	<li>SliTaz Cooking has the boot option <code>web</code>, so you can 
+	use boot.slitaz.org from the standard core LiveCD.</li>
+	<li>SliTaz boot ISO: Download
+	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
+	and burn the image to a cdrom. Boot from the cdrom device and select 
+	gPXE. This ISO image also provides Memtest86 to test system memory.
+	</li>
+	<li>USB media: Use TazUSB to generate bootable USB media. Install 
+	the package <code>gpxe</code>, copy /boot/gpxe into the boot 
+	directory of the USB media and add an entry to the Syslinux configuration
+	file <code>syslinux.cfg</code>:
+	<pre class="script">
+label web
+	kernel /boot/gpxe
+	</pre></li>
+	<li>Floppy image: Download
+	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	and transfer the image to a blank floppy disk using the command: 
+	<code>dd if=floppy-grub of=/dev/fd0</code>. Boot the floppy and select
+	gPXE entry.</li>
+</ul>
+
+<h3>Boot time</h3>
+<p>
+The boot time largely depends on your network connection. With a 1Mb 
+connection in France, it takes 5 min. If you want, you can report the
+boot time on the Mailing list or the Forum.
+</p>
+
+<h3>Required configuration</h3>
+<p>
+The default boot entry needs 160Mb RAM. Two entries are available to
+boot with 24Mb:
+<ul>
+	<li><code>tiny</code> starts in text mode.</li>
+	<li><code>loram</code> starts in graphical mode.</li>
+</ul>
+</p>
+
+<a name="fr"></a>
+<h2>[fr] Guide rapide</h2>
+<p>
+Pour démarrer depuis internet vous devez avoir une configuration réseau 
+fonctionnelle (Serveur DHCP, DNS/DNS cache, passerelle par défaut). 
+C'est généralement le cas si vous utiliser un routeur pour votre 
+connexion réseau.
+</p>
+
+<ul>
+	<li>La version Cooking de permet de démarrer depuis boot.slitaz.org
+	en utilisant l'option <code>web</code> au boot, cela permet d'utiliser
+	le LiveCD standard pour tester la dernière version sans regraver un
+	cdrom.</li>
+	<li>Image ISO SliTaz boot: Téléchargez le fichier
+	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
+	et gravez l'image sur un cdrom vierge. Démarrez depuis le cdrom et 
+	choisissez l'option gPXE. Cette image ISO vous permet également de tester
+	la mémoire système avec Memtest86.</li>
+	<li>Média USB: Utilisez TazUSB pour générer un média USB amorçable.
+	Installez le paquet <code>gpxe</code>, copiez le répertoire /boot/gpxe 
+	dans le répertoire boot du média USB et ajoutez une entrée dans le 
+	fichier de configuration de Syslinux <code>syslinux.cfg</code> :
+	<pre class="script">
+label web
+	kernel /boot/gpxe
+	</pre></li>
+	<li>Image de disquette: Téléchargez le fichier
+	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	Transférez l'image sur une disquette vierge en utilisant la commande 
+	suivant: <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur 
+	la disquette et choisissez l'entrée gPXE.
+	</li>
+</ul>
+
+<h3>Temps de démarrage</h3>
+<p>
+Le temps de démarrage dépend de votre vitesse de connexion  à internet 
+et des charges du serveur. En france avec un débit de 1Mo il faut 5 minutes.
+Vous pouvez poster vos retours d'expériences sur le Wiki, Forum ou la 
+liste de diffusion.
+</p>
+
+<h3>Configuration minimum</h3>
+<p>
+L'entrée par défaut nécessite au moins 160Mo de RAM. Deux autres sont
+disponibles pour démarrer avec 24Mo ou plus :
+<ul>
+	<li><code>tiny</code> démarre en mode texte.</li>
+	<li><code>loram</code> démarre en mode graphique.</li>
+</ul>
+</p>
+
+<!-- End of content -->
+</div>
+
+<!-- Footer -->
+<div id="footer">
+	<div class="right_box">
+	<h4>SliTaz Network</h4>
+		<ul>
+			<li><a href="http://doc.slitaz.org/">Documentation</a></li>
+			<li><a href="http://forum.slitaz.org/">Support Forum</a></li>
+			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
+			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
+			<li><a href="http://twitter.com/slitaz">SliTaz on Twitter</a></li>
+			<li><a href="http://distrowatch.com/slitaz">SliTaz on DistroWatch</a></li>
+		</ul>
+	</div>
+	<h4>SliTaz Website</h4>
+	<ul>
+		<li><a href="#header">Top of the page</a></li>
+		<li>Copyright &copy; <span class="year"></span>
+			<a href="http://www.slitaz.org/">SliTaz</a></li>
+		<li><a href="http://www.slitaz.org/en/about/">About the project</a></li>
+		<li><a href="http://www.slitaz.org/netmap.php">Network Map</a></li>
+		<li>Page modified the 07 Jan 2011</li>
+		<li><a href="http://validator.w3.org/check?uri=referer"><img
+		src="pics/website/xhtml10.png" alt="Valid XHTML 1.0"
+		title="Code validé XHTML 1.0"
+		style="width: 80px; height: 15px; vertical-align: middle;" /></a></li>
+	</ul>
+</div>
+
+</body>
+</html>
