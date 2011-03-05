@@ -1,18 +1,18 @@
 2010-12-22 
-The forum is powered by Vanilla Forum (http://vanillaforums.org/)
+The forum is powered by Vanilla Forums (http://vanillaforums.org/)
 
 Running on Debian 4.0 with:
 * vanilla 2.0.16
 * apache 2.23
 * mysql 5.0.32
 * php 5.2
-* awstats 6.95 (optionnal)
+* awstats 6.95 (optional)
 
 
 Installation
 ------------
 
-Install required system softwares (apache, mysql, php).
+Install requires system software (apache, mysql, php).
 
 Create a system user for the forum.
 i.e: adduser slitaz
