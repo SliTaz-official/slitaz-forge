@@ -7,7 +7,7 @@
 # rotate logs daily
 0 1 * * *  /usr/sbin/logrotate /etc/logrotate.conf
 
-# Update SliTaz stuffs
+# Update SliTaz stuff
 15 02 * * * /usr/bin/tazdev update-www
 20 02 * * * /usr/bin/tazpkg-web cooking
 30 02 * * * /usr/bin/tazpkg-web stable
@@ -16,7 +16,7 @@
 40 02 * * * /usr/bin/tazrss cooking
 40 02 * * * /usr/bin/tazrss stable
 
-# Update systam load graphics
+# Update system load graphics
 */5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
 
 # Backup (will be sync'ed by mirror)
