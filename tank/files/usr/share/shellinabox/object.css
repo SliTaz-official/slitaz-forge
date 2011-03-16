@@ -1,0 +1,4 @@
+#vt100 #scrollable {
+	/* overflow: hidden; */
+	overflow: visible; /* menu may overflow with tiny screens */
+}
