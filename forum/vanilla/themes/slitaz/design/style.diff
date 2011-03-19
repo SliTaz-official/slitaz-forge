@@ -1,0 +1,343 @@
+--- style.css.org
++++ style.css
+@@ -44,6 +44,7 @@
+    line-height: 1;
+    color: black;
+    background: white;
++   border-top: 34px solid #f1f1f1;
+ }
+ ol, ul {
+    list-style: none;
+@@ -131,11 +132,11 @@
+ a:visited,
+ a:active {
+    text-decoration: none;
+-   color: #1e79a7;
++   color: #2571B1;
+ }
+ a:hover {
+    text-decoration: none;
+-   color: #ff0084;
++   color: blue;
+ }
+ input.DateBox,
+ input.InputBox,
+@@ -321,11 +322,11 @@
+    font-size: 13px;
+    background: #fafafa;
+    border: 1px solid #eee;
+-   color: #888;
++   color: #666666;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+-   padding: 6px;
++   padding: 8px;
+    margin: 0 0 10px;
+ }
+ div.Info strong {
+@@ -408,8 +409,10 @@
+ 
+ /* =================================================================== Header */
+ #Head {
+-   background: #38abe3;
+-   padding: 0;
++   background: #351a0a url(header-img.png) no-repeat top right;
++   padding: 10px 0 0 0;
++   border-top: 1px solid black;
++	border-bottom: 1px solid #999;
+ }
+ div.Search:after,
+ div#Search:after {
+@@ -423,16 +426,15 @@
+    display: inline-block;
+    font-weight: bold;
+    margin: 0;
+-   padding: 21px 10px 4px 0;
++   padding: 0 10px 5px 0;
+    border: 0;
+ }
+ #Head h1 a span {
+-   font-size: 24px;
+-   color:#E4F7FE;
+-   text-shadow:0 1px 0 #2595ba;   
++   font-size: 18px;
++   color: #f1f1f1;
+ }
+ #Head h1 a:hover span {
+-   color:#f3fcff;
++   color: #b64b22;
+ }
+ #Head form {
+    float: right;
+@@ -463,8 +465,8 @@
+    border: 0;
+    width: 38px;
+    height: 26px;
+-   background: #cfecff;
+-   color: #1e79a7;
++   background: #eaeaea;
++   color: #222222;
+    padding: 3px 0 4px;
+    margin: 0;
+    -moz-border-radius: 0;
+@@ -679,7 +681,7 @@
+    color: #fff;
+ }
+ #Menu a:hover {
+-   background: #2595cb;
++   background: #a3431f;
+ }
+ #Menu a:hover,
+ #Menu li.NonTab a:hover {
+@@ -706,24 +708,27 @@
+    float: right;
+ }
+ div.Box {
+-   border-radius: 1px;
+-   -moz-border-radius: 1px;
+-   -webkit-border-radius: 1px;
+-   background: #cfecff;
++   background: #eaeaea;
+    color: #888;
+    padding: 6px 10px;
+    margin: 0 0 10px;
++   border-radius: 2px;
++   -moz-border-radius: 2px;
++   -webkit-border-radius: 2px;
+ 	box-shadow: 0px 0px 2px #999;
+ 	-moz-box-shadow: 0px 0px 2px #999;
+ 	-webkit-box-shadow: 0px 0px 2px #999;  
+ }
+ div.Box h4 {
+    font-size: 110%;
+-   color: #1e79a7;
++   color: #666666;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 0 1px;
+ }
++div.Box h4 a {
++   color: #666666;
++}
+ div.Box dl {
+    overflow: hidden;
+ }
+@@ -743,12 +748,12 @@
+    color: #555;
+ }
+ ul.PanelActivity {
+-   border-top: 1px solid #abdafb;
++   border-top: 1px solid #C8C8C8;
+ 	border-bottom: 0;
+ }
+ ul.PanelActivity li {
+-   background: #e3f4ff;
+-   border-bottom: 1px solid #abdafb;
++   background: #f1f1f1;
++   border-bottom: 1px solid #C8C8C8;
+    padding: 2px 4px;
+ 	color: #555;
+ 	font-size: 11px;
+@@ -777,8 +782,8 @@
+ 	font-size: 85%;
+ }
+ ul.PanelInfo li {
+-   background: #e3f4ff;
+-   border-bottom: 1px solid #abdafb;
++   background: #f1f1f1;
++   border-bottom: 1px solid #C8C8C8;
+    padding: 2px 4px;
+    text-align: right;
+ }
+@@ -788,7 +793,7 @@
+    font-weight: bold;
+ }
+ ul.PanelInfo {
+-   border-top: 1px solid #abdafb;
++   border-top: 1px solid #C8C8C8;
+ 	border-bottom: 0;
+ }
+ ul.PanelInfo li strong {
+@@ -834,8 +839,8 @@
+ 	padding: 2px 0;
+ }
+ ul.PanelInfo li.Active {
+-   background: #fff;
+-   border-bottom: 1px solid #a3e6ff;
++   background: #f8f8f8;
++   border-bottom: 1px solid #444444;
+ }
+ ul.PanelInfo li.Active a {
+    color: #1e79a7;
+@@ -851,7 +856,7 @@
+ 	margin-bottom: 10px;
+ }
+ body.Profile ul.PanelInfo {
+-   border-bottom: 1px solid #abdafb;
++   border-bottom: 1px solid #C8C8C8;
+ }
+ body.Profile ul.PanelInfo li {
+ 	border-bottom: 0;
+@@ -1246,7 +1251,7 @@
+ 
+ div.Preview {
+ 	text-align: left;
+-	background: #E3F4FF;
++	background: #f1f1f1;
+ 	padding: 1px 8px;
+ 	margin: 4px 0 8px;
+ }
+@@ -1336,9 +1341,9 @@
+ /* The "Foot" is at the bottom of the #Content section. Used for more results
+ links, sign in buttons, etc */
+ .Foot {
+-	border-bottom: 1px solid #abdafb;
++	border-bottom: 1px solid #C8C8C8;
+    padding: 6px;
+-   background: #cfecff;
++   background: #eaeaea;
+    text-align: right;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+@@ -1419,7 +1424,7 @@
+ }
+ ul.SideMenu li ul li a:hover {
+    text-decoration: none;
+-   background: #cfecff;
++   background: #eaeaea;
+ }
+ div.User {
+    line-height: 150%;
+@@ -1441,7 +1446,7 @@
+    -moz-border-radius-topright: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+-   background: #cfecff;
++   background: #f1f1f1;
+    margin: 0;
+    padding: 8px 8px 0;
+    color: #999;
+@@ -1471,7 +1476,7 @@
+    -moz-border-radius-topright: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+-   background: #cfecff;
++   background: #f1f1f1;
+    padding: 8px 8px 0;
+ }
+ div.User form input.InputBox {
+@@ -1495,8 +1500,8 @@
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+-	background: #F2FBFF;
+-	border: 1px solid #C0E7F5;
++	background: #f1f1f1;
++	border: 1px solid #DDDDDD;
+ }
+ #Form_Invitation table label {
+    font-size: 12px;
+@@ -1514,7 +1519,7 @@
+ }
+ #Form_Invitation table thead th,
+ #Form_Invitation table thead td {
+-   border-bottom: 1px solid #C0E7F5;
++   border-bottom: 1px solid #DDDDDD;
+ }
+ #Form_Invitation table tbody th {
+    font-weight: bold;
+@@ -1522,7 +1527,7 @@
+ }
+ #Form_Invitation table tbody th,
+ #Form_Invitation table tbody td {
+-   border-bottom: 1px solid #C0E7F5;
++   border-bottom: 1px solid #DDDDDD;
+    line-height: 150%;
+ }
+ #Form_Invitation table thead th {
+@@ -1534,7 +1539,7 @@
+ #Form_Invitation table.AltRows tr.Alt td,
+ #Form_Invitation table.AltColumns th.Alt,
+ #Form_Invitation table.AltColumns td.Alt {
+-   background: #cfecff;
++   background: #f1f1f1;
+ }
+ #Form_Invitation table.AltColumns tr.Alt {
+    background: none;
+@@ -1553,10 +1558,10 @@
+ div.Tabs,
+ div.Headings {
+ 	display: block;
+-   border-bottom: 1px solid #abdafb;
++   border-bottom: 1px solid #C8C8C8;
+    padding: 5px 8px;
+    margin: 0;
+-   background: #cfecff;
++   background: #f1f1f1;
+ }
+ div.MessageForm div.Tabs {
+ 	padding: 0;
+@@ -1587,14 +1592,14 @@
+ div.Tabs li a:active,
+ div.Tabs li a:visited {
+    margin: 0;
+-   border: 1px solid #abdafb;
++   border: 1px solid #C8C8C8;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+-   background: #bbe2f7;
++   background: #b64b22;
+    display: inline;
+    font-weight: bold;
+-   color: #1e79a7;
++   color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+ 	line-height: 2.6;
+@@ -1602,7 +1607,7 @@
+ div.MorePager li a:hover,
+ a.TabLink:hover,
+ div.Tabs li a:hover {
+-   background: #f3fcff;
++   background: #a3431f;
+ }
+ a.Active,
+ div.Tabs li.Active a {
+@@ -1962,7 +1967,7 @@
+   + Mine: the user created the discussion
+   + New: there are new comments since the last viewed the discussion
+ */
+-.Mine { background: #e3f4ff; }
++.Mine { background: #f1f1f1; }
+ 
+ ul.DataList div.Meta a.Category {
+    background: #fafafa;
+@@ -2049,7 +2054,7 @@
+ 
+ /* =============================================== Discussion & Comment Forms */
+ li.Editing {
+-	background: #E3F4FF;
++	background: #f1f1f1;
+ }
+ div.CommentForm textarea {
+    width: 99%;
+@@ -2089,8 +2094,8 @@
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+-   background: #c4e1ff none repeat scroll 0 0;
+-   border: 1px solid #7caccb;
++   background: #f1f1f1 none repeat scroll 0 0;
++   border: 1px solid #DDDDDD;
+    margin: 0;
+    padding: 20px;
+ }
+@@ -2709,4 +2714,4 @@
+ 	font-size: 13px;
+ 	color: #000;
+ 	display: block;
+-}
+\ No newline at end of file
++}
