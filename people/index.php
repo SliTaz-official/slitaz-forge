@@ -6,28 +6,15 @@
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
     <meta name="description" content="SliTaz contributors stuff" />
     <meta name="robots" content="index, nofollow" />
-    <meta name="expires" content="never" />
     <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
     <meta name="publisher" content="www.slitaz.org" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="slitaz.css" />
-    <link rel="Content" href="#content" />
 </head>
 <body>
 
-<!-- Header -->
-<div id="header">
-	<!-- Access -->
-	<div id="access"></div>
-    <!-- Logo -->
-	<a href="http://people.slitaz.org/"><img id="logo"
-		src="pics/website/logo.png" 
-		title="people.slitaz.org" alt="people.slitaz.org" /></a>
-	<p id="titre">#!/People</p>
-</div>
-
 <!-- Content -->
-<div id="content-full">
+<div id="content">
 
 <!-- Block begin -->
 <div class="block">
