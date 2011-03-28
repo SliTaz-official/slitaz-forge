@@ -14,60 +14,57 @@
 
 <!-- Header -->
 <div id="header">
-    <a href="http://tank.slitaz.org/"><img id="logo"
-		src="pics/website/logo.png" 
-		title="tank.slitaz.org" alt="tank.slitaz.org" /></a>
-    <p id="titre">#!/Tank</p>
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://www.slitaz.org/">
+			<img src="images/network.png" alt="network.png" /></a>
+		<a href="http://scn.slitaz.org/">Community</a>
+		<a href="http://doc.slitaz.org/">Doc</a>
+		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://labs.slitaz.org/issues">Bugs</a>
+		<a href="http://hg.slitaz.org/">Hg</a>
+	</div>
+	<h1><a href="http://www.slitaz.org/">SliTaz Tank</a></h1>
 </div>
 
-<!-- Content -->
-<div id="content-full">
-
-<!-- Block begin -->
-<div class="block">
-	<!-- Nav block begin -->
+<!-- Block -->
+<div id="block">
+	<!-- Navigation -->
 	<div id="block_nav">
-		<h3><img src="pics/website/development.png" alt="png" />Devel corner</h3>
+		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website/devel</a></li>
+			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
+			<li><a href="http://scn.slitaz.org/">Community</a></li>
 			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
 			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
 			<li><a href="http://bb.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://people.slitaz.org/">SliTaz People</a></li>
+			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 		</ul>
-	<!-- Nav block end -->
 	</div>
-	<!-- Top block begin -->
-	<div id="block_top">
-		<h1>Codename: tank</h1>
+	<!-- Information/image -->
+	<div id="block_info">
+		<h4>Codename: tank</h4>
 		<p>
-			This is the SliTaz GNU/Linux main server and build host. The server runs
-			naturally SliTaz (stable) and provides some services to all contributors
-			such as: secure access, disk space, a public directory, cron jobs and the
-			<a href="http://bb.slitaz.org/">Build Bot</a>.
+			This is the SliTaz GNU/Linux main server and build host. 
+			The server runs naturally SliTaz and provides some services
+			to all contributors such as: secure access, disk space, a 
+			public directory or cron jobs.
 		</p>
 		<p>
-			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
-			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
-			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
-			"if (n == 4) printf \"quad \"; print s }' ")?> -
-			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
-			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
-			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?> - Located next to Lausanne,
-			Switzerland and offered by Thomas Hinterberger and hosted by Christophe
-			Lincoln. Tank is also monitored by RRDtool which provides 
+			Tank CPU is a AMD Dual Core 2 GHz - 2GB RAM - Located next to Lausanne,
+			Switzerland. Tank is also monitored by RRDtool which provides 
 			<a href="graphs.php">graphical stats</a>.
 		</p>
-	<!-- Top block end -->
 	</div>
-<!-- Block end -->
 </div>
+
+<!-- Content -->
+<div id="content">
 
 <h2><a href="graphs.php"><img 
 	style="vertical-align: middle; padding: 0 4px 0 0;"
 	title="Tank RRDtool graphs" alt="graphs"
-    src="pics/website/monitor.png" /></a>System stats</h2>
+    src="images/monitor.png" /></a>System stats</h2>
 
 <h4>Uptime</h4>
 
@@ -78,7 +75,6 @@ system("uptime | sed 's/^\s*//'");
 </pre>
 
 <h4>Disk usage</h4>
-
 <pre class="package">
 <?php
 system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
@@ -95,7 +91,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 <h2><a href="/stats/awstats.pl?config=www.slitaz.org"><img
 	style="vertical-align: middle; padding: 0 4px 0 0;"
 	title="Tank Virtual hosts" alt="vhosts"
-    src="pics/website/vhosts.png" /></a>Virtual hosts</h2>
+    src="images/network.png" /></a>Virtual hosts</h2>
 
 <ul>
 	<li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
@@ -112,7 +108,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 <h2><img
 	style="vertical-align: middle; padding: 0 4px 0 0;"
 	title="Erjo Virtual hosts" alt="vhosts"
-    src="pics/website/vhosts.png" />Other hosts</h2>
+    src="images/network.png" />Other hosts</h2>
 
 <p>
 	These services are hosted by some individual sponsors who gracefully offer
@@ -129,7 +125,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
     
 <h2><a href="http://mirror.slitaz.org/info/"> <img
 	style="vertical-align: middle; padding: 0 4px 0 0;"
-	src="pics/website/vhosts.png"
+	src="images/network.png"
 	title="Secondary mirrors" alt="mirrors" /></a>Mirrors</h2>
 <p>
 	These mirrors are updated using the url <b>rsync://mirror.slitaz.org/slitaz/</b>
@@ -165,30 +161,22 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 
 <!-- Footer -->
 <div id="footer">
-	<div class="right_box">
-	<h4>SliTaz Network</h4>
-		<ul>
-			<li><a href="http://doc.slitaz.org/">Documentation</a></li>
-			<li><a href="http://forum.slitaz.org/">Support Forum</a></li>
-			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
-			<li><a href="http://twitter.com/slitaz">SliTaz on Twitter</a></li>
-			<li><a href="http://distrowatch.com/slitaz">SliTaz on DistroWatch</a></li>
-		</ul>
-	</div>
-	<h4>SliTaz Website</h4>
-	<ul>
-		<li><a href="#header">Top of the page</a></li>
-		<li>Copyright &copy; <?php echo date('Y'); ?>
-			<a href="http://www.slitaz.org/">SliTaz</a></li>
-		<li><a href="http://www.slitaz.org/en/about/">About the project</a></li>
-		<li><a href="http://www.slitaz.org/netmap.php">Network Map</a></li>
-		<li>Page modified the <?php echo (date( "d M Y", getlastmod())); ?></li>
-		<li><a href="http://validator.w3.org/check?uri=referer"><img
-		src="pics/website/xhtml10.png" alt="Valid XHTML 1.0"
-		title="Code validé XHTML 1.0"
-		style="width: 80px; height: 15px; vertical-align: middle;" /></a></li>
-	</ul>
+	Copyright &copy; <span class="year"></span>
+	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
+	<a href="http://scn.slitaz.org/">Community</a>
+	<a href="http://doc.slitaz.org/">Doc</a>
+	<a href="http://forum.slitaz.org/">Forum</a>
+	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://labs.slitaz.org/issues">Bugs</a>
+	<a href="http://hg.slitaz.org/">Hg</a>
+	<p>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a>
+		<a href="http://www.facebook.com/slitaz">Facebook</a>
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://flattr.com/profile/slitaz">Flattr</a>
+	</p>
 </div>
 
 </body>
