@@ -1,40 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>SliTaz People</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-    <meta name="description" content="SliTaz contributors stuff" />
-    <meta name="robots" content="index, nofollow" />
+	<title>SliTaz People</title>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+	<meta name="description" content="slitaz people" />
+	<meta name="keywords" lang="en" content="slitaz network, slitaz developpers, slitaz contributors" />
+	<meta name="robots" content="index, follow, all" />
     <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-    <meta name="publisher" content="www.slitaz.org" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="slitaz.css" />
+	<meta name="author" content="Christophe Lincoln"/>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="slitaz.css" />
 </head>
 <body>
 
-<!-- Content -->
-<div id="content">
+<!-- Header -->
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://www.slitaz.org/">
+			<img src="images/network.png" alt="network.png" /></a>
+		<a href="http://scn.slitaz.org/">Community</a>
+		<a href="http://doc.slitaz.org/">Doc</a>
+		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://labs.slitaz.org/issues">Bugs</a>
+		<a href="http://hg.slitaz.org/">Hg</a>
+	</div>
+	<h1><a href="http://people.slitaz.org/">SliTaz People</a></h1>
+</div>
 
-<!-- Block begin -->
-<div class="block">
-	<!-- Nav block begin -->
-	<div id="block_nav" style="min-height: 200px;">
-		<h3><img src="pics/website/development.png" alt="png" />Devel corner</h3>
+<!-- Block -->
+<div id="block">
+	<!-- Navigation -->
+	<div id="block_nav">
+		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website/devel</a></li>
+			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
+			<li><a href="http://scn.slitaz.org/">Community</a></li>
 			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
 			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
 			<li><a href="http://bb.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://pkgs.slitaz.org/">Packages</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-		</ul>	
-	<!-- Nav block end -->
+		</ul>
 	</div>
-	<!-- Top block begin -->
-	<div id="block_top" style="min-height: 200px;">
-		<h1>people.slitaz.org</h1>
+	<!-- Information/image -->
+	<div id="block_info">
+		<h4>People</h4>
 		<p>
 			Each contributor who has access to the project main server,
 			code name <a href="http://tank.slitaz.org/">Tank</a>, can 
@@ -44,10 +55,11 @@
 			<a href="http://www.slitaz.org/">SliTaz Website</a> and
 			<a href="http://labs.slitaz.org/">SliTaz Labs</a>.
 		</p>
-	<!-- Top block end -->
 	</div>
-<!-- Block end -->
 </div>
+
+<!-- Content -->
+<div id="content">
 
 <h2>SliTaz people</h2>
 
@@ -71,32 +83,26 @@ if ($handle = opendir('/home')) {
 <!-- End of content -->
 </div>
 
+<div style="margin-top: 100px;"></div>
+
 <!-- Footer -->
 <div id="footer">
-	<div class="right_box">
-	<h4>SliTaz Network</h4>
-		<ul>
-			<li><a href="http://www.slitaz.org/">Main Website</a></li>
-			<li><a href="http://doc.slitaz.org/">Documentation</a></li>
-			<li><a href="http://forum.slitaz.org/">Support Forum</a></li>
-			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
-			<li><a href="http://twitter.com/slitaz">SliTaz on Twitter</a></li>
-			<li><a href="http://distrowatch.com/slitaz">SliTaz on DistroWatch</a></li>
-		</ul>
-	</div>
-	<h4>Informations</h4>
-	<ul>
-		<li>Copyright &copy; <span class="year"></span>
-			<a href="http://www.slitaz.org/">SliTaz</a></li>
-		<li><a href="http://www.slitaz.org/en/about/">About the project</a></li>
-		<li><a href="http://www.slitaz.org/netmap.php">Network Map</a></li>
-		<li>Page modified the <?php echo (date( "d M Y", getlastmod())); ?></li>
-		<li><a href="http://validator.w3.org/check?uri=referer"><img
-		src="pics/website/xhtml10.png" alt="Valid XHTML 1.0"
-		title="Code validé XHTML 1.0"
-		style="width: 80px; height: 15px; vertical-align: middle;" /></a></li>
-	</ul>
+	Copyright &copy; <span class="year"></span>
+	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
+	<a href="http://scn.slitaz.org/">Community</a>
+	<a href="http://doc.slitaz.org/">Doc</a>
+	<a href="http://forum.slitaz.org/">Forum</a>
+	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://labs.slitaz.org/issues">Bugs</a>
+	<a href="http://hg.slitaz.org/">Hg</a>
+	<p>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a>
+		<a href="http://www.facebook.com/slitaz">Facebook</a>
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://flattr.com/profile/slitaz">Flattr</a>
+	</p>
 </div>
 
 </body>
