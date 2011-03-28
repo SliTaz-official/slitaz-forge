@@ -17,6 +17,7 @@ Commands:
   chroot        Move a user into a new chroot location
   up-web        Update http://tank.slitaz.org/
   up-people     Update http://people.slitaz.org/
+  up-boot       Update http://boot.slitaz.org/
   up-web-stats  Update Awstats statistics (run by cron)
   clean-labs    Clean Redmine Labs (no longer on Tank)\n"
 }
@@ -89,10 +90,10 @@ EOF
 	up-web)
 		# Update Tank web interface: http://tank.slitaz.org/
 		echo -e "\nUpdating: tank.slitaz.org..."
-		cd $REPOS/tank
+		cd $REPOS/slitaz-forge
 		hg update
-		rm -rf $VHOST/*.* $VHOST/pics/website
-		cp -a web/* $VHOST ;;
+		rm -rf $VHOST/*.* $VHOST/pics/website $VHOST/images
+		cp -a tank/web/* $VHOST ;;
 	up-people)
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
@@ -100,22 +101,19 @@ EOF
 		hg update
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people ;;
+	up-boot)
+		# Update Web Boot interface: http://boot.slitaz.org/
+		echo -e "\nUpdating: boot.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		hg update
+		rm -rf $WWW/boot/*
+		cp -a boot/* $WWW/boot ;;
 	up-web-stats)
 		echo -e "\nUpdating all awstats databases...\n"
 		for vh in www boot pkgs
 		do
 			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
 		done ;;
-	clean-labs)
-		# Redmin needs some time help
-		/etc/init.d/lighttpd stop
-		/etc/init.d/mysql stop
-		killall ruby
-		rm -rf labs/tmp/sessions
-		mkdir -p labs/tmp/sessions
-		chown www.www labs/tmp/sessions
-		/etc/init.d/mysql start
-		/etc/init.d/lighttpd start ;;
 	*)
 		usage ;;
 esac
