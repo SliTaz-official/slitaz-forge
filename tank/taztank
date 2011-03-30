@@ -126,6 +126,59 @@ EOF
 			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
 		done
 		echo "" ;;
+	adduser|-au)
+		# On Tank /etc/skel is empty to let taktank handle default user
+		# files.
+		echo ""
+		if [ -n "$2" ]; then
+			user=$2
+		else
+			echo -n "User name: " && read user
+		fi
+		if [ -d /home/$user ]; then
+			echo -e "User $user already exist...\n" && exit 1
+		fi
+		echo "Adding user: $user"
+		adduser $user
+		# HG access
+		echo -n "Hg password: " && read passwd
+		echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
+		# README
+		echo -n "Creating default user files... "
+		cat > /home/$user/README << EOF
+Welcome to Tank!
+================================================================================
+
+Your Public directory URL is: http://people.slitaz.org/~$USER/
+
+Please complet your public profile in ~/Public/profile.php and feel free
+to use the service for your needs, if any thing goes wrong or is missing
+please express your self :-)
+
+EOF
+		# Public profile
+		mkdir -p /home/$user/Public
+		cat > /home/$user/Public/profile.php << EOF
+<?php
+
+// Your custom SliTaz profile at http://people.slitaz.org/. This file must
+// be located at ~/Public/profile.php. You must at least provide your real
+// name and you can use the $wall variable for a personnal message.
+
+$name = "Real Name";
+$location = "";
+$scn_user = "";
+$skills = "";
+$wall = "";
+
+?>
+EOF
+		# Shell profile
+		cat > /home/$user/.profile << EOF
+# ~/.profile: Executed by Bourne-compatible login SHells.
+#
+EOF
+		echo -e "Done\n" ;;
 	*)
 		usage ;;
 esac
