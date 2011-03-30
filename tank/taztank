@@ -1,5 +1,6 @@
 #!/bin/sh
 # Taztank - Admin Tank, backup, update and give stats.
+#
 # (C) 2011 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
@@ -7,6 +8,7 @@
 REPOS="/home/slitaz/repos"
 WWW="/home/slitaz/www"
 VHOST="$WWW/tank"
+WEBSITE="$WWW/website"
 BACKUPS="/home/backups"
 
 usage() {
@@ -15,15 +17,15 @@ Commands:
   stats         Display some Tank stats
   backup        Backup files and MySQL DB
   chroot        Move a user into a new chroot location
-  up-web        Update http://tank.slitaz.org/
+  up-www        Update website http://www.slitaz.org/
+  up-tank       Update http://tank.slitaz.org/
   up-people     Update http://people.slitaz.org/
   up-boot       Update http://boot.slitaz.org/
-  up-web-stats  Update Awstats statistics (run by cron)
-  clean-labs    Clean Redmine Labs (no longer on Tank)\n"
+  up-stats      Update Awstats statistics (run by cron)\n"
 }
 
 case "$1" in
-	stats)
+	stats|-s)
 		# Report some stats
 		clear
 		cat << EOF
@@ -40,7 +42,7 @@ System usage
 
 EOF
 		;;
-	chroot)
+	chroot|-c)
 		if [ -s $2/bin/sh ] && grep -qs $3: /etc/password ; then
 			grep -q ^chroot /etc/busybox.conf ||
 			echo 'chroot = ssx root.root' >> /etc/busybox.conf
@@ -84,31 +86,36 @@ Move a user in a new chroot location
 EOF
 		fi
 		;;
-	backup)
+	backup|-b)
 		# Backup config files and SQL db.
 		echo "Not yet implemented..." ;;
-	up-web)
+	update-www|-uw)
+		# Update website from repo.
+		echo ""
+		cd $WEBSITE && hg pull && hg update
+		echo "" ;;
+	up-tank|-ut)
 		# Update Tank web interface: http://tank.slitaz.org/
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $VHOST/*.* $VHOST/pics/website $VHOST/images
 		cp -a tank/web/* $VHOST ;;
-	up-people)
+	up-people|-up)
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people ;;
-	up-boot)
+	up-boot|-ub)
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot ;;
-	up-web-stats)
+	up-stats|-us)
 		echo -e "\nUpdating all awstats databases...\n"
 		for vh in www boot pkgs
 		do
