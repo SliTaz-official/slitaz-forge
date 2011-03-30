@@ -43,6 +43,7 @@ System usage
 EOF
 		;;
 	chroot|-c)
+		# Move a user into a new chroot location
 		if [ -s $2/bin/sh ] && grep -qs $3: /etc/password ; then
 			grep -q ^chroot /etc/busybox.conf ||
 			echo 'chroot = ssx root.root' >> /etc/busybox.conf
@@ -91,7 +92,7 @@ EOF
 		echo "Not yet implemented..." ;;
 	update-www|-uw)
 		# Update website from repo.
-		echo ""
+		echo -e "\nUpdating: www.slitaz.org..."
 		cd $WEBSITE && hg pull && hg update
 		echo "" ;;
 	up-tank|-ut)
@@ -100,27 +101,31 @@ EOF
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $VHOST/*.* $VHOST/pics/website $VHOST/images
-		cp -a tank/web/* $VHOST ;;
+		cp -a tank/web/* $VHOST 
+		echo "" ;;
 	up-people|-up)
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $WWW/people/*
-		cp -a people/* $WWW/people ;;
+		cp -a people/* $WWW/people 
+		echo "" ;;
 	up-boot|-ub)
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		hg update
 		rm -rf $WWW/boot/*
-		cp -a boot/* $WWW/boot ;;
+		cp -a boot/* $WWW/boot 
+		echo "" ;;
 	up-stats|-us)
-		echo -e "\nUpdating all awstats databases...\n"
+		echo -e "\nUpdating all awstats databases..."
 		for vh in www boot pkgs
 		do
 			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
-		done ;;
+		done
+		echo "" ;;
 	*)
 		usage ;;
 esac
