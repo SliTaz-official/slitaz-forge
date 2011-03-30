@@ -51,7 +51,7 @@
 			code name <a href="http://tank.slitaz.org/">Tank</a>, can 
 			have a public directory to put personal stuff related to SliTaz.
 			This Public directory can be reached with URLs in the form of: 
-			http://people.slitaz.org/~contributors/. More information on 
+			http://people.slitaz.org/~name/. More information on 
 			<a href="http://www.slitaz.org/">SliTaz Website</a> and
 			<a href="http://labs.slitaz.org/">SliTaz Labs</a>.
 		</p>
@@ -63,16 +63,48 @@
 
 <h2>SliTaz people</h2>
 
+<style type="text/css">
+ul span { 
+	color: #666; 
+	font-size: 11px; 
+	font-weight: normal;
+	display: block;
+	padding: 2px 0;
+}
+ul { list-style-type: square; }
+ul span a { color: #666; }
+</style>
+
 <ul>
 <?php
 if ($handle = opendir('/home')) {
+	$scn_url = 'http://scn.slitaz.org/members';
 	while (false !== ($dir = readdir($handle))) {
 		if ($dir != "." && $dir != "..") {
 			$pub = "/home/$dir/Public";
 			$user = "$dir";
 			if (file_exists($pub)) {
-			echo "	<li><a href=\"/~$user/\">$user</a></li>\n";
+				echo "	<li><a href=\"/~$user/\">$user</a>\n";
+				if (file_exists("$pub/profile.php")) {
+					require_once("$pub/profile.php");
+					echo "<span>Name: $name";
+					if (! empty($location)) { 
+						echo " | Location: $location"; 
+					}
+					if (! empty($scn_user)) { 
+						echo " | <a href=\"$scn_url/$scn_user/\">SCN activity</a>"; 
+					}
+					if (! empty($skills)) { 
+						echo " | Skills: $skills"; 
+					}
+					echo "</span>";
+					if (! empty($wall)) { 
+						echo "<span>$wall</span>";
+					}
+				}
+				echo "</li>";
 			}
+			
 		}
 	}
 	closedir($handle);

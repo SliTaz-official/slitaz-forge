@@ -9,6 +9,7 @@
 
 # Update SliTaz stuff
 15 02 * * * /usr/bin/tazdev update-www
+*/20 * * * * /home/slitaz/www/website/libs/get-latest.sh
 20 02 * * * /usr/bin/tazpkg-web cooking
 30 02 * * * /usr/bin/tazpkg-web stable
 
