@@ -140,6 +140,7 @@ EOF
 			echo -e "User $user already exist...\n" && exit 1
 		fi
 		echo "Adding user: $user"
+		#adduser -s /bin/sh -g "SliTaz User" -G users -h /home/$user $user # for cooking
 		adduser $user
 		# HG access
 		echo -n "Hg password: " && read passwd
@@ -159,21 +160,9 @@ please express your self :-)
 EOF
 		# Public profile
 		mkdir -p /home/$user/Public
-		cat > /home/$user/Public/profile.php << EOF
-<?php
-
-// Your custom SliTaz profile at http://people.slitaz.org/. This file must
-// be located at ~/Public/profile.php. You must at least provide your real
-// name and you can use the $wall variable for a personnal message.
-
-$name = "Real Name";
-$location = "";
-$scn_user = "";
-$skills = "";
-$wall = "";
-
-?>
-EOF
+		if [ -f /usr/share/taztank/profile.php ]; then
+			cp -a /usr/share/taztank/profile.php /home/$user/Public/profile.php
+		fi
 		# Shell profile
 		cat > /home/$user/.profile << EOF
 # ~/.profile: Executed by Bourne-compatible login SHells.
