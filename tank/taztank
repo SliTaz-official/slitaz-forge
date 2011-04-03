@@ -14,14 +14,15 @@ BACKUPS="/home/backups"
 usage() {
 	echo -e "\nUsage: `basename $0` [command]
 Commands:
-  stats         Display some Tank stats
-  backup        Backup files and MySQL DB
-  chroot        Move a user into a new chroot location
-  up-www        Update website http://www.slitaz.org/
-  up-tank       Update http://tank.slitaz.org/
-  up-people     Update http://people.slitaz.org/
-  up-boot       Update http://boot.slitaz.org/
-  up-stats      Update Awstats statistics (run by cron)\n"
+  stats|-s         Display some Tank stats
+  backup|-b        Backup files and MySQL DB
+  chroot|-c        Move a user into a new chroot location
+  up-www|-uw        Update website http://www.slitaz.org/
+  up-tank|-ut       Update http://tank.slitaz.org/
+  up-people|-up     Update http://people.slitaz.org/
+  up-boot|-ub       Update http://boot.slitaz.org/
+  up-stats|-us      Update Awstats statistics (run by cron)
+  adduser|-au       Add user on tank\n"
 }
 
 case "$1" in
