@@ -52,8 +52,8 @@ if ( bb_is_profile() ) {
 		<div id="block">
 			<div style="text-align: justify; width: 48%; padding: 20px 10px 0 0;">
 				The SliTaz Forum is the place where you can get support,
-				ask any request about SliTaz, help others and get involve
-				in a community group.
+				ask any questions about SliTaz, make requests, help others 
+				and get involved in a community group.
 				<p>
 				Old forum: 
 				<a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a>

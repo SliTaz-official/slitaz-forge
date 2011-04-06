@@ -4,7 +4,7 @@
 # Backup MySQL databases
 0 30 * * * /usr/bin/mybackup.sh
 
-# rotate logs daily
+# Rotate logs daily
 0 1 * * *  /usr/sbin/logrotate /etc/logrotate.conf
 
 # Update SliTaz stuff
@@ -20,7 +20,7 @@
 # Update system load graphics
 */5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
 
-# Backup (will be sync'ed by mirror)
+# Backup (will be sync'd by mirror)
 0 3 * * *  /home/backups/tank/backup.sh
 
 # Send all sources to mirror

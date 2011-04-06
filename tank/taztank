@@ -17,12 +17,12 @@ Commands:
   stats|-s         Display some Tank stats
   backup|-b        Backup files and MySQL DB
   chroot|-c        Move a user into a new chroot location
-  up-www|-uw        Update website http://www.slitaz.org/
-  up-tank|-ut       Update http://tank.slitaz.org/
-  up-people|-up     Update http://people.slitaz.org/
-  up-boot|-ub       Update http://boot.slitaz.org/
-  up-stats|-us      Update Awstats statistics (run by cron)
-  adduser|-au       Add user on tank\n"
+  up-www|-uw       Update website http://www.slitaz.org/
+  up-tank|-ut      Update http://tank.slitaz.org/
+  up-people|-up    Update http://people.slitaz.org/
+  up-boot|-ub      Update http://boot.slitaz.org/
+  up-stats|-us     Update Awstats statistics (run by cron)
+  adduser|-au      Add user on tank\n"
 }
 
 case "$1" in
@@ -137,7 +137,7 @@ EOF
 			echo -n "User name: " && read user
 		fi
 		if [ -d /home/$user ]; then
-			echo -e "User $user already exist...\n" && exit 1
+			echo -e "User $user already exists...\n" && exit 1
 		fi
 		echo "Adding user: $user"
 		#adduser -s /bin/sh -g "SliTaz User" -G users -h /home/$user $user # for cooking
@@ -153,9 +153,9 @@ Welcome to Tank!
 
 Your Public directory URL is: http://people.slitaz.org/~$USER/
 
-Please complet your public profile in ~/Public/profile.php and feel free
-to use the service for your needs, if any thing goes wrong or is missing
-please express your self :-)
+Please complete your public profile in ~/Public/profile.php and feel free
+to use the service for your needs, if anything goes wrong or is missing
+please express yourself :-)
 
 EOF
 		# Public profile
