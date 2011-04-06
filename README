@@ -1,14 +1,16 @@
-SliTaz forge
-===============================================================================
+README SliTaz forge
+================================================================================
+
 
 These repos provide all files, themes and custom packages used by the SliTaz 
 network.
 
- * doc:    Use Dokuwiki
- * forum:  Use Vanilla
- * labs:   Use Redmine
- * people: Own php/html code
- * scn:    Receipts for custom packages to use scn on tank
+ * doc    : Use Dokuwiki
+ * forum  : Use BBpress
+ * labs   : Use Redmine
+ * scn    : Use Wordpress
+ * people : Own php/html code
+ * boot   : Own php/html code
 
 To update or fix a theme, please test it well before committing and then 
 notify <pankso at slitaz.org> who will update the modified theme.
@@ -16,3 +18,5 @@ notify <pankso at slitaz.org> who will update the modified theme.
 To update or fix packages do the same as for the themes and then notify 
 <erjo at slitaz.org>.
 
+
+================================================================================
