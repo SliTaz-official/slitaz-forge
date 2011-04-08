@@ -91,7 +91,7 @@ EOF
 	backup|-b)
 		# Backup config files and SQL db.
 		echo "Not yet implemented..." ;;
-	update-www|-uw)
+	up-www|-uw)
 		# Update website from repo.
 		echo -e "\nUpdating: www.slitaz.org..."
 		cd $WEBSITE && hg pull && hg update
@@ -145,29 +145,15 @@ EOF
 		# HG access
 		echo -n "Hg password: " && read passwd
 		echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
-		# README
-		echo -n "Creating default user files... "
-		cat > /home/$user/README << EOF
-Welcome to Tank!
-================================================================================
-
-Your Public directory URL is: http://people.slitaz.org/~$USER/
-
-Please complete your public profile in ~/Public/profile.php and feel free
-to use the service for your needs, if anything goes wrong or is missing
-please express yourself :-)
-
-EOF
-		# Public profile
-		mkdir -p /home/$user/Public
-		if [ -f /usr/share/taztank/profile.php ]; then
-			cp -a /usr/share/taztank/profile.php /home/$user/Public/profile.php
-		fi
-		# Shell profile
+		# Public dir at http://people.slitaz.org/~$user/
+		cp -a /usr/share/tank/Public /home/$user/Public
+		# README and empty Shell profile
+		cp -a /usr/share/tank/README /home/$user/
 		cat > /home/$user/.profile << EOF
 # ~/.profile: Executed by Bourne-compatible login SHells.
 #
 EOF
+		chown -R $user.$user /home/$user
 		echo -e "Done\n" ;;
 	*)
 		usage ;;
