@@ -19,7 +19,7 @@ install-files:
 	cp -a files/usr $(DESTDIR}/
 
 # Used to switc from taztank to tank (shorted :-)
-uninstill:
+uninstall:
 	rm -f /usr/bin/taztank
 	rm -f /usr/bin/tank
 	rm -rf /usr/share/taztank
