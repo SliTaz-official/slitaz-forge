@@ -10,7 +10,7 @@ install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin \
 		$(DESTDIR)$(PREFIX)/share
 	cp -f tank $(DESTDIR)$(PREFIX)/bin
-	cp files/usr/share/tank $(DESTDIR)$(PREFIX)/share
+	cp -a files/usr/share/tank $(DESTDIR)$(PREFIX)/share
 
 install-files:
 	cp -a files/var $(DESTDIR)/
