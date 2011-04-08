@@ -147,6 +147,7 @@ EOF
 		echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
 		# Public dir at http://people.slitaz.org/~$user/
 		cp -a /usr/share/tank/Public /home/$user/Public
+		sed -i s/'%user%'/"$user"/ /home/$user/Public/index.html
 		# README and empty Shell profile
 		cp -a /usr/share/tank/README /home/$user/
 		cat > /home/$user/.profile << EOF
