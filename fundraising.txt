@@ -1,0 +1,18 @@
+Funding Goal
+
+$1,000 - $5,000
+Project Description
+
+Work one month on the small and fast SliTaz GNU/linux operating system to be able to release SliTaz 4.0 as soon as possible and fundraise the SliTaz main developers and both at Solutionslinux 2011 in Paris. SliTaz 4.0 is nearly ready to be release but with the growing community and now 3000 packages making a release is a huge task and we need a developer working 100% for one more month to publish SliTaz/GNU Linux 4.0.
+
+The release will be synchonized with the Solutionlinux exposition in Paris. SliTaz have a free both at the expo but we must go to Paris (we all in europe) and live in the town 3 days and we woul love to have some USB key and cdrom for SliTaz users.
+
+Project Rewards
+
+Free to download and use SliTaz 4.0 stable version and we will be present at the both at Solutionlinux with bootable USB keys and cd-rom as well as our happyness!
+
+Links
+
+http://www.slitaz.org/
+http://scn.slitaz.org/
+http://hg.slitaz.org/
