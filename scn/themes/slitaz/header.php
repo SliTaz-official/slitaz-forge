@@ -119,9 +119,9 @@
 		<!-- SliTaz Block -->
 		<div id="block">
 			<div style="text-align: justify; width: 48%; padding: 0 10px 0 0;">
-				The SliTaz Community Network let you connect with SliTaz
-				users and developpers, share eveything about SliTaz,
-				help others and get involve in the project.
+				The SliTaz Community Network lets you connect with SliTaz
+				users and developers, share ideas about SliTaz,
+				help others and get involved in the project.
 			</div>
 		</div>
 
