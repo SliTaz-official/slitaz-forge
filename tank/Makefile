@@ -8,8 +8,8 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin \
-		$(DESTDIR)$(PREFIX)/share/taztank
-	cp -f taztank $(DESTDIR)$(PREFIX)/bin
+		$(DESTDIR)$(PREFIX)/share
+	cp -f tank $(DESTDIR)$(PREFIX)/bin
 	cp files/usr/share/tank $(DESTDIR)$(PREFIX)/share
 
 install-files:
