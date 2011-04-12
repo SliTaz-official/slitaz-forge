@@ -11,7 +11,8 @@ body {
 	color: black;
 	font: 13px sans-serif, vernada, arial;
 	margin: 0;
-	min-width: 900px;
+	min-width: 780px;
+	height: 100%;
 }
 
 a { text-decoration: underline; color: #215090; }
@@ -286,6 +287,8 @@ input[type=text] {
 	border-top: 1px solid #ddd;
 	padding: 40px;
 	color: #666;
+	clear: both;
+	margin-bottom: -2%;
 }
 
 #footer a { color: #666; padding: 0 2px; }

@@ -11,6 +11,17 @@
 	<meta name="author" content="Christophe Lincoln"/>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="slitaz.css" />
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	    (function() {
+	        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+	        s.type = 'text/javascript';
+	        s.async = true;
+	        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+	        t.parentNode.insertBefore(s, t);
+	    })();
+	/* ]]> */
+	</script>
 </head>
 <body>
 
@@ -48,12 +59,24 @@
 		<h4>People</h4>
 		<p>
 			Each contributor who has access to the project main server,
-			code name <a href="http://tank.slitaz.org/">Tank</a>, can 
-			have a public directory to put personal stuff related to SliTaz.
-			This Public directory can be reached with URLs in the form of: 
-			http://people.slitaz.org/~name/. More information on 
-			<a href="http://www.slitaz.org/">SliTaz Website</a> and
-			<a href="http://labs.slitaz.org/">SliTaz Labs</a>.
+			code name <a href="http://tank.slitaz.org/">Tank</a> and can 
+			have a public directory. This Public directory can be reached
+			with URLs in the form of: http://people.slitaz.org/~name/.
+		</p>
+		<p>
+			You can help us maintain and improve this service with a small
+			donation to the SliTaz association:
+			<!-- PayPal Button -->
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+				style="display: inline;">
+				<input type="hidden" name="cmd" value="_s-xclick" />
+				<input type="hidden" name="hosted_button_id" value="4885025" />
+				<input type="image" src="images/paypal.png" name="submit" 
+					alt="PayPal - The safer, easier way to pay online!" />
+			</form>
+			<!-- Flattr Button -->
+			<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
+				href="http://www.slitaz.org/"></a>
 		</p>
 	</div>
 </div>
