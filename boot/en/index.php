@@ -9,8 +9,8 @@
     <meta name="robots" content="index, follow, all" />
     <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
     <meta name="author" content="Christophe Lincoln"/>
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="slitaz.css" />
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../slitaz.css" />
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="images/network.png" alt="network.png" /></a>
+			<img src="../images/network.png" alt="network.png" /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
@@ -33,7 +33,7 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="images/users.png" alt="users.png" />Community</h4>
+		<h4><img src="../images/users.png" alt="users.png" />Community</h4>
 		<ul>
 			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
 			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
@@ -47,10 +47,7 @@
 		<p>
 			Welcome to the <a href="http://www.slitaz.org/en/">SliTaz GNU/Linux</a>
 			gPXE boot host; boot.slitaz.org allows you to boot SliTaz from the Web
-			using a cdrom, USB media or a floppy disk. The Linux Kernel and the 
-			complete SliTaz compressed root filesystem will be loaded into RAM 
-			from the Web using PXE and HTTP protocols. 
-			<a href="guide.html">Short guide...</a>
+			using a cdrom, USB media or a floppy disk. 
 		</p>
 		<div class="button" style="padding-top: 8px;">
 			Quick Download:
@@ -59,31 +56,74 @@
 	</div>
 </div>
 
+<!-- Languages -->
+<div id="lang">
+	<a href="http://www.slitaz.org/i18n.php">
+		<img src="../images/locale.png" alt="locale.png" /></a>
+	<a href="../de/">Deutsch</a>
+	<a href="../en/">English</a>
+	<a href="../fr/">Français</a>
+</div>
+
 <!-- Content -->
 <div id="content">
 
-<h2>In your language</h2>
+<h2>Introduction</h2>
 
-<h3>Français</h3>
 <p>
-Bienvenue sur l'hôte de démarrage gPXE de 
-<a href="http://www.slitaz.org/fr/">SliTaz GNU/Linux</a>, boot.slitaz.org
-vous permet de démarrer SliTaz depuis le réseau en utilisant un cdrom,
-une clé USB ou une disquette de démarrage. Le noyau Linux et le système
-de fichiers compressé contenant SliTaz seront chargés en RAM depuis
-internet en utilisant les protocoles PXE et HTTP. 
-<a href="guide.html#fr">Guide rapide...</a>
+	Boot your operating system from the internet and enjoy a full system
+	working all in RAM with speed an stability in mind. The Linux Kernel
+	and the complete SliTaz compressed root filesystem will be loaded into
+	RAM from the Web using PXE and HTTP protocols.
 </p>
 
-<h3>Deutsch</h3>
+<a name="guide"></a>
+<h2>Short guide</h2>
 <p>
-Willkommen am Start-Provider gPXE von
-<a href="http://www.slitaz.org/de/">SliTaz GNU/Linux</a>,
-boot.slitaz.org ermöglicht Ihnen, SliTaz aus dem Netzwerk durch 
-einfache benützung einer CD-ROM, eines USB-Sticks oder gar einer
-Start-Floppy, einzusetzen. Linux-Kernel und erforderliche komprimierte
-Dateien werden dann in Ihr RAM aus dem Internet über das Protokol 
-PXE/HTTP geladen. Viel Freude damit! <a href="guide.html#en">Short guide...</a>
+To boot from the internet you'll need a working DHCP server, DNS server/cache
+and a default internet route. This is usually the case if you have a router
+for network connection.
+</p>
+<ul>
+	<li>SliTaz Cooking has the boot option <code>web</code>, so you can 
+	use boot.slitaz.org from the standard core LiveCD.</li>
+	<li>SliTaz boot ISO: Download
+	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
+	and burn the image to a cdrom. Boot from the cdrom device and select 
+	gPXE. This ISO image also provides Memtest86 to test system memory.
+	</li>
+	<li>USB media: Use TazUSB to generate bootable USB media. Install 
+	the package <code>gpxe</code>, copy /boot/gpxe into the boot 
+	directory of the USB media and add an entry to the Syslinux configuration
+	file <code>syslinux.cfg</code>:
+	<pre class="script">
+label web
+	kernel /boot/gpxe
+	</pre></li>
+	<li>Floppy image: Download
+	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	and transfer the image to a blank floppy disk using the command: 
+	<code>dd if=floppy-grub of=/dev/fd0</code>. Boot the floppy and select
+	gPXE entry.</li>
+</ul>
+
+<h3>Boot time</h3>
+<p>
+The boot time largely depends on your network connection. With a 1Mb 
+connection in France, it takes 5 min. If you want, you can report the
+boot time on the Mailing list or the Forum.
+</p>
+
+<h3>Required configuration</h3>
+<p>
+The default boot entry needs 160Mb RAM. Two entries are available to
+boot with 24Mb:
+<ul>
+	<li><code>tiny</code> starts in text mode.</li>
+	<li><code>loram</code> starts in graphical mode.</li>
+</ul>
 </p>
 
 <!-- End of content -->
