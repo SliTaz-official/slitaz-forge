@@ -1,0 +1,630 @@
+/*
+	CSS style for SliTaz Network - (C) 2011 SliTaz GNU/Linux
+*/
+
+html {
+	min-height:  102%;
+}
+
+body {
+	background: #ffffff;
+	color: black;
+	font: 13px sans-serif, vernada, arial;
+	margin: 0;
+	min-width: 780px;
+	height: 100%;
+}
+
+a { text-decoration: underline; color: #215090; }
+a:hover { text-decoration: none; color: blue; }
+img { border: 0pt none; vertical-align: middle; }
+h2 { color: #444; margin: 2px 0;}
+h3 { color: #666; font-size: 140%; }
+h4 { color: #888; font-size: 120%; }
+
+/* Header */
+
+#header { 
+	height: 40px; 
+	background: #351a0a;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 8px 0 0 42px;
+	width: 250px;
+}
+
+#header h1 a { 
+	color: white; 
+	text-decoration: none;
+	font-size: 20px;
+	font-style: italic;
+}
+
+#header h1 a:hover, #network a:hover { 
+	color: #d66018;
+}
+
+/* Logo */
+
+#logo {
+	background: url(http://tank.slitaz.org/images/logo.png) no-repeat left;
+	position: absolute;
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+}
+
+/* SliTaz Network */
+
+#network { 
+	float: right; 
+	padding: 10px 5px 0; 
+	font-size: 12px;
+}
+
+#network a { padding: 0 6px; }
+
+/* Block */
+
+#block { 
+	min-height: 104px; 
+	background: #d66018; 
+	padding: 26px 10% 0px;
+	text-align: center;
+	color: #333;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+#block_info {
+	text-align: justify; 
+	width: 48%;
+	padding: 10px 10px 0 0;
+}
+
+#block a, #network a { 
+	color: #fff; 
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#block h4 {
+	color: #351a0a;
+	margin: 0px;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+#block_info p { margin: 6px 0; padding: 0 12px 0 0; }
+#block_info a { font-weight: normal; }
+#block ul { list-style-type: square; }
+#block a:hover { color: #351a0a; }
+
+/* Navigation */
+
+#block_nav {
+	background: #cc5b17;
+	padding: 10px 10px 40px;
+	text-align: justify;
+	width: 48%;
+	float: right;
+}
+
+#block_nav ul { 
+	list-style-type: none; 
+	margin: 6px 0; 
+	padding: 0;
+}
+
+#block_nav h4 img { 
+	margin: 0 4px 0 0; 
+	padding: 0;
+}
+
+#searchbox input[type=submit] {
+	padding: 4px;
+	margin-left: -5px;
+	background-color: #f1f1f1;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	color: #000;
+	font-weight: bold;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+input#search-text {
+	border: 1px solid #ddd;
+	padding: 4px;
+	height: 17px;
+	margin: 0;
+	width: 200px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+input[type=submit] {
+	padding: 2px;
+	margin: 2px 0;
+	background-color: #f1f1f1;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	color: #000;
+}
+
+input[type=submit]:hover, #searchbox input[type=submit]:hover {
+	background-color: #ddd;
+	border: 1px solid #999;
+}
+
+input[type=text] { height: 18px; margin: 4px 0; }
+
+
+/* Round corner */
+
+input[type=submit], p.ok-message, p.error-message, table.form,
+table.messages td {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* Footer */
+
+#footer {
+	background: #f1f1f1;
+	text-align: center;
+	border-top: 1px solid #ddd;
+	padding: 40px;
+	color: #666;
+	clear: both;
+	margin-top: 160px;
+	margin-bottom: -2%;
+}
+
+#footer a { color: #666; padding: 0 2px; }
+
+.year:after {
+	/* content: "2007-2011"; */
+	content: "2011";
+}
+
+/* Modified Roundup style */
+
+#searchbox {
+	float: right;
+}
+
+td.sidebar {
+	white-space: nowrap;
+	position: absolute;
+	right: 10px;
+	top: 230px;
+	border-left: 1px solid #ddd;
+	padding: 0 10px;
+}
+
+td.sidebar a {
+	text-decoration: none;
+}
+
+td.page-header-left {
+	padding: 5px;
+}
+
+td.page-header-top {
+	padding: 10px;
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	width: auto;
+}
+
+td.content {
+	padding: 30px 220px 20px 30px;
+	vertical-align: top;
+	width: 100%;
+}
+
+p.ok-message { color: #000; }
+p.error-message { color: red; }
+p.ok-message, p.error-message {
+	background-color: #f8f8f8;
+	padding: 5px;
+	font-weight: bold;
+	
+	position: absolute;
+	right: 10%;
+	top: 70px;
+	min-width: 220px;
+}
+
+td.sidebar p.classblock {
+	padding: 12px 5px 0;
+	margin: 0;
+}
+
+td.sidebar p.classblock:first-child { padding: 0px 5px 0; }
+
+td.sidebar p.userblock {
+	padding: 12px 5px 0;
+	margin: 0;
+}
+
+table.form {
+	margin: 0 0 10px;
+	padding: 10px;
+	border-spacing: 0;
+	border-collapse: separate;
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+}
+
+.index-controls {
+	margin: 20px 0;
+}
+
+table.body {
+  border: 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+/* don't display the sidebar when printing */
+@media print {
+    td.page-header-left {
+        display: none;
+    }
+    td.sidebar {
+        display: none;
+    }
+    .index-controls {
+        display: none;
+    }
+    #searchbox {
+        display: none;
+    }
+}
+
+form {
+  margin: 0;
+}
+
+textarea {
+    font-family: monospace;
+}
+
+.form-small {
+  padding: 0;
+  font-size: 75%;
+}
+
+td.date, th.date { 
+  white-space: nowrap;
+  width: 130px;
+}
+
+p.error-message a[href] {
+  color: white;
+  text-decoration: underline;
+}
+
+/* style for search forms */
+ul.search-checkboxes {
+    display: inline;
+    padding: 0;
+    list-style: none;
+}
+ul.search-checkboxes > li {
+    display: inline;
+    padding-right: .5em;
+}
+
+/* style for forms */
+
+table.form th {
+	color: #555;
+	text-align: right;
+	vertical-align: top;
+	font-weight: normal;
+	white-space: nowrap;
+	padding: 0 4px 0 0;
+}
+
+table.form th.header {
+  font-weight: bold;
+  background-color: #f1f1f1;
+  text-align: left;
+}
+
+table.form th.required {
+	font-weight: bold;
+	color: #b20000;
+}
+
+table.form td {
+  color: #000;
+  empty-cells: show;
+  vertical-align: top;
+}
+
+table.form td.optional {
+  font-weight: bold;
+  font-style: italic;
+}
+
+table.form td.html {
+  color: #000;
+}
+
+/* style for lists */
+table.list {
+	border-spacing: 0 4px;
+	border-collapse: separate;
+	width: 100%;
+}
+
+table.list th {
+	padding: 0px;
+	color: #888;
+	background-color: #fff;
+	vertical-align: top;
+	empty-cells: show;
+	text-align: left;
+}
+table.list th a[href]:hover { color: #333 }
+table.list th a[href]:link { color: #333 }
+table.list th a[href] { color: #333 }
+table.list th.group {
+	background-color: #f8f8f8;
+	color: #666;
+	text-align: left;
+	padding: 4px;
+	font-size: 120%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+table.list th.group:first-letter {
+	text-transform: uppercase;
+}
+
+table.list td {
+	padding: 2px;
+	color: #000;
+	vertical-align: top;
+	empty-cells: show;
+	/* border-bottom: 1px solid #ddd; */
+}
+
+table.list tr.navigation th {
+  width: 33%;
+  border-style: hidden;
+  text-align: center;
+}
+table.list tr.navigation td {
+    border: none
+}
+table.list tr.navigation th:first-child {
+  text-align: left;
+}
+table.list tr.navigation th:last-child {
+  text-align: right;
+}
+
+/* style for message displays */
+table.messages {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.messages th.header {
+	padding: 20px 0 4px;
+	font-weight: bold;
+	background-color: white;
+	color: #666;
+	font-size: 140%;
+}
+
+table.messages th {
+	font-weight: bold;
+	color: black;
+	text-align: left;
+	padding: 10px 0 2px;
+}
+
+table.messages th a {
+	text-decoration: none;
+}
+
+table.messages td {
+	font-family: monospace;
+	background-color: #f8f8f8;
+	border: 1px solid #ddd; 
+	color: black;
+	empty-cells: show;
+	vertical-align: top;
+	padding: 4px 10px 5px 10px;
+}
+
+/* style for file displays */
+table.files {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.files th.header{
+	padding: 10px 0;
+	border-bottom: 0px solid gray;
+	font-weight: bold;
+	background-color: white;
+	color: #666;
+	font-size: 140%;
+}
+
+table.files th {
+  border-bottom: 1px solid #888;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 0 2px;
+}
+
+table.files td {
+  font-family: monospace;
+  empty-cells: show;
+  padding-top: 5px;
+}
+
+/* style for history displays */
+table.history {
+	border-spacing: 0;
+	border-collapse: separate;
+	width: 100%;
+	margin: 0 0 40px;
+}
+
+table.history th.header {
+	padding: 20px 0 4px;
+	border-bottom: 1px solid #fff;
+	font-weight: bold;
+	background-color: white;
+	color: #666;
+	font-size: 140%;
+}
+
+table.history th {
+  border-bottom: 1px solid #666;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 0 2px;
+}
+
+table.history td {
+  vertical-align: top;
+  empty-cells: show;
+  padding-top: 5px;
+}
+
+
+/* style for class list */
+table.classlist {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.classlist th.header{
+  padding-top: 10px;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+  background-color: white;
+  color: #707040;
+}
+
+table.classlist th {
+  font-weight: bold;
+  text-align: left;
+}
+
+
+/* style for class help display */
+table.classhelp {      /* the table-layout: fixed;        */ 
+  table-layout: fixed; /* compromises quality for speed   */
+  overflow: hidden;
+  font-size: .9em;
+  padding-bottom: 3em;
+}
+
+table.classhelp th {
+  font-weight: normal;
+  text-align: left;
+  color: #444;
+  background-color: #efefef;
+  border-bottom: 1px solid #afafaf;
+  border-top: 1px solid #afafaf;
+  text-transform: uppercase;
+  vertical-align: middle;
+  line-height:1.5em;
+}
+
+table.classhelp td {
+  vertical-align: middle;
+  padding-right: .2em;
+  border-bottom: 1px solid #efefef;
+  text-align: left;
+  empty-cells: show;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+table.classhelp tr:hover {
+  background-color: #eee;
+}
+
+label.classhelp-label {
+  cursor: pointer;
+}
+
+#classhelp-controls {
+  position: fixed;
+  display: block;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: .5em;
+  border-top: 2px solid #444;
+  background-color: #eee;
+}
+
+#classhelp-controls input.apply {
+  width: 7em;
+  font-weight: bold;
+  margin-right: 2em;
+  margin-left: 2em;
+}
+
+#classhelp-controls input.preview {
+   margin-right: 3em;
+   margin-left: 1em;
+}
+
+/* style for "other" displays */
+table.otherinfo {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.otherinfo th.header{
+  padding-top: 10px;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+  background-color: white;
+  color: #707040;
+}
+
+table.otherinfo th {
+  border-bottom: 1px solid #afafaf;
+  font-weight: bold;
+  text-align: left;
+}
+
+.calendar_display {
+  text-align: center;
+}
+
+.calendar_display td {
+  padding: 1px 4px 1px 4px;
+}
+
+.calendar_display .today {
+  background-color: #afafaf;
+}
