@@ -132,7 +132,7 @@ EOF
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		echo "" ;;
-	up-hg|-uh)
+	up-doc|-ud)
 		# Update Wiki doc template from Hg: http://doc.slitaz.org/
 		echo -e "\nUpdating Wiki documentation template..."
 		cd $REPOS/slitaz-forge && hg up
