@@ -53,10 +53,8 @@ if (!defined('DOKU_INC')) die();
 		echo $translation->showTranslations();
 	?>
 	</div>
-	<div style="text-align: justify; width: 48%; padding: 0 10px 0 0;">
-		The SliTaz Community Network lets you connect with SliTaz
-		users and developers, share ideas about SliTaz,
-		help others and get involved in the project.
+	<div style="text-align: justify; width: 60%; padding: 0 10px 0 0;">
+		SliTaz GNU/Linux official and community documentation wiki.
 	</div>
 	<div class="tools">
 		<img src="<?php echo DOKU_TPL?>images/tools.png" alt=".png" />
