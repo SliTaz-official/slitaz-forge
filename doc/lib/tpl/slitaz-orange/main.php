@@ -36,7 +36,7 @@ if (!defined('DOKU_INC')) die();
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://labs.slitaz.org/issues">Bugs</a>
+		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
 	<h1><a href="./">SliTaz Doc</a></h1>

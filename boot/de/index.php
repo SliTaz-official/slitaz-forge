@@ -23,7 +23,7 @@
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://labs.slitaz.org/issues">Bugs</a>
+		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
 	<h1><a href="http://boot.slitaz.org/">SliTaz Web Boot</a></h1>
@@ -88,7 +88,7 @@ PXE/HTTP geladen. Viel Freude damit! <a href="../en/#guide">Short guide...</a>
 	<a href="http://doc.slitaz.org/">Doc</a>
 	<a href="http://forum.slitaz.org/">Forum</a>
 	<a href="http://pkgs.slitaz.org/">Packages</a>
-	<a href="http://labs.slitaz.org/issues">Bugs</a>
+	<a href="http://bugs.slitaz.org">Bugs</a>
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
 		SliTaz @
