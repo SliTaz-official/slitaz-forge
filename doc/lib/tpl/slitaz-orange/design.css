@@ -19,7 +19,7 @@ body {
 	color: black;
 	font: 13px sans-serif, vernada, arial;
 	margin: 0;
-	min-width: 800px;
+	min-width: 780px;
 }
 
 /* Languges */
@@ -40,7 +40,6 @@ body {
 	text-decoration: none;
 	font-weight: bold
 }
-
 
 #lang a:hover, div.plugin_translation a:hover {
 	background: transparent;
@@ -103,7 +102,7 @@ body {
 #network img { vertical-align: middle; }
 
 #block { 
-	min-height: 60px; 
+	min-height: 64px; 
 	background: #d66018; 
 	padding: 20px 12% 0;
 	text-align: center;
