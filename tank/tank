@@ -10,6 +10,8 @@ WWW="/home/slitaz/www"
 VHOST="$WWW/tank"
 WEBSITE="$WWW/website"
 BACKUPS="/home/backups"
+PYTHON_LIB="/usr/lib/python2.5"
+DOC_LIB="$WWW/doc/lib"
 
 usage() {
 	echo -e "\nUsage: `basename $0` [command]
@@ -22,6 +24,7 @@ Commands:
   up-people|-up    Update http://people.slitaz.org/
   up-boot|-ub      Update http://boot.slitaz.org/
   up-hg|-uh        Update template for http://hg.slitaz.org/
+  up-doc|-ud       Update template for http://doc.slitaz.org/
   up-stats|-us     Update Awstats statistics (run by cron)
   adduser|-au      Add user on tank\n"
 }
@@ -124,11 +127,16 @@ EOF
 		# Since Tank run stable and we update the style in slitaz-dev-tools
 		# the cooking package is unbuildable because it use new Tazwok function
 		# with mercurial|*
-		PYTHON_LIB="/usr/lib/python2.5"
-		echo -e "\nUpdating Mercurial style..."
+		echo -e "\nUpdating Mercurial template..."
 		cd $REPOS/slitaz-dev-tools && hg up
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
+		echo "" ;;
+	up-hg|-uh)
+		# Update Wiki doc template from Hg: http://doc.slitaz.org/
+		echo -e "\nUpdating Wiki documentation template..."
+		cd $REPOS/slitaz-forge && hg up
+		cp -a doc/lib/tpl/* $DOC_LIB/tpl
 		echo "" ;;
 	up-stats|-us)
 		echo -e "\nUpdating all awstats databases..."
