@@ -72,7 +72,7 @@
 
 <p>
 	Boot your operating system from the internet and enjoy a full system
-	working all in RAM with speed an stability in mind. The Linux Kernel
+	working entirely in RAM with speed and stability in mind. The Linux Kernel
 	and the complete SliTaz compressed root filesystem will be loaded into
 	RAM from the Web using PXE and HTTP protocols.
 </p>
