@@ -1,13 +1,12 @@
 
 
-http://bugs.slitaz.org/ runs a Roundup tracker powered by a WSGI handler
-(much faster than standard CGI) and Lighttpd mod_proxy
+http://bugs.slitaz.org/ runs a Roundup tracker powered by roundup-server
+-C server.ini and Lighttpd mod_proxy
 
 	* templates/   : Contain the SliTaz template used to install and initialize
 	                 the tracker. It also have the xHTML files and CSS style.
-	* roundup.wsgi : Is the WSGI handler (started at boot by the script
-	                 /etc/init.d/local.sh)
-	* server.ini   : Is a config that could be used with roundup-server
+	* roundup.wsgi : Is the WSGI handler (buggy with Lighttpd)
+	* server.ini   : Is the config used be used with roundup-server
 
 The bugs tracker configuration file (config.ini) is not under Hg since
 it have MySQL db login information and SMTP password.
