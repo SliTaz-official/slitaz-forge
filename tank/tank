@@ -21,6 +21,7 @@ Commands:
   up-tank|-ut      Update http://tank.slitaz.org/
   up-people|-up    Update http://people.slitaz.org/
   up-boot|-ub      Update http://boot.slitaz.org/
+  up-hg|-uh        Update template for http://hg.slitaz.org/
   up-stats|-us     Update Awstats statistics (run by cron)
   adduser|-au      Add user on tank\n"
 }
@@ -86,11 +87,10 @@ EOF
 Usage: $0 $1 newchroot user
 Move a user in a new chroot location
 EOF
-		fi
-		;;
+		fi ;;
 	backup|-b)
 		# Backup config files and SQL db.
-		echo "Not yet implemented..." ;;
+		echo "TODO" ;;
 	up-www|-uw)
 		# Update website from repo.
 		echo -e "\nUpdating: www.slitaz.org..."
@@ -119,6 +119,16 @@ EOF
 		hg update
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot 
+		echo "" ;;
+	up-hg|-uh)
+		# Since Tank run stable and we update the style in slitaz-dev-tools
+		# the cooking package is unbuildable because it use new Tazwok function
+		# with mercurial|*
+		PYTHON_LIB="/usr/lib/python2.5"
+		echo -e "\nUpdating Mercurial style..."
+		cd $REPOS/slitaz-dev-tools && hg up
+		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
+		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		echo "" ;;
 	up-stats|-us)
 		echo -e "\nUpdating all awstats databases..."
