@@ -1,5 +1,5 @@
 #!/bin/sh
-# Taztank - Admin Tank, backup, update and give stats.
+# Tank - Admin Tank, backup, update and give stats.
 #
 # (C) 2011 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
@@ -164,7 +164,7 @@ EOF
 		echo -n "Hg password: " && read passwd
 		echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
 		# Public dir at http://people.slitaz.org/~$user/
-		cp -a /usr/share/tank/Public /home/$user/Public
+		cp -a /usr/share/tank/Public/* /home/$user/Public
 		sed -i s/'%user%'/"$user"/ /home/$user/Public/index.html
 		# README and empty Shell profile
 		cp -a /usr/share/tank/README /home/$user/
