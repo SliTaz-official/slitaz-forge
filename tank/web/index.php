@@ -51,7 +51,13 @@
 			public directory or cron jobs.
 		</p>
 		<p>
-			Tank CPU is a AMD Dual Core 2 GHz - 2GB RAM - Located next to Lausanne,
+			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
+			"if (n == 4) printf \"quad \"; print s }' ")?> -
+			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
+			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
+			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located next to Lausanne,
 			Switzerland. Tank is also monitored by RRDtool which provides 
 			<a href="graphs.php">graphical stats</a>.
 		</p>
