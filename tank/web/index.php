@@ -101,13 +101,19 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 
 <ul>
 	<li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
-	(<a href="/stats/awstats.pl?config=www.slitaz.org">stats</a>)</li>
-	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.</li>
-	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.</li>
-	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.</li>
-	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.</li>
-	<li><a href="http://bb.slitaz.org/">bb.slitaz.org</a> - SliTaz Build Bot.</li>
-	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.</li>
+		(<a href="/stats/awstats.pl?config=www.slitaz.org">stats</a>)</li>
+	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.
+		(<a href="/stats/awstats.pl?config=doc.slitaz.org">stats</a>)</li>
+	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.
+		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li>
+	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.
+		(<a href="/stats/awstats.pl?config=boot.slitaz.org">stats</a>)</li>
+	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.
+		(<a href="/stats/awstats.pl?config=hg.slitaz.org">stats</a>)</li>
+	<li><a href="http://cook.slitaz.org/">cook.slitaz.org</a> - SliTaz Build Bot.
+		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>
+	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.
+		(<a href="/stats/awstats.pl?config=people.slitaz.org">stats</a>)</li>
 	<li><a href="http://pro.slitaz.org/">pro.slitaz.org</a> - SliTaz Professional services.</li>
 </ul>
 
