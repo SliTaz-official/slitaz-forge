@@ -50,7 +50,7 @@
 			<li><a href="http://scn.slitaz.org/">Community</a></li>
 			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
 			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
-			<li><a href="http://bb.slitaz.org/">Build Bot</a></li>
+			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 		</ul>
 	</div>
