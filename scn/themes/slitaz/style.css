@@ -2,7 +2,7 @@
 Theme Name: SliTaz BuddyPress
 Theme URI: http://www.slitaz.org
 Description: The default SliTaz theme for BuddyPress.
-Version: 1.0
+Version: 1.1
 Author: Christophe Lincoln
 Author URI: http://people.slitaz.org/~pankso/
 Template: bp-default
@@ -42,21 +42,21 @@ a:hover { text-decoration: none; color: blue; }
 }
 
 #header {
-	position: relative;
 	color: #fff;
-	background: #351a0a url(images/header-img.png) no-repeat top right;
+	background: #351a0a;
 	-moz-border-radius-bottomleft: 0px;
 	-webkit-border-bottom-left-radius: 0px;
 	-moz-border-radius-bottomright: 0px;
 	-webkit-border-bottom-right-radius: 0px;
-	height: 40px;
-	padding-top: 0px;
+	padding-top: 1px;
+	margin: 0px;
+	height: 39px;
 }
 
 #header #search-bar {
 	z-index: 100;
 	position: absolute;
-	top: 80px;
+	top: 76px;
 	right: 20px;
 	width: 386px;
 	text-align: right;
@@ -64,6 +64,7 @@ a:hover { text-decoration: none; color: blue; }
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
+	height: 40px;
 }
 
 #header h1 {
@@ -88,7 +89,7 @@ a:hover { text-decoration: none; color: blue; }
 
 #network { 
 	float: right; 
-	padding: 10px 5px 0; 
+	padding: 9px 5px 0; 
 	font-size: 12px;
 }
 #network a { padding: 0 6px; color: #fff; font-weight: bold; text-decoration: none;}
@@ -98,7 +99,7 @@ a:hover { text-decoration: none; color: blue; }
 	z-index: 20;
 	min-height: 120px;
 	position: absolute;
-	top: 40px;
+	/* top: 40px; */
 	background: #d66018;
 	margin: 0 0 40px 0;
 	padding: 40px 12% 0;
@@ -122,7 +123,7 @@ div#container {
 
 div#content .padder { padding: 0 19px 19px 0; }
 
-ul#nav { bottom: -160px; z-index: 120;  }
+ul#nav { bottom: -130px; z-index: 120;  }
 ul#nav li a { background: #cc5b17; padding: 6px; }
 ul#nav li.selected a, ul#nav li.current_page_item a {
 	background: #fff; }
@@ -133,6 +134,7 @@ ul#nav li.selected a, ul#nav li.current_page_item a {
 	text-align: center;
 	color: #666;
 	text-shadow: #fafafa 0px 0px 0;
+	margin: 0;
 }
 #footer a { color: #666; padding: 0 2px; }
 
