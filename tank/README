@@ -11,7 +11,7 @@ Build host documentation: http://doc.slitaz.org/en:cookbook:buildhost
 IP's
 ----
 Tank:         213.3.10.214
-Mirror:       94.23.60.116 (mirror,pizza,archives,ajaxterm)
+Mirror:       94.23.209.91 (mirror,pizza,archives,ajaxterm)
 Forum & labs: 94.23.34.123
 
 Check /home/slitaz/www for Tank vhosts.
