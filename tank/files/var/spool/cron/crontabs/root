@@ -1,27 +1,27 @@
-# Update Web stats
-0 0 * * * /usr/sbin/awsupdate_all
+# Update http://tank.slitaz.org/graphs.php pictures
+*/5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
 
-# Backup MySQL databases
-0 30 * * * /usr/bin/mybackup.sh
+# Check Internet access
+*/5 * * * * /usr/bin/chkwan
 
-# Rotate logs daily
-0 1 * * *  /usr/sbin/logrotate /etc/logrotate.conf
+# purge php sessions
+0 * * * * /usr/bin/find /tmp -name 'sess*' -type f -mmin +720 -exec rm -f {} \;
+
+# rotate logs
+0 1 * * *  /usr/sbin/logrotate /etc/logrotate.conf > /dev/null 2>&1
+0 0 * * * /usr/bin/ntpclient -s -h fr.pool.ntp.org
 
 # Update SliTaz stuff
-15 02 * * * /usr/bin/tazdev update-www
-*/20 * * * * /home/slitaz/www/website/libs/get-latest.sh
+15 02 * * * /usr/bin/tank up-www
+*/15 * * * * /home/slitaz/www/website/libs/get-feeds.sh
 20 02 * * * /usr/bin/tazpkg-web cooking
 30 02 * * * /usr/bin/tazpkg-web stable
 
-# Update RSS channels
-40 02 * * * /usr/bin/tazrss cooking
-40 02 * * * /usr/bin/tazrss stable
+0,10,20,30,40,50 * * * * /usr/bin/roundup-mailgw /home/slitaz/bugs/ \
+	pop bugs@slitaz.org:Bugs4SliTaz@pop.slitaz.org
 
-# Update system load graphics
-*/5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
+# Update flavors repo, until Gok* update its tools - pascal
+0 */2 * * * cd /home/slitaz/cooking/sandbox/home/slitaz/cooking/flavors && hg pull -u
 
-# Backup (will be sync'd by mirror)
-0 3 * * *  /home/backups/tank/backup.sh
-
-# Send all sources to mirror
-0 23 * * *  /home/slitaz/sources/update.sh update >/dev/null 2>&1
+# Build rolling release every day if necessary
+0 4 * * * /home/bellard/rolling/rolling.sh
