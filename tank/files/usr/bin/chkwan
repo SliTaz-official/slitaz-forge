@@ -1,0 +1,9 @@
+#!/bin/sh
+
+{
+ping -c 2 8.8.8.8 > /dev/null || 
+ping -c 2 8.8.4.4 > /dev/null || 
+ping -c 2 94.23.60.116 > /dev/null || 
+ping -c ssh.tuxfamily.org > /dev/null || 
+} && touch /var/run/WAN
+[ -n "$(find /var/run/WAN -mmin +240)" ] && reboot
