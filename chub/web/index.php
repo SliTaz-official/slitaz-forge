@@ -24,17 +24,17 @@
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
-	<h1><a href="http://www.slitaz.org/">SliTaz Chub</a></h1>
+	<h1><a href="http://www.slitaz.org/">SliTaz Tank</a></h1>
 </div>
 
 <!-- Block -->
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4>Servers</h4>
+		<h4>Project servers</h4>
 		<ul>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-			<li><a href="http://mirror.slitaz.org/">Mirror Server</a></li>
+			<li><a href="http://tank.slitaz.org/">Tank</a></li>
+			<li><a href="http://mirror.slitaz.org/">Mirror</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
@@ -45,15 +45,45 @@
 			virtual machine is gracefuly host by COSI at Clarkson
 			University <a href="http://cosi.clarkson.edu/">cosi.clarkson.edu</a>
 		</p>
+		<p>
+			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
+			"if (n == 4) printf \"quad \"; print s }' ")?> -
+			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
+			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
+			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>
+		</p>
 	</div>
 </div>
 
 <!-- Content -->
 <div id="content">
 
-<p>
-	Under construction :-)
-</p>
+<h2>System stats</h2>
+
+<h4>Uptime</h4>
+
+<pre class="package">
+<?php
+system("uptime | sed 's/^\s*//'");
+?>
+</pre>
+
+<h4>Disk usage</h4>
+<pre class="package">
+<?php
+system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
+?>
+</pre>
+
+<h4>Network</h4>
+<pre class="package">
+<?php
+system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s*//'");
+?>
+</pre>
+
 
 <!-- End of content -->
 </div>

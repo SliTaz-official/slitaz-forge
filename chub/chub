@@ -35,6 +35,7 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		#hg update when repos will be on Chub
 		hg pull -u
+		rm -rf $VHOST/*.*
 		cp -a chub/web/* $VHOST ;;
 	stats)
 		# Echo some stats.
