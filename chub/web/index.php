@@ -46,7 +46,7 @@
 			University <a href="http://cosi.clarkson.edu/">cosi.clarkson.edu</a>
 		</p>
 		<p>
-			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
+			Chub CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
 			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
