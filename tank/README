@@ -4,7 +4,7 @@ README for Tank - SliTaz main server and build host
 
 Tank is the hostname for SliTaz main server and build host. This package 
 provides the web interface accessible at http://tank.slitaz.org/ and a tiny
-tool (taztank) to help maintain and administer services.
+tool (tank) to help maintain and administer services.
 
 Build host documentation: http://doc.slitaz.org/en:cookbook:buildhost
 
