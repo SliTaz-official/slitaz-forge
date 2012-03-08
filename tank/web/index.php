@@ -22,6 +22,7 @@
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
+		<a href="http://cook.slitaz.org/">Bb</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
 	<h1><a href="http://www.slitaz.org/">SliTaz Tank</a></h1>
@@ -31,14 +32,10 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
+		<h4>Project servers</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
-			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
-			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
-			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
+			<li><a href="http://chub.slitaz.org/">Chub</a></li>
+			<li><a href="http://mirror.slitaz.org/">Mirror</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
@@ -100,16 +97,16 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
     src="images/network.png" /></a>Virtual hosts</h2>
 
 <ul>
-	<li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
+	<!-- <li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
 		(<a href="/stats/awstats.pl?config=www.slitaz.org">stats</a>)</li>
 	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.
 		(<a href="/stats/awstats.pl?config=doc.slitaz.org">stats</a>)</li>
 	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.
-		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li>
+		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li> -->
 	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.
 		(<a href="/stats/awstats.pl?config=boot.slitaz.org">stats</a>)</li>
-	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.
-		(<a href="/stats/awstats.pl?config=hg.slitaz.org">stats</a>)</li>
+	<!-- <li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.
+		(<a href="/stats/awstats.pl?config=hg.slitaz.org">stats</a>)</li> -->
 	<li><a href="http://cook.slitaz.org/">cook.slitaz.org</a> - SliTaz Build Bot.
 		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.
