@@ -16,7 +16,7 @@ VHOST="$WWW/chub"
 WEBSITE="$WWW/website"
 
 usage() {
-	echo -e "\nUsage: `basename $0` [command]
+	echo "\nUsage: $(basename $0) [command]
 Commands:
   up-www       Update website http://www.slitaz.org/
   up-chub      Update Chub web interface http://chub.slitaz.org/
@@ -39,10 +39,12 @@ case "$1" in
 		cp -a chub/web/* $VHOST
 		echo "" ;;
 	stats)
-		# Echo some stats
-		echo -e "\n==== Disk usage ===="
+		# Echo some stats.
+		echo -e "\n======== Disk usage"
 		df -h | grep ^/dev
-		echo "==== Connected users ===="
+		echo "======== Memory usage"
+		free -m | grep ^Mem
+		echo "======== Connected users"
 		who
 		echo "" ;;
 	backup)
