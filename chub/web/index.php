@@ -21,10 +21,12 @@
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
-	<h1><a href="http://www.slitaz.org/">SliTaz Tank</a></h1>
+	<h1><a href="http://www.slitaz.org/">SliTaz Chub</a></h1>
 </div>
 
 <!-- Block -->
