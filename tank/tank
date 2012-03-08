@@ -97,21 +97,21 @@ EOF
 	up-www|-uw)
 		# Update website from repo.
 		echo -e "\nUpdating: www.slitaz.org..."
-		cd $WEBSITE && hg pull && hg update
+		cd $WEBSITE && hg pull -u
 		echo "" ;;
 	up-tank|-ut)
 		# Update Tank web interface: http://tank.slitaz.org/
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg update
-		rm -rf $VHOST/*.* $VHOST/pics/website $VHOST/images
+		hg pull -u
+		rm -rf $VHOST/*.* $VHOST/images
 		cp -a tank/web/* $VHOST 
 		echo "" ;;
 	up-people|-up)
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg update
+		hg pull -u
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people 
 		echo "" ;;
@@ -119,7 +119,7 @@ EOF
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg update
+		hg pull -u
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot 
 		echo "" ;;
@@ -128,14 +128,14 @@ EOF
 		# the cooking package is unbuildable because it uses the new Tazwok function
 		# with mercurial|*
 		echo -e "\nUpdating Mercurial template..."
-		cd $REPOS/slitaz-dev-tools && hg up
+		cd $REPOS/slitaz-dev-tools && hg pull -u
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		echo "" ;;
 	up-doc|-ud)
 		# Update Wiki doc template from Hg: http://doc.slitaz.org/
 		echo -e "\nUpdating Wiki documentation template..."
-		cd $REPOS/slitaz-forge && hg up
+		cd $REPOS/slitaz-forge && hg pull -u
 		cp -a doc/lib/tpl/* $DOC_LIB/tpl
 		echo "" ;;
 	up-stats|-us)
