@@ -27,26 +27,23 @@ Commands:
 case "$1" in
 	up-www)
 		# Update website from repo.
-		echo -e "\nUpdating: www.slitaz.org..."
-		cd $WEBSITE && hg pull -u
-		echo "" ;;
+		echo "Updating: www.slitaz.org..."
+		cd $WEBSITE && hg pull -u ;;
 	up-chub)
 		# Update Chub web interface from repo.
-		echo -e "\nUpdating: chub.slitaz.org..."
+		echo "Updating: chub.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		#hg update when repos will be on Chub
 		hg pull -u
-		cp -a chub/web/* $VHOST
-		echo "" ;;
+		cp -a chub/web/* $VHOST ;;
 	stats)
 		# Echo some stats.
-		echo -e "\n======== Disk usage"
+		echo "======== Disk usage ============="
 		df -h | grep ^/dev
-		echo "======== Memory usage"
+		echo "======== Memory usage ==========="
 		free -m | grep ^Mem
-		echo "======== Connected users"
-		who
-		echo "" ;;
+		echo "======== Connected users ========"
+		who ;;
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)
