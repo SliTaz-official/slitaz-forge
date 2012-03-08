@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Chub admin utility - SliTaz Community HUB aka Chub is the server hosting
+# all end users sites such as the website, doc, forum as well as Hg repos.
+# This tiny utility can be run by a cron job or via the command line for 
+# maintainance tasks.
+#
+# Copyright (C) 2012 SliTaz GNU/Linux - BSD License
+#
+# Authors : Christophe Lincoln <pankso@slitaz.org>
+#
+
+REPOS="/home/slitaz/repos"
+WWW="/home/slitaz/www"
+VHOST="$WWW/chub"
+WEBSITE="$WWW/website"
+
+usage() {
+	echo -e "\nUsage: `basename $0` [command]
+Commands:
+  up-www       Update website http://www.slitaz.org/
+  up-chub      Update Chub web interface http://chub.slitaz.org/
+  stats        Display some server stats.
+  backup       Backup MySQL DB and files\n"
+}
+
+case "$1" in
+	up-www)
+		# Update website from repo.
+		echo -e "\nUpdating: www.slitaz.org..."
+		cd $WEBSITE && hg pull -u
+		echo "" ;;
+	up-chub)
+		# Update Chub web interface from repo.
+		echo -e "\nUpdating: chub.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		#hg update when repos will be on Chub
+		hg pull -u
+		cp -a chub/web/* $VHOST
+		echo "" ;;
+	stats)
+		# Echo some stats
+		echo -e "\n==== Disk usage ===="
+		df -h | grep ^/dev
+		echo "==== Connected users ===="
+		who
+		echo "" ;;
+	backup)
+		echo "TODO: backup MySQL, SCN files, etc" ;;
+	*)
+		usage ;;
+esac
+exit 0
