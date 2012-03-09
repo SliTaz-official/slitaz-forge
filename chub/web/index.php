@@ -44,7 +44,7 @@
 		<h4>Codename: chub</h4>
 		<p>
 			This is the SliTaz GNU/Linux Community HUB server. This
-			virtual machine is gracefuly host by COSI at Clarkson
+			virtual machine is gracefully hosted by COSI at Clarkson
 			University <a href="http://cosi.clarkson.edu/">cosi.clarkson.edu</a>
 		</p>
 		<p>
