@@ -1,5 +1,5 @@
 #!/bin/sh
-# Content negociation for SliTaz Network
+# Content negotiation for SliTaz Network
 #
 
 IFS=","

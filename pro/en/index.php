@@ -28,12 +28,12 @@
 		<p>
 			Welcome to the <a href="http://www.slitaz.org/en/">SliTaz GNU/Linux</a>
 			professional platform. SliTaz is a fast, robust and professional
-			operating system build with open source technology.
+			operating system built with open source technology.
 		</p>
 		<p>
-			We are a group of developer and partner who can provide custom
-			development and support, consulting, LiveCD flavor creation and more
-			to customers.
+			We are a group of developers and partners who can provide custom
+			development and support, consulting services, LiveCD flavor creation 
+			and more to customers.
 		</p>
 	</div>
 </div>
@@ -54,16 +54,16 @@
 
 <p>
 	SliTaz is free and open source system with a large and growing
-	community, our business model is software as a service, partnership
+	community. Our business model is software as a service, partnership
 	and sponsoring. We can provide services all over the world
-	and in many languages such English, French and Portuguese.
+	and in languages such English, French and Portuguese.
 </p>
 <p>
 	This professional platform allows you to have contact with the SliTaz
-	team who will process your request and do the mediate among you 
-	and one of our official developer or sponsor. Our goal is to monitor
+	team who will process your request and do the mediating among yourselves
+	and one of our official developers or sponsors. Our goal is to monitor
 	and verify the quality of service to ensure our customers a high 
-	level work.
+	level of work.
 </p>
 
 <h2>Services</h2>
@@ -79,20 +79,20 @@
 <h2>SliTaz developer</h2>
 
 <p>
-	The SliTaz association is a non profit base entity who can provide
-	payed services. We can employ a freelance Slitaz developer to work
-	for you. We can also help School, ONG and social project with a
-	small budget. Please contact us for more information on this service.
+	The SliTaz association is a non profit base entity which can provide
+	paid services. We can employ a freelance Slitaz developer to work
+	for you. We can also help Schools, ONG and social projects with a
+	small budget. Please contact us for more information about this service.
 </p>
 
 <h2>Partner</h2>
 
 <p>
-	The SliTaz association will do the mediate between customer and one of
-	our partner. Official partners collaborated with the official SliTaz
+	The SliTaz association will do the mediating between customers and one of
+	our partners. Official partners collaborate with the official SliTaz
 	developers and monetary support the project. Making business with our
-	official partners let you help the SliTaz project and get customized
-	services such as VOIP deployment, all in one server, Wifi Hot Spot,
+	official partners lets you help the SliTaz project and get customized
+	services such as VOIP deployment, all in one servers, Wifi Hot Spots,
 	closed development, and more.
 </p>
 
@@ -112,23 +112,23 @@
 </p>
 
 <p>
-	If you use Slitaz for business purpose, in University or if you just
+	If you use Slitaz for business purposes, in University or if you just
 	want to sponsor and get a logo-link-description on our main website,
-	please contact us. You can start sponsoring SliTaz from 40$ by mouth.
-	A sponsorship convention is signed for one year, the visibility of your
-	logo depend on the amount of donation received each mouth.
+	please contact us. You can start sponsoring SliTaz from $40 a month.
+	A sponsorship contract is signed for one year, the visibility of your
+	logo depends on the amount of donation received each month.
 </p>
 
 <p>
 	More information about sponsoring SliTaz and a list of our current
-	sponsors can be found on SliTaz website:
+	sponsors can be found on the SliTaz website:
 	<a href="http://www.slitaz.org/en/sponsor/">Sponsor page</a>
 </p>
 
 <h2>Contact</h2>
 
 <p>
-	Want to get in touch or get more and detailled information ? Dont
+	Want to get in touch or get more detailed information? Don't
 	hesitate to contact us by mail or post.
 </p>
 
