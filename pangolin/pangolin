@@ -13,12 +13,12 @@ WEBSITE="$WWW/website"
 PYTHON_LIB="/usr/lib/python2.5"
 
 usage() {
-	echo "\nUsage: $(basename $0) [command]
+	echo "Usage: $(basename $0) [command]
 Commands:
   up-www       Update website http://www.slitaz.org/
   up-hg        Update Hg web interface http://hg.slitaz.org/
   stats        Display some server stats.
-  backup       Backup MySQL DB and files\n"
+  backup       Backup MySQL DB and files"
 }
 
 case "$1" in
