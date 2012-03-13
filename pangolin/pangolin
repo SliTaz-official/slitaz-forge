@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Pangolin admin utility
+#
+# Copyright (C) 2012 SliTaz GNU/Linux - BSD License
+#
+# Authors : Christophe Lincoln <pankso@slitaz.org>
+#
+
+REPOS="/home/slitaz/repos"
+WWW="/home/slitaz/www"
+WEBSITE="$WWW/website"
+PYTHON_LIB="/usr/lib/python2.5"
+
+usage() {
+	echo "\nUsage: $(basename $0) [command]
+Commands:
+  up-www       Update website http://www.slitaz.org/
+  up-hg        Update Hg web interface http://hg.slitaz.org/
+  stats        Display some server stats.
+  backup       Backup MySQL DB and files\n"
+}
+
+case "$1" in
+	up-www)
+		# Update website from repo.
+		echo "Updating: www.slitaz.org..."
+		cd $WEBSITE && hg pull -u ;;
+	up-hg)
+		# Update hg.slitaz.org template.
+		echo -e "\nUpdating Mercurial template..."
+		cd $REPOS/slitaz-dev-tools && hg update 
+		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
+		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
+		echo "" ;;
+	stats)
+		# Echo some stats.
+		echo "======== Disk usage ============="
+		df -h | grep ^/dev
+		echo "======== Memory usage ==========="
+		free -m | grep ^Mem
+		echo "======== Connected users ========"
+		who ;;
+	backup)
+		echo "TODO: backup MySQL, SCN files, etc" ;;
+	*)
+		usage ;;
+esac
+exit 0
