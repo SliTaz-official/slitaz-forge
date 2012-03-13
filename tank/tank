@@ -22,6 +22,7 @@ Commands:
   up-www|-uw       Update website http://www.slitaz.org/
   up-tank|-ut      Update http://tank.slitaz.org/
   up-people|-up    Update http://people.slitaz.org/
+  up-pro           Update http://pro.slitaz.org/
   up-boot|-ub      Update http://boot.slitaz.org/
   up-hg|-uh        Update template for http://hg.slitaz.org/
   up-doc|-ud       Update template for http://doc.slitaz.org/
@@ -114,6 +115,14 @@ EOF
 		hg pull -u
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people 
+		echo "" ;;
+	up-pro)
+		# Update Pro website: http://pro.slitaz.org/
+		echo -e "\nUpdating: pro.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		hg pull -u
+		rm -rf $WWW/pro/*
+		cp -a pro/* $WWW/pro
 		echo "" ;;
 	up-boot|-ub)
 		# Update Web Boot interface: http://boot.slitaz.org/
