@@ -19,6 +19,7 @@ pre {
 #header { 
 	height: 40px; 
 	background: #351a0a;
+	border-bottom: 8px solid #d66018;
 }
 
 #header h1 {
