@@ -16,18 +16,21 @@ DOC_LIB="$WWW/doc/lib"
 usage() {
 	echo -e "\nUsage: `basename $0` [command]
 Commands:
-  stats|-s         Display some Tank stats
-  backup|-b        Backup files and MySQL DB
-  chroot|-c        Move a user into a new chroot location
-  up-www|-uw       Update website http://www.slitaz.org/
-  up-tank|-ut      Update http://tank.slitaz.org/
-  up-people|-up    Update http://people.slitaz.org/
-  up-pro           Update http://pro.slitaz.org/
-  up-boot|-ub      Update http://boot.slitaz.org/
-  up-hg|-uh        Update template for http://hg.slitaz.org/
-  up-doc|-ud       Update template for http://doc.slitaz.org/
-  up-stats|-us     Update Awstats statistics (run by cron)
-  adduser|-au      Add user on tank\n"
+  stats|-s     Display some Tank stats
+  backup|-b    Backup files and MySQL DB
+  adduser      Add user on Tank and create people files
+  chroot|-c    Move a user into a new chroot location
+  up-stats     Update Awstats statistics (run by cron)
+  
+  up-tank      Update http://tank.slitaz.org/
+  up-people    Update http://people.slitaz.org/
+  up-pro       Update http://pro.slitaz.org/
+  up-boot      Update http://boot.slitaz.org/
+  up-cook      Update http://cook.slitaz.org/
+  
+  #up-www       Update website http://www.slitaz.org/
+  #up-hg        Update template for http://hg.slitaz.org/
+  #up-doc       Update template for http://doc.slitaz.org/\n"
 }
 
 case "$1" in
@@ -95,12 +98,12 @@ EOF
 	backup|-b)
 		# Backup config files and SQL db.
 		echo "TODO" ;;
-	up-www|-uw)
+	up-www)
 		# Update website from repo.
 		echo -e "\nUpdating: www.slitaz.org..."
 		cd $WEBSITE && hg pull -u
 		echo "" ;;
-	up-tank|-ut)
+	up-tank)
 		# Update Tank web interface: http://tank.slitaz.org/
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
@@ -108,7 +111,7 @@ EOF
 		rm -rf $VHOST/*.* $VHOST/images
 		cp -a tank/web/* $VHOST 
 		echo "" ;;
-	up-people|-up)
+	up-people)
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
@@ -124,7 +127,7 @@ EOF
 		rm -rf $WWW/pro/*
 		cp -a pro/* $WWW/pro
 		echo "" ;;
-	up-boot|-ub)
+	up-boot)
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
@@ -132,7 +135,15 @@ EOF
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot 
 		echo "" ;;
-	up-hg|-uh)
+	up-cook)
+		# Update Web Boot interface: http://boot.slitaz.org/
+		echo -e "\nUpdating: cook.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		hg pull -u
+		cp -a cook/* $WWW/cook
+		cp -a cook/* $WWW/cook/undigest
+		echo "" ;;
+	up-hg)
 		# Since Tank runs stable and we update the style in slitaz-dev-tools
 		# the cooking package is unbuildable because it uses the new Tazwok function
 		# with mercurial|*
@@ -141,20 +152,20 @@ EOF
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		echo "" ;;
-	up-doc|-ud)
+	up-doc)
 		# Update Wiki doc template from Hg: http://doc.slitaz.org/
 		echo -e "\nUpdating Wiki documentation template..."
 		cd $REPOS/slitaz-forge && hg pull -u
 		cp -a doc/lib/tpl/* $DOC_LIB/tpl
 		echo "" ;;
-	up-stats|-us)
+	up-stats)
 		echo -e "\nUpdating all awstats databases..."
-		for vh in www boot pkgs
+		for vh in pro boot cook
 		do
 			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
 		done
 		echo "" ;;
-	adduser|-au)
+	adduser)
 		# On Tank /etc/skel is empty to let tank handle default user
 		# files.
 		echo ""
