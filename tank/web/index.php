@@ -25,7 +25,7 @@
 		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
-		<a href="http://cook.slitaz.org/">Bb</a>
+		<a href="http://cook.slitaz.org/">BB</a>
 	</div>
 	<h1><a href="http://tank.slitaz.org/">SliTaz Tank</a></h1>
 </div>

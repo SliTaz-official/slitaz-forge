@@ -56,7 +56,7 @@
 	SliTaz is free and open source system with a large and growing
 	community. Our business model is software as a service, partnership
 	and sponsoring. We can provide services all over the world
-	and in languages such English, French and Portuguese.
+	and in languages such as English, French and Portuguese.
 </p>
 <p>
 	This professional platform allows you to have contact with the SliTaz
