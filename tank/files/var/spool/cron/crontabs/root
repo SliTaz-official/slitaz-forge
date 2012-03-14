@@ -2,7 +2,7 @@
 */5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
 
 # Check Internet access
-*/5 * * * * /usr/bin/chkwan
+#*/5 * * * * /usr/bin/chkwan
 
 # purge php sessions
 0 * * * * /usr/bin/find /tmp -name 'sess*' -type f -mmin +720 -exec rm -f {} \;
@@ -12,16 +12,13 @@
 0 0 * * * /usr/bin/ntpclient -s -h fr.pool.ntp.org
 
 # Update SliTaz stuff
-15 02 * * * /usr/bin/tank up-www
-*/15 * * * * /home/slitaz/www/website/libs/get-feeds.sh
+#*/15 * * * * /home/slitaz/www/website/libs/get-feeds.sh
+15 02 * * * /usr/bin/tank up-pro
 20 02 * * * /usr/bin/tazpkg-web cooking
 30 02 * * * /usr/bin/tazpkg-web stable
 
-0,10,20,30,40,50 * * * * /usr/bin/roundup-mailgw /home/slitaz/bugs/ \
-	pop bugs@slitaz.org:Bugs4SliTaz@pop.slitaz.org
-
-# Update flavors repo, until Gok* update its tools - pascal
-0 */2 * * * cd /home/slitaz/cooking/sandbox/home/slitaz/cooking/flavors && hg pull -u
+#0,10,20,30,40,50 * * * * /usr/bin/roundup-mailgw /home/slitaz/bugs/ \
+#	pop bugs@slitaz.org:Bugs4SliTaz@pop.slitaz.org
 
 # Build rolling release every day if necessary
 0 4 * * * /home/bellard/rolling/rolling.sh

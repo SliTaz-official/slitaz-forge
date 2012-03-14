@@ -34,8 +34,8 @@
 	<div id="block_nav">
 		<h4>Project servers</h4>
 		<ul>
-			<li><a href="http://chub.slitaz.org/">Chub</a></li>
-			<li><a href="http://mirror.slitaz.org/">Mirror</a></li>
+			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
+			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
