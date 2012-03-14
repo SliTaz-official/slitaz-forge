@@ -17,28 +17,27 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="images/network.png" alt="network.png" /></a>
+			<img src="images/home.png" alt="[ Home ]" /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://cook.slitaz.org/">Bb</a>
 	</div>
-	<h1><a href="http://www.slitaz.org/">SliTaz Tank</a></h1>
+	<h1><a href="http://tank.slitaz.org/">SliTaz Tank</a></h1>
 </div>
 
 <!-- Block -->
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
+		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
-			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
-			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
-			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
+			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
+			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
