@@ -14,7 +14,7 @@ install:
 	cp -a files/var $(DESTDIR)/
 	chmod 0600 -p $(DESTDIR)/var/spool/cron/crontabs/root
 	cp -a files/etc $(DESTDIR)/
-	cp -a files/usr $(DESTDIR}/
+	cp -a files/usr/bin $(DESTDIR)/
 	/etc/init.d/crond restart
 
 uninstall:
