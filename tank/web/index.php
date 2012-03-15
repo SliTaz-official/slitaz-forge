@@ -73,29 +73,28 @@
 
 <h4>Uptime</h4>
 
-<pre class="package">
+<pre>
 <?php
 system("uptime | sed 's/^\s*//'");
 ?>
 </pre>
 
 <h4>Disk usage</h4>
-<pre class="package">
+<pre>
 <?php
 system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
 ?>
 </pre>
 
 <h4>Network</h4>
-<pre class="package">
+<pre>
 <?php
 system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s*//'");
 ?>
 </pre>
 
 <h2><a href="/stats/awstats.pl?config=www.slitaz.org"><img
-	style="vertical-align: middle; padding: 0 4px 0 0;"
-	title="Tank Virtual hosts" alt="vhosts"
+	style="padding: 0 4px 0 0;" title="Tank Virtual hosts" alt="vhosts"
     src="images/network.png" /></a>Virtual hosts</h2>
 
 <ul>

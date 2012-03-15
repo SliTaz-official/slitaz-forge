@@ -2,9 +2,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>SliTaz Chub</title>
+	<title>Chub RRD stats</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-	<meta name="description" content="slitaz chub server at COSI" />
+	<meta name="description" content="slitaz tank rrdtool graphs" />
 	<meta name="robots" content="index, follow, all" />
 	<meta name="author" content="SliTaz Contributors" />
 	<link rel="shortcut icon" href="favicon.ico" />
@@ -33,14 +33,9 @@
 			University <a href="http://cosi.clarkson.edu/">cosi.clarkson.edu</a>
 		</p>
 		<p>
-			<!-- Chub CPU is a <?php //system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
-			//"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
-			//" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
-			//"if (n == 4) printf \"quad \"; print s }' ")?> -
-			<?php //system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
-			//"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
-			//"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?> -->
-			Chub CPU is a quad Xeon E5410 2.33GHz - 4GB RAM 
+			Chub CPU is a quad Xeon E5410 2.33GHz - 4GB RAM
+			The server is monitored by RRDtool which provides 
+			<a href="graphs.php">graphical stats</a>.
 		</p>
 	</div>
 </div>
@@ -48,33 +43,43 @@
 <!-- Content -->
 <div id="content">
 
-<h2><a href="graphs.php"><img style="padding: 0 4px 0 0;"
-	title="Chub RRDtool graphs" alt="graphs"
-    src="images/monitor.png" /></a>System stats</h2>
-
-<h4>Uptime</h4>
-
-<pre>
 <?php
-system("uptime | sed 's/^\s*//'");
-?>
-</pre>
 
-<h4>Disk usage</h4>
-<pre>
-<?php
-system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
-?>
-</pre>
+$myurl="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 
-<h4>Network</h4>
-<pre>
-<?php
-system("ifconfig eth1 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s*//'");
-?>
-</pre>
+function one_graphic($img,$name)
+{
+	echo '<img src="images/rrd/'.$img.'" title="'.
+		$name.'" alt="'.$name.'" />'."\n";
+}
 
-<h2><img src="images/network.png" alt="[ Vhosts ]" />Virtual hosts</h2>
+function graphic($res, $img='')
+{
+	global $myurl;
+	if (!$img) $img=$res;
+	echo "<a name=\"".$res."\"></a>";
+	echo "<a href=\"".$myurl."?stats=".$res."#".$res."\">\n";
+	one_graphic($img."-day.png",$res." daily");
+	echo "</a>";
+	if ($_GET['stats'] == $res) {
+		one_graphic($img."-week.png",$res." weekly");
+		one_graphic($img."-month.png",$res." monthly");
+		one_graphic($img."-year.png",$res." yearly");
+	}
+}
+
+echo "<h2>CPU</h2>\n";
+graphic("cpu");
+echo "<h2>Memory</h2>\n";
+graphic("memory");
+echo "<h2>Disk</h2>\n";
+graphic("disk");
+echo "<h2>Network</h2>\n";
+$eth = array();
+exec("/sbin/route -n | awk '{ if (/^0.0.0.0/) print $8 }'", $eth);
+graphic("net",$eth[0]);
+
+?>
 
 <!-- End of content -->
 </div>
