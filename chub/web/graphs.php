@@ -34,8 +34,6 @@
 		</p>
 		<p>
 			Chub CPU is a quad Xeon E5410 2.33GHz - 4GB RAM
-			The server is monitored by RRDtool which provides 
-			<a href="graphs.php">graphical stats</a>.
 		</p>
 	</div>
 </div>

@@ -40,7 +40,8 @@
 			<?php //system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
 			//"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
 			//"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?> -->
-			Chub CPU is a quad Xeon E5410 2.33GHz - 4GB RAM 
+			Chub CPU is a quad Xeon E5410 2.33GHz - 4GB RAM -
+			<a href="graphs.php">Graphical stats</a>
 		</p>
 	</div>
 </div>
