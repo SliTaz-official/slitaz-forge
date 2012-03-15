@@ -1,0 +1,5 @@
+# Cron tasks for SliTaz Community HUB aka chub
+#
+
+# Update RRD images
+*/5 * * * * /home/slitaz/www/chub/lib/makegraphs >/dev/null
