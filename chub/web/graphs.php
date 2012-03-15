@@ -4,7 +4,7 @@
 <head>
 	<title>Chub RRD stats</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-	<meta name="description" content="slitaz tank rrdtool graphs" />
+	<meta name="description" content="slitaz chub rrdtool graphs" />
 	<meta name="robots" content="index, follow, all" />
 	<meta name="author" content="SliTaz Contributors" />
 	<link rel="shortcut icon" href="favicon.ico" />
