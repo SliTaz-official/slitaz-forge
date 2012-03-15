@@ -19,9 +19,9 @@ usage() {
 Usage: $(basename $0) [command]
 
 Commands:
+  stats        Display some server stats
   up-www       Update website http://www.slitaz.org/
   up-chub      Update Chub web interface http://chub.slitaz.org/
-  stats        Display some server stats
   rrd          Update RRD graphs images
   backup       Backup MySQL DB and files"
 
@@ -50,7 +50,7 @@ case "$1" in
 		echo "======== Connected users ========"
 		who ;;
 	rrd)
-		$VHOST/lib/chubrrd >/dev/null
+		$VHOST/lib/chubrrd >/dev/null ;;
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)
