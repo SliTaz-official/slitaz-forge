@@ -10,10 +10,8 @@
 # Authors : Christophe Lincoln <pankso@slitaz.org>
 #
 
-REPOS="/home/slitaz/repos"
-WWW="/home/slitaz/www"
-VHOST="$WWW/chub"
-WEBSITE="$WWW/website"
+[ -f "/etc/slitaz/chub.conf" ] && . /etc/slitaz/chub.conf
+[ -f "chub.conf" ] && . ./chub.conf
 
 usage() {
 	echo "\nUsage: $(basename $0) [command]

@@ -9,6 +9,7 @@ all:
 install:
 	install -m 0777 -d /var/spool/cron/crontabs
 	install -m 0777 chub $(PREFIX)/bin
+	install -m 0644 chub.conf /etc/slitaz
 	install -m 0644 files/etc/lighttpd/vhosts.conf /etc/lighttpd
 	install -m 0644 files/var/spool/cron/crontabs/root \
 		/var/spool/cron/crontabs

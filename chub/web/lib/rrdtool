@@ -1,14 +1,13 @@
 #!/bin/sh
-#*/5  * * * * /home/slitaz/www/chub/lib/makegraphs >/dev/null
+#*/5  * * * * /home/slitaz/www/chub/lib/rrdtool >/dev/null
 
-# Virtual host path
-vhost="/home/slitaz/www/chub"
+. /etc/slitaz/chub.conf || exit 1
 
 # RRD database directory
-rrdlog="$vhost/rrd/log"
+rrdlog="$VHOST/cache/rrd"
 
 # Images directory
-rrdgraph="$vhost/rrd/images"
+rrdgraph="$VHOST/images/rdd"
 
 # Colors
 rrdcolors="--color SHADEA#FFFFFF --color SHADEB#FFFFFF --color BACK#FFFFFF" 

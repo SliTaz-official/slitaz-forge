@@ -2,4 +2,4 @@
 #
 
 # Update RRD images
-*/5 * * * * /home/slitaz/www/chub/lib/makegraphs >/dev/null
+*/5 * * * * /home/slitaz/www/chub/lib/rrdtool >/dev/null
