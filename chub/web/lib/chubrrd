@@ -1,10 +1,12 @@
 #!/bin/sh
-#*/5  * * * * /home/slitaz/www/chub/lib/rrdtool >/dev/null
-
+#
+# */5  * * * * /home/slitaz/www/chub/lib/chubrrd >/dev/null
+# */5  * * * * /usr/bin/chub rrd >/dev/null
+#
 . /etc/slitaz/chub.conf || exit 1
 
 # RRD database directory
-rrdlog="$VHOST/cache/rrd"
+rrdlog="$VHOST/log/rrd"
 
 # Images directory
 rrdgraph="$VHOST/images/rdd"

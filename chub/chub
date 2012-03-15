@@ -21,7 +21,8 @@ Usage: $(basename $0) [command]
 Commands:
   up-www       Update website http://www.slitaz.org/
   up-chub      Update Chub web interface http://chub.slitaz.org/
-  stats        Display some server stats.
+  stats        Display some server stats
+  rrd          Update RRD graphs images
   backup       Backup MySQL DB and files"
 
 EOT
@@ -36,9 +37,9 @@ case "$1" in
 		# Update Chub web interface from repo.
 		echo "Updating: chub.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		#hg update when repos will be on Chub
+		#hg update if repos are on Chub
 		hg pull -u
-		rm -rf $VHOST/*.*
+		rm -rf $VHOST/*.* $VHOST/images/*.png
 		cp -a chub/web/* $VHOST ;;
 	stats)
 		# Echo some stats.
@@ -48,6 +49,8 @@ case "$1" in
 		free -m | grep ^Mem
 		echo "======== Connected users ========"
 		who ;;
+	rrd)
+		$VHOST/lib/chubrrd >/dev/null
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)

@@ -1,5 +1,5 @@
 # Cron tasks for SliTaz Community HUB aka chub
 #
 
-# Update RRD images
-*/5 * * * * /home/slitaz/www/chub/lib/rrdtool >/dev/null
+# Update RRD graphs images
+*/5  * * * * /usr/bin/chub rrd >/dev/null
