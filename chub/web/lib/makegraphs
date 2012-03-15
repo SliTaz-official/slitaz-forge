@@ -1,15 +1,11 @@
 #!/bin/sh
-#
-# */5  * * * * /home/slitaz/www/chub/lib/chubrrd >/dev/null
-# */5  * * * * /usr/bin/chub rrd >/dev/null
-#
-. /etc/slitaz/chub.conf || exit 1
+#*/5  * * * * /home/slitaz/www/chub/lib/makegraphs >/dev/null
 
 # RRD database directory
-rrdlog="$VHOST/log/rrd"
+rrdlog="/home/slitaz/www/chub/log/rrd"
 
 # Images directory
-rrdgraph="$VHOST/images/rdd"
+rrdgraph="/home/slitaz/www/chub/images/rrd"
 
 # Colors
 rrdcolors="--color SHADEA#FFFFFF --color SHADEB#FFFFFF --color BACK#FFFFFF" 
