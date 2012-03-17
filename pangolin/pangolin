@@ -11,14 +11,20 @@ REPOS="/home/slitaz/repos"
 WWW="/home/slitaz/www"
 WEBSITE="$WWW/website"
 PYTHON_LIB="/usr/lib/python2.5"
+HGUSERS="/home/slitaz/auth/hgusers"
 
 usage() {
-	echo "Usage: $(basename $0) [command]
+	cat << EOT
+
+Usage: $(basename $0) [command]
 Commands:
   up-www       Update website http://www.slitaz.org/
   up-hg        Update Hg web interface http://hg.slitaz.org/
+  adduser      Add a user to Hg
   stats        Display some server stats.
-  backup       Backup MySQL DB and files"
+  backup       Backup MySQL DB and files
+
+EOT
 }
 
 case "$1" in
@@ -33,6 +39,10 @@ case "$1" in
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		echo "" ;;
+	adduser)
+		[ ! "$2" ] && echo "Missing user name arg" && exit 0
+		[ ! "$3" ] && echo "Missing password arg" && exit 0
+		htpasswd -b $HGUSERS $2 $3 ;;
 	stats)
 		# Echo some stats.
 		echo "======== Disk usage ============="
