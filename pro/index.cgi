@@ -9,6 +9,7 @@ do
 	[ -d "$lang" ] &&  break
 done
 unset IFS
+[ -d "$lang" ] || lang="en"
 
 echo "Location: $lang/"
 echo ""

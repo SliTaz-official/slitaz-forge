@@ -1,5 +1,5 @@
 #!/bin/sh
-# Content negociation for SliTaz Network
+# Content negotiation for SliTaz Network
 #
 
 IFS=","
@@ -9,6 +9,7 @@ do
 	[ -d "$lang" ] &&  break
 done
 unset IFS
+[ -d "$lang" ] || lang="en"
 
 echo "Location: $lang/"
 echo ""
