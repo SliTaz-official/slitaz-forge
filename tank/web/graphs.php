@@ -38,6 +38,7 @@
 		<ul>
 			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
 			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
+			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->

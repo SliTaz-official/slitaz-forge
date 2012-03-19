@@ -22,6 +22,7 @@
 		<ul>
 			<li><a href="http://tank.slitaz.org/">Tank server</a></li>
 			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
+			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->

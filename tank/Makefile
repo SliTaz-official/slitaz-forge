@@ -21,6 +21,3 @@ uninstall:
 	rm -f $(PREFIX)/bin/tank
 	rm -rf $(PREFIX)/share/tank
 	rm -rf /etc/awstats/*.slitaz.org.conf
-	
-clean:
-	rm -rf _pkg
