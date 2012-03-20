@@ -158,9 +158,8 @@ if ($slitaz_style) {
 	<meta name="description" content=">Index of /$vpath" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<link rel="shortcut icon" href="http://mf.slitaz.org//favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="http://mf.slitaz.org/css/slitaz.css" />
-	<!--<link rel="stylesheet" type="text/css" href="http://mf.slitaz.org/css/mirror.css" />-->
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
 	#header { color: #ffffff; }
 	div.list { background-color: white; padding-bottom: 14px;}
@@ -171,6 +170,7 @@ if ($slitaz_style) {
 	td.s, th.s {text-align: right;}
 	#mirrors {
 		padding: 10px;
+		margin: 0 10px;
 		text-align: center;
 		background: #f1f1f1;
 		border: 2px solid #ddd;
@@ -184,7 +184,7 @@ if ($slitaz_style) {
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="http://mf.slitaz.org/images/home.png" alt="[ Home ]" />
+			<img src="/static/home.png" alt="[ Home ]" />
 			Home</a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
@@ -193,7 +193,7 @@ if ($slitaz_style) {
 		<a href="https://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
-		<a href="http://cook.slitaz.org/">BB</a>
+		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://mirror.slitaz.org/">SliTaz Mirror</a></h1>
 </div>
@@ -215,7 +215,7 @@ EOT;
 	if (preg_match("/mirror\.slitaz\./",$_SERVER["SERVER_NAME"])) print <<<EOT
 		<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
 		SliTaz (stable) in an lguest virtual machine provided by 
-		<a href="http://www.ads-lu.com/">ADS</a>.
+		<a href="http://www.ads-lu.com/">ADS</a> and is located in France.
 		<a href="/info/">Mirror info...</a></p>
 EOT;
 	print <<<EOT
