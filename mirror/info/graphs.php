@@ -7,8 +7,8 @@
 	<meta name="description" content="slitaz mirror rrdtool graphs" />
 	<meta name="robots" content="noindex" />
 	<meta name="author" content="SliTaz Contributors" />
-	<link rel="shortcut icon" href="/css/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/css/slitaz.css" />
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
 #copy {
 	text-align: center;
@@ -26,7 +26,7 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-		<img src="/css/pics/network.png" alt="network.png" /></a>
+			<img src="/static/home.png" alt=" [ Home ] " /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/" title="SliTaz Community Documentation">Doc</a>
 		<a href="http://forum.slitaz.org/" title="Slitaz Forum">Forum</a>
@@ -41,15 +41,11 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="/css/pics/development.png" alt="development.png" />Developers Corner</h4>
+		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
-			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
-			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
-			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-			<li><a href="http://mirror.slitaz.org/info/">Mirror Server</a></li>
+			<li><a href="http://tank.slitaz.org/">Tank server</a></li>
+			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
+			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
@@ -119,26 +115,25 @@ graphic("net",$eth[0]);
 <!-- End of content -->
 </div>
 
-<!-- Start of footer and copy notice -->
-<div id="copy">
-<p>                                                                          
-Last update : <?php echo date('r'); ?>
-</p> 
-<p>
-Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.slitaz.org/">SliTaz</a> -
-<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>
-</p>
-<!-- End of copy -->
-</div>
-
-<!-- Bottom and logo's -->
-<div id="bottom">
-<p>
-<a href="http://validator.w3.org/check?uri=referer"><img
-   src="/css/pics/website/xhtml10.png" alt="Valid XHTML 1.0"
-   title="Code validé XHTML 1.0"
-   style="width: 80px; height: 15px;" /></a>
-</p>
+<!-- Footer -->
+<div id="footer">
+	Copyright &copy; <span class="year"></span>
+	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
+	<a href="http://scn.slitaz.org/">Community</a>
+	<a href="http://doc.slitaz.org/">Doc</a>
+	<a href="http://forum.slitaz.org/">Forum</a>
+	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://boot.slitaz.org/">Boot</a>
+	<a href="http://bugs.slitaz.org">Bugs</a>
+	<a href="http://hg.slitaz.org/">Hg</a>
+	<p>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a>
+		<a href="http://www.facebook.com/slitaz">Facebook</a>
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://flattr.com/profile/slitaz">Flattr</a>
+	</p>
 </div>
 
 </body>

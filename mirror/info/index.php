@@ -7,8 +7,8 @@
 	<meta name="description" content="slitaz mirror server" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<link rel="shortcut icon" href="/css/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/css/slitaz.css" />
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
 #copy {
 	text-align: center;
@@ -41,15 +41,11 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="/css/pics/development.png" alt="development.png" />Developers Corner</h4>
+		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
-			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-			<li><a href="http://mirror.slitaz.org/info/">Mirror Server</a> -
-			<a href="http://mirror.slitaz.org/console/">Console</a>
-			</li>
+			<li><a href="http://tank.slitaz.org/">Tank server</a></li>
+			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
+			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
@@ -79,13 +75,13 @@
 <div id="content">
 
 <h2><a href="graphs.php"><img 
-	style="vertical-align: middle; padding: 0 4px 0 0;"
+	style="padding: 0 4px 0 0;"
 	title="Mirror RRDtool graphs" alt="graphs"
-    src="pics/website/monitor.png" /></a>System stats</h2>
+    src="images/monitor.png" /></a>System stats</h2>
 
 <h4>Uptime</h4>
 
-<pre class="package">
+<pre class="box">
 <?php
 system("uptime | sed 's/^\s*//'");
 ?>
@@ -93,14 +89,14 @@ system("uptime | sed 's/^\s*//'");
 
 <h4>Disk usage</h4>
 
-<pre class="package">
+<pre class="box">
 <?php
 system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
 ?>
 </pre>
 
 <h4>Network</h4>
-<pre class="package">
+<pre class="box">
 <?php
 system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s*//'");
 ?>
@@ -109,14 +105,14 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 
 <?php if (isset($_GET["all"])) { ?>
 <h4>Logins</h4>
-<pre class="package">
+<pre class="box">
 <?php
 system("last");
 ?>
 </pre>
 
 <h4>Processes</h4>
-<pre class="package">
+<pre class="box">
 <?php
 system("top -n1 -b");
 ?>
@@ -124,45 +120,45 @@ system("top -n1 -b");
 <?php } ?>
 
 <a name="vhosts"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=info.mirror.slitaz.org" target="_blank">
+<h3><a href="http://mirror.slitaz.org/awstats.pl?config=info.mirror.slitaz.org">
 	<img title="Mirror Virtual hosts" alt="vhosts"
     src="pics/website/vhosts.png" /></a>Virtual hosts</h3>
 
 <ul>
 	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz Mirror.
-	(<a href="http://mirror.slitaz.org/stats" target="_blank">stats</a>)</li>
+	(<a href="http://mirror.slitaz.org/stats">stats</a>)</li>
 	<li><a href="http://scn.slitaz.org/">scn.slitaz.org</a> - SliTaz Community Network.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=scn.slitaz.org" target="_blank">stats</a>)</li>
+	(<a href="http://mirror.slitaz.org/awstats.pl?config=scn.slitaz.org">stats</a>)</li>
 	<li><a href="http://pizza.slitaz.org/">pizza.slitaz.org</a> - SliTaz Flavor builder.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=pizza.mirror.slitaz.org" target="_blank">stats</a>)</li>
+	(<a href="http://mirror.slitaz.org/awstats.pl?config=pizza.mirror.slitaz.org">stats</a>)</li>
 	<li><a href="http://tiny.slitaz.org/">tiny.slitaz.org</a> - Tiny SliTaz builder.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=tiny.slitaz.org" target="_blank">stats</a>)</li>
+	(<a href="http://mirror.slitaz.org/awstats.pl?config=tiny.slitaz.org">stats</a>)</li>
 	<li><a href="https://ajaxterm.slitaz.org/">ajaxterm.slitaz.org</a> - Slitaz Web Console.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=ajaxterm.slitaz.org" target="_blank">stats</a>)</li>
+	(<a href="http://mirror.slitaz.org/awstats.pl?config=ajaxterm.slitaz.org">stats</a>)</li>
 </ul>
 
 <a name="replicas"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=replicas.mirror.slitaz.org" target="_blank">
+<h3><a href="http://mirror.slitaz.org/awstats.pl?config=replicas.mirror.slitaz.org">
          <img title="Tank replicas" alt="replicas"
     src="pics/website/vhosts.png" /></a>Tank replicas</h3>
 
 <ul>
 	<li><a href="http://mirror.slitaz.org/www/">www.slitaz.org</a> - SliTaz Website.
-	(<a href="http://www.slitaz.org/" target="_blank">main</a>)</li>
+	(<a href="http://www.slitaz.org/">main</a>)</li>
 	<li><a href="http://mirror.slitaz.org/doc/">doc.slitaz.org</a> - Documentation.
-	(<a href="http://doc.slitaz.org/" target="_blank">main</a>)</li>
+	(<a href="http://doc.slitaz.org/">main</a>)</li>
 	<li><a href="http://mirror.slitaz.org/pkgs/">pkgs.slitaz.org</a> - Packages Web interface.
-	(<a href="http://pkgs.slitaz.org/" target="_blank">main</a>)</li>
+	(<a href="http://pkgs.slitaz.org/">main</a>)</li>
 	<li><a href="http://mirror.slitaz.org/hg/">hg.slitaz.org</a> - Mercurial repositories (read only).
-	(<a href="http://hg.slitaz.org/" target="_blank">main</a>
-	<a href="http://hg.tuxfamily.org/mercurialroot/slitaz/" target="_blank">tuxfamily</a>)</li>
+	(<a href="http://hg.slitaz.org/">main</a>
+	<a href="http://hg.tuxfamily.org/mercurialroot/slitaz/">tuxfamily</a>)</li>
 	<li><a href="http://mirror.slitaz.org/webboot/">boot.slitaz.org</a> - gPXE Web boot.
-	(<a href="http://boot.slitaz.org/" target="_blank">main</a>)</li>
+	(<a href="http://boot.slitaz.org/">main</a>)</li>
 </ul>
 
 <a name="boot"></a>
-<h3><a href="http://doc.slitaz.org/en:guides:pxe#web-booting" target="_blank">
-	<img title="Web boot" src="pics/website/vhosts.png" 
+<h3><a href="http://doc.slitaz.org/en:guides:pxe#web-booting">
+	<img title="Web boot" src="/static/network.png" 
 	 alt="web boot" /></a>Web boot services</h3>
 	 The SliTaz mirror provides a <b>tftp</b> access and a 
 	 <a href="/pxe">pxe</a> tree. Simply add to your DHCP server configuration file:
@@ -184,8 +180,8 @@ dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre>
 	 </ul>
 
 <a name="mirrors"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=rsync" target="_blank">
-	<img title="Secondary mirrors" src="pics/website/vhosts.png" 
+<h3><a href="http://mirror.slitaz.org/awstats.pl?config=rsync">
+	<img title="Secondary mirrors" src="/static/network.png" 
 	 alt="mirrors" /></a>Mirrors</h3>
 	Most mirrors are updated using the url: <b>rsync://mirror.slitaz.org/slitaz/</b>
 	(<a href="http://mirror.slitaz.org/awstats.pl?config=rsync">stats</a>)
@@ -286,7 +282,7 @@ foreach (array(
 	array(	"flag"  => "us",
 		"http"  => "http://mirror.clarkson.edu/slitaz/",
 		"rsync" => "rsync://mirror.clarkson.edu/slitaz/")) as $mirror) {
-	$flag = "pics/website/".$mirror["flag"].".png";
+	$flag = "images/flags/".$mirror["flag"].".png";
 	$head = TRUE;
 	foreach(array("http", "ftp", "rsync") as $proto) {
 		if (!isset($mirror[$proto])) continue;
@@ -317,7 +313,7 @@ if ($output_url_file != "") {
 </ul>
 
 <a name="builds"></a>
-<h3><img title="Daily builds" src="pics/website/cdrom.png" alt="builds" 
+<h3><img title="Daily builds" src="images/iso.png" alt="builds" 
      width="25" height="25" />
     Daily builds</h3>
 
@@ -344,31 +340,25 @@ display_log("/var/log/packages-cooking.log","buildcooking","/iso/cooking/package
 <!-- End of content -->
 </div>
 
-<div id="content_bottom">
-<div class="bottom_left"></div>
-<div class="bottom_right"></div>
-</div>
-
-<!-- Start of footer and copy notice -->
-<div id="copy">
-<p>                                                                          
-Last update : <?php echo date('r'); ?>
-</p> 
-<p>
-Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.slitaz.org/">SliTaz</a> -
-<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>
-</p>
-<!-- End of copy -->
-</div>
-
-<!-- Bottom and logo's -->
-<div id="bottom">
-<p>
-<a href="http://validator.w3.org/check?uri=referer"><img
-   src="/css/pics/website/xhtml10.png" alt="Valid XHTML 1.0"
-   title="Code validé XHTML 1.0"
-   style="width: 80px; height: 15px;" /></a>
-</p>
+<!-- Footer -->
+<div id="footer">
+	Copyright &copy; <span class="year"></span>
+	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
+	<a href="http://scn.slitaz.org/">Community</a>
+	<a href="http://doc.slitaz.org/">Doc</a>
+	<a href="http://forum.slitaz.org/">Forum</a>
+	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://boot.slitaz.org/">Boot</a>
+	<a href="http://bugs.slitaz.org">Bugs</a>
+	<a href="http://hg.slitaz.org/">Hg</a>
+	<p>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a>
+		<a href="http://www.facebook.com/slitaz">Facebook</a>
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://flattr.com/profile/slitaz">Flattr</a>
+	</p>
 </div>
 
 </body>
