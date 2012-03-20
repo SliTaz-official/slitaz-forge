@@ -1,0 +1,346 @@
+/*
+	CSS style for SliTaz Network - (C) 2012 SliTaz GNU/Linux
+*/
+
+html {
+	min-height:  102%;
+}
+
+body {
+	background: #ffffff;
+	color: black;
+	font: 13px sans-serif, vernada, arial;
+	margin: 0;
+	min-width: 780px;
+	height: 100%;
+}
+
+a { text-decoration: underline; color: #215090; }
+a:hover { text-decoration: none; color: blue; }
+img { border: 0pt none; vertical-align: middle; }
+h2 { color: #444; }
+h3 { color: #666; font-size: 140%; }
+h4 { color: #888; font-size: 120%; }
+pre { 
+	background-color: #f8f8f8; 
+	border: 1px solid #ddd; 
+	padding: 10px;
+}
+table { 
+	background-color: #f8f8f8;
+	border: 1px solid #ddd; 
+	width: 100%; 
+	margin: 0px 0px 20px 0px;
+	padding: 10px;
+}
+
+/* Header */
+
+#header { 
+	height: 40px; 
+	background: #351a0a;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 8px 0 0 42px;
+	width: 250px;
+}
+
+#header h1 a { 
+	color: white; 
+	text-decoration: none;
+	font-size: 20px;
+	font-style: italic;
+}
+
+#header h1 a:hover, #network a:hover { 
+	color: #d66018;
+}
+
+/* Logo */
+
+#logo {
+	background: url(/images/logo.png) no-repeat left;
+	position: absolute;
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+}
+
+/* SliTaz Network */
+
+#network { 
+	float: right; 
+	padding: 10px 5px 0; 
+	font-size: 12px;
+}
+
+#network a { padding: 0 6px; }
+
+/* Block */
+
+#block { 
+	min-height: 200px; 
+	background: #d66018; 
+	padding: 26px 10% 0px;
+	text-align: center;
+	color: #333;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+#block_info {
+	text-align: justify; 
+	width: 48%;
+	padding: 10px 10px 0 0;
+}
+
+#block a, #network a { 
+	color: #fff; 
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#block h4 {
+	color: #351a0a;
+	margin: 0px;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+#block_info p { margin: 6px 0; padding: 0 12px 0 0; }
+#block_info a { font-weight: normal; }
+#block ul { list-style-type: square; }
+#block a:hover { color: #351a0a; }
+
+/* Navigation */
+
+#block_nav {
+	background: #cc5b17;
+	padding: 10px 10px 40px;
+	text-align: justify;
+	width: 48%;
+	float: right;
+}
+
+#block_nav ul { 
+	list-style-type: none; 
+	margin: 6px 0; 
+	padding: 0;
+}
+
+#block_nav h4 img { 
+	margin: 0 4px 0 0; 
+	padding: 0;
+}
+
+/* Languages */
+
+#lang {
+	position: absolute;
+	right: 0;
+	padding: 6px;
+	font-size: 11px;
+}
+
+#lang a {
+	text-decoration: none;
+	padding: 0 2px;
+}
+
+#lang a:hover {
+	text-decoration: underline;
+}
+
+/* Content */
+
+#content {
+	padding: 30px 80px;
+	text-align: justify;
+}
+
+.news li {
+	list-style-type: square;
+	border-bottom: 1px dotted #BEBEBE;
+	margin-left: -25px;
+	padding: 4px 0px 4px 0px;
+}
+
+.news a, .feed-grid a { text-decoration: none; }
+.news p a { text-decoration: underline; }
+.news p a:hover { text-decoration: none; }
+#twitter { margin: 20px 0; }
+#gallery { text-align: center; }
+
+#sponsor {
+	font-size: 90%;
+	background-color: #fbfbfb;
+	border: 2px solid #ddd;
+	width: 200px;
+	height: 160px;
+	float: right;
+	text-align: center;
+	margin: 10px 0px 20px 20px;
+}
+
+/* Classes */
+
+.right_box { width: 48%; float: right; }
+.left_box { width: 48%; float: left; }
+
+.box {
+	margin: 20px 60px;
+	padding: 12px;
+	background: #efefef;
+	border: 1px solid #ddd;
+}
+
+.searchbox { 
+	margin: 20px 80px; 
+	padding: 12px; 
+	background: #f8f8f8;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+/* Activity Box */
+
+.activity { 
+	margin: 0 0 20px; 
+	background: #efefef; 
+	padding: 5px 2px 0; 
+	border: 1px solid #ddd; 
+}
+.activity div { padding: 5px 10px; background: #fff; margin-top: 5px; }
+.activity p { margin: 0; padding: 5px 10px; font-weight: bold; }
+.activity a { text-decoration: none; }
+.activity ul { list-style-type: none; 
+	margin: 4px 0; padding: 0 4px; line-height: 150%; }
+.activity_more { text-align: right;  }
+.activity_more a { font-weight: normal; color: #000; padding: 0 4px; }
+.activity_more a:hover { text-decoration: underline; }
+
+.activity span, .news span { 
+	color: #666; 
+	font-size: 11px; 
+	font-weight: normal;
+}
+
+/* Button */
+
+.button a { 
+	background-color: #b64b22;
+	color: #ffffff;
+	margin-right: 6px;
+	padding: 6px 10px;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.button a:hover, input[type=submit]:hover { 
+	background-color: #a3431f;
+	color: #ffffff;
+}
+
+/* Round corner */
+
+#block_nav, pre, .box, .searchbox, .button a, #twitter, .activity,
+.activity div, #sponsor, table, input, textarea, select {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* Form */
+
+form { display: inline; }
+input[type="submit"], input[type="text"], textarea, select {
+	color: #444444;
+	border: 1px solid #cccccc;
+	padding: 4px;
+	margin: 4px 0px;
+	font-size: 14px;
+	line-height: 1.2em;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	-webkit-appearance: none;
+	-webkit-padding-end: 6px;
+	-webkit-padding-start: 6px;
+}
+
+input[type="text"], textarea { background: #fefefe; border: 2px solid #ccc; 
+	width: 460px; }
+/*input[type="file"] { border: 2px solid #ddd; }*/
+/*input[type="checkbox"] { background: #fefefe; }*/
+
+/* Be compatible with old FF and Webkit version. */
+input[type="submit"] {
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover { 
+	cursor: pointer;
+	color: black;
+}
+
+select { 
+	background-image: url(images/down.png), 
+		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+.searchbox input[type=submit] {
+	border: 1px solid #b64b22;
+	background-color: #b64b22;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 4px 10px;
+	font-size: 14px;
+	margin-left: -5px;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.searchbox input[type=submit]:hover { background-color: #a3431f; }
+
+.searchbox input[type=text] {
+	border: 1px solid #333333;
+	padding: 4px;
+	height: 17px;
+	width: 100%;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+/* Footer */
+
+#footer {
+	background: #f1f1f1;
+	text-align: center;
+	border-top: 1px solid #ddd;
+	padding: 40px;
+	color: #666;
+	clear: both;
+	margin-bottom: -2%;
+}
+
+#footer a { color: #666; padding: 0 2px; }
+
+.year:after {
+	/* content: "2007-2012"; */
+	content: "2012";
+}
