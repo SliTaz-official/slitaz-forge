@@ -213,7 +213,7 @@ EOT;
 	print <<<EOT
 		<form action="${_SERVER["REQUEST_URI"]}" method="get" style="width: 300px;">
 			<p><input type="text" name="f" $fvalue
-				style="width: width: 260px;" /></p>
+				style="width: width: 200px;" /></p>
 		</form>
 	</div>
 </div>
@@ -226,6 +226,7 @@ Path: /${vpath}
 <div id="content">
 
 <div id="mirrors">
+<img src="/static/network.png" alt="[ Mirrors ]" />
 EOT;
 
 // Mirror list
