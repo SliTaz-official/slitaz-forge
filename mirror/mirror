@@ -29,7 +29,7 @@ case "$1" in
 	up-info)
 		echo "Updating: mirror.slitaz.org/info..."
 		cd $REPOS/slitaz-forge && hg pull -u 
-		cp -a mirror/info/* $VHOSTS/mirror-info ;;
+		cp -a mirror/info/* $VHOST/mirror-info ;;
 	up-tiny)
 		echo "Updating: tiny.slitaz.org..."
 		cd $REPOS/slitaz-pizza && hg pull -u 
