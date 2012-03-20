@@ -2,7 +2,12 @@ SliTaz Mirror
 ===============================================================================
 
 
-Files used on mirror.slitaz.org including info web interface.
+Files and tools used on mirror.slitaz.org including info web interface. Images
+and CSS style are hosted on MF and alias are widely used for replica.
+
+
+	* files : Custom system configurations files
+	* info  : Mirror web interface at http://mirror.slitaz.org/info/
 
 
 Host : mirror.slitaz.org
