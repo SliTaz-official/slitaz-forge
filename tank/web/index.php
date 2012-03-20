@@ -99,11 +99,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
     src="images/network.png" /></a>Virtual hosts</h2>
 
 <ul>
-	<!-- <li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
-		(<a href="/stats/awstats.pl?config=www.slitaz.org">stats</a>)</li>
-	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.
-		(<a href="/stats/awstats.pl?config=doc.slitaz.org">stats</a>)</li>
-	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.
+	<!-- <li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.
 		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li> -->
 	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.
 		(<a href="/stats/awstats.pl?config=boot.slitaz.org">stats</a>)</li>
@@ -113,58 +109,8 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.
 		(<a href="/stats/awstats.pl?config=people.slitaz.org">stats</a>)</li>
-	<li><a href="http://pro.slitaz.org/">pro.slitaz.org</a> - SliTaz Professional services.</li>
-</ul>
-
-<h2><img
-	style="vertical-align: middle; padding: 0 4px 0 0;"
-	title="Erjo Virtual hosts" alt="vhosts"
-    src="images/network.png" />Other hosts</h2>
-
-<p>
-	These services are hosted by some individual sponsors who gracefully offer
-	resources to the SliTaz project.
-</p>
-<ul>
-	<li><a href="http://forum.slitaz.org/">forum.slitaz.org</a> - SliTaz support forum.</li>
-	<li><a href="http://labs.slitaz.org/">labs.slitaz.org</a> - SliTaz Laboratories.</li>
-	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz main mirror and replicas.
-		(<a href="http://mirror.slitaz.org/info/">more...</a>)</li>
-	<li><a href="http://scn.slitaz.org/">scn.slitaz.org</a> - Community platform.</li>
-	<li><a href="http://pizza.slitaz.org/">pizza.slitaz.org</a> - SliTaz flavor builder.</li>
-</ul>
-    
-<h2><a href="http://mirror.slitaz.org/info/"> <img
-	style="vertical-align: middle; padding: 0 4px 0 0;"
-	src="images/network.png"
-	title="Secondary mirrors" alt="mirrors" /></a>Mirrors</h2>
-<p>
-	These mirrors are updated using the url <b>rsync://mirror.slitaz.org/slitaz/</b>
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=rsync">stats</a>)
-</p>
-<ul>
-	<li><a href="http://mirror.switch.ch/ftp/mirror/slitaz/">
-		http://mirror.switch.ch/ftp/mirror/slitaz/</a> or
-		<a href="ftp://mirror.switch.ch/mirror/slitaz/">
-		ftp://mirror.switch.ch/mirror/slitaz/</a></li>
-	<li><a href="http://download.tuxfamily.org/slitaz/">
-		http://download.tuxfamily.org/slitaz/</a></li>
-	<li><a href="http://www.linuxembarque.com/slitaz/mirror/">
-		http://www.linuxembarque.com/slitaz/mirror/</a></li>
-	<li><a href="http://mirror.lupaworld.com/slitaz/">
-		http://mirror.lupaworld.com/slitaz/</a></li>
-	<li><a href="http://slitaz.c3sl.ufpr.br/">
-		http://slitaz.c3sl.ufpr.br/</a> or
-		<a href="ftp://slitaz.c3sl.ufpr.br/slitaz/">
-		ftp://slitaz.c3sl.ufpr.br/slitaz/</a></li>
-	<li><a href="http://slitaz.mirror.garr.it/mirrors/slitaz/">
-		http://slitaz.mirror.garr.it/mirrors/slitaz/</a></li>
-	<li><a href="http://www.gtlib.gatech.edu/pub/slitaz/">
-		http://www.gtlib.gatech.edu/pub/slitaz/</a> or
-		<a href="ftp://ftp.gtlib.gatech.edu/pub/slitaz/">
-		ftp://ftp.gtlib.gatech.edu/pub/slitaz/</a></li>
-		<li><a href="ftp://ftp.pina.si/slitaz/">
-		ftp://ftp.pina.si/slitaz/</a></li>
+	<li><a href="http://pro.slitaz.org/">pro.slitaz.org</a> - SliTaz Professional services.
+	(<a href="/stats/awstats.pl?config=pro.slitaz.org">stats</a>)</li>
 </ul>
 
 <!-- End of content -->
@@ -178,6 +124,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	<a href="http://doc.slitaz.org/">Doc</a>
 	<a href="http://forum.slitaz.org/">Forum</a>
 	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://boot.slitaz.org/">Boot</a>
 	<a href="http://bugs.slitaz.org">Bugs</a>
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
