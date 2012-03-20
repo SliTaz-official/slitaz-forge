@@ -61,7 +61,7 @@ table {
 /* Logo */
 
 #logo {
-	background: url(http://mf.slitaz.org/images/logo.png) no-repeat left;
+	background: url(logo.png) no-repeat left;
 	position: absolute;
 	float: left;
 	left: 0px;
