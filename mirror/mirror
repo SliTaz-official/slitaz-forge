@@ -21,6 +21,7 @@ Usage: $(basename $0) [command]
 Commands:
   up-info       Update mirror.slitaz.org/info/ web interface
   up-tiny       Update tiny.slitaz.org/ web interface
+  up-mf         Update mf.slitaz.org web interface
 
 EOT
 }
@@ -29,11 +30,14 @@ case "$1" in
 	up-info)
 		echo "Updating: mirror.slitaz.org/info..."
 		cd $REPOS/slitaz-forge && hg pull -u 
-		cp -a mirror/info/* $VHOST/mirror-info ;;
+		cp -a mirror/info/* $INFO ;;
 	up-tiny)
 		echo "Updating: tiny.slitaz.org..."
 		cd $REPOS/slitaz-pizza && hg pull -u 
-		cp -a php/tiny/* $TINY ;;
+		cp -a php/tiny/* $TINY 
+	up-mf)
+		echo "Updating: mf.slitaz.org..." 
+		cd $REPOS/slitaz-forge && hg pull -u ;;
 	*)
 		usage ;;
 esac
