@@ -113,6 +113,14 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	(<a href="/stats/awstats.pl?config=pro.slitaz.org">stats</a>)</li>
 </ul>
 
+<h2>Tank Log</h2>
+
+<pre>
+<?php
+system("cat /var/log/tank.log");
+?>
+</pre>
+
 <!-- End of content -->
 </div>
 

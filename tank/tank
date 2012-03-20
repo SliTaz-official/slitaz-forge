@@ -11,6 +11,7 @@ WWW="/home/slitaz/www"
 VHOST="$WWW/tank"
 WEBSITE="$WWW/website"
 BACKUPS="/home/backups"
+LOGFILE="/var/log/tank.log"
 
 usage() {
 	cat << EOT
@@ -75,12 +76,13 @@ case "$1" in
 		cp -a cook/* $WWW/cook/undigest
 		echo "" ;;
 	up-stats)
-		echo -e "\nUpdating all awstats databases..."
+		echo "Updating all awstats databases..."
 		for vh in pro boot cook people tank
 		do
-			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org -update
-		done
-		echo "" ;;
+			echo "" >> $LOGFILE
+			/var/www/cgi-bin/awstats.pl \
+				-config=$vh.slitaz.org -update 2>&1 | tee -a $LOGFILE
+		done ;;
 	adduser)
 		# On Tank /etc/skel is empty to let tank handle default user
 		# files.
