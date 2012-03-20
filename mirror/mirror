@@ -9,7 +9,7 @@
 
 REPOS="/home/slitaz/repos"
 WWW="/var/www"
-VHOST="$WWW/mirror"
+MIRROR="$WWW/mirror"
 INFO="$WWW/mirror-info"
 TINY="$WWW/pizza/tiny"
 BACKUPS="/home/backups"
@@ -22,6 +22,7 @@ Commands:
   up-info       Update mirror.slitaz.org/info/ web interface
   up-tiny       Update tiny.slitaz.org/ web interface
   up-mf         Update mf.slitaz.org web interface
+  up-mirror     Update mirror.slitaz.org files
 
 EOT
 }
@@ -34,10 +35,14 @@ case "$1" in
 	up-tiny)
 		echo "Updating: tiny.slitaz.org..."
 		cd $REPOS/slitaz-pizza && hg pull -u 
-		cp -a php/tiny/* $TINY 
+		cp -a php/tiny/* $TINY ;;
 	up-mf)
 		echo "Updating: mf.slitaz.org..." 
 		cd $REPOS/slitaz-forge && hg pull -u ;;
+	up-mirror)
+		echo "Updating: mirror.slitaz.org files..." 
+		cd $REPOS/slitaz-forge && hg pull -u 
+		cp -a mirror/root/* $MIRROR ;;
 	*)
 		usage ;;
 esac

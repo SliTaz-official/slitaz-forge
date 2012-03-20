@@ -8,6 +8,7 @@ and CSS style are hosted on MF and alias are widely used for replica.
 
 	* files : Custom system configurations files
 	* info  : Mirror web interface at http://mirror.slitaz.org/info/
+	* root  : File for the root directory of http://mirror.slitaz.org/
 
 
 Host : mirror.slitaz.org
