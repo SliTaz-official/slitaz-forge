@@ -76,7 +76,7 @@ case "$1" in
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..."
-		for vh in pro boot cook people
+		for vh in pro boot cook people tank
 		do
 			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org -update
 		done
