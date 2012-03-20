@@ -3,7 +3,9 @@
 #
 
 PREFIX?=/usr
-TINY=/var/www/pizza/tiny
+VHOSTS?=/var/www
+
+TINY=$(VHOSTS)/pizza/tiny
 REPOS=/home/slitaz/repos
 
 all:
@@ -11,6 +13,8 @@ all:
 install:
 	install -m 0644 files/etc/lighttpd/vhosts.conf /etc/lighttpd
 	install -m 0644 files/etc/rsyncd.* /etc
+	install -m 0644 info/*.php $(VHOSTS)/mirror-info
+	install -m 0644 info/bin/* $(VHOSTS)/mirror-info/bin
 
 install-tiny:
 	cp -a $(REPOS)/slitaz-pizza/php/tiny $(TINY)
