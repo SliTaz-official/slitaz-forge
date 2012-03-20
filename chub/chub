@@ -20,8 +20,8 @@ Usage: $(basename $0) [command]
 
 Commands:
   stats        Display some server stats
-  up-www       Update website http://www.slitaz.org/
-  up-chub      Update Chub web interface http://chub.slitaz.org/
+  up-chub      Update Chub web interface chub.slitaz.org
+  up-doc       Update doc.slitaz.org Wiki template
   rrd          Update RRD graphs images
   backup       Backup MySQL DB and files"
 
@@ -29,18 +29,19 @@ EOT
 }
 
 case "$1" in
-	up-www)
-		# Update website from repo.
-		echo "Updating: www.slitaz.org..."
-		cd $WEBSITE && hg pull -u ;;
 	up-chub)
 		# Update Chub web interface from repo.
 		echo "Updating: chub.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		#hg update if repos are on Chub
 		hg pull -u
 		rm -rf $VHOST/*.* $VHOST/images/*.png
 		cp -a chub/web/* $VHOST ;;
+	up-doc)
+		# Update Wiki doc template from Hg.
+		echo "Updating Wiki documentation template..."
+		cd $REPOS/slitaz-forge
+		hg pull -u
+		cp -a doc/lib/tpl/* $DOC_LIB/tpl ;;
 	stats)
 		# Echo some stats.
 		echo "======== Disk usage ============="
@@ -52,6 +53,7 @@ case "$1" in
 	rrd)
 		echo "Making RRD graphs images..."
 		$VHOST/lib/makegraphs >/dev/null ;;
+	
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)

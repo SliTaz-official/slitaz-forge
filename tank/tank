@@ -1,4 +1,5 @@
 #!/bin/sh
+#
 # Tank - Admin Tank, backup, update and give stats.
 #
 # (C) 2011 SliTaz - GNU General Public License.
@@ -10,16 +11,14 @@ WWW="/home/slitaz/www"
 VHOST="$WWW/tank"
 WEBSITE="$WWW/website"
 BACKUPS="/home/backups"
-PYTHON_LIB="/usr/lib/python2.5"
-DOC_LIB="$WWW/doc/lib"
 
 usage() {
-	echo -e "\nUsage: `basename $0` [command]
+	cat << EOT
+
+Usage: $(basename $0) [command]
 Commands:
-  stats|-s     Display some Tank stats
   backup|-b    Backup files and MySQL DB
   adduser      Add user on Tank and create people files
-  chroot|-c    Move a user into a new chroot location
   up-stats     Update Awstats statistics (run by cron)
   
   up-tank      Update http://tank.slitaz.org/
@@ -27,87 +26,19 @@ Commands:
   up-pro       Update http://pro.slitaz.org/
   up-boot      Update http://boot.slitaz.org/
   up-cook      Update http://cook.slitaz.org/
-  
-  #up-www       Update website http://www.slitaz.org/
-  #up-hg        Update template for http://hg.slitaz.org/
-  #up-doc       Update template for http://doc.slitaz.org/\n"
+
+EOT
 }
 
 case "$1" in
-	stats|-s)
-		# Report some stats
-		clear
-		cat << EOF
-
-Connected user
---------------
-`who`
-
-System usage
-------------
-`df -h`
-
-`free`
-
-EOF
-		;;
-	chroot|-c)
-		# Move a user into a new chroot location
-		if [ -s $2/bin/sh ] && grep -qs $3: /etc/password ; then
-			grep -q ^chroot /etc/busybox.conf ||
-			echo 'chroot = ssx root.root' >> /etc/busybox.conf
-			[ -s /bin/chrootsh ] || cat > /bin/chrootsh << EOF
-#!/bin/sh
-
-#case " \$@ " in                                        
-#*rsync*) exec /bin/sh "\$@" ;;
-#esac
-
-case "\$USER" in                                        
-pankso) exec /bin/sh "\$@" ;;                      
-*) exec /usr/sbin/chroot $2 /bin/chrootsh "\$@" ;;
-esac
-EOF
-			[ -s $2/bin/chrootsh ] || cat > $2/bin/chrootsh << EOF
-#!/bin/sh
-
-export SHELL='/bin/sh'
-cd \$HOME
-. /etc/profile
-exec /bin/sh "\$@"
-EOF
-			chmod +x /bin/chrootsh $2/bin/chrootsh
-			base=$(awk -F: "/^$3:/ { print \$6 }" /etc/passwd)
-			target=$base
-			while [ -L $target ]; do
-				target=$(readlink $target)
-			done
-			mv $target $2/$base
-			[ -L $base ] && rm -f $base
-			ln -s $2/$base $base
-			if ! grep -q ^$3: $2/etc/passwd ; then
-				grep ^$3: /etc/passwd >> $2/etc/passwd
-				grep ^$3: /etc/shadow >> $2/etc/shadow		fi
-			fi
-		else
-			cat << EOF
-Usage: $0 $1 newchroot user
-Move a user in a new chroot location
-EOF
-		fi ;;
 	backup|-b)
 		# Backup config files and SQL db.
 		echo "TODO" ;;
-	up-www)
-		# Update website from repo.
-		echo -e "\nUpdating: www.slitaz.org..."
-		cd $WEBSITE && hg pull -u
-		echo "" ;;
 	up-tank)
 		# Update Tank web interface: http://tank.slitaz.org/
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg pull -u
+		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $VHOST/*.* $VHOST/images
 		cp -a tank/web/* $VHOST 
 		echo "" ;;
@@ -115,7 +46,7 @@ EOF
 		# Update People web interface: http://people.slitaz.org/
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg pull -u
+		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people 
 		echo "" ;;
@@ -123,7 +54,7 @@ EOF
 		# Update Pro website: http://pro.slitaz.org/
 		echo -e "\nUpdating: pro.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg pull -u
+		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/pro/*
 		cp -a pro/* $WWW/pro
 		echo "" ;;
@@ -131,7 +62,7 @@ EOF
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg pull -u
+		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot 
 		echo "" ;;
@@ -139,30 +70,15 @@ EOF
 		# Update Web Boot interface: http://boot.slitaz.org/
 		echo -e "\nUpdating: cook.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		hg pull -u
+		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
 		cp -a cook/* $WWW/cook/undigest
 		echo "" ;;
-	up-hg)
-		# Since Tank runs stable and we update the style in slitaz-dev-tools
-		# the cooking package is unbuildable because it uses the new Tazwok function
-		# with mercurial|*
-		echo -e "\nUpdating Mercurial template..."
-		cd $REPOS/slitaz-dev-tools && hg pull -u
-		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
-		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
-		echo "" ;;
-	up-doc)
-		# Update Wiki doc template from Hg: http://doc.slitaz.org/
-		echo -e "\nUpdating Wiki documentation template..."
-		cd $REPOS/slitaz-forge && hg pull -u
-		cp -a doc/lib/tpl/* $DOC_LIB/tpl
-		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..."
-		for vh in pro boot cook
+		for vh in pro boot cook people
 		do
-			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org 
+			/var/www/cgi-bin/awstats.pl -config=$vh.slitaz.org -update
 		done
 		echo "" ;;
 	adduser)
