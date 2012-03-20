@@ -180,7 +180,7 @@ if ($slitaz_style) {
 		<a href="http://hg.slitaz.org/">Hg</a>
 		<a href="http://cook.slitaz.org/">BB</a>
 	</div>
-	<h1><a href="http://mirror.slitaz.org/">SliTaz Mirror</a> /${vpath}</h1>
+	<h1><a href="http://mirror.slitaz.org/">SliTaz Mirror</a></h1>
 </div>
 
 <!-- Block -->
@@ -212,6 +212,10 @@ EOT;
 </div>
 
 <div id="lang">
+Path: /${vpath}
+</div>
+
+<div id="mirrors">
 EOT;
 
 // Mirror list
