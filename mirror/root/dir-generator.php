@@ -160,7 +160,23 @@ if ($slitaz_style) {
 	<meta name="author" content="SliTaz Contributors" />
 	<link rel="shortcut icon" href="http://mf.slitaz.org//favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="http://mf.slitaz.org/css/slitaz.css" />
-	<link rel="stylesheet" type="text/css" href="http://mf.slitaz.org/css/mirror.css" />
+	<!--<link rel="stylesheet" type="text/css" href="http://mf.slitaz.org/css/mirror.css" />-->
+	<style type="text/css">
+	#header { color: #ffffff; }
+	div.list { background-color: white; padding-bottom: 14px;}
+	table { width: 100% ;}
+	th, td { font: 90% monospace; text-align: left;}
+	th { font-weight: bold; padding-right: 14px; padding-bottom: 3px;}
+	td {padding-right: 14px;}
+	td.s, th.s {text-align: right;}
+	
+	#mirrors {
+		padding: 10px;
+		text-align: center;
+		background: #f1f1f1;
+		border: 2px solid #ddd;
+	}
+	</style>
 </head>
 <body>
 
