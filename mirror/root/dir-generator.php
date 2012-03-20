@@ -161,7 +161,7 @@ if ($slitaz_style) {
 	<link rel="shortcut icon" href="/static/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
-	#header { min-height: 160px; }
+	#block { min-height: 160px; }
 	div.list { background-color: white; padding-bottom: 14px; }
 	th, td { font: 90% monospace; text-align: left; }
 	th { font-weight: bold; padding-right: 14px; padding-bottom: 3px; }
