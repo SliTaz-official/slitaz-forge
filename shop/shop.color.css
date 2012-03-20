@@ -1,0 +1,532 @@
+/*
+	Color CSS style for SliTaz Shop - (C) 2012 SliTaz GNU/Linux
+	Modified styles are ident with tab.
+*/
+
+/* Begin Spreadshop style */
+/********************************************
+*
+* Colours and fonts
+*
+*/
+
+/* Form */
+
+input, textarea, select {
+	color: #444444;
+	padding: 3px;
+	margin: 4px;
+	font-size: 13px;
+	line-height: 1.2em;
+	border: 1px solid #cccccc;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	-webkit-appearance: none;
+	-webkit-padding-end: 6px;
+	-webkit-padding-start: 6px;
+}
+
+/*
+* ~~~ Font family  ~~~
+*/
+select,
+input,
+textarea,
+body
+{
+font-family:Arial, Helvetica, sans-serif;
+}
+/*
+* ~~~ Link color, hover color  ~~~
+*/
+a,
+.links_color
+{
+color:#11aeb2;
+}
+a:hover,
+.mark,
+.navigation div span,
+#detailArticlePrint .detailArticleViews span strong a,
+.link_hover_color
+{
+color:#ff5e13;
+}
+/*
+* ~~~ Font color 1  ~~~
+*/
+body,
+h1,
+h4,
+.navigation,
+.basketAdditionals #frmProceed #basketPriceTotal div label,
+#frmOrderShow #basketItems .basketAdditionals #basketPriceTotal label,
+#footer small,
+.font_color_1
+{
+color:#666666;
+}
+/*
+* ~~~ Font color 2  ~~~
+*/
+h2,
+.content #basketItems h1
+{
+color:#444;
+}
+#ibox_content p,
+.font_color_2 {
+color:#444 !important;
+}
+/*
+* ~~~ Font color 3  ~~~
+*/
+h3,
+.checkout-login .gap_down_large h1,
+.checkout-lost-password .gap_down_large h1,
+.font_color_3
+{
+color:#fd7739;
+}
+/*
+* ~~~ Font color 4  ~~~
+*/
+/*
+* ~~~ Font color 5  ~~~
+*/
+h5,
+.price-old,
+#checkoutAddress form fieldset label,
+#frmOrderShow #basketItems .basketAdditionals #basketPriceTax,
+#frmOrderShow #basketItems .basketAdditionals #basketPriceTax .price,
+.checkout .basketAdditionals #frmProceed #basketPriceTotal div#basketTax,
+.checkout-login .gap_down_large p.metatext,
+.checkout-lost-password .gap_down_large p.metatext,
+.checkout-v2 #basketItems fieldset .basketItemViewConfig dl dt,
+.checkout-v2 #basketItems fieldset .basketItemViewConfig dl dd,
+.checkout-v2 .content input.error,
+.checkout-v2 .content select.error,
+.checkout-v2 #checkoutAddress form fieldset label,
+.checkout-v2 #basketAddressSelect fieldset label,
+.checkout-v2 #checkoutPaymentInfo form label,
+.checkout-v2 #checkoutPaymentInfo div.paymentOption fieldset div label,
+.checkout-v2 #checkoutAddress #ShippingDeliveryType2 label a,
+.checkout-v2 #checkoutAddress #ShippingDeliveryType2 label a:hover,
+.font_color_5
+{
+color:#558d18;
+}
+/*
+* ~~~ Font color 6  ~~~
+*/
+#detailArticlePrint h4,
+#basketItems fieldset ul.basketColumn span,
+.basketAdditionals #frmProceed div label,
+.basketAdditionals #frmProceed #basketHandlingPrice span,
+.basketAdditionals #frmProceed #basketShippingCoupon span,
+.basketAdditionals #frmProceed #basketShippingPrice span strong,
+.basketAdditionals #frmProceed #basketBonusPayment span,
+.basketAdditionals #frmProceed #basketCoupon span,
+.basketAdditionals #frmProceed #basketDiscount span,
+#checkoutAddress form h3,
+#checkoutAddress form .checkoutAdditionals fieldset div .price,
+#checkoutPaymentInfo form div.paymentOption h3,
+#checkoutPaymentInfo form div span strong,
+#frmOrderShow #basketItems .basketAdditionals #basketCharging .price,
+.checkout-v2 .basketAdditionals #frmProceed div label,
+.checkout-v2 .basketAdditionals #frmProceed #basketHandlingPrice span,
+.checkout-v2 .basketAdditionals #frmProceed #basketShippingCoupon span,
+.checkout-v2 .basketAdditionals #frmProceed #basketShippingPrice span strong,
+.checkout-v2 .basketAdditionals #frmProceed #basketBonusPayment span,
+.checkout-v2 .basketAdditionals #frmProceed #basketCoupon span,
+.checkout-v2 #checkoutAddress form h3,
+.checkout-v2 #checkoutAddress form h3 a,
+.checkout-v2 #checkoutAddress form .checkoutAdditionals fieldset div .price,
+.checkout-v2 #checkoutPaymentInfo form div.paymentOption h3,
+.checkout-v2 #checkoutPaymentInfo form div span strong,
+.checkout-v2 #frmOrderShow #basketItems .basketAdditionals #basketCharging .price,
+.checkout-v2 #frmOrderShow #basketItems .basketAdditionals #basketPriceTotal label,
+.checkout-v2 #ShippingDeliveryType2 label a,
+.font_color_6
+{
+color:#666666;
+}
+/*
+* ~~~ Font color 7  ~~~
+*/
+#headerUserInformation ul li,
+#detailArticlePrint fieldset,
+#basketItems fieldset ul.basketColumn,
+#checkoutAddress form .checkoutAdditionals fieldset div label,
+#checkoutAddress form .checkoutAdditionals fieldset div p,
+#checkoutPaymentInfo form label,
+#checkoutPaymentInfo form fieldset,
+#checkoutPaymentInfo div.paymentOption fieldset div label,
+#checkoutPaymentInfo div.paymentOption fieldset p,
+#frmOrderShow #basketItems .basketAdditionals #basketCharging,
+.rowData td,
+.rowData td.rowRange,
+.basketAdditionals #frmProceed div span,
+.checkout-v2 .basketAdditionals #frmProceed div span,
+.checkout-v2 #checkoutAddress form .checkoutAdditionals fieldset div label,
+.checkout-v2 #checkoutAddress form .checkoutAdditionals fieldset div p,
+.checkout-v2 #checkoutPaymentInfo form fieldset,
+.checkout-v2 #checkoutPaymentInfo div.paymentOption fieldset p,
+.checkout-v2 #frmOrderShow #basketItems .basketAdditionals #basketCharging,
+.font_color_7
+{
+color:#666666;
+}
+/*
+* ~~~ Background color 1, background image  ~~~
+*/
+body
+{
+background:#ffffff ;
+}
+bg_color_1 {
+background:#ffffff;
+}
+/*
+* ~~~ Background color 2 ~~~
+*/
+#main,
+#tooltip,
+#banner,
+.popup,
+.classicCompact form fieldset div.articleDesc,
+.classicCompact form fieldset div.articlePrice,
+#frmArticleDetails p.articleDesc,
+#checkoutPaymentInfo ul.checkoutStepsTop,
+#articleDesigns h3,
+#producttypeDetails #productDetailsImage,
+.faqPopup,
+.bg_color_2
+{
+background-color:#ffffff;
+}
+#ibox_content {
+background-color:#ffffff !important;
+}
+body.popup
+{
+background:#ffffff;
+}
+/*
+* ~~~ Background color 3 ~~~
+*/
+.classicCompact form fieldset div.articleImages,
+.classicCompact form fieldset ul,
+.classicExtended form fieldset .articleImages,
+.classicExtended form fieldset ul,
+.basketAdditionals #frmProceed div div,
+.rowData td,
+#headerUserInformation,
+#detailArticlePrint,
+#articleRecommend .articleImages,
+#basketItems fieldset ul.basketColumn,
+#checkoutAddress form .checkoutAdditionals fieldset,
+#checkoutPaymentInfo form div.paymentOption div,
+#checkoutPaymentInfo form fieldset,
+#frmOrderShow #basketItems .basketAdditionals #basketCharging,
+#articleDesigns div,
+#producttypeDetails #measureImage,
+#menuFooter,
+.mvc #help .faqAnswers div table th,
+.bg_color_3,
+#producttype_tabbox  tr.even td
+{
+background-color:#ffffff;
+}
+/*
+* ~~~ Background color 4 ~~~
+*/
+
+#frmFilter,
+#menuCheckout,
+#menu li#menuItemShop.current a,
+#menu li.current a,
+#menu li a:hover,
+form.topArticle fieldset .articleImages ul,
+form.topArticle fieldset .articleImages,
+h3.navi-level-4-header,
+.bg_color_4
+{
+	background-color:#555555;
+}
+#menu li#menuItemShop.current a, #menu li.current a,
+#menu li a:hover {
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-top-right-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-topright: 2px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+#ibox_wrapper {
+background-color:#555555 !important;
+}
+#menu li a
+{
+color:#555555;
+}
+/*
+* ~~~ Background color 5 ~~~
+*/
+#menuCheckout a:hover,
+.bg_color_5
+{
+	background-color: #666666;
+}
+/*
+* ~~~ Background color 6 ~~~
+*/
+#menuCheckout ol li.current,
+.bg_color_6
+{
+background-color:#558d18;
+}
+/*
+* ~~~ Background color 7 ~~~
+*/
+#menu,
+#menu li,
+.bg_color_7
+{
+background-color:#ffffff;
+}
+#menu li a:hover,
+#menu li.current a,
+#menuCheckout ol li a,
+#frmFilter h4,
+h3.navi-level-4-header,
+.headers-color
+{
+	color:#ffffff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#producttype_tabbox a:hover {
+	color: #d66018;
+	text-decoration: none;
+}
+/*
+* ~~~ Border colours (all) ~~~
+*/
+.button.delete,
+.tag,
+.delicious,
+.recommend,
+.message a img,
+.classicCompact form fieldset a img,
+.classicExtended form fieldset a img,
+.classicCompact .button.basket,
+#tooltip,
+#detailArticlePrint #detailArticleThumb,
+#detailArticlePrint .detailArticleViews a img,
+#detailArticlePrint .detailCurrentView a img,
+#detailArticlePrint fieldset div span img,
+#articleAdditionalLinks ul li a img,
+#detailProductInformation img,
+#articleRecommend .articleImages a img,
+#basketItems a.thumb,
+#basketItems fieldset .basketArticleImages a,
+#basketItems li.basketColor img,
+#articleDesigns div a img,
+#producttypeDetails #measureImage img,
+#producttypeDetails #productDetailsImage,
+.checkout-v2 #basketAddressSelect fieldset ul li a.del,
+.mvc .box,
+.checkout-v2 #basketItems fieldset .thumb,
+.checkout-v2 #basketItems fieldset .basketArticleImages a,
+.checkout-v2 #basketItems .thumb,
+.checkout-v2 .content select,
+.checkout-v2 .content fieldset input,
+.checkout-v2 .content textarea,
+.checkout-v2 #basketItems a.button.delete,
+.mvc #help .faqAnswers div table th,
+.checkout-v2 #basketItems li.basketColor span img,
+.border_color_1
+{
+	border: 2px solid #ddd;
+}
+.checkout-v2 .content img,
+.checkout-v2 .content .button.delete
+{
+border:0 solid #ffffff;
+}
+.checkout-v2 #basketItems li.basketColor img
+{
+border:1px solid #ffffff;
+}
+/*
+* ~~~ Border colours (top) ~~~
+*/
+.classicCompact form fieldset div.articlePrice,
+.classicExtended form fieldset .articleDesc #freeColorSelection,
+.classicExtended form fieldset div.articlePrice,
+.checkoutStepsTop,
+.checkoutStepsBottom,
+.faqEmbedded .faqAnswer h5,
+.basketAdditionals #frmProceed div,
+#frmArticleDetails fieldset div#articlePrice,
+#detailProduct,
+#checkoutAddress #checkoutDeliveryAddress,
+#checkoutAddress form .checkoutAdditionals,
+#checkoutPaymentInfo form div.paymentOption,
+#basketCheck div#listBasketCheck,
+#frmOrderShow #basketItems,
+#frmOrderShow #basketItems .basketAdditionals,
+#frmOrderShow #basketItems .basketAdditionals #basketSum,
+#impressum #impressumSpreadshirt,
+#cart .total,
+.checkout-v2 #frmOrderShow #basketItems .basketAdditionals #basketSum,
+.checkout-v2 #frmOrderShow #basketItems .basketAdditionals,
+.checkout-v2 #frmOrderShow #basketItems,
+.checkout-v2 #checkoutPaymentInfo form div.paymentOption,
+.checkout-v2 #checkoutAddress #checkoutDeliveryAddress,
+.checkout-v2 #basketCheck div#listBasketCheck,
+.checkout-v2 #basketItems .basketDelete,
+.checkout-v2 .basketAdditionals #frmProceed div
+.checkout-v2 .basketAdditionals #frmProceed div,
+.checkout-v2 .checkoutStepsBottom,
+.mvc #copyright,
+.mvc #help,
+.mvc #privacy,
+.mvc #impressum,
+.border_top_color_1
+{
+border-top:1px solid #ffffff;
+}
+/*
+* ~~~ Border colours (bottom) ~~~
+*/
+.detailMenuPath,
+.classicCompact form fieldset div.articlePrice,
+.classicExtended form fieldset div.articlePrice,
+#frmArticleDetails,
+#frmArticleDetails .articleProducttypeDesc,
+#frmArticleDetails p.articleDesc,
+#basketItems .updateBasketItem:hover,
+#basketItems .updateBasketItem,
+#basketAddressSelect fieldset,
+#basketAddressSelect .checkoutInformation,
+.checkout-v2 #basketAddressSelect fieldset,
+.checkout-v2 .checkoutStepsTop,
+.checkout-lost-password .gap_down_large form,
+.mvc #help .faqCategories,
+.mvc #terms ul.term-links,
+.border_bottom_color_1
+{
+border-bottom:1px solid #ffffff;
+}
+.filter
+{
+border-bottom:1px solid #ffffff !important;
+}
+/*
+* ~~~ Border colours (left) ~~~
+*/
+#ssl a,
+#headerUserInformation ul.left li,
+#headerUserInformation ul.right li,
+.border_left_color_1
+{
+border-left:1px solid #ffffff;
+}
+/*
+* ~~~ Border colours (right) ~~~
+*/
+.rowHL td,
+#menu li,
+#menuFooter ul li,
+#headerUserInformation ul.right,
+.border_right_color_1
+{
+border-right:1px solid #ffffff;
+}
+/*
+* ~~~ Border colours (hover) ~~~
+*/
+.tag:hover,
+.delicious:hover,
+.recommend:hover,
+.message a:hover img,
+.classicCompact form fieldset a:hover img,
+.classicCompact .button:hover.basket,
+.classicExtended form fieldset a:hover img,
+#detailArticlePrint .detailArticleViews a:hover img,
+#detailArticlePrint .detailCurrentView a:hover img,
+#articleAdditionalLinks ul li a:hover img,
+#articleRecommend .articleImages a:hover img,
+.content #basketItems fieldset .basketArticleImages a:hover,
+#articleDesigns div a:hover img,
+.checkout-v2 #basketItems fieldset .basketArticleImages a:hover,
+.borderCurrent,
+.border_color_2
+{
+border:1px solid #fd7739;
+}
+.mvc input:focus,
+.mvc input:active,
+.mvc input:hover,
+.mvc select:hover,
+.mvc select:focus,
+.mvc textarea:hover,
+.mvc textarea:focus
+{
+border-color:#fd7739;
+}
+/*
+* ~~~ Messages ~~~
+*/
+.error,
+.mvc .message error
+{
+border:1px solid #bf4500;
+color:#bf4500;
+}
+.mvc .message error a
+{
+color:#bf4500;
+text-decoration:underline;
+}
+.checkout-v2 #span-error
+{
+border:1px solid #bf4500 !important;
+}
+.checkout-v2 .content select.error,
+.checkout-v2 .content input.error
+{
+border-color:#bf4500;
+}
+.pending
+{
+border:1px solid #cc9933;
+color:#cc9933;
+}
+.info
+{
+border:1px solid #0060a1;
+color:#0060a1;
+}
+.success,
+.mvc .message info
+{
+border:1px solid #009933;
+color:#009933;
+}
+/*
+* ~~~ Article images (background, hardcoded) ~~~
+*/
+.button.delete,
+#detailArticlePrint #detailArticleThumb,
+#detailArticlePrint fieldset div span img,
+#basketItems li.basketColor img,
+#articleDesigns div a img
+{
+background-color:#fff;
+}
+/* End Spreadshop style */
