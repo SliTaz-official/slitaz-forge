@@ -226,7 +226,7 @@ Path: /${vpath}
 <div id="content">
 
 <div id="mirrors">
-<img src="/static/network.png" alt="[ Mirrors ]" />
+<img src="/static/network.png" alt="[ Mirrors ]" style="margin-right: 5px;" />
 EOT;
 
 // Mirror list
