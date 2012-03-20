@@ -13,7 +13,6 @@ install:
 	install -m 0644 files/etc/rsyncd.* /etc
 
 install-tiny:
-	hg pull -u $(REPOS)/slitaz-pizza
 	cp -a $(REPOS)/slitaz-pizza/php/tiny $(TINY)
 
 uninstall:
