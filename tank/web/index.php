@@ -117,7 +117,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 
 <pre>
 <?php
-system("cat /var/log/tank.log");
+system("cat /var/log/tank.log | head -40");
 ?>
 </pre>
 
