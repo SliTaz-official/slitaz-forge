@@ -29,15 +29,18 @@ EOT
 case "$1" in
 	up-info)
 		echo "Updating: mirror.slitaz.org/info..."
-		cd $REPOS/slitaz-forge && hg pull -u 
+		cd $REPOS/slitaz-forge && hg pull -u
+		echo "Copying info to: $INFO"
 		cp -a mirror/info/* $INFO ;;
 	up-tiny)
 		echo "Updating: tiny.slitaz.org..."
-		cd $REPOS/slitaz-pizza && hg pull -u 
+		cd $REPOS/slitaz-pizza && hg pull -u
+		echo "Copying tiny to: $TINY"
 		cp -a php/tiny/* $TINY ;;
 	up-mirror)
 		echo "Updating: mirror.slitaz.org files..." 
-		cd $REPOS/slitaz-forge && hg pull -u 
+		cd $REPOS/slitaz-forge && hg pull -u
+		echo "Copying root to: $MIRROR"
 		cp -a mirror/root/* $MIRROR ;;
 	*)
 		usage ;;

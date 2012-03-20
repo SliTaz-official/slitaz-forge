@@ -161,20 +161,11 @@ if ($slitaz_style) {
 	<link rel="shortcut icon" href="/static/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
-	#header { color: #ffffff; }
-	div.list { background-color: white; padding-bottom: 14px;}
-	table { width: 100% ;}
-	th, td { font: 90% monospace; text-align: left;}
-	th { font-weight: bold; padding-right: 14px; padding-bottom: 3px;}
-	td {padding-right: 14px;}
-	td.s, th.s {text-align: right;}
-	#mirrors {
-		padding: 10px;
-		margin: 0 10px;
-		text-align: center;
-		background: #f1f1f1;
-		border: 2px solid #ddd;
-	}
+	div.list { background-color: white; padding-bottom: 14px; }
+	th, td { font: 90% monospace; text-align: left; }
+	th { font-weight: bold; padding-right: 14px; padding-bottom: 3px; }
+	td { padding-right: 14px; }
+	td.s, th.s { text-align: right; }
 	</style>
 </head>
 <body>
@@ -184,8 +175,7 @@ if ($slitaz_style) {
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="/static/home.png" alt="[ Home ]" />
-			Home</a>
+			<img src="/static/home.png" alt="[ Home ]" /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
@@ -205,6 +195,7 @@ if ($slitaz_style) {
 		<h4>Online Tools</h4>
 		<ul>
 			<li><a href="http://pizza.slitaz.org/">Live Builder</a></li>
+			<li><a href="http://tiny.slitaz.org/">Tiny Builder</a></li>
 			<li><a href="http://boot.slitaz.org/">Web Boot</a></li>
 		</ul>
 	</div>
@@ -221,7 +212,7 @@ EOT;
 	print <<<EOT
 		<form action="${_SERVER["REQUEST_URI"]}" method="get" style="width: 300px;">
 			<p><input type="text" name="f" $fvalue
-				style="width: auto;" /></p>
+				style="width: width: 260px;" /></p>
 		</form>
 	</div>
 </div>

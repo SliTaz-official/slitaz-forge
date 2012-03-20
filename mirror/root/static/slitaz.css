@@ -39,6 +39,7 @@ table {
 #header { 
 	height: 40px; 
 	background: #351a0a;
+	color: #ffffff;
 }
 
 #header h1 {
@@ -185,6 +186,14 @@ table {
 	margin: 10px 0px 20px 20px;
 }
 
+#mirrors {
+	padding: 10px;
+	margin: 10px 0px 20px;
+	text-align: center;
+	background: #f1f1f1;
+	border: 2px solid #ddd;
+}
+
 /* Classes */
 
 .right_box { width: 48%; float: right; }
@@ -247,7 +256,7 @@ table {
 /* Round corner */
 
 #block_nav, pre, .box, .searchbox, .button a, #twitter, .activity,
-.activity div, #sponsor, table, input, textarea, select {
+.activity div, #sponsor, #mirrors, table, input, textarea, select {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
