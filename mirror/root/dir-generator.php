@@ -213,7 +213,7 @@ EOT;
 	print <<<EOT
 		<form action="${_SERVER["REQUEST_URI"]}" method="get" style="width: 300px;">
 			<p><input type="text" name="f" $fvalue
-				style="width: 160px;" /></p>
+				style="width: 260px;" /></p>
 		</form>
 	</div>
 </div>
