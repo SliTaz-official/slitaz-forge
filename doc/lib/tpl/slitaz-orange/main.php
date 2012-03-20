@@ -32,10 +32,12 @@ if (!defined('DOKU_INC')) die();
 	<!-- SliTaz Network -->
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="<?php echo DOKU_TPL?>images/network.png" alt="network.png" /></a>
+			<img src="<?php echo DOKU_TPL?>images/home.png" alt="[ Home ]" /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
@@ -109,10 +111,14 @@ if (!defined('DOKU_INC')) die();
 
 <!-- Footer -->
 <div id="footer">
-	Copyright &copy; <?php echo date('Y'); ?>
-	<a href="http://www.slitaz.org/">SliTaz</a> 
-	<a href="http://www.gnu.org/copyleft/fdl.html">GNU FDL</a>
-	- <a href="/start?do=login">Login Wiki</a>
+	Copyright &copy; <span class="year"></span>
+	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
+	<a href="http://scn.slitaz.org/">Community</a>
+	<a href="http://doc.slitaz.org/">Doc</a>
+	<a href="http://forum.slitaz.org/">Forum</a>
+	<a href="http://pkgs.slitaz.org/">Packages</a>
+	<a href="http://bugs.slitaz.org">Bugs</a>
+	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
 		SliTaz @
 		<a href="http://twitter.com/slitaz">Twitter</a>
