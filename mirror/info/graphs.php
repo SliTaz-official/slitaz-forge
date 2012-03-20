@@ -28,10 +28,13 @@
 		<a href="http://www.slitaz.org/">
 			<img src="/static/home.png" alt=" [ Home ] " /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
-		<a href="http://doc.slitaz.org/" title="SliTaz Community Documentation">Doc</a>
-		<a href="http://forum.slitaz.org/" title="Slitaz Forum">Forum</a>
-		<a href="http://bugs.slitaz.org/" title="Bug Tracking System">Bugs</a>
-		<a href="http://hg.slitaz.org/" title="SliTaz repositories">Hg</a>
+		<a href="http://doc.slitaz.org/">Doc</a>
+		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
+		<a href="http://bugs.slitaz.org">Bugs</a>
+		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/">SliTaz 
 	<?php $host=preg_replace('/(\w+).*/i','$1',$_SERVER["HTTP_HOST"]); echo $host; ?></a></h1>

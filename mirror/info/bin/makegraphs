@@ -5,7 +5,7 @@
 rrdlog="/var/spool/rrd"
 
 # Images directory
-rrdgraph="/var/www/mirror-info/pics/rrd"
+rrdgraph="/var/www/mirror-info/images/rrd"
 
 # Colors
 #rrdcolors="--color SHADEA#EAE9EE --color SHADEB#EAE9EE --color BACK#EAE9EE" 

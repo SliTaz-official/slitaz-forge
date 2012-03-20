@@ -10,13 +10,7 @@
 	<link rel="shortcut icon" href="/static/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
 	<style type="text/css">
-#copy {
-	text-align: center;
-}
-
-#bottom {
-	text-align: center;
-}
+		h2 img { padding-right: 4px; }
 	</style>
 </head>
 <body>
@@ -26,12 +20,15 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-		<img src="/css/pics/network.png" alt="network.png" /></a>
+			<img src="/static/home.png" alt=" [ Home ] " /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
-		<a href="http://doc.slitaz.org/" title="SliTaz Community Documentation">Doc</a>
-		<a href="http://forum.slitaz.org/" title="Slitaz Forum">Forum</a>
-		<a href="http://bugs.slitaz.org/" title="Bug Tracking System">Bugs</a>
-		<a href="http://hg.slitaz.org/" title="SliTaz repositories">Hg</a>
+		<a href="http://doc.slitaz.org/">Doc</a>
+		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
+		<a href="http://bugs.slitaz.org">Bugs</a>
+		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/">SliTaz 
 	<?php $host=preg_replace('/(\w+).*/i','$1',$_SERVER["HTTP_HOST"]); echo $host; ?></a></h1>
@@ -75,7 +72,6 @@
 <div id="content">
 
 <h2><a href="graphs.php"><img 
-	style="padding: 0 4px 0 0;"
 	title="Mirror RRDtool graphs" alt="graphs"
     src="images/monitor.png" /></a>System stats</h2>
 
@@ -120,9 +116,8 @@ system("top -n1 -b");
 <?php } ?>
 
 <a name="vhosts"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=info.mirror.slitaz.org">
-	<img title="Mirror Virtual hosts" alt="vhosts"
-    src="pics/website/vhosts.png" /></a>Virtual hosts</h3>
+<h2><img title="Mirror Virtual hosts" alt="vhosts"
+    src="/static/network.png" />Virtual hosts</h2>
 
 <ul>
 	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz Mirror.
@@ -138,9 +133,9 @@ system("top -n1 -b");
 </ul>
 
 <a name="replicas"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=replicas.mirror.slitaz.org">
-         <img title="Tank replicas" alt="replicas"
-    src="pics/website/vhosts.png" /></a>Tank replicas</h3>
+<h2><a href="http://mirror.slitaz.org/awstats.pl?config=replicas.mirror.slitaz.org">
+		<img title="Tank replicas" alt="replicas"
+    src="/static/network.png" /></a>Tank replicas</h2>
 
 <ul>
 	<li><a href="http://mirror.slitaz.org/www/">www.slitaz.org</a> - SliTaz Website.
@@ -157,9 +152,9 @@ system("top -n1 -b");
 </ul>
 
 <a name="boot"></a>
-<h3><a href="http://doc.slitaz.org/en:guides:pxe#web-booting">
+<h2><a href="http://doc.slitaz.org/en:guides:pxe#web-booting">
 	<img title="Web boot" src="/static/network.png" 
-	 alt="web boot" /></a>Web boot services</h3>
+	 alt="web boot" /></a>Web boot services</h2>
 	 The SliTaz mirror provides a <b>tftp</b> access and a 
 	 <a href="/pxe">pxe</a> tree. Simply add to your DHCP server configuration file:
 	 <ul>
@@ -180,9 +175,9 @@ dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre>
 	 </ul>
 
 <a name="mirrors"></a>
-<h3><a href="http://mirror.slitaz.org/awstats.pl?config=rsync">
+<h2><a href="http://mirror.slitaz.org/awstats.pl?config=rsync">
 	<img title="Secondary mirrors" src="/static/network.png" 
-	 alt="mirrors" /></a>Mirrors</h3>
+	 alt="mirrors" /></a>Mirrors</h2>
 	Most mirrors are updated using the url: <b>rsync://mirror.slitaz.org/slitaz/</b>
 	(<a href="http://mirror.slitaz.org/awstats.pl?config=rsync">stats</a>)
 	<pre>
