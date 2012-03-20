@@ -4,7 +4,7 @@
 <head>
     <title>SliTaz Pro</title>
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-    <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
+    <meta name="description" content="Slitaz Professional Platform" />
     <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
     <meta name="robots" content="index, follow, all" />
     <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
