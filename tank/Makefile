@@ -16,6 +16,7 @@ install:
 	cp -a files/etc $(DESTDIR)/
 	cp -a files/usr/bin $(DESTDIR)/
 	/etc/init.d/crond restart
+	/etc/init.d/lighttpd restart
 
 uninstall:
 	rm -f $(PREFIX)/bin/tank
