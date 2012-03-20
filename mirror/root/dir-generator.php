@@ -169,7 +169,6 @@ if ($slitaz_style) {
 	th { font-weight: bold; padding-right: 14px; padding-bottom: 3px;}
 	td {padding-right: 14px;}
 	td.s, th.s {text-align: right;}
-	
 	#mirrors {
 		padding: 10px;
 		text-align: center;
@@ -231,6 +230,9 @@ EOT;
 Path: /${vpath}
 </div>
 
+<!-- Content -->
+<div id="content">
+
 <div id="mirrors">
 EOT;
 
@@ -251,14 +253,7 @@ fclose($fp);
 foreach($mirrors as $name => $url) {
 	echo "<a href=\"$url$vpath\" title=\"$name mirror\">$name</a>\n";
 }
-
-print <<<EOT
-</div>
-
-<!-- Content -->
-<div id="content">
-
-EOT;
+echo "</div>";
 }
 else {
 
