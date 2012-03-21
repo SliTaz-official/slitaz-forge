@@ -30,12 +30,15 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-			<img src="images/network.png" alt="network.png" /></a>
+			<img src="images/home.png" alt="[ Home ]" /></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://slitaz.pro/">Pro</a>
+		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://people.slitaz.org/">SliTaz People</a></h1>
 </div>
