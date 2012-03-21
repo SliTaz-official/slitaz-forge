@@ -1,0 +1,5 @@
+LogFile="/var/log/lighttpd/slitaz.org-access.log"
+SiteDomain="www.slitaz.org"
+DirData="/var/lib/awstats/slitaz.org"
+LogoLink="http://www.slitaz.org"
+Include "/etc/awstats/awstats.optional.conf"
