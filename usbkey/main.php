@@ -35,7 +35,8 @@
 <a name="form"></a>
 <?php echo $form ?>
 
-<script language="javascript">
+<script type="text/javascript">
+<!--
 function valid(f)
 {
 	if (f.email.value.indexOf("@",0) < 0) {
@@ -72,6 +73,7 @@ function valid(f)
 		f.submit()
 	}
 }
+//-->
 </script>
 <form method="post" action="../preorder.php">
 <input type="hidden" name="lang" value="<?php echo $lang ?>" />
@@ -105,7 +107,7 @@ function valid(f)
 	<tr>
 		<td align="right"><?php echo $count ?></td>
 		<td><input type="text" name="count" value="1" size="5" 
-			onFocus="if (this.value < 1) {this.value='1'}" style="width: 80px;"/>
+			onfocus="if (this.value &lt; 1) {this.value='1'}" style="width: 80px;"/>
 		<?php echo $size ?>
 		<select name="size">
 			<option><?php echo $shell ?></option>
