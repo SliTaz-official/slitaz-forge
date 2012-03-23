@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>SliTaz Pro</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="Slitaz Professional Platform" />
     <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
     <meta name="robots" content="index, follow, all" />
@@ -44,7 +44,8 @@
 		<img src="../images/locale.png" alt="locale.png" /></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Fran�ais</a>
+	<a href="../fr/">Français</a>
+	<a href="../ru/">Русский</a>
 </div>-->
 
 <!-- Content -->
