@@ -120,11 +120,11 @@ boot time on the Mailing list or the Forum.
 <p>
 The default boot entry needs 160Mb RAM. Two entries are available to
 boot with 24Mb:
+</p>
 <ul>
 	<li><code>tiny</code> starts in text mode.</li>
 	<li><code>loram</code> starts in graphical mode.</li>
 </ul>
-</p>
 
 <!-- End of content -->
 </div>

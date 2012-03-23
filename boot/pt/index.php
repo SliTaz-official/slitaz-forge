@@ -124,11 +124,11 @@ tempo de boot na lista de discussão ou no fórum.
 <p>
 A entrada padrão de boot necessidade de 160MB de memória RAM. Duas entradas
 estão disponíveis para boot com 24MB:
+</p>
 <ul>
 	<li><code>tiny</code> inicia em modo texto.</li>
 	<li><code>loram</code> inicia em modo gráfico.</li>
 </ul>
-</p>
 
 <!-- End of content -->
 </div>

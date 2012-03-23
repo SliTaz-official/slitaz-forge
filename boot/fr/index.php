@@ -128,11 +128,11 @@ liste de diffusion.
 <p>
 L'entrée par défaut nécessite au moins 160Mo de RAM. Deux autres sont
 disponibles pour démarrer avec 24Mo ou plus :
+</p>
 <ul>
 	<li><code>tiny</code> démarre en mode texte.</li>
 	<li><code>loram</code> démarre en mode graphique.</li>
 </ul>
-</p>
 
 <!-- End of content -->
 </div>

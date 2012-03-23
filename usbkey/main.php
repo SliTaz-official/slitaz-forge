@@ -107,7 +107,7 @@ function valid(f)
 	<tr>
 		<td align="right"><?php echo $count ?></td>
 		<td><input type="text" name="count" value="1" size="5" 
-			onfocus="if (this.value &lt; 1) {this.value='1'}" style="width: 80px;"/>
+			onblur="if (this.value &lt; 1) {this.value='1'}" style="width: 80px;"/>
 		<?php echo $size ?>
 		<select name="size">
 			<option><?php echo $shell ?></option>
