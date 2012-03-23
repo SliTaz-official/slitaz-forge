@@ -20,7 +20,7 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav" style="text-align: center; padding: 10px;">
-		<img src="/images/desktop.png" />
+		<img src="/images/desktop.png" alt="[ desktop ]" />
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
