@@ -22,6 +22,17 @@
 	    })();
 	/* ]]> */
 	</script>
+	<style type="text/css">
+		ul span { 
+			color: #666; 
+			font-size: 11px; 
+			font-weight: normal;
+			display: block;
+			padding: 2px 0;
+		}
+		ul { list-style-type: square; }
+		ul span a { color: #666; }
+	</style>
 </head>
 <body>
 
@@ -69,18 +80,18 @@
 		<p>
 			You can help us maintain and improve this service with a small
 			donation to the SliTaz association:
-			<!-- PayPal Button -->
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-				style="display: inline;">
-				<input type="hidden" name="cmd" value="_s-xclick" />
-				<input type="hidden" name="hosted_button_id" value="4885025" />
-				<input type="image" src="images/paypal.png" name="submit" 
-					alt="PayPal - The safer, easier way to pay online!" />
-			</form>
-			<!-- Flattr Button -->
-			<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
-				href="http://www.slitaz.org/"></a>
 		</p>
+		<!-- PayPal Button -->
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+			style="display: inline;">
+			<input type="hidden" name="cmd" value="_s-xclick" />
+			<input type="hidden" name="hosted_button_id" value="4885025" />
+			<input type="image" src="images/paypal.png" name="submit" 
+				alt="PayPal - The safer, easier way to pay online!" />
+		</form>
+		<!-- Flattr Button -->
+		<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
+			href="http://www.slitaz.org/"></a>
 	</div>
 </div>
 
@@ -88,18 +99,6 @@
 <div id="content">
 
 <h2>SliTaz people</h2>
-
-<style type="text/css">
-ul span { 
-	color: #666; 
-	font-size: 11px; 
-	font-weight: normal;
-	display: block;
-	padding: 2px 0;
-}
-ul { list-style-type: square; }
-ul span a { color: #666; }
-</style>
 
 <ul>
 <?php
