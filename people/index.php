@@ -73,7 +73,7 @@
 		<h4>People</h4>
 		<p>
 			Each contributor who has access to the project main server,
-			code name <a href="http://tank.slitaz.org/">Tank</a> and can 
+			code name <a href="http://tank.slitaz.org/">Tank</a> can 
 			have a public directory. This Public directory can be reached
 			with URLs in the form of: http://people.slitaz.org/~name/.
 		</p>

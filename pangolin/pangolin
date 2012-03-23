@@ -20,9 +20,9 @@ Usage: $(basename $0) [command]
 Commands:
   up-www       Update website http://www.slitaz.org/
   up-hg        Update Hg web interface http://hg.slitaz.org/
-  adduser      Add a user to Hg
+  adduser      Add a user to Hg.
   stats        Display some server stats.
-  backup       Backup MySQL DB and files
+  backup       Backup MySQL DB and files.
 
 EOT
 }

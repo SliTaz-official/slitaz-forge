@@ -6,9 +6,9 @@
 
 modules: 
 
- * slitaz      		--> ISO, packages, boot... all stuff
- * slitaz-cooking   --> Cooking packages
- * slitaz-doc      	--> http://doc.slitaz.org/ backup
+ * slitaz		--> ISO, packages, boot... all stuff
+ * slitaz-cooking	--> Cooking packages
+ * slitaz-doc		--> http://doc.slitaz.org/ backup
  * tiny-slitaz		--> http://tiny.slitaz.org/ sources
 
 ===============================================================================
