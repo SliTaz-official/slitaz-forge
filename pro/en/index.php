@@ -38,15 +38,15 @@
 	</div>
 </div>
 
-<!-- Languages 
+<!-- Languages -->
 <div id="lang">
 	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="locale.png" /></a>
-	<a href="../de/">Deutsch</a>
+		<img src="../images/locale.png" alt="Locale" /></a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Français</a>
 	<a href="../ru/">Русский</a>
-</div>-->
+	<!--<a href="../de/">Deutsch</a>
+	<a href="../fr/">Français</a>-->
+</div>
 
 <!-- Content -->
 <div id="content">
