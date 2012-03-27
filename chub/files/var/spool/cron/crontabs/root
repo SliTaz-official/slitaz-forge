@@ -3,3 +3,7 @@
 
 # Update RRD graphs images
 */5  * * * * /usr/bin/chub rrd >/dev/null
+
+# Sync packages and files used by Pizza
+0 0 * * * /usr/bin/pizza sync-pkgs
+0 15 * * * /usr/bin/pizza get-lists
