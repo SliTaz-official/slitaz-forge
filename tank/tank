@@ -27,6 +27,7 @@ Commands:
   up-pro       Update http://pro.slitaz.org/
   up-boot      Update http://boot.slitaz.org/
   up-cook      Update http://cook.slitaz.org/
+  up-roadmap   Update http://roadmap.slitaz.org/
 
 EOT
 }
@@ -36,7 +37,7 @@ case "$1" in
 		# Backup config files and SQL db.
 		echo "TODO" ;;
 	up-tank)
-		# Update Tank web interface: http://tank.slitaz.org/
+		# Update Tank web interface
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
@@ -44,7 +45,7 @@ case "$1" in
 		cp -a tank/web/* $VHOST 
 		echo "" ;;
 	up-people)
-		# Update People web interface: http://people.slitaz.org/
+		# Update People web interface
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
@@ -52,7 +53,7 @@ case "$1" in
 		cp -a people/* $WWW/people 
 		echo "" ;;
 	up-pro)
-		# Update Pro website: http://pro.slitaz.org/
+		# Update Pro website
 		echo -e "\nUpdating: pro.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
@@ -60,7 +61,7 @@ case "$1" in
 		cp -a pro/* $WWW/pro
 		echo "" ;;
 	up-boot)
-		# Update Web Boot interface: http://boot.slitaz.org/
+		# Update Web Boot interface
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
@@ -68,12 +69,19 @@ case "$1" in
 		cp -a boot/* $WWW/boot 
 		echo "" ;;
 	up-cook)
-		# Update Web Boot interface: http://boot.slitaz.org/
+		# Update Web Boot interface
 		echo -e "\nUpdating: cook.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
 		cp -a cook/* $WWW/cook/undigest
+		echo "" ;;
+	up-roadmap)
+		# Update Roadmap Web interface
+		echo -e "\nUpdating: roadmap.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		[ "$2" == "--nohg" ] || hg pull -u
+		cp -a roadmap/* $WWW/roadmap 
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
