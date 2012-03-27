@@ -1,0 +1,41 @@
+SliTaz Roadmap
+================================================================================
+
+
+SliTaz roadmap provide guide lines to the next Slitaz Stable realease. We use
+our Mercurial repo to collaborate on the roadmap. All task are added and edited
+in releases/[slitaz-release] and then commited to Hg. Any tasks can have a wiki
+page link, description with HTML code, etc. Each release have also a goals.html
+page with the summary of the goals to the next release.
+
+All contributors are welcome to collaborate and add themself to the PEOPLE 
+variable of a task. The optionnal release task Wiki should be created under
+the space name en:releases:slitaz-release:task-name, example:
+
+	http://doc.slitaz.org/en:releases:5.0:update-toolchain
+	
+All the task are under SliTaz Mercurial repositories in the slitaz-forge repo.
+To clone the repos and collaborate on task you can clone the roadmap with:
+
+	hg clone http://hg.slitaz.org/slitaz-forge
+
+
+
+Task configuration format
+-------------------------
+As usual, keep it simple and somthing most people know about: a config files ;-)
+Bugs refer to the bug number on http://bugs.slitaz.org/ separated by space.
+
+# SliTaz task
+
+TASK="Update full Toolchain"
+STATUS="TODO"
+PRIORITY="1"
+PEOPLE="Pankso"
+WIKI=""
+BUGS=""
+
+DESC=""
+
+
+================================================================================
