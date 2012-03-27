@@ -134,7 +134,7 @@
 </p>
 
 <p class="box">
-	Mail: &lt;pro at slitaz.org&gt;
+	Mail: &lt;contact at slitaz.org&gt;
 </p>
 
 <p class="box">
