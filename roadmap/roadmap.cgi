@@ -21,7 +21,7 @@ EOT
 	if [ "$DESC" ]; then
 		cat << EOT
 
-Desccription
+Description
 ------------
 $DESC
 EOT
@@ -67,14 +67,14 @@ case " $(GET) " in
 <h2>Release: $rel</h2>
 
 <p>
-	Tasks: $tasks in total - $done finised - $todo todo
+	Tasks: $tasks in total - $done finished - $todo todo
 </p>
 <div class="pctbar">
 	<div class="pct" style="width: ${pct}%;">${pct}%</div>
 </div>
 <p>
-	Tasks lists are order by priority. Please read the <a href="?README">README</a>
-	for more information about SliTaz Roadmap web interface and Hg repo.
+	Tasks lists are ordered by priority. Please read the <a href="?README">README</a>
+	for more information about the SliTaz Roadmap web interface and Hg repo.
 </p>
 EOT
 		cat $taskdir/$release/goals.html
