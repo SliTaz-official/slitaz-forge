@@ -5,7 +5,7 @@ header
 
 # Default to next stable release.
 rel="5.0"
-[ "$(GET release)" ] && rel="$(GET release)"
+[ -n "$(GET release)" ] && rel="$(GET release)"
 taskdir="releases/$rel"
 
 # Show a task.
@@ -88,7 +88,12 @@ cat << EOT
 
 <div id="footer">
 	<a href="http://www.slitaz.org/">SliTaz Website</a> - Roadmap:
-	<a href="?release=4.0">4.0</a>
+EOT
+	for release in $(ls releases)
+	do
+		echo "<a href=\"?release=$release\">$release</a>"
+	done
+cat << EOT
 </div>
 
 </body>
