@@ -452,7 +452,7 @@ if ($slitaz_style) { ?>
 	</p>
 	<p>
 		<a href="http://validator.w3.org/check?uri=referer">
-			<img src="/css/pics/website/xhtml10.png" 
+			<img src="/static/xhtml10.png" 
 			     alt="Valid XHTML 1.0" title="Code validé XHTML 1.0"
 			     style="width: 80px; height: 15px;" /></a>
 	</p>
