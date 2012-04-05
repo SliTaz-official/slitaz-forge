@@ -1,0 +1,21 @@
+
+#header {
+	border-bottom: 8px solid #d66018;
+}
+
+input[type=text] {
+	/*width: inherit;*/
+	width: 40%;
+}
+
+#content {
+	margin: 6px 40px 0px 0px;
+}
+
+#copy {
+	text-align: center;
+}
+
+#bottom {
+	text-align: center;
+}

@@ -13,7 +13,7 @@ LANG=$lang
 SEARCH=$query
 SLITAZ_VERSION=$version
 OBJECT=$object
-DATE=`date +%Y-%m-%d\ %H:%M:%S`
+DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 VERSION=cooking
 if [ "$REQUEST_METHOD" = "GET" ]; then
 	SEARCH=""
@@ -230,108 +230,20 @@ _EOT_
 }
 
 # xHTML Header.
-xhtml_header()
-{
-	cat << _EOF_
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$LANG" lang="$LANG">
-<head>
-	<title>SliTaz Packages - Search $SEARCH</title>
-	<meta http-equiv="content-type" content="text/html; charset=$charset" />
-	<meta name="description" content="Au sujet de SliTaz GNU/Linux mini système d'exploitation" />
-	<meta name="keywords" lang="fr" content="Système, libre, gnu, linux, opensource, livecd" />
-	<meta name="robots" content="index, follow, all" />
-	<meta name="revisit-after" content="7 days" />
-	<meta name="expires" content="never" />
-	<meta name="modified" content="$DATE" />
-	<meta name="author" content="ash, awk, grep, sed and cat"/>
-	<meta name="publisher" content="www.slitaz.org" />
-	<link rel="shortcut icon" href="style/favicon.ico" />
-	<link rel="stylesheet"  type="text/css" href="style/slitaz.css" />
-	<style type="text/css">
-
-input[type=text] {
-#	width: inherit;
-	width: 40%;
-}
-
-#content {
-	margin: 6px 40px 0px 0px;
-}
-
-#copy {
-	text-align: center;
-}
-
-#bottom {
-	text-align: center;
-}
-
-	</style>
-</head>
-<body>
-
-<!-- Header -->
-<div id="header">
-	<a name="top"></a>
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">
-		<img src="style/home.png" alt="[ home ]" /></a>
-		<a href="http://scn.slitaz.org/">Community</a>
-		<a href="http://doc.slitaz.org/" title="SliTaz Community Documentation">Doc</a>
-		<a href="http://forum.slitaz.org/" title="Slitaz Forum">Forum</a>
-		<a href="http://bugs.slitaz.org/" title="Bug Tracking System">Bugs</a>
-		<a href="http://hg.slitaz.org/" title="SliTaz repositories">Hg</a>
-		<a href="http://cook.slitaz.org/" title="SliTaz build bot">BB</a>
-	</div>
-	<h1><a href="http://pkgs.slitaz.org/">SliTaz Packages</a></h1>
-</div>
-_EOF_
+xhtml_header() {
+	cat lib/header.html | sed s'/%SEARCH%/$SEARCH/'
 }
 
 # xHTML Footer.
-xhtml_footer()
-{
+xhtml_footer() {
 	cat << _EOT_
+
 <center>
 <i>$(ls $WOK/ | wc -l) packages and $(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l) files in $SLITAZ_VERSION database</i>
 </center>
 
-<!-- End of content -->
-</div>
-<div id="content_bottom">
-<div class="bottom_left"></div>
-<div class="bottom_right"></div>
-</div>
-
-<!-- Start of footer and copy notice -->
-<div id="copy">
-<p>
-Dernière modification : $DATE -
-<a href="#top">Top of the page</a>
-</p>
-<p>
-Copyright &copy; $(date +%Y) <a href="http://www.slitaz.org/">SliTaz</a> -
-<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>
-</p>
-<!-- End of copy -->
-</div>
-
-<!-- Bottom and logo's -->
-<div id="bottom">
-<p>
-<a href="http://validator.w3.org/check?uri=referer"><img
-	src="style/xhtml10.png" alt="Valid XHTML 1.0"
-	title="Code validé XHTML 1.0"
-	style="width: 80px; height: 15px;" /></a>
-</p>
-</div>
-
-</body>
-</html>
 _EOT_
+	cat lib/footer.html
 }
 
 installed_size()
