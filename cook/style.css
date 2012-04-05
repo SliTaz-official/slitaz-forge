@@ -35,7 +35,7 @@ pre {
 	font-style: italic;
 }
 
-#header h1 a:hover, #network a:hover { 
+#header h1 a:hover { 
 	color: #d66018;
 }
 
@@ -57,14 +57,17 @@ pre {
 	float: right; 
 	padding: 12px 5px 0; 
 	font-size: 12px;
+	color: #fff;
 }
 
 #network a {
-	padding: 0 6px;
+	padding: 0 4px;
 	color: #fff; 
 	font-weight: bold;
 	text-decoration: none;
 }
+
+#network a:hover { color: #cfcfcf; }
 
 /* Content */
 
@@ -90,7 +93,7 @@ pre {
 	color: #000;
 }
 
-a.button, .pctbar  {
+a.button {
 	text-decoration: none;
 	color: #666;
 }
@@ -100,12 +103,17 @@ a.button, .pctbar  {
 	border: 1px solid #999;
 }
 
+/* Progress bar */
+
 .pct { background: #9dff4a; padding: 2px 4px; }
 
-.button, .pctbar {
+.pctbar {
 	margin: 0;
+	color: #666;
 	background: #f1f1f1;
 	border: 1px solid #ddd;
+	overflow: hidden;
+	clear: both;
 }
 
 /* Round corner */
