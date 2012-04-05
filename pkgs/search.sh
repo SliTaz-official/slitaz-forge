@@ -396,7 +396,7 @@ package_exist()
 	cat << _EOT_
 
 <h3>$noresult</h3>
-<pre class="package">
+<pre>
 _EOT_
 	return 1
 }
@@ -438,7 +438,6 @@ if [ "$REQUEST_METHOD" != "POST" ]; then
 <div id="content">
 <a name="content"></a>
 
-<h1>$package</h1>
 <h2>$search</h2>
 _EOT_
 	search_form
@@ -451,7 +450,6 @@ else
 <div id="content">
 <a name="content"></a>
 
-<h1>$package</h1>
 <h2>$search</h2>
 _EOT_
 	search_form
@@ -460,7 +458,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$depends $loops</h3>
-<pre class="package">
+<pre>
 _EOT_
 			for i in $WOK/*/receipt; do
 				PACKAGE=
@@ -475,7 +473,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$deptree</h3>
-<pre class="package">
+<pre>
 _EOT_
 			ALL_DEPS=""
 			dep_scan $SEARCH ""
@@ -486,7 +484,7 @@ _EOT_
 </pre>
 
 <h3>$deptree (SUGGESTED)</h3>
-<pre class="package">
+<pre>
 _EOT_
 				ALL_DEPS=""
 				dep_scan "$SUGGESTED" "    "
@@ -495,7 +493,7 @@ _EOT_
 </pre>
 
 <h3>$rdeptree</h3>
-<pre class="package">
+<pre>
 _EOT_
 			ALL_DEPS=""
 			rdep_scan $SEARCH
@@ -508,7 +506,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$bdepends $loops</h3>
-<pre class="package">
+<pre>
 _EOT_
 			for i in $WOK/*/receipt; do
 				PACKAGE=
@@ -524,7 +522,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$bdeplist</h3>
-<pre class="package">
+<pre>
 _EOT_
 			ALL_DEPS=""
 			dep_scan $SEARCH "" build
@@ -532,7 +530,7 @@ _EOT_
 </pre>
 
 <h3>$rbdeplist</h3>
-<pre class="package">
+<pre>
 _EOT_
 			ALL_DEPS=""
 			rdep_scan $SEARCH build
@@ -545,7 +543,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$overloading $SEARCH</h3>
-<pre class="package">
+<pre>
 _EOT_
 			( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
 			  unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep -v ^$SEARCH: ) | awk '
@@ -568,7 +566,7 @@ _EOT_
 		cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 _EOT_
 		last=""
 		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
@@ -591,14 +589,14 @@ _EOT_
 			cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 _EOT_
 			last=""
 			unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
 			| grep ^$SEARCH: |  sed 's/.*: /    /' | sort
 			cat << _EOT_
 </pre>
-<pre class="package">
+<pre>
 $(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: | wc -l | echonb file)  \
 $(busybox sed -n "/^$SEARCH$/{nnnpq}" $PACKAGES_REPOSITORY/packages.txt)
 _EOT_
@@ -608,7 +606,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 <pre>
 $(htmlize < $WOK/$SEARCH/description.txt)
 </pre>
@@ -617,7 +615,7 @@ _EOT_
 			cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 _EOT_
 			last=""
 			grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
@@ -630,7 +628,7 @@ _EOT_
 		cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 _EOT_
 		last=""
 		grep ^TAGS= $WOK/*/receipt |  grep -i "$SEARCH" | \
@@ -642,7 +640,7 @@ _EOT_
 		package_exist $SEARCH && cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 <pre>
 $(if [ -f  $WOK/$SEARCH/taz/*/receipt ]; then
 	cat $WOK/$SEARCH/taz/*/receipt
@@ -655,7 +653,7 @@ _EOT_
 		cat << _EOT_
 
 <h3>$result</h3>
-<pre class="package">
+<pre>
 _EOT_
 		for pkg in `ls $WOK/ | grep "$SEARCH"`
 		do
@@ -673,7 +671,7 @@ _EOT_
 </pre>
 
 <h3>$result (package providing $vpkg)</h3>
-<pre class="package">
+<pre>
 _EOT_
 			for pkg in $(grep $vpkg= $equiv | sed "s/$vpkg=//"); do
 				. $WOK/${pkg#*:}/receipt
