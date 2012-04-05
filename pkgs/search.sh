@@ -230,7 +230,7 @@ _EOT_
 
 # xHTML Header.
 xhtml_header() {
-	cat lib/header.html | sed s/'%SEARCH%'/"$SEARCH"/'
+	cat lib/header.html | sed s/'%SEARCH%'/"$SEARCH"/
 }
 
 # xHTML Footer.
