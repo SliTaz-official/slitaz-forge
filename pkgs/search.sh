@@ -191,7 +191,7 @@ esac
 WOK=/home/slitaz/$SLITAZ_VERSION/wok
 PACKAGES_REPOSITORY=/home/slitaz/$SLITAZ_VERSION/packages
 
-echo Content-type: text/html
+echo "Content-type: text/html"
 echo
 
 # Search form
@@ -213,7 +213,6 @@ search_form()
 		<option $selected_file_list value="File_list">$file_list</option>
 		<option $selected_overlap value="FileOverlap">$overlap</option>
 	</select>
-	<strong>:</strong>
 	<input type="text" name="query" size="20" value="$SEARCH" />
 	<select name="version">
 		<option value="cooking">$cooking</option>
@@ -231,7 +230,7 @@ _EOT_
 
 # xHTML Header.
 xhtml_header() {
-	cat lib/header.html | sed s'/%SEARCH%/$SEARCH/'
+	cat lib/header.html | sed s/'%SEARCH%'/"$SEARCH"/'
 }
 
 # xHTML Footer.
