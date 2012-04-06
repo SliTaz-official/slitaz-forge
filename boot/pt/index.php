@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
 <head>
     <title>SliTaz Web Boot</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
     <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
     <meta name="robots" content="index, follow, all" />
@@ -39,16 +39,16 @@
 			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
 			<li><a href="http://doc.slitaz.org/pt:cookbook:start">SliTaz Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/pt:handbook:genlivecd">LiveCD flavor howto</a></li>
-		</ul>	
+		</ul>
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
 		<h4>Web Boot</h4>
 		<p>
-			Bem vindo ao servidor de boot via rede do <a 
+			Bem vindo ao servidor de boot via rede do <a
 			href="http://www.slitaz.org/en/">SliTaz GNU/Linux</a>;
-			boot.slitaz.org permite a você inicializar o  SliTaz 
-			a partir da web usando um cdrom, mídia USB ou disquete. 
+			boot.slitaz.org permite a vocÃª inicializar o  SliTaz
+			a partir da web usando um cdrom, mÃ­dia USB ou disquete.
 		</p>
 		<div class="button" style="padding-top: 8px;">
 			Link para Download:
@@ -60,46 +60,47 @@
 <!-- Languages -->
 <div id="lang">
 	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="locale.png" /></a>
+		<img src="../images/locale.png" alt="i18n" /></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Français</a>
-	<a href="../pt/">Português</a>
+	<a href="../fr/">FranÃ§ais</a>
+	<a href="../pt/">PortuguÃªs</a>
+	<a href="../ru/">Ð ÑƒÑÑÐºÐ¸Ð¹</a>
 </div>
 
 <!-- Content -->
 <div id="content">
 
-<h2>Introdução</h2>
+<h2>IntroduÃ§Ã£o</h2>
 
 <p>
 	Inicialize seu sistema operacional pela internet e aproveite um
-	uma distribuição GNU/Linux completa e funcional rodando na memória RAM
+	uma distribuiÃ§Ã£o GNU/Linux completa e funcional rodando na memÃ³ria RAM
 	com velocidade e estabilidade. O kernel Linux e o sistema de arquivos
-	comprimido do SliTaz serão carregados na RAM a partir da web usando
+	comprimido do SliTaz serÃ£o carregados na RAM a partir da web usando
 	os protocolos PXE e HTTP.
 </p>
 
 <a name="guide"></a>
-<h2>Guia Rápido</h2>
+<h2>Guia RÃ¡pido</h2>
 <p>
-Para inicializar a partir da internet você necessidade de um servidor DHCP,
-servidor DNS e uma rota para internet. Você já possui tudo isto caso use
-um roteador para conexões de rede.
+Para inicializar a partir da internet vocÃª necessidade de um servidor DHCP,
+servidor DNS e uma rota para internet. VocÃª jÃ¡ possui tudo isto caso use
+um roteador para conexÃµes de rede.
 </p>
 <ul>
-	<li>O SliTaz Cooking possui a opção de boot <code>web</code>, 
-	então você pode usar boot.slitaz.org a partir do LiveCD.</li>
+	<li>O SliTaz Cooking possui a opÃ§Ã£o de boot <code>web</code>,
+	entÃ£o vocÃª pode usar boot.slitaz.org a partir do LiveCD.</li>
 	<li>SliTaz boot ISO: Baixe
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
 	e grave a imagem em um cdrom. Inicialize pelo dispositivo de cdrom
-	e selecione gPXE. Esta imagem ISO também fornece o Memtest86 para
-	testar a memória do sistema.
+	e selecione gPXE. Esta imagem ISO tambÃ©m fornece o Memtest86 para
+	testar a memÃ³ria do sistema.
 	</li>
-	<li>Mídia USB: Use o TazUSB para gerar uma mídia USB inicializável. 
-	Instale o pacote <code>gpxe</code>, copie /boot/gpxe no diretório
-	de boot da mídia e adicione uma entrada no arquivo de configuração do
+	<li>MÃ­dia USB: Use o TazUSB para gerar uma mÃ­dia USB inicializÃ¡vel.
+	Instale o pacote <code>gpxe</code>, copie /boot/gpxe no diretÃ³rio
+	de boot da mÃ­dia e adicione uma entrada no arquivo de configuraÃ§Ã£o do
 	Syslinux <code>syslinux.cfg</code>:
 	<pre class="script">
 label web
@@ -108,26 +109,26 @@ label web
 	<li>Imagem de disquete: Baixe
 	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
 	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
-	e copie a imagem para um disquete usando o comando: 
+	e copie a imagem para um disquete usando o comando:
 	<code>dd if=floppy-grub of=/dev/fd0</code>. Inicialize pelo disquete
 	e selecione a entrada gPXE.</li>
 </ul>
 
 <h3>Tempo de boot</h3>
 <p>
-O tempo de boot depende de sua conexão de rede. Com uma conexão de 1MB
-na França, o boot leva 5 minutos. Caso deseje, você pode reportar o seu
-tempo de boot na lista de discussão ou no fórum.
+O tempo de boot depende de sua conexÃ£o de rede. Com uma conexÃ£o de 1MB
+na FranÃ§a, o boot leva 5 minutos. Caso deseje, vocÃª pode reportar o seu
+tempo de boot na lista de discussÃ£o ou no fÃ³rum.
 </p>
 
-<h3>Configuração requerida</h3>
+<h3>ConfiguraÃ§Ã£o requerida</h3>
 <p>
-A entrada padrão de boot necessidade de 160MB de memória RAM. Duas entradas
-estão disponíveis para boot com 24MB:
+A entrada padrÃ£o de boot necessidade de 160MB de memÃ³ria RAM. Duas entradas
+estÃ£o disponÃ­veis para boot com 24MB:
 </p>
 <ul>
 	<li><code>tiny</code> inicia em modo texto.</li>
-	<li><code>loram</code> inicia em modo gráfico.</li>
+	<li><code>loram</code> inicia em modo grÃ¡fico.</li>
 </ul>
 
 <!-- End of content -->

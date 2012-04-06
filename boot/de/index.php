@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>SliTaz Web Boot (de)</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
     <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
     <meta name="robots" content="index, follow, all" />
@@ -39,7 +39,7 @@
 			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
 			<li><a href="http://doc.slitaz.org/en:cookbook:start">SliTaz Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/en:handbook:genlivecd">LiveCD flavor howto</a></li>
-		</ul>	
+		</ul>
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
@@ -47,8 +47,8 @@
 		<p>
 			Willkommen am Start-Provider gPXE von
 			<a href="http://www.slitaz.org/de/">SliTaz GNU/Linux</a>,
-			boot.slitaz.org erm�glicht Ihnen, SliTaz aus dem Netzwerk
-			durch einfache ben�tzung einer CD-ROM, eines USB-Sticks oder
+			boot.slitaz.org ermöglicht Ihnen, SliTaz aus dem Netzwerk
+			durch einfache benützung einer CD-ROM, eines USB-Sticks oder
 			gar einer Start-Floppy, einzusetzen.
 		</p>
 		<div class="button" style="padding-top: 8px;">
@@ -61,10 +61,12 @@
 <!-- Languages -->
 <div id="lang">
 	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="locale.png" /></a>
+		<img src="../images/locale.png" alt="i18n" /></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Fran�ais</a>
+	<a href="../fr/">Français</a>
+	<a href="../pt/">Português</a>
+	<a href="../ru/">Русский</a>
 </div>
 
 <!-- Content -->
@@ -73,7 +75,7 @@
 <h2>Introduction und guide</h2>
 
 <p>
-Linux-Kernel und erforderliche komprimierte Dateien werden dann in Ihr RAM aus dem Internet �ber das Protokol 
+Linux-Kernel und erforderliche komprimierte Dateien werden dann in Ihr RAM aus dem Internet über das Protokol
 PXE/HTTP geladen. Viel Freude damit! <a href="../en/#guide">Short guide...</a>
 </p>
 

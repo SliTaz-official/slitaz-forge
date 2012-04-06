@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>SliTaz Web Boot (fr)</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
     <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
     <meta name="robots" content="index, follow, all" />
@@ -39,20 +39,20 @@
 			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
 			<li><a href="http://doc.slitaz.org/en:cookbook:start">SliTaz Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/en:handbook:genlivecd">LiveCD flavor howto</a></li>
-		</ul>	
+		</ul>
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
-		<h4>Démarrage via le réseau</h4>
+		<h4>DÃ©marrage via le rÃ©seau</h4>
 		<p>
-			Bienvenue sur l'hôte de démarrage gPXE de
+			Bienvenue sur l'hÃ´te de dÃ©marrage gPXE de
 			<a href="http://www.slitaz.org/fr/">SliTaz GNU/Linux</a>,
-			boot.slitaz.org vous permet de démarrer SliTaz depuis le
-			réseau en utilisant un cdrom, une clé USB ou une disquette
-			de démarrage.
+			boot.slitaz.org vous permet de dÃ©marrer SliTaz depuis le
+			rÃ©seau en utilisant un cdrom, une clÃ© USB ou une disquette
+			de dÃ©marrage.
 		</p>
 		<div class="button" style="padding-top: 8px;">
-			Téléchargement rapide:
+			TÃ©lÃ©chargement rapide:
 			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 		</div>
 	</div>
@@ -61,10 +61,12 @@
 <!-- Languages -->
 <div id="lang">
 	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="locale.png" /></a>
+		<img src="../images/locale.png" alt="i18n" /></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Français</a>
+	<a href="../fr/">FranÃ§ais</a>
+	<a href="../pt/">PortuguÃªs</a>
+	<a href="../ru/">Ð ÑƒÑÑÐºÐ¸Ð¹</a>
 </div>
 
 <!-- Content -->
@@ -73,65 +75,65 @@
 <h2>Introduction</h2>
 
 <p>
-Démarrez votre système d'exploitation depuis internet! Le noyau Linux et
-le système de fichiers compressé contenant SliTaz seront chargés en RAM
-depuis internet en utilisant les protocoles PXE et HTTP. 
+DÃ©marrez votre systÃ¨me d'exploitation depuis internet! Le noyau Linux et
+le systÃ¨me de fichiers compressÃ© contenant SliTaz seront chargÃ©s en RAM
+depuis internet en utilisant les protocoles PXE et HTTP.
 </p>
 
 <h2>Guide rapide</h2>
 <p>
-Pour démarrer depuis internet vous devez avoir une configuration réseau 
-fonctionnelle (Serveur DHCP, DNS/DNS cache, passerelle par défaut). 
-C'est généralement le cas si vous utiliser un routeur pour votre 
-connexion réseau.
+Pour dÃ©marrer depuis internet vous devez avoir une configuration rÃ©seau
+fonctionnelle (Serveur DHCP, DNS/DNS cache, passerelle par dÃ©faut).
+C'est gÃ©nÃ©ralement le cas si vous utiliser un routeur pour votre
+connexion rÃ©seau.
 </p>
 
 <ul>
-	<li>La version Cooking de permet de démarrer depuis boot.slitaz.org
+	<li>La version Cooking de permet de dÃ©marrer depuis boot.slitaz.org
 	en utilisant l'option <code>web</code> au boot, cela permet d'utiliser
-	le LiveCD standard pour tester la dernière version sans regraver un
+	le LiveCD standard pour tester la derniÃ¨re version sans regraver un
 	cdrom.</li>
-	
-	<li>Image ISO SliTaz boot: Téléchargez le fichier
+
+	<li>Image ISO SliTaz boot: TÃ©lÃ©chargez le fichier
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
-	et gravez l'image sur un cdrom vierge. Démarrez depuis le cdrom et 
-	choisissez l'option gPXE. Cette image ISO vous permet également de tester
-	la mémoire système avec Memtest86.</li>
-	<li>Média USB: Utilisez TazUSB pour générer un média USB amorçable.
-	Installez le paquet <code>gpxe</code>, copiez le répertoire /boot/gpxe 
-	dans le répertoire boot du média USB et ajoutez une entrée dans le 
+	et gravez l'image sur un cdrom vierge. DÃ©marrez depuis le cdrom et
+	choisissez l'option gPXE. Cette image ISO vous permet Ã©galement de tester
+	la mÃ©moire systÃ¨me avec Memtest86.</li>
+	<li>MÃ©dia USB: Utilisez TazUSB pour gÃ©nÃ©rer un mÃ©dia USB amorÃ§able.
+	Installez le paquet <code>gpxe</code>, copiez le rÃ©pertoire /boot/gpxe
+	dans le rÃ©pertoire boot du mÃ©dia USB et ajoutez une entrÃ©e dans le
 	fichier de configuration de Syslinux <code>syslinux.cfg</code> :
 <pre>
 label web
 	kernel /boot/gpxe
 </pre></li>
-	
-	<li>Image de disquette: Téléchargez le fichier
+
+	<li>Image de disquette: TÃ©lÃ©chargez le fichier
 	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
 	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
-	Transférez l'image sur une disquette vierge en utilisant la commande 
-	suivant: <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur 
-	la disquette et choisissez l'entrée gPXE.
+	TransfÃ©rez l'image sur une disquette vierge en utilisant la commande
+	suivant: <code>dd if=floppy-grub of=/dev/fd0</code>. DÃ©marrez sur
+	la disquette et choisissez l'entrÃ©e gPXE.
 	</li>
 </ul>
 
-<h3>Temps de démarrage</h3>
+<h3>Temps de dÃ©marrage</h3>
 <p>
-Le temps de démarrage dépend de votre vitesse de connexion  à internet 
-et des charges du serveur. En france avec un débit de 1Mo il faut 5 minutes.
-Vous pouvez poster vos retours d'expériences sur le Wiki, Forum ou la 
+Le temps de dÃ©marrage dÃ©pend de votre vitesse de connexion  Ã  internet
+et des charges du serveur. En france avec un dÃ©bit de 1Mo il faut 5 minutes.
+Vous pouvez poster vos retours d'expÃ©riences sur le Wiki, Forum ou la
 liste de diffusion.
 </p>
 
 <h3>Configuration minimum</h3>
 <p>
-L'entrée par défaut nécessite au moins 160Mo de RAM. Deux autres sont
-disponibles pour démarrer avec 24Mo ou plus :
+L'entrÃ©e par dÃ©faut nÃ©cessite au moins 160Mo de RAM. Deux autres sont
+disponibles pour dÃ©marrer avec 24Mo ou plus :
 </p>
 <ul>
-	<li><code>tiny</code> démarre en mode texte.</li>
-	<li><code>loram</code> démarre en mode graphique.</li>
+	<li><code>tiny</code> dÃ©marre en mode texte.</li>
+	<li><code>loram</code> dÃ©marre en mode graphique.</li>
 </ul>
 
 <!-- End of content -->
