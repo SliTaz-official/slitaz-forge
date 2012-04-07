@@ -115,6 +115,7 @@ case "$1" in
 		#echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
 		# Public dir at http://people.slitaz.org/~$user/
 		sed -i s/'%user%'/"$user"/ /home/$user/Public/index.html
+		sed -i s/'%name%'/"$gecos"/ /home/$user/Public/config.php
 		# Empty Shell profile
 		cat > /home/$user/.profile << EOF
 # ~/.profile: Executed by Bourne-compatible login SHells.

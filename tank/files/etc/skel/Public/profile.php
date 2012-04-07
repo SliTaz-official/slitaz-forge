@@ -4,7 +4,7 @@
 // be located at ~/Public/profile.php. You must at least provide your real
 // name and you can use the $wall variable for a personal message.
 
-$name = "Real Name";
+$name = "%name%";
 $location = "";
 $scn_user = "";
 $skills = "";
