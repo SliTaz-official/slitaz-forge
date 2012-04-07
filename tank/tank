@@ -108,7 +108,8 @@ case "$1" in
 		fi
 		echo "Adding user: $user"
 		# adduser -s /bin/sh -g "SliTaz User" -G users -h /home/$user $user # for cooking
-		adduser -g "$gecos" $user -G slitaz
+		adduser -g "$gecos" $user -G users
+		addgroup $user slitaz
 		# HG access
 		#echo -n "Hg password: " && read passwd
 		#echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
