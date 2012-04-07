@@ -11,8 +11,8 @@ taskdir="releases/$rel"
 # Show a task.
 show_task() {
 	cat << EOT
+<h4>$TASK</h4>
 <pre>
-Task      : $TASK
 People    : $PEOPLE
 EOT
 	if [ "$WIKI" ]; then
@@ -21,8 +21,6 @@ EOT
 	if [ "$DESC" ]; then
 		cat << EOT
 
-Description
-------------
 $DESC
 EOT
 	fi
