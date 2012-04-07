@@ -62,10 +62,10 @@
 		<ul>
 			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
 			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://labs.slitaz.org/">Laboratories</a></li>
 			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
 			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
+			<li><a href="http://roadmap.slitaz.org/">Roadmap</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->
