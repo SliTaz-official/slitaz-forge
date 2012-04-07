@@ -120,7 +120,7 @@ case "$1" in
 # ~/.profile: Executed by Bourne-compatible login SHells.
 #
 EOF
-		chown -R $user.$user /home/$user
+		#chown -R $user.$user /home/$user
 		echo -e "Done\n" ;;
 	*)
 		usage ;;
