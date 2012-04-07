@@ -10,7 +10,6 @@ install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin \
 		$(DESTDIR)$(PREFIX)/share
 	cp -f tank $(DESTDIR)$(PREFIX)/bin
-	cp -a files/usr/share/tank $(DESTDIR)$(PREFIX)/share
 	cp -a files/var $(DESTDIR)/
 	chmod 0600 $(DESTDIR)/var/spool/cron/crontabs/root
 	cp -a files/etc $(DESTDIR)/
