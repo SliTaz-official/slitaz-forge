@@ -93,8 +93,8 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.
 		(<a href="/stats/awstats.pl?config=people.slitaz.org">stats</a>)</li>
-	<li><a href="http://pro.slitaz.org/">pro.slitaz.org</a> - SliTaz Professional services.
-	(<a href="/stats/awstats.pl?config=pro.slitaz.org">stats</a>)</li>
+	<li><a href="http://slitaz.pro/">slitaz.pro</a> - SliTaz Professional services.
+	(<a href="/stats/awstats.pl?config=slitaz.pro">stats</a>)</li>
 </ul>
 
 <h2>Tank Log</h2>
