@@ -92,28 +92,29 @@ case "$1" in
 				-config=$vh.slitaz.org -update 2>&1 | tee -a $LOGFILE
 		done && echo "" ;;
 	adduser)
-		# On Tank /etc/skel is empty to let tank handle default user
-		# files.
 		echo ""
 		if [ -n "$2" ]; then
 			user=$2
 		else
 			echo -n "User name: " && read user
 		fi
+		if [ -n "$3" ]; then
+			gecos="$3"
+		else
+			echo -n "Real name: " && read name
+		fi
 		if [ -d /home/$user ]; then
 			echo -e "User $user already exists...\n" && exit 1
 		fi
 		echo "Adding user: $user"
 		# adduser -s /bin/sh -g "SliTaz User" -G users -h /home/$user $user # for cooking
-		adduser $user
+		adduser -g "$gecos" $user -G slitaz
 		# HG access
-		echo -n "Hg password: " && read passwd
-		echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
+		#echo -n "Hg password: " && read passwd
+		#echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
 		# Public dir at http://people.slitaz.org/~$user/
-		cp -a /usr/share/tank/Public/* /home/$user/Public
 		sed -i s/'%user%'/"$user"/ /home/$user/Public/index.html
-		# README and empty Shell profile
-		cp -a /usr/share/tank/README /home/$user/
+		# Empty Shell profile
 		cat > /home/$user/.profile << EOF
 # ~/.profile: Executed by Bourne-compatible login SHells.
 #

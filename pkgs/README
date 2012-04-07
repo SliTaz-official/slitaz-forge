@@ -1,0 +1,18 @@
+SliTaz Packages web interface
+================================================================================
+
+
+This is TazPKG web interface with a search engine for packages, files, 
+dependencies and more.
+
+
+TODO
+----
+
+	* Use GET so we can copy past urls from a browser
+	* Gettextise the search engine and use PO files
+	* Add package page with all info and an install link
+	  (tazpkg:// or tazpkg: works in Midori
+
+
+================================================================================

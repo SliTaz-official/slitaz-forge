@@ -15,6 +15,7 @@ SLITAZ_VERSION=$version
 OBJECT=$object
 DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 VERSION=cooking
+
 if [ "$REQUEST_METHOD" = "GET" ]; then
 	SEARCH=""
 	VERBOSE=0
