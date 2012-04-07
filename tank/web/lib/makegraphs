@@ -1,11 +1,11 @@
 #!/bin/sh
-#*/5  * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
+#*/5  * * * * /home/slitaz/www/tank/lib/makegraphs >/dev/null
 
 # RRD database directory
-rrdlog="/home/slitaz/www/tank/rrd"
+rrdlog="/home/slitaz/www/tank/log/rrd"
 
 # Images directory
-rrdgraph="/home/slitaz/www/tank/pics/rrd"
+rrdgraph="/home/slitaz/www/tank/imgages/rrd"
 
 # Colors
 rrdcolors="--color SHADEA#FFFFFF --color SHADEB#FFFFFF --color BACK#FFFFFF" 

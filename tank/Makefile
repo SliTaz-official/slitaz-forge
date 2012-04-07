@@ -3,12 +3,15 @@
 #
 PREFIX?=/usr
 DESTDIR?=
-	
+WEB?=/home/slitaz/www
+
 all:
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin \
-		$(DESTDIR)$(PREFIX)/share
+		$(DESTDIR)$(PREFIX)/share \
+		$(WEB)/tank/log/rrd \
+		$(WEB)/tank/images/rrd
 	cp -f tank $(DESTDIR)$(PREFIX)/bin
 	cp -a files/var $(DESTDIR)/
 	chmod 0600 $(DESTDIR)/var/spool/cron/crontabs/root

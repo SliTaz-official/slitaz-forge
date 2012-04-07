@@ -12,23 +12,7 @@
 </head>
 <body>
 
-<!-- Header -->
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">
-			<img src="images/home.png" alt="[ Home ]" /></a>
-		<a href="http://scn.slitaz.org/">Community</a>
-		<a href="http://doc.slitaz.org/">Doc</a>
-		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://slitaz.pro/">Pro</a>
-		<a href="http://slitaz.spreadshirt.net/">Shop</a>
-		<a href="http://bugs.slitaz.org">Bugs</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
-		<a href="http://cook.slitaz.org/">Cook</a>
-	</div>
-	<h1><a href="http://tank.slitaz.org/">SliTaz Tank</a></h1>
-</div>
+<?php include("lib/html/header.html"); ?>
 
 <!-- Block -->
 <div id="block">
@@ -107,25 +91,7 @@ graphic("net",$eth[0]);
 <!-- End of content -->
 </div>
 
-<!-- Footer -->
-<div id="footer">
-	Copyright &copy; <span class="year"></span>
-	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
-	<a href="http://scn.slitaz.org/">Community</a>
-	<a href="http://doc.slitaz.org/">Doc</a>
-	<a href="http://forum.slitaz.org/">Forum</a>
-	<a href="http://pkgs.slitaz.org/">Packages</a>
-	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
-	<p>
-		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a>
-		<a href="http://www.facebook.com/slitaz">Facebook</a>
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
-		<a href="http://flattr.com/profile/slitaz">Flattr</a>
-	</p>
-</div>
+<?php include("lib/html/footer.html"); ?>
 
 </body>
 </html>

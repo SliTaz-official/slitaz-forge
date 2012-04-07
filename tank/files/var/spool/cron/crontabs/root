@@ -2,7 +2,7 @@
 #
 
 # Update http://tank.slitaz.org/graphs.php pictures
-*/5 * * * * /home/slitaz/www/tank/bin/makegraphs >/dev/null
+*/5 * * * * /home/slitaz/www/tank/lib/makegraphs >/dev/null
 
 # Check Internet access
 #*/5 * * * * /usr/bin/chkwan
