@@ -105,16 +105,20 @@ case "$1" in
 		else
 			echo -n "Real name: " && read name
 		fi
+		if [ -n "$4" ]; then
+			pass=$4
+		else
+			echo -n "Password: " && read pass
+		fi
 		if [ -d /home/$user ]; then
 			echo -e "User $user already exists...\n" && exit 1
 		fi
 		echo "Adding user: $user"
-		# adduser -s /bin/sh -g "SliTaz User" -G users -h /home/$user $user # for cooking
-		adduser -g "$gecos" $user -G users
+		adduser -D -g "$gecos" $user -G users
+		echo $user:$pass | chpasswd --md5
 		addgroup $user slitaz
 		# HG access
-		#echo -n "Hg password: " && read passwd
-		#echo "$user:$passwd" >> /etc/lighttpd/plain.passwd
+		#echo "$user:$pass" >> /etc/lighttpd/plain.passwd
 		# Public dir at http://people.slitaz.org/~$user/
 		sed -i s/'%user%'/"$user"/ /home/$user/Public/index.html
 		sed -i s/'%name%'/"$gecos"/ /home/$user/Public/profile.php
