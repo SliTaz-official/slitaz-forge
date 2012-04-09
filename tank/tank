@@ -74,7 +74,9 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
-		cp -a cook/* $WWW/cook/undigest
+		# we have symlinks to repo
+		#cp -a cook/* $WWW/cook/undigest
+		#cp -a cook/* $WWW/cook/stable
 		echo "" ;;
 	up-roadmap)
 		# Update Roadmap Web interface
