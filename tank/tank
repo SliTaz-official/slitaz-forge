@@ -2,7 +2,7 @@
 #
 # Tank - Admin Tank, backup, update and give stats.
 #
-# (C) 2011 SliTaz - GNU General Public License.
+# (C) 2012 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
 
@@ -57,7 +57,7 @@ case "$1" in
 		echo -e "\nUpdating: pro.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
-		rm -rf $WWW/pro/*
+		rm -rf $WWW/pro/images
 		cp -a pro/* $WWW/pro
 		echo "" ;;
 	up-boot)
