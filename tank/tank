@@ -57,8 +57,8 @@ case "$1" in
 		echo -e "\nUpdating: pro.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
-		rm -rf $WWW/pro/images
-		cp -a pro/* $WWW/pro
+		rm -rf $WWW/pro/web/*
+		cp -a pro/* $WWW/pro/web
 		echo "" ;;
 	up-boot)
 		# Update Web Boot interface
