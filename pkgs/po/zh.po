@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tazpkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 03:23+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: lib\n"
+
+#: search.sh:134
+msgid "Package"
+msgstr "软件包："
+
+#: search.sh:135
+msgid "Description"
+msgstr "描述"
+
+#: search.sh:136
+msgid "Tags"
+msgstr "标签"
+
+#: search.sh:137
+msgid "Receipt"
+msgstr ""
+
+#: search.sh:138
+msgid "Depends"
+msgstr "依赖"
+
+#: search.sh:139
+msgid "Build depends"
+msgstr ""
+
+#: search.sh:140
+msgid "File"
+msgstr "文件"
+
+#: search.sh:141
+msgid "File list"
+msgstr "文件列表"
+
+#: search.sh:142
+msgid "common files"
+msgstr ""
+
+#: search.sh:146
+msgid "cooking"
+msgstr "开发版"
+
+#: search.sh:150
+msgid "tiny"
+msgstr ""
+
+#: search.sh:151
+msgid "undigest"
+msgstr ""
+
+#: search.sh:153
+msgid "Search"
+msgstr ""
+
+#: search.sh:171
+#, sh-format
+msgid "$PKGS package"
+msgid_plural "$PKGS packages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:172
+#, sh-format
+msgid "and $FILES file in $SLITAZ_VERSION database"
+msgid_plural "and $FILES files in $SLITAZ_VERSION database"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:179
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr ""
+
+#: search.sh:287
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr ""
+
+#: search.sh:335
+#, sh-format
+msgid "No package $SEARCH"
+msgstr ""
+
+#: search.sh:378
+#: search.sh:390
+msgid "Search for packages"
+msgstr ""
+
+#: search.sh:397
+msgid "Depends loops"
+msgstr "依赖 loops"
+
+#: search.sh:412
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr ""
+
+#: search.sh:423
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr ""
+
+#: search.sh:432
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr ""
+
+#: search.sh:445
+msgid "Build depends loops"
+msgstr ""
+
+#: search.sh:461
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr ""
+
+#: search.sh:469
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr ""
+
+#: search.sh:482
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr ""
+
+#: search.sh:505
+#: search.sh:528
+#: search.sh:545
+#: search.sh:553
+#: search.sh:566
+#: search.sh:578
+#: search.sh:590
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr ""
+
+#: search.sh:596
+msgid "description"
+msgstr ""
+
+#: search.sh:608
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr ""
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages — Search $SEARCH"
+msgstr ""
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr ""
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr ""
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr ""
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr ""
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr ""
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr ""
+
+#: lib/header.sh:26
+msgid "Bugs"
+msgstr ""
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr ""
+

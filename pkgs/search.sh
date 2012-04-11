@@ -1,9 +1,10 @@
 #!/bin/sh
 # Tiny CGI search engine for SliTaz packages on http://pkgs.slitaz.org/
 # Christophe Lincoln <pankso@slitaz.org>
+# Aleksej Bobylev <al.bobylev@gmail.com> - i18n
 #
 
-renice 20
+#renice 20
 read QUERY_STRING
 for i in $(echo $QUERY_STRING | sed 's/&/ /g'); do
 	i=$(httpd -d $i)
@@ -15,6 +16,13 @@ SLITAZ_VERSION=$version
 OBJECT=$object
 DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 VERSION=cooking
+SCRIPT_NAME="search.sh"
+
+
+# Internationalization
+. /usr/bin/gettext.sh
+TEXTDOMAIN='tazpkg-web'
+export TEXTDOMAIN
 
 if [ "$REQUEST_METHOD" = "GET" ]; then
 	SEARCH=""
@@ -71,227 +79,54 @@ if [ "$REQUEST_METHOD" = "GET" ]; then
 	[ "$SEARCH" == "." ] && SEARCH=
 fi
 
-case "$OBJECT" in
-File)	 	selected_file="selected";;
-Desc)	 	selected_desc="selected";;
-Tags)	 	selected_tags="selected";;
-Receipt) 	selected_receipt="selected";;
-File_list) 	selected_file_list="selected";;
-Depends)	selected_depends="selected";;
-BuildDepends)	selected_build_depends="selected";;
-FileOverlap)	selected_overlap="selected";;
-esac
-
-case "$SLITAZ_VERSION" in
-tiny)		selected_tiny="selected";;
-1.0)	 	selected_1="selected";;
-2.0)	 	selected_2="selected";;
-stable)		selected_stable="selected";;
-undigest)	selected_undigest="selected";;
-esac
-
-# unescape query
-SEARCH="$(echo $SEARCH | sed 's/%2B/+/g' | sed 's/%3A/:/g' | sed 's|%2F|/|g')"
-
+# preferred language
 if [ -z "$LANG" ]; then
-	for i in $(echo $HTTP_ACCEPT_LANGUAGE | sed 's/[,;]/ /g'); do
+	for i in $(echo $HTTP_ACCEPT_LANGUAGE | sed 's/[,;-_]/ /g'); do
 		case "$i" in
-		fr|de|pt|ru|cn)
-			LANG=$i
+		de*|fr*|pt*|ru*)
+			LANG=${i}
 			break;;
 		esac
 	done
 fi
 
-# --- Search form
-_package="Package"
-_desc="Description"
-_tags="Tags"
-_receipt="Receipt"
-_depends="Depends"
-_bdepends="Build depends"
-_file="File"
-_file_list="File list"
-_overlap="common files"
-_cooking="cooking"
-_search="Search"
-# --- Titles
-_noresult="No package $SEARCH"
-_search_title="Search"
-_depends_loops="Depends loops"
-_deptree="Dependency tree for: $SEARCH"
-_deptree_suggested="$_deptree (SUGGESTED)"
-_rdeptree="Reverse dependency tree for: $SEARCH"
-_bdepends_loops="Build depends loops"
-_bdeplist="$SEARCH needs these packages to be built"
-_rbdeplist="Packages who need $SEARCH to be built"
-_overloading="Theses packages may overload files of $SEARCH"
-_result="Result for: $SEARCH"
-_result_providing="$_result (package providing %VPKG%)"
-# --- Messages
-_main_libs_warn="glibc-base and gcc-lib-base are implicit dependencies, <b>every</b> package is supposed to depend on them."
-_description="description"
-_pkgs_report="%PKGS% packages and %FILES% files in $SLITAZ_VERSION database"
-# --- HTML Header
-_h_title="SliTaz Packages - Search %SEARCH%"
-
+# lang substitution
 case "$LANG" in
-
-fr)	_package="Paquet"
-#	_desc=
-#	_tags=
-	_receipt="Recette"
-	_depends="D&eacute;pendances"
-	_bdepends="Fabrication"
-	_file="Fichier"
-	_file_list="Liste des fichiers"
-	_overlap="Fichiers communs"
-#	_cooking=
-	_search="Recherche"
-
-	_noresult="Paquet $SEARCH introuvable"
-	_search_title="Search"
-	_depends_loops="D&eacute;pendances sans fin"
-	_deptree="Arbre des d&eacute;pendances de $SEARCH"
-	_deptree_suggested="$_deptree (SUGGESTED)"
-	_rdeptree="Arbre invers&eacute; des d&eacute;pendances de $SEARCH"
-	_bdepends_loops="Fabrication sans fin"
-	_bdeplist="$SEARCH a besion de ces paquets pour &ecirc;tre fabriqu&eacute;"
-	_rbdeplist="Paquets ayant besion de $SEARCH pour &ecirc;tre fabriqu&eacute;s"
-	_overloading="Paquets pouvant &eacute;craser des fichiers de $SEARCH"
-	_result="Recherche de : $SEARCH"
-	_result_providing="$_result (package providing %VPKG%)"
-
-	_main_libs_warn="	glibc-base and gcc-lib-base are implicit dependencies,
-	<b>every</b> package is supposed to depend on them."
-	_description="description"
-	_pkgs_report="%PKGS% packages and %FILES% files in $SLITAZ_VERSION database"
-	;;
-
-de)	_package="Paket"
-	_desc="Beschreibung"
-#	_tags=
-#	_receipt=
-	_depends="Abhängigkeiten"
-#	_bdepends=
-	_file="Datei"
-	_file_list="Datei liste"
-#	_overlap=
-	_cooking="Cooking"
-	_search="Suche"
-
-	_noresult="Kein Paket für $SEARCH"
-	_search_title="Search"
-	_depends_loops="Abhängigkeiten loops"
-	_deptree="Abhängigkeiten von: $SEARCH"
-	_deptree_suggested="$_deptree (SUGGESTED)"
-	_rdeptree="Abhängigkeit für: $SEARCH"
-#	_bdepends_loops=
-#	_bdeplist=
-#	_rbdeplist=
-#	_overloading=
-	_result="Resultate für : $SEARCH"
-	_result_providing="$_result (package providing %VPKG%)"
-
-#	_main_libs_warn=
-#	_description=
-#	_pkgs_report=
-	;;
-
-pt)	_package="Pacote"
-	_desc="Descrição"
-#	_tags=
-#	_receipt=
-	_depends="Dependências"
-#	_bdepends=
-	_file="Arquivo"
-	_file_list="Arquivo lista"
-#	_overlap=
-#	_cooking=
-	_search="Buscar"
-
-	_noresult="Sem resultado: $SEARCH"
-#	_search_title=
-	_depends_loops="Dependências loops"
-	_deptree="Árvore de dependências para: $SEARCH"
-	_deptree_suggested="$_deptree (SUGGESTED)"
-	_rdeptree="Árvore de dependências reversa para: $SEARCH"
-#	_bdepends_loops=
-#	_bdeplist=
-#	_rbdeplist=
-#	_overloading=
-	_result="Resultado para : $SEARCH"
-	_result_providing="$_result (package providing %VPKG%)"
-
-#	_main_libs_warn=
-#	_description=
-#	_pkgs_report=
-	;;
-
-cn)	_package="软件包："
-	_desc="描述"
-	_tags="标签"
-#	_receipt=
-	_depends="依赖"
-#	_bdepends=
-	_file="文件"
-	_file_list="文件列表"
-#	_overlap=
-	_cooking="开发版"
-#	_search=
-
-#	_noresult=
-#	_search_title=
-	_depends_loops="依赖 loops"
-#	_deptree=
-#	_deptree_suggested=
-#	_rdeptree=
-#	_bdepends_loops=
-#	_bdeplist=
-#	_rbdeplist=
-#	_overloading=
-#	_result=
-#	_result_providing=
-
-#	_main_libs_warn=
-#	_description=
-#	_pkgs_report=
-#	_stable="稳定版"
-	;;
-
-ru)	_package="пакет"
-	_desc="описание"
-	_tags="теги"
-	_receipt="рецепт"
-	_depends="зависимости"
-	_bdepends="зависимости сборки"
-	_file="файл"
-	_file_list="список файлов"
-	_overlap="общие файлы"
-#	_cooking=
-	_search="Искать"
-
-	_noresult="Пакет $SEARCH отсутствует"
-	_search_title="Поиск"
-	_depends_loops="Циклические зависимости"
-	_deptree="Дерево зависимостей для $SEARCH"
-	_deptree_suggested="Дерево необязательных зависимостей для $SEARCH"
-	_rdeptree="Обратное дерево зависимостей для $SEARCH"
-	_bdepends_loops="Циклические зависимости сборки"
-	_bdeplist="Следующие пакеты нужны, чтобы собрать $SEARCH"
-	_rbdeplist="$SEARCH нужен, чтобы собрать следующие пакеты"
-	_overloading="Следующие пакеты могут заменить файлы $SEARCH"
-	_result="Результаты поиска $SEARCH"
-	_result_providing="$_result (пакеты, предлагающие %VPKG%)"
-
-	_main_libs_warn="glibc-base и gcc-lib-base являются неявными зависимостями <b>любого</b> пакета."
-	_description="описание"
-	_pkgs_report="%PKGS% пакетов и %FILES% файлов в базе данных $SLITAZ_VERSION"
-	;;
-
-*)	LANG="en";;
-
+de*)	LANG="de_DE";;
+es*)	LANG="es_ES";;
+fr*)	LANG="fr_FR";;
+it*)	LANG="it_IT";;
+pt*)	LANG="pt_BR";;
+ru*)	LANG="ru_RU";;
 esac
+
+export LANG
+
+
+case "$OBJECT" in
+	File)	 	selected_file="selected";;
+	Desc)	 	selected_desc="selected";;
+	Tags)	 	selected_tags="selected";;
+	Receipt) 	selected_receipt="selected";;
+	File_list) 	selected_file_list="selected";;
+	Depends)	selected_depends="selected";;
+	BuildDepends)	selected_build_depends="selected";;
+	FileOverlap)	selected_overlap="selected";;
+esac
+
+case "$SLITAZ_VERSION" in
+	tiny)		selected_tiny="selected";;
+	1.0)		selected_1="selected";;
+	2.0)		selected_2="selected";;
+	3.0)		selected_3="selected";;
+	stable)		selected_stable="selected";;
+	undigest)	selected_undigest="selected";;
+esac
+
+# unescape query
+SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
+
+
 
 WOK=/home/slitaz/$SLITAZ_VERSION/wok
 PACKAGES_REPOSITORY=/home/slitaz/$SLITAZ_VERSION/packages
@@ -302,70 +137,71 @@ echo
 # Search form
 search_form()
 {
+
 	cat << _EOT_
 
 <div style="text-align: center; padding: 20px;">
-<form method="post" action="$(basename $SCRIPT_NAME)">
+<form method="get" action="$SCRIPT_NAME">
 	<input type="hidden" name="lang" value="$LANG" />
 	<select name="object">
-		<option value="Package">$_package</option>
-		<option $selected_desc value="Desc">$_desc</option>
-		<option $selected_tags value="Tags">$_tags</option>
-		<option $selected_receipt value="Receipt">$_receipt</option>
-		<option $selected_depends value="Depends">$_depends</option>
-		<option $selected_build_depends value="BuildDepends">$_bdepends</option>
-		<option $selected_file value="File">$_file</option>
-		<option $selected_file_list value="File_list">$_file_list</option>
-		<option $selected_overlap value="FileOverlap">$_overlap</option>
+		<option value="Package">$(gettext "Package")</option>
+		<option $selected_desc value="Desc">$(gettext "Description")</option>
+		<option $selected_tags value="Tags">$(gettext "Tags")</option>
+		<option $selected_receipt value="Receipt">$(gettext "Receipt")</option>
+		<option $selected_depends value="Depends">$(gettext "Depends")</option>
+		<option $selected_build_depends value="BuildDepends">$(gettext "Build depends")</option>
+		<option $selected_file value="File">$(gettext "File")</option>
+		<option $selected_file_list value="File_list">$(gettext "File list")</option>
+		<option $selected_overlap value="FileOverlap">$(gettext "common files")</option>
 	</select>
 	<input type="text" name="query" size="20" value="$SEARCH" />
 	<select name="version">
-		<option value="cooking">$_cooking</option>
-		<option $selected_stable value="stable">3.0</option>
+		<option value="cooking">$(gettext "cooking")</option>
+		<option $selected_stable value="stable">4.0</option>
+		<option $selected_3 value="3.0">3.0</option>
 		<option $selected_2 value="2.0">2.0</option>
 		<option $selected_1 value="1.0">1.0</option>
-		<option $selected_tiny value="tiny">tiny</option>
-		<option $selected_undigest value="undigest">undigest</option>
+		<option $selected_tiny value="tiny">$(gettext "tiny")</option>
+		<option $selected_undigest value="undigest">$(gettext "undigest")</option>
 	</select>
-	<input type="submit" name="search" value="$_search" />
+	<input type="submit" value="$(gettext 'Search')" />
 </form>
 </div>
 _EOT_
 }
 
-# xHTML Header.
+# xHTML5 Header.
 xhtml_header() {
-	header=$(cat lib/header.html | sed s/'%SEARCH%'/"$SEARCH"/)
-	# header i18n
-	case "$LANG" in
-	pt)
-		header=$(echo "$header" | sed 's/SliTaz Packages/SliTaz Pacotes/g;s/Community/Comunidade/;s/Forum/Fórum');;
-	ru)
-		header=$(echo "$header" | sed 's/SliTaz Packages/Пакеты SliTaz/g;s/Home/Сайт/;s/Community/Сообщество/;s/Doc/Документация/;s/Forum/Форум/;s/Pro/PRO/;s/Shop/Магазин/;s/Bugs/Баг-трекер/');;
-	esac
-	echo "$header"
+	. lib/header.sh
 }
 
 # xHTML Footer.
 xhtml_footer() {
-# Is it not too hard? (unlzma etc...) -- lexeii
-PKGS=$(ls $WOK/ | wc -l)
-FILES=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l)
+	PKGS=$(ls $WOK/ | wc -l)
+	FILES=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l)
 	cat << _EOT_
 
 <center>
-<i>$(echo $_pkgs_report | sed s/'%PKGS%'/"$PKGS"/ | sed s/'%FILES%'/"$FILES"/)</i>
+<i>$(eval_ngettext "\$PKGS package" "\$PKGS packages" $PKGS)
+$(eval_ngettext "and \$FILES file in \$SLITAZ_VERSION database" "and \$FILES files in \$SLITAZ_VERSION database" $FILES)</i>
 </center>
 
+<!-- End of content -->
+</div>
+
+<!-- Footer -->
+<div id="footer">$(gettext "SliTaz Packages")</div>
+
+</body>
+</html>
 _EOT_
-	cat lib/footer.html
 }
 
 installed_size()
 {
-[ $VERBOSE -gt 0 ] &&
-grep -A 3 "^$1\$" $PACKAGES_REPOSITORY/packages.txt | \
-       grep installed | sed 's/.*(\(.*\) installed.*/(\1) /'
+	[ $VERBOSE -gt 0 ] &&
+	grep -A 3 "^$1\$" $PACKAGES_REPOSITORY/packages.txt | \
+		grep installed | sed 's/.*(\(.*\) installed.*/(\1) /'
 }
 
 package_entry()
@@ -461,7 +297,9 @@ rdep_scan()
 {
 SEARCH=$1
 case "$SEARCH" in
-glibc-base|gcc-lib-base) echo $_main_libs_warn
+glibc-base|gcc-lib-base)
+	$(gettext "	glibc-base and gcc-lib-base are implicit dependencies,
+	<b>every</b> package is supposed to depend on them."); echo
 	return;;
 esac
 for i in $WOK/* ; do
@@ -508,7 +346,7 @@ package_exist()
 	[ -f $WOK/$1/receipt ] && return 0
 	cat << _EOT_
 
-<h3>$_noresult</h3>
+<h3>$(eval_gettext "No package \$SEARCH")</h3>
 <pre>
 _EOT_
 	return 1
@@ -551,7 +389,7 @@ if [ "$REQUEST_METHOD" != "POST" ]; then
 <div id="content">
 <a name="content"></a>
 
-<h2>$_search_title</h2>
+<h2>$(gettext "Search for packages")</h2>
 _EOT_
 	search_form
 	xhtml_footer
@@ -563,14 +401,14 @@ else
 <div id="content">
 <a name="content"></a>
 
-<h2>$_search_title</h2>
+<h2>$(gettext "Search for packages")</h2>
 _EOT_
 	search_form
 	if [ "$OBJECT" = "Depends" ]; then
 		if [ -z "$SEARCH" ]; then
 			cat << _EOT_
 
-<h3>$_depends_loops</h3>
+<h3>$(gettext "Depends loops")</h3>
 <pre>
 _EOT_
 			for i in $WOK/*/receipt; do
@@ -585,7 +423,7 @@ _EOT_
 		elif package_exist $SEARCH ; then
 			cat << _EOT_
 
-<h3>$_deptree</h3>
+<h3>$(eval_gettext "Dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
 			ALL_DEPS=""
@@ -596,7 +434,7 @@ _EOT_
 				cat << _EOT_
 </pre>
 
-<h3>$_deptree_suggested</h3>
+<h3>$(eval_gettext "Dependency tree for: \$SEARCH (SUGGESTED)")</h3>
 <pre>
 _EOT_
 				ALL_DEPS=""
@@ -605,7 +443,7 @@ _EOT_
 			cat << _EOT_
 </pre>
 
-<h3>$_rdeptree</h3>
+<h3>$(eval_gettext "Reverse dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
 			ALL_DEPS=""
@@ -618,7 +456,7 @@ _EOT_
 		if [ -z "$SEARCH" ]; then
 			cat << _EOT_
 
-<h3>$_bdepends_loops</h3>
+<h3>$(gettext "Build depends loops")</h3>
 <pre>
 _EOT_
 			for i in $WOK/*/receipt; do
@@ -634,7 +472,7 @@ _EOT_
 		elif package_exist $SEARCH ; then
 			cat << _EOT_
 
-<h3>$_bdeplist</h3>
+<h3>$(eval_gettext "\$SEARCH needs these packages to be built")</h3>
 <pre>
 _EOT_
 			ALL_DEPS=""
@@ -642,7 +480,7 @@ _EOT_
 			cat << _EOT_
 </pre>
 
-<h3>$_rbdeplist</h3>
+<h3>$(eval_gettext "Packages who need \$SEARCH to be built")</h3>
 <pre>
 _EOT_
 			ALL_DEPS=""
@@ -655,7 +493,7 @@ _EOT_
 		if package_exist $SEARCH ; then
 			cat << _EOT_
 
-<h3>$_overloading</h3>
+<h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
 <pre>
 _EOT_
 			( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
@@ -678,7 +516,7 @@ _EOT_
 	elif [ "$OBJECT" = "File" ]; then
 		cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 		last=""
@@ -701,7 +539,7 @@ _EOT_
 		if package_exist $SEARCH; then
 			cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 			last=""
@@ -718,7 +556,7 @@ _EOT_
 		if [ -f $WOK/$SEARCH/description.txt ]; then
 			cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 $(htmlize < $WOK/$SEARCH/description.txt)
 </pre>
@@ -726,7 +564,7 @@ _EOT_
 		else
 			cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 			last=""
@@ -739,7 +577,7 @@ _EOT_
 	elif [ "$OBJECT" = "Tags" ]; then
 		cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 		last=""
@@ -751,7 +589,7 @@ _EOT_
 	elif [ "$OBJECT" = "Receipt" ]; then
 		package_exist $SEARCH && cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 $(if [ -f  $WOK/$SEARCH/taz/*/receipt ]; then
 	cat $WOK/$SEARCH/taz/*/receipt
@@ -763,13 +601,13 @@ _EOT_
 	else
 		cat << _EOT_
 
-<h3>$_result</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 		for pkg in `ls $WOK/ | grep "$SEARCH"`
 		do
 			. $WOK/$pkg/receipt
-			DESC=" <a href=\"?desc=$pkg\">$_description</a>"
+			DESC=" <a href=\"?desc=$pkg\">$(gettext description)</a>"
 			[ -f $WOK/$pkg/description.txt ] || DESC=""
 			cat << _EOT_
 $(package_entry)$DESC
@@ -781,7 +619,7 @@ _EOT_
 	cat << _EOT_
 </pre>
 
-<h3>$(echo $_result_providing | sed s/'%VPKG%'/"$vpkg"/)</h3>
+<h3>$(eval_gettext "Result for: \$SEARCH (package providing \$vpkg)")</h3>
 <pre>
 _EOT_
 			for pkg in $(grep $vpkg= $equiv | sed "s/$vpkg=//"); do

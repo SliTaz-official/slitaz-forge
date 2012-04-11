@@ -1,0 +1,210 @@
+# Russian translation of Tazpkg Web.
+# Copyright (C) 2012 www.slitaz.org
+# This file is distributed under the same license as the Tazpkg Web package.
+# Aleksej Bobylev <al.bobylev@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tazpkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 03:23+0300\n"
+"PO-Revision-Date: 2012-04-11 01:02+0300\n"
+"Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
+"Language-Team: \n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: search.sh:134
+msgid "Package"
+msgstr "пакет"
+
+#: search.sh:135
+msgid "Description"
+msgstr "описание"
+
+#: search.sh:136
+msgid "Tags"
+msgstr "теги"
+
+#: search.sh:137
+msgid "Receipt"
+msgstr "рецепт"
+
+#: search.sh:138
+msgid "Depends"
+msgstr "зависимости"
+
+#: search.sh:139
+msgid "Build depends"
+msgstr "зависимости сборки"
+
+#: search.sh:140
+msgid "File"
+msgstr "файл"
+
+#: search.sh:141
+msgid "File list"
+msgstr "список файлов"
+
+#: search.sh:142
+msgid "common files"
+msgstr "общие файлы"
+
+#: search.sh:146
+msgid "cooking"
+msgstr "Cooking"
+
+#: search.sh:150
+msgid "tiny"
+msgstr "Tiny"
+
+#: search.sh:151
+msgid "undigest"
+msgstr "неофициальный"
+
+#: search.sh:153
+msgid "Search"
+msgstr "Искать"
+
+#: search.sh:171
+#, sh-format
+msgid "$PKGS package"
+msgid_plural "$PKGS packages"
+msgstr[0] "$PKGS пакет"
+msgstr[1] "$PKGS пакета"
+msgstr[2] "$PKGS пакетов"
+
+#: search.sh:172
+#, sh-format
+msgid "and $FILES file in $SLITAZ_VERSION database"
+msgid_plural "and $FILES files in $SLITAZ_VERSION database"
+msgstr[0] "и $FILES файл в базе данных $SLITAZ_VERSION"
+msgstr[1] "и $FILES файла в базе данных $SLITAZ_VERSION"
+msgstr[2] "и $FILES файлов в базе данных $SLITAZ_VERSION"
+
+#: search.sh:179
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "Пакеты SliTaz"
+
+#: search.sh:287
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr ""
+"\tglibc-base и gcc-lib-base являются неявными зависимостями\n"
+"\t<b>любого</b> пакета."
+
+#: search.sh:335
+#, sh-format
+msgid "No package $SEARCH"
+msgstr "Пакет $SEARCH отсутствует"
+
+#: search.sh:378
+#: search.sh:390
+msgid "Search for packages"
+msgstr "Поиск по пакетам"
+
+#: search.sh:397
+msgid "Depends loops"
+msgstr "Циклические зависимости"
+
+#: search.sh:412
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr "Дерево зависимостей для $SEARCH"
+
+#: search.sh:423
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr "Дерево необязательных зависимостей для $SEARCH"
+
+#: search.sh:432
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr "Обратное дерево зависимостей для $SEARCH"
+
+#: search.sh:445
+msgid "Build depends loops"
+msgstr "Циклические зависимости сборки"
+
+#: search.sh:461
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr "Следующие пакеты нужны, чтобы собрать $SEARCH"
+
+#: search.sh:469
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr "$SEARCH нужен, чтобы собрать следующие пакеты"
+
+#: search.sh:482
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr "Следующие пакеты могут заменить файлы $SEARCH"
+
+#: search.sh:505
+#: search.sh:528
+#: search.sh:545
+#: search.sh:553
+#: search.sh:566
+#: search.sh:578
+#: search.sh:590
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr "Результаты поиска $SEARCH"
+
+#: search.sh:596
+msgid "description"
+msgstr "описание"
+
+#: search.sh:608
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr "Результаты поиска $SEARCH (пакеты, предлагающие $vpkg)"
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages — Search $SEARCH"
+msgstr "Пакеты SliTaz — поиск $SEARCH"
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr "Сайт"
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr "Сообщество"
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr "Документация"
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr "Форум"
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr "PRO"
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr "Магазин"
+
+#: lib/header.sh:26
+msgid "Bugs"
+msgstr "Баг-трекер"
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr "Hg"
+
