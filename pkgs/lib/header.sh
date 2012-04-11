@@ -3,7 +3,7 @@ cat << _EOF_
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>$(eval_gettext "SliTaz Packages — Search \$SEARCH")</title>
+	<title>$(eval_gettext "SliTaz Packages - Search \$SEARCH")</title>
 	<meta name="description" content="slitaz packages search" />
 	<meta name="keywords" lang="en" content="SliTaz, Tazpkg" />
 	<meta name="robots" content="index, follow, all" />
