@@ -48,7 +48,8 @@ case "$1" in
 		cd $REPOS/slitaz-forge && hg pull -u
 		echo "Copying pkgs to: $WWW/pkgs"
 		cp -a pkgs/*.* $WWW/pkgs 
-		cp -a pkg/lib $WWW/pkgs ;;
+		cp -a pkgs/lib $WWW/pkgs 
+		cd pkgs && make install-msg ;;
 	*)
 		usage ;;
 esac
