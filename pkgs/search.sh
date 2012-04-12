@@ -93,10 +93,10 @@ do
 	fi
 	case "$lang" in
 		en) lang="C" ;;
-		de) lang="de_DE";;
-		es) lang="es_ES";;
+		de) lang="de_DE" ;;
+		es) lang="es_ES" ;;
 		fr) lang="fr_FR" ;;
-		it) lang="it_IT";;
+		it) lang="it_IT" ;;
 		pt) lang="pt_BR" ;;
 		ru) lang="ru_RU" ;;
 		zh) lang="zh_TW" ;;
@@ -388,7 +388,7 @@ case " $(GET) " in
 	*\ debug\ *)
 		xhtml_header
 		echo "<h2>Debug info</h2>"
-		echo "<p>Auto detected language: $LANG</p>"
+		echo "<p>Auto detected language: LANG=$LANG (lang=$lang)</p>"
 		echo '<pre>'
 		httpinfo
 		echo '</pre>'
