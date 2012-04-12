@@ -103,7 +103,9 @@ do
 	esac
 done
 unset IFS
-export LANG=$lang LC_ALL=$lang
+LANG=$lang
+LC_ALL=$lang
+export LANG LC_ALL
 
 case "$OBJECT" in
 	File)	 	selected_file="selected";;
