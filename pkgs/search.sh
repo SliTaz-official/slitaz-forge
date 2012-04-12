@@ -89,22 +89,21 @@ for lang in $HTTP_ACCEPT_LANGUAGE
 do
 	lang=${lang%;*} lang=${lang# } lang=${lang%-*}
 	case "$lang" in
-		en) lang="C" ;;
-		de) lang="de_DE" ;;
-		es) lang="es_ES" ;;
-		fr) lang="fr_FR" ;;
-		it) lang="it_IT" ;;
-		pt) lang="pt_BR" ;;
-		ru) lang="ru_RU" ;;
-		zh) lang="zh_TW" ;;
+		en) LANG="C" ;;
+		de) LANG="de_DE" ;;
+		es) LANG="es_ES" ;;
+		fr) LANG="fr_FR" ;;
+		it) LANG="it_IT" ;;
+		pt) LANG="pt_BR" ;;
+		ru) LANG="ru_RU" ;;
+		zh) LANG="zh_TW" ;;
 	esac
 	if echo "$po" | fgrep -q "$lang"; then
 		break
 	fi
 done
 unset IFS
-
-export LANG=$lang LC_ALL=$lang
+export LANG LC_ALL=$LANG
 
 case "$OBJECT" in
 	File)	 	selected_file="selected";;
@@ -139,7 +138,6 @@ echo
 # Search form
 search_form()
 {
-
 	cat << _EOT_
 
 <div style="text-align: center; padding: 20px;">
