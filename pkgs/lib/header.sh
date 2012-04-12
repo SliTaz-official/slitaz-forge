@@ -29,4 +29,7 @@ cat << _EOF_
 	<h1><a href="./">$(gettext "SliTaz Packages")</a></h1>
 </div>
 
+<!-- Content -->
+<div id="content">
+
 _EOF_

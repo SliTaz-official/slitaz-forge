@@ -3,8 +3,10 @@
 # Christophe Lincoln <pankso@slitaz.org>
 # Aleksej Bobylev <al.bobylev@gmail.com> - i18n
 #
+. /usr/lib/slitaz/httphelper.sh
 
-#renice 20
+# This can be removed when we use $(GET var) PHP a like syntaxe from
+# httphelper.sh
 read QUERY_STRING
 for i in $(echo $QUERY_STRING | sed 's/&/ /g'); do
 	i=$(httpd -d $i)
@@ -17,7 +19,6 @@ OBJECT=$object
 DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 VERSION=cooking
 SCRIPT_NAME="search.sh"
-
 
 # Internationalization
 . /usr/bin/gettext.sh
@@ -102,7 +103,6 @@ esac
 
 export LANG
 
-
 case "$OBJECT" in
 	File)	 	selected_file="selected";;
 	Desc)	 	selected_desc="selected";;
@@ -126,11 +126,10 @@ esac
 # unescape query
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
 
-
-
 WOK=/home/slitaz/$SLITAZ_VERSION/wok
 PACKAGES_REPOSITORY=/home/slitaz/$SLITAZ_VERSION/packages
 
+# --> header function from httphelper
 echo "Content-type: text/html"
 echo
 
@@ -380,29 +379,27 @@ while read pkg file; do
 done
 }
 
+#
+# Handle GET requests
+#
+case " $(GET) " in
+	*\ debug\ *)
+		xhtml_header
+		echo "<h2>Debug info</h2>"
+		echo "<p>LANG: $LANK</p>"
+		httpinfo
+		xhtml_footer 
+		exit 0 ;;
+esac
+
 # Display search form and result if requested.
 if [ "$REQUEST_METHOD" != "POST" ]; then
-	xhtml_header
-	cat << _EOT_
-
-<!-- Content -->
-<div id="content">
-<a name="content"></a>
-
-<h2>$(gettext "Search for packages")</h2>
-_EOT_
+	echo "<h2>$(gettext "Search for packages")</h2>"
 	search_form
 	xhtml_footer
 else
 	xhtml_header
-	cat << _EOT_
-
-<!-- Content -->
-<div id="content">
-<a name="content"></a>
-
-<h2>$(gettext "Search for packages")</h2>
-_EOT_
+	echo "$(gettext "Search for packages")</h2>"
 	search_form
 	if [ "$OBJECT" = "Depends" ]; then
 		if [ -z "$SEARCH" ]; then
