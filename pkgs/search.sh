@@ -388,7 +388,7 @@ case " $(GET) " in
 	*\ debug\ *)
 		xhtml_header
 		echo "<h2>Debug info</h2>"
-		echo "<p>LANG: $LANK</p>"
+		echo "<p>Auto detected language: $LANG</p>"
 		echo '<pre>'
 		httpinfo
 		echo '</pre>'
