@@ -20,6 +20,9 @@ DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 VERSION=cooking
 SCRIPT_NAME="search.sh"
 
+# Internal variables
+po="de fr pt ru zh"
+
 # Internationalization
 . /usr/bin/gettext.sh
 TEXTDOMAIN='tazpkg-web'
@@ -80,28 +83,27 @@ if [ "$REQUEST_METHOD" = "GET" ]; then
 	[ "$SEARCH" == "." ] && SEARCH=
 fi
 
-# preferred language
-if [ -z "$LANG" ]; then
-	for i in $(echo $HTTP_ACCEPT_LANGUAGE | sed 's/[,;-_]/ /g'); do
-		case "$i" in
-		de*|fr*|pt*|ru*)
-			LANG=${i}
-			break;;
-		esac
-	done
-fi
-
-# lang substitution
-case "$LANG" in
-de*)	LANG="de_DE";;
-es*)	LANG="es_ES";;
-fr*)	LANG="fr_FR";;
-it*)	LANG="it_IT";;
-pt*)	LANG="pt_BR";;
-ru*)	LANG="ru_RU";;
-esac
-
-export LANG
+# Content negotiation for Gettext
+IFS=","
+for lang in $HTTP_ACCEPT_LANGUAGE
+do
+	lang=${lang%;*} lang=${lang# } lang=${lang%-*}
+	if echo "$po" | fgrep -q "$lang"; then
+		break
+	fi
+	case "$lang" in
+		en) lang="C" ;;
+		de) lang="de_DE";;
+		es) lang="es_ES";;
+		fr) lang="fr_FR" ;;
+		it) lang="it_IT";;
+		pt) lang="pt_BR" ;;
+		ru) lang="ru_RU" ;;
+		zh) lang="zh_TW" ;;
+	esac
+done
+unset IFS
+export LANG=$lang LC_ALL=$lang
 
 case "$OBJECT" in
 	File)	 	selected_file="selected";;
