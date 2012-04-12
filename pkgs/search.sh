@@ -387,13 +387,16 @@ case " $(GET) " in
 		xhtml_header
 		echo "<h2>Debug info</h2>"
 		echo "<p>LANG: $LANK</p>"
+		echo '<pre>'
 		httpinfo
+		echo '</pre>'
 		xhtml_footer 
 		exit 0 ;;
 esac
 
 # Display search form and result if requested.
 if [ "$REQUEST_METHOD" != "POST" ]; then
+	xhtml_header
 	echo "<h2>$(gettext "Search for packages")</h2>"
 	search_form
 	xhtml_footer
