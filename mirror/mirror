@@ -47,7 +47,8 @@ case "$1" in
 		echo "Updating: pkgs.slitaz.org..."
 		cd $REPOS/slitaz-forge && hg pull -u
 		echo "Copying pkgs to: $WWW/pkgs"
-		cp -a pkgs/* $WWW/pkgs ;;
+		cp -a pkgs/*.* $WWW/pkgs 
+		cp -a pkg/lib $WWW/pkgs ;;
 	*)
 		usage ;;
 esac

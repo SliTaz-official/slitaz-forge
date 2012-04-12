@@ -25,6 +25,11 @@ msgfmt:
 		msgfmt -o po/mo/$$l/LC_MESSAGES/$(TEXTDOMAIN) po/$$l.po; \
 	done;
 
+# Install
+
+install-msg: msgfmt
+	cp -a po/mo/* /usr/share/locale
+
 # Clean source
 
 clean:
