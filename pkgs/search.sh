@@ -88,9 +88,6 @@ IFS=","
 for lang in $HTTP_ACCEPT_LANGUAGE
 do
 	lang=${lang%;*} lang=${lang# } lang=${lang%-*}
-	if echo "$po" | fgrep -q "$lang"; then
-		break
-	fi
 	case "$lang" in
 		en) lang="C" ;;
 		de) lang="de_DE" ;;
@@ -101,11 +98,13 @@ do
 		ru) lang="ru_RU" ;;
 		zh) lang="zh_TW" ;;
 	esac
+	if echo "$po" | fgrep -q "$lang"; then
+		break
+	fi
 done
 unset IFS
-LANG=$lang
-LC_ALL=$lang
-export LANG LC_ALL
+
+export LANG=$lang LC_ALL=$lang
 
 case "$OBJECT" in
 	File)	 	selected_file="selected";;
