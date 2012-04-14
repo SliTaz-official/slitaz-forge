@@ -1,0 +1,9 @@
+#!/bin/sh
+
+find /var/www/slitaz/mirror/ -type d | while read dir; do 
+    [ "$(ls -altr $dir | sed '$!d; s/.*\(....\)$/\1/')" == "list" ] && continue
+    echo -n "" > $dir/.folderlist
+    chown www.www $dir/.folderlist
+    echo -n "" > $dir/.filelist
+    chown www.www $dir/.filelist
+done
