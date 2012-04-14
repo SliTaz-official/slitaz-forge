@@ -292,22 +292,32 @@ function my_is_file($path)	// 2G+ file support
 {
 	exec("[ -f '".$path."' ]", $tmp, $ret);
 	return $ret == 0;
+//return is_file($path);
 }
 
 function my_filesize($path)	// 2G+ file support
 {
 	return rtrim(shell_exec("stat -Lc %s '".$path."'"));
+//return filesize($path);
 }
 
 function my_filemtime($path)	// 2G+ file support
 {
 	return rtrim(shell_exec("stat -Lc %Y '".$path."'"));
+//return filemtime($path);
 }
 
 function my_filemtimeasc($path)	// 2G+ file support
 {
-	return rtrim(shell_exec("date -r '".$path."' '+%Y-%b-%d %H:%M:%S'"));
+	return rtrim(shell_exec("LC_ALL=C date -r '".$path."' '+%Y-%b-%d %H:%M:%S'"));
+//return date('Y-M-d H:m:s', filemtime($path));
 }
+
+if (filesize($path.".folderlist") > 0 && filesize($path.".filelist") > 0) {
+	$folderlist = unserialize(file_get_contents($path.".folderlist"));
+	$filelist = unserialize(file_get_contents($path.".filelist"));
+}
+else {
 
 // Get all of the folders and files. 
 $folderlist = array();
@@ -315,6 +325,8 @@ $filelist = array();
 if($handle = @opendir($path)) {
 	while(($item = readdir($handle)) !== false) {
 		if ($item == "index.php") continue;
+		if ($item == ".folderlist") continue;
+		if ($item == ".filelist") continue;
 		if ($item == "dir-generator.php") continue;
 		if (isset($_GET['f'])) {
 			$filter = $_GET['f'];
@@ -347,6 +359,9 @@ if($handle = @opendir($path)) {
 		}
 	}
 	closedir($handle);
+	file_put_contents($path.".folderlist",serialize($folderlist),LOCK_EX);
+	file_put_contents($path.".filelist",serialize($filelist),LOCK_EX);
+}
 }
 
 
