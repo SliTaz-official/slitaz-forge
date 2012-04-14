@@ -328,12 +328,6 @@ if($handle = @opendir($path)) {
 		if ($item == ".folderlist") continue;
 		if ($item == ".filelist") continue;
 		if ($item == "dir-generator.php") continue;
-		if (isset($_GET['f'])) {
-			$filter = $_GET['f'];
-			if (substr($filter,0,1) != '/')
-				$filter = '/'.$filter.'/i';
-			if (!preg_match($filter,$item)) continue;
-		}
 		if(is_dir($path.'/'.$item) and $item != '.' and $item != '..') {
 			$folderlist[] = array(
 				'name' => $item, 
@@ -364,6 +358,17 @@ if($handle = @opendir($path)) {
 }
 }
 
+if (isset($_GET['f'])) {
+	$filter = $_GET['f'];
+	if (substr($filter,0,1) != '/')
+		$filter = '/'.$filter.'/i';
+	foreach ($filelist as $key => $value)
+		if (!preg_match($filter,$value['name']))
+			unset($filelist[$key]);
+	foreach ($folderlist as $key => $value)
+		if (!preg_match($filter,$value['name']))
+			unset($folderlist[$key]);
+}
 
 if(!isset($_GET['s'])) {
 	$_GET['s'] = 'name';
