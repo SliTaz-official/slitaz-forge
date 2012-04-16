@@ -290,8 +290,9 @@ getdisk()
 	for i in /dev/* ; do 
 		[ $(stat -c "%02t%02T" $i) == $d ] || continue
 		echo $i
-		break
+		return
 	done
+	df $1 | sed '$!d;s/ .*$//'
 }
 
 ###
