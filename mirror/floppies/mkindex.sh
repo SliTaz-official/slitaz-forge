@@ -26,8 +26,8 @@ build_page()
 	<meta name="description" content="slitaz$LORAM boot floppies $VERSION" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<link rel="shortcut icon" href="/static/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/static/slitaz.css" />
+	<link rel="shortcut icon" href="static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="static/slitaz.css" />
 	<link rel="stylesheet" type="text/css" href="menu.css" />
 	<style type="text/css">
 table {
@@ -53,7 +53,7 @@ table {
 	    <ul id="menu">
 	      <li>
 		<a href="http://www.slitaz.org/">
-		<img src="/static/home.png" alt="[ home ]" /></a>
+		<img src="static/home.png" alt="[ home ]" /></a>
 	      </li>
 	      <li>
 		<a href="floppy-grub4dos" title="Boot tools">Generic boot floppy</a>
@@ -222,7 +222,7 @@ Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">Sli
 <!-- Bottom and logo's -->
 <div id="bottom">
 <p>
-<a href="http://validator.w3.org/check?uri=referer"><img src="/static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
+<a href="http://validator.w3.org/check?uri=referer"><img src="static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
 </p>
 </div>
 

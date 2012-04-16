@@ -95,6 +95,9 @@ case "$1" in
 		done && echo "" ;;
 	adduser)
 		echo ""
+		if [ -d /home/$user ]; then
+			echo -e "User $user already exists...\n" && exit 1
+		fi
 		if [ -n "$2" ]; then
 			user=$2
 		else
@@ -109,9 +112,6 @@ case "$1" in
 			pass=$4
 		else
 			echo -n "Password: " && read pass
-		fi
-		if [ -d /home/$user ]; then
-			echo -e "User $user already exists...\n" && exit 1
 		fi
 		echo "Adding user: $user"
 		adduser -D -g "$gecos" $user -G users
