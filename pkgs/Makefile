@@ -38,3 +38,9 @@ clean:
 	rm -f po/*.mo
 	rm -f po/*.*~
 
+help:
+	@echo "$$ pot          - remake pot"
+	@echo "$$ msgmerge     - update *.po from *.pot"
+	@echo "$$ msgfmt | all - compile *.mo"
+	@echo "# install-msg  - compile *.mo & install to system"
+	@echo "$$ clean        - remove *.mo"

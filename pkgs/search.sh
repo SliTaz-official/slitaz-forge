@@ -1,117 +1,153 @@
 #!/bin/sh
 # Tiny CGI search engine for SliTaz packages on http://pkgs.slitaz.org/
 # Christophe Lincoln <pankso@slitaz.org>
-# Aleksej Bobylev <al.bobylev@gmail.com> - i18n
+# Aleksej Bobylev <al.bobylev@gmail.com>
 #
+
+# Parse query string
 . /usr/lib/slitaz/httphelper.sh
 
-# This can be removed when we use $(GET var) PHP a like syntaxe from
-# httphelper.sh
-read QUERY_STRING
-for i in $(echo $QUERY_STRING | sed 's/&/ /g'); do
-	i=$(httpd -d $i)
-	eval $i
-done
-LANG=$lang
-SEARCH=$query
-SLITAZ_VERSION=$version
-OBJECT=$object
-DATE=$(date +%Y-%m-%d\ %H:%M:%S)
-VERSION=cooking
-SCRIPT_NAME="search.sh"
+
+# User preferred language
+# parameter $1 have priority; without parameter $1 - browser language only
+# if we don't support any of user languages (or only en), then return C locale
+user_lang() {
+	LANG="C"
+	IFS=","
+	for lang in $1 $HTTP_ACCEPT_LANGUAGE
+	do
+		lang=${lang%;*} lang=${lang# } lang=${lang%-*} lang=${lang%_*}
+		case "$lang" in
+			de) LANG="de_DE" ;;
+			es) LANG="es_ES" ;;
+			fr) LANG="fr_FR" ;;
+			it) LANG="it_IT" ;;
+			pt) LANG="pt_BR" ;;
+			ru) LANG="ru_RU" ;;
+			zh) LANG="zh_TW" ;;
+		esac
+		if echo "de en fr pt ru zh" | fgrep -q "$lang"; then
+			break
+		fi
+	done
+	unset IFS
+	echo "$LANG"
+}
+
+# Short 2-letter lang code from ll_CC
+ll_lang() {
+	ll_CC="$1"
+	echo ${ll_CC%_*}
+}
+
+# Nice URL replacer - to copy url from address bar
+# TODO: deal with POST method of form submitting
+nice_url() {
+	# if user submitted a form
+	if [ ! -z $(GET submit) ]; then
+		OBJECT="$(GET object)"
+		SEARCH="$(GET query)"
+		case $OBJECT in
+			Package)		NICE="package=$SEARCH";;
+			Desc)			NICE="desc=$SEARCH";;
+			Tags)			NICE="tags=$SEARCH";;
+			Receipt)		NICE="receipt=$SEARCH";;
+			Depends)		NICE="depends=$SEARCH";;
+			BuildDepends)	NICE="builddepends=$SEARCH";;
+			File)			NICE="file=$SEARCH";;
+			File_list)		NICE="filelist=$SEARCH";;
+			FileOverlap)	NICE="fileoverlap=$SEARCH";;
+		esac
+		# version, if needed
+		version="$(GET version)"
+		if [ ! -z "$version" -a "$version" != "cooking" ]; then
+			NICE="${NICE}&version=${version:0:1}"
+		fi
+		# lang, if needed
+		query_lang="$(GET lang)"
+		pref_lang="$(user_lang)"
+		browser_lang="$(ll_lang $pref_lang)"
+		if [ ! -z "$query_lang" -a "$query_lang" != "$browser_lang" ]; then
+			NICE="${NICE}&lang=$query_lang"
+		fi
+		# verbose, if needed
+		verboseq="$(GET verbose)"
+		if [ ! -z "$verboseq" -a "$verboseq" != "0" ]; then
+			NICE="${NICE}&verbose=1"
+		fi
+		# redirect
+		# TODO: implement HTTP 301 Redirect
+		cat << EOT
+Content-type: text/html
+
+<!DOCTYPE html>
+<html><head><meta http-equiv="refresh" content="0;url=$SCRIPT_NAME?$NICE" />
+<title>Redirect</title></head></html>
+EOT
+#		echo "Location: $SCRIPT_NAME?$NICE"
+#		echo
+		exit 0
+	fi
+}
+
+nice_url
+
+
+
+OBJECT="$(GET object)"
+SEARCH="$(GET query)"
+SLITAZ_VERSION="$(GET version)"
+VERBOSE="$(GET verbose)"
 
 # Internal variables
-po="de fr pt ru zh"
+#DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 
 # Internationalization
 . /usr/bin/gettext.sh
-TEXTDOMAIN='tazpkg-web'
-export TEXTDOMAIN
+export TEXTDOMAIN='tazpkg-web'
 
-if [ "$REQUEST_METHOD" = "GET" ]; then
-	SEARCH=""
-	VERBOSE=0
-	for i in $(echo $REQUEST_URI | sed 's/[?&]/ /g'); do
-		# i=$(httpd -d $i)
-		SLITAZ_VERSION=cooking
-		case "$(echo $i | tr [A-Z] [a-z])" in
-		query=*|search=*)
-			[ ${i#*=} == Search ] || SEARCH=${i#*=};;
-		object=*)
-			OBJECT=${i#*=};;
-		verbose=*)
-			VERBOSE=${i#*=};;
-		lang=*)
-			LANG=${i#*=};;
-		file=*)
-			SEARCH=${i#*=}
-			OBJECT=File;;
-		desc=*)
-			SEARCH=${i#*=}
-			OBJECT=Desc;;
-		tags=*)
-			SEARCH=${i#*=}
-			OBJECT=Tags;;
-		receipt=*)
-			SEARCH=${i#*=}
-			OBJECT=Receipt;;
-		filelist=*)
-			SEARCH=${i#*=}
-			OBJECT=File_list;;
-		package=*)
-			SEARCH=${i#*=}
-			OBJECT=Package;;
-		depends=*)
-			SEARCH=${i#*=}
-			OBJECT=Depends;;
-		builddepends=*)
-			SEARCH=${i#*=}
-			OBJECT=BuildDepends;;
-		fileoverlap=*)
-			SEARCH=${i#*=}
-			OBJECT=FileOverlap;;
-		version=s*|version=3*)
-			SLITAZ_VERSION=stable;;
-		version=[1-9]*)
-			i=${i%%.*}
-			SLITAZ_VERSION=${i#*=}.0;;
-		version=u*)
-			SLITAZ_VERSION=undigest;;
-		esac
-	done
-	[ -n "$SEARCH" ] && REQUEST_METHOD="POST"
-	[ "$SEARCH" == "." ] && SEARCH=
-fi
+SEARCH=""
+VERBOSE=0
+for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
+#	SLITAZ_VERSION=cooking
+	case "$(echo $i | tr [A-Z] [a-z])" in
+		query=*|search=*)		[ ${i#*=} == Search ] || SEARCH=${i#*=};;
+		object=*)				OBJECT=${i#*=};;
+		verbose=*)				VERBOSE=${i#*=};;
+		lang=*)					LANG=${i#*=};;
+		file=*)					SEARCH=${i#*=}; OBJECT=File;;
+		desc=*)					SEARCH=${i#*=}; OBJECT=Desc;;
+		tags=*)					SEARCH=${i#*=}; OBJECT=Tags;;
+		receipt=*)				SEARCH=${i#*=}; OBJECT=Receipt;;
+		filelist=*)				SEARCH=${i#*=}; OBJECT=File_list;;
+		package=*)				SEARCH=${i#*=}; OBJECT=Package;;
+		depends=*)				SEARCH=${i#*=}; OBJECT=Depends;;
+		builddepends=*)			SEARCH=${i#*=}; OBJECT=BuildDepends;;
+		fileoverlap=*)			SEARCH=${i#*=}; OBJECT=FileOverlap;;
+		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
+		version=s*|version=4*)	SLITAZ_VERSION=stable;;
+		version=u*)				SLITAZ_VERSION=undigest;;
+		version=t*)				SLITAZ_VERSION=tiny;;
+	esac
+done
+[ -z "$SLITAZ_VERSION" ] && SLITAZ_VERSION=cooking
+#[ -n "$SEARCH" ] && REQUEST_METHOD="POST"
+#[ "$SEARCH" == "." ] && SEARCH=
+
 
 # Content negotiation for Gettext
-IFS=","
-for lang in $HTTP_ACCEPT_LANGUAGE
-do
-	lang=${lang%;*} lang=${lang# } lang=${lang%-*}
-	case "$lang" in
-		en) LANG="C" ;;
-		de) LANG="de_DE" ;;
-		es) LANG="es_ES" ;;
-		fr) LANG="fr_FR" ;;
-		it) LANG="it_IT" ;;
-		pt) LANG="pt_BR" ;;
-		ru) LANG="ru_RU" ;;
-		zh) LANG="zh_TW" ;;
-	esac
-	if echo "$po" | fgrep -q "$lang"; then
-		break
-	fi
-done
-unset IFS
+LANG=$(user_lang $(GET lang))
+lang="$(ll_lang $LANG)"
 export LANG LC_ALL=$LANG
 
+
 case "$OBJECT" in
-	File)	 	selected_file="selected";;
-	Desc)	 	selected_desc="selected";;
-	Tags)	 	selected_tags="selected";;
-	Receipt) 	selected_receipt="selected";;
-	File_list) 	selected_file_list="selected";;
-	Depends)	selected_depends="selected";;
+	File)			selected_file="selected";;
+	Desc)			selected_desc="selected";;
+	Tags)			selected_tags="selected";;
+	Receipt)		selected_receipt="selected";;
+	File_list)		selected_file_list="selected";;
+	Depends)		selected_depends="selected";;
 	BuildDepends)	selected_build_depends="selected";;
 	FileOverlap)	selected_overlap="selected";;
 esac
@@ -131,18 +167,22 @@ SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
 WOK=/home/slitaz/$SLITAZ_VERSION/wok
 PACKAGES_REPOSITORY=/home/slitaz/$SLITAZ_VERSION/packages
 
-# --> header function from httphelper
+
+# TODO: header function from httphelper
 echo "Content-type: text/html"
 echo
 
 # Search form
+# TODO: implement POST method
+# ... method="post" enctype="multipart/form-data" ...
+# TODO: add hint 'You are can search for depends loop, if textfield is empty'...
+# add progress ticker while page is not complete
 search_form()
 {
 	cat << _EOT_
 
-<div style="text-align: center; padding: 20px;">
-<form method="get" action="$SCRIPT_NAME">
-	<input type="hidden" name="lang" value="$LANG" />
+<form id="s_form" method="get" action="$SCRIPT_NAME">
+	<input type="hidden" name="lang" value="$lang" />
 	<select name="object">
 		<option value="Package">$(gettext "Package")</option>
 		<option $selected_desc value="Desc">$(gettext "Description")</option>
@@ -154,7 +194,7 @@ search_form()
 		<option $selected_file_list value="File_list">$(gettext "File list")</option>
 		<option $selected_overlap value="FileOverlap">$(gettext "common files")</option>
 	</select>
-	<input type="text" name="query" size="20" value="$SEARCH" />
+	<input type="text" name="query" id="query" size="20" value="$SEARCH" />
 	<select name="version">
 		<option value="cooking">$(gettext "cooking")</option>
 		<option $selected_stable value="stable">4.0</option>
@@ -164,9 +204,8 @@ search_form()
 		<option $selected_tiny value="tiny">$(gettext "tiny")</option>
 		<option $selected_undigest value="undigest">$(gettext "undigest")</option>
 	</select>
-	<input type="submit" value="$(gettext 'Search')" />
+	<input type="submit" name="submit" value="$(gettext 'Search')" />
 </form>
-</div>
 _EOT_
 }
 
@@ -176,32 +215,22 @@ xhtml_header() {
 }
 
 # xHTML Footer.
+# TODO: caching the summary for 5 minutes
 xhtml_footer() {
 	PKGS=$(ls $WOK/ | wc -l)
 	FILES=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l)
-	cat << _EOT_
-
-<center>
-<i>$(eval_ngettext "\$PKGS package" "\$PKGS packages" $PKGS)
-$(eval_ngettext "and \$FILES file in \$SLITAZ_VERSION database" "and \$FILES files in \$SLITAZ_VERSION database" $FILES)</i>
-</center>
-
-<!-- End of content -->
-</div>
-
-<!-- Footer -->
-<div id="footer">$(gettext "SliTaz Packages")</div>
-
-</body>
-</html>
-_EOT_
+	. lib/footer.sh
 }
 
 installed_size()
 {
-	[ $VERBOSE -gt 0 ] &&
-	grep -A 3 "^$1\$" $PACKAGES_REPOSITORY/packages.txt | \
-		grep installed | sed 's/.*(\(.*\) installed.*/(\1) /'
+	if [ $VERBOSE -gt 0 ]; then
+		inst=$(grep -A 3 "^$1\$" $PACKAGES_REPOSITORY/packages.txt | grep installed)
+#		size=$(echo $inst | cut -d'(' -f2 | cut -d' ' -f1)
+		echo $inst | sed 's/.*(\(.*\).*/(\1)/'
+#		echo $size
+#		 | sed 's/.*(\(.*\) installed.*/(\1) /'
+	fi
 }
 
 package_entry()
@@ -259,7 +288,7 @@ END {
 	last="$line"
 	pkg=$1
 	shift
-	echo $pkg ":" $@ "..."
+	echo "<strong>$pkg </strong>: $@ ..."
 done
 }
 
@@ -347,7 +376,6 @@ package_exist()
 	cat << _EOT_
 
 <h3>$(eval_gettext "No package \$SEARCH")</h3>
-<pre>
 _EOT_
 	return 1
 }
@@ -356,13 +384,6 @@ _EOT_
 htmlize()
 {
 	sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
-}
-
-echonb()
-{
-read n
-echo -n "$n $1"
-[ $n -gt 1 ] && echo -n s
 }
 
 display_packages_and_files()
@@ -380,125 +401,140 @@ while read pkg file; do
 done
 }
 
+xhtml_header
+
 #
 # Handle GET requests
 #
 case " $(GET) " in
-	*\ debug\ *)
-		xhtml_header
-		echo "<h2>Debug info</h2>"
-		echo "<p>Auto detected language: LANG=$LANG (lang=$lang)</p>"
-		echo '<pre>'
-		httpinfo
-		echo '</pre>'
-		xhtml_footer 
-		exit 0 ;;
+	*\ debug\ *|*\ debug*)
+		cat << EOT
+<h2>Debug info</h2>
+<pre>$(httpinfo)</pre>
+<pre>LANG=$LANG;
+OBJECT=$OBJECT;
+SEARCH=$SEARCH;
+SLITAZ_VERSION=$SLITAZ_VERSION;
+WOK=$WOK;
+</pre>
+EOT
+#$(xhtml_footer)
+#EOT
+#		exit 0
+	;;
 esac
 
 # Display search form and result if requested.
-if [ "$REQUEST_METHOD" != "POST" ]; then
-	xhtml_header
-	echo "<h2>$(gettext "Search for packages")</h2>"
-	search_form
-	xhtml_footer
-else
-	xhtml_header
-	echo "$(gettext "Search for packages")</h2>"
-	search_form
-	if [ "$OBJECT" = "Depends" ]; then
-		if [ -z "$SEARCH" ]; then
-			cat << _EOT_
+#xhtml_header
+echo "<h2>$(gettext 'Search for packages')</h2>"
+search_form
+
+case "$OBJECT" in
+
+
+### Depends loops; [Reverse] Dependency tree [(SUGGESTED)]
+Depends)
+	if [ -z "$SEARCH" ]; then
+		cat << _EOT_
 
 <h3>$(gettext "Depends loops")</h3>
 <pre>
 _EOT_
-			for i in $WOK/*/receipt; do
-				PACKAGE=
-				DEPENDS=
-				. $i
-				echo "$PACKAGE $(echo $DEPENDS)"
-			done | show_loops
-			cat << _EOT_
+		for i in $WOK/*/receipt; do
+			PACKAGE=
+			DEPENDS=
+			. $i
+			echo "$PACKAGE $(echo $DEPENDS)"
+		done | show_loops
+		cat << _EOT_
 </pre>
 _EOT_
-		elif package_exist $SEARCH ; then
-			cat << _EOT_
+	elif package_exist $SEARCH ; then
+		cat << _EOT_
 
 <h3>$(eval_gettext "Dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
-			ALL_DEPS=""
-			dep_scan $SEARCH ""
-			SUGGESTED=""
-			. $WOK/$SEARCH/receipt
-			if [ -n "$SUGGESTED" ]; then
-				cat << _EOT_
+		ALL_DEPS=""
+		dep_scan $SEARCH ""
+		SUGGESTED=""
+		. $WOK/$SEARCH/receipt
+		if [ -n "$SUGGESTED" ]; then
+			cat << _EOT_
 </pre>
 
 <h3>$(eval_gettext "Dependency tree for: \$SEARCH (SUGGESTED)")</h3>
 <pre>
 _EOT_
-				ALL_DEPS=""
-				dep_scan "$SUGGESTED" "    "
-			fi
-			cat << _EOT_
+			ALL_DEPS=""
+			dep_scan "$SUGGESTED" "    "
+		fi
+		cat << _EOT_
 </pre>
 
 <h3>$(eval_gettext "Reverse dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
-			ALL_DEPS=""
-			rdep_scan $SEARCH
-			cat << _EOT_
+		ALL_DEPS=""
+		rdep_scan $SEARCH
+		cat << _EOT_
 </pre>
 _EOT_
-		fi
-	elif [ "$OBJECT" = "BuildDepends" ]; then
-		if [ -z "$SEARCH" ]; then
-			cat << _EOT_
+	fi
+	;;
+
+
+### Build depends loops; [Reverse] Build dependency tree
+BuildDepends)
+	if [ -z "$SEARCH" ]; then
+		cat << _EOT_
 
 <h3>$(gettext "Build depends loops")</h3>
 <pre>
 _EOT_
-			for i in $WOK/*/receipt; do
-				PACKAGE=
-				WANTED=
-				BUILD_DEPENDS=
-				. $i
-				echo "$PACKAGE $WANTED $(echo $BUILD_DEPENDS)"
-			done | show_loops
-			cat << _EOT_
+		for i in $WOK/*/receipt; do
+			PACKAGE=
+			WANTED=
+			BUILD_DEPENDS=
+			. $i
+			echo "$PACKAGE $WANTED $(echo $BUILD_DEPENDS)"
+		done | show_loops
+		cat << _EOT_
 </pre>
 _EOT_
-		elif package_exist $SEARCH ; then
-			cat << _EOT_
+	elif package_exist $SEARCH ; then
+		cat << _EOT_
 
 <h3>$(eval_gettext "\$SEARCH needs these packages to be built")</h3>
 <pre>
 _EOT_
-			ALL_DEPS=""
-			dep_scan $SEARCH "" build
-			cat << _EOT_
+		ALL_DEPS=""
+		dep_scan $SEARCH "" build
+		cat << _EOT_
 </pre>
 
 <h3>$(eval_gettext "Packages who need \$SEARCH to be built")</h3>
 <pre>
 _EOT_
-			ALL_DEPS=""
-			rdep_scan $SEARCH build
-			cat << _EOT_
+		ALL_DEPS=""
+		rdep_scan $SEARCH build
+		cat << _EOT_
 </pre>
 _EOT_
-		fi
-	elif [ "$OBJECT" = "FileOverlap" ]; then
-		if package_exist $SEARCH ; then
-			cat << _EOT_
+	fi
+	;;
+
+
+### Common files
+FileOverlap)
+		if [ package_exist $SEARCH ]; then
+		cat << _EOT_
 
 <h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
 <pre>
 _EOT_
-			( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
-			  unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep -v ^$SEARCH: ) | awk '
+		( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
+		  unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep -v ^$SEARCH: ) | awk '
 BEGIN { pkg=""; last="x" }
 {
 	if ($2 == "") next
@@ -513,8 +549,13 @@ BEGIN { pkg=""; last="x" }
 			cat << _EOT_
 </pre>
 _EOT_
-		fi
-	elif [ "$OBJECT" = "File" ]; then
+	fi
+	;;
+
+
+### File search
+File)
+	if [ -n "$SEARCH" ]; then
 		cat << _EOT_
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
@@ -536,59 +577,91 @@ _EOT_
 			fi
 			echo "    $file"
 		done
-	elif [ "$OBJECT" = "File_list" ]; then
-		if package_exist $SEARCH; then
-			cat << _EOT_
-
-<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
-<pre>
-_EOT_
-			last=""
-			unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
-			| grep ^$SEARCH: |  sed 's/.*: /    /' | sort
-			cat << _EOT_
-</pre>
-<pre>
-$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: | wc -l | echonb file)  \
-$(busybox sed -n "/^$SEARCH$/{nnnpq}" $PACKAGES_REPOSITORY/packages.txt)
-_EOT_
-		fi
-	elif [ "$OBJECT" = "Desc" ]; then
-		if [ -f $WOK/$SEARCH/description.txt ]; then
-			cat << _EOT_
-
-<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
-<pre>
-$(htmlize < $WOK/$SEARCH/description.txt)
+		cat << _EOT_
 </pre>
 _EOT_
-		else
-			cat << _EOT_
+	fi
+	;;
 
-<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
-<pre>
-_EOT_
-			last=""
-			grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
-			sort | while read pkg extras ; do
-				. $WOK/$pkg/receipt
-				package_entry
-			done
-		fi
-	elif [ "$OBJECT" = "Tags" ]; then
+
+### List of files
+File_list)
+	if package_exist $SEARCH; then
 		cat << _EOT_
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
 		last=""
-		grep ^TAGS= $WOK/*/receipt |  grep -i "$SEARCH" | \
-		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
-				. $WOK/$pkg/receipt
-				package_entry
-			done
-	elif [ "$OBJECT" = "Receipt" ]; then
-		package_exist $SEARCH && cat << _EOT_
+		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
+		| grep ^$SEARCH: |  sed 's/.*: /    /' | sort
+		cat << _EOT_
+</pre>
+<pre>
+_EOT_
+		filenb=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: | wc -l)
+		eval_ngettext "\$filenb file" "\$filenb files" $filenb
+		cat << _EOT_
+  \
+$(busybox sed -n "/^$SEARCH$/{nnnpq}" $PACKAGES_REPOSITORY/packages.txt)
+</pre>
+_EOT_
+	fi
+	;;
+
+
+### Package description
+Desc)
+	if [ -f $WOK/$SEARCH/description.txt ]; then
+		cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+$(htmlize < $WOK/$SEARCH/description.txt)
+</pre>
+_EOT_
+	else
+		cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
+		last=""
+		grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
+		sort | while read pkg extras ; do
+			. $WOK/$pkg/receipt
+			package_entry
+		done
+		cat << _EOT_
+</pre>
+_EOT_
+	fi
+	;;
+
+
+### Tags
+Tags)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
+	last=""
+	grep ^TAGS= $WOK/*/receipt |  grep -i "$SEARCH" | \
+	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+		. $WOK/$pkg/receipt
+		package_entry
+	done
+	cat << _EOT_
+</pre>
+_EOT_
+	;;
+
+
+### Package receipt
+# TODO: add style highlighting
+Receipt)
+	package_exist $SEARCH && cat << _EOT_
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
@@ -599,7 +672,12 @@ $(if [ -f  $WOK/$SEARCH/taz/*/receipt ]; then
   fi | htmlize)
 </pre>
 _EOT_
-	else
+	;;
+
+
+### Package
+Package)
+	if package_exist $SEARCH; then
 		cat << _EOT_
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
@@ -608,7 +686,7 @@ _EOT_
 		for pkg in `ls $WOK/ | grep "$SEARCH"`
 		do
 			. $WOK/$pkg/receipt
-			DESC=" <a href=\"?desc=$pkg\">$(gettext description)</a>"
+			DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
 			[ -f $WOK/$pkg/description.txt ] || DESC=""
 			cat << _EOT_
 $(package_entry)$DESC
@@ -617,7 +695,7 @@ _EOT_
 		equiv=$PACKAGES_REPOSITORY/packages.equiv
 		vpkgs="$(cat $equiv | cut -d= -f1 | grep $SEARCH)"
 		for vpkg in $vpkgs ; do
-	cat << _EOT_
+			cat << _EOT_
 </pre>
 
 <h3>$(eval_gettext "Result for: \$SEARCH (package providing \$vpkg)")</h3>
@@ -628,11 +706,13 @@ _EOT_
 				package_entry
 			done
 		done
-	fi
-	cat << _EOT_
+		cat << _EOT_
 </pre>
 _EOT_
-	xhtml_footer
-fi
+	fi
+	;;
+esac
+
+xhtml_footer
 
 exit 0

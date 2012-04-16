@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 20:27+0300\n"
+"POT-Creation-Date: 2012-04-14 03:36+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
 "Language-Team: \n"
@@ -22,147 +22,146 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: lib\n"
 
-#: search.sh:147
+#: search.sh:142
 msgid "Package"
 msgstr "软件包："
 
-#: search.sh:148
+#: search.sh:143
 msgid "Description"
 msgstr "描述"
 
-#: search.sh:149
+#: search.sh:144
 msgid "Tags"
 msgstr "标签"
 
-#: search.sh:150
+#: search.sh:145
 msgid "Receipt"
 msgstr ""
 
-#: search.sh:151
+#: search.sh:146
 msgid "Depends"
 msgstr "依赖"
 
-#: search.sh:152
+#: search.sh:147
 msgid "Build depends"
 msgstr ""
 
-#: search.sh:153
+#: search.sh:148
 msgid "File"
 msgstr "文件"
 
-#: search.sh:154
+#: search.sh:149
 msgid "File list"
 msgstr "文件列表"
 
-#: search.sh:155
+#: search.sh:150
 msgid "common files"
 msgstr ""
 
-#: search.sh:159
+#: search.sh:154
 msgid "cooking"
 msgstr "开发版"
 
-#: search.sh:164
+#: search.sh:159
 msgid "tiny"
 msgstr ""
 
-#: search.sh:165
+#: search.sh:160
 msgid "undigest"
 msgstr ""
 
-#: search.sh:167
+#: search.sh:162
 msgid "Search"
 msgstr ""
 
-#: search.sh:185
+#: search.sh:180
 #, sh-format
 msgid "$PKGS package"
 msgid_plural "$PKGS packages"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:186
+#: search.sh:181
 #, sh-format
 msgid "and $FILES file in $SLITAZ_VERSION database"
 msgid_plural "and $FILES files in $SLITAZ_VERSION database"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:193
-#: lib/header.sh:29
+#: search.sh:188 lib/header.sh:29
 msgid "SliTaz Packages"
 msgstr ""
 
-#: search.sh:301
+#: search.sh:296
 msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
 msgstr ""
 
-#: search.sh:349
+#: search.sh:344
 #, sh-format
 msgid "No package $SEARCH"
 msgstr ""
 
-#: search.sh:392
-#: search.sh:404
+#: search.sh:397
 msgid "Search for packages"
 msgstr ""
 
-#: search.sh:411
+#: search.sh:405
 msgid "Depends loops"
 msgstr "依赖 loops"
 
-#: search.sh:426
+#: search.sh:420
 #, sh-format
 msgid "Dependency tree for: $SEARCH"
 msgstr ""
 
-#: search.sh:437
+#: search.sh:431
 #, sh-format
 msgid "Dependency tree for: $SEARCH (SUGGESTED)"
 msgstr ""
 
-#: search.sh:446
+#: search.sh:440
 #, sh-format
 msgid "Reverse dependency tree for: $SEARCH"
 msgstr ""
 
-#: search.sh:459
+#: search.sh:455
 msgid "Build depends loops"
 msgstr ""
 
-#: search.sh:475
+#: search.sh:471
 #, sh-format
 msgid "$SEARCH needs these packages to be built"
 msgstr ""
 
-#: search.sh:483
+#: search.sh:479
 #, sh-format
 msgid "Packages who need $SEARCH to be built"
 msgstr ""
 
-#: search.sh:496
+#: search.sh:494
 #, sh-format
 msgid "These packages may overload files of $SEARCH"
 msgstr ""
 
-#: search.sh:519
-#: search.sh:542
-#: search.sh:559
-#: search.sh:567
-#: search.sh:580
-#: search.sh:592
-#: search.sh:604
+#: search.sh:519 search.sh:548 search.sh:573 search.sh:581 search.sh:596
+#: search.sh:610 search.sh:624
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr ""
 
-#: search.sh:610
+#: search.sh:559
+#, sh-format
+msgid "$filenb file"
+msgid_plural "$filenb files"
+msgstr[0] ""
+
+#: search.sh:630
 msgid "description"
 msgstr ""
 
-#: search.sh:622
+#: search.sh:642
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
 msgstr ""
@@ -203,4 +202,3 @@ msgstr ""
 #: lib/header.sh:27
 msgid "Hg"
 msgstr ""
-

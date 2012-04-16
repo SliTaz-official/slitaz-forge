@@ -1,6 +1,19 @@
 
+#s_form {
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+}
+
+/* Be compatible with old FF and Webkit version. */
+input[type="submit"] {
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 #header {
-	border-bottom: 8px solid #d66018;
+	border-bottom: 8px solid #D66018;
 }
 
 #header h1 {
@@ -11,22 +24,74 @@
 	padding: 12px 5px 0; 
 }
 
-#network a {
-	padding: 0 4px;
+table, input, textarea, select {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
 }
 
-#network a:hover { color: #cfcfcf; }
-
 input[type=text] {
-	/*width: inherit;*/
 	width: 40%;
 }
 
-#content {
-	margin: 6px 40px 0px 0px;
+#footer {
+	background-color: #FFF;
 }
 
-#footer {
-	text-align: center;
-	background-color: #fff;
+select:focus, select:hover, input:focus, input:hover {
+	color: #000;
+	outline: 0 none;
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+input, select {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"], input[type="text"], textarea {
+	color: #444;
+	border: 1px solid #CCC;
+	padding: 4px;
+	margin: 4px 0px;
+	font-size: 14px;
+	line-height: 1.2em;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	-webkit-appearance: none;
+	-webkit-padding-end: 6px;
+	-webkit-padding-start: 6px;
+}
+
+input[type="submit"]:hover {
+	color: #000;
+}
+
+input[type="text"], textarea { background: #fefefe; border: 1px solid #ccc; }
+/*input[type="file"] { border: 2px solid #ddd; }*/
+/*input[type="checkbox"] { background: #fefefe; }*/
+
+input[type=submit], select { cursor: pointer; }
+
+select {
+	background-image: url(style/images/down.png),
+		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-position: center right;
+	background-repeat: no-repeat;
+
+	color: #444444;
+	border: 1px solid #cccccc;
+	padding: 4px 32px 4px 4px;
+	margin: 4px 0px;
+	font-size: 14px;
+	line-height: 1.2em;
+	-webkit-appearance: none;
+}
+
+poption {
+	padding: 4px 32px 4px 4px;
 }

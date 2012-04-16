@@ -10,12 +10,26 @@ IN THIS RELEASE
 
 	* Use GET so we can copy past urls from a browser
 	* Gettextise the search engine and use PO files
+	* auto form focus
+	* CSS3 style effects
+	* all css now in _standard_ slitaz.css (from website) and pkgs.css
+	* nice URLs to share via copy them from address bar
+	* improve debug mode
 
 TODO
 ----
 
 	* Add package page with all info and an install link
 	  (tazpkg:// or tazpkg: works in Midori
-
+	* implement POST method of the form submitting
+	* implement more nice redirect, than http refresh
+	* add hint 'You are can search for depends loop, if textfield is empty'...
+	* add progress ticker while page is not complete
+	* caching the footer summary
+	* add style highlighting for the receipts
+	* clear the file names, so our goal is URL like:
+	  http://pkgs.slitaz.org/?package=geany
+	  (form action="$SCRIPT_NAME" -> action="/")
+	* standard 4.0 have /usr/lib/slitaz/httphelper (without '.sh')
 
 ================================================================================
