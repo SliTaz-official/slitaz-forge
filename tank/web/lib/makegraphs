@@ -5,7 +5,7 @@
 rrdlog="/home/slitaz/www/tank/log/rrd"
 
 # Images directory
-rrdgraph="/home/slitaz/www/tank/imgages/rrd"
+rrdgraph="/home/slitaz/www/tank/images/rrd"
 
 # Colors
 rrdcolors="--color SHADEA#FFFFFF --color SHADEB#FFFFFF --color BACK#FFFFFF" 

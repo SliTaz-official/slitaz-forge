@@ -56,7 +56,7 @@ $myurl="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 
 function one_graphic($img,$name)
 {
-	echo '<img src="imgages/rrd/'.$img.'" title="'.
+	echo '<img src="images/rrd/'.$img.'" title="'.
 		$name.'" alt="'.$name.'" />'."\n";
 }
 
