@@ -1,50 +1,22 @@
 
-#s_form {
-	margin: auto;
-	text-align: center;
-	padding: 20px;
-}
-
 /* Be compatible with old FF and Webkit version. */
-input[type="submit"] {
+/*input[type="submit"] {
 	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-}
+}*/
 
-#header {
-	border-bottom: 8px solid #D66018;
-}
+#header { border-bottom: 8px solid #D66018; }
+#header h1 { padding: 3px 0 0 42px; }
+#network { padding: 12px 5px 0; }
+#footer { background-color: #FFF; }
 
-#header h1 {
-	padding: 3px 0 0 42px;
-}
-
-#network { 
-	padding: 12px 5px 0; 
-}
-
-table, input, textarea, select {
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-}
-
-input[type=text] {
-	width: 40%;
-}
-
-#footer {
-	background-color: #FFF;
-}
-
-select:focus, select:hover, input:focus, input:hover {
+/* COMMON STYLES */
+select:focus, select:hover, input:focus, input[type]:hover {
 	color: #000;
-	outline: 0 none;
 	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.3);
 }
-
 input, select {
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -52,46 +24,124 @@ input, select {
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-
-input[type="submit"], input[type="text"], textarea {
-	color: #444;
-	border: 1px solid #CCC;
-	padding: 4px;
-	margin: 4px 0px;
+select, input[type="text"], input[type="submit"] {
 	font-size: 14px;
-	line-height: 1.2em;
+	border: 1px solid #CCC;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	color: #444;
+	outline: 0 none;
+}
+
+/* TABLE */
+table {
+	width: 100%;
+	font-size: 12px;
+	border: 1px solid #CCC;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	border-spacing: 0;
+	padding: 2px;
+}
+tr {
+	margin: 0;
+	padding: 4px;
+}
+td {
+	margin: 0;
+	padding: 6px;
+	vertical-align: top;
+}
+tr.even {
+	background-color: #F0F0F0;
+}
+td.first {
+	width: 1%;
+	white-space: nowrap;
+}
+td.pre {
+	padding-left: 2em;
+	white-space: nowrap;
+}
+
+
+/* --- */
+
+input[type="submit"] {
+	padding: 4px;
+	margin: 0;
+	font-size: 14px;
 	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
 	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-	-webkit-appearance: none;
+/*	-webkit-appearance: none;
 	-webkit-padding-end: 6px;
-	-webkit-padding-start: 6px;
+	-webkit-padding-start: 6px;*/
 }
 
-input[type="submit"]:hover {
-	color: #000;
+div.form {
+	display: table;
+	table-layout: auto;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 20px 0; /* t r b l */
 }
 
-input[type="text"], textarea { background: #fefefe; border: 1px solid #ccc; }
-/*input[type="file"] { border: 2px solid #ddd; }*/
-/*input[type="checkbox"] { background: #fefefe; }*/
+#s_form {
+	display: table-row;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border: 1pt solid yellow;
+}
 
-input[type=submit], select { cursor: pointer; }
+.small {
+	white-space: nowrap;
+	display: table-cell;
+	width: 10%;
+}
 
 select {
-	background-image: url(style/images/down.png),
-		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	padding: 4px;
+	margin: 0 4px;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
 	background-position: center right;
 	background-repeat: no-repeat;
-
-	color: #444444;
-	border: 1px solid #cccccc;
-	padding: 4px 32px 4px 4px;
-	margin: 4px 0px;
-	font-size: 14px;
-	line-height: 1.2em;
 	-webkit-appearance: none;
+	cursor: pointer;
 }
 
-poption {
-	padding: 4px 32px 4px 4px;
+span.stretch {
+	display: table-cell;
+	width: 100%;
+	padding: 0 4px;
+	margin: 0;
 }
+
+input[type="text"] {
+	padding: 4px 0;
+	margin: 0;
+	border: 1px solid #CCC;
+	background-color: #FEFEFE;
+}
+
+div#ticker img {
+	float: right;
+}
+
+.summary {
+	margin-top: 12px;
+	text-align: center;
+	font-style: italic;
+}
+.match {
+	font-weight: bold;
+	color: #F33;
+}
+
+/* SYNTAX HIGHLIGHTER */
+.r-comment { color: #888; }
+.r-literal { color: #f35a00; }
+.r-var { font-weight: bold; color: #070; }
+.r-func { color: #4895DD; }
+.r-url { text-decoration: none; }
+.r-com, .r-scom { color: #4895DD; font-weight: bold; /*background-color: #cde;*/ }
+.r-path { text-decoration: underline; color: brown; }
+.r-param { font-weight: bold; color: #444; }
