@@ -71,11 +71,11 @@ case "$1" in
 	up-cook)
 		# Update Web Boot interface
 		echo -e "\nUpdating: cook.slitaz.org..."
-		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
 		cd $REPOS/cookutils
 		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
+		cd $REPOS/slitaz-forge
+		[ "$2" == "--nohg" ] || hg pull -u
 		# We use symlinks for cooker's
 		cd $WWW/cook && rm -f style.css
 		ln -s $REPOS/cookutils/web/style.css .
