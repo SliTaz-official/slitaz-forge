@@ -18,8 +18,8 @@ cat << EOT
 </p>
 
 <ul>
-	<li><a href="arm/">arm</a><li>
-	<li><a href="x86_64/">x86_64</a><li>
+	<li><a href="arm/">arm</a></li>
+	<li><a href="x86_64/">x86_64</a></li>
 </ul>
 
 </div>
