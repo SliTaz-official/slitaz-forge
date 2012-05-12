@@ -21,7 +21,7 @@ Commands:
   backup|-b    Backup files and MySQL DB
   adduser      Add user on Tank and create people files
   up-stats     Update Awstats statistics (run by cron)
-  
+
   up-tank      Update http://tank.slitaz.org/
   up-people    Update http://people.slitaz.org/
   up-pro       Update http://pro.slitaz.org/
@@ -42,7 +42,7 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $VHOST/*.* $VHOST/images
-		cp -a tank/web/* $VHOST 
+		cp -a tank/web/* $VHOST
 		echo "" ;;
 	up-people)
 		# Update People web interface
@@ -50,7 +50,7 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/people/*
-		cp -a people/* $WWW/people 
+		cp -a people/* $WWW/people
 		echo "" ;;
 	up-pro)
 		# Update Pro website
@@ -66,24 +66,40 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/boot/*
-		cp -a boot/* $WWW/boot 
+		cp -a boot/* $WWW/boot
 		echo "" ;;
 	up-cook)
 		# Update Web Boot interface
 		echo -e "\nUpdating: cook.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
+		cd $REPOS/cookutils
+		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
-		# we have symlinks to repo
-		#cp -a cook/* $WWW/cook/undigest
-		#cp -a cook/* $WWW/cook/stable
+		# We use symlinks for cooker's
+		cd $WWW/cook && rm -f style.css
+		ln -s $REPOS/cookutils/web/style.css .
+		for web in stable undigest cross/arm
+		do
+			echo "Creating: $web symlinks"
+			cd $WWW/cook/$web
+			for file in style.css cooker.cgi cookiso.cgi
+			do
+				rm -f $file
+				ln -s $REPOS/cookutils/web/$file .
+			done
+		done
+		# No ISO's for undigest and ARM.
+		rm -f \
+			$WWW/cook/undigest/cookiso.cgi \
+			$WWW/cook/cross/arm/cookiso.cgi
 		echo "" ;;
 	up-roadmap)
 		# Update Roadmap Web interface
 		echo -e "\nUpdating: roadmap.slitaz.org..."
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
-		cp -a roadmap/* $WWW/roadmap 
+		cp -a roadmap/* $WWW/roadmap
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
