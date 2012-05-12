@@ -32,7 +32,7 @@
 		</p>
 		<p>
 			We are a group of developers and partners who can provide custom
-			development and support, consulting services, LiveCD flavor creation 
+			development and support, consulting services, LiveCD flavor creation
 			and more to customers.
 		</p>
 	</div>
@@ -63,7 +63,7 @@
 	This professional platform allows you to have contact with the SliTaz
 	team who will process your request and do the mediating among yourselves
 	and one of our official developers or sponsors. Our goal is to monitor
-	and verify the quality of service to ensure our customers a high 
+	and verify the quality of service to ensure our customers a high
 	level of work.
 </p>
 
@@ -106,9 +106,9 @@
 <h2>Sponsor</h2>
 
 <p>
-	Do you use SliTaz in your project and want to see the distribution 
+	Do you use SliTaz in your project and want to see the distribution
 	getting even more professional with main developers working on the
-	project full time? If so, you can sponsor the SliTaz Association 
+	project full time? If so, you can sponsor the SliTaz Association
 	which will pay a developer to work fully 100% on SliTaz.
 </p>
 
@@ -134,7 +134,7 @@
 </p>
 
 <p class="box">
-	Mail: &lt;contact at slitaz.org&gt;
+	Mail: &lt;contact at slitaz.pro&gt;
 </p>
 
 <p class="box">
