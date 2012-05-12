@@ -79,6 +79,8 @@ case "$1" in
 		# We use symlinks for cooker's
 		cd $WWW/cook && rm -f style.css
 		ln -s $REPOS/cookutils/web/style.css .
+		cd $WWW/cook/cross && rm -f style.css
+		ln -s $REPOS/cookutils/web/style.css .
 		for web in stable undigest cross/arm
 		do
 			echo "Creating: $web symlinks"
