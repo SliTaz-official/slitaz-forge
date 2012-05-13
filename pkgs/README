@@ -2,7 +2,7 @@ SliTaz Packages web interface
 ================================================================================
 
 
-This is TazPKG web interface with a search engine for packages, files,
+This is a TazPKG web interface with a search engine for packages, files,
 dependencies and more.
 
 IN THIS RELEASE
@@ -13,7 +13,7 @@ IN THIS RELEASE
 	* auto form focus
 	* CSS3 style effects
 	* all css now in _standard_ slitaz.css (from website) and pkgs.css
-	* nice URLs to share via copy them from address bar
+	* nice URLs to share via copying them from address bar
 	* improve debug mode
 	* added progress ticker while page is not complete
 	* added style highlighting for the receipts
@@ -25,10 +25,10 @@ TODO
 	  (tazpkg:// or tazpkg: works in Midori
 	* add hint 'You are can search for depends loop, if textfield is empty'...
 	* caching the footer summary
-	* clear the file names, so our goal is URL like:
+	* clear the file names, so our goal is a URL like:
 	  http://pkgs.slitaz.org/?package=geany
 	  (form action="$SCRIPT_NAME" -> action="/")
 	* standard 4.0 have /usr/lib/slitaz/httphelper (without '.sh')
-	* display dependency trees as an unordered lists
+	* display dependency trees as unordered lists
 
 ================================================================================

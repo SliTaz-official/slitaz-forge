@@ -14,7 +14,7 @@ cat << EOT
 <p>
 	SliTaz is actually ported to the ARM platform and work is on the stove
 	for the x86_64 architecture. Please read the Cookutils cross howto for
-	more informations.
+	more information.
 </p>
 
 <ul>
