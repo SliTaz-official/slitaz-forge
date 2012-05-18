@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#. /usr/lib/slitaz/httphelper
+#. /usr/lib/slitaz/httphelper.sh
 #header
 echo "Content-Type: text/html"
 echo ""
@@ -20,7 +20,8 @@ cat << EOT
 <ul>
 	<li>Arch: <a href="arm/">arm</a>
 		[ <a href="arm/toolchain.cgi">toolchain</a> ]</li>
-	<li>Arch: <a href="x86_64/">x86_64</a></li>
+	<li>Arch: <a href="x86_64/">x86_64</a>
+		[ <a href="x86_64/toolchain.cgi">toolchain</a> ]</li>
 </ul>
 
 </div>
