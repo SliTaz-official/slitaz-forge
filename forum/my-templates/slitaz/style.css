@@ -7,7 +7,7 @@ Author: Christophe Lincoln
 Author URI: http://people.slitaz.org/~pankso/
 */
 
-/* Globals 
+/* Globals
 =================================== */
 
 * { margin: 0; padding: 0; }
@@ -101,7 +101,7 @@ img.avatar { border: 1px solid #ddd; }
 #header p { margin-bottom: 0; }
 
 #header h1 a { color: #fff; text-decoration: none; }
-#header h1 a:hover, #network a:hover { color: #d66018; }
+#header h1 a:hover, #network a:hover { color: #cfcfcf; }
 
 #header div.search {
 	float: right;
@@ -148,29 +148,29 @@ img.avatar { border: 1px solid #ddd; }
 	border-color: rgb(0, 100, 0);
 }
 
-#network { 
-	float: right; 
-	padding: 10px 5px 0; 
+#network {
+	float: right;
+	padding: 10px 5px 0;
 	font-size: 12px;
 }
-#network a { padding: 0 6px; color: #fff; font-weight: bold; text-decoration: none;}
+#network a { padding: 0 4px; color: #fff; font-weight: bold; text-decoration: none;}
 #network img, .infobox img { vertical-align: middle; border: 0pt none; }
 
-#block { 
-	min-height: 120px; 
-	background: #d66018; 
+#block {
+	min-height: 120px;
+	background: #d66018;
 	padding: 20px 12% 0;
 	text-align: center;
 	color: #333;
 	border-bottom: 1px solid #f5f5f5;
 }
 
-#block a { 
+#block a {
 	color: #fff;
 	text-decoration: none;
 }
 
-#block a:hover { 
+#block a:hover {
 	text-decoration: underline;
 }
 
@@ -233,7 +233,7 @@ img.avatar { border: 1px solid #ddd; }
 	color: #444;
 	z-index: 1;
 	font-size: 12px;
-	
+
 	padding: 2px;
 }
 
@@ -241,8 +241,8 @@ form.login {
 	bottom: 15px;
 }
 
-.login p { 
-	padding: 0px; 
+.login p {
+	padding: 0px;
 	border-bottom: 0px solid #999; }
 
 .login label {
@@ -789,7 +789,7 @@ tr.bb-category td {
 
 #userinfo dt { font-weight: bold; }
 
-#userinfo dd { margin: 0 0 5px; } 
+#userinfo dd { margin: 0 0 5px; }
 
 #useractivity { margin: 15px 0 5px; }
 

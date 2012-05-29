@@ -26,18 +26,19 @@ if ( bb_is_profile() ) {
 <body id="<?php bb_location(); ?>">
 	<div id="wrapper">
 		<div id="header" role="banner">
-			
+
 			<!-- SliTaz Network -->
 			<div id="network">
-				<a href="http://www.slitaz.org/">
-					<img src="<?php bb_uri(); ?>/my-templates/slitaz/images/network.png" alt="network.png" /></a>
+				<a href="http://www.slitaz.org/">Home</a>
 				<a href="http://scn.slitaz.org/">Community</a>
 				<a href="http://doc.slitaz.org/">Doc</a>
 				<a href="http://forum.slitaz.org/">Forum</a>
-				<a href="http://bugs.slitaz.org/">Bugs</a>
+				<a href="http://slitaz.pro/">Pro</a>
+				<a href="http://shop.slitaz.org/">Shop</a>
+				<a href="http://bugs.slitaz.org">Bugs</a>
 				<a href="http://hg.slitaz.org/">Hg</a>
 			</div>
-			
+
 			<h1><a href="<?php bb_uri(); ?>"><?php bb_option('name'); ?></a></h1>
 			<?php if ( bb_get_option('description') ) : ?><p class="description"><?php bb_option('description'); ?></p><?php endif; ?>
 
@@ -47,20 +48,16 @@ if ( bb_is_profile() ) {
 <?php search_form(); ?>
 			</div>
 		</div>
-		
+
 		<!-- SliTaz Block -->
 		<div id="block">
 			<div style="text-align: justify; width: 48%; padding: 20px 10px 0 0;">
 				The SliTaz Forum is the place where you can get support,
-				ask any questions about SliTaz, make requests, help others 
+				ask any questions about SliTaz, make requests, help others
 				and get involved in a community group.
-				<p>
-				Old forum: 
-				<a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a>
-				</p>
 			</div>
 		</div>
-		
+
 		<div id="main">
 
 <?php if ( bb_is_profile() ) profile_menu(); ?>
