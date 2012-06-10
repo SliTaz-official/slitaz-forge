@@ -786,20 +786,50 @@ _EOT_
 
 ### Tags
 Tags)
-	cat << _EOT_
+	if [ -n "$SEARCH" ]; then
+		cat << _EOT_
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <table>
 _EOT_
-	last=""
-	grep ^TAGS= $WOK/*/receipt | grep -i "$SEARCH" | \
-	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
-		. $WOK/$pkg/receipt
-		package_entry
-	done
-	cat << _EOT_
+		last=""
+		grep ^TAGS= $WOK/*/receipt | grep -i "$SEARCH" | \
+		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+			. $WOK/$pkg/receipt
+			package_entry
+		done
+		cat << _EOT_
 </table>
 _EOT_
+	else
+		# Display tag cloud
+		grep -l ^TAGS= $WOK/*/receipt | while read file; do
+			TAGS=
+			. $file
+			echo $TAGS
+			done | awk '
+{
+	for (i = 1; $i != ""; i++)
+		count[$i]++
+}
+END {
+	min=10000
+	max=0
+	for (i in count) {
+		if (count[i] < min) min = count[i]
+		if (count[i] > max) max = count[i]
+	}
+	for (i in count) 
+		print count[i] " " min " " max " " i
+}' | while read cnt min max tag ; do
+			cat <<EOT
+<span style="color:#99f; font-size:9pt; padding-left:5px; padding-right:2px;">\
+$cnt</span><a href="?tags=$tag&amp;version=$SLITAZ_VERSION" style="\
+font-size:$((8+(($cnt-$min)*10)/($max-$min)))pt; font-weight:bold; \
+color:black; text-decoration:none">$tag</a>
+EOT
+		done
+	fi
 	;;
 
 
