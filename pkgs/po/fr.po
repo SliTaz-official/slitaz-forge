@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 03:36+0300\n"
+"POT-Creation-Date: 2012-07-01 19:46+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: \n"
@@ -22,147 +22,134 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: lib\n"
 
-#: search.sh:142
+#: search.sh:183
 msgid "Package"
 msgstr "Paquet"
 
-#: search.sh:143
+#: search.sh:184
 msgid "Description"
 msgstr "Description"
 
-#: search.sh:144
+#: search.sh:185
 msgid "Tags"
 msgstr "Tags"
 
-#: search.sh:145
+#: search.sh:186
 msgid "Receipt"
 msgstr "Recette"
 
-#: search.sh:146
+#: search.sh:187
 msgid "Depends"
 msgstr "Dépendances"
 
-#: search.sh:147
+#: search.sh:188
 msgid "Build depends"
 msgstr "Fabrication"
 
-#: search.sh:148
+#: search.sh:189
 msgid "File"
 msgstr "Fichier"
 
-#: search.sh:149
+#: search.sh:190
 msgid "File list"
 msgstr "Liste des fichiers"
 
-#: search.sh:150
+#: search.sh:191
 msgid "common files"
 msgstr "Fichiers communs"
 
-#: search.sh:154
+#: search.sh:199
 msgid "cooking"
 msgstr ""
 
-#: search.sh:159
+#: search.sh:204
 msgid "tiny"
 msgstr ""
 
-#: search.sh:160
+#: search.sh:205
 msgid "undigest"
 msgstr ""
 
-#: search.sh:162
+#: search.sh:209
 msgid "Search"
 msgstr "Recherche"
 
-#: search.sh:180
-#, sh-format
-msgid "$PKGS package"
-msgid_plural "$PKGS packages"
-msgstr[0] ""
-msgstr[1] ""
-
-#: search.sh:181
-#, sh-format
-msgid "and $FILES file in $SLITAZ_VERSION database"
-msgid_plural "and $FILES files in $SLITAZ_VERSION database"
-msgstr[0] ""
-msgstr[1] ""
-
-#: search.sh:188 lib/header.sh:29
-msgid "SliTaz Packages"
-msgstr "SliTaz Paquets"
-
-#: search.sh:296
+#: search.sh:370
 msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
 msgstr ""
 
-#: search.sh:344
+#: search.sh:418
 #, sh-format
 msgid "No package $SEARCH"
 msgstr "Paquet $SEARCH introuvable"
 
-#: search.sh:397
+#: search.sh:564
 msgid "Search for packages"
 msgstr "Recherche de paquets"
 
-#: search.sh:405
+#: search.sh:579
 msgid "Depends loops"
 msgstr "Dépendances sans fin"
 
-#: search.sh:420
+#: search.sh:594
 #, sh-format
 msgid "Dependency tree for: $SEARCH"
 msgstr "Arbre des dépendances de $SEARCH"
 
-#: search.sh:431
+#: search.sh:605
 #, sh-format
 msgid "Dependency tree for: $SEARCH (SUGGESTED)"
 msgstr "Arbre des dépendances de $SEARCH (SUGGESTED)"
 
-#: search.sh:440
+#: search.sh:614
 #, sh-format
 msgid "Reverse dependency tree for: $SEARCH"
 msgstr "Arbre inversé des dépendances de $SEARCH"
 
-#: search.sh:455
+#: search.sh:631
 msgid "Build depends loops"
 msgstr "Fabrication sans fin"
 
-#: search.sh:471
+#: search.sh:647
 #, sh-format
 msgid "$SEARCH needs these packages to be built"
 msgstr "$SEARCH a besion de ces paquets pour être fabriqué"
 
-#: search.sh:479
+#: search.sh:655
 #, sh-format
 msgid "Packages who need $SEARCH to be built"
 msgstr "Paquets ayant besion de $SEARCH pour être fabriqués"
 
-#: search.sh:494
+#: search.sh:672
 #, sh-format
 msgid "These packages may overload files of $SEARCH"
 msgstr "Paquets pouvant écraser des fichiers de $SEARCH"
 
-#: search.sh:519 search.sh:548 search.sh:573 search.sh:581 search.sh:596
-#: search.sh:610 search.sh:624
+#: search.sh:700 search.sh:737 search.sh:771 search.sh:792 search.sh:841
+#: search.sh:859
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Recherche de : $SEARCH"
 
-#: search.sh:559
+#: search.sh:748
 #, sh-format
 msgid "$filenb file"
 msgid_plural "$filenb files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:630
+#: search.sh:763
+#, fuzzy, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "Paquet $SEARCH introuvable"
+
+#: search.sh:865
 msgid "description"
 msgstr ""
 
-#: search.sh:642
+#: search.sh:877
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
 msgstr "Recherche de : $SEARCH (package providing $vpkg)"
@@ -203,3 +190,7 @@ msgstr ""
 #: lib/header.sh:27
 msgid "Hg"
 msgstr ""
+
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "SliTaz Paquets"

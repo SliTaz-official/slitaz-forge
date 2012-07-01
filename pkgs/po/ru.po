@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 03:36+0300\n"
-"PO-Revision-Date: 2012-04-14 03:37+0300\n"
+"POT-Creation-Date: 2012-07-01 19:46+0000\n"
+"PO-Revision-Date: 2012-07-01 19:48-0000\n"
 "Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
 "Language-Team: \n"
 "Language: Russian\n"
@@ -22,80 +22,59 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: search.sh:142
+#: search.sh:183
 msgid "Package"
 msgstr "пакет"
 
-#: search.sh:143
+#: search.sh:184
 msgid "Description"
 msgstr "описание"
 
-#: search.sh:144
+#: search.sh:185
 msgid "Tags"
 msgstr "теги"
 
-#: search.sh:145
+#: search.sh:186
 msgid "Receipt"
 msgstr "рецепт"
 
-#: search.sh:146
+#: search.sh:187
 msgid "Depends"
 msgstr "зависимости"
 
-#: search.sh:147
+#: search.sh:188
 msgid "Build depends"
 msgstr "зависимости сборки"
 
-#: search.sh:148
+#: search.sh:189
 msgid "File"
 msgstr "файл"
 
-#: search.sh:149
+#: search.sh:190
 msgid "File list"
 msgstr "список файлов"
 
-#: search.sh:150
+#: search.sh:191
 msgid "common files"
 msgstr "общие файлы"
 
-#: search.sh:154
+#: search.sh:199
 msgid "cooking"
 msgstr "Cooking"
 
-#: search.sh:159
+#: search.sh:204
 msgid "tiny"
 msgstr "Tiny"
 
-#: search.sh:160
+#: search.sh:205
 msgid "undigest"
 msgstr "неофициальный"
 
-#: search.sh:162
+#: search.sh:209
 msgid "Search"
 msgstr "Искать"
 
-#: search.sh:180
-#, sh-format
-msgid "$PKGS package"
-msgid_plural "$PKGS packages"
-msgstr[0] "$PKGS пакет"
-msgstr[1] "$PKGS пакета"
-msgstr[2] "$PKGS пакетов"
-
-#: search.sh:181
-#, sh-format
-msgid "and $FILES file in $SLITAZ_VERSION database"
-msgid_plural "and $FILES files in $SLITAZ_VERSION database"
-msgstr[0] "и $FILES файл в базе данных $SLITAZ_VERSION"
-msgstr[1] "и $FILES файла в базе данных $SLITAZ_VERSION"
-msgstr[2] "и $FILES файлов в базе данных $SLITAZ_VERSION"
-
-#: search.sh:188
-#: lib/header.sh:29
-msgid "SliTaz Packages"
-msgstr "Пакеты SliTaz"
-
-#: search.sh:296
+#: search.sh:370
 msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
@@ -103,65 +82,64 @@ msgstr ""
 "\tglibc-base и gcc-lib-base являются неявными зависимостями\n"
 "\t<b>любого</b> пакета."
 
-#: search.sh:344
+#: search.sh:418
 #, sh-format
 msgid "No package $SEARCH"
 msgstr "Пакет $SEARCH отсутствует"
 
-#: search.sh:397
+#: search.sh:564
 msgid "Search for packages"
 msgstr "Поиск по пакетам"
 
-#: search.sh:405
+#: search.sh:579
 msgid "Depends loops"
 msgstr "Циклические зависимости"
 
-#: search.sh:420
+#: search.sh:594
 #, sh-format
 msgid "Dependency tree for: $SEARCH"
 msgstr "Дерево зависимостей для $SEARCH"
 
-#: search.sh:431
+#: search.sh:605
 #, sh-format
 msgid "Dependency tree for: $SEARCH (SUGGESTED)"
 msgstr "Дерево необязательных зависимостей для $SEARCH"
 
-#: search.sh:440
+#: search.sh:614
 #, sh-format
 msgid "Reverse dependency tree for: $SEARCH"
 msgstr "Обратное дерево зависимостей для $SEARCH"
 
-#: search.sh:455
+#: search.sh:631
 msgid "Build depends loops"
 msgstr "Циклические зависимости сборки"
 
-#: search.sh:471
+#: search.sh:647
 #, sh-format
 msgid "$SEARCH needs these packages to be built"
 msgstr "Следующие пакеты нужны, чтобы собрать $SEARCH"
 
-#: search.sh:479
+#: search.sh:655
 #, sh-format
 msgid "Packages who need $SEARCH to be built"
 msgstr "$SEARCH нужен, чтобы собрать следующие пакеты"
 
-#: search.sh:494
+#: search.sh:672
 #, sh-format
 msgid "These packages may overload files of $SEARCH"
 msgstr "Следующие пакеты могут заменить файлы $SEARCH"
 
-#: search.sh:519
-#: search.sh:548
-#: search.sh:573
-#: search.sh:581
-#: search.sh:596
-#: search.sh:610
-#: search.sh:624
+#: search.sh:700
+#: search.sh:737
+#: search.sh:771
+#: search.sh:792
+#: search.sh:841
+#: search.sh:859
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Результаты поиска $SEARCH"
 
-#: search.sh:559
+#: search.sh:748
 #, sh-format
 msgid "$filenb file"
 msgid_plural "$filenb files"
@@ -169,11 +147,16 @@ msgstr[0] "$filenb файл"
 msgstr[1] "$filenb файла"
 msgstr[2] "$filenb файлов"
 
-#: search.sh:630
+#: search.sh:763
+#, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "Описание пакета $SEARCH"
+
+#: search.sh:865
 msgid "description"
 msgstr "описание"
 
-#: search.sh:642
+#: search.sh:877
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
 msgstr "Результаты поиска $SEARCH (пакеты, предлагающие $vpkg)"
@@ -215,3 +198,20 @@ msgstr "Баг-трекер"
 msgid "Hg"
 msgstr "Hg"
 
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "Пакеты SliTaz"
+
+#~ msgid "$PKGS package"
+
+#~ msgid_plural "$PKGS packages"
+#~ msgstr[0] "$PKGS пакет"
+#~ msgstr[1] "$PKGS пакета"
+#~ msgstr[2] "$PKGS пакетов"
+
+#~ msgid "and $FILES file in $SLITAZ_VERSION database"
+
+#~ msgid_plural "and $FILES files in $SLITAZ_VERSION database"
+#~ msgstr[0] "и $FILES файл в базе данных $SLITAZ_VERSION"
+#~ msgstr[1] "и $FILES файла в базе данных $SLITAZ_VERSION"
+#~ msgstr[2] "и $FILES файлов в базе данных $SLITAZ_VERSION"
