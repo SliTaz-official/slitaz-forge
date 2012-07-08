@@ -98,7 +98,7 @@
 </p>
 
 <p>
-	If you want to get professional services from our partners of if
+	If you want to get professional services from our partners or if
 	you want to become an official partner, please contact us by mail
 	or post.
 </p>
