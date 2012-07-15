@@ -24,9 +24,10 @@ user_lang() {
 			it) LANG="it_IT" ;;
 			pt) LANG="pt_BR" ;;
 			ru) LANG="ru_RU" ;;
+			sv) LANG="sv_SE" ;;
 			zh) LANG="zh_TW" ;;
 		esac
-		if echo "de en fr pt ru zh" | fgrep -q "$lang"; then
+		if echo "de en fr pt ru sv zh" | fgrep -q "$lang"; then
 			break
 		fi
 	done

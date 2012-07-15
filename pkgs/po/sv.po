@@ -1,0 +1,193 @@
+# Swedish translations for TazPkg Web package.
+# Copyright (C) 2012 SliTaz
+# This file is distributed under the same license as the TazPkg Web package.
+# Emil Eklund <emileklund123@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazPkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-01 19:46+0000\n"
+"PO-Revision-Date: 2012-07-12 18:32-0000\n"
+"Last-Translator: Emil Eklund <emileklund123@gmail.com>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: search.sh:183
+msgid "Package"
+msgstr "Paket"
+
+#: search.sh:184
+msgid "Description"
+msgstr "Beskrivning"
+
+#: search.sh:185
+msgid "Tags"
+msgstr "Taggar"
+
+#: search.sh:186
+msgid "Receipt"
+msgstr "Recept"
+
+#: search.sh:187
+msgid "Depends"
+msgstr "Beror"
+
+#: search.sh:188
+msgid "Build depends"
+msgstr "Bygget beror"
+
+#: search.sh:189
+msgid "File"
+msgstr "Fil"
+
+#: search.sh:190
+msgid "File list"
+msgstr "Fil lista"
+
+#: search.sh:191
+msgid "common files"
+msgstr "Vanliga filer"
+
+#: search.sh:199
+msgid "cooking"
+msgstr "kokar"
+
+#: search.sh:204
+msgid "tiny"
+msgstr "jätteliten"
+
+#: search.sh:205
+msgid "undigest"
+msgstr "osmält"
+
+#: search.sh:209
+msgid "Search"
+msgstr "Sök"
+
+#: search.sh:370
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr ""
+"\tglibc-base och gcc-lib-base är underförstådda beroenden,\n"
+"\t<b>varje</b> paket är menade att bero på dem."
+
+#: search.sh:418
+#, sh-format
+msgid "No package $SEARCH"
+msgstr "Inget paket $SEARCH"
+
+#: search.sh:564
+msgid "Search for packages"
+msgstr "Sök efter paket"
+
+#: search.sh:579
+msgid "Depends loops"
+msgstr "Beroenden upprepas"
+
+#: search.sh:594
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr "Beroendeträd för: $SEARCH"
+
+#: search.sh:605
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr "Beroendeträd för: $SEARCH (SUGGESTED)"
+
+#: search.sh:614
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr "Omvänt beroendeträd för: $SEARCH"
+
+#: search.sh:631
+msgid "Build depends loops"
+msgstr "Byggets beroenden upprepas"
+
+#: search.sh:647
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr "$SEARCH behöver att de här paketen byggs"
+
+#: search.sh:655
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr "Paket som behöver att $SEARCH byggs"
+
+#: search.sh:672
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr "Dessa paket kan överskrida $SEARCH 's filer"
+
+#: search.sh:700 search.sh:737 search.sh:771 search.sh:792 search.sh:841
+#: search.sh:859
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr "Resultatet av: $SEARCH"
+
+#: search.sh:748
+#, sh-format
+msgid "$filenb file"
+msgid_plural "$filenb files"
+msgstr[0] "$filenb fil"
+msgstr[1] "$filenb filer"
+
+#: search.sh:763
+#, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "Beskrivning av paket: $SEARCH"
+
+#: search.sh:865
+msgid "description"
+msgstr "beskrivning"
+
+#: search.sh:877
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr "Resultat av: $SEARCH (package providing $vpkg)"
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages - Search $SEARCH"
+msgstr "SliTaz paket - Sök $SEARCH"
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr "Hem"
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr "Samhälle"
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr "Dokument"
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr "Forum"
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr "Pro"
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr "Shop"
+
+#: lib/header.sh:26
+msgid "Bugs"
+msgstr "Buggar"
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr "Hg"
+
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "SliTaz Paket"
