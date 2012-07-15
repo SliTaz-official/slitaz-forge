@@ -578,7 +578,7 @@ _EOT_
 
 ### Common files
 FileOverlap)
-		if [ package_exist $SEARCH ]; then
+		if package_exist $SEARCH; then
 		cat << _EOT_
 
 <h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
