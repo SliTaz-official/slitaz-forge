@@ -68,7 +68,7 @@ function graphic($res, $img='')
 	echo "<a href=\"".$myurl."?stats=".$res."#".$res."\">\n";
 	one_graphic($img."-day.png",$res." daily");
 	echo "</a>";
-	if ($_GET['stats'] == $res) {
+	if (isset($_GET['stats']) && $_GET['stats'] == $res) {
 		one_graphic($img."-week.png",$res." weekly");
 		one_graphic($img."-month.png",$res." monthly");
 		one_graphic($img."-year.png",$res." yearly");
