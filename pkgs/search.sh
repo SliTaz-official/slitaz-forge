@@ -5,6 +5,7 @@
 #
 
 # Parse query string
+. /etc/slitaz/slitaz.conf
 . /usr/lib/slitaz/httphelper.sh
 echo -n "0" > $HOME/ifEven
 
@@ -54,48 +55,54 @@ GETPOST() {
 }
 
 # Nice URL replacer - to copy url from address bar
-if [ "$REQUEST_METHOD" == "POST" -o ! -z $(GET submit) ]; then
-	OBJECT=$(GETPOST object)
-	SEARCH=$(GETPOST query)
-	case "$OBJECT" in
-		Package)		NICE="package=$SEARCH";;
-		Desc)			NICE="desc=$SEARCH";;
-		Tags)			NICE="tags=$SEARCH";;
-		Receipt)		NICE="receipt=$SEARCH";;
-		Depends)		NICE="depends=$SEARCH";;
-		BuildDepends)	NICE="builddepends=$SEARCH";;
-		File)			NICE="file=$SEARCH";;
-		File_list)		NICE="filelist=$SEARCH";;
-		FileOverlap)	NICE="fileoverlap=$SEARCH";;
-	esac
-	# version, if needed
-	version="$(GETPOST version)"
-	if [ ! -z "$version" -a "$version" != "cooking" ]; then
-		NICE="${NICE}&version=${version:0:1}"
+# TODO: deal with POST method of form submitting
+nice_url() {
+	# if user submitted a form
+	if [ "$REQUEST_METHOD" == "POST" -o ! -z $(GET submit) ]; then
+		OBJECT="$(GETPOST object)"
+		SEARCH="$(GETPOST query)"
+		case $OBJECT in
+			Package)		NICE="package=$SEARCH";;
+			Desc)			NICE="desc=$SEARCH";;
+			Tags)			NICE="tags=$SEARCH";;
+			Receipt)		NICE="receipt=$SEARCH";;
+			Depends)		NICE="depends=$SEARCH";;
+			BuildDepends)	NICE="builddepends=$SEARCH";;
+			File)			NICE="file=$SEARCH";;
+			File_list)		NICE="filelist=$SEARCH";;
+			FileOverlap)	NICE="fileoverlap=$SEARCH";;
+		esac
+		# version, if needed
+		version="$(GETPOST version)"
+		if [ ! -z "$version" -a "$version" != "cooking" ]; then
+			NICE="${NICE}&version=${version:0:1}"
+		fi
+		# lang, if needed
+		query_lang="$(GETPOST lang)"
+		pref_lang="$(user_lang)"
+		browser_lang="$(ll_lang $pref_lang)"
+		if [ ! -z "$query_lang" -a "$query_lang" != "$browser_lang" ]; then
+			NICE="${NICE}&lang=$query_lang"
+		fi
+		# verbose, if needed
+		verboseq="$(GETPOST verbose)"
+		if [ ! -z "$verboseq" -a "$verboseq" != "0" ]; then
+			NICE="${NICE}&verbose=1"
+		fi
+		# debug, if needed
+		debugq="$(GET debug)"
+		if [ ! -z "$debugq" -a "$debugq" == "debug" ]; then
+			NICE="${NICE}&debug"
+		fi
+		# redirect
+		header "HTTP/1.1 301 Moved Permanently" "Location: $SCRIPT_NAME?$NICE"
+#		echo "Location: $SCRIPT_NAME?$NICE"
+#		echo
+		exit 0
 	fi
-	# lang, if needed
-	query_lang="$(GETPOST lang)"
-	pref_lang="$(user_lang)"
-	browser_lang="$(ll_lang $pref_lang)"
-	if [ ! -z "$query_lang" -a "$query_lang" != "$browser_lang" ]; then
-		NICE="${NICE}&lang=$query_lang"
-	fi
-	# verbose, if needed
-	verboseq="$(GETPOST verbose)"
-	if [ ! -z "$verboseq" -a "$verboseq" != "0" ]; then
-		NICE="${NICE}&verbose=1"
-	fi
-	# debug, if needed
-	debugq="$(GET debug)"
-	if [ ! -z "$debugq" -a "$debugq" == "debug" ]; then
-		NICE="${NICE}&debug"
-	fi
-	# redirect
-	header "HTTP/1.1 301 Moved Permanently" "Location: $SCRIPT_NAME?$NICE"
-	exit 0
-fi
+}
 
-
+nice_url
 
 OBJECT="$(GET object)"
 SEARCH="$(GET query)"
@@ -127,6 +134,8 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		depends=*)				SEARCH=${i#*=}; OBJECT=Depends;;
 		builddepends=*)			SEARCH=${i#*=}; OBJECT=BuildDepends;;
 		fileoverlap=*)			SEARCH=${i#*=}; OBJECT=FileOverlap;;
+		category=*)				SEARCH=${i#*=}; OBJECT=Category;;
+		maintainer=*)			SEARCH=${i#*=}; OBJECT=Maintainer;;
 		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
 		version=s*|version=4*)	SLITAZ_VERSION=stable;;
 		version=u*)				SLITAZ_VERSION=undigest;;
@@ -166,8 +175,11 @@ esac
 # unescape query
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
 
-WOK=/home/slitaz/$SLITAZ_VERSION/wok
-PACKAGES_REPOSITORY=/home/slitaz/$SLITAZ_VERSION/packages
+WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok
+PACKAGES_REPOSITORY=$SLITAZ_HOME/$SLITAZ_VERSION/packages
+filelist=$PACKAGES_REPOSITORY/files.list.lzma
+pkglist=$PACKAGES_REPOSITORY/packages.txt
+equiv=$PACKAGES_REPOSITORY/packages.equiv
 
 # Search form
 # TODO: add hint 'You are can search for depends loop, if textfield is empty'...
@@ -223,14 +235,14 @@ xhtml_header() {
 # TODO: caching the summary for 5 minutes
 xhtml_footer() {
 	PKGS=$(ls $WOK/ | wc -l)
-	FILES=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l)
+	FILES=$(unlzma -c $filelist | wc -l)
 	. lib/footer.sh
 }
 
 installed_size()
 {
 	if [ $VERBOSE -gt 0 ]; then
-		inst=$(grep -A 3 "^$1\$" $PACKAGES_REPOSITORY/packages.txt | grep installed)
+		inst=$(grep -A 3 "^$1\$" $pkgslist | grep installed)
 #		size=$(echo $inst | cut -d'(' -f2 | cut -d' ' -f1)
 		echo $inst | sed 's/.*(\(.*\).*/(\1)/'
 #		echo $size
@@ -673,8 +685,8 @@ FileOverlap)
 <h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
 <pre>
 _EOT_
-		( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
-		  unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep -v ^$SEARCH: ) | awk '
+		( unlzma -c $filelist | grep ^$SEARCH: ;
+		  unlzma -c $filelist | grep -v ^$SEARCH: ) | awk '
 BEGIN { pkg=""; last="x" }
 {
 	if ($2 == "") next
@@ -702,7 +714,7 @@ File)
 <table>
 _EOT_
 		last=""
-		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
+		unlzma -c $filelist \
 		| grep "$SEARCH" | while read pkg file; do
 			echo "$file" | grep -q "$SEARCH" || continue
 			if [ "$last" != "${pkg%:}" ]; then
@@ -739,17 +751,17 @@ File_list)
 <pre>
 _EOT_
 		last=""
-		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
+		unlzma -c $filelist \
 		| grep ^$SEARCH: | sed 's/.*: /    /' | sort
 		cat << _EOT_
 </pre>
 <pre>
 _EOT_
-		filenb=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: | wc -l)
+		filenb=$(unlzma -c $filelist | grep ^$SEARCH: | wc -l)
 		eval_ngettext "\$filenb file" "\$filenb files" $filenb
 		cat << _EOT_
   \
-$(busybox sed -n "/^$SEARCH$/{nnnpq}" $PACKAGES_REPOSITORY/packages.txt)
+$(busybox sed -n "/^$SEARCH$/{nnnpq}" $pkglist)
 </pre>
 _EOT_
 	fi
@@ -869,7 +881,6 @@ _EOT_
 $(package_entry)$DESC
 _EOT_
 		done
-		equiv=$PACKAGES_REPOSITORY/packages.equiv
 		vpkgs="$(cat $equiv | cut -d= -f1 | grep $SEARCH)"
 		for vpkg in $vpkgs ; do
 			cat << _EOT_
