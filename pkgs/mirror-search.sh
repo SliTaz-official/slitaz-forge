@@ -1,8 +1,12 @@
 #!/bin/sh
+
 # Tiny CGI search engine for SliTaz packages on http://pkgs.slitaz.org/
 # Christophe Lincoln <pankso@slitaz.org>
+# Pascal Bellard <pascal.bellard@slitaz.org>
 # Aleksej Bobylev <al.bobylev@gmail.com>
 #
+
+renice -n 19 $$
 
 # Parse query string
 . /usr/lib/slitaz/httphelper.sh
@@ -216,11 +220,27 @@ xhtml_header() {
 	. lib/header.sh
 }
 
+cat_files_list()
+{
+	local tmp=/tmp/files.list.$(basename ${1%/packages})
+	if [ ! -s $tmp -o $1/files.list.lzma -nt $tmp ]; then
+		unlzma -c $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
+	fi
+	case "$2" in
+	lines)	if [ ! -s $tmp.lines -o $tmp -nt $tmp.lines ]; then
+			cat $tmp | wc -l > $tmp.lines.$$ &&
+			mv $tmp.lines.$$ $tmp.lines
+		fi
+		cat $tmp.lines ;;	
+	*)	cat $tmp ;;
+	esac
+}
+
 # xHTML Footer.
 # TODO: caching the summary for 5 minutes
 xhtml_footer() {
 	PKGS=$(ls $WOK/ | wc -l)
-	FILES=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | wc -l)
+	FILES=$(cat_files_list $PACKAGES_REPOSITORY lines)
 	. lib/footer.sh
 }
 
@@ -584,8 +604,8 @@ FileOverlap)
 <h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
 <pre>
 _EOT_
-		( unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: ;
-		  unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep -v ^$SEARCH: ) | awk '
+		( cat_files_list $PACKAGES_REPOSITORY | grep ^$SEARCH: ;
+		  cat_files_list $PACKAGES_REPOSITORY | grep -v ^$SEARCH: ) | awk '
 BEGIN { pkg=""; last="x" }
 {
 	if ($2 == "") next
@@ -613,7 +633,7 @@ File)
 <pre>
 _EOT_
 		last=""
-		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
+		cat_files_list $PACKAGES_REPOSITORY \
 		| grep "$SEARCH" | while read pkg file; do
 			echo "$file" | grep -q "$SEARCH" || continue
 			if [ "$last" != "${pkg%:}" ]; then
@@ -644,13 +664,13 @@ File_list)
 <pre>
 _EOT_
 		last=""
-		unlzma -c $PACKAGES_REPOSITORY/files.list.lzma \
+		cat_files_list $PACKAGES_REPOSITORY \
 		| grep ^$SEARCH: |  sed 's/.*: /    /' | sort
 		cat << _EOT_
 </pre>
 <pre>
 _EOT_
-		filenb=$(unlzma -c $PACKAGES_REPOSITORY/files.list.lzma | grep ^$SEARCH: | wc -l)
+		filenb=$(cat_files_list $PACKAGES_REPOSITORY | grep ^$SEARCH: | wc -l)
 		eval_ngettext "\$filenb file" "\$filenb files" $filenb
 		cat << _EOT_
   \
