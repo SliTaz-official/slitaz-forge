@@ -116,6 +116,20 @@ label web
 	suivant: <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur
 	la disquette et choisissez l'entrée gPXE.
 	</li>
+	<li> Démarrage réseau: si vous pouvez modifier la configuration du server DHCP,
+	déclarez le serveur tftp <i>mirror.slitaz.org</i> et le fichier de boot
+	<i>gpxe.pxe</i> :
+	<ul>
+	<li>pour <b>udhcpd</b>
+	<pre>siaddr mirror.slitaz.org
+boot_file gpxe.pxe</pre></li>
+	<li>pour <b>dhcpd</b>
+	<pre>next-server "mirror.slitaz.org"
+filemane "gpxe.pxe"</pre></li>
+	<li>pour <b>dnsmasq</b>
+	<pre>dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre></li>
+	</ul>
+	</li>	
 </ul>
 
 <h3>Temps de démarrage</h3>

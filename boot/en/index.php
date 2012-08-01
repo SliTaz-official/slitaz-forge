@@ -109,6 +109,20 @@ label web
 	and transfer the image to a blank floppy disk using the command:
 	<code>dd if=floppy-grub of=/dev/fd0</code>. Boot the floppy and select
 	gPXE entry.</li>
+	<li>Network boot: if you can modify your DHCP server configuration, declare
+	the tftp server <i>mirror.slitaz.org</i> and the boot file
+	<i>gpxe.pxe</i> :
+	<ul>
+	<li>for <b>udhcpd</b>
+	<pre>siaddr mirror.slitaz.org
+boot_file gpxe.pxe</pre></li>
+	<li>for <b>dhcpd</b>
+	<pre>next-server "mirror.slitaz.org"
+filemane "gpxe.pxe"</pre></li>
+	<li>for <b>dnsmasq</b>
+	<pre>dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre></li>
+	</ul>
+	</li>	
 </ul>
 
 <h3>Boot time</h3>
