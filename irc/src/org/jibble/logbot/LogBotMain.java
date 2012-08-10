@@ -23,7 +23,9 @@ public class LogBotMain {
         }
 
         LogBot.copy(new File("html/style.css"), new File(outDir, "style.css"));
-		LogBot.copy(new File("html/index.php"), new File(outDir, "index.php"));
+        LogBot.copy(new File("html/logo.png"), new File(outDir, "logo.png"));
+        LogBot.copy(new File("html/favicon.ico"), new File(outDir, "favicon.ico"));
+        LogBot.copy(new File("html/index.php"), new File(outDir, "index.php"));
         
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File(outDir, "config.inc.php")));
         writer.write("<?php");

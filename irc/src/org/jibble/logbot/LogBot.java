@@ -60,6 +60,11 @@ public class LogBot extends PircBot {
     
     public void onJoin(String channel, String sender, String login, String hostname) {
         append(GREEN, "*** " + sender + " (" + login + "@" + hostname + ") has joined " + channel);
+      //  if (sender.equals(getNick())) {
+      //      sendNotice(channel, joinMessage);
+      //  }        else {
+      //     sendNotice(sender, joinMessage);
+      //  }
     }
     
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
@@ -79,12 +84,28 @@ public class LogBot extends PircBot {
         append(ORANGE, "*** " + oldNick + " is now known as " + newNick);
     }
     
+    public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
+        // append(ORANGE, "-" + sourceNick + "- " + notice);
+    }
+    
     public void onPart(String channel, String sender, String login, String hostname) {
         append(GREY, "*** " + sender + " (" + login + "@" + hostname + ") has left " + channel);
     }
-
+    
+    public void onPing(String sourceNick, String sourceLogin, String sourceHostname, String target, String pingValue) {
+      //  append(RED, "[" + sourceNick + " PING]");
+    }
+    
+    public void onPrivateMessage(String sender, String login, String hostname, String message) {
+       //  append(WHITE, "<- *" + sender + "* " + message);
+    }
+    
     public void onQuit(String sourceNick, String sourceLogin, String sourceHostname, String reason) {
          append(RED, "*** " + sourceNick + " (" + sourceLogin + "@" + sourceHostname + ") has quit (" + reason + ")");
+    }
+    
+    public void onTime(String sourceNick, String sourceLogin, String sourceHostname, String target) {
+      //  append(RED, "[" + sourceNick + " TIME]");
     }
     
     public void onTopic(String channel, String topic, String setBy, long date, boolean changed) {
@@ -98,6 +119,7 @@ public class LogBot extends PircBot {
     }
     
     public void onVersion(String sourceNick, String sourceLogin, String sourceHostname, String target) {
+      //  append(RED, "[" + sourceNick + " VERSION]");
     }
     
     public void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) {
