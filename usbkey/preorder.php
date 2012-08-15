@@ -2,6 +2,7 @@
 include("./head.php");
 
 echo '<div id="content">';
+if (!isset($_POST['host']) || $_POST['host'] == "") { // capcha
 $data = serialize($_POST);
 $hash = md5($data);
 @mkdir("pending/".substr($hash,0,1),0777,TRUE);
@@ -13,6 +14,7 @@ system(dirname($_SERVER["SCRIPT_FILENAME"])."/helper.sh '".
 	  $_POST['email']."' '".$_POST['surname']."' '".$_POST['size'].
 	  "' ".$hash);
 echo "Thanks ".$_POST['surname'].".<br>\nAn email has been send to ".$_POST['email'].".";
+}
 echo '</div>';
 include("./tail.php");
 ?>

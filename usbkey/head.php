@@ -17,7 +17,7 @@
 #bottom {
 	text-align: center;
 }
-.cfrm { // capcha
+#capcha {
 	display: none;
 }
 	</style>

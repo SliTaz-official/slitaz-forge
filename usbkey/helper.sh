@@ -15,7 +15,8 @@ END {
 	print last " : " n
 }'
 	else
-		ls $dir/?/* 2> /dev/null | wc -l
+		sed '/"count";s:1:/!d;s/.*"count";s:1:"\([0-9]*\)";.*/\1/' $dir/?/* | \
+			awk 'BEGIN { n=0 }{ n+=$0 } END { print n }'
 	fi
 	exit	
 fi
@@ -36,13 +37,13 @@ body()
 From: usbkey-preorder@$DOMAIN
 Reply-To: no-reply@$DOMAIN
 To: $SENDTO
-Date: $(date '+%a, %d %b %Y %H:%M:%S %z')
+Date: $(LC_ALL=C date '+%a, %d %b %Y %H:%M:%S %z')
 Subject: $SUBJECT
 
 Hello $SURNAME,
 
 A $KEYSIZE SliTaz USB key will be reserved for you.
-Would you mind confirming the pre-ordering with the following link
+Would you mind confirm the pre-ordering with the following link
 http://usbkey.slitaz.org/?confirm=$HASH
 
 Or cancel the registration with the following link

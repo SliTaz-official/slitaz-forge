@@ -8,7 +8,8 @@
 	<!-- Information/image -->
 	<div id="block_info">
 		<?php echo $characteristics ?>
-		<h4><?php system("../helper.sh --stats confirmed"); echo $stats ?></h4>
+		<h4><?php system("../helper.sh --stats confirmed"); echo $stats.", ";
+		          system("../helper.sh --stats pending"); echo $pending."."  ?></h4>
 	</div>
 </div>
 		
@@ -39,7 +40,7 @@
 <!--
 function valid(f)
 {
-	if (f.email.value.indexOf("@",0) < 0) {
+	if (f.email.value == "" || f.email.value.indexOf("@",0) < 0) {
 		alert("<?php echo $enter_email ?>")
 		f.email.focus()
 		return
@@ -77,6 +78,14 @@ function valid(f)
 </script>
 <form method="post" action="../preorder.php">
 <input type="hidden" name="lang" value="<?php echo $lang ?>" />
+<input type="hidden" name="ip" value="<?php 
+if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) 
+     echo $_SERVER["HTTP_X_FORWARDED_FOR"];
+else echo $_SERVER["REMOTE_ADDR"];
+?>" />
+<div id="capcha">
+<input name="host" type="text" value="" />
+</div>
 <table width="100%">
 <tbody>
 	<tr>
