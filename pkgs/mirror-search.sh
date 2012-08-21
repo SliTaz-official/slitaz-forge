@@ -468,7 +468,7 @@ $cnt</span><a href="?$1=$item&amp;version=$SLITAZ_VERSION" style="\
 font-size:$((8+($pct/10)))pt; font-weight:bold; \
 color:black; text-decoration:none">$(echo $item | sed 's/-/\&minus;/g')</a>
 EOT
-	done
+	done | tee /dev/stderr | printf "</p><p align=right>$2" $(wc -l)
 	echo "</p>"
 }
 
@@ -731,7 +731,7 @@ _EOT_
 _EOT_
 	else
 		# Display clouds
-		while read var arg title filter; do
+		while read var arg title fmt filter; do
 			file=/tmp/$arg-$SLITAZ_VERSION
 			echo "<a name=\"$arg\"></a>"
 			echo "<h3>$title</h3>"
@@ -739,11 +739,11 @@ _EOT_
 			  $PACKAGES_REPOSITORY/packages.txt -nt $file ] &&
 				build_cloud_cache $var "$filter" > $file.$$ &&
 				mv $file.$$ $file
-			display_cloud $arg < $file
+			display_cloud $arg "$fmt" < $file 2>&1
 		done << EOT
-TAGS		tags		Tag\ cloud
-CATEGORY	category	Category\ cloud
-MAINTAINER	maintainer	Maintainer\ cloud	s/.*<//;s/.*\ //;s/>//
+TAGS		tags		Tag\ cloud		%d\ tags.
+CATEGORY	category	Category\ cloud		%d\ categories.
+MAINTAINER	maintainer	Maintainer\ cloud	%d\ maintainers.	s/.*<//;s/.*\ //;s/>//
 EOT
 	fi
 	;;
