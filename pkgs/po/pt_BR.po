@@ -45,7 +45,7 @@ msgstr "Dependências"
 
 #: search.sh:188
 msgid "Build depends"
-msgstr ""
+msgstr "Dependências de compilação"
 
 #: search.sh:189
 msgid "File"
@@ -53,11 +53,11 @@ msgstr "Arquivo"
 
 #: search.sh:190
 msgid "File list"
-msgstr "Arquivo lista"
+msgstr "Lista de arquivo"
 
 #: search.sh:191
 msgid "common files"
-msgstr ""
+msgstr "Arquivos comuns"
 
 #: search.sh:199
 msgid "cooking"
@@ -80,6 +80,8 @@ msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
 msgstr ""
+"\tglibc-base e gcc-lib-base são dependências implícitas,\n"
+"\t<b>todo</b> pacote em princípio depende delas."
 
 #: search.sh:418
 #, sh-format
@@ -88,11 +90,11 @@ msgstr "Sem resultado: $SEARCH"
 
 #: search.sh:564
 msgid "Search for packages"
-msgstr ""
+msgstr "Busca pelos pacotes"
 
 #: search.sh:579
 msgid "Depends loops"
-msgstr "Dependências loops"
+msgstr "Loops de dependência"
 
 #: search.sh:594
 #, sh-format
@@ -107,26 +109,26 @@ msgstr "Árvore de dependências para: $SEARCH (SUGGESTED)"
 #: search.sh:614
 #, sh-format
 msgid "Reverse dependency tree for: $SEARCH"
-msgstr "Árvore de dependências reversa para: $SEARCH"
+msgstr "Árvore reversa de dependências para: $SEARCH"
 
 #: search.sh:631
 msgid "Build depends loops"
-msgstr ""
+msgstr "Loop de dependências de compilação"
 
 #: search.sh:647
 #, sh-format
 msgid "$SEARCH needs these packages to be built"
-msgstr ""
+msgstr "$SEARCH depende que estes pacotes sejam compilados"
 
 #: search.sh:655
 #, sh-format
 msgid "Packages who need $SEARCH to be built"
-msgstr ""
+msgstr "Pacotes que necessitam de $SEARCH para serem compilados"
 
 #: search.sh:672
 #, sh-format
 msgid "These packages may overload files of $SEARCH"
-msgstr ""
+msgstr "Estes pacotes talvez sobrecarreguem os arquivos de $SEARCH"
 
 #: search.sh:700 search.sh:737 search.sh:771 search.sh:792 search.sh:841
 #: search.sh:859
@@ -138,31 +140,31 @@ msgstr "Resultado para : $SEARCH"
 #, sh-format
 msgid "$filenb file"
 msgid_plural "$filenb files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$filenb arquivo"
+msgstr[1] "$filenb arquivos"
 
 #: search.sh:763
 #, fuzzy, sh-format
 msgid "Description of package: $SEARCH"
-msgstr "Sem resultado: $SEARCH"
+msgstr "Descrição do pacote: $SEARCH"
 
 #: search.sh:865
 msgid "description"
-msgstr ""
+msgstr "descrição"
 
 #: search.sh:877
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "Resultado para : $SEARCH (package providing $vpkg)"
+msgstr "Resultado para : $SEARCH (pacote fornece $vpkg)"
 
 #: lib/header.sh:6
 #, sh-format
 msgid "SliTaz Packages - Search $SEARCH"
-msgstr "SliTaz Pacotes — Search $SEARCH"
+msgstr "Pacotes do SliTaz - Busca por $SEARCH"
 
 #: lib/header.sh:20
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 #: lib/header.sh:21
 msgid "Community"
@@ -194,4 +196,4 @@ msgstr ""
 
 #: lib/header.sh:29
 msgid "SliTaz Packages"
-msgstr "SliTaz Pacotes"
+msgstr "Pacotes do SliTaz"
