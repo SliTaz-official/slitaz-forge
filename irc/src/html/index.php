@@ -60,8 +60,8 @@
 <div id="contentbox">
 	<div style="text-align: justify; width: 48%; padding: 20px 10px 0pt 0pt;">
 		These are the logs from the #slitaz support channel on freenode.<br />
-		The main purpose of these are to provide records of meetings and<br />
-		dicussion we have on IRC - not that pankso is around much...<br /><br />
+		The main purpose of these is to provide records of meetings and<br />
+		dicussions we have on IRC - not that pankso is around much...<br /><br />
 		Please click on the date of the log you wish to view:<br />
 	</div>
 </div>

@@ -42,11 +42,11 @@ Subject: $SUBJECT
 
 Hello $SURNAME,
 
-A $KEYSIZE SliTaz USB key will be reserved for you.
-Would you mind confirm the pre-ordering with the following link
+A $KEYSIZE SliTaz USB key has been reserved for you.
+Would you mind confirming your pre-order with the following link
 http://usbkey.slitaz.org/?confirm=$HASH
 
-Or cancel the registration with the following link
+Or cancelling the registration with the following link
 http://usbkey.slitaz.org/?cancel=$HASH
 
 Thanks,
