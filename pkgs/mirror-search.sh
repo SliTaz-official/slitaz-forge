@@ -55,6 +55,7 @@ nice_url() {
 			Package)		NICE="package=$SEARCH";;
 			Desc)			NICE="desc=$SEARCH";;
 			Tags)			NICE="tags=$SEARCH";;
+			Arch)			NICE="arch=$SEARCH";;
 			Receipt)		NICE="receipt=$SEARCH";;
 			Depends)		NICE="depends=$SEARCH";;
 			BuildDepends)	NICE="builddepends=$SEARCH";;
@@ -122,6 +123,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		file=*)					SEARCH=${i#*=}; OBJECT=File;;
 		desc=*)					SEARCH=${i#*=}; OBJECT=Desc;;
 		tags=*)					SEARCH=${i#*=}; OBJECT=Tags;;
+		arch=*)					SEARCH=${i#*=}; OBJECT=Arch;;
 		receipt=*)				SEARCH=${i#*=}; OBJECT=Receipt;;
 		filelist=*)				SEARCH=${i#*=}; OBJECT=File_list;;
 		package=*)				SEARCH=${i#*=}; OBJECT=Package;;
@@ -151,6 +153,7 @@ case "$OBJECT" in
 	File)			selected_file="selected";;
 	Desc)			selected_desc="selected";;
 	Tags)			selected_tags="selected";;
+	Arch)			selected_arch="selected";;
 	Receipt)		selected_receipt="selected";;
 	File_list)		selected_file_list="selected";;
 	Depends)		selected_depends="selected";;
@@ -193,6 +196,7 @@ search_form()
 		<option value="Package">$(gettext "Package")</option>
 		<option $selected_desc value="Desc">$(gettext "Description")</option>
 		<option $selected_tags value="Tags">$(gettext "Tags")</option>
+		<!-- option $selected_arch value="Tags">$(gettext "Arch")</option -->
 		<option $selected_receipt value="Receipt">$(gettext "Receipt")</option>
 		<option $selected_depends value="Depends">$(gettext "Depends")</option>
 		<option $selected_build_depends value="BuildDepends">$(gettext "Build depends")</option>
@@ -271,7 +275,8 @@ else
 	busybox wget -s $PACKAGE_URL 2> /dev/null &&
 	PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 	cat << _EOT_
-$PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC
+$PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC \
+<a href="?receipt=$PACKAGE">$(gettext "Receipt")</a>
 _EOT_
 fi
 	[ -n "$(GET debug)" ] && cat << _EOT_
@@ -418,6 +423,69 @@ _EOT_
 htmlize()
 {
 	sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
+}
+
+# Create some clickable links
+urllink()
+{
+	sedit=""
+	[ -n "$WEB_SITE" ] && sedit="$sedit -e 's|^WEB_SITE=\"\\(.*\\)\"|WEB_SITE=\"<a href=\"$WEB_SITE\">\\1</a>\"|'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|^WGET_URL=\"\\(.*\\)\"|WGET_URL=\"<a href=\"$WGET_URL\">\\1</a>\"|'"
+	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|^CATEGORY=\"\\(.*\\)\"|CATEGORY=\"<a href=\"?category=$CATEGORY\">\\1</a>\"|'"
+	[ -n "$WANTED" ] && sedit="$sedit -e 's|^WANTED=\"\\(.*\\)\"|WANTED=\"<a href=\"?receipt=$WANTED\">\\1</a>\"|'"
+	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|^SHORT_DESC=\"\\(.*\\)\"|SHORT_DESC=\"<a href=\"?desc=$PACKAGE\">\\1</a>\"|'"
+	if [ -n "$HOST_ARCH" ]; then
+		tmp=""
+		for i in $HOST_ARCH ; do
+			tmp="$tmp <a href=\\\"?arch=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^HOST_ARCH=\".*\"|HOST_ARCH=\"${tmp# }\"|'"
+	fi
+	if [ -n "$TAGS" ]; then
+		tmp=""
+		for i in $TAGS ; do
+			tmp="$tmp <a href=\\\"?tags=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^TAGS=\".*\"|TAGS=\"${tmp# }\"|'"
+	fi
+	if [ -n "$DEPENDS" ]; then
+		tmp=""
+		for i in $(echo $DEPENDS) ; do
+			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^DEPENDS=\".*\"|DEPENDS=\"${tmp# }\"|'"
+	fi
+	if [ -n "$BUILD_DEPENDS" ]; then
+		tmp=""
+		for i in $(echo $BUILD_DEPENDS) ; do
+			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^BUILD_DEPENDS=\".*\"|BUILD_DEPENDS=\"${tmp# }\"|'"
+	fi
+	if [ -n "$SUGGESTED" ]; then
+		tmp=""
+		for i in $(echo $SUGGESTED) ; do
+			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^SUGGESTED=\".*\"|SUGGESTED=\"${tmp# }\"|'"
+	fi
+	if [ -n "$CONFIG_FILES" ]; then
+		tmp=""
+		for i in $(echo $CONFIG_FILES) ; do
+			tmp="$tmp <a href=\\\"?file=$i\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^CONFIG_FILES=\".*\"|CONFIG_FILES=\"${tmp# }\"|'"
+	fi
+	if [ -n "$PROVIDE" ]; then
+		tmp=""
+		for i in $(echo $PROVIDE) ; do
+			tmp="$tmp <a href=\\\"?package=${i%:*}\\\">$i</a>"
+		done
+		sedit="$sedit -e 's|^PROVIDE=\".*\"|PROVIDE=\"${tmp# }\"|'"
+	fi
+	eval sed $sedit \
+		-e "'s|^MAINTAINER=\".*\"|MAINTAINER=\"<a href=\"?maintainer=$MAINTAINER\">$MAINTAINER</a>\"|'" \
+		-e "'s|^genpkg_rules|<a href=\"?filelist=$PACKAGE\">&</a>|'"
 }
 
 display_packages_and_files()
@@ -683,30 +751,45 @@ _EOT_
 
 ### Package description
 Desc)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
 	if [ -f $WOK/$SEARCH/description.txt ]; then
-		cat << _EOT_
-
-<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
-<pre>
-$(htmlize < $WOK/$SEARCH/description.txt)
-</pre>
-_EOT_
+		htmlize < $WOK/$SEARCH/description.txt
 	else
-		cat << _EOT_
-
-<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
-<pre>
-_EOT_
 		last=""
 		grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
 		sort | while read pkg extras ; do
 			. $WOK/$pkg/receipt
 			package_entry
 		done
-		cat << _EOT_
+	fi
+	cat << _EOT_
 </pre>
 _EOT_
-	fi
+	;;
+
+
+### Arch
+Arch)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
+	last=""
+	grep ^HOST_ARCH= $WOK/*/receipt |  grep -i "$SEARCH" | \
+	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+		HOST_ARCH=
+		. $WOK/$pkg/receipt
+		echo " $HOST_ARCH " | grep -iq " $SEARCH " &&
+		package_entry
+	done
+	cat << _EOT_
+</pre>
+_EOT_
 	;;
 
 
@@ -756,11 +839,10 @@ Receipt)
 
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
-$(if [ -f  $WOK/$SEARCH/taz/*/receipt ]; then
-	cat $WOK/$SEARCH/taz/*/receipt
-  else
-    cat $WOK/$SEARCH/receipt
-  fi | htmlize)
+$(receipt=$WOK/$SEARCH/taz/*/receipt
+  [ -f  $receipt ] || receipt=$WOK/$SEARCH/receipt
+  . $receipt
+  cat $receipt | htmlize | urllink)
 </pre>
 _EOT_
 	;;
