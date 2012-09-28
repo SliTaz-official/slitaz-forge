@@ -448,26 +448,11 @@ urllink()
 		done
 		sedit="$sedit -e 's|^TAGS=\".*\"|TAGS=\"${tmp# }\"|'"
 	fi
-	if [ -n "$DEPENDS" ]; then
-		tmp=""
-		for i in $(echo $DEPENDS) ; do
-			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
+	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED" ]; then
+		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED) ; do
+			sedit="$sedit -e 's|\\([\" ]\\)$i\\([\" \\]\\)|\\1<a href=\\\"?package=$i\\\">$i</a>\\2|'"
+			sedit="$sedit -e 's|^$i\\([\" \\]\\)|<a href=\\\"?package=$i\\\">$i</a>\\1|'"
 		done
-		sedit="$sedit -e 's|^DEPENDS=\".*\"|DEPENDS=\"${tmp# }\"|'"
-	fi
-	if [ -n "$BUILD_DEPENDS" ]; then
-		tmp=""
-		for i in $(echo $BUILD_DEPENDS) ; do
-			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
-		done
-		sedit="$sedit -e 's|^BUILD_DEPENDS=\".*\"|BUILD_DEPENDS=\"${tmp# }\"|'"
-	fi
-	if [ -n "$SUGGESTED" ]; then
-		tmp=""
-		for i in $(echo $SUGGESTED) ; do
-			tmp="$tmp <a href=\\\"?package=$i\\\">$i</a>"
-		done
-		sedit="$sedit -e 's|^SUGGESTED=\".*\"|SUGGESTED=\"${tmp# }\"|'"
 	fi
 	if [ -n "$CONFIG_FILES" ]; then
 		tmp=""
@@ -841,6 +826,7 @@ Receipt)
 <pre>
 $(receipt=$WOK/$SEARCH/taz/*/receipt
   [ -f  $receipt ] || receipt=$WOK/$SEARCH/receipt
+  . /home/slitaz/repos/cookutils/cook.conf
   . $receipt
   cat $receipt | htmlize | urllink)
 </pre>
