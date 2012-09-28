@@ -56,6 +56,7 @@ nice_url() {
 			Desc)			NICE="desc=$SEARCH";;
 			Tags)			NICE="tags=$SEARCH";;
 			Arch)			NICE="arch=$SEARCH";;
+			Bugs)			NICE="bugs=$SEARCH";;
 			Receipt)		NICE="receipt=$SEARCH";;
 			Depends)		NICE="depends=$SEARCH";;
 			BuildDepends)	NICE="builddepends=$SEARCH";;
@@ -124,6 +125,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		desc=*)					SEARCH=${i#*=}; OBJECT=Desc;;
 		tags=*)					SEARCH=${i#*=}; OBJECT=Tags;;
 		arch=*)					SEARCH=${i#*=}; OBJECT=Arch;;
+		bugs=*)					SEARCH=${i#*=}; OBJECT=Bugs;;
 		receipt=*)				SEARCH=${i#*=}; OBJECT=Receipt;;
 		filelist=*)				SEARCH=${i#*=}; OBJECT=File_list;;
 		package=*)				SEARCH=${i#*=}; OBJECT=Package;;
@@ -154,6 +156,7 @@ case "$OBJECT" in
 	Desc)			selected_desc="selected";;
 	Tags)			selected_tags="selected";;
 	Arch)			selected_arch="selected";;
+	Bugs)			selected_bugs="selected";;
 	Receipt)		selected_receipt="selected";;
 	File_list)		selected_file_list="selected";;
 	Depends)		selected_depends="selected";;
@@ -197,6 +200,7 @@ search_form()
 		<option $selected_desc value="Desc">$(gettext "Description")</option>
 		<option $selected_tags value="Tags">$(gettext "Tags")</option>
 		<!-- option $selected_arch value="Tags">$(gettext "Arch")</option -->
+		<!-- option $selected_bugs value="Bugs">$(gettext "Bugs")</option -->
 		<option $selected_receipt value="Receipt">$(gettext "Receipt")</option>
 		<option $selected_depends value="Depends">$(gettext "Depends")</option>
 		<option $selected_build_depends value="BuildDepends">$(gettext "Build depends")</option>
@@ -433,6 +437,7 @@ urllink()
 	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|^WGET_URL=\"\\(.*\\)\"|WGET_URL=\"<a href=\"$WGET_URL\">\\1</a>\"|'"
 	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|^CATEGORY=\"\\(.*\\)\"|CATEGORY=\"<a href=\"?category=$CATEGORY\">\\1</a>\"|'"
 	[ -n "$WANTED" ] && sedit="$sedit -e 's|^WANTED=\"\\(.*\\)\"|WANTED=\"<a href=\"?receipt=$WANTED\">\\1</a>\"|'"
+	[ -n "$BUGS" ] && sedit="$sedit -e 's|^BUGS=\"\\(.*\\)\"|BUGS=\"<a href=\"?bugs=$PACKAGE\">\\1</a>\"|'"
 	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|^SHORT_DESC=\"\\(.*\\)\"|SHORT_DESC=\"<a href=\"?desc=$PACKAGE\">\\1</a>\"|'"
 	if [ -n "$HOST_ARCH" ]; then
 		tmp=""
@@ -451,7 +456,9 @@ urllink()
 	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED" ]; then
 		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED) ; do
 			sedit="$sedit -e 's|\\([\" ]\\)$i\\([\" \\]\\)|\\1<a href=\\\"?package=$i\\\">$i</a>\\2|'"
+			sedit="$sedit -e 's|\\([\" ]\\)$i\$|\\1<a href=\\\"?package=$i\\\">$i</a>|'"
 			sedit="$sedit -e 's|^$i\\([\" \\]\\)|<a href=\\\"?package=$i\\\">$i</a>\\1|'"
+			sedit="$sedit -e 's|^$i\$|<a href=\\\"?package=$i\\\">$i</a>|'"
 		done
 	fi
 	if [ -n "$CONFIG_FILES" ]; then
@@ -751,6 +758,27 @@ _EOT_
 			package_entry
 		done
 	fi
+	cat << _EOT_
+</pre>
+_EOT_
+	;;
+
+
+### Bugs
+Bugs)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for known bugs")</h3>
+<pre>
+_EOT_
+	last=""
+	grep ^BUGS= $WOK/*/receipt | \
+	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+		BUGS=
+		. $WOK/$pkg/receipt
+		package_entry
+		echo "    $BUGS "
+	done
 	cat << _EOT_
 </pre>
 _EOT_
