@@ -164,6 +164,7 @@ updatediskgraph() {
 	rate=$(echo | awk "BEGIN { printf \"%.0e\\n\",$err/$done }")
 	[ $err -eq 0 ] &&  rate="0"
 #		--right-axis-label "I/O state %"
+	 # BUG workaround: swap readsect and writesect :-/
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
 		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
@@ -177,9 +178,9 @@ updatediskgraph() {
 		"CDEF:errpct=100,err,req,/,*" \
 		"CDEF:donepct=100,done,req,/,*" \
 		"CDEF:errrate=err,done,/" \
-		'AREA:readpct#0000FF:sectors read from disk' \
+		'AREA:readpct#0000FF:sectors written from disk' \
 		"COMMENT:I/O error rate $rate" \
-		'STACK:writepct#00FF00:sectors written to disk' \
+		'STACK:writepct#00FF00:sectors read to disk' \
 		'LINE2:donepct#FFFF00:% I/O complete' \
 		'LINE2:errpct#FF0000:% I/O error\j'
 	else
@@ -190,8 +191,8 @@ updatediskgraph() {
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
-		'AREA:readpct#0000FF:sectors read from disk' \
-		'STACK:writepct#00FF00:sectors written to disk'
+		'AREA:readpct#0000FF:sectors written from disk' \
+		'STACK:writepct#00FF00:sectors read to disk'
 	fi
 }
 
