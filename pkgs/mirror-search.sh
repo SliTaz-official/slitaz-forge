@@ -280,7 +280,7 @@ else
 	PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 	cat << _EOT_
 $PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC \
-<a href="?receipt=$PACKAGE">$(gettext "Receipt")</a>
+<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a>
 _EOT_
 fi
 	[ -n "$(GET debug)" ] && cat << _EOT_
@@ -432,52 +432,60 @@ htmlize()
 # Create some clickable links
 urllink()
 {
+	local tarball_url
 	sedit=""
 	[ -n "$WEB_SITE" ] && sedit="$sedit -e 's|^WEB_SITE=\"\\(.*\\)\"|WEB_SITE=\"<a href=\"$WEB_SITE\">\\1</a>\"|'"
 	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|^WGET_URL=\"\\(.*\\)\"|WGET_URL=\"<a href=\"$WGET_URL\">\\1</a>\"|'"
-	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|^CATEGORY=\"\\(.*\\)\"|CATEGORY=\"<a href=\"?category=$CATEGORY\">\\1</a>\"|'"
-	[ -n "$WANTED" ] && sedit="$sedit -e 's|^WANTED=\"\\(.*\\)\"|WANTED=\"<a href=\"?receipt=$WANTED\">\\1</a>\"|'"
-	[ -n "$BUGS" ] && sedit="$sedit -e 's|^BUGS=\"\\(.*\\)\"|BUGS=\"<a href=\"?bugs=$PACKAGE\">\\1</a>\"|'"
-	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|^SHORT_DESC=\"\\(.*\\)\"|SHORT_DESC=\"<a href=\"?desc=$PACKAGE\">\\1</a>\"|'"
+	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|^CATEGORY=\"\\(.*\\)\"|CATEGORY=\"<a href=\"?category=$CATEGORY\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
+	[ -n "$WANTED" ] && sedit="$sedit -e 's|^WANTED=\"\\(.*\\)\"|WANTED=\"<a href=\"?receipt=$WANTED\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
+	[ -n "$BUGS" ] && sedit="$sedit -e 's|^BUGS=\"\\(.*\\)\"|BUGS=\"<a href=\"?bugs=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
+	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|^SHORT_DESC=\"\\(.*\\)\"|SHORT_DESC=\"<a href=\"?desc=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
+	tarball_url=sources/packages-$SLITAZ_VERSION/${TARBALL:0:1}/$TARBALL
+	[ -f /var/www/slitaz/mirror/$tarball_url ] || case "$tarball_url" in
+		*.gz)	tarball_url=${tarball_url%gz}lzma ;;
+		*.tgz)	tarball_url=${tarball_url%tgz}tar.lzma ;;
+		*.bz2)	tarball_url=${tarball_url%bz2}lzma ;;
+	esac
+	[ -f /var/www/slitaz/mirror/$tarball_url ] && sedit="$sedit -e 's|^TARBALL=\"\\(.*\\)\"|TARBALL=\"<a href=\"http://mirror.slitaz.org/$tarball_url\">\\1</a>\"|'"
 	if [ -n "$HOST_ARCH" ]; then
 		tmp=""
 		for i in $HOST_ARCH ; do
-			tmp="$tmp <a href=\\\"?arch=$i\\\">$i</a>"
+			tmp="$tmp <a href=\\\"?arch=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>"
 		done
 		sedit="$sedit -e 's|^HOST_ARCH=\".*\"|HOST_ARCH=\"${tmp# }\"|'"
 	fi
 	if [ -n "$TAGS" ]; then
 		tmp=""
 		for i in $TAGS ; do
-			tmp="$tmp <a href=\\\"?tags=$i\\\">$i</a>"
+			tmp="$tmp <a href=\\\"?tags=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>"
 		done
 		sedit="$sedit -e 's|^TAGS=\".*\"|TAGS=\"${tmp# }\"|'"
 	fi
 	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED" ]; then
 		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED) ; do
-			sedit="$sedit -e 's|\\([\" ]\\)$i\\([\" \\]\\)|\\1<a href=\\\"?package=$i\\\">$i</a>\\2|'"
-			sedit="$sedit -e 's|\\([\" ]\\)$i\$|\\1<a href=\\\"?package=$i\\\">$i</a>|'"
-			sedit="$sedit -e 's|^$i\\([\" \\]\\)|<a href=\\\"?package=$i\\\">$i</a>\\1|'"
-			sedit="$sedit -e 's|^$i\$|<a href=\\\"?package=$i\\\">$i</a>|'"
+			sedit="$sedit -e 's|\\([\" ]\\)$i\\([\" \\]\\)|\\1<a href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
+			sedit="$sedit -e 's|\\([\" ]\\)$i\$|\\1<a href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>|'"
+			sedit="$sedit -e 's|^$i\\([\" \\]\\)|<a href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\1|'"
+			sedit="$sedit -e 's|^$i\$|<a href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>|'"
 		done
 	fi
 	if [ -n "$CONFIG_FILES" ]; then
 		tmp=""
 		for i in $(echo $CONFIG_FILES) ; do
-			tmp="$tmp <a href=\\\"?file=$i\\\">$i</a>"
+			tmp="$tmp <a href=\\\"?file=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>"
 		done
 		sedit="$sedit -e 's|^CONFIG_FILES=\".*\"|CONFIG_FILES=\"${tmp# }\"|'"
 	fi
 	if [ -n "$PROVIDE" ]; then
 		tmp=""
 		for i in $(echo $PROVIDE) ; do
-			tmp="$tmp <a href=\\\"?package=${i%:*}\\\">$i</a>"
+			tmp="$tmp <a href=\\\"?package=${i%:*}\\&amp;version=$SLITAZ_VERSION\\\">$i</a>"
 		done
 		sedit="$sedit -e 's|^PROVIDE=\".*\"|PROVIDE=\"${tmp# }\"|'"
 	fi
 	eval sed $sedit \
 		-e "'s|^MAINTAINER=\".*\"|MAINTAINER=\"<a href=\"?maintainer=$MAINTAINER\">$MAINTAINER</a>\"|'" \
-		-e "'s|^genpkg_rules|<a href=\"?filelist=$PACKAGE\">&</a>|'"
+		-e "'s|^genpkg_rules|<a href=\"?filelist=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">&</a>|'"
 }
 
 display_packages_and_files()
