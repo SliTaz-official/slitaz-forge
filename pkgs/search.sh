@@ -4,6 +4,8 @@
 # Aleksej Bobylev <al.bobylev@gmail.com>
 #
 
+renice -n 19 $$
+
 # Parse query string
 . /etc/slitaz/slitaz.conf
 . /usr/lib/slitaz/httphelper.sh
@@ -65,6 +67,8 @@ nice_url() {
 			Package)		NICE="package=$SEARCH";;
 			Desc)			NICE="desc=$SEARCH";;
 			Tags)			NICE="tags=$SEARCH";;
+			Arch)			NICE="arch=$SEARCH";;
+			Bugs)			NICE="bugs=$SEARCH";;
 			Receipt)		NICE="receipt=$SEARCH";;
 			Depends)		NICE="depends=$SEARCH";;
 			BuildDepends)	NICE="builddepends=$SEARCH";;
@@ -116,7 +120,7 @@ VERBOSE="$(GET verbose)"
 . /usr/bin/gettext.sh
 export TEXTDOMAIN='tazpkg-web'
 
-SEARCH=""
+unset SEARCH
 VERBOSE=0
 for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 #	SLITAZ_VERSION=cooking
@@ -128,6 +132,8 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		file=*)					SEARCH=${i#*=}; OBJECT=File;;
 		desc=*)					SEARCH=${i#*=}; OBJECT=Desc;;
 		tags=*)					SEARCH=${i#*=}; OBJECT=Tags;;
+		arch=*)					SEARCH=${i#*=}; OBJECT=Arch;;
+		bugs=*)					SEARCH=${i#*=}; OBJECT=Bugs;;
 		receipt=*)				SEARCH=${i#*=}; OBJECT=Receipt;;
 		filelist=*)				SEARCH=${i#*=}; OBJECT=File_list;;
 		package=*)				SEARCH=${i#*=}; OBJECT=Package;;
@@ -156,6 +162,8 @@ case "$OBJECT" in
 	File)			selected_file="selected";;
 	Desc)			selected_desc="selected";;
 	Tags)			selected_tags="selected";;
+	Arch)			selected_arch="selected";;
+	Bugs)			selected_bugs="selected";;
 	Receipt)		selected_receipt="selected";;
 	File_list)		selected_file_list="selected";;
 	Depends)		selected_depends="selected";;
@@ -175,7 +183,7 @@ esac
 # unescape query
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
 
-WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok
+WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok-hg
 PACKAGES_REPOSITORY=$SLITAZ_HOME/$SLITAZ_VERSION/packages
 filelist=$PACKAGES_REPOSITORY/files.list.lzma
 pkglist=$PACKAGES_REPOSITORY/packages.txt
@@ -196,6 +204,8 @@ search_form()
 			<option value="Package">$(gettext "Package")</option>
 			<option $selected_desc value="Desc">$(gettext "Description")</option>
 			<option $selected_tags value="Tags">$(gettext "Tags")</option>
+			<option $selected_arch value="Arch">$(gettext "Arch")</option>
+			<option $selected_bugs value="Bugs">$(gettext "Bugs")</option>
 			<option $selected_receipt value="Receipt">$(gettext "Receipt")</option>
 			<option $selected_depends value="Depends">$(gettext "Depends")</option>
 			<option $selected_build_depends value="BuildDepends">$(gettext "Build depends")</option>
@@ -229,6 +239,22 @@ _EOT_
 # xHTML5 Header.
 xhtml_header() {
 	. lib/header.sh
+}
+
+cat_files_list()
+{
+	local tmp=/tmp/files.list.$(basename ${1%/packages})
+	if [ ! -s $tmp -o $1/files.list.lzma -nt $tmp ]; then
+		unlzma -c $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
+	fi
+	case "$2" in
+	lines)	if [ ! -s $tmp.lines -o $tmp -nt $tmp.lines ]; then
+			cat $tmp | wc -l > $tmp.lines.$$ &&
+			mv $tmp.lines.$$ $tmp.lines
+		fi
+		cat $tmp.lines ;;	
+	*)	cat $tmp ;;
+	esac
 }
 
 # xHTML Footer.
@@ -272,9 +298,9 @@ EOT
 _EOT_
 	else
 		PACKAGE_HREF="<u>$PACKAGE</u>"
-		PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
-		nslookup mirror.slitaz.org | grep -q 127.0.0.1 &&
-		PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
+		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
+		nslookup $(echo $MIRROR_URL | sed 's|http://||g') | grep -q 127.0.0.1 &&
+		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
 		busybox wget -s $PACKAGE_URL 2> /dev/null &&
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 		cat << _EOT_
@@ -287,6 +313,7 @@ _EOT_
 </tr>
 EOT
 }
+
 package_entry_inline() {
 	if [ -s "$(dirname $0)/$SLITAZ_VERSION/$CATEGORY.html" ]; then
 		cat << _EOT_
@@ -294,9 +321,9 @@ package_entry_inline() {
 _EOT_
 	else
 		PACKAGE_HREF="<u>$PACKAGE</u>"
-		PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
-		nslookup mirror.slitaz.org | grep -q 127.0.0.1 &&
-		PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
+		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
+		nslookup $(echo $MIRROR_URL | sed 's|http://||g') | grep -q 127.0.0.1 &&
+		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
 		busybox wget -s $PACKAGE_URL 2> /dev/null &&
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 		cat << _EOT_
@@ -361,9 +388,7 @@ for i in $1; do
 		)
 	fi
 	[ -f $WOK/$i/receipt ] || continue
-	DEPENDS=""
-	BUILD_DEPENDS=""
-	WANTED=""
+	unset BUILD_DEPENDS DEPENDS WANTED
 	. $WOK/$i/receipt
 	if [ -n "$3" ]; then
 		[ -n "$BUILD_DEPENDS$WANTED" ] &&
@@ -385,9 +410,7 @@ glibc-base|gcc-lib-base)
 	return;;
 esac
 for i in $WOK/* ; do
-	DEPENDS=""
-	BUILD_DEPENDS=""
-	WANTED=""
+	unset BUILD_DEPENDS DEPENDS WANTED
 	. $i/receipt
 	if [ -n "$2" ]; then
 		echo "$(basename $i) $(echo $WANTED $BUILD_DEPENDS)"
@@ -439,7 +462,7 @@ htmlize() {
 }
 
 display_packages_and_files() {
-last=""
+unset last
 while read pkg file; do
 	pkg=${pkg%:}
 	if [ "$pkg" != "$last" ]; then
@@ -607,9 +630,9 @@ _EOT_
 <h3>$(eval_gettext "Dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
-		ALL_DEPS=""
+		unset ALL_DEPS
 		dep_scan $SEARCH ""
-		SUGGESTED=""
+		unset SUGGESTED
 		. $WOK/$SEARCH/receipt
 		if [ -n "$SUGGESTED" ]; then
 			cat << _EOT_
@@ -618,7 +641,7 @@ _EOT_
 <h3>$(eval_gettext "Dependency tree for: \$SEARCH (SUGGESTED)")</h3>
 <pre>
 _EOT_
-			ALL_DEPS=""
+			unset ALL_DEPS
 			dep_scan "$SUGGESTED" "    "
 		fi
 		cat << _EOT_
@@ -627,7 +650,7 @@ _EOT_
 <h3>$(eval_gettext "Reverse dependency tree for: \$SEARCH")</h3>
 <pre>
 _EOT_
-		ALL_DEPS=""
+		unset ALL_DEPS
 		rdep_scan $SEARCH
 		cat << _EOT_
 </pre>
@@ -660,7 +683,7 @@ _EOT_
 <h3>$(eval_gettext "\$SEARCH needs these packages to be built")</h3>
 <pre>
 _EOT_
-		ALL_DEPS=""
+		unset ALL_DEPS
 		dep_scan $SEARCH "" build
 		cat << _EOT_
 </pre>
@@ -668,7 +691,7 @@ _EOT_
 <h3>$(eval_gettext "Packages who need \$SEARCH to be built")</h3>
 <pre>
 _EOT_
-		ALL_DEPS=""
+		unset ALL_DEPS
 		rdep_scan $SEARCH build
 		cat << _EOT_
 </pre>
@@ -713,7 +736,7 @@ File)
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <table>
 _EOT_
-		last=""
+		unset last
 		unlzma -c $filelist \
 		| grep "$SEARCH" | while read pkg file; do
 			echo "$file" | grep -q "$SEARCH" || continue
@@ -750,7 +773,7 @@ File_list)
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <pre>
 _EOT_
-		last=""
+		unset last
 		unlzma -c $filelist \
 		| grep ^$SEARCH: | sed 's/.*: /    /' | sort
 		cat << _EOT_
@@ -784,7 +807,7 @@ _EOT_
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <table>
 _EOT_
-		last=""
+		unset last
 		grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
 		sort | while read pkg extras ; do
 			. $WOK/$pkg/receipt
@@ -796,6 +819,45 @@ _EOT_
 	fi
 	;;
 
+Bugs)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for known bugs")</h3>
+<pre>
+_EOT_
+	unset last
+	grep ^BUGS= $WOK/*/receipt | \
+	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+		unset BUGS
+		. $WOK/$pkg/receipt
+		package_entry_inline
+		echo "    $BUGS "
+	done
+	cat << _EOT_
+</pre>
+_EOT_
+	;;
+
+
+### Arch
+Arch)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
+	unset last
+	grep ^HOST_ARCH= $WOK/*/receipt |  grep -i "$SEARCH" | \
+	sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+		unset HOST_ARCH
+		. $WOK/$pkg/receipt
+		echo " $HOST_ARCH " | grep -iq " $SEARCH " &&
+		package_entry_inline
+	done
+	cat << _EOT_
+</pre>
+_EOT_
+	;;
 
 ### Tags
 Tags)
@@ -805,7 +867,7 @@ Tags)
 <h3>$(eval_gettext "Result for: \$SEARCH")</h3>
 <table>
 _EOT_
-		last=""
+		unset last
 		grep ^TAGS= $WOK/*/receipt | grep -i "$SEARCH" | \
 		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
 			. $WOK/$pkg/receipt
@@ -876,7 +938,7 @@ _EOT_
 		do
 			. $WOK/$pkg/receipt
 			DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION$(ifdebug '&')&submit=go\">$(gettext description)</a>"
-			[ -f $WOK/$pkg/description.txt ] || DESC=""
+			[ -f $WOK/$pkg/description.txt ] || unset DESC
 			cat << _EOT_
 $(package_entry)$DESC
 _EOT_
