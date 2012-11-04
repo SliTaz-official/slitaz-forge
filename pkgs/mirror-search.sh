@@ -435,7 +435,7 @@ urllink()
 	local tarball_url
 	sedit=""
 	[ -n "$WEB_SITE" ] && sedit="$sedit -e 's|^WEB_SITE=\"\\(.*\\)\"|WEB_SITE=\"<a href=\"$WEB_SITE\">\\1</a>\"|'"
-	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|^WGET_URL=\"\\(.*\\)\"|WGET_URL=\"<a href=\"$WGET_URL\">\\1</a>\"|'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e 's#^WGET_URL=\"\\(.*\\)\"#WGET_URL=\"<a href=\"${WGET_URL##*|}\">\\1</a>\"#'"
 	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|^CATEGORY=\"\\(.*\\)\"|CATEGORY=\"<a href=\"?category=$CATEGORY\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
 	[ -n "$WANTED" ] && sedit="$sedit -e 's|^WANTED=\"\\(.*\\)\"|WANTED=\"<a href=\"?receipt=$WANTED\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
 	[ -n "$BUGS" ] && sedit="$sedit -e 's|^BUGS=\"\\(.*\\)\"|BUGS=\"<a href=\"?bugs=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>\"|'"
