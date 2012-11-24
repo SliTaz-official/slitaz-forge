@@ -444,9 +444,11 @@ foreach($filelist as $file) {
 // Print ending stuff
 $soft = explode('/',$_SERVER["SERVER_SOFTWARE"]);
 $tag = get_conf('server.tag','"','"',$soft[0].' &lt;'.$soft[1].'&gt;');
+$filenum = exec("cat $path/.filelist | sed 's|^a:||g' | sed 's|:{.*||g'");
+$foldernum = exec("cat $path/.folderlist | sed 's|^a:||g' | sed 's|:{.*||g'");
 print "</tbody>
 	</table>
-	</div>";
+	".$foldernum." folders and ".$filenum." files.</div>";
 if ($slitaz_style) { ?>
 
 <!-- End of content -->
