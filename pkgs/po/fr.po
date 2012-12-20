@@ -60,15 +60,15 @@ msgstr "Fichiers communs"
 
 #: search.sh:199
 msgid "cooking"
-msgstr ""
+msgstr "cuisson"
 
 #: search.sh:204
 msgid "tiny"
-msgstr ""
+msgstr "petit"
 
 #: search.sh:205
 msgid "undigest"
-msgstr ""
+msgstr "indigeste"
 
 #: search.sh:209
 msgid "Search"
@@ -79,6 +79,8 @@ msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
 msgstr ""
+"\tglibc-base et gcc-lib-base sont des dépendances implicite,\n"
+"\tpour chaque paquet supposé dépendre d'eux."
 
 #: search.sh:418
 #, sh-format
@@ -137,22 +139,22 @@ msgstr "Recherche de : $SEARCH"
 #, sh-format
 msgid "$filenb file"
 msgid_plural "$filenb files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$filenb fichier"
+msgstr[1] "$filenb fichiers"
 
 #: search.sh:763
 #, fuzzy, sh-format
 msgid "Description of package: $SEARCH"
-msgstr "Paquet $SEARCH introuvable"
+msgstr "Description du paquet: $SEARCH"
 
 #: search.sh:865
 msgid "description"
-msgstr ""
+msgstr "Description"
 
 #: search.sh:877
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "Recherche de : $SEARCH (package providing $vpkg)"
+msgstr "Recherche pour : $SEARCH (package providing $vpkg)"
 
 #: lib/header.sh:6
 #, sh-format
@@ -177,19 +179,19 @@ msgstr "Forum"
 
 #: lib/header.sh:24
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: lib/header.sh:25
 msgid "Shop"
-msgstr ""
+msgstr "Magasin"
 
 #: lib/header.sh:26
 msgid "Bugs"
-msgstr ""
+msgstr "Bugs"
 
 #: lib/header.sh:27
 msgid "Hg"
-msgstr ""
+msgstr "Hg"
 
 #: lib/header.sh:29
 msgid "SliTaz Packages"
