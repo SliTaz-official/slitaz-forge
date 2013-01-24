@@ -24,7 +24,7 @@
 		<a href="http://doc.slitaz.org/">Документация</a>
 		<a href="http://forum.slitaz.org/">Форум</a>
 		<a href="http://bugs.slitaz.org">Баг-трекер</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
 	<h1><a href="http://boot.slitaz.org/">Веб-загрузка SliTaz</a></h1>
 </div>

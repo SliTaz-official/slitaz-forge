@@ -48,7 +48,7 @@
 		<a href="http://slitaz.pro/">Pro</a>
 		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://people.slitaz.org/">SliTaz People</a></h1>
@@ -62,7 +62,7 @@
 		<ul>
 			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
 			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
+			<li><a href="http://hg.slitaz.org/?sort=lastchange">Mercurial Repos</a></li>
 			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 			<li><a href="http://roadmap.slitaz.org/">Roadmap</a></li>

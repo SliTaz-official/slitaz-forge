@@ -27,7 +27,7 @@
 		<a href="http://slitaz.pro/">Pro</a>
 		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/">SliTaz 
@@ -144,8 +144,8 @@ system("top -n1 -b");
 	(<a href="http://doc.slitaz.org/">main</a>)</li>
 	<li><a href="http://mirror.slitaz.org/pkgs/">pkgs.slitaz.org</a> - Packages Web interface.
 	(<a href="http://pkgs.slitaz.org/">main</a>)</li>
-	<li><a href="http://mirror.slitaz.org/hg/">hg.slitaz.org</a> - Mercurial repositories (read only).
-	(<a href="http://hg.slitaz.org/">main</a>
+	<li><a href="http://mirror.slitaz.org/hg/?sort=lastchange">hg.slitaz.org</a> - Mercurial repositories (read only).
+	(<a href="http://hg.slitaz.org/?sort=lastchange">main</a>
 	<a href="http://hg.tuxfamily.org/mercurialroot/slitaz/">tuxfamily</a>)</li>
 	<li><a href="http://mirror.slitaz.org/webboot/">boot.slitaz.org</a> - gPXE Web boot.
 	(<a href="http://boot.slitaz.org/">main</a>)</li>

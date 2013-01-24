@@ -24,7 +24,7 @@ cat << _EOF_
 		<a href="http://slitaz.pro/">$(gettext Pro)</a>
 		<a href="http://shop.slitaz.org/">$(gettext Shop)</a>
 		<a href="http://bugs.slitaz.org/">$(gettext Bugs)</a>
-		<a href="http://hg.slitaz.org/">$(gettext Hg)</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">$(gettext Hg)</a>
 	</div>
 	<h1><a href="./">$(gettext "SliTaz Packages")</a></h1>
 </div>

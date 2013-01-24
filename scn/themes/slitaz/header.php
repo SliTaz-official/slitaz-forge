@@ -49,7 +49,7 @@
 				<a href="http://doc.slitaz.org/">Doc</a>
 				<a href="http://forum.slitaz.org/">Forum</a>
 				<a href="http://bugs.slitaz.org/">Bugs</a>
-				<a href="http://hg.slitaz.org/">Hg</a>
+				<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 			</div>
 
 			<h1 id="logo"><a href="<?php echo site_url() ?>" title="<?php _e( 'Home', 'buddypress' ) ?>"><?php bp_site_name() ?></a></h1>

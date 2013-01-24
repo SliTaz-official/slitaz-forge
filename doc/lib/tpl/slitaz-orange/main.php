@@ -39,7 +39,7 @@ if (!defined('DOKU_INC')) die();
 		<a href="http://slitaz.pro/">Pro</a>
 		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
 	<h1><a href="./">SliTaz Doc</a></h1>
 	<!-- <?php tpl_link(wl($ID,'do=backlink'),tpl_pagetitle($ID,true),'title="'.$lang['btn_backlink'].'"')?> -->

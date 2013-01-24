@@ -37,7 +37,7 @@ if ( bb_is_profile() ) {
 				<a href="http://slitaz.pro/">Pro</a>
 				<a href="http://shop.slitaz.org/">Shop</a>
 				<a href="http://bugs.slitaz.org">Bugs</a>
-				<a href="http://hg.slitaz.org/">Hg</a>
+				<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 			</div>
 
 			<h1><a href="<?php bb_uri(); ?>"><?php bb_option('name'); ?></a></h1>

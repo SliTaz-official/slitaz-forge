@@ -87,7 +87,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li> -->
 	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.
 		(<a href="/stats/awstats.pl?config=boot.slitaz.org">stats</a>)</li>
-	<!-- <li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.
+	<!-- <li><a href="http://hg.slitaz.org/?sort=lastchange">hg.slitaz.org</a> - Mercurial repositories.
 		(<a href="/stats/awstats.pl?config=hg.slitaz.org">stats</a>)</li> -->
 	<li><a href="http://cook.slitaz.org/">cook.slitaz.org</a> - SliTaz Build Bot.
 		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>

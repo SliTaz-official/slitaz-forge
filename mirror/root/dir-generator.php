@@ -183,7 +183,7 @@ if ($slitaz_style) {
 		<a href="http://pro.slitaz.org/">Pro</a>
 		<a href="https://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
-		<a href="http://hg.slitaz.org/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://mirror.slitaz.org/">SliTaz Mirror</a></h1>
