@@ -8,20 +8,14 @@ msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-01 19:46+0000\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
-"Language-Team: \n"
-"Language: \n"
+"PO-Revision-Date: 2013-01-27 03:20-0300\n"
+"Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
+"Language-Team: Portuguese <i18n@slitaz.org>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: BRAZIL\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ../\n"
-"Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: lib\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: search.sh:183
 msgid "Package"
@@ -33,11 +27,11 @@ msgstr "Descrição"
 
 #: search.sh:185
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: search.sh:186
 msgid "Receipt"
-msgstr ""
+msgstr "Receipt"
 
 #: search.sh:187
 msgid "Depends"
@@ -53,7 +47,7 @@ msgstr "Arquivo"
 
 #: search.sh:190
 msgid "File list"
-msgstr "Lista de arquivo"
+msgstr "Lista de arquivos"
 
 #: search.sh:191
 msgid "common files"
@@ -61,15 +55,15 @@ msgstr "Arquivos comuns"
 
 #: search.sh:199
 msgid "cooking"
-msgstr ""
+msgstr "cooking"
 
 #: search.sh:204
 msgid "tiny"
-msgstr ""
+msgstr "tiny"
 
 #: search.sh:205
 msgid "undigest"
-msgstr ""
+msgstr "undigest"
 
 #: search.sh:209
 msgid "Search"
@@ -172,7 +166,7 @@ msgstr "Comunidade"
 
 #: lib/header.sh:22
 msgid "Doc"
-msgstr ""
+msgstr "Doc"
 
 #: lib/header.sh:23
 msgid "Forum"
@@ -180,19 +174,19 @@ msgstr "Fórum"
 
 #: lib/header.sh:24
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: lib/header.sh:25
 msgid "Shop"
-msgstr ""
+msgstr "Shop"
 
 #: lib/header.sh:26
 msgid "Bugs"
-msgstr ""
+msgstr "Bugs"
 
 #: lib/header.sh:27
 msgid "Hg"
-msgstr ""
+msgstr "Hg"
 
 #: lib/header.sh:29
 msgid "SliTaz Packages"
