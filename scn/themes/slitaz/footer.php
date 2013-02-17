@@ -4,7 +4,7 @@
 		<?php do_action( 'bp_before_footer' ) ?>
 
 		<div id="footer">
-	    	<p>Copyright &copy; 2012
+		<p>Copyright &copy; <?php echo date('Y'); ?>
 				<a href="http://www.slitaz.org">SliTaz</a> - SCN is
 				proudly powered by <a href="http://wordpress.org">WordPress</a>
 				and <a href="http://buddypress.org">BuddyPress</a>

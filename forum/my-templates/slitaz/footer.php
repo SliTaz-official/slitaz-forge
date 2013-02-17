@@ -1,7 +1,7 @@
 		</div>
 	</div>
 	<div id="footer" role="contentinfo">
-		Copyright &copy; 2011
+		Copyright &copy; <?php echo date('Y'); ?>
 		<a href="http://www.slitaz.org/">SliTaz</a> Powered by 
 		<a href="http://bbpress.org">bbPress</a> - Network:
 		<a href="http://scn.slitaz.org/">Community</a>
