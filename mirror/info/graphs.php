@@ -77,6 +77,7 @@
 <!-- Content -->
 <div id="content">
 
+<div align="center"> <?php echo date("r"); ?> </div>
 <?php
 
 $myurl="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
