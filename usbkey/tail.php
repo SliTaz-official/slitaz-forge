@@ -14,7 +14,8 @@ Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">Sli
 </p>
 <p>
 	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-	     onclick= "this.width = this.height = 300;" />
+	     onmouseover= "this.title = location.href"
+	     onclick= "this.width = this.height = 300" />
 	<script type="text/javascript" src="/static/qrcode.js"></script>
 	<script type="text/javascript">
 		document.getElementById('qrcodeimg').src =

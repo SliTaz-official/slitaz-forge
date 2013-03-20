@@ -146,7 +146,8 @@ graphic("net",$eth[0]);
 	</p>
 	<p>
 		<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-		     onclick= "this.width = this.height = 300;" />
+		     onmouseover= "this.title = location.href"
+		     onclick= "this.width = this.height = 300" />
 		<script type="text/javascript" src="/static/qrcode.js"></script>
 		<script type="text/javascript">
 			document.getElementById('qrcodeimg').src =

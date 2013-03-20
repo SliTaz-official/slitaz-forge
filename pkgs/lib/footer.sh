@@ -13,7 +13,8 @@ $(eval_ngettext "and \$FILES file in \$SLITAZ_VERSION database" "and \$FILES fil
 $(gettext "SliTaz Packages")
 <p>
 	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-	     onclick= "this.width = this.height = 300;" />
+	     onmouseover= "this.title = location.href"
+	     onclick= "this.width = this.height = 300" />
 	<script type="text/javascript" src="http://mirror.slitaz.org/static/qrcode.js"></script>
 	<script type="text/javascript">
 		document.getElementById('qrcodeimg').src =
