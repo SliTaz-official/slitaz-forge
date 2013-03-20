@@ -478,6 +478,15 @@ if ($slitaz_style) { ?>
 			     alt="Valid XHTML 1.0" title="Code validé XHTML 1.0"
 			     style="width: 80px; height: 15px;" /></a>
 	</p>
+	<p>
+		<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
+		     onclick= "this.width = this.height = 300;" />
+		<script type="text/javascript" src="/static/qrcode.js"></script>
+		<script type="text/javascript">
+			document.getElementById('qrcodeimg').src =
+				QRCode.generatePNG(location.href, {ecclevel: 'H'});
+		</script>
+	</p>
 </div>
 
 <?php }

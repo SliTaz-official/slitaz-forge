@@ -216,6 +216,15 @@ You can extract the <u>kernel</u>, <u>cmdline</u> and <u>rootfs</u> files with
 Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">SliTaz</a> -
 <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>
 </p>
+<p>
+	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
+	     onclick= "this.width = this.height = 300;" />
+	<script type="text/javascript" src="static/qrcode.js"></script>
+	<script type="text/javascript">
+		document.getElementById('qrcodeimg').src =
+			QRCode.generatePNG(location.href, {ecclevel: 'H'});
+	</script>
+</p>
 <!-- End of copy -->
 </div>
 
