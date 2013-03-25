@@ -3,6 +3,8 @@
 		<?php do_action( 'bp_after_container' ) ?>
 		<?php do_action( 'bp_before_footer' ) ?>
 
+		<script type="text/javascript" src="qrcode.js"></script>
+
 		<div id="footer">
 		<p>Copyright &copy; <?php echo date('Y'); ?>
 				<a href="http://www.slitaz.org">SliTaz</a> - SCN is
@@ -10,7 +12,8 @@
 				and <a href="http://buddypress.org">BuddyPress</a>
 			</p>
 			<p>
-				SliTaz @
+				<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+				 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 				<a href="http://twitter.com/slitaz">Twitter</a>
 				<a href="http://www.facebook.com/slitaz">Facebook</a>
 				<a href="http://distrowatch.com/slitaz">Distrowatch</a>
