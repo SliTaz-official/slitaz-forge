@@ -114,7 +114,7 @@ if (!defined('DOKU_INC')) die();
 <script type="text/javascript" src="<?php echo DOKU_TPL?>qrcode.js"></script>
 
 <div id="footer">
-	Copyright &copy; <span class="year"></span>
+	Copyright &copy; <?php echo date('Y'); ?>
 	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
 	<a href="http://scn.slitaz.org/">Community</a>
 	<a href="http://doc.slitaz.org/">Doc</a>
