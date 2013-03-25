@@ -218,6 +218,7 @@ EOT;
 	</div>
 </div>
 
+<script type="text/javascript" src="/static/qrcode.js"></script>
 <div id="lang">
 Path: /${vpath}
 </div>
@@ -437,7 +438,11 @@ foreach($folderlist as $folder) {
 foreach($filelist as $file) {
 	print "<tr><td class='n'><a href='" . addslashes($file['name']). "'>" .htmlentities($file['name']). "</a></td>";
 	print "<td class='m'>" . $file['modtimeasc'] . "</td>";
-	print "<td class='s'>" . format_bytes($file['size'])           . "</td>";
+	print "<td class='s'><u><img src=\"#\" alt=\"" .
+		format_bytes($file['size']) . "\" onmouseover=" .
+		"\"this.title = location.href+'$url'\" onclick=" .
+		"\"this.src = QRCode.generatePNG(location.href+'$url', " .
+		"{ecclevel: 'H'}) \"/></u></td>";
 	print "<td class='t'>" . $file['file_type']                      . "</td></tr>\n";
 }
 
@@ -465,7 +470,8 @@ if ($slitaz_style) { ?>
 	<a href="http://bugs.slitaz.org">Bugs</a>
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
-		SliTaz @
+		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>
 		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
@@ -477,16 +483,6 @@ if ($slitaz_style) { ?>
 			<img src="/static/xhtml10.png" 
 			     alt="Valid XHTML 1.0" title="Code validé XHTML 1.0"
 			     style="width: 80px; height: 15px;" /></a>
-	</p>
-	<p>
-		<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-		     onmouseover= "this.title = location.href"
-		     onclick= "this.width = this.height = 300" />
-		<script type="text/javascript" src="/static/qrcode.js"></script>
-		<script type="text/javascript">
-			document.getElementById('qrcodeimg').src =
-				QRCode.generatePNG(location.href, {ecclevel: 'H'});
-		</script>
 	</p>
 </div>
 
