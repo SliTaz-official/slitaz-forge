@@ -120,6 +120,9 @@ graphic("net",$eth[0]);
 </div>
 
 <!-- Footer -->
+
+<script type="text/javascript" src="/static/qrcode.js"></script>
+
 <div id="footer">
 	Copyright &copy; <span class="year"></span>
 	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
@@ -131,7 +134,8 @@ graphic("net",$eth[0]);
 	<a href="http://bugs.slitaz.org">Bugs</a>
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
-		SliTaz @
+		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>
 		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
@@ -143,16 +147,6 @@ graphic("net",$eth[0]);
 			<img src="/static/xhtml10.png"
 				alt="Valid XHTML 1.0" title="Code valid. XHTML 1.0"
 				style="width: 80px; height: 15px;" /></a>
-	</p>
-	<p>
-		<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-		     onmouseover= "this.title = location.href"
-		     onclick= "this.width = this.height = 300" />
-		<script type="text/javascript" src="/static/qrcode.js"></script>
-		<script type="text/javascript">
-			document.getElementById('qrcodeimg').src =
-				QRCode.generatePNG(location.href, {ecclevel: 'H'});
-		</script>
 	</p>
 </div>
 
