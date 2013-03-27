@@ -1,7 +1,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="my-templates/slitaz/qrcode.js"></script>
+	<script type="text/javascript" src="/my-templates/slitaz/qrcode.js"></script>
 
 	<div id="footer" role="contentinfo">
 		Copyright &copy; <?php echo date('Y'); ?>

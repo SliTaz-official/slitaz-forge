@@ -3,7 +3,7 @@
 		<?php do_action( 'bp_after_container' ) ?>
 		<?php do_action( 'bp_before_footer' ) ?>
 
-		<script type="text/javascript" src="qrcode.js"></script>
+		<script type="text/javascript" src="/wp-content/themes/custom-community/qrcode.js"></script>
 
 		<div id="footer">
 		<p>Copyright &copy; <?php echo date('Y'); ?>
