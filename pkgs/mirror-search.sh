@@ -11,6 +11,9 @@ renice -n 19 $$
 # Parse query string
 . /usr/lib/slitaz/httphelper.sh
 
+case "$HTTP_USER_AGENT" in
+*/[Bb]ot*|*[Bb]ot/*|*spider/*) exec $PWD/Travaux.sh ;;
+esac
 
 # User preferred language
 # parameter $1 have priority; without parameter $1 - browser language only
@@ -278,9 +281,12 @@ else
 	PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
 	busybox wget -s $PACKAGE_URL 2> /dev/null &&
 	PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
+	COOKER=""
+	[ "$SLITAZ_VERSION" == "cooking" ] &&
+	COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>"
 	cat << _EOT_
 $PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC \
-<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a>
+<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER
 _EOT_
 fi
 	[ -n "$(GET debug)" ] && cat << _EOT_
@@ -530,6 +536,8 @@ display_cloud()
 {
 	echo "<p>"
 	while read cnt pct item ; do
+		pct=$(((10000 - ((100 - $pct)**2))/100))
+		pct=$(((10000 - ((100 - $pct)**2))/100))
 		cat <<EOT
 <span style="color:#99f; font-size:9pt; padding-left:5px; padding-right:2px;">\
 $cnt</span><a href="?$1=$item&amp;version=$SLITAZ_VERSION" style="\
