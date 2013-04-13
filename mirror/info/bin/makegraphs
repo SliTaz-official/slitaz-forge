@@ -38,8 +38,9 @@ updatecpudata() {
 
 updatecpugraph() {
 	period=$1
-	info="$(grep '^model name' /proc/cpuinfo | cut -d: -f2 \
-		| sed 's/ * / /g' | head -1)"
+	info="$(sed '/cpuinfo=/!d;s/.*cpuinfo=\([^ ]*\).*/: \1/;s/_/ /g' /proc/cmdline)"
+	[ -n "$info" ] || info="$(grep '^model name' /proc/cpuinfo)"
+	info="$(echo "$info" | cut -d: -f2 | sed 's/ * / /g' | head -1)"
 	rrdtool graph "$rrdgraph/cpu-$period.png" --start -1$period \
 		$rrdgraphargs -l 0 -u 100 -t "cpu usage per $period [$info ]" \
 		DEF:user=$rrdlog/cpu.rrd:user:AVERAGE \
@@ -145,17 +146,17 @@ END { print max }' | sed 's/,/./'
 
 updatediskgraph() {
 	period=$1
-	[ "$period" == "day" ] && maxdisk="$(getmax disk)"
+	extra="--logarithmic --lower-limit 1"
+	[ "$period" == "day" ] && maxdisk="$(getmax disk)" && extra=""
 	info=""
 	[ -r $2 ] &&
 	info="[ $(fdisk -l 2> /dev/null | grep "^Disk $2:" | \
 		  sed "s|Disk $2: \(.*\), .*|\1|") ]"
 	if [ -e /sys/block/${2#/dev/}/device/iodone_cnt ]; then
 #		--right-axis-label "I/O state %"
-	# BUG workaround: swap readsect and writesect :-/
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
-		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
+		$extra -v "Sectors/second" --units=si \
 		DEF:read=$rrdlog/disk.rrd:readsect:AVERAGE \
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
 		DEF:req=$rrdlog/iodisk.rrd:req:AVERAGE \
@@ -172,13 +173,17 @@ updatediskgraph() {
 	else
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
-		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
+		$extra -v "Sectors/second" --units=si \
 		DEF:read=$rrdlog/disk.rrd:readsect:AVERAGE \
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
+		DEF:blk=$rrdlog/usagedisk.rrd:broot:AVERAGE \
+		DEF:ino=$rrdlog/usagedisk.rrd:iroot:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
 		'AREA:readpct#0000FF:sectors written from disk' \
-		'STACK:writepct#00FF00:sectors read to disk'
+		'STACK:writepct#00FF00:sectors read to disk' \
+		'LINE1:ino#FF00FF:% inodes used' \
+		'LINE1:blk#FF0000:% blocks used\j'
 	fi
 }
 
@@ -196,6 +201,11 @@ updatediskdata() {
 			DS:req:GAUGE:600:0:U \
 			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
 			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
+	[ -e "$rrdlog/usagedisk.rrd" ] ||
+		rrdtool create "$rrdlog/usagedisk.rrd" --step=300 \
+			DS:broot:GAUGE:600:0:U  DS:iroot:GAUGE:600:0:U \
+			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
+			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
 
 	while read major minor name readreq readsect writereq writesect misc; do
 		[ $major = $(( 0x$(stat -c %t $dev) )) ] || continue
@@ -205,6 +215,10 @@ updatediskdata() {
 	done < /proc/diskstats
 	disk=${dev:0:8}
 	dir=/sys/block/${disk#/dev/}/device
+	iroot=$(df -i / | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	broot=$(df / | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	rrdtool update "$rrdlog/usagedisk.rrd" -t broot:iroot N:$broot:$iroot
+	[ -e $dir/iorequest_cnt ] || return
 	done=$(printf "%d\n" $(cat $dir/iodone_cnt 2> /dev/null) )
 	err=$(printf "%d\n" $(cat $dir/ioerr_cnt 2> /dev/null) )
 	req=$(printf "%d\n" $(cat $dir/iorequest_cnt 2> /dev/null) )
@@ -219,8 +233,11 @@ updateifgraph() {
 		--logarithmic -A -v "Bytes/second" --units=si \
 		DEF:incoming=$rrdlog/$interface.rrd:incoming:AVERAGE \
 		DEF:outgoing=$rrdlog/$interface.rrd:outgoing:AVERAGE \
+		DEF:tcp=$rrdlog/proto-$interface.rrd:tcp:AVERAGE \
 		'AREA:incoming#00FF00:incoming traffic' \
-		'LINE1:outgoing#0000FF:outgoing traffic\j'
+		'GPRINT:outgoing:MAX:max output%8.3lf %sBps' \
+		'LINE1:outgoing#0000FF:outgoing traffic' \
+		'LINE1:tcp#000000:connections\j'
 }
 
 netframes() {
@@ -229,6 +246,16 @@ ifconfig $1 | grep "$2 packets" | sed -re "s/.*$3:([0-9]+).*/\1/g"
 
 netstats() {
 ifconfig $1 | grep bytes | sed -re "s/.*$2 bytes:([0-9]+).*/\1/g"
+}
+
+netproto()
+{
+	proto=${1:-tcp}
+	if [ -n "$2" ]; then
+		netstat -an 2> /dev/null | grep -v '0.0.0.0:*' | grep "^$proto" | grep ":$2 " | wc -l
+	else
+		netstat -an 2> /dev/null | grep -v '0.0.0.0:*' | grep "^$proto" | wc -l
+	fi
 }
 
 updateifdata() {
@@ -248,6 +275,13 @@ updateifdata() {
 			DS:frame:COUNTER:600:0:U   DS:carrier:COUNTER:600:0:U \
 			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
 			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
+	[ -e "$rrdlog/proto-$interface.rrd" ] ||
+		rrdtool create "$rrdlog/proto-$interface.rrd" --step=300 \
+			DS:tcp:GAUGE:600:0:U     DS:udp:GAUGE:600:0:U \
+			DS:rsync:GAUGE:600:0:U   DS:www:GAUGE:600:0:U \
+			DS:ssh:GAUGE:600:0:U \
+			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
+			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
 	rx=$(netstats $interface RX)
 	tx=$(netstats $interface TX)
 	rrdtool update "$rrdlog/$interface.rrd" -t incoming:outgoing \
@@ -265,6 +299,14 @@ updateifdata() {
 	rrdtool update "$rrdlog/packets-$interface.rrd" \
 		-t in:out:inerr:outerr:indrop:outdrop:inov:outov:frame:carrier \
 		N:${rx:-U}:${tx:-U}:${rxerr:-U}:${txerr:-U}:${rxdrop:-U}:${txdrop:-U}:${rxov:-U}:${txov:-U}:${frame:-U}:${carrier:-U}
+	rsync=$(netproto tcp 873)
+	www=$(netproto tcp 80)
+	ssh=$(netproto tcp 22)
+	tcp=$(netproto tcp)
+	udp=$(netproto udp)
+	rrdtool update "$rrdlog/proto-$interface.rrd" \
+		-t tcp:udp:rsync:www:ssh \
+		N:${tcp:-U}:${udp:-U}:${rsync:-U}:${www:-U}:${ssh:-U}
 }
 
 getdisk()
@@ -310,3 +352,23 @@ updateifgraph $iface day
 updateifgraph $iface week
 updateifgraph $iface month
 updateifgraph $iface year
+
+[ ! -s $rrdgraph/boot.html -o /var/log/boot.log -nt $rrdgraph/boot.html ] &&
+cat > $rrdgraph/boot.html <<EOT
+<html>
+<body>
+<pre>
+$(cat /var/log/dmesg.log /var/log/boot.log | \
+sed	-e 's/</\&lt;/g;s/>/\&gt;/g' -e 's/.*\]R//' -e 's/.*\[?8h//' \
+	-e 's|.\[1m|<b>|' -e 's|.\[0m|</b>|' -e 's|.\[[0-9][0-9Gm;]*||g' \
+	-e ':a;s/^\(.\{1,68\}\)\(\[ [A-Za-z]* \]\)/\1 \2/;ta' \
+	-e 's#\[ OK \]#[ <span style="color: green">OK</span> ]#' \
+	-e 's#\[ Failed \]#[ <span style="color: red">Failed</span> ]#' \
+	-e 's|No such .*|<span style="color: red">&</span>|' \
+	-e 's|ERROR .*|<span style="color: red">&</span>|' \
+	-e 's|command line: \(.*\)|command line: <span style="color: blue">\1</span>|' \
+)
+</pre>
+</body>
+</html>
+EOT

@@ -50,12 +50,13 @@
 	<h4>Codename: <?php echo $host; ?></h4>
 		<p>
 			This is the SliTaz GNU/Linux main mirror. The server runs naturally SliTaz 
-			(stable) in an lguest virtual machine provided by 
+			(stable) in an UML virtual machine provided by 
 			<a href="http://www.ads-lu.com/">Allied Data Sys. (ADS)</a>.
 		</p>
 		<p>
-			Mirror CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
-			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			Mirror CPU is a <?php system("( sed '/cpuinfo=/!d;" .
+			"s/.*cpuinfo=\\([^ ]*\).*/: \\1/;s/_/ /g' /proc/cmdline ; grep '^model name' /proc/cpuinfo) | sed -e 's/.*Intel(R) //;" .
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //;q' |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
 			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
@@ -239,8 +240,8 @@ foreach (array(
 		"rsync" => "rsync://download.tuxfamily.org/pub/slitaz/"),
 	array(	"flag"  => "fr",
 		"http"  => "http://www.linuxembarque.com/slitaz/mirror/"),
-	array(	"flag"  => "cn",
-		"http"  => "http://mirror.lupaworld.com/slitaz/"),
+//	array(	"flag"  => "cn",
+//		"http"  => "http://mirror.lupaworld.com/slitaz/"),
 	array(	"flag"  => "cn",
 		"http"  => "http://ks.lupaworld.com/slitaz/"),
 	array(	"flag"  => "br",
@@ -253,8 +254,8 @@ foreach (array(
 		"rsync" => "rsync://slitaz.mirror.garr.it/mirrors/slitaz/"),
 	array(	"flag"  => "si",
 		"http"  => "http://mirror.drustvo-dns.si/slitaz/"),
-	array(	"flag"  => "si",
-		"ftp"   => "ftp://ftp.pina.si/slitaz/"),
+//	array(	"flag"  => "si",
+//		"ftp"   => "ftp://ftp.pina.si/slitaz/"),
 	array(	"flag"  => "us",
 		"http"  => "http://distro.ibiblio.org/pub/linux/distributions/slitaz/",
 		"ftp"   => "ftp://distro.ibiblio.org/pub/linux/distributions/slitaz/"),
@@ -328,7 +329,7 @@ system("sed '".$sed_script."' < $file");
 echo "</pre>";
 }
 
-display_log("/var/log/packages-stable.log", "buildstable", "/iso/stable/packages-3.0.iso");
+display_log("/var/log/packages-stable.log", "buildstable", "/iso/stable/packages-4.0.iso");
 display_log("/var/log/packages-cooking.log","buildcooking","/iso/cooking/packages-cooking.iso");
 ?>
 
@@ -348,7 +349,7 @@ display_log("/var/log/packages-cooking.log","buildcooking","/iso/cooking/package
 	<a href="http://pkgs.slitaz.org/">Packages</a>
 	<a href="http://boot.slitaz.org/">Boot</a>
 	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
+	<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	<p>
 		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
 		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />

@@ -56,12 +56,13 @@
 	<h4>Codename: <?php echo $host; ?></h4>
 		<p>
 			This is the SliTaz GNU/Linux main mirror. The server runs naturally SliTaz 
-			(stable) in an lguest virtual machine provided by 
+			(stable) in an UML virtual machine provided by 
 			<a href="http://www.ads-lu.com/">Allied Data Sys. (ADS)</a>.
 		</p>
 		<p>
-			Mirror CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
-			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			Mirror CPU is a <?php system("( sed '/cpuinfo=/!d;" .
+			"s/.*cpuinfo=\\([^ ]*\).*/: \\1/;s/_/ /g' /proc/cmdline ; grep '^model name' /proc/cpuinfo) | sed -e 's/.*Intel(R) //;" .
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //;q' |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
 			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
@@ -132,7 +133,7 @@ graphic("net",$eth[0]);
 	<a href="http://pkgs.slitaz.org/">Packages</a>
 	<a href="http://boot.slitaz.org/">Boot</a>
 	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
+	<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	<p>
 		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
 		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
