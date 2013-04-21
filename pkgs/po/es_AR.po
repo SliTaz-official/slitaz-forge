@@ -1,0 +1,192 @@
+# Spanish translations for TazPkg package.
+# Copyright (C) 2013 THE TazPkg'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the TazPkg package.
+# René Rivero <arca1085@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazPkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-01 19:46+0000\n"
+"PO-Revision-Date: 2013-04-20 00:04-0300\n"
+"Last-Translator: René Rivero <arca1085@gmail.com>\n"
+"Language-Team: Argentinian\n"
+"Language: es_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: search.sh:183
+msgid "Package"
+msgstr "Paquete"
+
+#: search.sh:184
+msgid "Description"
+msgstr "Descripción"
+
+#: search.sh:185
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: search.sh:186
+msgid "Receipt"
+msgstr "Recibo"
+
+#: search.sh:187
+msgid "Depends"
+msgstr "Dependencias"
+
+#: search.sh:188
+msgid "Build depends"
+msgstr "Construir dependencias"
+
+#: search.sh:189
+msgid "File"
+msgstr "Archivo"
+
+#: search.sh:190
+msgid "File list"
+msgstr "Lista de archivos"
+
+#: search.sh:191
+msgid "common files"
+msgstr "archivos comunes"
+
+#: search.sh:199
+msgid "cooking"
+msgstr "cocina"
+
+#: search.sh:204
+msgid "tiny"
+msgstr "pequeño"
+
+#: search.sh:205
+msgid "undigest"
+msgstr "en crudo"
+
+#: search.sh:209
+msgid "Search"
+msgstr "Buscar"
+
+#: search.sh:370
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr "\tglibc-base y gcc-lib-base son dependencias implícitas,\n"
+"\t<b>todos</b> los paquetes se supone que dependen de ellos."
+
+#: search.sh:418
+#, sh-format
+msgid "No package $SEARCH"
+msgstr "Ningún paquete $SEARCH"
+
+#: search.sh:564
+msgid "Search for packages"
+msgstr "Buscar por paquetes"
+
+#: search.sh:579
+msgid "Depends loops"
+msgstr "Dependencias bucles"
+
+#: search.sh:594
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr "Arbol de dependencias para: $SEARCH"
+
+#: search.sh:605
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr "Arbol de dependencias para: $SEARCH (SUGERIDAS)"
+
+#: search.sh:614
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr "Arbol de dependencias inversas para: $SEARCH"
+
+#: search.sh:631
+msgid "Build depends loops"
+msgstr "Construye dependencias bucles"
+
+#: search.sh:647
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr "$SEARCH necesita estos paquetes para ser construido"
+
+#: search.sh:655
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr "Paquetes que necesita $SEARCH para ser construido"
+
+#: search.sh:672
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr "Estos paquetes pueden sobrecargar los archivos de $SEARCH"
+
+#: search.sh:700 search.sh:737 search.sh:771 search.sh:792 search.sh:841
+#: search.sh:859
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr "Resultado para: $SEARCH"
+
+#: search.sh:748
+#, sh-format
+msgid "$filenb file"
+msgid_plural "$filenb files"
+msgstr[0] "$filenb archivo"
+msgstr[1] "$filenb archivos"
+
+#: search.sh:763
+#, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "Descripción del paquete: $SEARCH"
+
+#: search.sh:865
+msgid "description"
+msgstr "descripción"
+
+#: search.sh:877
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr "Resultado para: $SEARCH (paquete provisto por $vpkg)"
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages - Search $SEARCH"
+msgstr "Paquetes de SliTaz - Buscar $SEARCH"
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr "Principal"
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr "Comunidad"
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr "Documentación"
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr "Foro"
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr "Profesional"
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr "Compras"
+
+#: lib/header.sh:26
+msgid "Bugs"
+msgstr "Errores"
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr "Hg"
+
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "Paquetes de SliTaz"
