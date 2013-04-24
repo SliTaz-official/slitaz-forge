@@ -438,7 +438,7 @@ foreach($folderlist as $folder) {
 foreach($filelist as $file) {
 	print "<tr><td class='n'><a href='" . addslashes($file['name']). "'>" .htmlentities($file['name']). "</a></td>";
 	print "<td class='m'>" . $file['modtimeasc'] . "</td>";
-	print "<td class='s'><u><img src=\"#\" alt=\"" .
+	print "<td class='s'><u><img src=\"/static/qr.png\" alt=\"" .
 		format_bytes($file['size']) . "\" onmouseover=" .
 		"\"this.title = location.href+'$url'\" onclick=" .
 		"\"this.src = QRCode.generatePNG(location.href+'$url', " .
@@ -470,7 +470,7 @@ if ($slitaz_style) { ?>
 	<a href="http://bugs.slitaz.org">Bugs</a>
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
-		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+		<img src="/static/qr.png" alt="SliTaz @" onmouseover="this.title = location.href"
 		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>

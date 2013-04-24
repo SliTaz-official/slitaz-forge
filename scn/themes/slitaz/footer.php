@@ -12,7 +12,8 @@
 				and <a href="http://buddypress.org">BuddyPress</a>
 			</p>
 			<p>
-				<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+				<img src="/wp-content/themes/custom-community/qr.png"
+				 alt="SliTaz @" onmouseover="this.title = location.href"
 				 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 				<a href="http://twitter.com/slitaz">Twitter</a>
 				<a href="http://www.facebook.com/slitaz">Facebook</a>

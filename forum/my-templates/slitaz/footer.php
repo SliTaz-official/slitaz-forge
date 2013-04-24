@@ -14,7 +14,8 @@
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 		<p>
-			<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
+			<img src="/my-templates/slitaz/images/qr.png" alt="SliTaz @"
+			 onmouseover="this.title = location.href"
 			 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
 			<a href="http://twitter.com/slitaz">Twitter</a>
 			<a href="http://www.facebook.com/slitaz">Facebook</a>
