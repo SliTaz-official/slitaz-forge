@@ -1,0 +1,42 @@
+#!/bin/sh
+
+. /etc/tazwok.conf
+WOK=/home/slitaz/${1:-cooking}/wok
+WWW=/var/www/slitaz/mirror
+SRC=$WWW/sources/packages-${1:-cooking}
+SRC2=$WWW/sources/packages
+
+for i in $WOK/*/receipt ; do
+	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED
+	. $i
+	[ -n "$WANTED" ] && continue
+	[ -n "$TARBALL" ] && echo $TARBALL
+	[ -n "$WGET_URL" ] && echo $WGET_URL >> /tmp/wget_url$$
+	for j in $EXTRA_SOURCE_FILES ; do
+		basename $j
+	done
+done | sort | uniq > /tmp/tarball$$
+while read file; do
+	[ -s $SRC/${file:0:1}/$file ] || [ -s $SRC/${file:0:1}/${file%.*}.lzma ] ||
+	[ -s $SRC/${file:0:1}/${file%.*}.tar.lzma ] ||
+	echo -e "Missing: $file\nURL: $(grep $file$ /tmp/wget_url$$ | sed q)"
+done < /tmp/tarball$$
+for i in $SRC/?/* ; do
+	[ -f "$i" ] || continue
+	j=$(basename $i)
+	[ -f $SRC2/${j:0:1}/$j ] || ln $i $SRC2/${j:0:1}/$j
+	case "$i" in
+	*lzma)
+		grep -q ^$(basename ${i%lzma}) /tmp/tarball$$ && continue
+		[ $(ls ${i%lzma}* | wc -l) -ne 1 ] && ls ${i%lzma}* | cat
+		;;
+	*)
+		grep -q ^$(basename $i)$ /tmp/tarball$$ && continue
+		;;
+	esac
+	echo $i
+done
+rm -f /tmp/tarball$$ /tmp/wget_url$$
+for i in $SRC2/?/* ; do
+	[ $(stat -c "%h" $i) -eq 1 ] && echo $i
+done

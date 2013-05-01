@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PKG=/home/slitaz/${1:-cooking}/chroot/home/slitaz/packages
+WOK=/home/slitaz/${1:-cooking}/chroot/home/slitaz/wok
+
+for i in $(cd $PKG ; ls *.tazpkg); do
+	for j in $WOK/${i%%-*}*/taz/*/receipt ; do
+		[ -s $j ] || break
+		PACKAGE=
+		VERSION=
+		EXTRAVERSION=
+		. $j
+		[ "$i" == "$PACKAGE-$VERSION$EXTRAVERSION.tazpkg" ] && continue 2
+	done
+	echo "Rebuild $i"
+done
+[ -n "$2" ] && for i in $WOK/*/receipt; do
+	PACKAGE=
+	VERSION=
+	EXTRAVERSION=
+	. $i
+	[ -s $PKG/$PACKAGE-$VERSION$EXTRAVERSION.tazpkg ] ||
+	echo "Not built : $(basename $(dirname $i))"
+done
