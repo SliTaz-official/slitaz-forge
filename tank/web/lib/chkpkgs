@@ -20,5 +20,6 @@ done
 	EXTRAVERSION=
 	. $i
 	[ -s $PKG/$PACKAGE-$VERSION$EXTRAVERSION.tazpkg ] ||
-	echo "Not built : $(basename $(dirname $i))"
+	[ -s $PKG/$PACKAGE-$VERSION$EXTRAVERSION_*.tazpkg ] ||
+	echo "Not built : $(basename $(dirname $i))	$PKG/$PACKAGE-$VERSION$EXTRAVERSION.tazpkg"
 done
