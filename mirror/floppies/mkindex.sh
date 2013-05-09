@@ -84,24 +84,24 @@ done )
 <!-- Block -->
 <div id="block">
 	<!-- Navigation -->
-	<div id="block_nav">
+	<div id="block_nav" style="height: 126px;">
 		<h4><img src="pics/floppy.png" alt="@" />1.44Mb SliTaz$LORAM $VERSION floppy images</h4>
 <table width="100%">
 $(
 n=0
 for f in $DIR/fd*img ; do
 	[ $n -eq 0 ] && echo "<tr>"
-	echo "	<td> <a href=\"$f\">$(basename $f)</a> </td>"
-	n=$(( ($n+1)&3 ))
+	echo "	<td> <a href=\"$f\">$(basename $f .img)</a> </td>"
+	n=$(( ($n+1)%6 ))
 	[ $n -eq 0 ] && echo "</tr>"
 done
 [ $n -eq 0 ] && echo "<tr>"
-while [ $n -ne 3 ]; do
+while [ $n -ne 5 ]; do
 	echo "	<td> </td>"
 	n=$(($n+1))
 done
 )
-	<td> <a href="$DIR/md5sum">md5sum</a> </td>
+	<td> <a href="$DIR/md5sum">md5</a> </td>
 </tr>
 </table>
 	</div>
@@ -113,7 +113,7 @@ $(
 tail=""
 list_version | while read dir; do
 	case "$dir" in
-	loram*)	echo -en "\n	<a href=\"index-$dir.html\">loram</a>" ;;
+	loram*)	echo -en "\n	- <a href=\"index-$dir.html\">loram</a>" ;;
 	*) 	echo -en "$tail	<li><a href=\"index-$dir.html\">SliTaz $dir</a>" ;;
 	esac
 	tail="</li>\n"
@@ -216,16 +216,6 @@ You can extract the <u>kernel</u>, <u>cmdline</u> and <u>rootfs</u> files with
 Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">SliTaz</a> -
 <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>
 </p>
-<p>
-	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-	     onmouseover= "this.title = location.href"
-	     onclick= "this.width = this.height = 300" />
-	<script type="text/javascript" src="static/qrcode.js"></script>
-	<script type="text/javascript">
-		document.getElementById('qrcodeimg').src =
-			QRCode.generatePNG(location.href, {ecclevel: 'H'});
-	</script>
-</p>
 <!-- End of copy -->
 </div>
 
@@ -233,6 +223,16 @@ Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">Sli
 <div id="bottom">
 <p>
 <a href="http://validator.w3.org/check?uri=referer"><img src="static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
+</p>
+<p>
+	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
+	     onmouseover= "this.title = location.href" 
+	     onclick= "this.width = this.height = 300;" />
+	<script type="text/javascript" src="static/qrcode.js"></script>
+	<script type="text/javascript">
+		document.getElementById('qrcodeimg').src =
+			QRCode.generatePNG(location.href, {ecclevel: 'H'});
+	</script>
 </p>
 </div>
 

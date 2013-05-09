@@ -45,9 +45,13 @@ if (isset($_GET['file']))
 	<meta name="description" content="slitaz boot floppies" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<link rel="shortcut icon" href="../css/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../css/slitaz.css" />
+	<link rel="shortcut icon" href="static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="static/slitaz.css" />
 	<style type="text/css">
+table {
+	background-color: inherit;
+	margin: 10px 0px 0px 0px;
+}
 #copy {
 	text-align: center;
 }
@@ -65,11 +69,10 @@ if (isset($_GET['file']))
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">
-		<img src="/css/pics/network.png" alt="network.png" /></a>
-		<a href="floppy-grub4dos" title="Boot tools">Generic boot floppy</a> |
-		<a href="http://tiny.slitaz.org/" title="SliTaz in one floppy !">Tiny SliTaz</a> |
-		<a href="index-loram.html" title="Floppy image sets for low ram systems">Loram floppies</a> |
-		<a href="builder/index.php" title="Build floppies with your own kernel and initramfs">Floppy set web builder</a> |
+		<img src="static/home.png" alt="[ home ]" /></a>
+		<a href="floppy-grub4dos" title="Boot tools">Generic boot floppy</a>
+		<a href="http://tiny.slitaz.org/" title="SliTaz in one floppy !">Tiny SliTaz</a>
+		<a href="builder/index.php" title="Build floppies with your own kernel and initramfs">Floppy set web builder</a>
 		<a href="builder/bootloader" title="Build your floppy sets without Internet">Shell builder</a>
 	</div>
 	<h1><a href="http://www.slitaz.org/">Boot floppies</a></h1>
@@ -84,19 +87,18 @@ if (isset($_GET['file']))
 <?php
 $max = floor((my_filesize("../".$_POST["iso"]) + $fdsz - 1 + $cpiopad) / $fdsz);
 for ($i = 1; $i <= $max ; $i++) {
-	if ($i % 4 == 1) echo "<tr>\n";
-	echo "	<td><a href=\"download.php?file=$i&amp;iso=".
+	if ($i % 6 == 1) echo "<tr>\n";
+	echo "	<td> <a href=\"download.php?file=$i&amp;iso=".
 		urlencode($_POST["iso"])."\">fdiso".sprintf("%02d",$i);
-	if ($max < 100) echo ".img";
-	echo "</a></td>\n";
-	if ($i % 4 == 0) echo "</tr>\n";
+	echo "</a> </td>\n";
+	if ($i % 6 == 0) echo "</tr>\n";
 }
-if ($max % 4 != 0) {
-	while ($max % 4 != 3) { echo "<td></td>"; $max++; }
+if ($max % 6 != 0) {
+	while ($max % 6 != 5) { echo "<td></td>"; $max++; }
 }
 else echo "<tr>\n";
 echo "	<td><a href=\"download.php?file=md5sum&amp;iso=".
-	urlencode($_POST["iso"])."\">md5sum</a></td>\n</tr>";
+	urlencode($_POST["iso"])."\">md5</a></td>\n</tr>";
 ?>
 </table>
 	</div>
@@ -104,12 +106,15 @@ echo "	<td><a href=\"download.php?file=md5sum&amp;iso=".
 	<div id="block_info">
 		<h4>Available boot floppies</h4>
 		<ul>
-	<li><a href="index-4.0.html">SliTaz 4.0</a></li>
-	<li><a href="index-loram-4.0.html">SliTaz loram 4.0</a></li>
-	<li><a href="index-3.0.html">SliTaz 3.0</a></li>
-	<li><a href="index-loram-3.0.html">SliTaz loram 3.0</a></li>
-	<li><a href="index-2.0.html">SliTaz 2.0</a></li>
-	<li><a href="index-1.0.html">SliTaz 1.0</a></li>
+<?php
+for ($i = 1; file_exists("index-$i.0.html") ; $i++);
+while (--$i > 0) {
+	echo "	<li><a href=\"index-$i.0.html\">SliTaz $i.0</a>";
+	if (file_exists("index-loram-".$i.".0.html"))
+		echo " - <a href=\"index-loram-$i.0.html\">loram</a>";
+	echo "</li>\n";
+}
+?>
 		</ul>
 	</div>
 </div>

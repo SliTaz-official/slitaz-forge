@@ -2,22 +2,26 @@
 
 read32()
 {
-	dd if=kernel bs=1 skip=$((0x$1)) count=4 2> /dev/null | \
-		hexdump -e '"" 1/4 "%d" "\n"'
+	echo $(od -j $((0x$1)) -N 4 -t u4 -An kernel)
+}
+
+ddsect()
+{
+	dd bs=512 count=$@ 2> /dev/null
 }
 
 case "$1" in
 extract)
-	dd bs=512 count=2 > kernel 2> /dev/null
+	ddsect 2 > kernel
 	setupsz=$(($(read32 1F1) & 255))
-	dd bs=512 count=$(($setupsz - 1)) >> kernel 2> /dev/null
+	ddsect $(($setupsz - 1)) >> kernel
 	[ $(read32 228) -ne 0 ] &&
-	dd bs=512 count=1 2> /dev/null | strings > cmdline
+	ddsect 1 | strings > cmdline
 	syssz=$(read32 1F4)
 	syssz=$(( ($syssz + 31) / 32 ))
-	dd bs=512 count=$syssz >> kernel 2> /dev/null
+	ddsect $syssz >> kernel
 	ramsz=$(read32 21C)
-	dd bs=512 count=$((($ramsz + 511) / 512)) of=rootfs 2> /dev/null
+	ddsect $((($ramsz + 511) / 512)) of=rootfs
 	dd bs=1 seek=$ramsz count=0 of=rootfs 2> /dev/null
 	;;
 *)	cat <<EOT
