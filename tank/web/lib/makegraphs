@@ -48,17 +48,20 @@ END { if (n > 1) printf " %dx",n; print s }')"
 		DEF:system=$rrdlog/cpu.rrd:system:AVERAGE \
 		DEF:idle=$rrdlog/cpu.rrd:idle:AVERAGE \
 		DEF:nice=$rrdlog/cpu.rrd:nice:AVERAGE \
+		DEF:iowait=$rrdlog/cpu.rrd:iowait:AVERAGE \
 		DEF:celsius=$rrdlog/cpu.rrd:celsius:AVERAGE \
-		'CDEF:total=user,system,idle,nice,+,+,+' \
+		'CDEF:total=user,system,idle,nice,iowait,+,+,+,+' \
 		'CDEF:userpct=100,user,total,/,*' \
 		'CDEF:systempct=100,system,total,/,*' \
 		'CDEF:idlepct=100,idle,total,/,*' \
 		'CDEF:nicepct=100,nice,total,/,*' \
+		'CDEF:iopct=100,iowait,total,/,*' \
 		'CDEF:temp=celsius,1000,/' \
-		'AREA:userpct#0000FF:user cpu usage' \
-		'STACK:nicepct#C0C0FF:nice cpu usage' \
-		'STACK:systempct#FF0000:system cpu usage' \
-		'STACK:idlepct#00FF00:idle cpu usage' \
+		'AREA:userpct#0000FF:user cpu' \
+		'STACK:nicepct#C0C0FF:nice cpu' \
+		'STACK:systempct#FF0000:system cpu' \
+		'STACK:iopct#FFFF00:I/O wait' \
+		'STACK:idlepct#00FF00:idle cpu' \
 		'LINE1:temp#000000:temperature\g' \
 		'GPRINT:temp:MAX:max %2.0lfC\j'
 }
@@ -105,7 +108,8 @@ updatememgraph() {
 		'STACK:bufferpct#FF00FF:buffered memory' \
 		'STACK:cachepct#FFFF00:cached memory' \
 		'STACK:freepct#00FF00:free memory' \
-		'LINE2:swusedpct#FF0000:used swap\j'
+		'LINE2:swusedpct#FF0000:used swap\g' \
+		'GPRINT:swusedpct:MAX:%1.0lf%%\j'
 }
 
 updatememdata () {
@@ -164,25 +168,16 @@ updatediskgraph() {
 	rate=$(echo | awk "BEGIN { printf \"%.0e\\n\",$err/$done }")
 	[ $err -eq 0 ] &&  rate="0"
 #		--right-axis-label "I/O state %"
-	# BUG workaround: swap readsect and writesect :-/
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
 		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
 		DEF:read=$rrdlog/disk.rrd:readsect:AVERAGE \
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
-		DEF:req=$rrdlog/iodisk.rrd:req:AVERAGE \
-		DEF:done=$rrdlog/iodisk.rrd:done:AVERAGE \
-		DEF:err=$rrdlog/iodisk.rrd:err:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
-		"CDEF:errpct=100,err,req,/,*" \
-		"CDEF:donepct=100,done,req,/,*" \
-		"CDEF:errrate=err,done,/" \
 		'AREA:readpct#0000FF:sectors written from disk' \
 		"COMMENT:I/O error rate $rate" \
-		'STACK:writepct#00FF00:sectors read to disk' \
-		'LINE2:donepct#FFFF00:% I/O complete' \
-		'LINE2:errpct#FF0000:% I/O error\j'
+		'STACK:writepct#00FF00:sectors read to disk\j'
 	else
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
@@ -191,8 +186,8 @@ updatediskgraph() {
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
-		'AREA:readpct#0000FF:sectors written from disk' \
-		'STACK:writepct#00FF00:sectors read to disk'
+		'AREA:readpct#0000FF:sectors read from disk' \
+		'STACK:writepct#00FF00:sectors written to disk'
 	fi
 }
 
@@ -327,3 +322,25 @@ updateifgraph $iface day
 updateifgraph $iface week
 updateifgraph $iface month
 updateifgraph $iface year
+
+[ ! -s $rrdgraph/boot.html -o /var/log/boot.log -nt $rrdgraph/boot.html ] &&
+cat > $rrdgraph/boot.html <<EOT
+<html>
+<body>
+$(stat -c %y /var/log/dmesg.log | sed 's/\.0*//')
+<span style="color: blue"><i>$(cat /proc/cmdline)</i></span>
+<pre>
+$(cat /var/log/dmesg.log /var/log/boot.log | \
+sed	-e 's/</\&lt;/g;s/>/\&gt;/g' -e 's/.*\]R//' -e 's/.*\[?8h//' \
+	-e 's|.\[1m|<b>|' -e 's|.\[0m|</b>|' -e 's|.\[[0-9][0-9Gm;]*||g' \
+	-e ':a;s/^\(.\{1,68\}\)\(\[ [A-Za-z]* \]\)/\1 \2/;ta' \
+	-e 's#\[ OK \]#[ <span style="color: green">OK</span> ]#' \
+	-e 's#\[ Failed \]#[ <span style="color: red">Failed</span> ]#' \
+	-e 's|No such .*|<span style="color: red">&</span>|' \
+	-e 's|ERROR .*|<span style="color: red">&</span>|' \
+	-e 's|command line: \(.*\)|command line: <span style="color: blue">\1</span>|' \
+)
+</pre>
+</body>
+</html>
+EOT

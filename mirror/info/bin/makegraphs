@@ -15,6 +15,8 @@ rrdgraphargs="-aPNG -i -z --alt-y-grid -w 600 -h 100 -r $rrdcolors"
 [ -d $rrdlog ] || mkdir -p $rrdlog
 [ -d $rrdgraph ] || mkdir -p $rrdgraph
 
+RRDTOOLYEAR=$(rrdtool --help | sed '/Copyright/!d;s/.*-\([0-9]*\) .*/\1/')
+
 updatecpudata() {
 	[ -e "$rrdlog/cpu.rrd" ] || rrdtool create $rrdlog/cpu.rrd --step=300 \
 			DS:user:COUNTER:600:0:500000000 \
@@ -148,10 +150,11 @@ updatediskgraph() {
 	period=$1
 	extra="--logarithmic --lower-limit 1"
 	[ "$period" == "day" ] && maxdisk="$(getmax disk)" && extra=""
-	info=""
+	info="$(fdisk -l 2> /dev/null | sed '/dev/!d;s|.*: \(.*\), .*|\1|;q')"
+	[ -n "$info" ] && info="[ $info ]"
 	[ -r $2 ] &&
 	info="[ $(fdisk -l 2> /dev/null | grep "^Disk $2:" | \
-		  sed "s|Disk $2: \(.*\), .*|\1|") ]"
+		  sed "s|Disk $2: \(.*\), .*|\1|") ]" ||
 	if [ -e /sys/block/${2#/dev/}/device/iodone_cnt ]; then
 #		--right-axis-label "I/O state %"
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
@@ -182,8 +185,10 @@ updatediskgraph() {
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
 		'AREA:readpct#0000FF:sectors written from disk' \
 		'STACK:writepct#00FF00:sectors read to disk' \
-		'LINE1:ino#FF00FF:% inodes used' \
-		'LINE1:blk#FF0000:% blocks used\j'
+		'LINE1:ino#FF00FF:inodes used' \
+		'GPRINT:ino:MAX:%1.0lf%%' \
+		'LINE1:blk#FF0000:blocks used' \
+		'GPRINT:blk:MAX:%1.0lf%%\j'
 	fi
 }
 
@@ -234,10 +239,26 @@ updateifgraph() {
 		DEF:incoming=$rrdlog/$interface.rrd:incoming:AVERAGE \
 		DEF:outgoing=$rrdlog/$interface.rrd:outgoing:AVERAGE \
 		DEF:tcp=$rrdlog/proto-$interface.rrd:tcp:AVERAGE \
+		DEF:rsync=$rrdlog/proto-$interface.rrd:rsync:AVERAGE \
 		'AREA:incoming#00FF00:incoming traffic' \
-		'GPRINT:outgoing:MAX:max output%8.3lf %sBps' \
+		'AREA:rsync#FF00FF:updates' \
 		'LINE1:outgoing#0000FF:outgoing traffic' \
-		'LINE1:tcp#000000:connections\j'
+		'GPRINT:outgoing:MAX:max %5.3lf %sBps' \
+		'LINE1:tcp#000000:connections' \
+		'GPRINT:tcp:MAX:max %2.0lf\j'
+	rrdtool graph "$rrdgraph/proto-$interface-$period.png" --start -1$period \
+		$rrdgraphargs -t "traffic on $interface graph per $period" \
+		--logarithmic -A -v "Bytes/second" --units=si \
+		DEF:rsync=$rrdlog/proto-$interface.rrd:rsync:AVERAGE \
+		DEF:www=$rrdlog/proto-$interface.rrd:www:AVERAGE \
+		DEF:ssh=$rrdlog/proto-$interface.rrd:ssh:AVERAGE \
+		DEF:tcp=$rrdlog/proto-$interface.rrd:tcp:AVERAGE \
+		DEF:udp=$rrdlog/proto-$interface.rrd:udp:AVERAGE \
+		'AREA:tcp#00FF00:tcp connections' \
+		'AREA:rsync#0000FF:rsync' \
+		'LINE1:www#FF0000:www' \
+		'LINE1:ssh#FF00FF:ssh' \
+		'LINE1:udp#000000:udp connections\j'
 }
 
 netframes() {
@@ -357,6 +378,8 @@ updateifgraph $iface year
 cat > $rrdgraph/boot.html <<EOT
 <html>
 <body>
+$(stat -c %y /var/log/dmesg.log | sed 's/\.0*//')
+<span style="color: blue"><i>$(cat /proc/cmdline)</i></span>
 <pre>
 $(cat /var/log/dmesg.log /var/log/boot.log | \
 sed	-e 's/</\&lt;/g;s/>/\&gt;/g' -e 's/.*\]R//' -e 's/.*\[?8h//' \
