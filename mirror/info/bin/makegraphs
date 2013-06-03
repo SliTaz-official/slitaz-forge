@@ -100,7 +100,8 @@ updatememgraph() {
 		'STACK:bufferpct#FF00FF:buffered memory' \
 		'STACK:cachepct#FFFF00:cached memory' \
 		'STACK:freepct#00FF00:free memory' \
-		'LINE2:swusedpct#FF0000:used swap\j'
+		'LINE2:swusedpct#FF0000:used swap\g' \
+		'GPRINT:swusedpct:MAX:%1.0lf%%\j'
 }
 
 updatememdata () {

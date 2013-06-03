@@ -353,3 +353,24 @@ updateifgraph $iface year
 #rsync --bwlimit=40 -t -e 'ssh -p 222 -i /home/bellard/.ssh/id_rsa' $rrdlog/* \
 #	bellard@mirror.slitaz.org:/var/spool/rrd/tank/ > /dev/null 2>&1
 
+[ ! -s $rrdgraph/boot.html -o /var/log/boot.log -nt $rrdgraph/boot.html ] &&
+cat > $rrdgraph/boot.html <<EOT
+<html>
+<body>
+$(stat -c %y /var/log/dmesg.log | sed 's/\.0*//')
+<span style="color: blue"><i>$(cat /proc/cmdline)</i></span>
+<pre>
+$(cat /var/log/dmesg.log /var/log/boot.log | \
+sed	-e 's/</\&lt;/g;s/>/\&gt;/g' -e 's/.*\]R//' -e 's/.*\[?8h//' \
+	-e 's|.\[1m|<b>|' -e 's|.\[0m|</b>|' -e 's|.\[[0-9][0-9Gm;]*||g' \
+	-e ':a;s/^\(.\{1,68\}\)\(\[ [A-Za-z]* \]\)/\1 \2/;ta' \
+	-e 's#\[ OK \]#[ <span style="color: green">OK</span> ]#' \
+	-e 's#\[ Failed \]#[ <span style="color: red">Failed</span> ]#' \
+	-e 's|No such .*|<span style="color: red">&</span>|' \
+	-e 's|ERROR .*|<span style="color: red">&</span>|' \
+	-e 's|command line: \(.*\)|command line: <span style="color: blue">\1</span>|' \
+)
+</pre>
+</body>
+</html>
+EOT
