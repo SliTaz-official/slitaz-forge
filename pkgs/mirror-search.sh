@@ -137,6 +137,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		fileoverlap=*)				SEARCH=${i#*=}; OBJECT=FileOverlap;;
 		category=*)				SEARCH=${i#*=}; OBJECT=Category;;
 		maintainer=*)				SEARCH=${i#*=}; OBJECT=Maintainer;;
+		license=*)				SEARCH=${i#*=}; OBJECT=License;;
 		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
 		version=s*|version=4*)	SLITAZ_VERSION=stable;;
 		version=u*)				SLITAZ_VERSION=undigest;;
@@ -250,8 +251,14 @@ cat_files_list()
 # xHTML Footer.
 # TODO: caching the summary for 5 minutes
 xhtml_footer() {
-	PKGS=$(ls $WOK/ | wc -l)
-	FILES=$(cat_files_list $PACKAGES_REPOSITORY lines)
+	file=/tmp/footer-$SLITAZ_VERSION
+	[ ! -e $file -o  $PACKAGES_REPOSITORY/packages.txt -nt $file ] &&
+		cat > $file.$$ <<EOT && mv -f $file.$$ $file
+PKGS=$(ls $WOK/ | wc -l)
+FILES=$(cat_files_list $PACKAGES_REPOSITORY lines)
+EOT
+	PKGS=$(sed '/PKGS=/!d;s/PKGS=//' $file)
+	FILES=$(sed '/FILES=/!d;s/FILES=//' $file)
 	. lib/footer.sh
 }
 
@@ -282,7 +289,7 @@ else
 	busybox wget -s $PACKAGE_URL 2> /dev/null &&
 	PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 	COOKER=""
-	[ "$SLITAZ_VERSION" == "cooking" ] &&
+	[ "$SLITAZ_VERSION" == "cooking" ] && 
 	COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>"
 	cat << _EOT_
 $PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC \
@@ -850,11 +857,12 @@ _EOT_
 			[ ! -e $file -o  \
 			  $PACKAGES_REPOSITORY/packages.txt -nt $file ] &&
 				build_cloud_cache $var "$filter" > $file.$$ &&
-				mv $file.$$ $file
+				mv -f $file.$$ $file
 			display_cloud $arg "$fmt" < $file 2>&1
 		done << EOT
 TAGS		tags		Tag\ cloud		%d\ tags.
 CATEGORY	category	Category\ cloud		%d\ categories.
+LICENSE		license		License\ cloud		%d\ licenses.
 MAINTAINER	maintainer	Maintainer\ cloud	%d\ maintainers.	s/.*<//;s/.*\ //;s/>//
 EOT
 	fi
@@ -948,6 +956,25 @@ _EOT_
 		DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
 		[ -f $WOK/$pkg/description.txt ] || DESC=""
 		[ "$MAINTAINER" == "$SEARCH" ] && cat << _EOT_
+$(package_entry)$DESC
+_EOT_
+	done
+	;;
+
+### License
+License)
+	cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<pre>
+_EOT_
+	for pkg in `ls $WOK/`
+	do
+		LICENSE=
+		. $WOK/$pkg/receipt
+		DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
+		[ -f $WOK/$pkg/description.txt ] || DESC=""
+		[ "$LICENSE" == "$SEARCH" ] && cat << _EOT_
 $(package_entry)$DESC
 _EOT_
 	done
