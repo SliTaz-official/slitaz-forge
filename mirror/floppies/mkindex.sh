@@ -5,6 +5,8 @@ list_version()
 	ls ?.0 -dr | while read dir ; do
 		echo $dir
 		[ -d loram-$dir ] && echo loram-$dir
+		[ -d bios-$dir ] && echo bios-$dir
+		[ -d mini-$dir ] && echo mini-$dir
 	done
 }
 
@@ -13,8 +15,10 @@ build_page()
 	DIR=$1
 	VERSION=${DIR#*-}
 	case "$DIR" in
-	loram*)	LORAM="&nbsp;loram" ;;
-	*)	LORAM="";
+	bios*)	TYPE="&nbsp;bios" ;;
+	mini*)	TYPE="&nbsp;mini" ;;
+	loram*)	TYPE="&nbsp;loram" ;;
+	*)	TYPE=""
 	esac
 	cat <<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -23,7 +27,7 @@ build_page()
 <head>
 	<title>SliTaz Boot Floppies</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-	<meta name="description" content="slitaz$LORAM boot floppies $VERSION" />
+	<meta name="description" content="slitaz$TYPE boot floppies $VERSION" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
 	<link rel="shortcut icon" href="static/favicon.ico" />
@@ -78,14 +82,14 @@ done )
 	      </li>
 	    </ul>
 	</div>
-	<h1><a href="http://www.slitaz.org/">Boot&nbsp;floppies$LORAM&nbsp;$VERSION</a></h1>
+	<h1><a href="http://www.slitaz.org/">Boot&nbsp;floppies$TYPE&nbsp;$VERSION</a></h1>
 </div>   
 
 <!-- Block -->
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav" style="height: 126px;">
-		<h4><img src="pics/floppy.png" alt="@" />1.44Mb SliTaz$LORAM $VERSION floppy images</h4>
+		<h4><img src="pics/floppy.png" alt="@" />1.44Mb SliTaz$TYPE $VERSION floppy images</h4>
 <table width="100%">
 $(
 n=0
@@ -113,6 +117,8 @@ $(
 tail=""
 list_version | while read dir; do
 	case "$dir" in
+	bios*)	echo -en "\n	- <a href=\"index-$dir.html\">bios</a>" ;;
+	mini*)	echo -en "\n	- <a href=\"index-$dir.html\">mini</a>" ;;
 	loram*)	echo -en "\n	- <a href=\"index-$dir.html\">loram</a>" ;;
 	*) 	echo -en "$tail	<li><a href=\"index-$dir.html\">SliTaz $dir</a>" ;;
 	esac
@@ -135,7 +141,7 @@ done
 <h2>Floppy image set</h2>
 
 <p>
-This floppy set will boot a Slitaz stable$LORAM version. You can write floppies
+This floppy set will boot a Slitaz stable$TYPE version. You can write floppies
 with SliTaz <i>bootfloppybox</i>, 
 <a href="http://en.wikipedia.org/wiki/RaWrite">Windows rawrite</a> or simply dd:
 </p><pre># dd if=fd001.img of=/dev/fd0
@@ -152,11 +158,15 @@ $(cat $DIR/description.html)
 <p>
 Each floppy set detects disk swaps and can be used without a keyboard.
 </p>
+EOT
+	[ -s $DIR/fd100.img ] && cat <<EOT
 <p>
 If you have an ext3 partition on your hard disk, the bootstrap can create the
 installation script <u>slitaz/install.sh</u>. You will be able to install SliTaz
 on your hard disk without extra media.
 </p>
+EOT
+	cat <<EOT
 <p>
 Good luck.
 </p>
@@ -164,7 +174,7 @@ Good luck.
 <a name="fdiso"></a>
 <h2>ISO image floppy set</h2>
 
-<form method="post" action="http://mirror.slitaz.org/floppies/download.php">
+<form method="get" action="http://mirror.slitaz.org/floppies/download.php">
 <p>
 The floppy image set above includes an embedded installer and can install
 SliTaz on your hard disk.
