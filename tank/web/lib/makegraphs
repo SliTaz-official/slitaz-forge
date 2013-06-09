@@ -170,24 +170,36 @@ updatediskgraph() {
 #		--right-axis-label "I/O state %"
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
-		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
+		-v "Sectors/second" --units=si \
 		DEF:read=$rrdlog/disk.rrd:readsect:AVERAGE \
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
+		DEF:blkh=$rrdlog/usagedisk.rrd:bhome:AVERAGE \
+		DEF:blkr=$rrdlog/usagedisk.rrd:broot:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
-		'AREA:readpct#0000FF:sectors written from disk' \
-		"COMMENT:I/O error rate $rate" \
-		'STACK:writepct#00FF00:sectors read to disk\j'
+		'AREA:readpct#0000FF:sectors written' \
+		'STACK:writepct#00FF00:sectors read' \
+		"COMMENT:I/O error $rate" \
+		'LINE1:blkr#FF00FF:blocks used in /root\g' \
+		'GPRINT:blkr:LAST:%1.0lf%%' \
+		'LINE1:blkh#FF0000:blocks used in /home\g' \
+		'GPRINT:blkh:LAST:%1.0lf%%\j'
 	else
 	rrdtool graph "$rrdgraph/disk-$period.png" --start -1$period \
 		$rrdgraphargs -t "disk access per $period $info" \
 		--logarithmic --lower-limit 1 -v "Sectors/second" --units=si \
 		DEF:read=$rrdlog/disk.rrd:readsect:AVERAGE \
 		DEF:write=$rrdlog/disk.rrd:writesect:AVERAGE \
+		DEF:blk=$rrdlog/usagedisk.rrd:bhome:AVERAGE \
+		DEF:ino=$rrdlog/usagedisk.rrd:ihome:AVERAGE \
 		"CDEF:readpct=100,read,$maxdisk,/,*" \
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
 		'AREA:readpct#0000FF:sectors read from disk' \
-		'STACK:writepct#00FF00:sectors written to disk'
+		'STACK:writepct#00FF00:sectors written to disk' \
+		'LINE1:ino#FF00FF:inodes used in /home\g' \
+		'GPRINT:ino:MAX:%1.0lf%%' \
+		'LINE1:blk#FF0000:blocks used in /home\g' \
+		'GPRINT:blk:MAX:%1.0lf%%\j'
 	fi
 }
 
@@ -205,6 +217,12 @@ updatediskdata() {
 			DS:req:GAUGE:600:0:U \
 			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
 			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
+	[ -e "$rrdlog/usagedisk.rrd" ] ||
+		rrdtool create "$rrdlog/usagedisk.rrd" --step=300 \
+			DS:broot:GAUGE:600:0:U  DS:iroot:GAUGE:600:0:U \
+			DS:bhome:GAUGE:600:0:U  DS:ihome:GAUGE:600:0:U \
+			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
+			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
 
 	while read major minor name readreq readsect writereq writesect misc; do
 		[ $major = $(( 0x$(stat -c %t $dev) )) ] || continue
@@ -218,6 +236,11 @@ updatediskdata() {
 	err=$(printf "%d\n" $(cat $dir/ioerr_cnt 2> /dev/null) )
 	req=$(printf "%d\n" $(cat $dir/iorequest_cnt 2> /dev/null) )
 	rrdtool update "$rrdlog/iodisk.rrd" -t done:err:req N:$done:$err:$req
+	iroot=$(df -i / | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	broot=$(df / | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	ihome=$(df -i /home | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	bhome=$(df /home | sed '$!d;s/.* \([0-9]*\)% \/.*/\1/')
+	rrdtool update "$rrdlog/usagedisk.rrd" -t broot:iroot:bhome:ihome N:$broot:$iroot:$bhome:$ihome
 }
 
 updateifgraph() {
@@ -228,10 +251,13 @@ updateifgraph() {
 		--logarithmic -A -v "Bytes/second" --units=si \
 		DEF:incoming=$rrdlog/$interface.rrd:incoming:AVERAGE \
 		DEF:outgoing=$rrdlog/$interface.rrd:outgoing:AVERAGE \
-		'AREA:incoming#00FF00:incoming traffic' \
-		'GPRINT:incoming:MAX:max input%8.3lf %sBps' \
-		'GPRINT:outgoing:MAX:max output%8.3lf %sBps' \
-		'LINE1:outgoing#0000FF:outgoing traffic\j'
+		DEF:tcp=$rrdlog/proto-$interface.rrd:tcp:AVERAGE \
+		'AREA:incoming#00FF00:incoming traffic\g' \
+		'GPRINT:incoming:MAX:max%8.3lf %sBps' \
+		'LINE1:outgoing#0000FF:outgoing traffic\g' \
+		'GPRINT:outgoing:MAX:max%8.3lf %sBps' \
+		'LINE1:tcp#000000:connections\g' \
+		'GPRINT:tcp:MAX:max %2.0lf\j'
 }
 
 netframes() {
@@ -240,6 +266,16 @@ ifconfig $1 | grep "$2 packets" | sed -re "s/.*$3:([0-9]+).*/\1/g"
 
 netstats() {
 ifconfig $1 | grep bytes | sed -re "s/.*$2 bytes:([0-9]+).*/\1/g"
+}
+
+netproto()
+{
+	proto=${1:-tcp}
+	if [ -n "$2" ]; then
+		netstat -an 2> /dev/null | grep -v '0.0.0.0:*' | grep "^$proto"| grep ":$2 " | wc -l
+	else
+		netstat -an 2> /dev/null | grep -v '0.0.0.0:*' | grep "^$proto"| wc -l
+	fi
 }
 
 updateifdata() {
@@ -259,6 +295,13 @@ updateifdata() {
 			DS:frame:COUNTER:600:0:U   DS:carrier:COUNTER:600:0:U \
 			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
 			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
+	[ -e "$rrdlog/proto-$interface.rrd" ] ||
+		rrdtool create "$rrdlog/proto-$interface.rrd" --step=300 \
+			DS:tcp:GAUGE:600:0:U     DS:udp:GAUGE:600:0:U \
+			DS:rsync:GAUGE:600:0:U   DS:www:GAUGE:600:0:U \
+			DS:ssh:GAUGE:600:0:U \
+			RRA:AVERAGE:0.5:1:576  RRA:AVERAGE:0.5:6:672 \
+			RRA:AVERAGE:0.5:24:732 RRA:AVERAGE:0.5:144:1460
 	rx=$(netstats $interface RX)
 	tx=$(netstats $interface TX)
 	rrdtool update "$rrdlog/$interface.rrd" -t incoming:outgoing \
@@ -276,6 +319,14 @@ updateifdata() {
 	rrdtool update "$rrdlog/packets-$interface.rrd" \
 		-t in:out:inerr:outerr:indrop:outdrop:inov:outov:frame:carrier \
 		N:${rx:-U}:${tx:-U}:${rxerr:-U}:${txerr:-U}:${rxdrop:-U}:${txdrop:-U}:${rxov:-U}:${txov:-U}:${frame:-U}:${carrier:-U}
+	rsync=$(netproto tcp 873)
+	www=$(netproto tcp 80)
+	ssh=$(netproto tcp 22)
+	tcp=$(netproto tcp)
+	udp=$(netproto udp)
+	rrdtool update "$rrdlog/proto-$interface.rrd" \
+		-t tcp:udp:rsync:www:ssh \
+		N:${tcp:-U}:${udp:-U}:${rsync:-U}:${www:-U}:${ssh:-U}
 }
 
 getdisk()

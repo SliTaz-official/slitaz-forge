@@ -174,9 +174,9 @@ updatediskgraph() {
 		"CDEF:writepct=100,write,$maxdisk,/,*" \
 		'AREA:readpct#0000FF:sectors read from disk' \
 		'STACK:writepct#00FF00:sectors written to disk' \
-		'LINE1:ino#FF00FF:% inodes used in /home' \
+		'LINE1:ino#FF00FF:inodes used in /home\g' \
 		'GPRINT:ino:MAX:%1.0lf%%' \
-		'LINE1:blk#FF0000:% blocks used in /home' \
+		'LINE1:blk#FF0000:blocks used in /home\g' \
 		'GPRINT:blk:MAX:%1.0lf%%\j'
 }
 
@@ -229,11 +229,11 @@ updateifgraph() {
 		DEF:incoming=$rrdlog/$interface.rrd:incoming:AVERAGE \
 		DEF:outgoing=$rrdlog/$interface.rrd:outgoing:AVERAGE \
 		DEF:tcp=$rrdlog/proto-$interface.rrd:tcp:AVERAGE \
-		'AREA:incoming#00FF00:incoming traffic' \
+		'AREA:incoming#00FF00:incoming traffic\g' \
 		'GPRINT:incoming:MAX:max%8.3lf %sBps' \
-		'LINE1:outgoing#0000FF:outgoing traffic' \
+		'LINE1:outgoing#0000FF:outgoing traffic\g' \
 		'GPRINT:outgoing:MAX:max%8.3lf %sBps' \
-		'LINE1:tcp#000000:connections' \
+		'LINE1:tcp#000000:connections\g' \
 		'GPRINT:tcp:MAX:max %2.0lf\j'
 }
 
