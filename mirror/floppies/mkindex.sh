@@ -5,7 +5,6 @@ list_version()
 	ls ?.0 -dr | while read dir ; do
 		echo $dir
 		[ -d loram-$dir ] && echo loram-$dir
-		[ -d bios-$dir ] && echo bios-$dir
 		[ -d mini-$dir ] && echo mini-$dir
 	done
 }
@@ -15,7 +14,6 @@ build_page()
 	DIR=$1
 	VERSION=${DIR#*-}
 	case "$DIR" in
-	bios*)	TYPE="&nbsp;bios" ;;
 	mini*)	TYPE="&nbsp;mini" ;;
 	loram*)	TYPE="&nbsp;loram" ;;
 	*)	TYPE=""
@@ -117,7 +115,6 @@ $(
 tail=""
 list_version | while read dir; do
 	case "$dir" in
-	bios*)	echo -en "\n	- <a href=\"index-$dir.html\">bios</a>" ;;
 	mini*)	echo -en "\n	- <a href=\"index-$dir.html\">mini</a>" ;;
 	loram*)	echo -en "\n	- <a href=\"index-$dir.html\">loram</a>" ;;
 	*) 	echo -en "$tail	<li><a href=\"index-$dir.html\">SliTaz $dir</a>" ;;
