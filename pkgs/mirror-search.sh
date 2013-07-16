@@ -974,9 +974,11 @@ _EOT_
 		. $WOK/$pkg/receipt
 		DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
 		[ -f $WOK/$pkg/description.txt ] || DESC=""
-		[ "$LICENSE" == "$SEARCH" ] && cat << _EOT_
+		case " $LICENSE " in
+		*\ $SEARCH\ *) cat << _EOT_
 $(package_entry)$DESC
 _EOT_
+		esac
 	done
 	;;
 esac
