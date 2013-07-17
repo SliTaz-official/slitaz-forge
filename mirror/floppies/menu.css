@@ -23,7 +23,7 @@
 }
 #menu li ul {
 	display: none; 
-	width: 180px;
+	width: 115px;
 	background-color: #f1efeb;
 	border: 1px solid #c1baad;
 }
@@ -38,6 +38,7 @@
 }
 #menu li:hover li {
 	float: none;
+	position: relative;
 }
 #menu li:hover li a {
 	background-color: #f1efeb;
@@ -53,3 +54,14 @@
 	/* border: 1px solid #c1baad; */
 }
 
+#menu li:hover li ul {
+	display: none;
+	position: absolute;
+	left: 115px;
+	top: 0px;
+	z-index:1;
+}
+
+#menu li:hover li:hover ul {
+	display: block;
+}
