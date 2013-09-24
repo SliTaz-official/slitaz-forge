@@ -41,8 +41,8 @@
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
 			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
 			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
-			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located next to Lausanne,
-			Switzerland. Tank is also monitored by RRDtool which provides 
+			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located in Gravelines,
+			France. Tank is also monitored by RRDtool which provides 
 			<a href="graphs.php">graphical stats</a>.
 		</p>
 	</div>
