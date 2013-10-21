@@ -195,8 +195,9 @@ if ($slitaz_style) {
 	<div id="block_nav">
 		<h4>Online Tools</h4>
 		<ul>
-			<li><a href="http://pizza.slitaz.org/">Live Builder</a></li>
-			<li><a href="http://tiny.slitaz.org/">Tiny Builder</a></li>
+			<li><a href="http://pizza.slitaz.me/">Live ISO Builder</a></li>
+			<li><a href="http://pizza.slitaz.org/">Live flavor Builder</a></li>
+			<li><a href="http://tiny.slitaz.org/">Tiny SliTaz Builder</a></li>
 			<li><a href="http://boot.slitaz.org/">Web Boot</a></li>
 		</ul>
 	</div>
@@ -320,6 +321,7 @@ if (filesize($path.".folderlist") > 0 && filesize($path.".filelist") > 0) {
 }
 else {
 
+proc_nice(10);
 // Get all of the folders and files. 
 $folderlist = array();
 $filelist = array();
@@ -436,24 +438,24 @@ foreach($folderlist as $folder) {
 
 // Print file information
 foreach($filelist as $file) {
-	print "<tr><td class='n'><a href='" . addslashes($file['name']). "'>" .htmlentities($file['name']). "</a></td>";
-	print "<td class='m'>" . $file['modtimeasc'] . "</td>";
-	print "<td class='s'><u><img src=\"/static/qr.png\" alt=\"" .
-		format_bytes($file['size']) . "\" onmouseover=" .
+	$url = addslashes($file['name']);
+	print "<tr><td class='n'><a href='$url'>" .htmlentities($file['name']). "</a></td>";
+	print "<td class='m'>" . $file['modtimeasc'] .
+		" <img src=\"/static/qr.png\" alt=\"@\" onmouseover=" .
 		"\"this.title = location.href+'$url'\" onclick=" .
 		"\"this.src = QRCode.generatePNG(location.href+'$url', " .
-		"{ecclevel: 'H'}) \"/></u></td>";
-	print "<td class='t'>" . $file['file_type']                      . "</td></tr>\n";
+		"{ecclevel: 'H'}) \"/>" .
+		"</td>";
+	print "<td class='s'>" . format_bytes($file['size']) . "</td>";
+	print "<td class='t'>" . $file['file_type'] . "</td></tr>\n";
 }
 
 // Print ending stuff
 $soft = explode('/',$_SERVER["SERVER_SOFTWARE"]);
 $tag = get_conf('server.tag','"','"',$soft[0].' &lt;'.$soft[1].'&gt;');
-$filenum = exec("cat $path/.filelist | sed 's|^a:||g' | sed 's|:{.*||g'");
-$foldernum = exec("cat $path/.folderlist | sed 's|^a:||g' | sed 's|:{.*||g'");
 print "</tbody>
 	</table>
-	".$foldernum." folders and ".$filenum." files.</div>";
+	".count($folderlist)." folders and ".count($filelist)." files.</div>";
 if ($slitaz_style) { ?>
 
 <!-- End of content -->
@@ -468,10 +470,11 @@ if ($slitaz_style) { ?>
 	<a href="http://forum.slitaz.org/">Forum</a>
 	<a href="http://pkgs.slitaz.org/">Packages</a>
 	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
+	<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	<p>
-		<img src="/static/qr.png" alt="SliTaz @" onmouseover="this.title = location.href"
+		<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
 		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
+		SliTaz @	 
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>
 		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
