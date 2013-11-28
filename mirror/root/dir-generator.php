@@ -146,8 +146,17 @@ function get_file_type($file) {
 //$slitaz_style = ($_SERVER["SERVER_NAME"] == "mirror.slitaz.org");
 $slitaz_style = preg_match("/mirror\.slitaz\./",$_SERVER["SERVER_NAME"]);
 if ($slitaz_style) {
+	$modified = gmdate("D, d M Y H:i:s e", strtotime("-1 hour"));
+	$expires = gmdate("D, d M Y H:i:s e", strtotime("+1 hour"));
 	$fvalue = "";
 	if (isset($_GET['f'])) $fvalue = 'value="'.$_GET['f'].'"';
+	header("Expires: ".$expires);
+	header("Last-Modified: " . $modified);
+	header("Pragma: cache");
+//	header("Cache-Control: public");
+//	<meta http-equiv="cache-control" content="public" />
+//	<meta http-equiv="last-modified" content="$modified" />
+//	<meta http-equiv="expires" content="$expires" />
 	print <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -219,7 +228,23 @@ EOT;
 	</div>
 </div>
 
-<script type="text/javascript" src="/static/qrcode.js"></script>
+<!-- script type="text/javascript" src="/static/qrcode.js"></script -->
+<script type="text/javascript">
+	function QRCodePNG(str, obj) {
+		try {
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "/static/qrcode.js";
+			element.type ="text/javascript"; 
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}
+</script>
 <div id="lang">
 Path: /${vpath}
 </div>
@@ -443,9 +468,7 @@ foreach($filelist as $file) {
 	print "<td class='m'>" . $file['modtimeasc'] .
 		" <img src=\"/static/qr.png\" alt=\"@\" onmouseover=" .
 		"\"this.title = location.href+'$url'\" onclick=" .
-		"\"this.src = QRCode.generatePNG(location.href+'$url', " .
-		"{ecclevel: 'H'}) \"/>" .
-		"</td>";
+		"\"this.src = QRCodePNG(location.href+'$url', this) \"/></td>";
 	print "<td class='s'>" . format_bytes($file['size']) . "</td>";
 	print "<td class='t'>" . $file['file_type'] . "</td></tr>\n";
 }
@@ -473,7 +496,7 @@ if ($slitaz_style) { ?>
 	<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	<p>
 		<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
-		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
+		 onclick="this.src = QRCodePNG(location.href, this)" />
 		SliTaz @	 
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>
