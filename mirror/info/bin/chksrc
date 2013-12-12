@@ -2,20 +2,29 @@
 
 . /etc/tazwok.conf
 WOK=/home/slitaz/${1:-cooking}/wok
-WWW=/var/www/slitaz/mirror
-SRC=$WWW/sources/packages-${1:-cooking}
-SRC2=$WWW/sources/packages
+SRC=/var/www/slitaz/mirror/sources/packages-${1:-cooking}
+SRC2=/var/www/slitaz/mirror/sources/packages
 
 for i in $WOK/*/receipt ; do
-	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED
+	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
 	. $i
 	[ -n "$WANTED" ] && continue
-	[ -n "$TARBALL" ] && echo $TARBALL
+	if [ -z "$TARBALL" ]; then
+		[ -n "$WGET_URL" ] || continue
+		echo $(basename ${i%/receipt}) >> /tmp/notarball$$
+		TARBALL="$PACKAGE-$VERSION.tar.bz2"
+	fi
+	echo $TARBALL
 	[ -n "$WGET_URL" ] && echo $WGET_URL >> /tmp/wget_url$$
 	for j in $EXTRA_SOURCE_FILES ; do
 		basename $j
 	done
 done | sort | uniq > /tmp/tarball$$
+if [ -s /tmp/notarball$$ ]; then
+	echo $(cat /tmp/notarball$$ 2> /dev/null) | \
+		sed 's/ /, /g;s/^/No TARBALL for /'
+	rm -f /tmp/notarball$$
+fi
 while read file; do
 	[ -s $SRC/${file:0:1}/$file ] || [ -s $SRC/${file:0:1}/${file%.*}.lzma ] ||
 	[ -s $SRC/${file:0:1}/${file%.*}.tar.lzma ] ||
