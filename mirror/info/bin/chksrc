@@ -9,14 +9,13 @@ for i in $WOK/*/receipt ; do
 	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
 	. $i
 	[ -n "$WANTED" ] && continue
-	if [ -z "$TARBALL" ]; then
+	if [ -z "$TARBALL$EXTRA_SOURCE_FILES" ]; then
 		[ -n "$WGET_URL" ] || continue
 		echo $(basename ${i%/receipt}) >> /tmp/notarball$$
 		TARBALL="$PACKAGE-$VERSION.tar.bz2"
 	fi
-	echo $TARBALL
 	[ -n "$WGET_URL" ] && echo $WGET_URL >> /tmp/wget_url$$
-	for j in $EXTRA_SOURCE_FILES ; do
+	for j in $TARBALL $EXTRA_SOURCE_FILES ; do
 		basename $j
 	done
 done | sort | uniq > /tmp/tarball$$
