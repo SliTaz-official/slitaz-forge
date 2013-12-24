@@ -81,7 +81,7 @@ case "$1" in
 		ln -s $REPOS/cookutils/web/style.css .
 		cd $WWW/cook/cross && rm -f style.css
 		ln -s $REPOS/cookutils/web/style.css .
-		for web in stable undigest cross/arm cross/x86_64
+		for web in stable undigest backports cross/arm cross/x86_64
 		do
 			echo "Linking: $web CSS/CGI files"
 			cd $WWW/cook/$web
