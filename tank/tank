@@ -2,7 +2,7 @@
 #
 # Tank - Admin Tank, backup, update and give stats.
 #
-# (C) 2012 SliTaz - GNU General Public License.
+# (C) 2012-2014 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
 
@@ -28,6 +28,7 @@ Commands:
   up-boot      Update http://boot.slitaz.org/
   up-cook      Update http://cook.slitaz.org/
   up-roadmap   Update http://roadmap.slitaz.org/
+  up-bugs      Update http://bugs.slitaz.org/
 
 EOT
 }
@@ -107,6 +108,16 @@ case "$1" in
 		cd $REPOS/slitaz-forge
 		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a roadmap/* $WWW/roadmap
+		echo "" ;;
+	up-bugs)
+		# Update Bugs Web interface
+		bugs="$WWW/bugs"
+		echo -e "\nUpdating: bugs.slitaz.org..."
+		cd $REPOS/tazbug
+		[ "$2" == "--nohg" ] || hg pull -u
+		cp -a web/* ${bugs}
+		cp README ${bugs}
+		chown -R www.www ${bugs}
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
