@@ -5,6 +5,7 @@
 # (C) 2012-2014 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
+. /lib/libtaz.sh
 
 REPOS="/home/slitaz/repos"
 WWW="/home/slitaz/www"
@@ -21,6 +22,7 @@ Commands:
   backup|-b    Backup files and MySQL DB
   adduser      Add user on Tank and create people files
   up-stats     Update Awstats statistics (run by cron)
+  online       Show online users
 
   up-tank      Update http://tank.slitaz.org/
   up-people    Update http://people.slitaz.org/
@@ -163,6 +165,9 @@ case "$1" in
 EOF
 		#chown -R $user.$user /home/$user
 		echo -e "Done\n" ;;
+	online)
+		echo -n "Bugs online users: "
+		colorize 34 "$(ls /tmp/bugs/sessions | wc -l)" ;;
 	*)
 		usage ;;
 esac
