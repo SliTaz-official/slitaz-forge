@@ -140,8 +140,9 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		category=*)				SEARCH=${i#*=}; OBJECT=Category;;
 		maintainer=*)				SEARCH=${i#*=}; OBJECT=Maintainer;;
 		license=*)				SEARCH=${i#*=}; OBJECT=License;;
-		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
-		version=s*|version=4*)	SLITAZ_VERSION=stable;;
+		version=[1-9]*)				i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
+		version=s*|version=4*)			SLITAZ_VERSION=stable;;
+		version=b*)				SLITAZ_VERSION=backports;;
 		version=u*)				SLITAZ_VERSION=undigest;;
 		version=t*)				SLITAZ_VERSION=tiny;;
 	esac
@@ -176,6 +177,7 @@ case "$SLITAZ_VERSION" in
 	2.0)		selected_2="selected";;
 	3.0)		selected_3="selected";;
 	stable)		selected_stable="selected";;
+	backports)	selected_undigest="backports";;
 	undigest)	selected_undigest="selected";;
 esac
 
@@ -217,6 +219,7 @@ search_form()
 	<input type="text" name="query" id="query" size="20" value="$SEARCH" />
 	<select name="version">
 		<option value="cooking">$(gettext "cooking")</option>
+		<option $selected_backports value="backports">$(gettext backports")</option>
 		<option $selected_stable value="stable">4.0</option>
 		<option $selected_3 value="3.0">3.0</option>
 		<option $selected_2 value="2.0">2.0</option>
