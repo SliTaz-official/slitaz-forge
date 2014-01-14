@@ -1,0 +1,15 @@
+SliTaz IRC
+===============================================================================
+
+The main purpose of the logs is to provide records of meetings and dicussions
+we have on IRC. TazIRC Log Bot may runs in a conspy session on Tank.
+
+	* index.cgi : The main CGI SHell script
+	* lib/      : HTML template and eventual JS functions
+	* log/      : All the logs produced by tazirc-lb
+
+Host: irc.slitaz.org
+IP: 37.187.4.13 (tank)
+
+
+===============================================================================
