@@ -85,20 +85,15 @@ $ tazirc irc.freenode.net [nick] slitaz
 
 <pre>
 EOT
-		IFS=" "
-		wc -l ${logdir}/*.log | while read count day
+		for log in $(ls $logdir/*.log | sort -r -n)
 		do
-			case "$day" in
-				total)
-					# Last line is total
-					echo "</pre>"
-					echo "<p>Total: $count messages</p>" ;;
-				*)
-					day=$(basename $day)
-					log="${day%.log}"
-					echo "<a href='?log=$log'>$log</a> $count messages" ;;
-			esac
+			count="$(wc -l $log | awk '{print $1}')"
+			log="$(basename ${log%.log})"
+			echo "<a href='?log=$log'>$log</a> $count messages"
 		done
+		echo "</pre>"
+		total=$(wc -l ${logdir}/*.log | tail -n 1 | awk '{print $1}')
+		echo "<p>Total: $count messages</p>"
 		unset IFS
 		html_footer
 esac
