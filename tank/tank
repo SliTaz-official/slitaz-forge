@@ -31,6 +31,7 @@ Commands:
   up-cook      Update http://cook.slitaz.org/
   up-roadmap   Update http://roadmap.slitaz.org/
   up-bugs      Update http://bugs.slitaz.org/
+  up-irc      Update http://irc.slitaz.org/
 
 EOT
 }
@@ -120,6 +121,14 @@ case "$1" in
 		cp -a web/* ${bugs}
 		cp README ${bugs}
 		chown -R www.www ${bugs}
+		echo "" ;;
+	up-boot)
+		# Update IRC interface
+		echo -e "\nUpdating: irc.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		[ "$2" == "--nohg" ] || hg pull -u
+		rm -rf $WWW/irc/images $WWW/irc/lib
+		cp -a irc/* $WWW/irc
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
