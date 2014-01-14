@@ -93,7 +93,7 @@ EOT
 		done
 		echo "</pre>"
 		total=$(wc -l ${logdir}/*.log | tail -n 1 | awk '{print $1}')
-		echo "<p>Total: $count messages</p>"
+		echo "<p>Total: $total messages</p>"
 		unset IFS
 		html_footer
 esac
