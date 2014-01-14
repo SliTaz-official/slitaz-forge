@@ -122,7 +122,7 @@ case "$1" in
 		cp README ${bugs}
 		chown -R www.www ${bugs}
 		echo "" ;;
-	up-boot)
+	up-irc)
 		# Update IRC interface
 		echo -e "\nUpdating: irc.slitaz.org..."
 		cd $REPOS/slitaz-forge
