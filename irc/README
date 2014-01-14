@@ -1,8 +1,8 @@
 SliTaz IRC
 ===============================================================================
 
-The main purpose of the logs is to provide records of meetings and dicussions
-we have on IRC. TazIRC Log Bot may runs in a conspy session on Tank.
+The main purpose of the logs is to provide records of meetings and discussions
+we have on IRC. TazIRC Log Bot may run in a conspy session on Tank.
 
 	* index.cgi : The main CGI SHell script
 	* lib/      : HTML template and eventual JS functions

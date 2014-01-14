@@ -72,8 +72,8 @@ EOT
 		cat << EOT
 <h2>Welcome to SliTaz IRC World!</h2>
 <p>
-	This service let you read online the SliTaz IRC support channel on
-	Freenode and provide a <a href="?webirc">web IRC client</a>. On a
+	This service lets you read online the SliTaz IRC support channel on
+	Freenode and provides a <a href="?webirc">web IRC client</a>. On a
 	SliTaz system you can also use a graphical or a text mode IRC client
 	such as Xchat or TazIRC: 
 </p>
