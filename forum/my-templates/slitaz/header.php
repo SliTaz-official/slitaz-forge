@@ -33,7 +33,7 @@ if ( bb_is_profile() ) {
 				<a href="http://www.slitaz.org/">Home</a>
 				<a href="http://scn.slitaz.org/">Community</a>
 				<a href="http://doc.slitaz.org/">Doc</a>
-				<a href="http://forum.slitaz.org/">Forum</a>
+				<span>Forum</span>
 				<a href="http://irc.slitaz.org/">IRC</a>
 				<a href="http://slitaz.pro/">Pro</a>
 				<a href="http://shop.slitaz.org/">Shop</a>

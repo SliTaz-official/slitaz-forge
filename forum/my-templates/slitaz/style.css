@@ -101,7 +101,7 @@ img.avatar { border: 1px solid #ddd; }
 #header p { margin-bottom: 0; }
 
 #header h1 a { color: #fff; text-decoration: none; }
-#header h1 a:hover, #network a:hover { color: #afafaf; }
+#header h1 a:hover, #network a:hover, #network span { color: #afafaf; }
 
 #header div.search {
 	float: right;
@@ -153,7 +153,14 @@ img.avatar { border: 1px solid #ddd; }
 	padding: 13px 5px 0;
 	font-size: 12px;
 }
-#network a { padding: 0 4px; color: #fff; font-weight: bold; text-decoration: none;}
+
+#network a, #network span {
+	padding: 0 4px;
+	color: #fff; 
+	font-weight: bold;
+	text-decoration: none;
+}
+
 #network img, .infobox img { vertical-align: middle; border: 0pt none; }
 
 #block {
