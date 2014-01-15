@@ -228,12 +228,11 @@ img.avatar { border: 1px solid #ddd; }
 
 .login {
 	position: absolute;
-	top: 196px;
+	top: 160px;
 	right: 80px;
 	color: #444;
 	z-index: 1;
 	font-size: 12px;
-
 	padding: 2px;
 }
 
