@@ -1,4 +1,7 @@
 		</div>
+		
+		<?php do_action('bb_foot'); ?>
+		
 	</div>
 
 	<script type="text/javascript" src="/my-templates/slitaz/qrcode.js"></script>
@@ -23,8 +26,6 @@
 			<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
 			<a href="http://flattr.com/profile/slitaz">Flattr</a>
 		</p>
-		
-		<?php do_action('bb_foot'); ?>
 
 		<!-- If you like showing off the fact that your server rocks -->
 		<!-- <p class="showoff">
