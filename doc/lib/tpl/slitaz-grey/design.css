@@ -36,11 +36,12 @@ body {
 	font-weight: bold;
 }
 
-#lang a, div.plugin_translation a {
+#lang a {
 	text-decoration: none;
 	font-weight: bold;
 	color: #215090;
-	background: #333;
+	background: #444;
+	padding: 2px;
 }
 
 #lang a:hover, div.plugin_translation a:hover {
