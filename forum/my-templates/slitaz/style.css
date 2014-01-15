@@ -161,6 +161,7 @@ img.avatar { border: 1px solid #ddd; }
 	text-decoration: none;
 }
 
+#network span { color: #afafaf; }
 #network img, .infobox img { vertical-align: middle; border: 0pt none; }
 
 #block {
