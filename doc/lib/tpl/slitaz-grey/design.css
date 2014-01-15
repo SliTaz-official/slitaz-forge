@@ -26,7 +26,7 @@ body {
 
 #lang {
 	position: absolute;
-	top: 140px;
+	top: 146px;
 	right: 0px;
 	text-align: right;
 	width: auto;
@@ -38,12 +38,13 @@ body {
 
 #lang a {
 	text-decoration: none;
-	font-weight: bold
+	font-weight: bold;
+	color: #215090;
+	background: transparent;
 }
 
 #lang a:hover, div.plugin_translation a:hover {
 	background: transparent;
-	color: #b64b22;
 }
 
 #lang img {
@@ -102,7 +103,7 @@ body {
 #network img { vertical-align: middle; }
 
 #block { 
-	min-height: 100px; 
+	min-height: 92px; 
 	background: #ccc; 
 	padding: 20px 12% 0;
 	text-align: center;
@@ -131,7 +132,7 @@ body {
 .tools { 
 	width: 100%;
 	min-height: 30px;
-	background-color: #cc5b17;
+	background-color: #666;
 	padding: 8px 5px 1px 5px;
 	margin: 10px 0;
 	vertical-align: middle;
@@ -1008,8 +1009,8 @@ div.notify {
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	position: absolute;
-	top: 180px;
-	right: 20px;
+	top: 100px;
+	right: 100px;
 	width: 400px;
 }
 
