@@ -36,7 +36,11 @@ newline() {
 }
 
 boldify() {
-	echo -e "\\033[1m$@\\033[0m" ;;
+	echo -e "\\033[1m$@\\033[0m"
+}
+
+separator() {
+	echo "================================================================================="
 }
 
 #
@@ -78,13 +82,17 @@ case "$1" in
 		htpasswd -b $HGUSERS $2 $3 ;;
 	stats)
 		# Echo some stats.
-		echo "======== Disk usage ============="
+		newline
+		boldify "Disk usage"
+		separator
 		df -h | grep ^/dev
-		echo "======== Memory usage ==========="
+		boldify "Memory usage"
+		separator
 		free -m | grep ^Mem
-		echo "======== Connected users ========"
+		boldify "Connected users"
+		separator
 		who 
-		echo "" ;;
+		newline ;;
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)
