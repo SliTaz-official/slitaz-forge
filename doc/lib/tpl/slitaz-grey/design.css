@@ -40,7 +40,7 @@ body {
 	text-decoration: none;
 	font-weight: bold;
 	color: #215090;
-	background: transparent;
+	background: #333;
 }
 
 #lang a:hover, div.plugin_translation a:hover {
@@ -145,7 +145,7 @@ div.dokuwiki .tools input.button {
   color: #fff;
 }
 div.dokuwiki .tools input:hover.button {
-  color: #351a0a;
+  color: #222;
 }
 
 #footer, .tools {
@@ -1010,8 +1010,8 @@ div.notify {
 	border-radius: 4px;
 	position: absolute;
 	top: 10px;
-	right: 100px;
-	width: 400px;
+	right: 200px;
+	width: 620px;
 }
 
 #access div.notify a { text-decoration: underline; }
