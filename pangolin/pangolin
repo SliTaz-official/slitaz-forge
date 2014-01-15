@@ -2,7 +2,7 @@
 #
 # Pangolin admin utility
 #
-# Copyright (C) 2012 SliTaz GNU/Linux - BSD License
+# Copyright (C) 2012-2014 SliTaz GNU/Linux - BSD License
 #
 # Authors : Christophe Lincoln <pankso@slitaz.org>
 #
@@ -20,6 +20,7 @@ Usage: $(basename $0) [command]
 Commands:
   up-www       Update website www.slitaz.org
   up-forum     Update forum.slitaz.org theme
+  up-doc       Update doc.slitaz.org theme and configs
   up-hg        Update Hg web interface hg.slitaz.org
   adduser      Add a user to Hg.
   stats        Display some server stats.
@@ -28,23 +29,49 @@ Commands:
 EOT
 }
 
+# While libtaz.sh is not installed on Pangolin
+#
+newline() {
+	echo ""
+}
+
+boldify() {
+	echo -e "\\033[1m$@\\033[0m" ;;
+}
+
+#
+# handle commands
+#
+
 case "$1" in
 	up-www)
 		# Update website from repo.
-		echo "Updating: www.slitaz.org..."
-		cd ${WEBSITE} && hg pull -u ;;
+		newline
+		boldify "Updating: www.slitaz.org..."
+		cd ${WEBSITE} && hg pull -u 
+		newline;;
 	up-forum)
 		# Update forum.slitaz.org theme
-		echo "Updating: forum.slitaz.org..."
+		newline
+		boldify "Updating: forum.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg up
-		cp -a forum/my-templates ${WWW}/forum.slitaz.org/public_html ;;
+		cp -a forum/my-templates ${WWW}/forum.slitaz.org/public_html 
+		newline ;;
+	up-doc)
+		# Update doc.slitaz.org theme
+		newline
+		boldify "Updating: doc.slitaz.org..."
+		cd ${REPOS}/slitaz-forge && hg up
+		cp -a doc/* ${WWW}/doc.slitaz.org/public_html 
+		newline ;;
 	up-hg)
 		# Update hg.slitaz.org template.
-		echo -e "\nUpdating Mercurial template..."
+		newline
+		boldify "Updating Mercurial template..."
 		cd $REPOS/slitaz-dev-tools && hg update 
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
-		echo "" ;;
+		newline ;;
 	adduser)
 		[ ! "$2" ] && echo "Missing user name arg" && exit 0
 		[ ! "$3" ] && echo "Missing password arg" && exit 0

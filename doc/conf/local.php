@@ -7,7 +7,7 @@
  */
 
 $conf['title'] = 'SliTaz Doc';
-$conf['template'] = 'slitaz-orange';
+$conf['template'] = 'slitaz-grey';
 $conf['license'] = 'gnufdl';
 $conf['tocminheads'] = '4';
 $conf['maxtoclevel'] = '2';
