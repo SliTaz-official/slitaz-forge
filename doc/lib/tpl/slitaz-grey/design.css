@@ -36,7 +36,7 @@ body {
 	font-weight: bold;
 }
 
-#lang a {
+div.plugin_translation a {
 	text-decoration: none;
 	font-weight: bold;
 	color: #215090;
@@ -44,12 +44,8 @@ body {
 	padding: 2px;
 }
 
-#lang a:hover, div.plugin_translation a:hover {
-	background: transparent;
-}
-
-#lang img {
-	vertical-align: middle;
+div.plugin_translation a:hover {
+	background: #333;
 }
 
 /* Header and title */
