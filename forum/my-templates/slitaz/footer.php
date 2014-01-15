@@ -23,6 +23,8 @@
 			<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
 			<a href="http://flattr.com/profile/slitaz">Flattr</a>
 		</p>
+		
+		<?php do_action('bb_foot'); ?>
 
 		<!-- If you like showing off the fact that your server rocks -->
 		<!-- <p class="showoff">
@@ -36,8 +38,6 @@ bb_number_format_i18n( $bbdb->num_queries )
 ?>
 		</p> -->
 	</div>
-
-<?php do_action('bb_foot'); ?>
 
 </body>
 </html>
