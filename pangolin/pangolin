@@ -18,8 +18,9 @@ usage() {
 
 Usage: $(basename $0) [command]
 Commands:
-  up-www       Update website http://www.slitaz.org/
-  up-hg        Update Hg web interface http://hg.slitaz.org/
+  up-www       Update website www.slitaz.org
+  up-forum     Update forum.slitaz.org theme
+  up-hg        Update Hg web interface hg.slitaz.org
   adduser      Add a user to Hg.
   stats        Display some server stats.
   backup       Backup MySQL DB and files.
@@ -32,6 +33,11 @@ case "$1" in
 		# Update website from repo.
 		echo "Updating: www.slitaz.org..."
 		cd ${WEBSITE} && hg pull -u ;;
+	up-forum)
+		# Update forum.slitaz.org theme
+		echo "Updating: forum.slitaz.org..."
+		cd ${REPOS}/slitaz-forge && hg up
+		cp -a forum/my-templates ${WWW}/forum.slitaz.org/public_html ;;
 	up-hg)
 		# Update hg.slitaz.org template.
 		echo -e "\nUpdating Mercurial template..."
