@@ -31,13 +31,13 @@ if (!defined('DOKU_INC')) die();
 	<div id="logo"></div>
 	<!-- SliTaz Network -->
 	<div id="network">
-		<a href="http://www.slitaz.org/">
-			<img src="<?php echo DOKU_TPL?>images/home.png" alt="[ Home ]" /></a>
+		<a href="http://www.slitaz.org/">Home</a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://irc.slitaz.org/">IRC</a>
 		<a href="http://slitaz.pro/">Pro</a>
-		<a href="http://slitaz.spreadshirt.net/">Shop</a>
+		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
