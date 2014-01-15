@@ -8,8 +8,8 @@
 #
 
 REPOS="/home/slitaz/repos"
-WWW="/home/slitaz/www"
-WEBSITE="$WWW/website"
+WWW="/home/vhost"
+WEBSITE="$WWW/www.slitaz.org/website"
 PYTHON_LIB="/usr/lib/python2.5"
 HGUSERS="/home/slitaz/auth/hgusers"
 
@@ -31,7 +31,7 @@ case "$1" in
 	up-www)
 		# Update website from repo.
 		echo "Updating: www.slitaz.org..."
-		cd $WEBSITE && hg pull -u ;;
+		cd ${WEBSITE} && hg pull -u ;;
 	up-hg)
 		# Update hg.slitaz.org template.
 		echo -e "\nUpdating Mercurial template..."
@@ -50,7 +50,8 @@ case "$1" in
 		echo "======== Memory usage ==========="
 		free -m | grep ^Mem
 		echo "======== Connected users ========"
-		who ;;
+		who 
+		echo "" ;;
 	backup)
 		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)
