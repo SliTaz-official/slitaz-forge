@@ -1,5 +1,0 @@
-Name: slitaz
-Description: This is a SliTaz GNU/Linux Roundup tracker template based on
- the classic template provided by the Roundup.
-Intended-for: All first-time Roundup users
-Path: /home/slitaz/trackers/bugs
