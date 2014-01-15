@@ -31,9 +31,9 @@ if ( bb_is_profile() ) {
 			<div id="network">
 				<a href="http://www.slitaz.org/">Home</a>
 				<a href="http://scn.slitaz.org/">Community</a>
-				<a href="http://webchat.freenode.net/?channels=#slitaz">IRC</a>
 				<a href="http://doc.slitaz.org/">Doc</a>
 				<a href="http://forum.slitaz.org/">Forum</a>
+				<a href="http://irc.slitaz.org/">IRC</a>
 				<a href="http://slitaz.pro/">Pro</a>
 				<a href="http://shop.slitaz.org/">Shop</a>
 				<a href="http://bugs.slitaz.org">Bugs</a>
