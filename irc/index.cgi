@@ -44,7 +44,7 @@ case " $(GET) " in
 		do
 			cat << EOT
 <div class="box">
-<span class="date">[$time]</span> <span style="color: #0000FF;">$user:</span> $text
+<span class="date">[$time]</span> <span style="color: #36C;">$user:</span> $text
 </div>
 EOT
 		done
