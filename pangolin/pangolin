@@ -10,7 +10,7 @@
 REPOS="/home/slitaz/repos"
 WWW="/home/vhost"
 WEBSITE="$WWW/www.slitaz.org/website"
-PYTHON_LIB="/usr/lib/python2.5"
+PYTHON_LIB="/usr/lib/python2.7"
 HGUSERS="/home/slitaz/auth/hgusers"
 
 usage() {
