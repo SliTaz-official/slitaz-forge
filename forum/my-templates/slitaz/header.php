@@ -14,6 +14,7 @@ if ( bb_is_profile() ) {
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php bb_title() ?></title>
 	<link rel="stylesheet" href="<?php bb_stylesheet_uri(); ?>" type="text/css" />
+	<link rel="shortcut icon" href="favicon.ico" />
 <?php if ( 'rtl' == bb_get_option( 'text_direction' ) ) : ?>
 	<link rel="stylesheet" href="<?php bb_stylesheet_uri( 'rtl' ); ?>" type="text/css" />
 <?php endif; ?>

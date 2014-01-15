@@ -228,7 +228,7 @@ img.avatar { border: 1px solid #ddd; }
 
 .login {
 	position: absolute;
-	top: 160px;
+	top: 146px;
 	right: 80px;
 	color: #444;
 	z-index: 1;
@@ -309,11 +309,11 @@ form.login input#remember {
 	left: 80px;
 	width: 48%;
 	overflow: hidden;
-	height: 100px;
+	height: 64px;
 }
 
 #front-page #discussions {
-	padding: 60px 0 0 0;
+	padding: 40px 0 0 0;
 }
 
 .frontpageheatmap {
