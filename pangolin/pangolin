@@ -66,7 +66,9 @@ case "$1" in
 		newline
 		boldify "Updating: doc.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg up
-		cp -a doc/* ${WWW}/doc.slitaz.org/public_html 
+		cp -a doc/* ${WWW}/doc.slitaz.org/public_html
+		chown www.www ${WWW}/doc.slitaz.org/public_html/conf
+		chown www.www ${WWW}/doc.slitaz.org/public_html/conf/local.php
 		newline ;;
 	up-hg)
 		# Update hg.slitaz.org template.

@@ -48,13 +48,6 @@ if (!defined('DOKU_INC')) die();
 <!-- SliTaz Block -->
 <div id="block">
 	<?php html_msgarea()?>
-	<!-- Languages -->
-	<div id="lang">
-	<?php
-		$translation = &plugin_load('helper','translation');
-		echo $translation->showTranslations();
-	?>
-	</div>
 	<div style="text-align: justify; width: 60%; padding: 0 10px 0 0;">
 		SliTaz GNU/Linux official and community documentation wiki.
 	</div>
@@ -71,6 +64,14 @@ if (!defined('DOKU_INC')) die();
 		<?php tpl_button('profile')?>
 		<?php tpl_button('login')?>
 	</div>
+</div>
+
+<!-- Languages -->
+<div id="lang">
+<?php
+	$translation = &plugin_load('helper','translation');
+	echo $translation->showTranslations();
+?>
 </div>
 
 <!-- Content -->
