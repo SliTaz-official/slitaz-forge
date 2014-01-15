@@ -1,6 +1,5 @@
-		</div>
-		
 		<?php do_action('bb_foot'); ?>
+		</div>
 		
 	</div>
 
