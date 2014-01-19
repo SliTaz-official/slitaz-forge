@@ -53,7 +53,7 @@ case "$1" in
 		newline
 		boldify "Updating: www.slitaz.org..."
 		cd ${WEBSITE} && hg pull -u 
-		newline;;
+		newline ;;
 	up-forum)
 		# Update forum.slitaz.org theme
 		newline
@@ -78,10 +78,17 @@ case "$1" in
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		newline ;;
+	up-pangolin)
+		# Update pangolin.slitaz.org
+		newline
+		boldify "Updating: pangolin.slitaz.org..."
+		cd ${REPOS}/slitaz-forge && hg pull -u
+		cp -a pangolin/web/* $WWW/pangolin.slitaz.org/public_html
+		newline ;;
 	adduser)
 		[ ! "$2" ] && echo "Missing user name arg" && exit 0
 		[ ! "$3" ] && echo "Missing password arg" && exit 0
-		htpasswd -b $HGUSERS $2 $3 ;;
+		htpasswd -b ${HGUSERS} $2 $3 ;;
 	stats)
 		# Echo some stats.
 		newline

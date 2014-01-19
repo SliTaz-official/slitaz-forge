@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>SliTaz Pizza</title>
+<style type="text/css">
+<!--
+
+/* CSS style for SliTaz Pizza */
+
+html { height: 102%; }
+body { font: 13px sans-serif, vernada, arial; margin: 0; }
+h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
+h1 a { color: #fff; text-decoration: none; }
+h2 { color: #444; } h3 { color: #666; font-size: 130%; }
+a { text-decoration: underline; color: #215090; }
+a:hover { text-decoration: none; }
+img { vertical-align: middle; }
+h2 img { padding: 0px 6px 6px 0px; }
+pre img { margin: 2px 0px; }
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: 10px;
+	overflow: auto;
+	font-size: 98%;
+}
+table { 
+	background-color: #f8f8f8;
+	border: 1px solid #ddd; 
+	width: 100%; 
+	margin: 0px 0px 20px 0px;
+	padding: 10px;
+}
+/* HTML 5 dont allow size="40" but it's buggy on FF
+ * input[type="file"] { width: 240px; margin: 0 5px; } */
+
+/* Header */
+
+#header {
+	background: #351a0a;
+	height: 40px;
+	border-bottom: 8px solid #ffad02;
+	/*border-bottom: 8px solid #d66018;*/
+}
+
+#header h1 {
+	margin: 0;
+	padding: 8px 0 0 42px;
+	width: 250px;
+}
+
+#header h1 a { 
+	color: white; 
+	text-decoration: none;
+	font-size: 20px;
+	font-style: italic;
+}
+
+#header h1 a:hover { 
+	color: #d66018;
+}
+
+/* Logo */
+
+#logo {
+	background: url(/images/logo.png) no-repeat left;
+	position: absolute;
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+}
+
+/* Header links */
+
+#network { 
+	float: right; 
+	padding: 12px 5px 0; 
+	font-size: 12px;
+}
+
+#network a {
+	padding: 0 4px;
+	color: #fff; 
+	font-weight: bold;
+	text-decoration: none;
+}
+#network a:hover { color: #cfcfcf; }
+
+/* Notification box */
+
+#notify {
+	/*font-weight: bold;*/
+	background-color: #351a0a;
+	border: 1px solid #ffad02;
+	color: #fff;
+	cursor: help;
+	position: absolute;
+	top: 58px;
+	right: 10px;
+	width: auto;
+	padding: 6px 12px;
+}
+#notify img { margin-right: 10px; }
+
+/* Content */
+
+#content {
+	margin: 40px auto;
+	text-align: justify;
+	width: 740px;
+}
+
+.note { 
+	margin: 20px;
+	padding: 20px; 
+	background-color: #eaeaea;
+	border: 2px solid #ccc;
+}
+
+.box { margin: 20px 0; }
+.next { float: right; }
+
+.span-ok { color: green; }
+.span-red { color: red; }
+.log-date { color: #666; font-size: 95%; }
+
+#packages {
+	width: 100%;
+	height: 260px;
+	overflow: auto;
+	border: 1px solid #ddd;
+	background-color: #f8f8f8;
+}
+
+#packages table {
+	border: 0px solid #fff;
+}
+
+#pkgs-search {
+	width: 100%;
+	max-height: 180px;
+	overflow: auto;
+}
+
+/* Form */
+
+form { display: inline; }
+input[type="submit"], input[type="text"], textarea, select {
+	color: #444444;
+	border: 1px solid #cccccc;
+	padding: 4px;
+	margin: 4px 0px;
+	font-size: 14px;
+	line-height: 1.2em;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	-webkit-appearance: none;
+	-webkit-padding-end: 12px;
+	-webkit-padding-start: 6px;
+}
+
+input[type="text"] { background: #fefefe; border: 2px solid #ccc; 
+	width: 460px; }
+/*input[type="file"] { border: 2px solid #ddd; }*/
+/*input[type="checkbox"] { background: #fefefe; }*/
+
+/* Be compatible with old FF and Webkit version. */
+input[type="submit"] {
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover { 
+	cursor: pointer;
+	color: black;
+}
+
+select { 
+	background-image: url(images/down.png), 
+		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+input[type="file"] { 
+	width: 576px; 
+	z-index: -1; 
+	vertical-align: middle;
+	cursor: pointer;
+	margin: 0;
+}
+
+.inputhide { overflow: hidden; width: 420px; }
+
+.inputfile { 
+	width: 462px;
+	background: #f8f8f8 url(images/open.png) no-repeat center right; 
+	z-index: 2;
+	border: 1px solid #ccc;
+	padding: 3px 0px 0px 2px;
+	height: 25px;
+	float: left;
+	margin-top: 4px;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+   float: right;
+}
+
+/* Round corner */
+
+img, pre, table, input, textarea, select, .note, .box, #notify,
+#packages, #pkgs-search, .inputfile {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* Footer */
+
+#footer {
+	text-align: center;
+	margin-top: 80px;
+	padding: 20px;
+	/*border-top: 1px solid #ddd;*/
+	font-size: 90%;
+}
+
+#footer a { padding: 0 2px; }
+-->
+</style>
+</head>
+<body>
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://www.slitaz.org/">Home</a>
+		<a href="http://scn.slitaz.org/">Community</a>
+		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://pizza.slitaz.me">Pizza</a>
+	</div>
+	<h1><a href="/">SliTaz Pangolin</a></h1>
+</div>
+
+<div id="content">
+
