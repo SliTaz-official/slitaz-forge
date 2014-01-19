@@ -82,7 +82,7 @@ case "$1" in
 		# Update pangolin.slitaz.org
 		newline
 		boldify "Updating: pangolin.slitaz.org..."
-		cd ${REPOS}/slitaz-forge && hg pull -u
+		cd ${REPOS}/slitaz-forge && hg up
 		cp -a pangolin/web/* $WWW/pangolin.slitaz.org/public_html
 		newline ;;
 	adduser)
