@@ -5,12 +5,14 @@ README SliTaz forge
 These repos provide all files, themes and custom packages used by the SliTaz 
 network.
 
+
  * doc    : Use Dokuwiki
  * forum  : Use BBpress
- * labs   : Use Redmine
  * scn    : Use Wordpress
  * people : Own php/html code
  * boot   : Own php/html code
+ * bugs   : Own CGI/SHell code aka TazBug
+
 
 To update or fix a theme, please test it well before committing and then 
 notify <pankso at slitaz.org> who will update the modified theme.
