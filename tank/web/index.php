@@ -18,12 +18,21 @@
 <div id="block">
 	<!-- Navigation -->
 	<div id="block_nav">
-		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
-		<ul>
-			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
-			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
-			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
-		</ul>
+		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
+		<div class="right_box">
+			<ul>
+				<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
+				<li><a href="http://mirror.slitaz.org/">Main Mirror</a></li>
+			</ul>
+		</div>
+		<div class="left_box">
+			<ul>
+				<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
+				<li><a href="http://people.slitaz.org/">SliTaz People</a></li>
+				<li><a href="http://cook.slitaz.org/">Cooker</a></li>
+				<li><a href="http://pizza.slitaz.me/">Pizza Builder</a></li>
+			</ul>
+		</div>
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
@@ -31,8 +40,7 @@
 		<p>
 			This is the SliTaz GNU/Linux main server and build host. 
 			The server runs naturally SliTaz and provides some services
-			to all contributors such as: secure access, disk space, a 
-			public directory or cron jobs.
+			to all contributors.
 		</p>
 		<p>
 			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
@@ -52,7 +60,7 @@
 <div id="content">
 
 <h2><a href="graphs.php"><img 
-	style="vertical-align: middle; padding: 0 4px 0 0;"
+	style="vertical-align: middle; padding: 0 4px 4px 0;"
 	title="Tank RRDtool graphs" alt="graphs"
     src="images/monitor.png" /></a>System stats</h2>
 
@@ -79,13 +87,13 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 </pre>
 
 <h2><a href="/stats/awstats.pl?config=www.slitaz.org"><img
-	style="padding: 0 4px 0 0;" title="Tank Virtual hosts" alt="vhosts"
+	style="padding: 0 4px 4px 0;" title="Tank Virtual hosts" alt="vhosts"
     src="images/network.png" /></a>Virtual hosts</h2>
 
 <ul>
 	<!-- <li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.
 		(<a href="/stats/awstats.pl?config=pkgs.slitaz.org">stats</a>)</li> -->
-	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.
+	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - SliTaz Web boot.
 		(<a href="/stats/awstats.pl?config=boot.slitaz.org">stats</a>)</li>
 	<!-- <li><a href="http://hg.slitaz.org/?sort=lastchange">hg.slitaz.org</a> - Mercurial repositories.
 		(<a href="/stats/awstats.pl?config=hg.slitaz.org">stats</a>)</li> -->
@@ -96,15 +104,24 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 		<li><a href="http://roadmap.slitaz.org/">roadmap.slitaz.org</a> - 
 		SliTaz Roadmap.
 	(<a href="/stats/awstats.pl?config=roadmap.slitaz.org">stats</a>)</li>
-	<li><a href="http://slitaz.pro/">slitaz.pro</a> - SliTaz Professional services.
-	(<a href="/stats/awstats.pl?config=slitaz.pro">stats</a>)</li>
+	<li><a href="http://bugs.slitaz.org/">bugs.slitaz.org</a> - 
+		SliTaz Bug Tracker.</li>
+	<li><a href="http://irc.slitaz.org/">irc.slitaz.org</a> - 
+		SliTaz IRC logs and webchat.</li>
+	<li><a href="http://try.slitaz.org/">try.slitaz.org</a> - 
+		To try some CGI scripts and other web services.</li>
 </ul>
 
+<ul>
+	<li><a href="http://slitaz.pro">slitaz.pro</a> - SliTaz Professional services.
+	(<a href="/stats/awstats.pl?config=slitaz.pro">stats</a>)</li>
+	<li><a href="http://slitaz.me">slitaz.me</a> - 
+		Domain used for users services such as Pizza.</li>
 <h2>Tank Log</h2>
 
 <pre>
 <?php
-system("tac /var/log/tank.log | head -40");
+system("tac /var/log/tank.log | head -50");
 ?>
 </pre>
 
