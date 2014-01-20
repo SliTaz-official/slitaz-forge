@@ -1,0 +1,92 @@
+/* CSS style for SliTaz IRC */
+
+html { min-height: 102%; }
+body { font: 13px sans-serif, vernada, arial; margin: 0; }
+h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
+h1 a { color: #fff; text-decoration: none; }
+h2 { color: #444; } h3 { color: #666; font-size: 140%; }
+a { text-decoration: underline; color: #215090; }
+a:hover { text-decoration: none; }
+img { border: 0pt none; vertical-align: middle; }
+
+/* Header */
+
+#header {
+	background: #222;
+	height: 40px;
+	border-bottom: 4px solid #d66018;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 8px 0 0 42px;
+	width: 250px;
+}
+
+#header h1 a { 
+	color: white; 
+	text-decoration: none;
+	font-size: 20px;
+	font-style: italic;
+}
+
+#header h1 a:hover { 
+	color: #afafaf;
+}
+
+/* Header links */
+
+#network { 
+	float: right; 
+	padding: 14px 5px 0; 
+	font-size: 12px;
+}
+
+#network a, #network span {
+	padding: 0 4px;
+	color: #fff; 
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#network a:hover, #network span { color: #afafaf; }
+
+/* Logo */
+
+#logo {
+	background: url(images/logo.png) no-repeat left;
+	position: absolute;
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+}
+
+/* Content */
+
+#content {
+	margin: 40px auto;
+	padding: 0 20px;
+	text-align: justify;
+	max-width: 720px;
+}
+
+/* Round corner */
+
+pre, img, .box, input[type="text"] {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* Footer */
+
+#footer {
+	text-align: center;
+	padding: 20px;
+	border-top: 1px solid #ddd;
+	font-size: 90%;
+}
+
+#footer a { padding: 0 2px; }
