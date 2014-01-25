@@ -1,0 +1,58 @@
+README for Mixer - SliTaz mixed services server
+===============================================================================
+
+
+Mixer is used to host some SliTaz subproject and end users services.
+
+IP: 91.121.94.143
+
+
+Mixer install
+-------------
+We use a subroot install and all Slitaz files are in: /slitaz. A SliTaz 
+cooking base is used. The initrd.gz is compressed with gzip and have 
+Pascal custom /init script to allow subroot boot.
+
+On Tank:
+--------
+# conspy -f 4
+# cookiso gen --flavors=base --version=cooking
+BUG: slitaz-base.iso is not found and copied into /home/slitaz/iso
+FIX: mv /home/slitaz/cooking/slitaz-base.iso \
+	/home/slitaz/iso/slitaz-cooking-base.iso
+
+ESC ESC ESC
+# scp /home/slitaz/cooking/iso/slitaz-cooking-base.iso \
+	root@mixer.slitaz.org:/root
+
+On Mixer:
+---------
+# mount -o loop slitaz-base.iso /mnt
+# mkdir -p /slitaz/boot
+# cp /mnt/boot/vmlinuz-* /slitaz/boot
+# cp /mnt/boot/rootfs.gz /slitaz
+# cd slitaz
+# unlzma < rootfs.gz | cpio -idm
+or:
+# cat rootfs.gz | unlzma | cpio -idmu
+
+The initrd.gz: with /init to handle subroot= option
+
+# mkdir /root/initrd
+# mv init /root/initrd
+# cd /root/initrd
+# find . -print | cpio -o -H newc | gzip -9 > ../initrd.gz
+# cd .. && cp initrd.gz /slitaz
+
+Replace Debian GRUB Entry: nano /boot/grub/grub.cfg
+
+menuentry "SliTaz GNU/Linux Cooking (Kernel 3.2.53-slitaz)" {
+	insmod part_msdos
+	insmod btrfs
+	set root='(/dev/sda1)'
+	search --no-floppy --fs-uuid --set=root 21c87a8a-a004-4270-adb2-be1295547e0b
+	linux /slitaz/boot/vmlinuz-3.2.53-slitaz root=/dev/null mount=/dev/sda1 subroot=slitaz panic=60 sound=noconf quiet
+	initrd /slitaz/initrd.gz
+}
+
+===============================================================================
