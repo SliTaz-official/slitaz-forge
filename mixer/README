@@ -2,7 +2,7 @@ README for Mixer - SliTaz mixed services server
 ===============================================================================
 
 
-Mixer is used to host some SliTaz subproject and end users services.
+Mixer is used to host some SliTaz subprojects and end user services.
 
 IP: 91.121.94.143
 
@@ -10,7 +10,7 @@ IP: 91.121.94.143
 Mixer install
 -------------
 We use a subroot install and all Slitaz files are in: /slitaz. A SliTaz 
-cooking base is used. The initrd.gz is compressed with gzip and have 
+cooking base is used. The initrd.gz is compressed with gzip and has a
 Pascal custom /init script to allow subroot boot.
 
 On Tank:
