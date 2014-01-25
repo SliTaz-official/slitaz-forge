@@ -44,7 +44,9 @@ The initrd.gz: with /init to handle subroot= option
 # find . -print | cpio -o -H newc | gzip -9 > ../initrd.gz
 # cd .. && cp initrd.gz /slitaz
 
-Replace Debian GRUB Entry: nano /boot/grub/grub.cfg
+Add SliTaz GRUB Entry and change: set default="1"
+
+$ cat >> /boot/grub/grub.cfg << EOT
 
 menuentry "SliTaz GNU/Linux Cooking (Kernel 3.2.53-slitaz)" {
 	insmod part_msdos
@@ -54,5 +56,7 @@ menuentry "SliTaz GNU/Linux Cooking (Kernel 3.2.53-slitaz)" {
 	linux /slitaz/boot/vmlinuz-3.2.53-slitaz root=/dev/null mount=/dev/sda1 subroot=slitaz panic=60 sound=noconf quiet
 	initrd /slitaz/initrd.gz
 }
+
+EOT
 
 ===============================================================================
