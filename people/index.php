@@ -28,7 +28,7 @@
 			font-size: 11px; 
 			font-weight: normal;
 			display: block;
-			padding: 2px 0;
+			padding: 4px 0;
 		}
 		ul { list-style-type: square; }
 		ul span a { color: #666; }
@@ -45,8 +45,9 @@
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
+		<a href="http://irc.slitaz.org/">IRC</a>
 		<a href="http://slitaz.pro/">Pro</a>
-		<a href="http://slitaz.spreadshirt.net/">Shop</a>
+		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
@@ -60,10 +61,8 @@
 	<div id="block_nav">
 		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
 		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Website devel</a></li>
-			<li><a href="http://scn.slitaz.org/">Community</a></li>
-			<li><a href="http://hg.slitaz.org/?sort=lastchange">Mercurial Repos</a></li>
-			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
+			<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
+			<li><a href="http://pizza.slitaz.me">Pizza</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 			<li><a href="http://roadmap.slitaz.org/">Roadmap</a></li>
 		</ul>
@@ -74,8 +73,7 @@
 		<p>
 			Each contributor who has access to the project main server,
 			code name <a href="http://tank.slitaz.org/">Tank</a> can 
-			have a public directory. This Public directory can be reached
-			with URLs in the form of: http://people.slitaz.org/~name/.
+			have a public directory.
 		</p>
 		<p>
 			You can help us maintain and improve this service with a small
