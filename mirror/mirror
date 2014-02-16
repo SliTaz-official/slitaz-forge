@@ -13,6 +13,7 @@ MIRROR="$WWW/mirror"
 INFO="$WWW/mirror-info"
 TINY="$WWW/pizza/tiny"
 BACKUPS="/home/backups"
+WEBSITE="/home/slitaz/website"
 
 usage() {
 	cat << EOT
@@ -22,7 +23,8 @@ Commands:
   up-info       Update mirror.slitaz.org/info/ web interface
   up-tiny       Update tiny.slitaz.org/ web interface
   up-mirror     Update mirror.slitaz.org files
-  up-pkgs       Update pkgs.slitaz.org
+  up-www        Update main website www.slitaz.org
+  up-pkgs       Update pkgs.slitaz.org web interface
 
 EOT
 }
@@ -43,6 +45,9 @@ case "$1" in
 		cd $REPOS/slitaz-forge && hg pull -u
 		echo "Copying root to: $MIRROR"
 		cp -a mirror/root/* $MIRROR ;;
+	up-www)
+		echo "Updating: www.slitaz.org"
+		cd $WEBSITE && hg pull -u ;;
 	up-pkgs)
 		echo "Updating: pkgs.slitaz.org..."
 		cd $REPOS/slitaz-forge && hg pull -u
