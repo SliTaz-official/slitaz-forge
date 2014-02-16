@@ -184,12 +184,16 @@ esac
 
 # unescape query
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
-
-WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok
-PACKAGES_REPOSITORY=$SLITAZ_HOME/$SLITAZ_VERSION/packages
-filelist=$PACKAGES_REPOSITORY/files.list.lzma
-pkglist=$PACKAGES_REPOSITORY/packages.txt
-equiv=$PACKAGES_REPOSITORY/packages.equiv
+SLITAZ_HOME=""
+if [ "$SLITAZ_VERSION" == "cooking" ]; then
+	WOK=$SLITAZ_HOME/wok
+else
+	WOK=$SLITAZ_HOME/wok-${VERSION}
+fi
+pkgsrepo=$SLITAZ_HOME/$SLITAZ_VERSION/packages
+filelist=$pkgsrepo/files.list.lzma
+pkglist=$pkgsrepo/packages.txt
+equiv=$pkgsrepo/packages.equiv
 
 # Search form
 # TODO: add hint 'You are can search for depends loop, if textfield is empty'...
@@ -263,7 +267,7 @@ cat_files_list()
 # TODO: caching the summary for 5 minutes
 xhtml_footer() {
 	PKGS=$(ls $WOK/ | wc -l)
-	FILES=$(unlzma -c $filelist | wc -l)
+	#FILES=$(unlzma -c $filelist | wc -l)
 	. lib/footer.sh
 }
 
@@ -809,7 +813,7 @@ _EOT_
 <table>
 _EOT_
 		unset last
-		grep -i "$SEARCH" $PACKAGES_REPOSITORY/packages.desc | \
+		grep -i "$SEARCH" $pkgsrepo/packages.desc | \
 		sort | while read pkg extras ; do
 			. $WOK/$pkg/receipt
 			package_entry
@@ -938,7 +942,7 @@ _EOT_
 		for pkg in `ls $WOK/ | grep "$SEARCH"`
 		do
 			. $WOK/$pkg/receipt
-			DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION$(ifdebug '&')&submit=go\">$(gettext description)</a>"
+			DESC=" <p><a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION$(ifdebug '&')&submit=go\">$(gettext description)</a><p>"
 			[ -f $WOK/$pkg/description.txt ] || unset DESC
 			cat << _EOT_
 $(package_entry)$DESC
