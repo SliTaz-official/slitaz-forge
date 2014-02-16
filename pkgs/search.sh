@@ -185,7 +185,7 @@ esac
 # unescape query
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
 
-WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok-hg
+WOK=$SLITAZ_HOME/$SLITAZ_VERSION/wok
 PACKAGES_REPOSITORY=$SLITAZ_HOME/$SLITAZ_VERSION/packages
 filelist=$PACKAGES_REPOSITORY/files.list.lzma
 pkglist=$PACKAGES_REPOSITORY/packages.txt
