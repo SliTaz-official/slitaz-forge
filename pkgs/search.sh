@@ -1,4 +1,5 @@
 #!/bin/sh
+#
 # Tiny CGI search engine for SliTaz packages on http://pkgs.slitaz.org/
 # Christophe Lincoln <pankso@slitaz.org>
 # Aleksej Bobylev <al.bobylev@gmail.com>
@@ -602,7 +603,6 @@ cat << EOT
 <div id="ticker"><img src="style/images/loader.gif" alt="." /></div>
 EOT
 search_form
-
 
 
 case "$OBJECT" in

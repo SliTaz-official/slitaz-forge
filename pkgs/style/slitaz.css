@@ -31,7 +31,7 @@ pre {
 
 #header { 
 	height: 40px; 
-	background: #351a0a;
+	background: #222;
 }
 
 #header h1 {
@@ -47,8 +47,8 @@ pre {
 	font-style: italic;
 }
 
-#header h1 a:hover { 
-	color: #d66018;
+#header h1 a:hover, #network a:hover, #network span { 
+	color: #afafaf;
 }
 
 /* Logo */
@@ -67,22 +67,22 @@ pre {
 
 #network { 
 	float: right; 
-	padding: 10px 5px 0; 
+	padding: 14px 5px 0; 
 	font-size: 12px;
 }
 
-#network a { padding: 0 4px; }
-#network a:hover { color: #cfcfcf; }
+#network a, #network span { padding: 0 4px; }
+#network span { font-weight: bold; }
 
 /* Block */
 
 #block { 
-	min-height: 200px; 
-	background: #d66018; 
-	padding: 26px 10% 0px;
+	min-height: 180px; 
+	background: #ccc; 
+	padding: 20px 10% 0px;
 	text-align: center;
 	color: #222;
-	border-bottom: 1px solid #f5f5f5;
+	border-bottom: 1px solid #afafaf;
 }
 
 #block_info {
@@ -92,28 +92,29 @@ pre {
 }
 
 #block a, #network a { 
-	color: #fff; 
+	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
 }
 
 #block h4 {
-	color: #351a0a;
+	color: #222;
 	margin: 0px;
 	font-weight: bold;
 	font-size: 110%;
 }
 
 #block_info p { margin: 6px 0; padding: 0 12px 0 0; }
-#block_info a { font-weight: normal; }
+#block_info a { font-weight: normal; color: #215090; }
+#block_info a:hover { text-decoration: underline; }
 #block ul { list-style-type: square; }
-#block a:hover { color: #351a0a; }
+#block_nav a:hover { color: #afafaf; }
 
 /* Navigation */
 
 #block_nav {
-	background: #cc5b17;
-	padding: 10px 10px 40px;
+	background: #666;
+	padding: 10px 10px 20px;
 	text-align: justify;
 	width: 48%;
 	float: right;
@@ -168,7 +169,7 @@ pre {
 .news a, .feed-grid a { text-decoration: none; }
 .news p a { text-decoration: underline; }
 .news p a:hover { text-decoration: none; }
-#twitter { margin: 20px 0; }
+#twitter { margin: 20px 0; text-align: center; }
 #gallery { text-align: center; }
 
 #sponsor {
@@ -205,7 +206,7 @@ pre {
 	background: url("/images/download.png") no-repeat 12px 12px #efefef;
 }
 .box-up {
-	background: url("/images/update.png") no-repeat 12px 12px #efefef;
+	background: url("/images/update.png") no-repeat  center left #efefef;
 }
 .box-dl p { color: #456; }
 
@@ -242,17 +243,17 @@ pre {
 
 /* Button */
 
-.button a { 
-	background-color: #b64b22;
+#block_info .button a { 
+	background-color: #666;
 	color: #ffffff;
-	margin-right: 6px;
+	margin: 0px 4px;
 	padding: 6px 10px;
 	font-size: 12px;
 	text-decoration: none;
 	font-weight: bold;
 }
-.button a:hover, input[type=submit]:hover { 
-	background-color: #a3431f;
+#block_info .button a:hover, input[type=submit]:hover { 
+	background-color: #444;
 	color: #ffffff;
 }
 
@@ -268,8 +269,8 @@ pre {
 /* Form */
 
 input[type=submit] {
-	border: 1px solid #b64b22;
-	background-color: #b64b22;
+	border: 1px solid #666;
+	background-color: #666;
 	color: white;
 	font-weight: bold;
 	cursor: pointer;
@@ -284,7 +285,7 @@ input[type=submit] {
 	border-bottom-right-radius: 4px;
 }
 
-input[type=submit]:hover { background-color: #a3431f; }
+input[type=submit]:hover { background-color: #444; }
 
 input[type=text] {
 	border: 1px solid #333333;
