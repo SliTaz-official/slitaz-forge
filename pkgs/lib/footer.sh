@@ -1,8 +1,7 @@
 cat << _EOT_
 
 <div class="summary">
-$(eval_ngettext "\$PKGS package" "\$PKGS packages" $PKGS)
-$(eval_ngettext "in \$SLITAZ_VERSION database")
+$(eval_gettext "\$PKGS packages in \$SLITAZ_VERSION database")
 </div>
 
 <!-- End of content -->
