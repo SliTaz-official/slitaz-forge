@@ -182,9 +182,11 @@ case "$SLITAZ_VERSION" in
 	undigest)	selected_undigest="selected";;
 esac
 
-# unescape query
+#
+# Unescape query and set vars
+#
 SEARCH="$(echo $SEARCH | sed 's/%2B/+/g; s/%3A/:/g; s|%2F|/|g')"
-SLITAZ_HOME=""
+SLITAZ_HOME="/home/slitaz"
 if [ "$SLITAZ_VERSION" == "cooking" ]; then
 	WOK=$SLITAZ_HOME/wok
 else
