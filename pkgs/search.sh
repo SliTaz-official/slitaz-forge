@@ -506,6 +506,7 @@ done
 # Syntax highlighting for receipt file - stolen from tazpanel:
 # '/var/www/tazpanel/lib/libtazpanel' and developed
 syntax_highlighter() {
+	. $1
 	sed -e "s|\&|\&amp;|g; s|<|\&lt;|g; s|>|\&gt;|g; s|	|    |g" \
 			-e "s|@|\&#64;|g; s|~|\&#126;|g" \
 	-e "#literals" \
@@ -553,7 +554,44 @@ syntax_highlighter() {
 			-e "s|@s|<span class='r-scom'>|g" \
 			-e "s|@p|<span class='r-path'>|g" \
 			-e "s|@r|<span class='r-param'>|g" \
-			-e "s|~|</span>|g" < "$1"
+			-e "s|~|</span>|g" < "$1" | add_url_links
+}
+
+# Create some clickable links
+add_url_links() {
+	local tarball_url
+	sedit=""
+	#[ -n "$WEB_SITE" ] && sedit="$sedit -e 's|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|'"
+	[ -n "$MAINTAINER" ] && sedit="$sedit -e 's|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	[ -n "$LICENSE" ] && sedit="$sedit -e 's|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	[ -n "$WANTED" ] && sedit="$sedit -e 's|\\($WANTED\\)|<a class='r-url' target='_blank' href=\"?receipt=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|\\($SHORT_DESC\\)|<a class='r-url' target='_blank' href=\"?desc=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	tarball_url=sources/packages-$SLITAZ_VERSION/${TARBALL:0:1}/$TARBALL
+	[ -f /var/www/slitaz/mirror/$tarball_url ] || case "$tarball_url" in
+		*.gz)	tarball_url=${tarball_url%gz}lzma ;;
+		*.tgz)	tarball_url=${tarball_url%tgz}tar.lzma ;;
+		*.bz2)	tarball_url=${tarball_url%bz2}lzma ;;
+	esac
+	[ -f /var/www/slitaz/mirror/$tarball_url ] && sedit="$sedit -e 's|\\(>TARBALL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://mirror.slitaz.org/$tarball_url\">\\2</a>|'"
+	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED$PROVIDE" ]; then
+		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED $PROVIDE) ; do
+			sedit="$sedit -e 's|\\([\" >]\\)$i\\([\" <\\]\\)|\\1<a class='r-url' target='_blank' href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
+		done
+	fi
+	if [ -n "$HOST_ARCH" ]; then
+		for i in $HOST_ARCH ; do
+			sedit="$sedit -e '/HOST_ARCH/{s|\\([\" ]\\)$i\\([\" ]\\)|\\1<a class='r-url' target='_blank' href=\\\"?arch=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|}'"
+		done
+	fi
+	if [ -n "$TAGS" ]; then
+		for i in $TAGS ; do
+			sedit="$sedit -e '/TAGS/{s|\\([\" ]\\)$i\\([\" ]\\)|\\1<a class='r-url' target='_blank' href=\\\"?tags=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|}'"
+		done
+	fi
+	eval sed $sedit \
+		-e "'s|genpkg_rules|<a class='r-url' target='_blank' href=\"?filelist=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">&</a>|'"
 }
 
 display_cloud() {
@@ -566,13 +604,20 @@ display_cloud() {
 END {
 	min=10000
 	max=0
+	cnt=0
 	for (i in count) {
 		if (count[i] < min) min = count[i]
 		if (count[i] > max) max = count[i]
+		cnt++
 	}
 	for (i in count) 
 		print count[i] " " min " " max " " i
+	print cnt
 }' | while read cnt min max tag ; do
+			if [ -z "$min" ]; then
+				echo "<p align=right>$cnt ${arg/ry/rie}s.</p>"
+				continue
+			fi
 			pct=$(((($cnt-$min)*100)/($max-$min)))
 			pct=$(((10000 - ((100 - $pct)**2))/100))
 			pct=$(((10000 - ((100 - $pct)**2))/100))
