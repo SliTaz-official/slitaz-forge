@@ -78,6 +78,9 @@ nice_url() {
 			File)			NICE="file=$SEARCH";;
 			File_list)		NICE="filelist=$SEARCH";;
 			FileOverlap)	NICE="fileoverlap=$SEARCH";;
+			Category)	NICE="category=$SEARCH";;
+			Maintainer)	NICE="maintainer=$SEARCH";;
+			License)	NICE="license=$SEARCH";;
 		esac
 		# version, if needed
 		version="$(GETPOST version)"
@@ -145,6 +148,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		fileoverlap=*)			SEARCH=${i#*=}; OBJECT=FileOverlap;;
 		category=*)				SEARCH=${i#*=}; OBJECT=Category;;
 		maintainer=*)			SEARCH=${i#*=}; OBJECT=Maintainer;;
+		license=*)			SEARCH=${i#*=}; OBJECT=License;;
 		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
 		version=s*|version=4*)	SLITAZ_VERSION=stable;;
 		version=u*)				SLITAZ_VERSION=undigest;;
@@ -173,6 +177,9 @@ case "$OBJECT" in
 	Depends)		selected_depends="selected";;
 	BuildDepends)	selected_build_depends="selected";;
 	FileOverlap)	selected_overlap="selected";;
+	Category)	selected_category="selected";;
+	Maintainer)	selected_maintainer="selected";;
+	License)	selected_license="selected";;
 esac
 
 case "$SLITAZ_VERSION" in
@@ -223,6 +230,9 @@ search_form()
 			<option $selected_file value="File">$(gettext "File")</option>
 			<option $selected_file_list value="File_list">$(gettext "File list")</option>
 			<option $selected_overlap value="FileOverlap">$(gettext "common files")</option>
+			<option $selected_category value="Category">$(gettext "Category")</option>
+			<option $selected_maintainer value="Maintainer">$(gettext "Maintainer")</option>
+			<option $selected_license value="License">$(gettext "License")</option>
 		</select>
 	</span>
 	<span class="stretch">
@@ -321,7 +331,7 @@ _EOT_
 	<td class="first">$PACKAGE_HREF</td>
 	<td class="first">$(installed_size $PACKAGE)</td>
 	<td>$SHORT_DESC</td>
-	<td><a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER</td>
+	<td><a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a>&nbsp;$COOKER</td>
 _EOT_
 	fi
 	cat << EOT
@@ -345,7 +355,7 @@ _EOT_
 		esac
 		cat << _EOT_
 $PACKAGE_HREF $(installed_size $PACKAGE) : $SHORT_DESC \
-<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER
+<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a>&nbsp;$COOKER
 _EOT_
 	fi
 }
@@ -546,6 +556,34 @@ syntax_highlighter() {
 			-e "s|~|</span>|g" < "$1"
 }
 
+display_cloud() {
+	arg=$1
+	awk '
+{
+	for (i = 1; $i != ""; i++)
+		count[$i]++
+}
+END {
+	min=10000
+	max=0
+	for (i in count) {
+		if (count[i] < min) min = count[i]
+		if (count[i] > max) max = count[i]
+	}
+	for (i in count) 
+		print count[i] " " min " " max " " i
+}' | while read cnt min max tag ; do
+			pct=$(((($cnt-$min)*100)/($max-$min)))
+			pct=$(((10000 - ((100 - $pct)**2))/100))
+			pct=$(((10000 - ((100 - $pct)**2))/100))
+			cat <<EOT
+<span style="color:#99f; font-size:9pt; padding-left:5px; padding-right:2px;">\
+$cnt</span><a href="?$arg=$tag&amp;version=$SLITAZ_VERSION" style="\
+font-size:$((8+($pct/10)))pt; font-weight:bold;
+color:black; text-decoration:none">$tag</a>
+EOT
+		done
+}
 
 #
 # page begins
@@ -876,6 +914,87 @@ _EOT_
 _EOT_
 	;;
 
+### Maintainer
+Maintainer)
+	if [ -n "$SEARCH" ]; then
+		cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<table>
+_EOT_
+		unset last
+		grep ^MAINTAINER= $WOK/*/receipt | grep -i "$SEARCH" | \
+		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+			. $WOK/$pkg/receipt
+			package_entry
+		done
+		cat << _EOT_
+</table>
+_EOT_
+	else
+		# Display maintainer cloud
+		grep -l ^MAINTAINER= $WOK/*/receipt | while read file; do
+			MAINTAINER=
+			. $file
+			echo $MAINTAINER
+			done | display_cloud maintainer
+	fi
+	;;
+
+### License
+License)
+	if [ -n "$SEARCH" ]; then
+		cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<table>
+_EOT_
+		unset last
+		grep ^LICENSE= $WOK/*/receipt | grep -i "$SEARCH" | \
+		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+			. $WOK/$pkg/receipt
+			package_entry
+		done
+		cat << _EOT_
+</table>
+_EOT_
+	else
+		# Display license cloud
+		grep -l ^LICENSE= $WOK/*/receipt | while read file; do
+			LICENSE=
+			. $file
+			echo $LICENSE
+			done | display_cloud license
+	fi
+	;;
+
+### Category
+Category)
+	if [ -n "$SEARCH" ]; then
+		cat << _EOT_
+
+<h3>$(eval_gettext "Result for: \$SEARCH")</h3>
+<table>
+_EOT_
+		unset last
+		grep ^CATEGORY= $WOK/*/receipt | grep -i "$SEARCH" | \
+		sed "s|$WOK/\(.*\)/receipt:.*|\1|" | sort | while read pkg ; do
+			. $WOK/$pkg/receipt
+			package_entry
+		done
+		cat << _EOT_
+</table>
+_EOT_
+	else
+		# Display category cloud
+		grep -l ^CATEGORY= $WOK/*/receipt | while read file; do
+			CATEGORY=
+			. $file
+			echo $CATEGORY
+			done | display_cloud category
+	fi
+	;;
+
 ### Tags
 Tags)
 	if [ -n "$SEARCH" ]; then
@@ -899,28 +1018,7 @@ _EOT_
 			TAGS=
 			. $file
 			echo $TAGS
-			done | awk '
-{
-	for (i = 1; $i != ""; i++)
-		count[$i]++
-}
-END {
-	min=10000
-	max=0
-	for (i in count) {
-		if (count[i] < min) min = count[i]
-		if (count[i] > max) max = count[i]
-	}
-	for (i in count) 
-		print count[i] " " min " " max " " i
-}' | while read cnt min max tag ; do
-			cat <<EOT
-<span style="color:#99f; font-size:9pt; padding-left:5px; padding-right:2px;">\
-$cnt</span><a href="?tags=$tag&amp;version=$SLITAZ_VERSION" style="\
-font-size:$((8+(($cnt-$min)*10)/($max-$min)))pt; font-weight:bold; \
-color:black; text-decoration:none">$tag</a>
-EOT
-		done
+			done | display_cloud args
 	fi
 	;;
 
