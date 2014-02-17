@@ -148,6 +148,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 		version=[1-9]*)			i=${i%%.*}; SLITAZ_VERSION=${i#*=}.0;;
 		version=s*|version=4*)	SLITAZ_VERSION=stable;;
 		version=u*)				SLITAZ_VERSION=undigest;;
+		version=b*)				SLITAZ_VERSION=backports;;
 		version=t*)				SLITAZ_VERSION=tiny;;
 	esac
 done
@@ -181,6 +182,7 @@ case "$SLITAZ_VERSION" in
 	3.0)		selected_3="selected";;
 	stable)		selected_stable="selected";;
 	undigest)	selected_undigest="selected";;
+	backports)	selected_backports="selected";;
 esac
 
 #
@@ -235,6 +237,7 @@ search_form()
 			<option $selected_1 value="1.0">1.0</option>
 			<option $selected_tiny value="tiny">$(gettext "tiny")</option>
 			<option $selected_undigest value="undigest">$(gettext "undigest")</option>
+			<option $selected_backports value="backports">$(gettext "backports")</option>
 		</select>
 	</span>
 	<span class="small">
@@ -254,11 +257,11 @@ cat_files_list()
 {
 	local tmp=/tmp/files.list.$(basename ${1%/packages})
 	if [ ! -s $tmp -o $1/files.list.lzma -nt $tmp ]; then
-		unlzma -c $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
+		unlzma < $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
 	fi
 	case "$2" in
 	lines)	if [ ! -s $tmp.lines -o $tmp -nt $tmp.lines ]; then
-			cat $tmp | wc -l > $tmp.lines.$$ &&
+			wc -l < $tmp > $tmp.lines.$$ &&
 			mv $tmp.lines.$$ $tmp.lines
 		fi
 		cat $tmp.lines ;;	
@@ -270,7 +273,7 @@ cat_files_list()
 # TODO: caching the summary for 5 minutes
 xhtml_footer() {
 	PKGS=$(ls $WOK/ | wc -l)
-	#FILES=$(unlzma -c $filelist | wc -l)
+	#FILES=$(unlzma < $filelist | wc -l)
 	. lib/footer.sh
 }
 
@@ -317,7 +320,8 @@ _EOT_
 		cat << _EOT_
 	<td class="first">$PACKAGE_HREF</td>
 	<td class="first">$(installed_size $PACKAGE)</td>
-	<td>$SHORT_DESC <a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER</td>
+	<td>$SHORT_DESC</td>
+	<td><a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER</td>
 _EOT_
 	fi
 	cat << EOT
@@ -492,7 +496,7 @@ done
 # Syntax highlighting for receipt file - stolen from tazpanel:
 # '/var/www/tazpanel/lib/libtazpanel' and developed
 syntax_highlighter() {
-	cat "$1" | sed -e "s|\&|\&amp;|g; s|<|\&lt;|g; s|>|\&gt;|g; s|	|    |g" \
+	sed -e "s|\&|\&amp;|g; s|<|\&lt;|g; s|>|\&gt;|g; s|	|    |g" \
 			-e "s|@|\&#64;|g; s|~|\&#126;|g" \
 	-e "#literals" \
 			-e "s|'\([^']*\)'|@l\0~|g" \
@@ -539,7 +543,7 @@ syntax_highlighter() {
 			-e "s|@s|<span class='r-scom'>|g" \
 			-e "s|@p|<span class='r-path'>|g" \
 			-e "s|@r|<span class='r-param'>|g" \
-			-e "s|~|</span>|g"
+			-e "s|~|</span>|g" < "$1"
 }
 
 
@@ -721,8 +725,8 @@ FileOverlap)
 <h3>$(eval_gettext "These packages may overload files of \$SEARCH")</h3>
 <pre>
 _EOT_
-		( unlzma -c $filelist | grep ^$SEARCH: ;
-		  unlzma -c $filelist | grep -v ^$SEARCH: ) | awk '
+		( unlzma < $filelist | grep ^$SEARCH: ;
+		  unlzma < $filelist | grep -v ^$SEARCH: ) | awk '
 BEGIN { pkg=""; last="x" }
 {
 	if ($2 == "") next
@@ -750,7 +754,7 @@ File)
 <table>
 _EOT_
 		unset last
-		unlzma -c $filelist \
+		unlzma < $filelist \
 		| grep "$SEARCH" | while read pkg file; do
 			echo "$file" | grep -q "$SEARCH" || continue
 			if [ "$last" != "${pkg%:}" ]; then
@@ -787,13 +791,13 @@ File_list)
 <pre>
 _EOT_
 		unset last
-		unlzma -c $filelist \
+		unlzma < $filelist \
 		| grep ^$SEARCH: | sed 's/.*: /    /' | sort
 		cat << _EOT_
 </pre>
 <pre>
 _EOT_
-		filenb=$(unlzma -c $filelist | grep ^$SEARCH: | wc -l)
+		filenb=$(unlzma < $filelist | grep ^$SEARCH: | wc -l)
 		eval_ngettext "\$filenb file" "\$filenb files" $filenb
 		cat << _EOT_
   \
@@ -956,7 +960,7 @@ _EOT_
 $(package_entry)$DESC
 _EOT_
 		done
-		vpkgs="$(cat $equiv | cut -d= -f1 | grep $SEARCH)"
+		vpkgs="$(cut -d= -f1 < $equiv | grep $SEARCH)"
 		for vpkg in $vpkgs ; do
 			cat << _EOT_
 </table>
