@@ -356,6 +356,8 @@ if($handle = @opendir($path)) {
 		if ($item == ".folderlist") continue;
 		if ($item == ".filelist") continue;
 		if ($item == "dir-generator.php") continue;
+		if ($item == "robots.txt") continue;
+		if ($item == "humans.txt") continue;
 		if(is_dir($path.'/'.$item) and $item != '.' and $item != '..') {
 			$folderlist[] = array(
 				'name' => $item, 

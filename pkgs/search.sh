@@ -11,6 +11,7 @@ renice -n 19 $$
 . /etc/slitaz/slitaz.conf
 . /usr/lib/slitaz/httphelper.sh
 echo -n "0" > $HOME/ifEven
+[ -n "$MIRROR_URL" ] || MIRROR_URL="http://mirror.slitaz.org"
 
 # User preferred language
 # parameter $1 have priority; without parameter $1 - browser language only
@@ -305,16 +306,18 @@ EOT
 	<td>$SHORT_DESC</td>
 _EOT_
 	else
-		PACKAGE_HREF="<u>$PACKAGE</u>"
 		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
-		nslookup $(echo $MIRROR_URL | sed 's|http://||g') | grep -q 127.0.0.1 &&
-		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
-		busybox wget -s $PACKAGE_URL 2> /dev/null &&
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
+		case "$SLITAZ_VERSION" in
+		cooking) COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		undigest) COOKER="<a href=\"http://cook.slitaz.org/undigest/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		backports) COOKER="<a href=\"http://cook.slitaz.org/backports/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		*)      COOKER="";;
+		esac
 		cat << _EOT_
 	<td class="first">$PACKAGE_HREF</td>
 	<td class="first">$(installed_size $PACKAGE)</td>
-	<td>$SHORT_DESC</td>
+	<td>$SHORT_DESC <a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER</td>
 _EOT_
 	fi
 	cat << EOT
@@ -328,14 +331,17 @@ package_entry_inline() {
 <a href="$SLITAZ_VERSION/$CATEGORY.html#$PACKAGE">$PACKAGE</a> $(installed_size $PACKAGE) : $SHORT_DESC
 _EOT_
 	else
-		PACKAGE_HREF="<u>$PACKAGE</u>"
 		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
-		nslookup $(echo $MIRROR_URL | sed 's|http://||g') | grep -q 127.0.0.1 &&
-		PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
-		busybox wget -s $PACKAGE_URL 2> /dev/null &&
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
+		case "$SLITAZ_VERSION" in
+		cooking) COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		undigest) COOKER="<a href=\"http://cook.slitaz.org/undigest/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		backports) COOKER="<a href=\"http://cook.slitaz.org/backports/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		*)      COOKER="";;
+		esac
 		cat << _EOT_
-$PACKAGE_HREF $(installed_size $PACKAGE) : $SHORT_DESC
+$PACKAGE_HREF $(installed_size $PACKAGE) : $SHORT_DESC \
+<a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER
 _EOT_
 	fi
 }

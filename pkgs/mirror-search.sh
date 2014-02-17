@@ -241,11 +241,11 @@ cat_files_list()
 {
 	local tmp=/tmp/files.list.$(basename ${1%/packages})
 	if [ ! -s $tmp -o $1/files.list.lzma -nt $tmp ]; then
-		unlzma -c $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
+		unlzma < $1/files.list.lzma > $tmp.$$ && mv $tmp.$$ $tmp
 	fi
 	case "$2" in
 	lines)	if [ ! -s $tmp.lines -o $tmp -nt $tmp.lines ]; then
-			cat $tmp | wc -l > $tmp.lines.$$ &&
+			wc -l < $tmp > $tmp.lines.$$ &&
 			mv $tmp.lines.$$ $tmp.lines
 		fi
 		cat $tmp.lines ;;	
@@ -293,9 +293,12 @@ else
 	PACKAGE_URL="http://mirror.slitaz.org/packages/$SLITAZ_VERSION/$(cd /var/www/slitaz/mirror/packages/$SLITAZ_VERSION ; ls $PACKAGE-$VERSION*.tazpkg)"
 	busybox wget -s $PACKAGE_URL 2> /dev/null &&
 	PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
-	COOKER=""
-	[ "$SLITAZ_VERSION" == "cooking" ] && 
-	COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>"
+	case "$SLITAZ_VERSION" in
+	cooking) COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+	undigest) COOKER="<a href=\"http://cook.slitaz.org/undigest/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+	backports) COOKER="<a href=\"http://cook.slitaz.org/backports/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+	*)	COOKER="";;
+	esac
 	cat << _EOT_
 $PACKAGE_HREF $(installed_size $PACKAGE): $SHORT_DESC \
 <a href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION">$(gettext "Receipt")</a> $COOKER
@@ -909,7 +912,7 @@ $(package_entry)$DESC
 _EOT_
 		done
 		equiv=$PACKAGES_REPOSITORY/packages.equiv
-		vpkgs="$(cat $equiv | cut -d= -f1 | grep $SEARCH)"
+		vpkgs="$(cut -d= -f1 < $equiv | grep $SEARCH)"
 		for vpkg in $vpkgs ; do
 			cat << _EOT_
 </pre>
