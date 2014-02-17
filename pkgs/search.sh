@@ -200,7 +200,7 @@ SLITAZ_HOME="/home/slitaz"
 if [ "$SLITAZ_VERSION" == "cooking" ]; then
 	WOK=$SLITAZ_HOME/wok
 else
-	WOK=$SLITAZ_HOME/wok-${VERSION}
+	WOK=$SLITAZ_HOME/wok-${SLITAZ_VERSION}
 fi
 pkgsrepo=$SLITAZ_HOME/$SLITAZ_VERSION/packages
 filelist=$pkgsrepo/files.list.lzma
@@ -561,13 +561,12 @@ syntax_highlighter() {
 add_url_links() {
 	local tarball_url
 	sedit=""
-	#[ -n "$WEB_SITE" ] && sedit="$sedit -e 's|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|'"
-	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|'"
-	[ -n "$MAINTAINER" ] && sedit="$sedit -e 's|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
-	[ -n "$CATEGORY" ] && sedit="$sedit -e 's|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
-	[ -n "$LICENSE" ] && sedit="$sedit -e 's|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
-	[ -n "$WANTED" ] && sedit="$sedit -e 's|\\($WANTED\\)|<a class='r-url' target='_blank' href=\"?receipt=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
-	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e 's|\\($SHORT_DESC\\)|<a class='r-url' target='_blank' href=\"?desc=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>|'"
+	#[ -n "$WEB_SITE" ] && sedit="$sedit -e '/WEB_SITE/{s|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|}'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e '/WGET_URL/{s|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|}'"
+	[ -n "$MAINTAINER" ] && sedit="$sedit -e '/MAINTAINER/{s|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
+	[ -n "$CATEGORY" ] && sedit="$sedit -e '/CATEGORY/{s|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
+	[ -n "$LICENSE" ] && sedit="$sedit -e '/LICENSE/{s|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
+	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e '/SHORT_DESC/{s|\\($SHORT_DESC\\)|<a class='r-url' target='_blank' href=\"?desc=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	tarball_url=sources/packages-$SLITAZ_VERSION/${TARBALL:0:1}/$TARBALL
 	[ -f /var/www/slitaz/mirror/$tarball_url ] || case "$tarball_url" in
 		*.gz)	tarball_url=${tarball_url%gz}lzma ;;
@@ -575,9 +574,9 @@ add_url_links() {
 		*.bz2)	tarball_url=${tarball_url%bz2}lzma ;;
 	esac
 	[ -f /var/www/slitaz/mirror/$tarball_url ] && sedit="$sedit -e 's|\\(>TARBALL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://mirror.slitaz.org/$tarball_url\">\\2</a>|'"
-	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED$PROVIDE" ]; then
-		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED $PROVIDE) ; do
-			sedit="$sedit -e 's|\\([\" >]\\)$i\\([\" <\\]\\)|\\1<a class='r-url' target='_blank' href=\\\"?package=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
+	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED$PROVIDE$WANTED" ]; then
+		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED $PROVIDE $WANTED) ; do
+			sedit="$sedit -e 's|\\([\" >]\\)$i\\([\" <\\]\\)|\\1<a class='r-url' target='_blank' href=\\\"?receipt=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
 		done
 	fi
 	if [ -n "$HOST_ARCH" ]; then
