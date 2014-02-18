@@ -561,8 +561,14 @@ syntax_highlighter() {
 add_url_links() {
 	local tarball_url
 	sedit=""
+	case "$SLITAZ_VERSION" in
+	cooking) [ -n "$VERSION" ] &&
+		sedit="$sedit -e 's|\\(>VERSION<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">\\2</a>|}'" ;;
+	undigest|backports) [ -n "$VERSION" ] &&
+		sedit="$sedit -e 's|\\(>VERSION<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">\\2</a>|}'" ;;
+	esac
 	#[ -n "$WEB_SITE" ] && sedit="$sedit -e '/WEB_SITE/{s|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|}'"
-	[ -n "$WGET_URL" ] && sedit="$sedit -e '/WGET_URL/{s|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|}'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|}'"
 	[ -n "$MAINTAINER" ] && sedit="$sedit -e '/MAINTAINER/{s|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -n "$CATEGORY" ] && sedit="$sedit -e '/CATEGORY/{s|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -n "$LICENSE" ] && sedit="$sedit -e '/LICENSE/{s|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
@@ -612,9 +618,10 @@ END {
 	for (i in count) 
 		print count[i] " " min " " max " " i
 	print cnt
-}' | while read cnt min max tag ; do
+}' | sort -k 4 | {
+		while read cnt min max tag ; do
 			if [ -z "$min" ]; then
-				echo "<p align=right>$cnt ${arg/ry/rie}s.</p>"
+				count=$cnt
 				continue
 			fi
 			pct=$(((($cnt-$min)*100)/($max-$min)))
@@ -627,6 +634,8 @@ font-size:$((8+($pct/10)))pt; font-weight:bold;
 color:black; text-decoration:none">$tag</a>
 EOT
 		done
+		echo "<p align=right>$count ${arg/ry/rie}s.</p>"
+	}
 }
 
 #
