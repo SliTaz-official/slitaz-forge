@@ -323,8 +323,8 @@ _EOT_
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 		case "$SLITAZ_VERSION" in
 		cooking) COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
-		undigest) COOKER="<a href=\"http://cook.slitaz.org/undigest/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
-		backports) COOKER="<a href=\"http://cook.slitaz.org/backports/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		stable|undigest|backports)
+			COOKER="<a href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
 		*)      COOKER="";;
 		esac
 		cat << _EOT_
@@ -349,8 +349,8 @@ _EOT_
 		PACKAGE_HREF="<a href=\"$PACKAGE_URL\">$PACKAGE</a>"
 		case "$SLITAZ_VERSION" in
 		cooking) COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
-		undigest) COOKER="<a href=\"http://cook.slitaz.org/undigest/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
-		backports) COOKER="<a href=\"http://cook.slitaz.org/backports/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
+		stable|undigest|backports)
+			COOKER="<a href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">$(gettext "Cooker")</a>";;
 		*)      COOKER="";;
 		esac
 		cat << _EOT_
@@ -564,7 +564,7 @@ add_url_links() {
 	case "$SLITAZ_VERSION" in
 	cooking) [ -n "$VERSION" ] &&
 		sedit="$sedit -e 's|\\(>VERSION<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">\\2</a>|}'" ;;
-	undigest|backports) [ -n "$VERSION" ] &&
+	stable|undigest|backports) [ -n "$VERSION" ] &&
 		sedit="$sedit -e 's|\\(>VERSION<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">\\2</a>|}'" ;;
 	esac
 	#[ -n "$WEB_SITE" ] && sedit="$sedit -e '/WEB_SITE/{s|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|}'"
