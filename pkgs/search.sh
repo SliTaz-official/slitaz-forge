@@ -568,7 +568,7 @@ add_url_links() {
 		sedit="$sedit -e 's|\\(>VERSION<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">\\2</a>|}'" ;;
 	esac
 	#[ -n "$WEB_SITE" ] && sedit="$sedit -e '/WEB_SITE/{s|\\($WEB_SITE\\)|<a class='r-url' target='_blank' href=\"\\1\">\\1</a>|}'"
-	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"$WGET_URL\">\\2</a>|}'"
+	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"${WGET_URL//|/\\|}\">\\2</a>|}'"
 	[ -n "$MAINTAINER" ] && sedit="$sedit -e '/MAINTAINER/{s|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -n "$CATEGORY" ] && sedit="$sedit -e '/CATEGORY/{s|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -n "$LICENSE" ] && sedit="$sedit -e '/LICENSE/{s|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
@@ -583,6 +583,7 @@ add_url_links() {
 	if [ -n "$DEPENDS$BUILD_DEPENDS$SUGGESTED$PROVIDE$WANTED" ]; then
 		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED $PROVIDE $WANTED) ; do
 			sedit="$sedit -e 's|\\([\" >]\\)$i\\([\" <\\]\\)|\\1<a class='r-url' target='_blank' href=\\\"?receipt=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
+			sedit="$sedit -e 's|^$i\\([\" <\\]\\)|<a class='r-url' target='_blank' href=\\\"?receipt=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\1|'"
 		done
 	fi
 	if [ -n "$HOST_ARCH" ]; then
@@ -618,7 +619,7 @@ END {
 	for (i in count) 
 		print count[i] " " min " " max " " i
 	print cnt
-}' | sort -k 4 | {
+}' | sed 's/[<>]//g' | sort -k 4 | {
 		while read cnt min max tag ; do
 			if [ -z "$min" ]; then
 				count=$cnt
