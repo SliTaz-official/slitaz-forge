@@ -38,7 +38,7 @@ table {
 
 #header { 
 	height: 40px; 
-	background: #351a0a;
+	background: #222;
 	color: #ffffff;
 }
 
@@ -56,7 +56,7 @@ table {
 }
 
 #header h1 a:hover, #network a:hover { 
-	color: #d66018;
+	color: #ccc;
 }
 
 /* Logo */
@@ -85,7 +85,7 @@ table {
 
 #block { 
 	min-height: 200px; 
-	background: #d66018; 
+	background: #ccc; 
 	padding: 26px 10% 0px;
 	text-align: center;
 	color: #333;
@@ -105,7 +105,7 @@ table {
 }
 
 #block h4 {
-	color: #351a0a;
+	color: #222;
 	margin: 0px;
 	font-weight: bold;
 	font-size: 110%;
@@ -114,12 +114,12 @@ table {
 #block_info p { margin: 6px 0; padding: 0 12px 0 0; }
 #block_info a { font-weight: normal; }
 #block ul { list-style-type: square; }
-#block a:hover { color: #351a0a; }
+#block a:hover { color: #afafaf; }
 
 /* Navigation */
 
 #block_nav {
-	background: #cc5b17;
+	background: #666;
 	padding: 10px 10px 40px;
 	text-align: justify;
 	width: 48%;
@@ -240,7 +240,7 @@ table {
 /* Button */
 
 .button a { 
-	background-color: #b64b22;
+	background-color: #666;
 	color: #ffffff;
 	margin-right: 6px;
 	padding: 6px 10px;
@@ -249,7 +249,7 @@ table {
 	font-weight: bold;
 }
 .button a:hover, input[type=submit]:hover { 
-	background-color: #a3431f;
+	background-color: #444;
 	color: #ffffff;
 }
 
@@ -304,8 +304,8 @@ select {
 }
 
 .searchbox input[type=submit] {
-	border: 1px solid #b64b22;
-	background-color: #b64b22;
+	border: 1px solid #666;
+	background-color: #666;
 	color: white;
 	font-weight: bold;
 	cursor: pointer;
@@ -320,7 +320,7 @@ select {
 	border-bottom-right-radius: 4px;
 }
 
-.searchbox input[type=submit]:hover { background-color: #a3431f; }
+.searchbox input[type=submit]:hover { background-color: #444; }
 
 .searchbox input[type=text] {
 	border: 1px solid #333333;
@@ -351,5 +351,5 @@ select {
 
 .year:after {
 	/* content: "2007-2012"; */
-	content: "2013";
+	content: "2014";
 }

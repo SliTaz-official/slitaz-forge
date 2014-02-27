@@ -571,7 +571,6 @@ add_url_links() {
 	[ -n "$WGET_URL" ] && sedit="$sedit -e 's|\\(>WGET_URL<[^\"]*\"\\)\\([^\"]*\\)|\\1<a class='r-url' target='_blank' href=\"${WGET_URL//|/\\|}\">\\2</a>|}'"
 	[ -n "$MAINTAINER" ] && sedit="$sedit -e '/MAINTAINER/{s|\\(${MAINTAINER/@/&#64;}\\)|<a class='r-url' target='_blank' href=\"?maintainer=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -n "$CATEGORY" ] && sedit="$sedit -e '/CATEGORY/{s|\\($CATEGORY\\)|<a class='r-url' target='_blank' href=\"?category=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
-	[ -n "$LICENSE" ] && sedit="$sedit -e '/LICENSE/{s|\\($LICENSE\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	[ -f $WOK/$PACKAGE/description.txt ] && sedit="$sedit -e '/SHORT_DESC/{s|\\($SHORT_DESC\\)|<a class='r-url' target='_blank' href=\"?desc=$PACKAGE\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 	tarball_url=sources/packages-$SLITAZ_VERSION/${TARBALL:0:1}/$TARBALL
 	[ -f /var/www/slitaz/mirror/$tarball_url ] || case "$tarball_url" in
@@ -584,6 +583,11 @@ add_url_links() {
 		for i in $(echo $DEPENDS $BUILD_DEPENDS $SUGGESTED $PROVIDE $WANTED) ; do
 			sedit="$sedit -e 's|\\([\" >]\\)$i\\([\" <\\]\\)|\\1<a class='r-url' target='_blank' href=\\\"?receipt=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\2|'"
 			sedit="$sedit -e 's|^$i\\([\" <\\]\\)|<a class='r-url' target='_blank' href=\\\"?receipt=$i\\&amp;version=$SLITAZ_VERSION\\\">$i</a>\\1|'"
+		done
+	fi
+	if [ -n "$LICENSE" ]; then
+		for i in $LICENSE ; do
+			sedit="$sedit -e '/LICENSE/{s|\\($i\\)|<a class='r-url' target='_blank' href=\"?license=\\1\\&amp;version=$SLITAZ_VERSION\">\\1</a>|}'"
 		done
 	fi
 	if [ -n "$HOST_ARCH" ]; then
