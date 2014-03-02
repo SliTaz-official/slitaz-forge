@@ -31,7 +31,8 @@ Commands:
   up-cook      Update http://cook.slitaz.org/
   up-roadmap   Update http://roadmap.slitaz.org/
   up-bugs      Update http://bugs.slitaz.org/
-  up-irc      Update http://irc.slitaz.org/
+  up-irc       Update http://irc.slitaz.org/
+  up-arm       Update http://arm.slitaz.org/
 
 EOT
 }
@@ -129,6 +130,13 @@ case "$1" in
 		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $WWW/irc/images $WWW/irc/lib
 		cp -a irc/* $WWW/irc
+		echo "" ;;
+	up-arm)
+		# Update ARM Web interface
+		echo -e "\nUpdating: arm.slitaz.org..."
+		cd $REPOS/slitaz-forge
+		[ "$2" == "--nohg" ] || hg pull -u
+		cp -a arm/* $WWW/arm
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
