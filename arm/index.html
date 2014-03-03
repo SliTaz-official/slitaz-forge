@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SliTaz ARM</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<!-- <a href="http://scn.slitaz.org/">SCN</a>
+		<a href="http://doc.slitaz.org/">Doc</a>
+		<a href="http://forum.slitaz.org/">Forum</a> -->
+		<a href="http://bugs.slitaz.org/">Bugs</a>
+		<a href="http://hg.slitaz.org/slitaz-arm">Hg</a>
+		<a href="http://cook.slitaz.org/cross/arm/">Cooker</a>
+	</div>
+	<h1><a href="./">SliTaz ARM</a></h1>
+</div>
+
+<!-- Content -->
+<div id="content">
+	
+<h2>Welcome to SliTaz ARM</h2>
+
+<p>
+	This website provide informations, notes and links about the SliTaz
+	GNU/Linux port to the ARM architecture.
+</p>
+
+<h3>Packages</h3>
+
+<p>
+	All SliTaz ARM packages are automaticaly built by the
+	<a href="http://cook.slitaz.org/cross/arm/">ARM Cooker</a>. To properly
+	handle SLITAZ_ARCH varibale the recommended Packages Manager is
+	<a href="http://hg.slitaz.org/spk">spk</a>. The recommended way to
+	start with Spk Toolset is to generate a distro and include latest Hg
+	version with 'sat gen --spk' and then emulate the system to try it
+	out. 
+</p>
+
+<p>
+	Run 'spk-up --list' to get the latest 
+	<a href="tools.cgi?pkgs">packages list</a>.
+</p>
+
+<p>
+	Current ARM packages mirror URL:
+	<a href="http://cook.slitaz.org/cross/arm/packages/"
+		>http://cook.slitaz.org/cross/arm/packages/</a>
+</p>
+
+<h3>SliTaz ARM Tools</h3>
+
+<p>
+	To create some custom ARM SliTaz flavors we use a tool called 'sat'
+	witch stand for SliTaz ARM Tool. Sat is a cmdline tool all written
+	in SHell script and in the spirit of SliTaz, light, fast, easy to
+	use! You may want to browse 
+	<a href="http://hg.slitaz.org/slitaz-arm">slitaz-arm</a>
+	Hg repo and have a look to the 
+	<a href="tools.cgi?doc&amp;tool=sat">README</a>.
+</p>
+
+<pre>
+$ hg clone http://hg.slitaz.org/slitaz-arm
+</pre>
+
+<p>
+	Sat in under heavy development so dont forget to update your Hg repo
+	- March 2014
+</p>
+
+<h3>Raspberry Pi</h3>
+
+<p>
+	Currently SliTaz official ARM port works on the Raspberry Pi and can
+	be used to setup a small server. DirectFB is also ported and provide
+	nice and light GUI support. A new tool is on the stove to create
+	custom Rpi flavors with official Kernel, cutom boot options and more.
+</p>
+
+<p>
+	Official Raspberry Pi website:
+	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
+</p>
+
+<h3>Prebuilt ARM Toolchain</h3>
+
+<p>
+	To compile SliTaz packages to ARM you need a working cross compilation
+	toolchain. You can built your own with 'cross' or use our prebuilt
+	toolchains avalaible from SliTaz Mirror:
+	<a href="http://mirror.slitaz.org/packages/cross/"
+		>http://mirror.slitaz.org/packages/cross/</a>
+</p>
+
+<h3>Cross compiling</h3>
+
+<p>
+	SliTaz provide all the necesary tools for cross compiling Open Source
+	software. The <a href="http://hg.slitaz.org/cookutils">cookutils</a>
+	package provide 'cross' witch is used to create cross compilation
+	toolchains and 'cook' is used to cross compile SliTaz packages.
+</p>
+
+<p>
+	README, howto and doc: <a href="tools.cgi?doc&amp;tool=cross">cross</a>
+	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>
+</p>
+
+</div>
+
+<div id="footer">
+	&copy; 2014 - <a href="http://www.slitaz.org/">SliTaz GNU/Linux</a>
+</div>
+
+</body>
+</html>
