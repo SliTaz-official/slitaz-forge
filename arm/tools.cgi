@@ -2,6 +2,9 @@
 #
 # SliTaz ARM CGI Tools.
 #
+# Copyright (C) 2014 SliTaz ARM - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
 . /usr/lib/slitaz/httphelper.sh
 
 repos="/home/slitaz/repos"
@@ -22,6 +25,7 @@ html_header() {
 	<title>SliTaz ARM $title</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
 
