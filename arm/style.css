@@ -4,8 +4,8 @@ html { min-height: 102%; }
 body { font: 13px sans-serif, vernada, arial; margin: 0; }
 h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
 h1 a { color: #fff; text-decoration: none; }
-h2 { color: #444; }
-h3 { color: #666; font-size: 140%; border-bottom: 1px dashed #afafaf; }
+h2 { color: #444; border-bottom: 1px dashed #afafaf; padding: 2px 0px;}
+h3 { color: #666; font-size: 140%;  }
 a { text-decoration: underline; color: #215090; }
 a:hover { text-decoration: none; }
 img { border: 0pt none; vertical-align: middle; }
@@ -104,8 +104,14 @@ pre {
 	margin: 4px 0px;
 }
 
-pre, .box {
-	background-color: #f8f8f8;
+.box-dl {
+	background: url("images/download.png") no-repeat 12px center;
+	padding: 16px 16px 16px 54px;
+	margin: 20px 60px;
+}
+
+pre, .box, .box-dl {
+	background-color: #efefef;
 	border: 1px solid #ddd;
 }
 
@@ -121,7 +127,7 @@ pre img { margin: 4px 4px 4px 0px; }
 
 /* Round corner */
 
-pre, img, .box, input[type="text"] {
+pre, img, .box, .box-dl, input[type="text"] {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
