@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-16 16:15+0100\n"
-"PO-Revision-Date: 2013-01-27 03:20-0300\n"
+"PO-Revision-Date: 2014-03-06 21:40-0300\n"
 "Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
@@ -31,7 +31,7 @@ msgstr "Tags"
 
 #: search.sh:209
 msgid "Arch"
-msgstr ""
+msgstr "Arquitetura"
 
 #: search.sh:210 lib/header.sh:26
 msgid "Bugs"
@@ -153,7 +153,7 @@ msgstr "Descrição do pacote: $SEARCH"
 #: search.sh:826
 #, sh-format
 msgid "Result for known bugs"
-msgstr ""
+msgstr "Resultado para bugs conhecidos"
 
 #: search.sh:941
 msgid "description"
