@@ -110,7 +110,13 @@ pre {
 	margin: 20px 60px;
 }
 
-pre, .box, .box-dl {
+.box-up {
+	background: url("images/generic.png") no-repeat 12px center;
+	padding: 20px 10px 20px 54px;
+	margin: 20px 0;
+}
+
+pre, .box, .box-dl, .box-up {
 	background-color: #efefef;
 	border: 1px solid #ddd;
 }
@@ -127,7 +133,7 @@ pre img { margin: 4px 4px 4px 0px; }
 
 /* Round corner */
 
-pre, img, .box, .box-dl, input[type="text"] {
+pre, img, .box, .box-dl, .box-up, input[type="text"] {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;

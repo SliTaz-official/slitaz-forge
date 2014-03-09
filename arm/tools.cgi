@@ -64,6 +64,7 @@ case " $(GET) " in
 			cook) cat ${hgcook}/README ;;
 			cross) cat ${hgcook}/doc/cross.txt ;;
 			sat) cat ${hgsat}/README ;;
+			spi) cat ${hgsat}/rpi/README ;;
 			*) echo "No README file for: $(GET tool)" ;;
 		esac ;;
 	*\ pkgs\ *)
