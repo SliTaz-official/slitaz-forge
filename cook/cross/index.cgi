@@ -17,6 +17,10 @@ cat << EOT
 	more information.
 </p>
 
+<p>
+	SliTaz ARM website: <a href="http://arm.slitaz.org">arm.slitaz.org</a>
+</p>
+
 <ul>
 	<li>Arch: <a href="arm/">arm</a>
 		[ <a href="arm/toolchain.cgi">toolchain</a> ]</li>
