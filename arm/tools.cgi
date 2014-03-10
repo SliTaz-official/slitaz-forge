@@ -17,35 +17,18 @@ hgcook="$repos/cookutils"
 # Functions
 #
 
+# Usage: html_header "title"
 html_header() {
-	cat << EOT
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>SliTaz ARM $title</title>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="shortcut icon" href="favicon.ico" />
-</head>
-<body>
-
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://bugs.slitaz.org/">Bugs</a>
-		<a href="http://hg.slitaz.org/slitaz-arm">Hg</a>
-		<a href="http://cook.slitaz.org/cross/arm/">Cooker</a>
-	</div>
-	<h1><a href="./">SliTaz ARM</a></h1>
-</div>
-
-<!-- Content -->
-<div id="content">
-EOT
+	cat header.html | sed s"/_TITLE_/$1/"
 }
 
 html_footer() {
 	cat << EOT
+<!-- Close content -->
+</div>
+
+<div id="footer">
+	&copy; $(date +%Y) - <a href="http://www.slitaz.org/">SliTaz GNU/Linux</a>
 </div>
 
 </body>
@@ -59,28 +42,32 @@ EOT
 
 case " $(GET) " in
 	*\ doc\ *)
-		header "Content-Type: text/plain"
+		header
+		html_header "$(GET tool)"
+		echo '<pre>'
 		case "$(GET tool)" in
 			cook) cat ${hgcook}/README ;;
 			cross) cat ${hgcook}/doc/cross.txt ;;
 			sat) cat ${hgsat}/README ;;
 			spi) cat ${hgsat}/rpi/README ;;
 			*) echo "No README file for: $(GET tool)" ;;
-		esac ;;
+		esac
+		echo '</pre>'
+		html_footer ;;
 	*\ pkgs\ *)
 		# TODO: link packages and add link to raw lists
 		title="- Packages"
 		count="$(cat $pkgs/packages.list | wc -l)"
-		html_header
+		html_header "Packages"
 		echo "<h2>Packages: $count</h2>"
 		IFS="|"
 		cat $pkgs/packages.desc | while read pkg vers desc web deps
 		do
+			vers=${vers# }
 			cat << EOT
-<div>
-	<b>$pkg</b> $vers
-	<pre>  $desc</pre>
-</div>
+<p>
+	<a href="${mirror%/}/${pkg% }-${vers% }-arm.tazpkg">${pkg% }</a> $vers - $desc
+</p>
 EOT
 		done
 		unset IFS
