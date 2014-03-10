@@ -1,0 +1,16 @@
+
+i486 cook chroot's
+------------------
+conspy -f 2 = stable
+conspy -f 4 = cooking
+conspy -f 6 = undigest
+conspy -f 8 = backports
+
+cross cook chroot's
+-------------------
+conspy -f 3 = arm arch
+conspy -f 5 = x86_64 arch
+
+conspy -f 7 = TazIRC LogBot
+
+3X ESC = quit conspy
