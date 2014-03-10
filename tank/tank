@@ -135,8 +135,9 @@ case "$1" in
 		# Update ARM Web interface
 		echo -e "\nUpdating: arm.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a arm/* $WWW/arm
+		echo "Updating: slitaz-arm Hg repo..."
+		cd $REPOS/slitaz-arm
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
