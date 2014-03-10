@@ -134,10 +134,10 @@ case "$1" in
 	up-arm)
 		# Update ARM Web interface
 		echo -e "\nUpdating: arm.slitaz.org..."
-		cd $REPOS/slitaz-forge
+		cd $REPOS/slitaz-forge && hg pull -u
 		cp -a arm/* $WWW/arm
 		echo "Updating: slitaz-arm Hg repo..."
-		cd $REPOS/slitaz-arm
+		cd $REPOS/slitaz-arm && hg pull -u
 		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
