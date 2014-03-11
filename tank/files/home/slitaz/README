@@ -1,12 +1,12 @@
 
-i486 cook chroot's
+i486 cook chroots
 ------------------
 conspy -f 2 = stable
 conspy -f 4 = cooking
 conspy -f 6 = undigest
 conspy -f 8 = backports
 
-cross cook chroot's
+cross cook chroots
 -------------------
 conspy -f 3 = arm arch
 conspy -f 5 = x86_64 arch

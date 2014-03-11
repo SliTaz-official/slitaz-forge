@@ -28,7 +28,7 @@ TODO
 	* clear the file names, so our goal is a URL like:
 	  http://pkgs.slitaz.org/?package=geany
 	  (form action="$SCRIPT_NAME" -> action="/")
-	* standard 4.0 have /usr/lib/slitaz/httphelper (without '.sh')
+	* standard 4.0 has /usr/lib/slitaz/httphelper (without '.sh')
 	* display dependency trees as unordered lists
 
 ================================================================================

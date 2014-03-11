@@ -5,7 +5,7 @@
 	<title>SliTaz People</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 	<meta name="description" content="slitaz people" />
-	<meta name="keywords" lang="en" content="slitaz network, slitaz developpers, slitaz contributors" />
+	<meta name="keywords" lang="en" content="slitaz network, slitaz developers, slitaz contributors" />
 	<meta name="robots" content="index, follow, all" />
     <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
 	<meta name="author" content="Christophe Lincoln"/>

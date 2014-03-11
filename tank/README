@@ -8,7 +8,7 @@ tool (tank) to help maintain and administer services.
 
 Build host documentation: http://doc.slitaz.org/en:cookbook:buildhost
 
-IP's
+IPs
 ----
 Tank:         37.187.4.13
 Mirror:       46.105.127.17
