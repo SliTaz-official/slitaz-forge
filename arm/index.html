@@ -47,14 +47,35 @@
 	
 <h2>Welcome to SliTaz ARM</h2>
 
-<img src="images/arm-cpu.png" alt="arm-cpu.png" 
+<img src="images/arm.png" alt="arm.png" 
 		style="float: right; margin: 0 0 10px 20px;" />
 <p>
 	
 	This website provides information, notes and links about the 
 	<a href="http://www.slitaz.org/">SliTaz GNU/Linux</a> port to 
 	the ARM architecture. SliTaz currently supports the ARM v6 (armel)
-	architecture and work is on the stove for armv6hf (hard float).
+	architecture and work is on the stove for armv6hf (hard float) and
+	armv7.
+</p>
+<p>
+	SliTaz ARM is supported by the official SliTaz project but with it's
+	own boot scripts for faster start-up and it's own build tools. A base
+	system will use around 20mb of RAM. SliTaz can turn our ARM device into
+	a music or web server, a NAT, an IRC bot, a small desktop and much more.
+</p>
+
+<h2>Raspberry Pi</h2>
+
+<p>
+	Currently the SliTaz official ARM port works on the Raspberry Pi and can
+	be used to setup a small server. DirectFB is ported and provides a
+	nice and light GUI support. A new tool is also on the stove to create
+	custom Rpi flavors with an official Kernel, custom boot options and more.
+</p>
+
+<p>
+	Official Raspberry Pi website:
+	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
 </p>
 
 <h2>Build distros</h2>
@@ -84,20 +105,6 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 # sat mirror &amp;&amp; sat gen --flavor=base
 </pre>
 
-<h2>Raspberry Pi</h2>
-
-<p>
-	Currently the SliTaz official ARM port works on the Raspberry Pi and can
-	be used to setup a small server. DirectFB is ported and provides a
-	nice and light GUI support. A new tool is also on the stove to create
-	custom Rpi flavors with an official Kernel, custom boot options and more.
-</p>
-
-<p>
-	Official Raspberry Pi website:
-	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
-</p>
-
 <h2>Packages</h2>
 
 <p>
@@ -105,12 +112,7 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 	<a href="http://cook.slitaz.org/cross/arm/">ARM Cooker</a>. To properly
 	handle the SLITAZ_ARCH variable, the recommended Package Manager is
 	<a href="http://hg.slitaz.org/spk">spk</a>. One way to start
-	with the Spk Toolset is to generate a distro and include the latest Hg
-	version with 'sat gen --spk' and then emulate the system to try it
-	out. 
-</p>
-
-<p>
+	with the Spk Toolset is to generate a distro and include spk. 
 	On a SliTaz ARM system you simply run 'spk-up --list' to get the 
 	latest <a href="tools.cgi?pkgs">packages list</a>. The current ARM
 	packages mirror URL:
