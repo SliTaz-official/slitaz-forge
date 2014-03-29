@@ -4,7 +4,8 @@ html { min-height: 102%; }
 body { font: 13px sans-serif, vernada, arial; margin: 0; }
 h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
 h1 a { color: #fff; text-decoration: none; }
-h2 { color: #444; border-bottom: 1px dashed #afafaf; padding: 4px 0px; }
+h2 { color: #444; border-bottom: 1px dashed #afafaf; 
+	padding: 4px 0px; margin: 30px 0 0 0; }
 h3 { color: #666; font-size: 140%;  }
 a { text-decoration: underline; color: #215090; }
 a:hover { text-decoration: none; }
@@ -71,7 +72,7 @@ pre {
 /* Block */
 
 #block { 
-	min-height: 60px;
+	min-height: 74px;
 	background: #ccc; 
 	padding: 20px 10% 0px;
 	text-align: center;
@@ -82,7 +83,7 @@ pre {
 #block_info {
 	text-align: justify; 
 	width: 48%;
-	padding: 0;
+	padding: 4px 0;
 }
 
 #block_info img { margin-right: 6px; }
@@ -92,7 +93,7 @@ pre {
 
 #block_nav {
 	background: #666;
-	padding: 12px 6px;
+	padding: 14px 6px;
 	text-align: justify;
 	width: 48%;
 	float: right;
@@ -138,7 +139,7 @@ nav a {
 	margin: 40px auto;
 	padding: 0 20px;
 	text-align: justify;
-	max-width: 720px;
+	max-width: 760px;
 }
 
 .box {
@@ -146,7 +147,8 @@ nav a {
 	margin: 4px 0px;
 }
 
-.box-up, .box-share { padding: 20px 10px 20px 54px; margin: 20px 0; }
+.box-up, .box-share, .box-rpi { 
+	padding: 20px 10px 20px 54px; margin: 20px 0; }
 
 .box-dl {
 	background: url("images/download.png") no-repeat 12px center;
@@ -162,7 +164,11 @@ nav a {
 	background: url("images/share.png") no-repeat 12px center;
 }
 
-pre, .box, .box-dl, .box-up, .box-share {
+.box-rpi {
+	background: url("images/raspberrypi.png") no-repeat 12px center;
+}
+
+pre, .box, .box-dl, .box-up, .box-share, .box-rpi {
 	background-color: #efefef;
 	border: 1px solid #ddd;
 }
@@ -179,8 +185,8 @@ pre img { margin: 4px 4px 4px 0px; }
 
 /* Round corner */
 
-pre, img, .box, .box-dl, .box-up, input[type="text"], #block_nav, 
-	.box-share {
+pre, img, .box, .box-dl, .box-up, .box-rpi, input[type="text"], 
+#block_nav, .box-share {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;

@@ -27,16 +27,18 @@
 	<div id="block_nav">
 		
 		<nav id="nav">
+			<a href="http://twitter.com/slitaz" title="Follow us on Twitter">
+			<img src="images/twitter.png" alt="Twitter" /></a>
 			<a href="tools.cgi?doc&amp;tool=sat">README</a>
 			<a href="tools.cgi?pkgs">Packages</a>
-			<!-- <a href="rpi/">Raspberry Pi</a> -->
+			<a href="rpi/">Raspberry Pi</a>
 		</nav>
 		
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
 		<p>
-			<img src="images/generic.png" alt="arm-cpu.png" />
+			<img src="images/generic.png" alt="generic.png" />
 			Official SliTaz GNU/Linux port to ARM
 		</p>
 	</div>
@@ -50,7 +52,6 @@
 <img src="images/arm.png" alt="arm.png" 
 		style="float: right; margin: 0 0 10px 20px;" />
 <p>
-	
 	This website provides information, notes and links about the 
 	<a href="http://www.slitaz.org/">SliTaz GNU/Linux</a> port to 
 	the ARM architecture. SliTaz currently supports the ARM v6 (armel)
@@ -59,24 +60,36 @@
 </p>
 <p>
 	SliTaz ARM is supported by the official SliTaz project but with its
-	own boot scripts for faster start-up and its own build tools. A base
-	system will use around 20mb of RAM. SliTaz can turn an ARM device into
-	a music or web server, a NAT, an IRC bot, a small desktop and much more.
+	own boot scripts for faster start-up. A base system will use around 
+	20mb of RAM. SliTaz can turn an ARM device into a music or web server,
+	a NAT, an IRC bot, a small desktop and much more.
 </p>
+
+<div style="text-align: center;">
+	<a href="images/shots/slitaz-rpi-jwm.png"><img 
+		src="images/shots/slitaz-rpi-jwm_thumb.png" 
+		alt="slitaz-rpi-jwm PNG" /></a>
+	<a href="images/shots/slitaz-rpi-e17.jpg"><img 
+		src="images/shots/slitaz-rpi-e17_thumb.png" 
+		alt="slitaz-rpi-e17 PNG" /></a>
+	<a href="images/shots/slitaz-rpi-e17-links.png"><img 
+		src="images/shots/slitaz-rpi-e17-links_thumb.png"
+		alt="slitaz-rpi-links PNG" /></a>
+</div>
 
 <h2>Raspberry Pi</h2>
 
 <p>
 	Currently the SliTaz official ARM port works on the Raspberry Pi and can
-	be used to setup a small server. DirectFB is ported and provides a
-	nice and light GUI support. A new tool is also on the stove to create
-	custom Rpi flavors with an official Kernel, custom boot options and more.
+	be used to setup a small server. DirectFB; Xorg, JWM, E17, Openbox and
+	the FOX toolkit is ported and provides a nice and light GUI support. 
+	Sat-rpi let advanced users create custom Rpi flavors with an official
+	Kernel, custom boot options and more.
 </p>
 
-<p>
-	Official Raspberry Pi website:
-	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
-</p>
+<div class="box-rpi">
+	<a href="rpi/">SliTaz Raspberry Pi Home</a>
+</div>
 
 <h2>Build distros</h2>
 
@@ -102,7 +115,7 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 </p>
 
 <pre>
-# sat mirror &amp;&amp; sat gen --flavor=base
+# sat mirror &amp;&amp; sat gen --flavor=arm-base
 </pre>
 
 <h2>Packages</h2>

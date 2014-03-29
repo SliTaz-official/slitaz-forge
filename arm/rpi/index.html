@@ -27,17 +27,19 @@
 	<div id="block_nav">
 		
 		<nav id="nav">
+			<a href="http://twitter.com/slitaz" title="Follow us on Twitter">
+			<img src="../images/twitter.png" alt="Twitter" /></a>
 			<a href="../tools.cgi?doc&amp;tool=sat-rpi">README</a>
-			<a href="../rpi/">Raspberry Pi</a>
 			<a href="../tools.cgi?pkgs">Packages</a>
+			<a href="../rpi/">Raspberry Pi</a>
 		</nav>
 		
 	</div>
 	<!-- Information/image -->
 	<div id="block_info">
 		<p>
-			<img src="../images/generic.png" alt="arm-cpu.png" />
-			Official SliTaz GNU/Linux port to ARM
+			<img src="../images/raspberrypi.png" alt="raspberrypi.png" />
+			Official SliTaz GNU/Linux Raspberry Pi distribution
 		</p>
 	</div>
 </div>
@@ -50,26 +52,103 @@
 <p>
 	Official SliTaz GNU/Linux Raspberry Pi distribution, a small operating
 	system for a small computer! The goal is to provide a fast, minimal 
-	footprint and optimized distro for the Raspberry Pi.
+	footprint and optimized distro for the Raspberry Pi. You can setup a
+	fast and eco music server, development box, desktop, web server and 
+	much more with SliTaz Raspberry Pi.
+</p>
+
+<p>
+	Official Raspberry Pi website:
+	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
 </p>
 
 <div class="box-share">
-	SliTaz Raspberry Pi is a rolling model distro with a selective set of 
-	packages.
+	New SliTaz Raspberry Pi release 20140329
+</div>
+
+<div style="text-align: center;">
+	<a href="../images/shots/tazberry.png"><img 
+		src="../images/shots/tazberry_thumb.png" 
+		alt="tazberry.png"/></a>
+	<a href="../images/shots/slitaz-rpi-cgiadm.png"><img 
+		src="../images/shots/slitaz-rpi-cgiadm_thumb.png" 
+		alt="slitaz-rpi-jwm PNG" /></a>
+	<a href="../images/shots/slitaz-rpi-jwm.png"><img 
+		src="../images/shots/slitaz-rpi-jwm_thumb.png" 
+		alt="slitaz-rpi-cgi PNG" /></a>
+</div>
+
+<h2>Downloads</h2>
+
+<p>
+	SliTaz Raspberry Pi provide actually a text mode base system and a
+	light desktop flavor powered by JWM and the FOX toolkit. Download 
+	the tarball, extract, install and boot your Rapberry Pi!
+</p>
+
+<div class="box-dl">
+	<a href="http://mirror.slitaz.org/arm/rpi/slitaz-rpi-base-20140329.tar.bz2"
+		>slitaz-rpi-base-20140329</a> (22 Mb)
+	<a href="http://mirror.slitaz.org/arm/rpi/slitaz-rpi-desktop-20140329.tar.bz2"
+		>slitaz-rpi-desktop-20140329</a> (34 Mb)
+</div>
+
+<h2>Installation</h2>
+
+<pre class="box-up">
+boot/    : Must be copied to a FAT32 partition
+rootfs/  : Must be copied to an ext4 or btrfs partition
+</pre>
+
+<p>
+	Be sure the SD card has got 3 partitions (boot,swap,root). Then you 
+	simply have to run the install.sh script from the SliTaz Raspberry Pi
+	release directory:
+</p>
+
+<pre>
+# ./install.sh
+</pre>
+
+<h2>Remote control</h2>
+
+<p>
+	SliTaz Raspberry Pi provide a CGI SHell remote control environment
+	with plugins support and HTTP authentification. You can rebooot/halt
+	the system, edit any system file and set boot options. Creating new
+	plugings is a nice way to learn CGI/SHell scripts and Linux commands.
+</p>
+
+<p>
+	You must first start the web server then check the IP adress of your
+	device and connect with root user and password via the IP:
+</p>
+
+<pre>
+# startd httpd
+# ifconfig
+</pre>
+
+<div class="box-rpi">
+	<b>URL:</b> http://192.rpi.ip/adm
 </div>
 
 <h2>TazBerry</h2>
 
-<div style="text-align: center;">
-	<img src="../images/tazberry.png" alt="tazberry.png"/>
-</div>
+<p>
+	TazBerry is a Ncurses GUI to configure your SliTaz Raspberry Pi box.
+	It provide a simple menu and let you edit files with your favorite
+	text editor. TazBerry can be started from the window manger menu or
+	from the cmdline with: 'tazbery'
+</p>
 
 <h2>Sat-rpi builder</h2>
 
 <p>
-	The Raspberry Pi has a lot of specifications. SliTaz ARM provides 'sat-rpi' to
-	build custom SliTaz Rpi distro images ready to boot. Quickstart guide is in
-	the SliTaz Raspberry Pi <a href="../tools.cgi?doc&amp;tool=sat-rpi">README</a>
+	The Raspberry Pi has a lot of specifications. SliTaz ARM provides 
+	'sat-rpi' to build custom SliTaz Rpi distro images ready to boot. 
+	Quickstart guide is in the SliTaz Raspberry Pi repository: 
+	<a href="../tools.cgi?doc&amp;tool=sat-rpi">README</a>
 </p>
 
 <!-- Close content -->
