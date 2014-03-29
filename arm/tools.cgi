@@ -59,9 +59,19 @@ case " $(GET) " in
 		title="- Packages"
 		count="$(cat $pkgs/packages.list | wc -l)"
 		html_header "Packages"
-		echo "<h2>Packages: $count</h2>"
+		cat << EOT
+<h2>Packages: $count</h2>
+
+<pre>
+Packages lists : <a href="${mirror%/}/packages.list">packages.list</a> \
+- <a href="${mirror%/}/packages.md5">packages.md5</a>
+Mirror URL     : <a href="${mirror}">${mirror}</a>
+</pre>
+
+<h2>Packages list</h2>
+EOT
 		IFS="|"
-		cat $pkgs/packages.desc | while read pkg vers desc web deps
+		cat $pkgs/packages.desc| while read pkg vers desc web deps
 		do
 			vers=${vers# }
 			cat << EOT
