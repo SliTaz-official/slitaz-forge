@@ -11,8 +11,7 @@
 <div id="header">
 	<div id="logo"></div>
 	<div id="network">
-		<!-- <a href="http://scn.slitaz.org/">SCN</a>
-		<a href="http://doc.slitaz.org/">Doc</a>-->
+		<!-- <a href="http://scn.slitaz.org/">SCN</a>-->
 		<a href="http://forum.slitaz.org/forum/arm">Forum</a> 
 		<a href="http://bugs.slitaz.org/?arch=arm">Bugs</a>
 		<a href="http://hg.slitaz.org/slitaz-arm/summary">Hg</a>
@@ -54,12 +53,12 @@
 	system for a small computer! The goal is to provide a fast, minimal 
 	footprint and optimized distro for the Raspberry Pi. You can setup a
 	fast and eco music server, development box, desktop, web server and 
-	much more with SliTaz Raspberry Pi.
+	much more with SliTaz Raspberry Pi. For a common list of applications
+	please read the <a href="../codex/apps.html">SliTaz ARM Codex</a>.
 </p>
 
 <div class="box-share">
-	New SliTaz Raspberry Pi release 20140329 - Official Raspberry Pi
-	website: <a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
+	New SliTaz Raspberry Pi release 20140329
 </div>
 
 <div style="text-align: center;">
@@ -72,6 +71,11 @@
 	<a href="../images/shots/slitaz-rpi-jwm.png"><img 
 		src="../images/shots/slitaz-rpi-jwm_thumb.png" 
 		alt="slitaz-rpi-cgi PNG" /></a>
+</div>
+
+<div class="box-rpi">
+	Official Raspberry Pi website: 
+	<a href="http://www.raspberrypi.org/">www.raspberrypi.org</a>
 </div>
 
 <h2>Downloads</h2>
@@ -97,10 +101,11 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 </pre>
 
 <p>
-	Be sure the SD card has got 3 partitions (boot,swap,root). The 
+	Be sure the SD card has got 3 partitions (boot, swap, root). The 
 	recommended partition sizes are 40Mb for /boot, 420Mb for swap and
-	leaving all free space for root. Then you simply have to run the 
-	install.sh script from the SliTaz Raspberry Pi release directory:
+	using all avalaible free space for root. Then you simply have to 
+	run the install.sh script from the SliTaz Raspberry Pi release 
+	directory:
 </p>
 
 <pre>
@@ -146,16 +151,15 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 	servers and some additional services can be installed via the Spk
 	packages manager. Installed servers are ftpd, httpd, tftpd, ntpd,
 	udhcpd and the Dropbear SSH server. MPD, the best audio server is
-	also installable in one command and can be remotely controlled by
-	a nice and modern web interface from a desktop, tablet or mobile device.
+	also on the mirror.
 </p>
 
 <p>
-	To install the MPD music player daemon and Ympd:
+	To install the MPD music player daemon (config file is: /etc/mpd.conf):
 </p>
 
 <pre>
-# spk-add mpd ympd
+# spk-add mpd
 </pre>
 
 <h2>Sat-rpi builder</h2>

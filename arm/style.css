@@ -9,6 +9,7 @@ h2 { color: #444; border-bottom: 1px dashed #afafaf;
 h3 { color: #666; font-size: 140%;  }
 a { text-decoration: underline; color: #215090; }
 a:hover { text-decoration: none; }
+li { list-style-type: square; }
 img { border: 0pt none; vertical-align: middle; }
 pre {
 	overflow: auto;
