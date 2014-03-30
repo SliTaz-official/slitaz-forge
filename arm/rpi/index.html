@@ -97,9 +97,10 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 </pre>
 
 <p>
-	Be sure the SD card has got 3 partitions (boot,swap,root). Then you 
-	simply have to run the install.sh script from the SliTaz Raspberry Pi
-	release directory:
+	Be sure the SD card has got 3 partitions (boot,swap,root). The 
+	recommended partitions size are 40Mb for /boot, 420Mb for swap and
+	all leaving free space for root. Then you simply have to run the 
+	install.sh script from the SliTaz Raspberry Pi release directory:
 </p>
 
 <pre>
@@ -137,6 +138,25 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 	text editor. TazBerry can be started from the window manger menu or
 	from the cmdline with: 'tazberry'
 </p>
+
+<h2>Raspberry Pi server</h2>
+
+<p>
+	By default SliTaz Raspberry Pi provide some tiny and low footprint
+	servers and some additionnal services can be installed via the Spk
+	packages mamanger. Installed servers are ftpd, httpd, tftpd, ntpd,
+	udhcpd and the Dropbear SSH server. MPD, the best audio server is
+	also installable in one command and can be remotly controled by
+	a nice an modern web interface from desktop, tablet or mobile devices.
+</p>
+
+<p>
+	To install the MPD music player daemon and Ympd:
+</p>
+
+<pre>
+# spk-add mpd ympd
+</pre>
 
 <h2>Sat-rpi builder</h2>
 
