@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SliTaz ARM - Codex</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://arm.slitaz.org/">SliTaz ARM</a>
+	</div>
+	<h1><a href=".">SliTaz ARM Codex</a></h1>
+</div>
+
+<!-- Content -->
+<div id="content">
+	
+<h2>Applications</h2>
+
+<p>
+	List of common SliTaz ARM applications. This far from a complet list
+	but focused on one tool for one task. Use 'spk-find package' to find
+	packages.
+</p>
+
+<ul>
+	<li><a href="#multimedia">Multimedia</a></li>
+	<li><a href="#networking">Networking</a></li>
+	<li><a href="#servers">Servers</a></li>
+	<li><a href="#x-window">X Window</a></li>
+	<li><a href="#development">Development</a></li>
+</ul>
+
+<h2 id="multimedia">Multimedia</h2>
+
+<ul>
+	<li>Cmdline music player: <b>mpg123</b></li>
+	<li>Sound mixer: <b>alsamixer</b></li>
+	<li>Audio decoder: <b>decode</b> (MP3, OGG, etc)</li>
+	<li>Video player: <b>mplayer</b></li>
+	<li>Audio/Video tool: <b>ffmpeg</b> (record, convert, stream)</li>
+</ul>
+
+<p>
+	To listen to all audio files in a directory you can use:
+</p>
+
+<pre>
+$ mpg123 Music/*
+</pre>
+
+<h2 id="networking">Networking</h2>
+
+<ul>
+	<li>Web browser: <b>links</b> (gui or cmdline)</li>
+	<li>Cmdline web browser: <b>lynx</b></li>
+	<li>Cmdline IRC client: <b>tazirc</b></li>
+</ul>
+
+<h2 id="servers">Servers</h2>
+
+<ul>
+	<li>All SliTaz ARM flavors provide Busybox HTTPd daemon</li>
+	<li>Web server: <b>lighttpd</b></li>
+	<li>Audio server: <b>mpd</b></li>
+	<li>SSHd server: <b>dropbear</b></li>
+</ul>
+
+<p>
+	To start a server daemon at boot time you must edit the configuration
+	file: <b>/etc/rcS.conf</b> and add the daemon name to the RUN_DAEMONS
+	variable. Example to start the HTTPd daemon from the command line:
+</p>
+
+<pre>
+# startd httpd
+</pre>
+
+<h2 id="x-window">X Window</h2>
+
+<ul>
+	<li>Default desktop powered by <b>jwm</b> with panel and menu</li>
+	<li>Window manager: <b>openbox</b></li>
+	<li>Desktop environment: <b>enlightenment</b> (e17)</li>
+	<li>Desktop wallpaper: <b>hsetroot</b></li>
+	<li>Desktop panel: <b>tint2</b></li>
+	<li>Desktop launch bar: <b>wbar2</b></li>
+</ul>
+
+<h2 id="development">Development</h2>
+
+<ul>
+	<li>The so famous SHell scripting</li>
+	<li>Ncurses dialog: dialog --msgbox "Hello" 10 20</li>
+	<li>Lua programing language</li>
+	<li>Ruby with gems support</li>
+	<li>Nasm/Yasm netwide assembler</li>
+</ul>
+
+<p>
+	Dialog let you create fast Ncurses interfaces with SHell script coding
+	style. Here is a short example to run from cmdline:
+</p>
+
+<pre>
+$ dialog --msgbox "Hello World!" 8 32
+</pre>
+
+<!-- Close content -->
+</div>
+
+<div id="footer">
+	&copy; 2014 - <a href="http://www.slitaz.org/">SliTaz GNU/Linux</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+SliTaz ARM Codex - Small and up-to-date documentation
+================================================================================
+
+Please discuss any new page since the goal is to have a small set of info to
+keep up-to-date. This HTML doc is packaged for ARM in slitaz-doc, the style.css
+and images/ symlink help to package.
+
+
+	* quickstart.html
+	* faq.html
+	* apps.html
+	* config.html
+	
+	
+================================================================================
