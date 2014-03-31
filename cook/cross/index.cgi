@@ -9,24 +9,27 @@ cat header.html
 
 cat << EOT
 
-<h2>SliTaz Cross</h2>
+<h2>SliTaz Cross Cooker's</h2>
 
 <p>
-	SliTaz is actually ported to the ARM platform and work is on the stove
-	for the x86_64 architecture. Please read the Cookutils cross howto for
-	more information.
+	SliTaz is actually ported to the ARM platform and the x86_64
+	architecture can be cross or natively compiled but not officially
+	supported. Please read the Cookutils cross howto for more information.
 </p>
 
 <p>
 	SliTaz ARM website: <a href="http://arm.slitaz.org">arm.slitaz.org</a>
 </p>
 
-<ul>
-	<li>Arch: <a href="arm/">arm</a>
-		[ <a href="arm/toolchain.cgi">toolchain</a> ]</li>
-	<li>Arch: <a href="x86_64/">x86_64</a>
-		[ <a href="x86_64/toolchain.cgi">toolchain</a> ]</li>
-</ul>
+<pre>
+Arch  : <a href="arm/">arm</a>
+Cross : <a href="arm/toolchain.cgi">toolchain</a>
+</pre>
+
+<pre>
+Arch  : <a href="x86_64/">x86_64</a>
+Cross : <a href="x86_64/toolchain.cgi">toolchain</a>
+</pre>
 
 </div>
 </body>
