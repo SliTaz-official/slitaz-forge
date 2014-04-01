@@ -9,12 +9,12 @@ cat header.html
 
 cat << EOT
 
-<h2>SliTaz Cross Cooker's</h2>
+<h2>SliTaz Cross Cookers</h2>
 
 <p>
 	SliTaz is actually ported to the ARM platform and the x86_64
-	architecture can be cross or natively compiled but not officially
-	supported. Please read the Cookutils cross howto for more information.
+	architecture can be cross or natively compiled (but not officially
+	supported). Please read the Cookutils cross howto for more information.
 </p>
 
 <p>
