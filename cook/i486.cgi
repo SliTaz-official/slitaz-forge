@@ -17,16 +17,14 @@ cat << EOT
 
 <pre>
 Version  : <a href="stable">stable</a>
+	   <a href="backports/">backports</a>
 Cook     : <a href="/stable/?pkg=slitaz-toolchain">toolchain</a>
 </pre>
 
 <pre>
 Version  : <a href="cooker.cgi">cooking</a>
+	   <a href="undigest/">undigest</a>
 Cook     : <a href="/cooker.cgi?pkg=slitaz-toolchain">toolchain</a>
-</pre>
-
-<pre>
-Version  : <a href="undigest/">undigest</a>
 </pre>
 
 </div>
