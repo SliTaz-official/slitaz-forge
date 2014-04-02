@@ -12,18 +12,17 @@ cat << EOT
 <h2>SliTaz i486 platform</h2>
 
 <p>
-	SliTaz i486: stable, cooking, undiguest + backport
-</p>
-<p>
-	SliTaz i486: <a href="/cooker.cgi?pkg=slitaz-toolchain">toolchain</a>
+	SliTaz i486 version: stable, cooking, undiguest + backport
 </p>
 
 <pre>
 Version  : <a href="stable">stable</a>
+Cook     : <a href="/stable/?pkg=slitaz-toolchain">toolchain</a>
 </pre>
 
 <pre>
 Version  : <a href="cooker.cgi">cooking</a>
+Cook     : <a href="/cooker.cgi?pkg=slitaz-toolchain">toolchain</a>
 </pre>
 
 <pre>
