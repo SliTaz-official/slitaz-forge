@@ -12,7 +12,7 @@ cat << EOT
 <h2>SliTaz i486 platform</h2>
 
 <p>
-	SliTaz i486 version: stable, cooking, undiguest + backport
+	SliTaz i486 version: stable, cooking, undigest + backports
 </p>
 
 <pre>
