@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SliTaz ARM - Setup</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://arm.slitaz.org/">SliTaz ARM</a>
+	</div>
+	<h1><a href=".">SliTaz ARM Codex</a></h1>
+</div>
+
+<!-- Content -->
+<div id="content">
+	
+<h2>System &amp; services setup</h2>
+
+<p>
+	Setup a web server or an IRC bouncer on your nifty ARM board.
+</p>
+
+<ul>
+	<li><a href="#firstboot">First boot setup</a></li>
+	<li><a href="#znc">IRC bouncer setup</a></li>
+</ul>
+
+<h2 id="firstboot">First boot setup</h2>
+<p>
+	On the first SliTaz ARM boot you will be prompt to configure basic
+	system settings such as the system keymap and the root password. If
+	dont want this setup you can create a file with the current date as
+	content. Mount the sdcard and create /var/lib/slitaz/post-install 
+	before you boot.
+</p>
+
+<h2 id="znc">IRC bouncer setup</h2>
+
+<p>
+	The goal is to stay connected on your favorite IRC channels. And playback
+	the IRC messages when you are back online. To setup the IRC bouncer we
+	are going to use a SliTaz RPi base or desktop system combined with
+	<a href="http://wiki.znc.in/ZNC">ZNC</a>. First off install the package
+	and create a configuration file:
+</p>
+
+<pre>
+# spk-add znc
+# znc --makeconf
+</pre>
+
+<p>
+	The ZNC server will listen on port 1025 to provide the web interface.
+	To start or kill the ZNC bouncer server:
+</p>
+
+<pre>
+# znc
+# killall znc
+</pre>
+
+
+<!-- Close content -->
+</div>
+
+<div id="footer">
+	&copy; 2014 - <a href="http://www.slitaz.org/">SliTaz GNU/Linux</a>
+</div>
+
+</body>
+</html>
