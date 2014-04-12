@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-16 16:15+0100\n"
+"POT-Creation-Date: 2014-04-12 15:16+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
 "Language-Team: \n"
@@ -22,67 +22,87 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: lib\n"
 
-#: search.sh:206
+#: search.sh:222
 msgid "Package"
 msgstr "Paquet"
 
-#: search.sh:207
+#: search.sh:223
 msgid "Description"
 msgstr "Description"
 
-#: search.sh:208
+#: search.sh:224
 msgid "Tags"
 msgstr "Tags"
 
-#: search.sh:209
+#: search.sh:225
 msgid "Arch"
 msgstr ""
 
-#: search.sh:210 lib/header.sh:26
+#: search.sh:226 lib/header.sh:26
 msgid "Bugs"
 msgstr "Bugs"
 
-#: search.sh:211
+#: search.sh:227 search.sh:334 search.sh:358
 msgid "Receipt"
 msgstr "Recette"
 
-#: search.sh:212
+#: search.sh:228
 msgid "Depends"
 msgstr "Dépendances"
 
-#: search.sh:213
+#: search.sh:229
 msgid "Build depends"
 msgstr "Fabrication"
 
-#: search.sh:214
+#: search.sh:230
 msgid "File"
 msgstr "Fichier"
 
-#: search.sh:215
+#: search.sh:231
 msgid "File list"
 msgstr "Liste des fichiers"
 
-#: search.sh:216
+#: search.sh:232
 msgid "common files"
 msgstr "Fichiers communs"
 
-#: search.sh:224
+#: search.sh:233
+msgid "Category"
+msgstr ""
+
+#: search.sh:234
+msgid "Maintainer"
+msgstr ""
+
+#: search.sh:235
+msgid "License"
+msgstr ""
+
+#: search.sh:243
 msgid "cooking"
 msgstr "cuisson"
 
-#: search.sh:229
+#: search.sh:248
 msgid "tiny"
 msgstr "petit"
 
-#: search.sh:230
+#: search.sh:249
 msgid "undigest"
 msgstr "indigeste"
 
-#: search.sh:234
+#: search.sh:250
+msgid "backports"
+msgstr ""
+
+#: search.sh:254
 msgid "Search"
 msgstr "Recherche"
 
-#: search.sh:410
+#: search.sh:325 search.sh:327 search.sh:351 search.sh:353
+msgid "Cooker"
+msgstr ""
+
+#: search.sh:436
 msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
@@ -90,81 +110,81 @@ msgstr ""
 "\tglibc-base et gcc-lib-base sont des dépendances implicite,\n"
 "\tpour chaque paquet supposé dépendre d'eux."
 
-#: search.sh:456
+#: search.sh:482
 #, sh-format
 msgid "No package $SEARCH"
 msgstr "Paquet $SEARCH introuvable"
 
-#: search.sh:602
+#: search.sh:714
 msgid "Search for packages"
 msgstr "Recherche de paquets"
 
-#: search.sh:616
+#: search.sh:728
 msgid "Depends loops"
 msgstr "Dépendances sans fin"
 
-#: search.sh:631
+#: search.sh:743
 #, sh-format
 msgid "Dependency tree for: $SEARCH"
 msgstr "Arbre des dépendances de $SEARCH"
 
-#: search.sh:642
+#: search.sh:754
 #, sh-format
 msgid "Dependency tree for: $SEARCH (SUGGESTED)"
 msgstr "Arbre des dépendances de $SEARCH (SUGGESTED)"
 
-#: search.sh:651
+#: search.sh:763
 #, sh-format
 msgid "Reverse dependency tree for: $SEARCH"
 msgstr "Arbre inversé des dépendances de $SEARCH"
 
-#: search.sh:668
+#: search.sh:780
 msgid "Build depends loops"
 msgstr "Fabrication sans fin"
 
-#: search.sh:684
+#: search.sh:796
 #, sh-format
 msgid "$SEARCH needs these packages to be built"
 msgstr "$SEARCH a besion de ces paquets pour être fabriqué"
 
-#: search.sh:692
+#: search.sh:804
 #, sh-format
 msgid "Packages who need $SEARCH to be built"
 msgstr "Paquets ayant besion de $SEARCH pour être fabriqués"
 
-#: search.sh:709
+#: search.sh:821
 #, sh-format
 msgid "These packages may overload files of $SEARCH"
 msgstr "Paquets pouvant écraser des fichiers de $SEARCH"
 
-#: search.sh:737 search.sh:774 search.sh:808 search.sh:847 search.sh:868
-#: search.sh:917 search.sh:935
+#: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
+#: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Recherche de : $SEARCH"
 
-#: search.sh:785
+#: search.sh:897
 #, sh-format
 msgid "$filenb file"
 msgid_plural "$filenb files"
 msgstr[0] "$filenb fichier"
 msgstr[1] "$filenb fichiers"
 
-#: search.sh:800
+#: search.sh:912
 #, fuzzy, sh-format
 msgid "Description of package: $SEARCH"
 msgstr "Description du paquet: $SEARCH"
 
-#: search.sh:826
+#: search.sh:938
 #, sh-format
 msgid "Result for known bugs"
 msgstr ""
 
-#: search.sh:941
+#: search.sh:1113
 msgid "description"
 msgstr "Description"
 
-#: search.sh:952
+#: search.sh:1124
 #, sh-format
 msgid "Result for: $SEARCH (package providing $vpkg)"
 msgstr "Recherche pour : $SEARCH (package providing $vpkg)"
