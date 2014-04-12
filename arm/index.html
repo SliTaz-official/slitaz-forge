@@ -135,6 +135,29 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 		>http://cook.slitaz.org/cross/arm/packages/</a>
 </div>
 
+<h2>SliTaz Tiny/Touch Screen</h2>
+
+<img src="images/shots/sts-pitft.png" alt="sts-pitft.png" 
+	style="float: right; margin: 4px 0 10px 20px;" />
+
+<p>
+	The SliTaz Tiny/Touch Screen aka sts provide a suitable desktop for
+	small screens such as 320x240 TFT display. The screenshot shown sts
+	running on the Raspberry PiTFT touchscreen. The desktop is powered
+	by Openbox and LXpanel. All applications are started maximited and
+	without decoration.
+</p>
+<p>	
+	To close windows and switch desktop you must use the hidden bottom 
+	panel. Sts provide a small cmdline tool to handle custom tasks and
+	the sts-session script can be used to start an X session via startx
+	and ~/.xsession or the Slim login manager.
+</p>
+
+<pre>
+$ sts help
+</pre>
+
 <h2>Prebuilt ARM Toolchain</h2>
 
 <p>
@@ -159,8 +182,32 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 
 <p>
 	README, howto and docs: <a href="tools.cgi?doc&amp;tool=cross">cross</a>
-	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>.
+	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>. Here is a quickstart
+	cmdline setup:
 </p>
+
+<pre>
+Setup the build chroot
+# tazdev gen-chroot --arch=arm
+# tazdev -c --arch=arm
+
+Setup the cross toolchain
+# mkdir -p /cross &amp;&amp; cd /cross
+# wget http://mirror.slitaz.org/arm/cross/slitaz-arm-toolchain-20140304.tar.bz2
+# tar xjf slitaz-arm-toolchain-20140304.tar.bz2
+# cp -a slitaz-arm-toolchain-*/arm /cross
+
+Check the toolchain installation
+# export PATH=$PATH:/cross/arm/tools/bin
+# arm-slitaz-linux-gnueabi-gcc -v
+
+Setup cook environment:
+# cook arm-setup
+# cook setup --wok
+
+Cross compile zlib and check testsuite output
+# cook zlib
+</pre>
 
 <h2>ARM emulator</h2>
 
