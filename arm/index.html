@@ -141,14 +141,14 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 	style="float: right; margin: 10px 0 10px 20px;" />
 
 <p>
-	The SliTaz Tiny/Touch Screen aka sts provide a suitable desktop for
-	small screens such as 320x240 TFT display. The screenshot shown sts
+	The SliTaz Tiny/Touch Screen aka sts provides a suitable desktop for
+	small screens such as a 320x240 TFT display. The screenshot shows sts
 	running on the Raspberry PiTFT touchscreen. The desktop is powered
-	by Openbox and LXpanel. All applications are started maximited and
+	by Openbox and LXpanel. All applications are started maximised and
 	without decoration.
 </p>
 <p>	
-	To close windows and switch desktop you must use the hidden bottom 
+	To close windows and switch desktops you must use the hidden bottom 
 	panel. Sts provide a small cmdline tool to handle custom tasks and
 	the sts-session script can be used to start an X session via startx
 	and ~/.xsession or the Slim login manager.
@@ -180,10 +180,14 @@ $ sts help
 	toolchains and 'cook' is used to cross compile SliTaz packages.
 </p>
 
-<p>
+<!--<p>
 	README, howto and docs: <a href="tools.cgi?doc&amp;tool=cross">cross</a>
-	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>. Here is a quickstart
+	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>. Here is a quickstart 
 	cmdline setup:
+</p>-->
+
+<p>
+	Here is a cmdline quickstart setup:
 </p>
 
 <pre>
@@ -210,10 +214,15 @@ Cross compile zlib and check testsuite output
 </pre>
 
 <p>
-	If you want to cross compile package that have a lot of build 
-	dependencies and dont want to build them all from source, you must
-	download official SliTaz ARM packages to the /home/slitaz/packages
+	If you want to cross compile packages that have a lot of build 
+	dependencies and don't want to build them all from source, you must
+	download any official SliTaz ARM packages to the /home/slitaz/packages
 	in the build chroot.
+</p>
+
+<p>
+	README, howto and docs: <a href="tools.cgi?doc&amp;tool=cross">cross</a>
+	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>.
 </p>
 
 <h2>ARM emulator</h2>
