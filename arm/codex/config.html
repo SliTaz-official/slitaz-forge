@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SliTaz ARM - Configuration</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+<div id="header">
+	<div id="logo"></div>
+	<div id="network">
+		<a href="http://arm.slitaz.org/">SliTaz ARM</a>
+	</div>
+	<h1><a href=".">SliTaz ARM Codex</a></h1>
+</div>
+
+<!-- Content -->
+<div id="content">
+	
+<h2>Configuration</h2>
+
+<p>
+	System and devices configuration
+</p>
+
+<ul>
+	<li><a href="#slitaz-config">SliTaz Ncurses config</a></li>
+	<li><a href="#cgi-adm">CGI/Web remote control</a></li>
+</ul>
+
+<h2 id="slitaz-config">SliTaz Ncurses config</h2>
+<p>
+	Each SliTaz ARM flavor provide a Ncurses dialog tool to configure the
+	system from the Linux kernel console or from an X session with mouse
+	support. The slitaz-config tool can be found in the 'System Tools'
+	menu or can be run from cmdline:
+</p>
+
+<pre>
+# slitaz-config
+</pre>
+
+<h2 id="cgi-adm">CGI/Web remote control</h2>
+
+<p>
+	SliTaz ARM flavors provides a CGI SHell remote control environment
+	with plugins support and HTTP authentication. You can rebooot/halt
+	the system, edit any system files, check system status or upload
+	file via a nice web interface.
+</p>
+
+<p>
+	You must first start the web server then check the IP address of your
+	device and connect with the root user and password via the IP:
+</p>
+
+<pre>
+# startd httpd
+# ifconfig
+</pre>
+
+<div>
+	<b>URL:</b> http://192.168.1.xxx/adm
+</div>
+
+<!-- Close content -->
+</div>
+
+<div id="footer">
+	&copy; 2014 - <a href="http://www.slitaz.org/">SliTaz GNU/Linux</a>
+</div>
+
+</body>
+</html>

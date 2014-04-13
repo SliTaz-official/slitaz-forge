@@ -6,10 +6,10 @@ keep up-to-date. This HTML doc is packaged for ARM in slitaz-doc, the style.css
 and images/ symlink help to package.
 
 
-	* quickstart.html
-	* faq.html
-	* apps.html
-	* config.html
+	* faq.html        : Frenqently Asked Questions
+	* apps.html       : List of applications with tips
+	* config.html     : System and devices configuration
+	* setup.html      : System and services setup guides
 	
 	
 ================================================================================

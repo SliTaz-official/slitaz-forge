@@ -116,24 +116,19 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 
 <p>
 	SliTaz Raspberry Pi provides a CGI SHell remote control environment
-	with plugins support and HTTP authentication. You can rebooot/halt
-	the system, edit any system files and set boot options. Creating new
+	with custom rpi_config plugin support. You can rebooot/halt
+	the system, edit or upload files and set boot options. Creating new
 	plugins is a nice way to learn CGI/SHell scripts and Linux commands.
 </p>
 
 <p>
-	You must first start the web server then check the IP address of your
-	device and connect with the root user and password via the IP:
+	See: <a href="../codex/config.html#cgi-adm">Codex: CGI/Web remote control</a>
+	for more information. SliTaz Raspberry Pi can also be controled via
+	the cmdline and an encrypted SSH connection. Finaly you can also control
+	graphicaly SliTaz with a VNC viewer: simply install and start the x11vnc
+	server on your Raspberry Pi and connect from any computer or mobile 
+	devices.
 </p>
-
-<pre>
-# startd httpd
-# ifconfig
-</pre>
-
-<div class="box-rpi">
-	<b>URL:</b> http://192.rpi.ip/adm
-</div>
 
 <h2>TazBerry</h2>
 
@@ -167,9 +162,12 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 <p>
 	The Raspberry Pi has a lot of specifications. SliTaz ARM provides 
 	'sat-rpi' to build custom SliTaz Rpi distro images ready to boot. 
-	A quickstart guide is in the SliTaz Raspberry Pi repository: 
-	<a href="../tools.cgi?doc&amp;tool=sat-rpi">README</a>
+	A quickstart guide is in the SliTaz Raspberry Pi repository:
 </p>
+
+<div class="box-rpi">
+	Sat-rpi: <a href="../tools.cgi?doc&amp;tool=sat-rpi">README</a>
+</div>
 
 <!-- Close content -->
 </div>
