@@ -3,7 +3,9 @@
 <head>
 	<title>SliTaz ARM - _TITLE_</title>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="style-tiny.css" />
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
@@ -21,17 +23,18 @@
 	<h1><a href="./">SliTaz ARM</a></h1>
 </div>
 
-<div id="block">
-	<nav id="nav">
-		<a class="nav1" href="codex/">Codex</a>
-		<a class="nav2" href="tools.cgi?pkgs">Packages</a>
-		<a class="navpi" href="rpi/">Raspberry Pi</a>
-		<a class="nav2" href="tools.cgi?doc&amp;tool=sat">README</a>
-		<a class="nav1" href="http://twitter.com/slitaz" 
-			title="Follow us on Twitter">
-		<img src="images/twitter.png" alt="Twitter" /></a>
-	</nav>
-</div>
+<nav id="nav" role="navigation" tabindex="0">
+	<ul>
+		<li><a class="nav1" href="codex/">Codex</a></li>
+		<li><a class="nav2" href="tools.cgi?pkgs">Packages</a></li>
+		<li><a class="navpi" href="rpi/">Raspberry Pi</a></li>
+		<li><a class="nav2" href="tools.cgi?doc&amp;tool=sat">README</a></li>
+		<li><a class="nav1 mobile" href="http://www.slitaz.org">SliTaz.Org</a></li>
+		<li><a class="nav1" href="http://twitter.com/slitaz" 
+			title="Follow us on Twitter"><span class="mobile">Follow us</span><img 
+			src="images/twitter.png" alt="Twitter" /></a></li>
+	</ul>
+</nav>
 
 <!-- Content -->
 <div id="content">

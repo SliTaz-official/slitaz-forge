@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>SliTaz ARM - Configuration</title>
+	<title>SliTaz ARM Codex - System</title>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="style-tiny.css" />
 </head>
-<body>
+<body bgcolor="#fff">
 
 <div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://arm.slitaz.org/">SliTaz ARM</a>
-	</div>
+	<div id="network"><a href="http://arm.slitaz.org/">SliTaz ARM</a></div>
 	<h1><a href=".">SliTaz ARM Codex</a></h1>
 </div>
+
+<nav id="nav" role="navigation" tabindex="0">
+	<ul>
+		<li><a class="nav1" href="faq.html">FAQ</a></li>
+		<li><a class="nav2" href="system.html">System</a></li>
+		<li><a class="nav1" href="apps.html">Apps</a></li>
+		<li><a class="nav2" href="setup.html">Setup</a></li>
+	</ul>
+</nav>
 
 <!-- Content -->
 <div id="content">
@@ -27,6 +35,7 @@
 <ul>
 	<li><a href="#firstboot">First boot setup</a></li>
 	<li><a href="#slitaz-config">SliTaz Ncurses config</a></li>
+	<li><a href="#spk">Packages management</a></li>
 	<li><a href="#cgi-adm">CGI/Web remote control</a></li>
 </ul>
 
@@ -50,6 +59,16 @@
 <pre>
 # slitaz-config
 </pre>
+
+<h2 id="spk">Packages management</h2>
+<p>
+	The recomended package manager for Slitaz ARM is 'spk', zhe packages
+	is installed by default on all flavors and provide several tools to
+	handle SliTaz packages. Spk was coded with multiarch architecture, it
+	handle miltiple packages in arguments and provide a Ncurses GUI
+	interface. The spk documentation in install in /usr/share/doc/spk
+	and can be found in the desktop menu.
+</p>
 
 <h2 id="cgi-adm">CGI/Web remote control</h2>
 
