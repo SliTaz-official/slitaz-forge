@@ -1,7 +1,7 @@
 
+SCN is powered by TinyCM. This folder have the custom CSS style and
+header skeleton.
 
-Receipts folder is the custom packages receipts for the SliTaz network.
-Note that all receipts are made for tazwok 3.1 and SliTaz 3.0.
-
-Themes folder has the SliTaz Wordpress themes.
+Receipts folder is the custom packages receipts for the old wordpress
+SliTaz SCN. Note that all receipts are made for tazwok 3.1 and SliTaz 3.0.
 
