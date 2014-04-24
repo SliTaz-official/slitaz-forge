@@ -3,9 +3,11 @@
 <head>
 	<title>SCN %TITLE%</title>
 	<meta charset="utf-8" />
-	<link rel="shortcut icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="style-tiny.css" />
 	<script type="text/javascript" src="lib/functions.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
 
@@ -13,58 +15,31 @@
 	<div id="logo"></div>
 	<div id="network">
 		<a href="http://www.slitaz.org/">Home</a>
-		<span>Community</span>
+		<span>SCN</span>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org/">Bugs</a>
 		<a href="http://hg.slitaz.org/">Hg</a>
 	</div>
-	<h1><a href="index.cgi">SliTaz Community</a></h1>
+	<h1><a href="./">SliTaz Community</a></h1>
 </div>
 
-<!-- Block -->
-<div id="block">
-	<!-- Navigation -->
-	<div id="block_nav">
-		
-		<!-- Twitter button
-		<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-hashtags="SliTaz">Tweet</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-		 -->
-		 
-		<a href="http://twitter.com/slitaz" title="Follow us on Twitter">
-			<img src="images/twitter.png" alt="Twitter" /></a>
-		<a href="http://www.facebook.com/slitaz" title="Follow us on Facebook">
-			<img src="images/fb.png" alt="Facebook" /></a>
-		
-		<!-- PayPal button -->
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-			style="display: inline;">
-			<input type="hidden" name="cmd" value="_s-xclick" />
-			<input type="hidden" name="hosted_button_id" value="4885025" />
-			<input type="image" src="images/paypal.png" name="submit" title="Donate"
-				alt="PayPal - The safer, easier way to pay online!" />
-		</form>
-		
-		<!-- Hardcoded SCN links -->
-		<nav id="nav">
-			<a href="?blog">Blog</a>
-			<a href="?log">Activity</a>
-			<a href="?d=en/about">About</a>
-		</nav>
-		
-	</div>
-	<!-- Information/image -->
-	<div id="block_info">
-		<p>
-			The SliTaz Community Network provides latest news, lets you
-			connect with SliTaz users and developers, share ideas about
-			SliTaz, help others and get involved in the project.
-		</p>
-	</div>
-</div>
-
+<nav id="nav" role="navigation" tabindex="0">
+	<ul>
+		<li><a class="nav1" href="?blog">Blog</a></li>
+		<li><a class="nav2" href="?log">Activity</a></li>
+		<li><a class="nav1" href="?d=en/about">About</a></li>
+		<li><a class="nav2" href="http://twitter.com/slitaz" 
+			title="Follow us on Twitter"><img src="images/twitter.png"
+			alt="Twitter" /><span class="mobile"> @slitaz</span></a></li>
+		<li><a class="nav1" href="http://www.facebook.com/slitaz"
+			title="Follow us on Facebook"><img src="images/fb.png"
+			alt="Facebook" /><span class="mobile"> Fan page</span></a></li>
+	</ul>
+	<p>
+		Latest news, connect with the community, share or get involved in the project.
+	</p>
+</nav>
 <!-- Content -->
 <div id="content">

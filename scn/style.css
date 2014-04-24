@@ -18,7 +18,7 @@ thead { font-weight: bold; }
 /* Header */
 
 #header {
-	background: #111 ;
+	background: #111 url(images/logo.png) no-repeat left;
 	height: 40px;
 }
 
@@ -71,11 +71,7 @@ thead { font-weight: bold; }
 
 /* Login and user box */
 
-#login {
-	width: 240px;
-	float: left;
-	height: 120px;
-}
+#login { width: 240px; float: left; height: 120px; }
 
 #login input[type="text"], #login input[type="password"] { 
 	width: 200px; }
@@ -101,49 +97,45 @@ thead { font-weight: bold; }
 
 #account-info { width: 380px; height: 120px; float: right; }
 
-/* Block */
+/* Navigation */
 
-#block { 
-	min-height: 92px;
-	background: #ccc; 
-	padding: 20px 10% 0px;
+nav {
+	font-size: 120%;
+	min-height: 54px;
+	background: #ddd; 
+	padding: 30px 6% 0;
 	text-align: center;
 	color: #222;
 	border-bottom: 1px solid #afafaf;
+	margin-bottom: 20px;
+	top: 40px;
 }
 
-#block_info {
-	text-align: justify; 
-	width: 48%;
-	padding: 0px 10px 0 0;
+nav ul {
+    margin: 0; padding: 0;
+    list-style: none;
 }
+nav li { display: inline; }
 
-#block_info p { margin: 10px 0; padding: 0 12px 0 0; }
-#block_info a { font-weight: normal; }
-#block ul { list-style-type: square; }
-#block a:hover { color: #351a0a; }
-
-/* Navigation */
-
-#block_nav {
-	background: #666;
-	padding: 10px;
-	text-align: justify;
-	width: 48%;
-	float: right;
-}
-
-nav { margin: 12px 0 0 0; }
-
-nav a { 
+nav a, nav form { 
 	text-decoration: none;
-	padding: 0px 4px;
+	padding: 12px;
 	color: #fff; 
 	font-weight: bold;
+	vertical-align: middle;
+	-webkit-transition: background-color 0.6s;
+	transition: background-color 0.6s;
 }
+nav p { padding: 8px; color: #333; font-size: 92%; }
 
-#block_nav a:hover, nav a:hover { color: #afafaf; }
-#block_nav img { vertical-align: top; }
+nav input { padding: 0px;}
+.nav1 { background-color: #333; }
+.nav1:hover { background-color: #128da9; }
+.nav2 { background-color: #ab3c00; }
+.nav2:hover { background-color: #ff9b00; }
+.navpi { background-color: #444; }
+.navpi:hover { background-color: #bc1142; }
+
 
 /* Languages */
 
@@ -197,6 +189,7 @@ pre img { margin: 4px 4px 4px 0px; }
 #content p img { display: block;
 	margin: 0 auto;  }
 
+.mobile { display: none !important; }
 .error { color: red; }
 .ok { color: green; }
 .date { color: #666; font-size: 96%; }
@@ -260,18 +253,18 @@ select {
 }
 
 #tools { 
-	padding-top: 10px; 
+	padding-top: 10px;
 	margin: 20px 0px; 
 	/*border-top: 1px dotted #ccc;
 	position: fixed;
 	bottom: 10px;*/
 }
-#tools a { text-decoration: none; margin: 4px 6px 4px 0px; }
+#tools a { text-decoration: none; }
 
 /* Round corner */
 
 pre, .button, .pctbar, .box, #login, #account-info, #user, img,
-input, textarea, select, #tools a, #block_nav {
+input, textarea, select, #tools a, nav a {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;

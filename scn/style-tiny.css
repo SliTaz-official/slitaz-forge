@@ -1,0 +1,107 @@
+/* Tiny/Mobile screens CSS style for SliTaz */
+
+@media (max-width: 680px) {
+
+	body { font: 100% sans-serif, vernada, arial; }
+	#header, #logo, nav p { display: none !important; }
+	#user { top: 65px; background-color: #ddd; }
+	#user a {  color: #444; } #user a:hover { color: #000; }
+	#account-info { width: auto; height: 120px; float: none; }
+	#login { width: auto; float: none; height: 120px; margin-top: 20px; }
+	.mobile { display: block !important; }
+	.mobile span { display: inline !important; }
+	
+	body {
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+	img, table, td, blockquote, code, pre, textarea, input, iframe, 
+	object, embed, video {
+		max-width: 100%;
+	}
+	
+	/* Keep images ratio */
+	img {
+		height: auto;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	textarea, table, td, th, code, pre, samp {
+		word-wrap: break-word;
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		hyphens: auto;
+	}
+	code, pre, samp { white-space: pre-wrap; }
+
+	/* Navigation */
+	
+	nav {
+		min-height: 0;
+		max-height: 0;
+		font-size: 116%;
+		padding: 0;
+		text-align: left;
+		color: #222;
+		border-bottom: 1px solid #afafaf;
+		margin-bottom: 20px;
+		top: 0;
+		display: block;
+	}
+
+	nav:before {
+		content: "Menu \25BC"; 
+		display: block;
+		padding: .8em;
+		background: #333;
+		color: #fff;
+		border-bottom: 4px solid #afafaf;
+		background: #222 url(images/logo.png) no-repeat right;
+	}
+	nav ul {
+	    max-height: 0;
+	    overflow: hidden;
+	    margin: 0; padding: 0;
+	    list-style: none;
+	}
+	nav a {
+		display: block;
+		padding: 0.8em;
+		background: #4A7377;
+		color: #fff;
+		text-decoration: none;
+		background-color: #000;
+		opacity: 0.95;
+		border-radius: 0px;
+	}
+	nav:not(:focus) ul {
+		max-height: 0;
+	}
+	nav:focus ul {
+		margin-bottom: 25em;
+	}
+	nav ul {
+		/* number of <li> x5 */
+		max-height: 25em;
+		-webkit-transition: max-height .4s;
+		transition: max-height .4s;
+	}
+	
+	/* Content */
+	
+	#content {
+		margin: 65px 0 0 0;
+		padding: 2%;
+		text-align: justify;
+		max-width: auto;
+	}
+	pre, .box-dl, .box-rpi { overflow: hidden; }
+}
+
+@media (max-device-width:768px) and (orientation: landscape) {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+}
