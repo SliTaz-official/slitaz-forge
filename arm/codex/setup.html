@@ -81,14 +81,14 @@
 # killall znc
 </pre>
 
-<h2 id="ntpd">Lightweigt time server</h2>
+<h2 id="ntpd">Lightweight time server</h2>
 <p>
-	SliTaz Busybox multi-tool binary provide a built-in NTP 
+	SliTaz Busybox multi-tool binary provides a built-in NTP 
 	(Network Time Protocol) client/server. If you have many machines
-	in a local network that need to keep system clock up-to-date, it
-	may be useful to setup your own NTP server to save traffic to
+	in a local network that need to keep system clocks up-to-date, it
+	may be useful to setup your own NTP server to serve traffic to
 	the web. To start the NTP daemon using '0.pool.ntp.org' server
-	has reference:
+	as reference:
 </p>
 
 <pre>
@@ -97,8 +97,8 @@
 
 <p>
 	You can add this command to '/etc/init.d/local.sh' to start the daemon
-	on each boot. Then from a other local mahine you just have to edit
-	/etc/rcS.conf to set NTPD_HOST with the IP address of you NTP server.
+	on each boot. Then from another local machine you just have to edit
+	/etc/rcS.conf to set NTPD_HOST with the IP address of your NTP server.
 	You can also test the server with:
 </p>
 
