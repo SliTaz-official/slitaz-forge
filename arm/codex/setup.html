@@ -51,9 +51,10 @@
 # spk-add lighttpd
 </pre>
 
-<p>
-	Config files: <b>/etc/lighttpd</b>
-</p>
+<ul>
+	<li>Main config files: <b>/etc/lighttpd/lighttpd.conf</b></li>
+	<li>Virtual hosts configs: <b>/etc/lighttpd/vhosts.conf</b></li>
+</ul>
 
 <h2 id="znc">IRC bouncer setup</h2>
 
@@ -97,7 +98,7 @@
 <p>
 	You can add this command to '/etc/init.d/local.sh' to start the daemon
 	on each boot. Then from a other local mahine you just have to edit
-	/etc/rcS.conf to set NTPD_HOST witj the IP address of you NTP server.
+	/etc/rcS.conf to set NTPD_HOST with the IP address of you NTP server.
 	You can also test the server with:
 </p>
 
