@@ -1,12 +1,21 @@
 #!/bin/sh
 
 . /etc/tazwok.conf
+PURGE=
+while true; do
+	case "$1" in
+	--purge) PURGE="yes";;
+	*) break;;
+	esac
+	shift
+done
 WOK=/home/slitaz/${1:-cooking}/wok
 SRC=/var/www/slitaz/mirror/sources/packages-${1:-cooking}
 SRC2=/var/www/slitaz/mirror/sources/packages
 
 for i in $WOK/*/receipt ; do
 	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
+	ARCH=${2:-i486}
 	. $i
 	[ -n "$WANTED" ] && continue
 	if [ -z "$TARBALL$EXTRA_SOURCE_FILES" ]; then
@@ -42,9 +51,10 @@ for i in $SRC/?/* ; do
 		grep -q ^$(basename $i)$ /tmp/tarball$$ && continue
 		;;
 	esac
-	echo $i
+	echo $i && [ "$PURGE" == "yes" ] && \rm -i $i
 done
 rm -f /tmp/tarball$$ /tmp/wget_url$$
 for i in $SRC2/?/* ; do
-	[ $(stat -c "%h" $i) -eq 1 ] && echo $i
+	[ $(stat -c "%h" $i) -eq 1 ] && echo $i &&
+	[ "$PURGE" == "yes" ] && echo "Purge $i" && rm -f $i
 done

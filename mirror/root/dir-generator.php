@@ -340,7 +340,8 @@ function my_filemtimeasc($path)	// 2G+ file support
 //return date('Y-M-d H:m:s', filemtime($path));
 }
 
-if (filesize($path.".folderlist") > 0 && filesize($path.".filelist") > 0) {
+if (filesize($path.".folderlist") > 0 && filesize($path.".filelist") > 0 &&
+    filemtime($path."/.filelist") > filemtime($path)) {
 	$folderlist = unserialize(file_get_contents($path.".folderlist"));
 	$filelist = unserialize(file_get_contents($path.".filelist"));
 }

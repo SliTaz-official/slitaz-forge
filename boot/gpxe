@@ -1,0 +1,3 @@
+#!gpxe
+kernel http://mirror.slitaz.org/boot/gpxe.pxe
+boot
