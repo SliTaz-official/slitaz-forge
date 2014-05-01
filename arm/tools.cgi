@@ -54,10 +54,27 @@ case " $(GET) " in
 		esac
 		echo '</pre>'
 		html_footer ;;
+	
+	*\ micronews\ *)
+		header
+		html_header "microNews" 
+		cat << EOT
+<h2>SliTaz ARM &micro;News</h2>
+<p>
+	Development activity can be seen on: 
+	<a href="http://hg.slitaz.org/slitaz-arm">SliTaz ARM Hg repo</a>
+</p>
+<pre style="line-height: 1.6em;">
+$(tac news.txt)
+</pre>
+EOT
+		html_footer ;;
+		
 	*\ pkgs\ *)
 		# TODO: link packages and add link to raw lists
 		title="- Packages"
 		count="$(cat $pkgs/packages.list | wc -l)"
+		header
 		html_header "Packages"
 		cat << EOT
 <h2>Packages: $count</h2>

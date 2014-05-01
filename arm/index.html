@@ -31,7 +31,7 @@
 		<li><a class="nav2" href="tools.cgi?doc&amp;tool=sat">README</a></li>
 		<li><a class="nav1" href="http://twitter.com/slitaz" 
 			title="Follow us on Twitter"><img src="images/twitter.png"
-			alt="Twitter" /><span class="mobile"> @slitaz</span></a></li>
+			alt="Twitter" /></a></li>
 	</ul>
 </nav>
 
@@ -68,18 +68,63 @@
 		alt="slitaz-rpi-links PNG" style="margin: 4px 0;" /></a>
 </div>
 
+<div class="box-up">
+	Stay informed with: <a href="tools.cgi?micronews">SliTaz ARM &micro;News</a>
+</div>
+
 <h2>Raspberry Pi</h2>
 
 <p>
 	Currently the SliTaz official ARM port works on the Raspberry Pi and can
 	be used to setup a small server. DirectFB, Xorg, JWM, E17, Openbox and
-	the FOX toolkit is ported and provides a nice and light GUI support. 
-	Sat-rpi lets advanced users create custom Rpi flavors with an official
-	Kernel, custom boot options and more.
+	the FOX toolkit and FLTK is ported and provides a nice and light GUI
+	support. Sat-rpi lets advanced users create custom Rpi flavors with
+	an official Kernel, custom boot options and more.
 </p>
 
 <div class="box-rpi">
 	<a href="rpi/">SliTaz Raspberry Pi Home</a>
+</div>
+
+<h2>SliTaz Tiny/Touch Screen</h2>
+
+<img src="images/shots/sts-pitft.png" alt="sts-pitft.png" 
+	style="float: right; margin: 10px 0 10px 20px;" />
+
+<p>
+	The SliTaz Tiny/Touch Screen aka sts provides a suitable desktop for
+	small screens such as a 320x240 TFT display. The screenshot shows sts
+	running on the Raspberry PiTFT touchscreen. The desktop is powered
+	by Openbox and LXpanel. All applications are started maximised and
+	without decoration.
+</p>
+<p>	
+	To close windows and switch desktops you must use the hidden bottom 
+	panel. Sts provide a small cmdline tool to handle custom tasks and
+	the sts-session script can be used to start an X session via startx
+	and ~/.xsession or the Slim login manager.
+</p>
+
+<pre>
+$ sts help
+</pre>
+
+<h2>Packages</h2>
+
+<p>
+	All SliTaz ARM packages are automatically built by the
+	<a href="http://cook.slitaz.org/cross/arm/">ARM Cooker</a>. To properly
+	handle the SLITAZ_ARCH variable, the recommended Package Manager is
+	<a href="http://hg.slitaz.org/spk">spk</a>. One way to start
+	with the Spk Toolset is to generate a distro and include spk. 
+	On a SliTaz ARM system you simply run 'spk-up --list' to get the 
+	latest <a href="tools.cgi?pkgs">packages list</a>. The current ARM
+	packages mirror URL:
+</p>
+
+<div class="box-dl">
+	<a href="http://cook.slitaz.org/cross/arm/packages/"
+		>http://cook.slitaz.org/cross/arm/packages/</a>
 </div>
 
 <h2>Build distros</h2>
@@ -109,47 +154,6 @@ $ hg clone http://hg.slitaz.org/slitaz-arm
 # sat mirror &amp;&amp; sat gen --flavor=arm-base
 </pre>
 
-<h2>Packages</h2>
-
-<p>
-	All SliTaz ARM packages are automatically built by the
-	<a href="http://cook.slitaz.org/cross/arm/">ARM Cooker</a>. To properly
-	handle the SLITAZ_ARCH variable, the recommended Package Manager is
-	<a href="http://hg.slitaz.org/spk">spk</a>. One way to start
-	with the Spk Toolset is to generate a distro and include spk. 
-	On a SliTaz ARM system you simply run 'spk-up --list' to get the 
-	latest <a href="tools.cgi?pkgs">packages list</a>. The current ARM
-	packages mirror URL:
-</p>
-
-<div class="box-dl">
-	<a href="http://cook.slitaz.org/cross/arm/packages/"
-		>http://cook.slitaz.org/cross/arm/packages/</a>
-</div>
-
-<h2>SliTaz Tiny/Touch Screen</h2>
-
-<img src="images/shots/sts-pitft.png" alt="sts-pitft.png" 
-	style="float: right; margin: 10px 0 10px 20px;" />
-
-<p>
-	The SliTaz Tiny/Touch Screen aka sts provides a suitable desktop for
-	small screens such as a 320x240 TFT display. The screenshot shows sts
-	running on the Raspberry PiTFT touchscreen. The desktop is powered
-	by Openbox and LXpanel. All applications are started maximised and
-	without decoration.
-</p>
-<p>	
-	To close windows and switch desktops you must use the hidden bottom 
-	panel. Sts provide a small cmdline tool to handle custom tasks and
-	the sts-session script can be used to start an X session via startx
-	and ~/.xsession or the Slim login manager.
-</p>
-
-<pre>
-$ sts help
-</pre>
-
 <h2>Prebuilt ARM Toolchain</h2>
 
 <p>
@@ -172,36 +176,31 @@ $ sts help
 	toolchains and 'cook' is used to cross compile SliTaz packages.
 </p>
 
-<!--<p>
-	README, howto and docs: <a href="tools.cgi?doc&amp;tool=cross">cross</a>
-	- <a href="tools.cgi?doc&amp;tool=cook">cook</a>. Here is a quickstart 
-	cmdline setup:
-</p>-->
-
 <p>
 	Here is a cmdline quickstart setup:
 </p>
 
 <pre>
-Setup the build chroot
+1) Setup the build chroot
+-------------------------
 # tazdev gen-chroot --arch=arm
 # tazdev -c --arch=arm
 
-Setup the cross toolchain
+2) Setup the cross toolchain
+----------------------------
 # mkdir -p /cross &amp;&amp; cd /cross
 # wget http://mirror.slitaz.org/arm/cross/slitaz-arm-toolchain-20140304.tar.bz2
 # tar xjf slitaz-arm-toolchain-20140304.tar.bz2
 # cp -a slitaz-arm-toolchain-*/arm /cross
 
-Check the toolchain installation
-# export PATH=$PATH:/cross/arm/tools/bin
-# arm-slitaz-linux-gnueabi-gcc -v
-
-Setup cross/cook environment:
+3) Setup cross/cook environment
+-------------------------------
 # cross arm-setup
 # cook setup --wok
 
-Cross compile zlib and check testsuite output
+4) Testsuite and cross compile zlib
+-----------------------------------
+# cross testsuite
 # cook zlib
 </pre>
 
