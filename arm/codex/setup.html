@@ -34,8 +34,9 @@
 
 <ul>
 	<li><a href="#httpd">HTTP Web server</a></li>
+	<li><a href="#ftpd">On demand FTP server</a></li>
 	<li><a href="#znc">IRC bouncer setup</a></li>
-	<li><a href="#ntpd">Lightweight time server</a></li>
+	<li><a href="#ntpd">Low resources NTP server</a></li>
 </ul>
 
 <h2 id="httpd">HTTP Web server</h2>
@@ -63,9 +64,50 @@
 	to the server URL, example with the loopback IP address:
 </p>
 
-<pre class="box-up">
+<pre class="box-share">
 server root   : <a href="http://localhost">http://localhost</a>
 Server status : <a href="http://127.0.0.1/server-status">http://127.0.0.1/server-status</a>
+</pre>
+
+<h2 id="ftpd">On demand FTP server</h2>
+
+<p>
+	This setup guide will use the small Busybox ftpd applet and inetd 
+	daemon to run the FTP server only when needed. The setup use very
+	small system resources and the server can handle undread of files.
+	The root directory is where the FTP files are or will be stored.
+	Open inetd.conf with a textt editor:
+</p>
+
+<pre>
+# editor /etc/inetd.conf
+</pre>
+
+<p>
+	And add the following line at the bottom of the config file or 
+	search and uncomment the line starting with #ftp:
+</p>
+
+<pre>
+ftp  stream    tcp   nowait   root   ftpd   ftpd -w /home/share/ftp
+</pre>
+
+<p>
+	We choosed to store FTP files in <b>/home/share/ftp</b>, but you are
+	free to use the folder you want. Now restart the inetd daemon to include
+	your new settings:
+</p>
+
+<pre>
+# /etc/init.d/inetd restart
+</pre>
+
+<p>
+	Finaly use a web browser to test the services. As usual, you must
+	use the local IP address of the server or connect from localhost:
+</p>
+<pre class="box-share">
+FTP server: <a href="ftp://localhost/">ftp://localhost/</a>
 </pre>
 
 <h2 id="znc">IRC bouncer setup</h2>
@@ -93,7 +135,7 @@ Server status : <a href="http://127.0.0.1/server-status">http://127.0.0.1/server
 # killall znc
 </pre>
 
-<h2 id="ntpd">Lightweight time server</h2>
+<h2 id="ntpd">Low resources NTP server</h2>
 <p>
 	SliTaz Busybox multi-tool binary provides a built-in NTP 
 	(Network Time Protocol) client/server. If you have many machines
@@ -108,10 +150,10 @@ Server status : <a href="http://127.0.0.1/server-status">http://127.0.0.1/server
 </pre>
 
 <p>
-	You can add this command to '/etc/init.d/local.sh' to start the daemon
-	on each boot. Then from another local machine you just have to edit
-	/etc/rcS.conf to set NTPD_HOST with the IP address of your NTP server.
-	You can also test the server with:
+	You can add this command to the boot script <b>/etc/init.d/local.sh</b>
+	to start the daemon on each boot. Then from another local machine 
+	you just have to edit <b>/etc/rcS.conf</b> to set NTPD_HOST with 
+	the IP address of your NTP server. You can also test the server with:
 </p>
 
 <pre>
