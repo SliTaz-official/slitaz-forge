@@ -58,8 +58,8 @@
 </ul>
 
 <p>
-	You can reach you server with the IP address of the machine or from
-	the machine itself via the localhost URL (link below). And you you 
+	You can reach your server with the IP address of the machine or from
+	the machine itself via the localhost URL (link below). And you  
 	can have some stats and the server status by adding 'server-status'
 	to the server URL, example with the loopback IP address:
 </p>
@@ -73,10 +73,10 @@ Server status : <a href="http://127.0.0.1/server-status">http://127.0.0.1/server
 
 <p>
 	This setup guide will use the small Busybox ftpd applet and inetd 
-	daemon to run the FTP server only when needed. The setup use very
-	small system resources and the server can handle undread of files.
+	daemon to run the FTP server only when needed. The setup uses very
+	little system resources and the server can handle hundreds of files.
 	The root directory is where the FTP files are or will be stored.
-	Open inetd.conf with a textt editor:
+	Open inetd.conf with a text editor:
 </p>
 
 <pre>
@@ -93,7 +93,7 @@ ftp  stream    tcp   nowait   root   ftpd   ftpd -w /home/share/ftp
 </pre>
 
 <p>
-	We choosed to store FTP files in <b>/home/share/ftp</b>, but you are
+	We chose to store FTP files in <b>/home/share/ftp</b>, but you are
 	free to use the folder you want. Now restart the inetd daemon to include
 	your new settings:
 </p>
@@ -103,7 +103,7 @@ ftp  stream    tcp   nowait   root   ftpd   ftpd -w /home/share/ftp
 </pre>
 
 <p>
-	Finaly use a web browser to test the services. As usual, you must
+	Finally use a web browser to test the services. As usual, you must
 	use the local IP address of the server or connect from localhost:
 </p>
 <pre class="box-share">
