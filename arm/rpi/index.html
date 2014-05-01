@@ -43,14 +43,15 @@
 	Official SliTaz GNU/Linux Raspberry Pi distribution, a small operating
 	system for a small computer! The goal is to provide a fast, minimal 
 	footprint and optimized distro for the Raspberry Pi. You can setup a
-	fast and eco music server, development box, desktop, web server and 
-	much more with SliTaz Raspberry Pi. For a common list of applications
-	please read the <a href="../codex/apps.html">SliTaz ARM Codex</a>.
+	wide range of system type, from servers to desktop and learning platform.
+	Check out our <a href="../codex/pibook.html">PiBook</a> to get started 
+	with your Raspberry Pi and SliTaz.
 </p>
 
-<div class="box-rpi">
-	20140425: Full PiGlow support: PyGlow + Wiring Pi + custom SliTaz utility
-</div>
+<pre class="box-rpi">
+20140501: <a href="../codex/pibook.html">SliTaz PiBook</a> is out! Learn using SliTaz and the Raspberry Pi
+20140425: Full PiGlow support: PyGlow + Wiring Pi + custom SliTaz utility
+</pre>
 
 <div style="text-align: center;">
 	<a href="../images/shots/tazberry.png"><img 
@@ -87,13 +88,14 @@
 <h2>Installation</h2>
 
 <p>
-	For now the only installation option isto have 3 partitions on the SD
+	For now the only installation option is to have 3 partitions on the SD
 	card then run the install.sh script from a Linux system. In time we 
 	will try to provide disk image for MS Windows and OSX users.
 </p>
 
-<div class="box-up">
-	PiBook: <a href="../codex/pibook.html#install">Installation instructions</a>
+<div class="box-rpi">
+	Read out PiBook: 
+	<a href="../codex/pibook.html#install">Installation instructions</a>
 </div>
 
 <h2>Remote control</h2>
@@ -101,17 +103,15 @@
 <p>
 	SliTaz Raspberry Pi provides a CGI SHell remote control environment
 	with custom plugins. Creating new plugins is a nice way to learn 
-	CGI/SHell scripts and Linux commands. See: 
-	<a href="../codex/system.html#cgi-adm">Codex: CGI/Web remote control</a>
-	for more information.
+	CGI/SHell scripts and Linux commands. SliTaz Raspberry Pi can also 
+	be controlled via the cmdline and an encrypted SSH connection.
 </p>
 
 <p>
-	SliTaz Raspberry Pi can also be controlled via the cmdline and an 
-	encrypted SSH connection. Finally, you can also control SliTaz 
-	graphically with a VNC viewer: simply install and start the x11vnc
-	server on your Raspberry Pi and connect from any computer or mobile 
-	device.
+	Finally, you can also control a SliTaz Pi desktop graphicaly with a
+	VNC viewer. Check out: 
+	<a href="../codex/pibook.html#remote">PiBook Remote control</a>
+	section for more information.
 </p>
 
 <h2>TazBerry</h2>
@@ -120,8 +120,12 @@
 	TazBerry is a Ncurses GUI to configure your SliTaz Raspberry Pi box.
 	It provides a simple menu and lets you edit files with your favorite
 	text editor. TazBerry can be started from the window manger menu or
-	from the cmdline with: 'tazberry'
+	from the cmdline with:
 </p>
+
+<pre>
+# tazberry
+</pre>
 
 <h2>Raspberry Pi server</h2>
 
@@ -133,13 +137,10 @@
 	also on the mirror.
 </p>
 
-<p>
-	To install the MPD music player daemon (config file is: /etc/mpd.conf):
-</p>
-
-<pre>
-# spk-add mpd
-</pre>
+<div class="box-rpi">
+	<a href="../codex/pibook.html">PiBook</a> - Read out SliTaz
+	Raspberry Pi PocketBook for suggested usage and setup guides.
+</div>
 
 <h2>Breakout boards</h2>
 <p>
@@ -150,8 +151,8 @@
 </p>
 
 <ul>
-	<li>Pi Camera - Pi NoIR</li>
-	<li>PiGlow from Pimorini</li>
+	<li><a href="../codex/pibook.html#picam">Pi Camera - Pi NoIR</a></li>
+	<li><a href="../codex/pibook.html#piglow">PiGlow from Pimorini</a></li>
 </ul>
 
 <h2>Sat-rpi builder</h2>
