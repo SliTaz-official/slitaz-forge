@@ -86,38 +86,30 @@
 
 <h2>Installation</h2>
 
-<pre class="box-up">
-boot/    : Must be copied to a FAT32 partition
-rootfs/  : Must be copied to an ext4 or btrfs partition
-</pre>
-
 <p>
-	Be sure the SD card has got 3 partitions (boot, swap, root). The 
-	recommended partition sizes are 40Mb for /boot, 420Mb for swap and
-	using all available free space for root. Then you simply have to 
-	run the install.sh script from the SliTaz Raspberry Pi release 
-	directory:
+	For now the only installation option isto have 3 partitions on the SD
+	card then run the install.sh script from a Linux system. In time we 
+	will try to provide disk image for MS Windows and OSX users.
 </p>
 
-<pre>
-# ./install.sh
-</pre>
+<div class="box-up">
+	PiBook: <a href="../codex/pibook.html#install">Installation instructions</a>
+</div>
 
 <h2>Remote control</h2>
 
 <p>
 	SliTaz Raspberry Pi provides a CGI SHell remote control environment
-	with custom rpi_config plugins support. You can reboot/halt
-	the system, edit or upload files and set boot options. Creating new
-	plugins is a nice way to learn CGI/SHell scripts and Linux commands.
-	See: <a href="../codex/config.html#cgi-adm">Codex: CGI/Web remote control</a>
+	with custom plugins. Creating new plugins is a nice way to learn 
+	CGI/SHell scripts and Linux commands. See: 
+	<a href="../codex/system.html#cgi-adm">Codex: CGI/Web remote control</a>
 	for more information.
 </p>
 
 <p>
-	SliTaz Raspberry Pi can also be controlled via
-	the cmdline and an encrypted SSH connection. Finally, you can also control
-	SliTaz graphically with a VNC viewer: simply install and start the x11vnc
+	SliTaz Raspberry Pi can also be controlled via the cmdline and an 
+	encrypted SSH connection. Finally, you can also control SliTaz 
+	graphically with a VNC viewer: simply install and start the x11vnc
 	server on your Raspberry Pi and connect from any computer or mobile 
 	device.
 </p>

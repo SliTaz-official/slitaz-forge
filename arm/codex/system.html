@@ -40,27 +40,36 @@
 </ul>
 
 <h2 id="firstboot">First boot setup</h2>
+
 <p>
 	On the first SliTaz ARM boot you will be prompted to configure basic
-	system settings such as the system keymap and the root password. If
-	you don't want this setup you can create a file with the current date as
-	content. Mount the sdcard and create a file /var/lib/slitaz/post-install
-	before you boot.
+	system settings such as the system keymap, the root password, default
+	user settings and wifi configuration.
 </p>
+<p>
+	If you don't want this setup you can create a file with the current 
+	date as content. Mount the sdcard and create a file 'post-install'
+	before you boot. Example with the third sdcard partition mounted
+	on /mnt:
+</p>
+<pre>
+# date > /mnt/var/lib/slitaz/post-install
+</pre>
 
 <h2 id="slitaz-config">SliTaz Ncurses config</h2>
+
 <p>
 	Each SliTaz ARM flavor provides an Ncurses dialog tool to configure the
 	system from the Linux kernel console or from an X session with mouse
 	support. The slitaz-config tool can be found in the 'System Tools'
 	menu or can be run from a cmdline:
 </p>
-
 <pre>
 # slitaz-config
 </pre>
 
 <h2 id="spk">Packages management</h2>
+
 <p>
 	The recommended package manager for Slitaz ARM is 'spk', the package
 	is installed by default on all flavors and provides several tools to
@@ -78,20 +87,29 @@
 	the system, edit any system files, check system status or upload
 	files via a nice web interface.
 </p>
-
 <p>
-	You must first start the web server then check the IP address of your
-	device and connect with the root user and password via the IP:
+	To use the interface, you must find the IP address of your device
+	and connect with the root user and password via the correct local IP.
+	You can use ipinfo on on device to get the IP address:
 </p>
-
 <pre>
-# startd httpd
-# ifconfig
+$ ipinfo
+URL: http://192.168.x.xxx/adm
 </pre>
-
-<div>
-	<b>URL:</b> http://192.168.1.xxx/adm
-</div>
+<p>
+	The service is started by default to help new users. If you want to
+	stop/start the web server manually from cmdline you can use the
+	following commands and if you want to disable the service at boot
+	you must edit: <b>/etc/rcS.conf</b>. Start or stop the web server:
+</p>
+<pre>
+# stopd httpd
+# startd httpd
+</pre>
+<p>
+	If you wich to run the service on an othe port, you can edit the web
+	server configuration file: <b>/etc/httpd.conf</b>
+</p>
 
 <!-- Close content -->
 </div>
