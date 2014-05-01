@@ -39,9 +39,9 @@
 
 <p>
 	With the PiBook you will learn how to get started with SliTaz ARM and 
-	the Raspberry Pi, configure the system, install additionnal software
+	the Raspberry Pi, configure the system, install additional software
 	packages, setup a custom desktop and use pre-installed applications.
-	The book also cover GPIO usage, boards setup such has the official
+	The book also covers GPIO usage and boards setup such as the official
 	Raspberry Pi Camera or PiGlow, and basic electronic usage.
 </p>
 
@@ -53,7 +53,7 @@
 	<li><a href="#update">System &amp; kernel update</a></li>
 	<li><a href="#add-apps">Installing new packages</a></li>
 	<li><a href="#def-apps">Installed applications</a></li>
-	<li><a href="#pi-pkgs">Rasperry Pi packages</a></li>
+	<li><a href="#pi-pkgs">Raspberry Pi packages</a></li>
 	<li><a href="#remote">GUI &amp; secure remote control</a></li>
 	<li><a href="#setup">Pi setup suggestions</a></li>
 	<li><a href="#desktop">Desktop customization</a></li>
@@ -63,7 +63,7 @@
 </ul>
 
 <p>
-	The Pibook is completed by the general documentation found in the
+	The Pibook is complemented by the general documentation found in the
 	<a href="./.">SliTaz ARM Codex</a>.
 </p>
 
@@ -90,10 +90,10 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 <p>
 	On the first SliTaz Raspberry Pi boot you will be prompted to configure
 	basic system settings such as the system keymap and the root password.
-	Then you will prompt to create the default user with it password.
+	Then you will be prompted to create the default user with its password.
 </p>
 <p>
-	On any secure GNU/Linux system the will have a leat the administrator
+	On any secure GNU/Linux system you will have to have at least the administrator
 	(root) and the default human user. In this way, users can fully use
 	the system but can't break it.
 </p>
@@ -107,16 +107,16 @@ rootfs/  : Must be copied to an ext4 or btrfs partition
 <h2 id="config">System configuration</h2>
 
 <p>
-	All SliTaz Raspberry Pi basic configuration can be done via a nice
+	All SliTaz Raspberry Pi basic configurations can be done via a nice
 	Ncurses driven GUI with mouse support under an X session and via
 	a CGI/web administration interface. Please check the detailed 
-	<a href="#remote">remote control section</a> on the book for more 
+	<a href="#remote">remote control section</a> in the book for more 
 	information about the CGI/Web control panel.
 </p>
 
 <pre class="box-up">
 tazberry      : Dedicated tool for all Raspberry Pi specific configs
-slitaz-config : Slitaz system configs such as keymaps, lang, users.
+slitaz-config : Slitaz system configs such as keymaps, lang, users
 </pre>
 
 <p>
@@ -133,35 +133,35 @@ slitaz-config : Slitaz system configs such as keymaps, lang, users.
 
 <p>
 	The Raspberry Pi has two audio output modes: HDMI and headphone jack.
-	You can switch between these modes at any time. SliTaz Raspberry Pi
-	provide a custom web admin plugin to graphicaly configure and check
-	audio setting locally or remotly. The web audion control let you 
-	switch audion output and paly a sound to test settings. You can directly
-	access to the audio control panel with an URL in form of:
+	You can switch between these two modes at any time. SliTaz Raspberry Pi
+	provides a custom web admin plugin to graphically configure and check
+	audio settings locally or remotely. The web audio control lets you 
+	switch audio output and play a sound to test settings. You can directly
+	access the audio control panel with a URL in the form of:
 </p>
 <pre>
 http://192.168.x.xxx/adm/tools.cgi?audio
 </pre>
 <p>
-	You can also configure the Raspberry Pi audio outout from the command 
-	line wher the last number is the output mode (0=auto 1=jack 2=hdmi):
+	You can also configure the Raspberry Pi audio output from the command 
+	line where the last number is the output mode (0=auto 1=jack 2=hdmi):
 </p>
 <pre>
 # amxier cset numid=3 1
 </pre>
 <p>
-	The desktop flavor include Alsa audio mixer and mpg123 cmdline
+	The desktop flavor includes Alsa audio mixer and mpg123 cmdline
 	audio player. Please check the Codex apps page for a common list of 
 	<a href="apps.html#multimedia">multimedia applications</a>.
 </p>
 
 <h2 id="update">System &amp; kernel update</h2>
 <p>
-	It is always a good idea to check for update! It will bring you fixes
+	It is always a good idea to check for updates! It will bring you fixes
 	and new features. With SliTaz Raspberry Pi you have to upgrade all
-	the installed packages and the custom Linux Kernel. Udate can be done
+	the installed packages and the custom Linux Kernel. Updates can be done
 	via spk-dialog and tazberry found in the "System Tools menu" or directly
-	from the command line:
+	from a command line:
 </p>
 <pre>
 # spk-dialog
@@ -172,7 +172,7 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 
 <p>
 	After your system is configured and connected to the web, you may want
-	to install new packages to add functionnylities to your SliTaz system.
+	to install new packages to add functionality to your SliTaz system.
 	You can install new applications via spk-dialog GUI or from the command
 	line with spk-add:
 </p>
@@ -181,7 +181,7 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 </pre>
 <p>
 	You can find a list of packages on the SliTaz Raspberry Pi website
-	or using spk-find utility. You can search by package name, keywork
+	or by using the spk-find utility. You can search by package name, keyword
 	or description:
 </p>
 <pre>
@@ -191,21 +191,21 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 <h2 id="def-apps">Installed applications</h2>
 
 <p>
-	SliTaz Raspberry Pi can come in many flavor with a custom pre-installed
-	packages set. This section will cover the base and desktop flavor, more
-	information about a spécific flavor max be found on the SliTaz Raspberry
+	SliTaz Raspberry Pi can come in many flavors with a custom pre-installed
+	packages set. This section will cover the base and desktop flavors, more
+	information about a spécific flavor may be found on the SliTaz Raspberry
 	Pi website.
 </p>
 
 <h3>Base system</h3>
 <p>
-	The base flavor provide a text mode system with cmdline only tools, all
-	Busybox applets are present. It support for wireless network but no sound.
-	The default and most usefull applications are:
+	The base flavor provides a text mode system with cmdline only tools, all
+	Busybox applets are present. It supports wireless networks but no sound.
+	The default and most useful applications are:
 </p>
 
 <ul>
-	<li>Dropber SSH client &amp; server</li>
+	<li>Dropbear SSH client &amp; server</li>
 	<li>Busybox HTTPd, NTPd, FTPd servers</li>
 	<li>The CGI/Web admin interface and TazBerry</li>
 	<li>Clex file manager and Lynx web browser</li>
@@ -215,44 +215,44 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 
 <h3>Desktop environment</h3>
 <p>
-	The SliTaz Raspberry Pi desktop flavor focus on providing a fast, 
-	elegent, and easy to use desktop enviromnent. The desktop is powerd
-	by JWM window manger, you will all the base applications plus GUI
+	The SliTaz Raspberry Pi desktop flavor focuses on providing a fast, 
+	elegant, and easy to use desktop environment. The desktop is powered
+	by JWM window manger and you will find all the base applications plus GUI
 	programs:
 </p>
 
 <ul>
 	<li>Text editors: Adie + FLTK Editor</li>
 	<li>File manager: PathFinder</li>
-	<li>Web browsesr: Dillo</li>
+	<li>Web browser: Dillo</li>
 	<li>X terminal: Xterm</li>
 	<li>Audio mixer: Alsamixer</li>
 	<li>Audio player: mpg123</li>
 	<li>2 nice games: Blocks Attack + Sudoku</li>
-	<li>Fluid FLTK GUI desinger</li>
+	<li>Fluid FLTK GUI designer</li>
 	<li>Lua programming language</li>
 	<li>SQLite database support</li>
 	<li>Htop processes monitor</li>
 </ul>
 
-<h2 id="pi-pkgs">Rasperry Pi Packages</h2>
+<h2 id="pi-pkgs">Raspberry Pi Packages</h2>
 
 <p>
-	Some custom tools and libraries have been package specially for the
+	Some custom tools and libraries have been packaged specially for the
 	SliTaz Raspberry Pi distribution. Here is a list of packages and
 	a short description:
 </p>
 
 <ul>
-	<li>slitaz-arm-rpi - Provide the CGI/adm plugins, tazberry and custom
+	<li>slitaz-arm-rpi - Provides the CGI/adm plugins, tazberry and custom
 	config files.</li>
 	
-	<li>raspberrypi-boot - Provide the R-Pi bootloader firmware.</li>
+	<li>raspberrypi-boot - Provides the R-Pi bootloader firmware.</li>
 	
-	<li>raspberrypi-boot-x - Provide the R-Pi bootloader firmware with 
+	<li>raspberrypi-boot-x - Provides the R-Pi bootloader firmware with 
 	Pi Camera support.</li>
 	
-	<li>raspberrypi-vc -Raspberry Pi VideoCore Tools, includind 
+	<li>raspberrypi-vc -Raspberry Pi VideoCore Tools, including
 	raspistill and raspivid.</li>
 	
 	<li>gst-omx - A gstreamer-1.0 plugin which can do hardware-accelerated 
@@ -261,30 +261,30 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 	<li>wiringpi - A GPIO access library written in C for the BCM2835 
 	used in the Raspberry Pi.</li>
 	
-	<li>wiringpi-piglow - The WiringPi tool for PiGlow, usefull to handle
+	<li>wiringpi-piglow - The WiringPi tool for PiGlow, useful to handle
 	leds from SHell scripts.</li>
 	
 	<li>picamera - Provides a pure Python interface to the Raspberry 
-	Pi camera module</li>
+	Pi camera module.</li>
 	
 	<li>libbcm2835 - Provides access to GPIO and other IO functions on 
 	the Broadcom BCM 2835 chip.</li>
 	
-	<li>rcswitch-pi - RCSwitch implementation for the Raspberry Pi</li>
+	<li>rcswitch-pi - RCSwitch implementation for the Raspberry Pi.</li>
 	
-	<li>python-rpi-gpio - Python class to control the GPIO on a Raspberry Pi</li>
+	<li>python-rpi-gpio - Python class to control the GPIO on a Raspberry Pi.</li>
 	
-	<li>python-rpi-pyglow - Control Piglow from Python. Include a custom 
+	<li>python-rpi-pyglow - Control Piglow from Python. Includes a custom 
 	SliTaz utility to easily play with PiGlow.</li>
 	
-	<li>(xorg-xf86-video-fbturbo) - Buggy Xorg server module for the R-Pi</li>
+	<li>(xorg-xf86-video-fbturbo) - Buggy Xorg server module for the R-Pi.</li>
 </ul>
 
 <h2 id="remote">GUI &amp; secure remote control</h2>
 
 <p>
-	This section will cover remote control using SliTaz CGI/Web admin
-	interface, SSH secure SHell connection and graphical desktop control
+	This section will cover remote control using the SliTaz CGI/Web admin
+	interface, SSH secure SHell connections and graphical desktop control
 	with VNC.
 </p>
 
@@ -292,23 +292,23 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 
 <p>
 	The CGI/Web interface is a nice way to control your Raspberry Pi machine
-	usind Dillo from the desktop or any web browser from an other computer,
+	using Dillo from the desktop or any web browser from another computer,
 	mobile or tablet device. Remote control via the CGI interface is enabled
-	by default. To stop/start the service or use an other port, please refer
+	by default. To stop/start the service or to use another port, please refer
 	to the SliTaz ARM Codex: <a href="system.html#cgi-adm">System page</a>
 </p>
 
 <p>
-	SliTaz Raspberry Pi provide plugins to easily handle your Pi, in a nifty
+	SliTaz Raspberry Pi provides plugins to easily handle your Pi. In a nifty
 	and clean interface you can: poweroff/reboot the system, configure boot
 	settings including blacklisted modules, set audio output and test sound,
-	play with GPIO pins and get I2C information, turn on/off the green led :-)
-	The tool let you do quiet a few more handy actions that you will discover
-	browsinf the interface.
+	play with GPIO pins and get I2C information, and turn on/off the green led :-)
+	The tool lets you do quite a few more handy actions that you will discover
+	browsing the interface.
 </p>
 
 <p>
-	You must first found out the local IP address of you Raspberry Pi machine.
+	First you must found out the local IP address of you Raspberry Pi machine.
 	On your SliTaz Pi you can use 'ipinfo' to get the IP, then connect using
 	this IP. To connect you must use 'root' as user name with the correct
 	system administrator password.
@@ -319,10 +319,10 @@ $ ipinfo
 
 <h3>Secure SSH connection</h3>
 <p>
-	By default all flavors provide Dropbear Secure SHell, a lighteight but
-	powerfull and standard compliant SSH client and server. The server is
-	not started by default, you van start it manually from the cmdline and
-	edit /etc/init.d/rcS.conf to start it automaticaly on each boot:
+	By default all flavors provide Dropbear Secure SHell, a lightweight but
+	powerful and standard compliant SSH client and server. The server is
+	not started by default, you can start it manually from the cmdline and
+	edit /etc/init.d/rcS.conf to start it automatically on each boot:
 </p>
 <pre>
 # startd dropbear
@@ -331,8 +331,8 @@ $ ipinfo
 
 <h3>VNC Desktop control</h3>
 <p>
-	VNC is geate tool letting you remotly control a desktop. The steps are:
-	install and start the VNV server on your Pi, install a VNC client on
+	VNC is great tool for letting you remotely control a desktop. The steps are:
+	install and start the VNC server on your Pi, install a VNC client on
 	your desktop machine, mobile phone or tablet. To install the server
 	and start it on your Raspberry Pi (via an SSH connection or with an
 	attached keyboard and screen):
@@ -345,22 +345,22 @@ $ ipinfo
 <h2 id="setup">Pi setup suggestions</h2>
 
 <p>
-	What can you do with you SliTaz Raspberry Pi distro ? Use it as a tiny
+	What can you do with your SliTaz Raspberry Pi distro? Use it as a tiny
 	desktop! Learn Linux, Lua, Python, SHell scripting. Play with some
-	electronics circuits, sensors, leds and Raspberry Pi plugable boards.
-	Setup servers, use the cam for fun or security purpose, create a secure
+	electronics circuits, sensors, leds and Raspberry Pi pluggable boards.
+	Setup servers, use the cam for fun or security purposes, create a secure
 	wifi network, ...- So much can be done with a Pi! 
 </p>
 
 <ul>
-	<li>Kids learning computer with Scratch and games</li>
+	<li>Kids learn about computers with Scratch and games</li>
 	<li>Web server with SHell and Python CGI support</li>
 	<li>Secure and anonymous wifi network with Tor</li>
 	<li>Development system including a wide range of tools</li>
-	<li>Electronic circuits playground with breadboard</li>
+	<li>Electronic circuits playground with breadboards</li>
 	<li>Security camera with infra red support</li>
 	<li>Audio player and streamer with MPD</li>
-	<li>Video player with MPlayer or gst-omx (provide hardware 
+	<li>Video player with MPlayer or gst-omx (provides hardware 
 	accelerated decoding on the Raspberry Pi)</li>
 	<li>Video streamer with gst-omx or ffserver</li>
 	<li><a href="setup.html">Codex setup guides</a></li>
@@ -370,16 +370,16 @@ $ ipinfo
 
 <p>
 	Your SliTaz Raspberry Pi Desktop can be customized to infinity! With
-	a little edit of configuration files and autostart script you can
+	a little editing of configuration files and autostart scripts you can
 	configure the entire environment. The default window manager is
 	JWM, but it can be replaced by OpenBox, Enlightenment (e17) or the
 	DWM dynamic window manager.
 </p>
 
 <p>
-	JWM autostarted applications and theme is set in a xml.jwmrc file.
-	By default the system wide config is used, let copy it to your home
-	folder as .jwmrc hidden file and then edit it:
+	JWM autostarted applications and themes are set in a xml.jwmrc file.
+	By default the system wide config is used, lets copy it to your home
+	folder as a .jwmrc hidden file and then edit it:
 </p>
 <pre>
 $ cp /etc/xdg/jwm/system.jwmrc ~/.jwmrc
@@ -387,7 +387,7 @@ $ editor .jwmrc
 </pre>
 <p>
 	The system wide menu path is: <b>/etc/xdg/jwm/menus.jwmrc</b> and
-	is updated by SliTaz packages manager. You can also copy it in
+	is updated by SliTaz packages manager. You can also copy it to
 	your home folder if you want to customize it. See the official 
 	<a href="http://joewing.net/projects/jwm/config.shtml">configuration documentation</a>
 	for comprehensive documentation on configuring JWM.
@@ -414,10 +414,10 @@ $ tint2
 <h2 id="gpio">GPIO Pins &amp; I2C Bus</h2>
 
 <p>
-	SliTaz provide all the necessary tools to work with the Raspberry Pi
-	GPIO pins and I2C bus. The CGI/Web admin interface let you control
-	the GPIO pins and get I2C informations. Pi I2C kernel module is
-	blacklisted by default and can be load manually, on-demand by scripts
+	SliTaz provides all the necessary tools to work with the Raspberry Pi
+	GPIO pins and I2C bus. The CGI/Web admin interface lets you control
+	the GPIO pins and get I2C information. Pi I2C kernel module is
+	blacklisted by default and can be loaded manually, by on-demand scripts
 	or at boot by commenting the blacklist line in:
 </p>
 <pre class="box-up">
@@ -427,16 +427,16 @@ $ tint2
 <h2 id="picam">Pi Camera - Pi NoIR</h2>
 
 <p>
-	Rspberry Pi onboard camera work flowlessly with SliTaz. You can
+	Raspberry Pi onboard camera works flawlessly with SliTaz. You can
 	setup then shot, record and stream video with our easy to use and
-	home made tools and he official VideoCore Tools from The Raspberry Pi
+	home made tools and the official VideoCore Tools from The Raspberry Pi
 	foundation. Official documentation can be found on elinux.org wiki:
 	<a href="http://elinux.org/Rpi_Camera_Module">Rpi Camera Module</a>
 </p>
 
 <p>
 	To setup your camera from your Pi device, you can run TazBerry from
-	the desktop menu or directly start the the cam setup from cmdline:
+	the desktop menu or directly start the cam setup from a cmdline:
 </p>
 <pre>
 # tazberry cam-setup
@@ -454,9 +454,9 @@ $ tint2
 
 <p>
 	PiGlow is a fun and cheap little board to learn and play with leds. It
-	can do very nice effect, support easy on/off switch and brightness
-	setting. Plug in you PiGlow board, boot you Raspberry Pi, intall Python
-	PyGlow examples and utility and testsuite:
+	can do very nice effects, support easy on/off switches and brightness
+	settings. Plug in your PiGlow board, boot your Raspberry Pi, install the Python
+	PyGlow examples and utilities and testsuite:
 </p>
 
 <pre>
