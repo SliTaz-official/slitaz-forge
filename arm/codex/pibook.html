@@ -41,8 +41,8 @@
 	With the PiBook you will learn how to get started with SliTaz ARM and 
 	the Raspberry Pi, configure the system, install additional software
 	packages, setup a custom desktop and use pre-installed applications.
-	The book also covers GPIO usage and boards setup such as the official
-	Raspberry Pi Camera or PiGlow, and basic electronic usage.
+	The book also covers GPIO usage, add-on boards setup such as the official
+	Raspberry Pi Camera or PiGlow and basic electronic usage.
 </p>
 
 <ul>
@@ -308,7 +308,7 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 </p>
 
 <p>
-	First you must found out the local IP address of you Raspberry Pi machine.
+	First you must found out the local IP address of your Raspberry Pi machine.
 	On your SliTaz Pi you can use 'ipinfo' to get the IP, then connect using
 	this IP. To connect you must use 'root' as user name with the correct
 	system administrator password.
@@ -321,7 +321,7 @@ $ ipinfo
 <p>
 	By default all flavors provide Dropbear Secure SHell, a lightweight but
 	powerful and standard compliant SSH client and server. The server is
-	not started by default, you can start it manually from the cmdline and
+	not started by default, you can start it manually from the cmdline or
 	edit /etc/init.d/rcS.conf to start it automatically on each boot:
 </p>
 <pre>
@@ -332,7 +332,7 @@ $ ipinfo
 <h3>VNC Desktop control</h3>
 <p>
 	VNC is great tool for letting you remotely control a desktop. The steps are:
-	install and start the VNC server on your Pi, install a VNC client on
+	install and start the VNC server on your Pi, then install a VNC client on
 	your desktop machine, mobile phone or tablet. To install the server
 	and start it on your Raspberry Pi (via an SSH connection or with an
 	attached keyboard and screen):
@@ -454,9 +454,9 @@ $ tint2
 
 <p>
 	PiGlow is a fun and cheap little board to learn and play with leds. It
-	can do very nice effects, support easy on/off switches and brightness
+	can do very nice effects and also supports easy on/off switches and brightness
 	settings. Plug in your PiGlow board, boot your Raspberry Pi, install the Python
-	PyGlow examples and utilities and testsuite:
+	PyGlow examples and utilities testsuite:
 </p>
 
 <pre>
