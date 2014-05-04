@@ -15,7 +15,7 @@ SRC2=/var/www/slitaz/mirror/sources/packages
 
 for i in $WOK/*/receipt ; do
 	unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
-	ARCH=${2:-i486}
+	ARCH=i486
 	. $i
 	[ -n "$WANTED" ] && continue
 	if [ -z "$TARBALL$EXTRA_SOURCE_FILES" ]; then
@@ -23,11 +23,37 @@ for i in $WOK/*/receipt ; do
 		echo $(basename ${i%/receipt}) >> /tmp/notarball$$
 		TARBALL="$PACKAGE-$VERSION.tar.bz2"
 	fi
-	[ -n "$WGET_URL" ] && echo $WGET_URL >> /tmp/wget_url$$
+	[ -n "$WGET_URL" ] && echo "$TARBALL $WGET_URL" >> /tmp/wget_url$$
 	for j in $TARBALL $EXTRA_SOURCE_FILES ; do
 		basename $j
 	done
 done | sort | uniq > /tmp/tarball$$
+for i in $WOK/*/receipt ; do
+	HOST_ARCH=
+	WANTED=
+	. $i
+	[ -n "$WANTED" ] && continue
+	for a in $HOST_ARCH ; do
+		[ $a == i486 ] && continue
+		unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
+		SLITAZ_ARCH=$a
+		ARCH=$a
+		. $i
+		if [ -z "$TARBALL$EXTRA_SOURCE_FILES" ]; then
+			[ -n "$WGET_URL" ] || continue 2
+			grep -q $(basename ${i%/receipt}) /tmp/notarball$$ ||
+			echo $(basename ${i%/receipt}) >> /tmp/notarball$$
+			TARBALL="$PACKAGE-$VERSION.tar.bz2"
+		fi
+		[ -n "$WGET_URL" ] && 
+		! grep -q "^$TARBALL " /tmp/wget_url$$ &&
+		echo "$TARBALL $WGET_URL" >> /tmp/wget_url$$
+		for j in $TARBALL $EXTRA_SOURCE_FILES ; do
+			grep -q "^$(basename $j)$" /tmp/tarball$$ ||
+			basename $j
+		done
+	done
+done | sort | uniq >> /tmp/tarball$$
 if [ -s /tmp/notarball$$ ]; then
 	echo $(cat /tmp/notarball$$ 2> /dev/null) | \
 		sed 's/ /, /g;s/^/No TARBALL for /'
@@ -36,7 +62,7 @@ fi
 while read file; do
 	[ -s $SRC/${file:0:1}/$file ] || [ -s $SRC/${file:0:1}/${file%.*}.lzma ] ||
 	[ -s $SRC/${file:0:1}/${file%.*}.tar.lzma ] ||
-	echo -e "Missing: $file\nURL: $(grep $file$ /tmp/wget_url$$ | sed q)"
+	echo -e "Missing: $file\nURL: $(sed "/^$file /!d;s/^$file //;q" /tmp/wget_url$$)"
 done < /tmp/tarball$$
 for i in $SRC/?/* ; do
 	[ -f "$i" ] || continue
