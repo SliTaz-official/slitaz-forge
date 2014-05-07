@@ -1,2 +1,3 @@
 20140425: Full PiGlow support: PyGlow + Wiring Pi + custom SliTaz utility
 20140501: <a href="codex/pibook.html">SliTaz PiBook</a> is out! Learn how to use SliTaz Raspberry Pi distro
+20140502: Blog post: <a href="http://scn.slitaz.org/index.cgi?blog&p=20">SliTaz Raspberry Pi news</a>
