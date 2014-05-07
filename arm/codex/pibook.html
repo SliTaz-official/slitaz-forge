@@ -58,9 +58,10 @@
 	<li><a href="#setup">Pi setup suggestions</a></li>
 	<li><a href="#desktop">Desktop customization</a></li>
 	<li><a href="#gpio">GPIO Pins &amp; I2C Bus</a></li>
+	<li><a href="#pileds">Using leds with the RPi</a></li>
 	<li><a href="#picam">Pi Camera - Pi NoIR</a></li>
 	<li><a href="#piglow">PiGlow from Pimorini</a></li>
-	<li><a href="#pileds">Using leds with the RPi</a></li>
+	<li><a href="#piface">PiFace Digital setup</a></li>
 </ul>
 
 <p>
@@ -280,6 +281,11 @@ http://192.168.x.xxx/adm/tools.cgi?audio
 	
 	<li>pi-blaster - Enables PWM on the GPIO pins you request of a Raspberry Pi.</li>
 	
+	<li>libmcp23s17 - A simple C library for accessing an MCP23S17 port expander
+	found on PiFace board.</li>
+	
+	<li>libpifacedigital - A simple library for controlling PiFace Digital</li>
+	
 	<li>(xorg-xf86-video-fbturbo) - Buggy Xorg server module for the R-Pi.</li>
 </ul>
 
@@ -440,6 +446,43 @@ $ editor /etc/rcS.conf
 LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
+<h2 id="pileds">Using leds with the RPi</h2>
+
+<p>
+	Leds can be used for many purposes such as for a notification or as a light show.
+	SliTaz Raspberry Pi provides a built-in utility to help set up and
+	use leds. The RPi has an onboard green led (ACT) that you can 
+	turn on or off:
+</p>
+<pre>
+# pileds act
+</pre>
+
+<p>
+	Pileds also provides examples and usable commands for Adafruit 7segment
+	LED Backpack and the 8x8 LED Matrix. Creating visual elements with
+	Kids is fun and lets them learn mathematics at the same time, since
+	the leds must be mapped (ie: 0, 3) on a grid. Let's display a nice 
+	little boat and pileds built in help:
+</p>
+
+<pre>
+# pileds 8x8 --boat
+# pileds help
+</pre>
+
+<p>
+	PiLeds uses some example code from Adafruit and PiClass Git Hub 
+	repositories. We have packaged them for easy install/updates and
+	to provide some code right under the hood. Adafruit and PiClass
+	code examples are located in:
+</p>
+
+<pre class="box-up">
+/usr/share/adafruit
+/usr/share/piclass
+</pre>
+
 <h2 id="picam">Pi Camera - Pi NoIR</h2>
 
 <p>
@@ -492,42 +535,35 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 /usr/share/pyglow
 </pre>
 
-<h2 id="pileds">Using leds with the RPi</h2>
+<h2 id="piface">PiFace Digital</h2>
 
 <p>
-	Leds can be used for many purposes such as for a notification or as a light show.
-	SliTaz Raspberry Pi provides a built-in utility to help set up and
-	use leds. The RPi has an onboard green led (ACT) that you can 
-	turn on or off:
-</p>
-<pre>
-# pileds act
-</pre>
-
-<p>
-	Pileds also provides examples and usable commands for Adafruit 7segment
-	LED Backpack and the 8x8 LED Matrix. Creating visual elements with
-	Kids is fun and lets them learn mathematics at the same time, since
-	the leds must be mapped (ie: 0, 3) on a grid. Let's display a nice 
-	little boat and pileds built in help:
+	The PiFace Digital board allows you to connect things like switches,
+	lights and motors so your Raspberry Pi becomes aware of, and can 
+	influence the world around it. Plugin your PiFace board then install
+	the official C library including the 'pifacedigital' utility and
+	testsuite:
 </p>
 
 <pre>
-# pileds 8x8 --boat
-# pileds help
+# spk-add libpifacedigital
 </pre>
 
 <p>
-	PiLeds uses some example code from Adafruit and PiClass Git Hub 
-	repositories. We have packaged them for easy install/updates and
-	to provide some code right under the hood. Adafruit and PiClass
-	code examples are located in:
+	To test your Piface Digital board on SliTaz Raspberry Pi you simply
+	have to run the testsuite from the cmdline. The tool will test GPIO 
+	pns, leds and input button:
 </p>
 
-<pre class="box-up">
-/usr/share/adafruit
-/usr/share/piclass
+<pre>
+# pifacedigital-test
 </pre>
+
+<p>
+	PiFace official website: 
+	<a href="http://www.piface.org.uk/">www.piface.org.uk</a>
+	and <a href="http://www.piface.org.uk/guides/">guides</a>
+</p>
 
 <!-- Close content -->
 </div>
