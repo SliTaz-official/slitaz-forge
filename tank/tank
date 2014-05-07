@@ -33,6 +33,7 @@ Commands:
   up-bugs      Update http://bugs.slitaz.org/
   up-irc       Update http://irc.slitaz.org/
   up-arm       Update http://arm.slitaz.org/
+  up-piclass   Update http://piclass.org/
 
 EOT
 }
@@ -139,6 +140,11 @@ case "$1" in
 		echo "Updating: slitaz-arm Hg repo..."
 		cd $REPOS/slitaz-arm && hg pull -u
 		echo "" ;;
+	up-piclass)
+		# Update piclass.org
+		echo -e "\nUpdating: piclass.org..."
+		cd /home/piclass/website
+		git pull && echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
 		date >> $LOGFILE
