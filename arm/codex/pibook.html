@@ -429,9 +429,9 @@ $ tint2
 
 <p>
 	To have a full working I2C bus system we must also load the 'i2c-dev'
-	kernel module wich is not autoloaded by udev. In this cas we must
-	use SliTaz boot time configuration file, lets edit the config file
-	on modify the line LOAD_MODULES to look like below:
+	kernel module which is not autoloaded by udev. In this case we must
+	use a SliTaz boot time configuration file, lets edit the config file
+	to modify the line LOAD_MODULES to look like below:
 </p>
 
 <pre>
@@ -482,10 +482,10 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
 <p>
-	In the package database you will aslo find <b>wiringpi-piglow</b>
+	In the package database you will also find <b>wiringpi-piglow</b>
 	providing the 'piglow' utility. On the Python side, we provide some
 	examples that you can use to learn and code your own scripts. Have
-	a look to the folder:
+	a look in the folder:
 </p>
 
 <pre class="box-up">
@@ -495,21 +495,21 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 <h2 id="pileds">Using leds with the RPi</h2>
 
 <p>
-	leds can be used for many purpose such as notification or light show.
-	SliTaz Raspberry Pi provide a built-in utility to help setting up and
-	using leds. The RPi have on onboard green led (ACT) that you can 
-	turned on or off:
+	Leds can be used for many purposes such as for a notification or as a light show.
+	SliTaz Raspberry Pi provides a built-in utility to help set up and
+	use leds. The RPi has an onboard green led (ACT) that you can 
+	turn on or off:
 </p>
 <pre>
 # pileds act
 </pre>
 
 <p>
-	Pileds also provide example and usable commands for Adafruit 7segment
+	Pileds also provides examples and usable commands for Adafruit 7segment
 	LED Backpack and the 8x8 LED Matrix. Creating visual elements with
-	Kids is very fun and let them train mathematics in the ame sime since
-	the leds must be mapped (ie: 0, 3) on a gride. Let's display a nice 
-	little boat and piled built in help:
+	Kids is fun and lets them learn mathematics at the same time, since
+	the leds must be mapped (ie: 0, 3) on a grid. Let's display a nice 
+	little boat and pileds built in help:
 </p>
 
 <pre>
@@ -518,9 +518,9 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
 <p>
-	PiLeds use some example code from Adafruit and PiClass Git Hub 
-	repositories. We have packaged them for easy install/update and
-	to provide some code right under the hand. Adafruit and PiClass
+	PiLeds uses some example code from Adafruit and PiClass Git Hub 
+	repositories. We have packaged them for easy install/updates and
+	to provide some code right under the hood. Adafruit and PiClass
 	code examples are located in:
 </p>
 
