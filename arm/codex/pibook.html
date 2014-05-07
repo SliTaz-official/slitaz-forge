@@ -426,6 +426,19 @@ $ tint2
 /etc/modprobe.d/rpi-blacklist.conf
 </pre>
 
+<p>
+	To have a full working I2C bus system we must also load the 'i2c-dev'
+	kernel module wich is not autoloaded by udev. In this cas we must
+	use SliTaz boot time configuration file, lets edit the config file
+	on modify the line LOAD_MODULES to look like below:
+</p>
+
+<pre>
+$ editor /etc/rcS.conf
+# Kernel modules to load earlier in boot.
+LOAD_MODULES="snd-bcm2835 i2c-dev"
+</pre>
+
 <h2 id="picam">Pi Camera - Pi NoIR</h2>
 
 <p>
@@ -465,6 +478,17 @@ $ tint2
 # spk-add python-rpi-pyglow
 # pyglow test
 # pyglow help
+</pre>
+
+<p>
+	In the package database you will aslo find <b>wiringpi-piglow</b>
+	providing the 'piglow' utility. On the Python side, we provide some
+	examples that you can use to learn and code your own scripts. Have
+	a look to the folder:
+</p>
+
+<pre class="box-up">
+/usr/share/pyglow
 </pre>
 
 <!-- Close content -->
