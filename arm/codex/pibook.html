@@ -60,6 +60,7 @@
 	<li><a href="#gpio">GPIO Pins &amp; I2C Bus</a></li>
 	<li><a href="#picam">Pi Camera - Pi NoIR</a></li>
 	<li><a href="#piglow">PiGlow from Pimorini</a></li>
+	<li><a href="#pileds">Using leds with the RPi</a></li>
 </ul>
 
 <p>
@@ -489,6 +490,43 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 
 <pre class="box-up">
 /usr/share/pyglow
+</pre>
+
+<h2 id="pileds">Using leds with the RPi</h2>
+
+<p>
+	leds can be used for many purpose such as notification or light show.
+	SliTaz Raspberry Pi provide a built-in utility to help setting up and
+	using leds. The RPi have on onboard green led (ACT) that you can 
+	turned on or off:
+</p>
+<pre>
+# pileds act
+</pre>
+
+<p>
+	Pileds also provide example and usable commands for Adafruit 7segment
+	LED Backpack and the 8x8 LED Matrix. Creating visual elements with
+	Kids is very fun and let them train mathematics in the ame sime since
+	the leds must be mapped (ie: 0, 3) on a gride. Let's display a nice 
+	little boat and piled built in help:
+</p>
+
+<pre>
+# pileds 8x8 --boat
+# pileds help
+</pre>
+
+<p>
+	PiLeds use some example code from Adafruit and PiClass Git Hub 
+	repositories. We have packaged them for easy install/update and
+	to provide some code right under the hand. Adafruit and PiClass
+	code examples are located in:
+</p>
+
+<pre class="box-up">
+/usr/share/adafruit
+/usr/share/piclass
 </pre>
 
 <!-- Close content -->
