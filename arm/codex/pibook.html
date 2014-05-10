@@ -573,16 +573,16 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 <h2 id="raspicomm">RaspiComm</h2>
 
 <p>
-	RaspiComm is a pluggable board which use advanced features like a 5-way
-	joystick, two serial ports (RS-232 and RS-485), l2c output, and a 
-	realtime clock. The board let you directy control a display, a stepper
-	motor controller, relays, and more.
+	RaspiComm is a pluggable board which uses advanced features like a 5-way
+	joystick, two serial ports (RS-232 and RS-485), l2c output and a 
+	realtime clock. The board lets you directly control a display, a stepper
+	motor controller, relays and more.
 </p>
 
 <p>
 	SliTaz Raspberry Pi provides a built-in tool to let you use and test
 	the RaspiComm board out-of-the-box. Shutdown down your Pi if needed,
-	plugin the board on the GPIO pins and boot the system then run the
+	plug in the board on to the GPIO pins and boot the system, then run the
 	testsuite:
 </p>
 
@@ -593,10 +593,10 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 
 <p>
 	The testsuite will prompt you to move the Joystick left and top 
-	after the LEDs tests. To initialize the board on each boot, setup 
-	the system clock and automaticaly load the i2c kernel modules, you 
+	after the LED tests. To initialize the board on each boot, setup 
+	the system clock and automatically load the i2c kernel modules, you 
 	need to edit the <b>local.sh</b> boot script and add a line to start 
-	'raspicomm init'. This can be done in one command or using a text
+	'raspicomm init'. This can be done in one command or by using a text
 	editor:
 </p>
 
@@ -605,11 +605,11 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
 <p>
-	The Real Time Clock use i2c bus. When the clock is initialized you
+	The Real Time Clock uses the i2c bus. When the clock is initialized you
 	can find information in: /sys/class/i2c-adapter/i2c-1/1-0068. On the
 	first setup you need to sync the system clock from the web and then
 	set the RTC from the system clock. On next reboot the system clock
-	will be synced with the Real Time Clock:
+	will be sync'd with the Real Time Clock:
 </p>
 
 <pre>
@@ -618,9 +618,9 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
 <p>
-	Here is a small SHell example to turn on/off LED1. The led use the
+	Here is a small SHell example to turn on/off LED1. The led uses the
 	gpio pin number 18. The raspicomm utility already exported the
-	LEDs pins so we just have to set the value. 1 to turn it on and 0
+	LED pins so we just have to set the value: 1 to turn it on and 0
 	to switch it off:
 </p>
 
