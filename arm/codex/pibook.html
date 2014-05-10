@@ -504,11 +504,23 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 </pre>
 
 <p>
-	After reboot you can test the camera with 'raspivid' and take a picture
-	via the CGI/Web Camera plugin. To test the camera:
+	After reboot you can test the camera with <b>raspivid</b> and take a 
+	picture via the CGI/Web Camera plugin. To test the camera:
 </p>
 <pre>
+$ su -
 # raspivid -d
+</pre>
+
+<h3>Pictures with Raspistill</h3>
+
+<p>
+	The official tool to take pictures with the camera board is 
+	<b>raspistill</b>. The following command will take a picture
+	and create the PNG image shot.png:
+</p>
+<pre>
+# raspistill -o shot.png
 </pre>
 
 <!-- PiGlow -->
