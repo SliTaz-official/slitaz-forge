@@ -62,6 +62,7 @@
 	<li><a href="#picam">Pi Camera - Pi NoIR</a></li>
 	<li><a href="#piglow">PiGlow from Pimorini</a></li>
 	<li><a href="#piface">PiFace Digital setup</a></li>
+	<li><a href="#raspicomm">RaspiComm init and usage</a></li>
 </ul>
 
 <p>
@@ -483,6 +484,7 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 /usr/share/piclass
 </pre>
 
+<!-- Camera -->
 <h2 id="picam">Pi Camera - Pi NoIR</h2>
 
 <p>
@@ -509,6 +511,7 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 # raspivid -d
 </pre>
 
+<!-- PiGlow -->
 <h2 id="piglow">PiGlow from Pimorini</h2>
 
 <p>
@@ -535,6 +538,7 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 /usr/share/pyglow
 </pre>
 
+<!-- PiFace -->
 <h2 id="piface">PiFace Digital</h2>
 
 <p>
@@ -563,6 +567,71 @@ LOAD_MODULES="snd-bcm2835 i2c-dev"
 	PiFace official website: 
 	<a href="http://www.piface.org.uk/">www.piface.org.uk</a>
 	and <a href="http://www.piface.org.uk/guides/">guides</a>
+</p>
+
+<!-- RaspiComm -->
+<h2 id="raspicomm">RaspiComm</h2>
+
+<p>
+	RaspiComm is a pluggable board which use advanced features like a 5-way
+	joystick, two serial ports (RS-232 and RS-485), l2c output, and a 
+	realtime clock. The board let you directy control a display, a stepper
+	motor controller, relays, and more.
+</p>
+
+<p>
+	SliTaz Raspberry Pi provides a built-in tool to let you use and test
+	the RaspiComm board out-of-the-box. Shutdown down your Pi if needed,
+	plugin the board on the GPIO pins and boot the system then run the
+	testsuite:
+</p>
+
+<pre>
+# raspicomm init
+# raspicomm testsuite
+</pre>
+
+<p>
+	The testsuite will prompt you to move the Joystick left and top 
+	after the LEDs tests. To initialize the board on each boot, setup 
+	the system clock and automaticaly load the i2c kernel modules, you 
+	need to edit the <b>local.sh</b> boot script and add a line to start 
+	'raspicomm init'. This can be done in one command or using a text
+	editor:
+</p>
+
+<pre>
+# echo 'raspicomm init' >> /etc/init.d/local.sh
+</pre>
+
+<p>
+	The Real Time Clock use i2c bus. When the clock is initialized you
+	can find information in: /sys/class/i2c-adapter/i2c-1/1-0068. On the
+	first setup you need to sync the system clock from the web and then
+	set the RTC from the system clock. On next reboot the system clock
+	will be synced with the Real Time Clock:
+</p>
+
+<pre>
+# rdate -s tick.greyware.com
+# hwclock --systohc
+</pre>
+
+<p>
+	Here is a small SHell example to turn on/off LED1. The led use the
+	gpio pin number 18. The raspicomm utility already exported the
+	LEDs pins so we just have to set the value. 1 to turn it on and 0
+	to switch it off:
+</p>
+
+<pre>
+# echo 1 > /sys/class/gpio/gpio18/value
+# echo 0 > /sys/class/gpio/gpio18/value
+</pre>
+
+<p>
+	Official RaspiComm: 
+	<a href="http://amescon.com/media/5277/Raspicomm_User_Manual.pdf">PDF User Manual</a>
 </p>
 
 <!-- Close content -->

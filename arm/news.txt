@@ -2,3 +2,4 @@
 20140501: <a href="codex/pibook.html">SliTaz PiBook</a> is out! Learn how to use SliTaz Raspberry Pi distro
 20140502: Blog post: <a href="http://scn.slitaz.org/index.cgi?blog&p=20">SliTaz Raspberry Pi news</a>
 20140507: Blog post: <a href="http://scn.slitaz.org/index.cgi?blog&p=21">SliTaz RPi Box and PiLeds</a>
+20140510: RaspiComm support: custom raspicomm utility + PiBook updated
