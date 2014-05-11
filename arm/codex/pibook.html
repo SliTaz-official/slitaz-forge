@@ -61,7 +61,7 @@
 	<li><a href="#pileds">Using leds with the RPi</a></li>
 	<li><a href="#picam">Pi Camera - Pi NoIR</a></li>
 	<li><a href="#piglow">PiGlow from Pimorini</a></li>
-	<li><a href="#piface">PiFace Digital setup</a></li>
+	<li><a href="#piface">PiFace Digital setup and usage</a></li>
 	<li><a href="#raspicomm">RaspiComm init and usage</a></li>
 </ul>
 
@@ -556,13 +556,13 @@ $ su -
 <p>
 	The PiFace Digital board allows you to connect things like switches,
 	lights and motors so that your Raspberry Pi can become aware of, and  
-	influence the world around it. Plug in your PiFace board then install
-	the official C library including the 'pifacedigital' utility and
-	testsuite:
+	influence the world around it. Plug in your PiFace board then use
+	SliTaz <b>piface</b> utility to install the official C library 
+	the 'pifacedigital' utility and set of tiny tools:
 </p>
 
 <pre>
-# spk-add libpifacedigital
+# piface help
 </pre>
 
 <p>
@@ -572,14 +572,43 @@ $ su -
 </p>
 
 <pre>
-# pifacedigital-test
+# piface testsuite
 </pre>
 
+<h3>PiFace Metronome</h3>
+
 <p>
-	PiFace official website: 
-	<a href="http://www.piface.org.uk/">www.piface.org.uk</a>
-	and <a href="http://www.piface.org.uk/guides/">guides</a>
+	The Piface Slitaz utility use WiringPi to provide a simple metronome
+	using PiFace relays. The default is 80 beates per minutes but you can
+	specify any beates in a range of 40 to 200. To turn on and off the
+	metronome:
 </p>
+
+<pre>
+# piface metronome 120
+# piface metronome
+</pre>
+
+<h3>Piface Reaction game</h3>
+
+<p>
+	Let play to a reaction game with PiFace Digital. Run the command 
+	bellow then press a button and wait untill 2 LEDs are on and press 
+	the correspondig button as fast as you can:
+</p>
+
+<pre>
+# piface reaction
+</pre>
+
+<h3>Piface Digital info</h3>
+
+<pre>
+Kernel modules   : i2c_bcm2708 i2c-dev
+SliTaz packages  : libpifacedigital wiringpi-piface
+Official website : <a href="http://www.piface.org.uk/">www.piface.org.uk</a>
+Official guides  : <a href="http://www.piface.org.uk/guides/">www.piface.org.uk/guides</a>
+</pre>
 
 <!-- RaspiComm -->
 <h2 id="raspicomm">RaspiComm</h2>
