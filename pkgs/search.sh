@@ -1076,7 +1076,7 @@ _EOT_
 			TAGS=
 			. $file
 			echo $TAGS
-			done | display_cloud args
+			done | display_cloud tags
 	fi
 	;;
 
