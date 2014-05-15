@@ -45,6 +45,7 @@ updatecpugraph() {
 	info="$(echo "$info" | cut -d: -f2 | sed 's/ * / /g' | head -1)"
 	rrdtool graph "$rrdgraph/cpu-$period.png" --start -1$period \
 		$rrdgraphargs -l 0 -u 100 -t "cpu usage per $period [$info ]" \
+		-v " " \
 		DEF:user=$rrdlog/cpu.rrd:user:AVERAGE \
 		DEF:system=$rrdlog/cpu.rrd:system:AVERAGE \
 		DEF:idle=$rrdlog/cpu.rrd:idle:AVERAGE \
@@ -79,6 +80,7 @@ updatememgraph() {
 	rrdtool graph "$rrdgraph/memory-$period.png" --start -1$period \
 		$rrdgraphargs -l 0 -u 100 \
 		-t "memory usage per $period [ $info + $info2 swap ]" \
+		-v " " \
 		DEF:used=$rrdlog/mem.rrd:memused:AVERAGE \
 		DEF:free=$rrdlog/mem.rrd:memfree:AVERAGE \
 		DEF:shared=$rrdlog/mem.rrd:memshared:AVERAGE \
