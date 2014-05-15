@@ -3,5 +3,5 @@
 20140502: Blog post: <a href="http://scn.slitaz.org/index.cgi?blog&p=20">SliTaz Raspberry Pi news</a>
 20140507: Blog post: <a href="http://scn.slitaz.org/index.cgi?blog&p=21">SliTaz RPi Box and PiLeds</a>
 20140510: RaspiComm support: custom raspicomm utility + PiBook updated
-20140512: PiFace support with it's own <a href="codex/pibook.html#piface">PiBook section</a>
+20140512: PiFace support with its own <a href="codex/pibook.html#piface">PiBook section</a>
 20140515: Added PiTFT setup script + basic Pibrella and Piborg support
