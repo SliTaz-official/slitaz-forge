@@ -1,0 +1,222 @@
+# Traditional Chinese translations for SliTaz tazpkg-web package.
+# Copyright (C) 2014 Slitaz Association
+# This file is distributed under the same license as the SliTaz tazpkg-web package.
+# lunglungyu <lunglungyu2004@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazPkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-08 01:37+0800\n"
+"PO-Revision-Date: 2014-06-08 01:37+0800\n"
+"Last-Translator: <lunglungyu2004@gmail.com>\n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: search.sh:222
+msgid "Package"
+msgstr "包"
+
+#: search.sh:223
+msgid "Description"
+msgstr "描述"
+
+#: search.sh:224
+msgid "Tags"
+msgstr "標誌"
+
+#: search.sh:225
+msgid "Arch"
+msgstr "構建"
+
+#: search.sh:226 lib/header.sh:26
+msgid "Bugs"
+msgstr "Bugs"
+
+#: search.sh:227 search.sh:334 search.sh:358
+msgid "Receipt"
+msgstr "清單"
+
+#: search.sh:228
+msgid "Depends"
+msgstr "依賴"
+
+#: search.sh:229
+msgid "Build depends"
+msgstr "編譯依賴"
+
+#: search.sh:230
+msgid "File"
+msgstr "文件"
+
+#: search.sh:231
+msgid "File list"
+msgstr "文件清單"
+
+#: search.sh:232
+msgid "common files"
+msgstr "共用文件"
+
+#: search.sh:233
+msgid "Category"
+msgstr "分類"
+
+#: search.sh:234
+msgid "Maintainer"
+msgstr "維護者"
+
+#: search.sh:235
+msgid "License"
+msgstr "授權"
+
+#: search.sh:243
+msgid "cooking"
+msgstr "cooking"
+
+#: search.sh:248
+msgid "tiny"
+msgstr "tiny"
+
+#: search.sh:249
+msgid "undigest"
+msgstr "undigest"
+
+#: search.sh:250
+msgid "backports"
+msgstr "backports"
+
+#: search.sh:254
+msgid "Search"
+msgstr "搜索"
+
+#: search.sh:325 search.sh:327 search.sh:351 search.sh:353
+msgid "Cooker"
+msgstr "生成者"
+
+#: search.sh:436
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr ""
+"\tglibc-base 和 gcc-lib-base 是隱性依賴,\n"
+"\t<b>每個</b> 包都需要該項依賴."
+
+#: search.sh:482
+#, sh-format
+msgid "No package $SEARCH"
+msgstr "沒有包 $SEARCH"
+
+#: search.sh:714
+msgid "Search for packages"
+msgstr "搜索包"
+
+#: search.sh:728
+msgid "Depends loops"
+msgstr "依賴循環"
+
+#: search.sh:743
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr "$SEARCH 的依賴樹"
+
+#: search.sh:754
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr "$SEARCH (SUGGESTED) 的依賴樹"
+
+#: search.sh:763
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr "$SERACH 的反向依賴樹"
+
+#: search.sh:780
+msgid "Build depends loops"
+msgstr "編譯依賴循環"
+
+#: search.sh:796
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr "$SEARCH 需要以下包"
+
+#: search.sh:804
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr "以下包需要 $SEARCH "
+
+#: search.sh:821
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr "以下包可能會超載(overload) $SEARCH 的文件"
+
+#: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
+#: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr "$SEARCH 的結果"
+
+#: search.sh:897
+#, sh-format
+msgid "$filenb file"
+msgid_plural "$filenb files"
+msgstr[0] "$filenb 文件"
+msgstr[1] "$filenb 文件"
+
+#: search.sh:912
+#, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "包描述: $SEARCH"
+
+#: search.sh:938
+#, sh-format
+msgid "Result for known bugs"
+msgstr "已知Bugs :"
+
+#: search.sh:1113
+msgid "description"
+msgstr "描述"
+
+#: search.sh:1124
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr "$SEARCH (提供 $vpkg 的包) 的結果"
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages - Search $SEARCH"
+msgstr "SliTaz 包 - 搜索 $SEARCH"
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr "主目錄"
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr "社區"
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr "文檔"
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr "論壇"
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr "專業支持"
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr "商店"
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr "Hg"
+
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "SliTaz 包"
