@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-12 15:16+0300\n"
-"PO-Revision-Date: 2014-03-06 21:40-0300\n"
+"PO-Revision-Date: 2014-06-16 19:46-0300\n"
 "Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
@@ -63,15 +63,15 @@ msgstr "Arquivos comuns"
 
 #: search.sh:233
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 #: search.sh:234
 msgid "Maintainer"
-msgstr ""
+msgstr "Mantenedor"
 
 #: search.sh:235
 msgid "License"
-msgstr ""
+msgstr "Licença"
 
 #: search.sh:243
 msgid "cooking"
@@ -87,7 +87,7 @@ msgstr "undigest"
 
 #: search.sh:250
 msgid "backports"
-msgstr ""
+msgstr "backports"
 
 #: search.sh:254
 msgid "Search"
@@ -95,7 +95,7 @@ msgstr "Buscar"
 
 #: search.sh:325 search.sh:327 search.sh:351 search.sh:353
 msgid "Cooker"
-msgstr ""
+msgstr "Cooker"
 
 #: search.sh:436
 msgid ""
