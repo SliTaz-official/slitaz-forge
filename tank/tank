@@ -155,13 +155,13 @@ case "$1" in
 		done && echo "" ;;
 	adduser)
 		echo ""
-		if [ -d /home/$user ]; then
-			echo -e "User $user already exists...\n" && exit 1
-		fi
 		if [ -n "$2" ]; then
 			user=$2
 		else
 			echo -n "User name: " && read user
+		fi
+		if [ -d /home/$user ]; then
+			echo -e "User $user already exists...\n" && exit 1
 		fi
 		if [ -n "$3" ]; then
 			gecos="$3"
