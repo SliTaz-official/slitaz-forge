@@ -582,14 +582,25 @@ Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.slitaz.org/">SliTa
 <a href="http://validator.w3.org/check?uri=referer"><img src="../static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
 </p>
 <p>
-	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
-	     onmouseover= "this.title = location.href" 
-	     onclick= "this.width = this.height = 300;" />
-	<script type="text/javascript" src="../static/qrcode.js"></script>
 	<script type="text/javascript">
-		document.getElementById('qrcodeimg').src =
-			QRCode.generatePNG(location.href, {ecclevel: 'H'});
+	function QRCodePNG(str, obj) {
+		try {
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "../static/qrcode.js";
+			element.type ="text/javascript";
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}	
 	</script>
+	<img src="../static/qr.png" alt="#"
+	     onmouseover= "this.title = location.href" 
+	     onclick="this.src = QRCodePNG(location.href, this)" />
 </p>
 </div>
 

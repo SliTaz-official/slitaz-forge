@@ -13,7 +13,6 @@ Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">Sli
 <a href="http://validator.w3.org/check?uri=referer"><img src="/static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
 </p>
 <p>
-	<!-- script type="text/javascript" src="/static/qrcode.js"></script -->
 	<script type="text/javascript">
 	function QRCodePNG(str, obj) {
 		try {

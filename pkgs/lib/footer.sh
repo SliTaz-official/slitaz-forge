@@ -11,7 +11,6 @@ $(eval_gettext "\$PKGS packages in \$SLITAZ_VERSION database")
 <div id="footer">
 $(gettext "SliTaz Packages")
 <p>
-	<!-- script type="text/javascript" src="http://mirror.slitaz.org/static/qrcode.js"></script -->
 	<script type="text/javascript">
 		function QRCodePNG(str, obj) {
 			try {
@@ -28,13 +27,9 @@ $(gettext "SliTaz Packages")
 			}
 		}	
 	</script>
-	<img src="http://mirror.slitaz.org/static/qr.png" id="qrcodeimg" alt="#" 
+	<img src="http://mirror.slitaz.org/static/qr.png" alt="#" 
 	     onmouseover= "this.title = location.href"
 	     onclick="this.src = QRCodePNG(location.href, this)" />
-	<script type="text/javascript">
-		document.getElementById('qrcodeimg').src =
-			QRCode.generatePNG(location.href, {ecclevel: 'H'});
-	</script>
 </p>
 </div>
 

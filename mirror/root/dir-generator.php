@@ -228,7 +228,6 @@ EOT;
 	</div>
 </div>
 
-<!-- script type="text/javascript" src="/static/qrcode.js"></script -->
 <script type="text/javascript">
 	function QRCodePNG(str, obj) {
 		try {

@@ -111,7 +111,22 @@ if (!defined('DOKU_INC')) die();
 
 <!-- Footer -->
 
-<script type="text/javascript" src="<?php echo DOKU_TPL?>qrcode.js"></script>
+<script type="text/javascript">
+	function QRCodePNG(str, obj) {
+		try {
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "<?php echo DOKU_TPL?>qrcode.js";
+			element.type ="text/javascript"; 
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}
+</script>
 
 <div id="footer">
 	Copyright &copy; <?php echo date('Y'); ?>
@@ -124,7 +139,7 @@ if (!defined('DOKU_INC')) die();
 	<a href="http://hg.slitaz.org/">Hg</a>
 	<p>
 		<img src="#" alt="SliTaz @" onmouseover="this.title = location.href"
-		 onclick="this.src = QRCode.generatePNG(location.href, {ecclevel: 'H'})" />
+		 onclick="this.src = QRCodePNG(location.href, this)" />
 		<a href="http://twitter.com/slitaz">Twitter</a>
 		<a href="http://www.facebook.com/slitaz">Facebook</a>
 		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
