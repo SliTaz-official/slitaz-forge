@@ -312,12 +312,8 @@ form.login input#remember {
 =================================== */
 
 #front-page #hottags {
-	position: absolute;
-	top: -46px;
-	left: 80px;
-	width: 48%;
-	overflow: hidden;
-	height: 64px;
+	margin-top: -46px;
+	height: 70px;
 }
 
 #front-page #discussions {
