@@ -114,6 +114,7 @@ if (!defined('DOKU_INC')) die();
 <script type="text/javascript">
 	function QRCodePNG(str, obj) {
 		try {
+			obj.height = obj.width += 300;
 			return QRCode.generatePNG(str, {ecclevel: 'H'});
 		}
 		catch (any) {
