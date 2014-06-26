@@ -1,0 +1,223 @@
+# Persian translation of Tazpkg Web.
+# Copyright (C) 2014 www.slitaz.org
+# This file is distributed under the same license as the TazPkg Web package.
+# Ali Rashidi <alirashidi17@yahoo.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazPkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-12 15:16+0300\n"
+"PO-Revision-Date: 2014-06-25 18:01+0400\n"
+"Last-Translator: Ali Rashidi <alirashidi17@yahoo.com>\n"
+"Language-Team: Ali Rashidi <alirashidi17@yahoo.com>\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: search.sh:222
+msgid "Package"
+msgstr "پکیج"
+
+#: search.sh:223
+msgid "Description"
+msgstr "توضیحات"
+
+#: search.sh:224
+msgid "Tags"
+msgstr "برچسب ها"
+
+#: search.sh:225
+msgid "Arch"
+msgstr "اصلی"
+
+#: search.sh:226 lib/header.sh:26
+msgid "Bugs"
+msgstr "باگ ها"
+
+#: search.sh:227 search.sh:334 search.sh:358
+msgid "Receipt"
+msgstr "دریافتی"
+
+#: search.sh:228
+msgid "Depends"
+msgstr "وابسته ها"
+
+#: search.sh:229
+msgid "Build depends"
+msgstr "ساخت وابسته ها"
+
+#: search.sh:230
+msgid "File"
+msgstr "فایل"
+
+#: search.sh:231
+msgid "File list"
+msgstr "لیست فایل"
+
+#: search.sh:232
+msgid "common files"
+msgstr "فایل های عمومی"
+
+#: search.sh:233
+msgid "Category"
+msgstr "دسته بندی"
+
+#: search.sh:234
+msgid "Maintainer"
+msgstr "حامی"
+
+#: search.sh:235
+msgid "License"
+msgstr "مجوز"
+
+#: search.sh:243
+msgid "cooking"
+msgstr "آشپزی"
+
+#: search.sh:248
+msgid "tiny"
+msgstr "کوچک"
+
+#: search.sh:249
+msgid "undigest"
+msgstr ""
+
+#: search.sh:250
+msgid "backports"
+msgstr ""
+
+#: search.sh:254
+msgid "Search"
+msgstr "جستجو"
+
+#: search.sh:325 search.sh:327 search.sh:351 search.sh:353
+msgid "Cooker"
+msgstr "Cooker"
+
+#: search.sh:436
+msgid ""
+"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
+"\t<b>every</b> package is supposed to depend on them."
+msgstr ""
+"وابسته های الزامی هستند gcc-lib-base و \tglibc-base\n"
+"\t<b>همه ی</b> پکیج ها آن دو را نیاز دارند."
+
+#: search.sh:482
+#, sh-format
+msgid "No package $SEARCH"
+msgstr "موجود نیست $SEARCH پکیج "
+
+#: search.sh:714
+msgid "Search for packages"
+msgstr "جستجوی پکیج ها"
+
+#: search.sh:728
+msgid "Depends loops"
+msgstr "حلقه های پکیج های وابسته"
+
+#: search.sh:743
+#, sh-format
+msgid "Dependency tree for: $SEARCH"
+msgstr "$SEARCH :درختواره وابسته های"
+
+#: search.sh:754
+#, sh-format
+msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+msgstr "(پیشنهاد شده) $SEARCH :درختواره وابسته های"
+
+#: search.sh:763
+#, sh-format
+msgid "Reverse dependency tree for: $SEARCH"
+msgstr "$SEARCH :برگرداندن درختواره وابسته های "
+
+#: search.sh:780
+msgid "Build depends loops"
+msgstr "حلقه های وابسته های ساخت"
+
+#: search.sh:796
+#, sh-format
+msgid "$SEARCH needs these packages to be built"
+msgstr "برای ساخته شدن به این پکیج ها نیازمند است $SEARCH"
+
+#: search.sh:804
+#, sh-format
+msgid "Packages who need $SEARCH to be built"
+msgstr ".برای ساخته شدن نیازمندند $SEARCH پکیج هایی که به"
+
+#: search.sh:821
+#, sh-format
+msgid "These packages may overload files of $SEARCH"
+msgstr ".لود کنند $SEARCH این پکیج ها ممکن است فایل های زیادی را از "
+
+#: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
+#: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
+#, sh-format
+msgid "Result for: $SEARCH"
+msgstr "$SEARCH :نتایج برای"
+
+#: search.sh:897
+#, sh-format
+msgid "$filenb file"
+msgid_plural "$filenb files"
+msgstr[0] "$filenb فایل"
+
+#: search.sh:912
+#, sh-format
+msgid "Description of package: $SEARCH"
+msgstr "$SEARCH :شرح پکیج"
+
+#: search.sh:938
+#, sh-format
+msgid "Result for known bugs"
+msgstr "نتایج برای باگ های شناخته شده"
+
+#: search.sh:1113
+msgid "description"
+msgstr "شرح"
+
+#: search.sh:1124
+#, sh-format
+msgid "Result for: $SEARCH (package providing $vpkg)"
+msgstr "$SEARCH (package providing $vpkg) :نتایج جستجوی"
+
+#: lib/header.sh:6
+#, sh-format
+msgid "SliTaz Packages - Search $SEARCH"
+msgstr "$SEARCH - جستجوی SliTaz پکیج های"
+
+#: lib/header.sh:20
+msgid "Home"
+msgstr "خانه"
+
+#: lib/header.sh:21
+msgid "Community"
+msgstr "انجمن"
+
+#: lib/header.sh:22
+msgid "Doc"
+msgstr "سند"
+
+#: lib/header.sh:23
+msgid "Forum"
+msgstr "انجمن گفتمان"
+
+#: lib/header.sh:24
+msgid "Pro"
+msgstr "حرفه ای"
+
+#: lib/header.sh:25
+msgid "Shop"
+msgstr "خرید"
+
+#: lib/header.sh:27
+msgid "Hg"
+msgstr "Hg"
+
+#: lib/header.sh:29
+msgid "SliTaz Packages"
+msgstr "SliTaz پکیج"

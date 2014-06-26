@@ -27,6 +27,7 @@ user_lang() {
 		case "$lang" in
 			de) LANG="de_DE" ;;
 			es) LANG="es_AR" ;;
+			fa) LANG="fa_IR" ;;
 			fr) LANG="fr_FR" ;;
 			it) LANG="it_IT" ;;
 			pl) LANG="pl_PL" ;;
@@ -35,7 +36,7 @@ user_lang() {
 			sv) LANG="sv_SE" ;;
 			zh) LANG="zh_TW" ;;
 		esac
-		if echo "de en es fr pl pt ru sv zh" | fgrep -q "$lang"; then
+		if echo "de en es fa fr pl pt ru sv zh" | fgrep -q "$lang"; then
 			break
 		fi
 	done
