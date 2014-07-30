@@ -1,35 +1,30 @@
 #!/bin/sh
 
-read32()
+rd()
 {
-	echo $(od -j $((0x$1)) -N 4 -t u4 -An kernel)
+	echo $(od -j $((0x$1)) -N ${2:-4} -t u${2:-4} -An kernel)
 }
 
-ddsect()
+ds()
 {
-	dd bs=512 count=$@ 2> /dev/null
+	dd count=$1 bs=${2:-512} 2>/dev/null
 }
 
 case "$1" in
-extract)
-	ddsect 2 > kernel
-	setupsz=$(($(read32 1F1) & 255))
-	ddsect $(($setupsz - 1)) >> kernel
-	[ $(read32 228) -ne 0 ] &&
-	ddsect 1 | strings > cmdline
-	syssz=$(read32 1F4)
-	syssz=$(( ($syssz + 31) / 32 ))
-	ddsect $syssz >> kernel
-	ramsz=$(read32 21C)
-	ddsect $((($ramsz + 511) / 512)) of=rootfs
-	dd bs=1 seek=$ramsz count=0 of=rootfs 2> /dev/null
+extract) (
+	ds 1
+	ds $(rd 1F1 1)
+	[ $(rd 228) -ne 0 ] && ds 1 | strings >cmdline
+	ds $(( ($(rd 1F4) +31) /32)) ) >kernel
+	ds $(( ($(rd 21C) +3) /4)) 4 >rootfs
 	;;
 *)	cat <<EOT
 usage: 
 # cat fd0*.img | $0 extract
 	creates kernel, rootfs and cmdline files
-# cat fd1*.img | unlzma | cpio -i
-# cat fd2*.img | unlzma | cpio -i
-...
 EOT
+	for i in 1 2 3; do
+		j=" cat fd$i*.img |"
+		echo "#$j cpio -i 2>/dev/null ||$j unlzma | cpio -idmu"
+	done
 esac
