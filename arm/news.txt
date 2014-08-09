@@ -5,3 +5,4 @@
 20140510: RaspiComm support: custom raspicomm utility + PiBook updated
 20140512: PiFace support with its own <a href="codex/pibook.html#piface">PiBook section</a>
 20140515: Added PiTFT setup script + basic Pibrella and Piborg support
+20140809: Announcing the PiClass project - <a href="http://piclass.org">piclass.org</a>
