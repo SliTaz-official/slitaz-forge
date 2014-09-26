@@ -11,7 +11,7 @@ function redirect()
 	<meta name="description" content="slitaz mirror redirection" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<meta http-equiv="Refresh" content="0;url=http://mirror.slitaz.org/">
+	<meta http-equiv="Refresh" content="0;url=http://mirror1.slitaz.org/">
 </head>
 <?php
 }
@@ -143,8 +143,8 @@ function get_file_type($file) {
 }
 
 //$slitaz_style = (dirname($_SERVER["PHP_SELF"]) == '/');
-//$slitaz_style = ($_SERVER["SERVER_NAME"] == "mirror.slitaz.org");
-$slitaz_style = preg_match("/mirror\.slitaz\./",$_SERVER["SERVER_NAME"]);
+//$slitaz_style = ($_SERVER["SERVER_NAME"] == "mirror1.slitaz.org");
+$slitaz_style = preg_match("/mirror1\.slitaz\./",$_SERVER["SERVER_NAME"]);
 if ($slitaz_style) {
 	$modified = gmdate("D, d M Y H:i:s e", strtotime("-1 hour"));
 	$expires = gmdate("D, d M Y H:i:s e", strtotime("+1 hour"));
@@ -195,7 +195,7 @@ if ($slitaz_style) {
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
-	<h1><a href="http://mirror.slitaz.org/">SliTaz Mirror</a></h1>
+	<h1><a href="http://mirror1.slitaz.org/">SliTaz Mirror</a></h1>
 </div>
 
 <!-- Block -->
@@ -214,9 +214,9 @@ if ($slitaz_style) {
 	<div id="block_info">
 		<h4>Welcome to Open Source!</h4>
 EOT;
-	if (preg_match("/mirror\.slitaz\./",$_SERVER["SERVER_NAME"])) print <<<EOT
+	if (preg_match("/mirror1\.slitaz\./",$_SERVER["SERVER_NAME"])) print <<<EOT
 		<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
-		SliTaz (stable) in an lguest virtual machine provided by 
+		SliTaz (stable) in an uml virtual machine provided by 
 		<a href="http://www.ads-lu.com/">ADS</a> and is located in France.
 		<a href="/info/">Mirror info...</a></p>
 EOT;

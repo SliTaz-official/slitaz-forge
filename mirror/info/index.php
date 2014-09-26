@@ -121,34 +121,34 @@ system("top -n1 -b");
     src="/static/network.png" />Virtual hosts</h2>
 
 <ul>
-	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz Mirror.
-	(<a href="http://mirror.slitaz.org/stats">stats</a>)</li>
+	<li><a href="http://mirror1.slitaz.org/">mirror1.slitaz.org</a> - SliTaz Mirror.
+	(<a href="http://mirror1.slitaz.org/stats">stats</a>)</li>
 	<li><a href="http://scn.slitaz.org/">scn.slitaz.org</a> - SliTaz Community Network.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=scn.slitaz.org">stats</a>)</li>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=scn.slitaz.org">stats</a>)</li>
 	<li><a href="http://pizza.slitaz.org/">pizza.slitaz.org</a> - SliTaz Flavor builder.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=pizza.mirror.slitaz.org">stats</a>)</li>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=pizza.mirror1.slitaz.org">stats</a>)</li>
 	<li><a href="http://tiny.slitaz.org/">tiny.slitaz.org</a> - Tiny SliTaz builder.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=tiny.slitaz.org">stats</a>)</li>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=tiny.slitaz.org">stats</a>)</li>
 	<li><a href="https://ajaxterm.slitaz.org/">ajaxterm.slitaz.org</a> - Slitaz Web Console.
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=ajaxterm.slitaz.org">stats</a>)</li>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=ajaxterm.slitaz.org">stats</a>)</li>
 </ul>
 
 <a name="replicas"></a>
-<h2><a href="http://mirror.slitaz.org/awstats.pl?config=replicas.mirror.slitaz.org">
+<h2><a href="http://mirror1.slitaz.org/awstats.pl?config=replicas.mirror1.slitaz.org">
 		<img title="Tank replicas" alt="replicas"
     src="/static/network.png" /></a>Tank replicas</h2>
 
 <ul>
-	<li><a href="http://mirror.slitaz.org/www/">www.slitaz.org</a> - SliTaz Website.
+	<li><a href="http://mirror1.slitaz.org/www/">www.slitaz.org</a> - SliTaz Website.
 	(<a href="http://www.slitaz.org/">main</a>)</li>
-	<li><a href="http://mirror.slitaz.org/doc/">doc.slitaz.org</a> - Documentation.
+	<li><a href="http://mirror1.slitaz.org/doc/">doc.slitaz.org</a> - Documentation.
 	(<a href="http://doc.slitaz.org/">main</a>)</li>
-	<li><a href="http://mirror.slitaz.org/pkgs/">pkgs.slitaz.org</a> - Packages Web interface.
+	<li><a href="http://mirror1.slitaz.org/pkgs/">pkgs.slitaz.org</a> - Packages Web interface.
 	(<a href="http://pkgs.slitaz.org/">main</a>)</li>
-	<li><a href="http://mirror.slitaz.org/hg/?sort=lastchange">hg.slitaz.org</a> - Mercurial repositories (read only).
+	<li><a href="http://mirror1.slitaz.org/hg/?sort=lastchange">hg.slitaz.org</a> - Mercurial repositories (read only).
 	(<a href="http://hg.slitaz.org/?sort=lastchange">main</a>
 	<a href="http://hg.tuxfamily.org/mercurialroot/slitaz/">tuxfamily</a>)</li>
-	<li><a href="http://mirror.slitaz.org/webboot/">boot.slitaz.org</a> - gPXE Web boot.
+	<li><a href="http://mirror1.slitaz.org/webboot/">boot.slitaz.org</a> - gPXE Web boot.
 	(<a href="http://boot.slitaz.org/">main</a>)</li>
 </ul>
 
@@ -176,13 +176,13 @@ dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre>
 	 </ul>
 
 <a name="mirrors"></a>
-<h2><a href="http://mirror.slitaz.org/awstats.pl?config=rsync">
+<h2><a href="http://mirror1.slitaz.org/awstats.pl?config=rsync">
 	<img title="Secondary mirrors" src="/static/network.png" 
 	 alt="mirrors" /></a>Mirrors</h2>
-	Most mirrors are updated using the url: <b>rsync://mirror.slitaz.org/slitaz/</b>
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=rsync">stats</a>)
+	Most mirrors are updated using the url: <b>rsync://mirror1.slitaz.org/slitaz/</b>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=rsync">stats</a>)
 	<pre>
-rsync -azH --delete rsync://mirror.slitaz.org/slitaz/ /local/slitaz/mirror/ </pre>
+rsync -azH --delete rsync://mirror1.slitaz.org/slitaz/ /local/slitaz/mirror/ </pre>
 	New mirrors should be announced on the 
 	<a href="http://www.slitaz.org/en/mailing-list.html">mailing list</a>.
 <ul>
@@ -221,8 +221,8 @@ function test_url($link, $proto)
 if (! file_exists($mirrors_url_file)) {
 	$output_url_file = tempnam('/tmp','mkmirrors');
 	$output_url_handler = fopen($output_url_file, "w");
-	fwrite($output_url_handler,"http://mirror.slitaz.org/\n");
-	fwrite($output_url_handler,"rsync://mirror.slitaz.org/\n");
+	fwrite($output_url_handler,"http://mirror1.slitaz.org/\n");
+	fwrite($output_url_handler,"rsync://mirror1.slitaz.org/\n");
 }
 
 # Flags icons from http://www.famfamfam.com/lab/icons/flags/famfamfam_flag_icons.zip
