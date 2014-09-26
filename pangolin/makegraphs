@@ -352,9 +352,6 @@ updateifgraph $iface week
 updateifgraph $iface month
 updateifgraph $iface year
 
-#rsync --bwlimit=40 -t -e 'ssh -p 222 -i /home/bellard/.ssh/id_rsa' $rrdlog/* \
-#	bellard@mirror.slitaz.org:/var/spool/rrd/tank/ > /dev/null 2>&1
-
 [ ! -s $rrdgraph/boot.html -o /var/log/boot.log -nt $rrdgraph/boot.html ] &&
 cat > $rrdgraph/boot.html <<EOT
 <html>

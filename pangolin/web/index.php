@@ -129,7 +129,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 </p>
 <ul>
 	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz main mirror and replicas.
-		(<a href="http://mirror.slitaz.org/info/">more...</a>)</li>
+		(<a href="http://mirror1.slitaz.org/info/">more...</a>)</li>
 	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.</li>
 	<li><a href="http://tiny.slitaz.org/">tiny.slitaz.org</a> - Tiny SliTaz builder.</li>
 	<!-- ajaxterm archives console-mirror demo dvd floppy ssh usbkey -->
@@ -141,14 +141,14 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 </ul>
     
 <a name="mirrors"></a>
-<h2><a href="http://mirror.slitaz.org/info/"> <img
+<h2><a href="http://mirror1.slitaz.org/info/"> <img
 	style="vertical-align: middle; padding: 0 4px 4px 0;"
 	src="images/network.png"
 	title="Secondary mirrors" alt="mirrors" /></a>Mirrors</h2>
-	Most mirrors are updated using the url: <b>rsync://mirror.slitaz.org/slitaz/</b>
-	(<a href="http://mirror.slitaz.org/awstats.pl?config=rsync">stats</a>)
+	Most mirrors are updated using the url: <b>rsync://mirror1.slitaz.org/slitaz/</b>
+	(<a href="http://mirror1.slitaz.org/awstats.pl?config=rsync">stats</a>)
 	<pre>
-rsync -azH --delete rsync://mirror.slitaz.org/slitaz/ /local/slitaz/mirror/ </pre>
+rsync -azH --delete rsync://mirror1.slitaz.org/slitaz/ /local/slitaz/mirror/ </pre>
 	New mirrors should be announced on the 
 	<a href="http://www.slitaz.org/en/mailing-list.html">mailing list</a>.
 <ul>
@@ -187,8 +187,8 @@ function test_url($link, $proto)
 if (! file_exists($mirrors_url_file)) {
 	$output_url_file = tempnam('/tmp','mkmirrors');
 	$output_url_handler = fopen($output_url_file, "w");
-	fwrite($output_url_handler,"http://mirror.slitaz.org/\n");
-	fwrite($output_url_handler,"rsync://mirror.slitaz.org/\n");
+	fwrite($output_url_handler,"http://mirror1.slitaz.org/\n");
+	fwrite($output_url_handler,"rsync://mirror1.slitaz.org/\n");
 }
 
 # Flags icons from http://www.famfamfam.com/lab/icons/flags/famfamfam_flag_icons.zip

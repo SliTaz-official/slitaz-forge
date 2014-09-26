@@ -187,7 +187,7 @@ Good luck.
 <a name="fdiso"></a>
 <h2>ISO image floppy set</h2>
 
-<form method="get" action="http://mirror.slitaz.org/floppies/download.php">
+<form method="get" action="http://mirror1.slitaz.org/floppies/download.php">
 <p>
 The floppy image set above includes an embedded installer and can install
 SliTaz on your hard disk.

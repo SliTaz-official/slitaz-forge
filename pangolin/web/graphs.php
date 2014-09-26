@@ -39,7 +39,7 @@
 			<li><a href="http://hg.slitaz.org/">Mercurial Repos</a></li>
 			<li><a href="http://cook.slitaz.org/">Build Bot</a></li>
 			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-			<li><a href="http://mirror.slitaz.org/info/">Mirror Server</a></li>
+			<li><a href="http://mirror1.slitaz.org/info/">Mirror Server</a></li>
 		</ul>
 	</div>
 	<!-- Information/image -->

@@ -20,9 +20,9 @@ usage() {
 
 Usage: $(basename $0) [command]
 Commands:
-  up-info       Update mirror.slitaz.org/info/ web interface
+  up-info       Update mirror1.slitaz.org/info/ web interface
   up-tiny       Update tiny.slitaz.org/ web interface
-  up-mirror     Update mirror.slitaz.org files
+  up-mirror     Update mirror1.slitaz.org files
   up-www        Update main website www.slitaz.org
   up-pkgs       Update pkgs.slitaz.org web interface
 
@@ -31,7 +31,7 @@ EOT
 
 case "$1" in
 	up-info)
-		echo "Updating: mirror.slitaz.org/info..."
+		echo "Updating: mirror1.slitaz.org/info..."
 		cd $REPOS/slitaz-forge && hg pull -u
 		echo "Copying info to: $INFO"
 		cp -a mirror/info/* $INFO ;;
@@ -41,7 +41,7 @@ case "$1" in
 		echo "Copying tiny to: $TINY"
 		cp -a * $TINY ;;
 	up-mirror)
-		echo "Updating: mirror.slitaz.org files..." 
+		echo "Updating: mirror1.slitaz.org files..." 
 		cd $REPOS/slitaz-forge && hg pull -u
 		echo "Copying root to: $MIRROR"
 		cp -a mirror/root/* $MIRROR ;;

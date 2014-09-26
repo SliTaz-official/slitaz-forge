@@ -10,7 +10,7 @@ if (false) { // no php support on this mirror !
 	<meta name="description" content="slitaz boot floppies builder redirection" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
-	<meta http-equiv="Refresh" content="0;url=http://mirror.slitaz.org/floppies/builder/index.php">
+	<meta http-equiv="Refresh" content="0;url=http://mirror1.slitaz.org/floppies/builder/index.php">
 </head>
 </html>
 <?php
