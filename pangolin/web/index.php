@@ -37,7 +37,7 @@
 		<div class="right_box">
 			<ul>
 				<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-				<li><a href="http://mirror.slitaz.org/">Main Mirror</a></li>
+				<li><a href="http://mirror1.slitaz.org/">Main Mirror</a></li>
 			</ul>
 		</div>
 		<div class="left_box">
@@ -128,7 +128,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	resources to the SliTaz project.
 </p>
 <ul>
-	<li><a href="http://mirror.slitaz.org/">mirror.slitaz.org</a> - SliTaz main mirror and replicas.
+	<li><a href="http://mirror.slitaz.org/">mirror1.slitaz.org</a> - SliTaz main mirror and replicas.
 		(<a href="http://mirror1.slitaz.org/info/">more...</a>)</li>
 	<li><a href="http://pkgs.slitaz.org/">pkgs.slitaz.org</a> - Packages Web interface.</li>
 	<li><a href="http://tiny.slitaz.org/">tiny.slitaz.org</a> - Tiny SliTaz builder.</li>

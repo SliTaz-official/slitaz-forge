@@ -22,7 +22,7 @@
 		<div class="right_box">
 			<ul>
 				<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-				<li><a href="http://mirror.slitaz.org/">Main Mirror</a></li>
+				<li><a href="http://mirror1.slitaz.org/">Main Mirror</a></li>
 			</ul>
 		</div>
 		<div class="left_box">
