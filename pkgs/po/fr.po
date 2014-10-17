@@ -36,7 +36,7 @@ msgstr "Tags"
 
 #: search.sh:225
 msgid "Arch"
-msgstr ""
+msgstr "Arch"
 
 #: search.sh:226 lib/header.sh:26
 msgid "Bugs"
@@ -69,14 +69,15 @@ msgstr "Fichiers communs"
 #: search.sh:233
 msgid "Category"
 msgstr ""
+msgstr "Catégorie"
 
 #: search.sh:234
 msgid "Maintainer"
-msgstr ""
+msgstr "Mainteneur"
 
 #: search.sh:235
 msgid "License"
-msgstr ""
+msgstr "License"
 
 #: search.sh:243
 msgid "cooking"
@@ -92,7 +93,7 @@ msgstr "indigeste"
 
 #: search.sh:250
 msgid "backports"
-msgstr ""
+msgstr "backports"
 
 #: search.sh:254
 msgid "Search"
@@ -100,15 +101,15 @@ msgstr "Recherche"
 
 #: search.sh:325 search.sh:327 search.sh:351 search.sh:353
 msgid "Cooker"
-msgstr ""
+msgstr "Mijoteur"
 
 #: search.sh:436
 msgid ""
 "\tglibc-base and gcc-lib-base are implicit dependencies,\n"
 "\t<b>every</b> package is supposed to depend on them."
 msgstr ""
-"\tglibc-base et gcc-lib-base sont des dépendances implicite,\n"
-"\tpour chaque paquet supposé dépendre d'eux."
+"\tglibc-base et gcc-lib-base sont des dépendances implicites,\n"
+"\tchaque paquet est supposé dépendre d'eux."
 
 #: search.sh:482
 #, sh-format
@@ -178,7 +179,7 @@ msgstr "Description du paquet: $SEARCH"
 #: search.sh:938
 #, sh-format
 msgid "Result for known bugs"
-msgstr ""
+msgstr "Problèmes connus"
 
 #: search.sh:1113
 msgid "description"
