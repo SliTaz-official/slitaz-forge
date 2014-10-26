@@ -91,6 +91,7 @@ system("uptime | sed 's/^\s*//'");
 <h4>Disk usage</h4>
 <pre class="package">
 <?php
+system("[ -d /sys/block ] && [ -x /usr/sbin/smartctl ] && { cd /sys/block ; for i in [hs]d? ; do echo -n \$i ; /usr/sbin/smartctl -a /dev/\$i 2> /dev/null | sed '/Power_On_Hours/{s/.*Pow/: Pow/;s/ours.*-/ours/;p};/offline/!d;q'; echo; done; }");
 system("df -h | sed '/^rootfs/d' | grep  '\(^/dev\|Filesystem\)'");
 ?>
 </pre>
