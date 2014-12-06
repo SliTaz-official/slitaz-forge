@@ -1,0 +1,14 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "by.slitaz.org" IN {
+	type master;
+	file "/etc/bind/by.slitaz.org";
+	allow-update { 127.0.0.1; 5.135.85.160; key rndc-key; };
+	allow-query  { any; };
+};

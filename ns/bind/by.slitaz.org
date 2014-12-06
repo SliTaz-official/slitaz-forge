@@ -1,0 +1,12 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+by.slitaz.org		IN SOA	ns.slitaz.org. postmaster.slitaz.org. (
+				2013120204 ; serial
+				10800      ; refresh (3 hours)
+				1800       ; retry (30 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	ns.slitaz.org.
+$ORIGIN by.slitaz.org.
+$TTL 900	; 15 minutes
