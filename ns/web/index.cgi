@@ -9,14 +9,15 @@ ip="$(GET ip)"
 name="$(GET name)"
 name="${name%.by.slitaz.org}"
 if [ "$name" -a "$REMOTE_USER" ]; then
-	if grep -qs ^$name $OWNERFILE ; then
+	header
+	if grep -qs "^$name " $OWNERFILE ; then
 		owner="$(sed "/^$name /!d;s/.* //" $OWNERFILE)"
 		if [ "$owner" != "$REMOTE_USER" ]; then
 			echo "$name is already used by $owner. Abort."
 			exit 1
 		fi
 	else
-		echo "$name $REMOTE_USER" >> $OWNERFILE
+		echo "$name $(date -u) $REMOTE_USER" >> $OWNERFILE
 	fi
 	addip=yes
 	case " $(GET) " in
@@ -24,10 +25,12 @@ if [ "$name" -a "$REMOTE_USER" ]; then
 		addip=
 		sed -i "/^$name /d" $OWNERFILE
 	esac
+	type="A"
+	echo "$ip" | grep -q : && type="AAAA"
 	req="server 127.0.0.1
-update delete $name.by.slitaz.org A"
+update delete $name.by.slitaz.org $type"
 	[ "$addip" ] && req="$req
-update add $name.by.slitaz.org 900 A $ip"
+update add $name.by.slitaz.org 900 $type $ip"
 	case " $(GET) " in
 	*\ mx\ *)
 		mx="$(GET mx)"
@@ -38,7 +41,7 @@ update delete $name.by.slitaz.org MX"
 update add $name.by.slitaz.org 900 MX 10 $mx"		
 	esac
 	echo "$req
-send" | nsupdate
+send" | nsupdate 2>&1
 else
 	#header "text/html; charset=utf-8"
 	cat <<EOT
@@ -74,7 +77,7 @@ else
 	<div id="network">
 		<a href="http://www.slitaz.org/">Home</a>
 		<a href="http://bugs.slitaz.org/">Bugs</a>
-		<a href="http://hg.slitaz.org/wok/">Hg</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://roadmap.slitaz.org/">Roadmap</a>
 		<a href="http://pizza.slitaz.me/">Pizza</a>
@@ -90,11 +93,11 @@ EOT
 		cat <<EOT
 <h3>Status</h3>
 $REMOTE_USER has $(grep " $REMOTE_USER$" $OWNERFILE | wc -l) names
-the in by.slitaz.org domain.
+in the by.slitaz.org domain.
 <pre>
 EOT
 		for i in $(grep " $REMOTE_USER$" $OWNERFILE | sed 's/ .*//'); do
-			grep "^$i	" /etc/bind/by.slitaz.org
+			dig @127.0.0.1 $i.by.slitaz.org ANY | grep ^$i
 		done
 		cat <<EOT
 </pre>
