@@ -10,8 +10,26 @@ name="$(GET name)"
 name="${name%.by.slitaz.org}"
 if [ "$name" -a "$REMOTE_USER" ]; then
 	header
-	if grep -qs "^$name " $OWNERFILE ; then
+	addip=yes
+	case " $(GET) " in
+	*\ remove\ *|*\ delete\ *|*\ wipe\ *)
+		addip=
+	esac
+	case "$name" in
+	@*)	echo "$name not allowed. Abort."
+		exit 1 ;;
+	*\**)	base="${name//\*/}"
+		if grep -qs "^[^ ]*${base//./\\.} " $OWNERFILE ; then
+			owner="$(sed "/^[^ ]*${base//./\\.} /!d;s/.* //" $OWNERFILE | uniq | xargs echo)"
+			if [ "$addip" -o "$owner" != "$REMOTE_USER" ]; then
+				echo "$base is already used by $owner. Abort."
+				exit 1
+			fi
+		fi
+	esac
+	if grep -qs "^$name " $OWNERFILE || grep -qs "^\$name " $OWNERFILE ; then
 		owner="$(sed "/^$name /!d;s/.* //" $OWNERFILE)"
+		[ "$owner" ] || owner="$(sed "/^\$name /!d;s/.* //" $OWNERFILE)"
 		if [ "$owner" != "$REMOTE_USER" ]; then
 			echo "$name is already used by $owner. Abort."
 			exit 1
@@ -19,27 +37,27 @@ if [ "$name" -a "$REMOTE_USER" ]; then
 	else
 		echo "$name $(date -u) $REMOTE_USER" >> $OWNERFILE
 	fi
-	addip=yes
-	case " $(GET) " in
-	*\ remove\ *|*\ delete\ *|*\ wipe\ *)
-		addip=
-		sed -i "/^$name /d" $OWNERFILE
-	esac
-	type="A"
-	echo "$ip" | grep -q : && type="AAAA"
-	req="server 127.0.0.1
-update delete $name.by.slitaz.org $type"
-	[ "$addip" ] && req="$req
-update add $name.by.slitaz.org 900 $type $ip"
-	case " $(GET) " in
-	*\ mx\ *)
+	[ "$addip" ] || sed -i "/^$name /d;/^\$name /d" $OWNERFILE
+	ttl=900
+	[ "$(GET ttl)" ] && ttl="$(GET ttl)"
+	req="server 127.0.0.1"
+	if [ "$(GET mx)" ]; then
 		mx="$(GET mx)"
 		[ "$mx" ] || mx=$ip
 		req="$req
 update delete $name.by.slitaz.org MX"
 	[ "$addip" ] && req="$req
-update add $name.by.slitaz.org 900 MX 10 $mx"		
-	esac
+update add $name.by.slitaz.org $ttl MX 10 $mx"		
+	fi
+	type="A"
+	echo "$ip" | grep -q : && type="AAAA"
+	[ "$(GET ns)" ] && type="NS"
+	[ "$(GET txt)" ] && type="TXT" && ip="$(GET txt)"
+	[ "$(GET cname)" ] && type="CNAME" && ip="$(GET cname)"
+	req="$req
+update delete $name.by.slitaz.org $type"
+	[ "$addip" ] && req="$req
+update add $name.by.slitaz.org $ttl $type $ip"
 	echo "$req
 send" | nsupdate 2>&1
 else
@@ -88,12 +106,15 @@ else
 
 <!-- Content -->
 <div id="content">
+<h3>Status</h3>
+<p>
+There are $(wc -l < $OWNERFILE) records and 
+$(sed 's/.* //' $OWNERFILE | sort | uniq | wc -l) users
+in the by.slitaz.org domain.</p>
 EOT
 	if grep -qs " $REMOTE_USER$" $OWNERFILE; then
 		cat <<EOT
-<h3>Status</h3>
-$REMOTE_USER has $(grep " $REMOTE_USER$" $OWNERFILE | wc -l) names
-in the by.slitaz.org domain.
+$REMOTE_USER has $(grep " $REMOTE_USER$" $OWNERFILE | wc -l) names:
 <pre>
 EOT
 		for i in $(grep " $REMOTE_USER$" $OWNERFILE | sed 's/ .*//'); do
@@ -108,38 +129,63 @@ EOT
 	cat <<EOT
 <h3>Usage</h3>
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;[&remove][&ip=&lt;ip1&gt;][&mx[=&lt;ip2&gt;]]"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;[&ip=&lt;ip1&gt;][&mx[=&lt;ip2&gt;]]"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;&remove[&mx]"
+</pre>
+<pre>
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;&ns=&lt;ip&gt;"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;&ns&remove"
+</pre>
+<pre>
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;&{txt|cname}=&lt;text&gt;"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=&lt;name&gt;&{txt|cname}&remove"
 </pre>
 <h3>Examples</h3>
 <ul>
 <li>
 Update myblog.by.slitaz.org with my current IP address.
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=myblog"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myblog"
 </pre>
 </li>
 <li>
 Update myblog.by.slitaz.org with the IP address 1.2.3.4.
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&ip=1.2.3.4"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&ip=1.2.3.4"
+</pre>
+</li>
+<li>
+Update myblog.by.slitaz.org with the IPv6 address 1:2:3::4:5
+<pre>
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&ip=1:2:3::4:5"
 </pre>
 </li>
 <li>
 Remove myblog.by.slitaz.org from the name server.
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&remove"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&remove"
 </pre>
 </li>
 <li>
 Update myserver.by.slitaz.org with my current IP address and declare the mail server btw.
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx"
 </pre>
 </li>
 <li>
 Update myserver.by.slitaz.org with my current IP address and use the mail server at 1.2.3.4.
 <pre>
-wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx=1.2.3.4"
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx=1.2.3.4"
+</pre>
+</pre>
+</li>
+<li>
+The Addams family has got a name server at 1.2.3.4.
+<pre>
+$ wget -O - "http://user:pass@ns.slitaz.org/?name=*.addams&ns=1.2.3.4"
+$ nslookup blog.gomez.addams.by.slitaz.org
+Name:      blog.gomez.addams.by.slitaz.org
+Address 1: 5.6.7.8
 </pre>
 </li>
 </ul>
