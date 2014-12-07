@@ -108,8 +108,8 @@ else
 <div id="content">
 <h3>Status</h3>
 <p>
-There are $(wc -l < $OWNERFILE) records and 
-$(sed 's/.* //' $OWNERFILE | sort | uniq | wc -l) users
+There are $(wc -l < $OWNERFILE) record(s) and 
+$(sed 's/.* //' $OWNERFILE | sort | uniq | wc -l) user(s)
 in the by.slitaz.org domain.</p>
 EOT
 	if grep -qs " $REMOTE_USER$" $OWNERFILE; then
@@ -167,20 +167,20 @@ $ wget -O - "http://user:pass@ns.slitaz.org/?name=myblog&remove"
 </pre>
 </li>
 <li>
-Update myserver.by.slitaz.org with my current IP address and declare the mail server btw.
+Update myserver.by.slitaz.org with my current IP address and declare a mail server.
 <pre>
 $ wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx"
 </pre>
 </li>
 <li>
-Update myserver.by.slitaz.org with my current IP address and use the mail server at 1.2.3.4.
+Update myserver.by.slitaz.org with my current IP address and use a mail server at 1.2.3.4.
 <pre>
 $ wget -O - "http://user:pass@ns.slitaz.org/?name=myserver&mx=1.2.3.4"
 </pre>
 </pre>
 </li>
 <li>
-The Addams family has got a name server at 1.2.3.4.
+The Addams family use a name server at 1.2.3.4.
 <pre>
 $ wget -O - "http://user:pass@ns.slitaz.org/?name=*.addams&ns=1.2.3.4"
 $ nslookup blog.gomez.addams.by.slitaz.org
