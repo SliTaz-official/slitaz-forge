@@ -16,7 +16,7 @@ function redirect()
 <?php
 }
 
-$VERSION = "0.2-slitaz";
+$VERSION = "0.3-slitaz";
 
 /*  Lighttpd Enhanced Directory Listing Script
  *  ------------------------------------------
@@ -228,10 +228,11 @@ EOT;
 	</div>
 </div>
 
+<!-- script type="text/javascript" src="/static/qrcode.js"></script -->
 <script type="text/javascript">
 	function QRCodePNG(str, obj) {
 		try {
-			obj.height = obj.width += 300;
+			obj.height = obj.width += 200;
 			return QRCode.generatePNG(str, {ecclevel: 'H'});
 		}
 		catch (any) {
@@ -340,10 +341,10 @@ function my_filemtimeasc($path)	// 2G+ file support
 //return date('Y-M-d H:m:s', filemtime($path));
 }
 
-if (filesize($path.".folderlist") > 0 && filesize($path.".filelist") > 0 &&
+if (filesize($path."/.folderlist") > 0 && filesize($path."/.filelist") > 0 &&
     filemtime($path."/.filelist") > filemtime($path)) {
-	$folderlist = unserialize(file_get_contents($path.".folderlist"));
-	$filelist = unserialize(file_get_contents($path.".filelist"));
+	$folderlist = unserialize(file_get_contents($path."/.folderlist"));
+	$filelist = unserialize(file_get_contents($path."/.filelist"));
 }
 else {
 
@@ -384,8 +385,8 @@ if($handle = @opendir($path)) {
 		}
 	}
 	closedir($handle);
-	file_put_contents($path.".folderlist",serialize($folderlist),LOCK_EX);
-	file_put_contents($path.".filelist",serialize($filelist),LOCK_EX);
+	file_put_contents($path."/.folderlist",serialize($folderlist),LOCK_EX);
+	file_put_contents($path."/.filelist",serialize($filelist),LOCK_EX);
 }
 }
 
@@ -482,6 +483,12 @@ $tag = get_conf('server.tag','"','"',$soft[0].' &lt;'.$soft[1].'&gt;');
 print "</tbody>
 	</table>
 	".count($folderlist)." folders and ".count($filelist)." files.</div>";
+if (filesize($path."/README")) {
+	echo "<pre>\n";
+	echo file_get_contents($path."/README");
+	echo "</pre>\n";
+}
+
 if ($slitaz_style) { ?>
 
 <!-- End of content -->
