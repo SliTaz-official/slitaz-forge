@@ -485,7 +485,8 @@ print "</tbody>
 	".count($folderlist)." folders and ".count($filelist)." files.</div>";
 if (filesize($path."/README")) {
 	echo "<pre>\n";
-	echo file_get_contents($path."/README");
+	echo preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i',
+		 '<a href="$1">$1</a>', file_get_contents($path."/README"));
 	echo "</pre>\n";
 }
 
