@@ -112,7 +112,9 @@ table {
 }
 
 #block_info p { margin: 6px 0; padding: 0 12px 0 0; }
-#block_info a { font-weight: normal; }
+#block_info a { font-weight: normal; color: #B51; }
+#block_info a:hover { color: #000; }
+
 #block ul { list-style-type: square; }
 #block a:hover { color: #afafaf; }
 
@@ -265,7 +267,7 @@ table {
 /* Form */
 
 form { display: inline; }
-input[type="submit"], input[type="text"], textarea, select {
+input[type="submit"], input[type="text"], input[type="search"], textarea, select {
 	color: #444444;
 	border: 1px solid #cccccc;
 	padding: 4px;
@@ -279,7 +281,7 @@ input[type="submit"], input[type="text"], textarea, select {
 	-webkit-padding-start: 6px;
 }
 
-input[type="text"], textarea { background: #fefefe; border: 2px solid #ccc; 
+input[type="text"], input[type="search"], textarea { background: #fefefe; border: 2px solid #ccc; 
 	width: 460px; }
 /*input[type="file"] { border: 2px solid #ddd; }*/
 /*input[type="checkbox"] { background: #fefefe; }*/
@@ -322,7 +324,7 @@ select {
 
 .searchbox input[type=submit]:hover { background-color: #444; }
 
-.searchbox input[type=text] {
+.searchbox input[type=text], input[type=search] {
 	border: 1px solid #333333;
 	padding: 4px;
 	height: 17px;

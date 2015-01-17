@@ -7,7 +7,7 @@ function redirect()
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<title>SliTaz mirror redirection</title>
-	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="description" content="slitaz mirror redirection" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
@@ -163,8 +163,8 @@ if ($slitaz_style) {
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<title>Index of /$vpath</title>
-	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
-	<meta name="description" content=">Index of /$vpath" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Index of /$vpath" />
 	<meta name="robots" content="index, nofollow" />
 	<meta name="author" content="SliTaz Contributors" />
 	<link rel="shortcut icon" href="/static/favicon.ico" />
@@ -254,7 +254,8 @@ Path: /${vpath}
 <div id="content">
 
 <div id="mirrors">
-<img src="/static/network.png" alt="[ Mirrors ]" style="margin-right: 5px;" />
+<a href="http://web.archive.org/web/*/http://mirror.slitaz.org"><img
+ src="/static/network.png" alt="[ Mirrors ]" style="margin-right: 5px;" /></a>
 EOT;
 
 // Mirror list
@@ -485,7 +486,7 @@ print "</tbody>
 	".count($folderlist)." folders and ".count($filelist)." files.</div>";
 if (filesize($path."/README")) {
 	echo "<pre>\n";
-	echo preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i',
+	echo preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Z()0-9@:%_+.~#?&;//=]+)!i',
 		 '<a href="$1">$1</a>', file_get_contents($path."/README"));
 	echo "</pre>\n";
 }
@@ -518,7 +519,7 @@ if ($slitaz_style) { ?>
 	<p>
 		<a href="http://validator.w3.org/check?uri=referer">
 			<img src="/static/xhtml10.png" 
-			     alt="Valid XHTML 1.0" title="Code valid� XHTML 1.0"
+			     alt="Valid XHTML 1.0" title="Valid XHTML 1.0 Transitional"
 			     style="width: 80px; height: 15px;" /></a>
 	</p>
 </div>
