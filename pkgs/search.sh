@@ -220,8 +220,11 @@ search_form()
 	<input type="hidden" name="lang" value="$lang" />
 	<span class="small">
 		<select name="object">
+			<!--value="Package" found only exact match.
 			<option value="Package">$(gettext "Package")</option>
 			<option $selected_desc value="Desc">$(gettext "Description")</option>
+			-->
+			<option $selected_desc value="Desc">$(gettext "Package")|$(gettext "Description")</option>
 			<option $selected_tags value="Tags">$(gettext "Tags")</option>
 			<option $selected_arch value="Arch">$(gettext "Arch")</option>
 			<option $selected_bugs value="Bugs">$(gettext "Bugs")</option>
