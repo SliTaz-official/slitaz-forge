@@ -12,6 +12,20 @@ if (false) { // no php support on this mirror !
 	<meta name="author" content="SliTaz Contributors" />
 	<meta http-equiv="Refresh" content="0;url=http://mirror1.slitaz.org/floppies/builder/index.php">
 </head>
+<body>
+	<script type="text/javascript">
+	window.location.replace('http://mirror1.slitaz.org/floppies/builder/index.php')
+	</script>
+	<noscript>
+	<frameset rows="100%">
+		<frame src="http://mirror1.slitaz.org/floppies/builder/index.php">
+		<noframes>
+		<body>Please follow <a href="http://mirror1.slitaz.org/floppies/builder/index.php
+		">this link</a>.</body>
+		</noframes>
+	</frameset>
+	</noscript>
+</body>
 </html>
 <?php
 }
@@ -51,6 +65,10 @@ if (isset($_GET['id']) && is_file("/tmp/".$_GET['id']."/fd")) {
 	<link rel="stylesheet" type="text/css" href="../static/slitaz.css" />
 	<style type="text/css">
 	
+// input[type=submit] {
+//	cursor: pointer;
+// }
+
 input[type=text] {
 	width: inherit;
 }
@@ -71,6 +89,9 @@ input[type=text] {
 #bottom {
 	text-align: center;
 }
+
+// #cmdline:hover, #cmdline:foqus, #cmdline:not([value=""]) { width: 200px; }
+// #cmdline { width: 50px; }
 
 	</style>
 </head>
@@ -201,10 +222,6 @@ EOT;
 		       ", ".$_FILES["initrd"]['name'].
 		       " and ".$_FILES["initrd2"]['name'];
 	}
-	if ($size >= 15 * 1024 * 1024) {
-		error($msg." exceeds 15 MB.");
-		$size = 0;
-	}
 	if ($size == 0) {
 		if (isset($tmp_dir))
 			system("rm -f $tmp_dir");
@@ -281,9 +298,7 @@ function show_size($size)
 		$max = rtrim(ini_get('upload_max_filesize'),"M");
 		$max_post = rtrim(ini_get('post_max_size'),"M");
 		if ($max_post < $max) $max = $max_post;
-		$msg = "the <acronym title=\"The linux kernel boot sector\">tiny boot loader</acronym> can't load more than 15 MB";
-		if ($max < 16)
-			$msg = "the web server can't upload more than $max MB";
+		$msg = "the web server can't upload more than $max MB";
 ?>
 <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 <table>
@@ -305,7 +320,7 @@ function show_size($size)
 	</tr>
 	<tr>
 	<td>Default cmdline:</td>
-	<td><input type="text" name="cmdline" size="36" <?php 
+	<td id="cmdline"><input type="text" name="cmdline" size="36" <?php
 		if (isset($_GET['cmdline'])) echo 'value="'.$_GET['cmdline'].'"';
 	?>/> <input type="checkbox" name="edit" checked="checked" />edit
 	<i>optional</i></td>
@@ -582,26 +597,14 @@ Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.slitaz.org/">SliTa
 <a href="http://validator.w3.org/check?uri=referer"><img src="../static/xhtml10.png" alt="Valid XHTML 1.0" title="Code validé XHTML 1.0" style="width: 80px; height: 15px;" /></a>
 </p>
 <p>
-	<script type="text/javascript">
-	function QRCodePNG(str, obj) {
-		try {
-			obj.height = obj.width += 300;
-			return QRCode.generatePNG(str, {ecclevel: 'H'});
-		}
-		catch (any) {
-			var element = document.createElement("script");
-			element.src = "../static/qrcode.js";
-			element.type ="text/javascript";
-			element.onload = function() {
-				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
-			};
-			document.body.appendChild(element);
-		}
-	}	
-	</script>
-	<img src="../static/qr.png" alt="#"
+	<img src="#" id="qrcodeimg" alt="#" width="60" height="60"
 	     onmouseover= "this.title = location.href" 
-	     onclick="this.src = QRCodePNG(location.href, this)" />
+	     onclick= "this.width = this.height = 300;" />
+	<script type="text/javascript" src="../static/qrcode.js"></script>
+	<script type="text/javascript">
+		document.getElementById('qrcodeimg').src =
+			QRCode.generatePNG(location.href, {ecclevel: 'H'});
+	</script>
 </p>
 </div>
 

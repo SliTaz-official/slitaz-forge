@@ -17,6 +17,7 @@
 }
 #menu li a:hover {
 	color: #ffffff;
+	//background-color: #d66018;
 	background-color: #ccc;
 	border-top-right-radius: 3px;
 	border-top-left-radius: 3px;
@@ -48,6 +49,7 @@
 	border: 1px solid #f1efeb; 
 }
 #menu li li a:hover {
+	//background-color: #d66018;
 	background-color: #ccc;
 	color: #ffffff;
 	border-radius: 2px;

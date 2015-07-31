@@ -172,13 +172,6 @@ $(cat $DIR/description.html)
 Each floppy set detects disk swaps and can be used without a keyboard.
 </p>
 EOT
-	[ -s $DIR/fd100.img ] && cat <<EOT
-<p>
-If you have an ext3 partition on your hard disk, the bootstrap can create the
-installation script <u>slitaz/install.sh</u>. You will be able to install SliTaz
-on your hard disk without extra media.
-</p>
-EOT
 	cat <<EOT
 <p>
 Good luck.
@@ -218,13 +211,18 @@ You can restore the ISO image on your hard disk using :
 </pre>
 
 <h2>Images generation</h2>
-<p>
-All these floppy images are built with <b>bootfloppybox</b> from
-a <i>core</i> or a <i>4in1</i> iso. The <i>loram</i> is preprocessed by
-<b>tazlitobox</b> (Low RAM tab). These tools are available since 3.0.
-You can extract the <u>kernel</u>, <u>cmdline</u> and <u>rootfs</u> files with 
-<a href="floppies">this tool</a>
-</p>
+<ul>
+	<li>All these floppy images are built from a <i>core</i>
+	    or a <i>Nin1</i> iso.</li>
+	<li>The <i>loram</i> is preprocessed by <b>tazlitobox</b> (Low RAM tab)
+	    or <b>tazlito build-loram</b>.</li>
+	<li>The versions 1.0 and 2.0 are built with <b>bootfloppybox</b>
+	    available since 3.0.</li>
+	<li>The newer versions are built with <b>taziso floppyset</b>
+	    available since 5.0.</li>
+	<li>You can extract the <u>kernel</u>, <u>cmdline</u> and
+	    <u>rootfs*</u> files with  <a href="floppies">this tool</a></li>
+</ul>
 
 <!-- End of content with round corner -->
 </div>
