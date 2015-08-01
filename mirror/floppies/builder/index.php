@@ -559,10 +559,10 @@ Good luck.
 <h4>How does it work ?</h4>
 <p>
 This tool updates the boot sector of your kernel with
-<a href="http://hg.slitaz.org/wok/raw-file/66e38bd6a132/linux/stuff/linux-header.u">this patch</a>.
+<a href="http://hg.slitaz.org/wok/raw-file/13835bce7189/syslinux/stuff/iso2exe/bootloader.S">this code</a>.
 You may add a default cmdline and an initramfs. The cmdline can be edited at boot
 time but the <acronym title="Check for disk swap every 5 seconds">keyboard is not mandatory</acronym>.
-A <a href="bootloader"> standalone version</a> is available.
+A <a href="bootloader"> standalone version</a> is available to break the web server upload limit.
 </p>
 <p>
 Each part (boot, setup, boot message, cmdline, kernel, initramfs) is aligned to 512 bytes.
@@ -571,7 +571,7 @@ The last floppy image is padded with zeros.
 </p>
 <p>
 You can extract the <u>kernel</u>, <u>cmdline</u> and <u>rootfs</u> files with 
-<a href="../floppies">this tool</a> from the floppy images.
+<a href="bootloader" title="./bootloader --extract floppy.*">this tool</a> from the floppy images.
 </p>
 </div>
 
