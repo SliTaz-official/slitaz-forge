@@ -203,24 +203,28 @@ EOT;
 	
 	// Upload initrd
 	
-	if ($size && isset($_FILES["initrd"]['tmp_name']) &&
-	    is_uploaded_file($_FILES["initrd"]['tmp_name'])) {
-		move_uploaded_file($_FILES["initrd"]['tmp_name'],
-				   $tmp_dir."initrd");
-		$initrd_size = $_FILES["initrd"]['size'];
+	if ($size) for ($i = 0; $i < count($_FILES["initrd"]['name']); $i++)
+	if (isset($_FILES["initrd"]['tmp_name'][$i]) &&
+	    is_uploaded_file($_FILES["initrd"]['tmp_name'][$i])) {
+		move_uploaded_file($_FILES["initrd"]['tmp_name'][$i],
+				   $tmp_dir."initrd.".$i);
+		$initrd_cmd .= " --initrd ".$tmp_dir."initrd.".$i;
+		$initrd_size = $_FILES["initrd"]['size'][$i];
 		$size += $initrd_size;
+		if ($i == 0)
 		$msg = "The total size of the files ".$_FILES["kernel"]['name'].
-		       " and ".$_FILES["initrd"]['name'];
+		       " and ".$_FILES["initrd"]['name'][$i];
+		else $msg .= ", ".$FILE["initrd"]['name'][$i];
 	}
-	if ($initrd_size && isset($_FILES["initrd2"]['tmp_name']) &&
-	    is_uploaded_file($_FILES["initrd2"]['tmp_name'])) {
-		move_uploaded_file($_FILES["initrd2"]['tmp_name'],
-				   $tmp_dir."initrd2");
-		$initrd2_size = $_FILES["initrd2"]['size'];
+	if ($initrd_size) for ($i = 0; $i < count($_FILES["initrd2"]['name']); $i++)
+	if (isset($_FILES["initrd2"]['tmp_name'][$i]) &&
+	    is_uploaded_file($_FILES["initrd2"]['tmp_name'][$i])) {
+		move_uploaded_file($_FILES["initrd2"]['tmp_name'][$i],
+				   $tmp_dir."initrd2.".$i);
+		$initrd2_cmd .= " --initrd ".$tmp_dir."initrd2.".$i;
+		$initrd2_size = $_FILES["initrd2"]['size'][$i];
 		$size += $initrd2_size;
-		$msg = "The total size of the files ".$_FILES["kernel"]['name'].
-		       ", ".$_FILES["initrd"]['name'].
-		       " and ".$_FILES["initrd2"]['name'];
+		$msg .= ", ".$FILE["initrd2"]['name'][$i];
 	}
 	if ($size == 0) {
 		if (isset($tmp_dir))
@@ -239,9 +243,9 @@ EOT;
 		if (file_exists($_POST['rdev']))
 			$cmd .= " --rdev ".$_POST['rdev'];
 		if ($initrd_size)
-			$cmd .= " --initrd ".$tmp_dir."initrd";
+			$cmd .= $initrd_cmd;
 		if ($initrd2_size)
-			$cmd .= " --initrd ".$tmp_dir."initrd2";
+			$cmd .= $initrd2_cmd;
 		switch ($_POST['size']) {
 		case 1763328 : 
 		case 2015232 : 
@@ -308,11 +312,11 @@ function show_size($size)
 	</tr>
 	<tr>
 	<td>Initramfs / Initrd:</td>
-	<td><input type="file" name="initrd" size="37" /> <i>optional</i></td>
+	<td><input type="file" name="initrd[]" size="37" multiple /> <i>optional</i></td>
 	</tr>
 	<tr>
 	<td>Extra initramfs:</td>
-	<td><input type="file" name="initrd2" size="37" /> <i>optional</i></td>
+	<td><input type="file" name="initrd2[]" size="37" multiple /> <i>optional</i></td>
 	</tr>
 	<tr>
 	<td>Boot message:</td>
@@ -329,7 +333,7 @@ function show_size($size)
 	<td>Root device:</td>
 	<td><input type="text" name="rdev" size="8" value="<?php
 		if (isset($_GET['rdev'])) echo $_GET['rdev'];
-		else echo "/dev/fd0";
+		else echo "/dev/ram0";
 	?>" />
 	&nbsp;&nbsp;Flags: <select name="flags">
 		<option value="1">R/O</option>

@@ -283,6 +283,7 @@ EOT
 	esac
 	while [ -L "$RDEV" ]; do RDEV="$(readlink "$RDEV")"; done
 	[ -b "$RDEV" ] && RDEV=$(stat -c '0x%02t%02T' $RDEV 2> /dev/null)
+	[ "$(echo $RDEV | tr '[0-9A-FXa-fx]' 0 | sed 's/0//g')" ] ||
 	store 16 $RootDevOfs $RDEV $bs RDEV
 
 	[ $FORMAT -lt 720  ] && store 8 0x15F 40	 $bs	360K
@@ -329,7 +330,7 @@ EOT
 		[ $syssz -gt 32768 ] && syssz=$(get 0x1F4 $bs 2)
 		[ $syssz -eq 0 ] && syssz=$((0x7F00))
 		sysszsect=$((($syssz+31)/32))
-		INITRD="${INITRD%%,*}"
+		INITRD="${INITRD%% *}"
 		initrdlen=$(stat -c %s "$INITRD")
 		store 16 $OldRamfsLenOfs $(($initrdlen/1024)) $bs set oldramfs
 		INITRDDISKALIGN=$((0x40000))
