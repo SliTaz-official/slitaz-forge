@@ -20,7 +20,6 @@
 	<div id="block_nav">
 		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
 		<ul>
-			<li><a href="http://chub.slitaz.org/">Chub server</a></li>
 			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
 			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
 		</ul>
