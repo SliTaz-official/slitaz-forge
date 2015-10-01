@@ -2,15 +2,15 @@ SliTaz Mirror
 ===============================================================================
 
 
-Files and tools used on mirror.slitaz.org including web interface info. Images
+Files and tools used on mirror1.slitaz.org including web interface info. Images
 and CSS style are hosted on MF and aliases are widely used for replication.
 
 	* files : Custom system configuration files
-	* info  : Mirror web interface at http://mirror.slitaz.org/info/
-	* root  : File for the root directory of http://mirror.slitaz.org/
+	* info  : Mirror web interface at http://mirror1.slitaz.org/info/
+	* root  : File for the root directory of http://mirror1.slitaz.org/
 
-Host : mirror.slitaz.org
-IP   : 91.121.171.224
+Host : mirror1.slitaz.org
+IP   : 188.165.229.172
 
 
 Administration
