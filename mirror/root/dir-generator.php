@@ -180,13 +180,14 @@ if ($slitaz_style) {
 	//	<meta http-equiv="cache-control" content="public" />
 	//	<meta http-equiv="last-modified" content="$modified" />
 	//	<meta http-equiv="expires" content="$expires" />
-	?>
+	print "
 <!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
 	<title>Index of /$vpath</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Index of /$vpath">
+	<meta charset=\"UTF-8\">
+	<meta name=\"description\" content=\"Index of /$vpath\">"
+?>
 	<meta name="robots" content="index, nofollow">
 	<meta name="author" content="SliTaz Contributors">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -496,28 +497,29 @@ if ($path != "./")
 foreach($folderlist as $folder)
 	print "<tr><td class='dir'><a href='" . addslashes($folder['name']). "'>" .
 		htmlentities($folder['name']) . "</a>/</td>" .
-		"<td" . $folder['modtimeasc'] . "</td>" .
+		"<td>" . $folder['modtimeasc'] . "</td>" .
 		"<td>- &nbsp;</td></tr>\n";
 
 
 
 // Print file information
 foreach($filelist as $file) {
+	$filename = $file['name'];
 	$url = addslashes($file['name']);
 
-	if (preg_match('/\.tazpkg$/', $file))
+	if (preg_match('/\.tazpkg$/', $filename))
 		$class = "pkg";
-	elseif (preg_match('/\.iso$/', $file))
+	elseif (preg_match('/\.iso$/', $filename))
 		$class = "iso";
-	elseif (preg_match('/\.(exe|com)$/', $file))
+	elseif (preg_match('/\.(exe|com)$/', $filename))
 		$class = "exe";
-	elseif (preg_match('/^README$/', $file))
+	elseif (preg_match('/^README$/', $filename))
 		$class = "rme";
-	elseif (preg_match('/^bzImage$/', $file))
+	elseif (preg_match('/^bzImage$/', $filename))
 		$class = "krn";
-	elseif (preg_match('/\.zip$/', $file))
+	elseif (preg_match('/\.zip$/', $filename))
 		$class = "zip";
-	elseif (preg_match('/\.log$/', $file))
+	elseif (preg_match('/\.log$/', $filename))
 		$class = "log";
 	else {
 		$classes = explode('/', $file['file_type']);
@@ -525,7 +527,7 @@ foreach($filelist as $file) {
 	}
 
 
-	print "<tr><td class='$class'><a href='$url'>" . htmlentities($file['name']) . "</a></td>" .
+	print "<tr><td class='$class'><a href='$url'>" . htmlentities($filename) . "</a></td>" .
 		"<td>" . $file['modtimeasc'] .
 		" <img src='/static/qr.png' alt='#' " .
 		"onmouseover=\"this.title = location.href+'$url'\" " .

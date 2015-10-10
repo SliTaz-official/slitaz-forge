@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 Countries flags by Go Squared:
 
@@ -29,7 +29,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 MIME Types icons from Faenza icon theme:
 
@@ -44,14 +44,18 @@ MIME Types icons from Faenza icon theme:
   * folder.png
   * go-up.png
   * home.png
+  * image-jpeg.png
+  * image-png.png
   * package-x-generic.png
+  * text-css.png
   * text-plain.png
   * text-x-changelog.png
+  * text-x-javascript.png
   * text-x-readme.png
 
 Copyright (c) 2010 Matthieu James <matthieu.james@gmail.com> GPL-3+
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 qrcode.js -- QR code generator in Javascript (revision 2011-01-19)
 Written by Kang Seonghoon <public+qrjs@mearie.org>.
@@ -60,7 +64,7 @@ This source code is in the public domain; if your jurisdiction does not
 recognize the public domain the terms of Creative Commons CC0 license apply. In
 the other words, you can always do what you want.
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 SliTaz Contributors commits:
 
@@ -69,12 +73,12 @@ SliTaz Contributors commits:
   * qr.png
   * slitaz.css
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 Minified script and styles using tools from
-"Free Online Tools For Developers"(http://www.freeformatter.com/)
+"Free Online Tools For Developers"( http://www.freeformatter.com/ )
 
   * qrcode.min.js
   * slitaz.min.css
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------

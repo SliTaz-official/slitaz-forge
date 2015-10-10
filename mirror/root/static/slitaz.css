@@ -408,6 +408,10 @@ td:nth-child(1)::before {
 .plain::before { content: url(text-plain.png); }
 .x-bittorrent::before { content: url(application-x-bittorrent.png); }
 .octet-stream::before { content: url(application-octet-stream.png); }
+.jpeg::before { content: url(image-jpeg.png); }
+.png::before { content: url(image-png.png); }
+.javascript::before { content: url(text-x-javascript); }
+.css::before { content: url(text-css.png); }
 .dir::before { content: url(folder.png); }
 .up::before { content: url(go-up.png); }
 .zip::before { content: url(application-zip.png); }
