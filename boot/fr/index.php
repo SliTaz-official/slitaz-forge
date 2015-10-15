@@ -1,76 +1,77 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>SliTaz Web Boot (fr)</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
-    <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
-    <meta name="robots" content="index, follow, all" />
-    <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-    <meta name="author" content="Christophe Lincoln"/>
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="../slitaz.css" />
+	<meta charset="UTF-8">
+	<title>SliTaz Web Boot</title>
+	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
+	<meta name="robots" content="index, follow, all">
+	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
+	<meta name="author" content="Christophe Lincoln">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.min.css">
 </head>
 <body>
 
-<!-- Header -->
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">
-			<img src="../images/network.png" alt="network.png" /></a>
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
+<header>
+	<h1><a href="http://boot.slitaz.org/">SliTaz Web Boot</a></h1>
+	<div class="network">
+		<a href="http://www.slitaz.org/" class="home"></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
-	<h1><a href="http://boot.slitaz.org/">SliTaz Web Boot</a></h1>
-</div>
+</header>
 
 <!-- Block -->
-<div id="block">
+<div class="block"><div>
+
+	<!-- Information/image -->
+	<div class="block_info">
+		<header>Démarrage via le réseau</header>
+		<p>
+			Bienvenue sur l'hôte de démarrage gPXE de
+			<a href="http://www.slitaz.org/fr/">SliTaz GNU/Linux</a>,
+			boot.slitaz.org vous permet de démarrer SliTaz depuis le
+			réseau en utilisant un CD-ROM, une clé USB ou une disquette
+			de démarrage.
+		</p>
+		<p>
+			Téléchargement rapide :
+			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+		</p>
+	</div>
+
 	<!-- Navigation -->
-	<div id="block_nav">
-		<h4><img src="../images/users.png" alt="users.png" />Community</h4>
+	<nav>
+		<header>Community</header>
 		<ul>
 			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
 			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
 			<li><a href="http://doc.slitaz.org/en:cookbook:start">SliTaz Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/en:handbook:genlivecd">LiveCD flavor howto</a></li>
 		</ul>
-	</div>
-	<!-- Information/image -->
-	<div id="block_info">
-		<h4>Démarrage via le réseau</h4>
-		<p>
-			Bienvenue sur l'hôte de démarrage gPXE de
-			<a href="http://www.slitaz.org/fr/">SliTaz GNU/Linux</a>,
-			boot.slitaz.org vous permet de démarrer SliTaz depuis le
-			réseau en utilisant un cdrom, une clé USB ou une disquette
-			de démarrage.
-		</p>
-		<div class="button" style="padding-top: 8px;">
-			Téléchargement rapide:
-			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
-		</div>
-	</div>
-</div>
+	</nav>
+</div></div>
+
+<!-- Content -->
+<main>
 
 <!-- Languages -->
-<div id="lang">
-	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="i18n" /></a>
+<div class="lang">
+	<a href="http://www.slitaz.org/i18n.php" class="locale"></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
-	<a href="../fr/">Français</a>
+	<b>Français</b>
 	<a href="../pt/">Português</a>
 	<a href="../ru/">Русский</a>
 </div>
 
-<!-- Content -->
-<div id="content">
 
 <h2>Introduction</h2>
 
@@ -80,7 +81,9 @@ le système de fichiers compressé contenant SliTaz seront chargés en RAM
 depuis internet en utilisant les protocoles PXE et HTTP.
 </p>
 
+
 <h2>Guide rapide</h2>
+
 <p>
 Pour démarrer depuis internet vous devez avoir une configuration réseau
 fonctionnelle (Serveur DHCP, DNS/DNS cache, passerelle par défaut).
@@ -92,33 +95,33 @@ connexion réseau.
 	<li>La version Cooking de permet de démarrer depuis boot.slitaz.org
 	en utilisant l'option <code>web</code> au boot, cela permet d'utiliser
 	le LiveCD standard pour tester la dernière version sans regraver un
-	cdrom.</li>
+	CD-ROM.</li>
 
-	<li>Image ISO SliTaz boot: Téléchargez le fichier
+	<li>Image ISO SliTaz boot : Téléchargez le fichier
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
-	et gravez l'image sur un cdrom vierge. Démarrez depuis le cdrom et
+	et gravez l'image sur un CD-ROM vierge. Démarrez depuis le CD-ROM et
 	choisissez l'option gPXE. Cette image ISO vous permet également de tester
 	la mémoire système avec Memtest86.</li>
-	<li>Média USB: Utilisez TazUSB pour générer un média USB amorçable.
+	<li>Média USB : Utilisez TazUSB pour générer un média USB amorçable.
 	Installez le paquet <code>gpxe</code>, copiez le répertoire /boot/gpxe
 	dans le répertoire boot du média USB et ajoutez une entrée dans le
-	fichier de configuration de Syslinux <code>syslinux.cfg</code> :
+	fichier de configuration de Syslinux <code>syslinux.cfg</code> :
 <pre>
 label web
 	kernel /boot/gpxe
 </pre></li>
 
-	<li>Image de disquette: Téléchargez le fichier
+	<li>Image de disquette : Téléchargez le fichier
 	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
 	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
 	Transférez l'image sur une disquette vierge en utilisant la commande
-	suivant: <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur
+	suivant : <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur
 	la disquette et choisissez l'entrée gPXE.
 	</li>
-	<li> Démarrage réseau: si vous pouvez modifier la configuration du server DHCP,
+	<li>Démarrage réseau : si vous pouvez modifier la configuration du server DHCP,
 	déclarez le serveur tftp <i>mirror.slitaz.org</i> et le fichier de boot
-	<i>gpxe.pxe</i> :
+	<i>gpxe.pxe</i> :
 	<ul>
 	<li>pour <b>udhcpd</b>
 	<pre>siaddr mirror.slitaz.org
@@ -129,21 +132,25 @@ filemane "gpxe.pxe"</pre></li>
 	<li>pour <b>dnsmasq</b>
 	<pre>dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre></li>
 	</ul>
-	</li>	
+	</li>
 </ul>
 
+
 <h3>Temps de démarrage</h3>
+
 <p>
-Le temps de démarrage dépend de votre vitesse de connexion  à internet
-et des charges du serveur. En france avec un débit de 1Mo il faut 5 minutes.
+Le temps de démarrage dépend de votre vitesse de connexion à internet
+et des charges du serveur. En France avec un débit de 1 Mo il faut 5 minutes.
 Vous pouvez poster vos retours d'expériences sur le Wiki, Forum ou la
 liste de diffusion.
 </p>
 
+
 <h3>Configuration minimum</h3>
+
 <p>
-L'entrée par défaut nécessite au moins 160Mo de RAM. Deux autres sont
-disponibles pour démarrer avec 24Mo ou plus :
+L'entrée par défaut nécessite au moins 160 Mo de RAM. Deux autres sont
+disponibles pour démarrer avec 24 Mo ou plus :
 </p>
 <ul>
 	<li><code>tiny</code> démarre en mode texte.</li>
@@ -151,27 +158,51 @@ disponibles pour démarrer avec 24Mo ou plus :
 </ul>
 
 <!-- End of content -->
-</div>
+</main>
 
-<!-- Footer -->
-<div id="footer">
-	Copyright &copy; <span class="year"></span>
-	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
-	<a href="http://scn.slitaz.org/">Community</a>
-	<a href="http://doc.slitaz.org/">Doc</a>
-	<a href="http://forum.slitaz.org/">Forum</a>
-	<a href="http://pkgs.slitaz.org/">Packages</a>
-	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
-	<p>
+<script>
+	function QRCodePNG(str, obj) {
+		try {
+			obj.height = obj.width += 300;
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "/static/qrcode.min.js";
+			element.type = "text/javascript";
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}
+</script>
+
+<footer>
+	<div>
+		Copyright © <span class="year"></span>
+		<a href="http://www.slitaz.org/">SliTaz</a>
+	</div>
+	<div>
+		Network :
+		<a href="http://scn.slitaz.org/">Community</a> ·
+		<a href="http://doc.slitaz.org/">Doc</a> ·
+		<a href="http://forum.slitaz.org/">Forum</a> ·
+		<a href="http://pkgs.slitaz.org/">Packages</a> ·
+		<a href="http://bugs.slitaz.org">Bugs</a> ·
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
+	</div>
+	<div>
 		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a>
-		<a href="http://www.facebook.com/slitaz">Facebook</a>
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://twitter.com/slitaz">Twitter</a> ·
+		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
+		<a href="http://fr.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
-	</p>
-</div>
+	</div>
+	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
+	onclick="this.src = QRCodePNG(location.href, this)"/>
+</footer>
 
 </body>
 </html>

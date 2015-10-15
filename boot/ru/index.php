@@ -1,39 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
-	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
-	<meta name="robots" content="index, follow, all" />
-	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-	<meta name="author" content="Christophe Lincoln"/>
-	<link rel="shortcut icon" href="../favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="../slitaz.css" />
+	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
+	<meta name="robots" content="index, follow, all">
+	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
+	<meta name="author" content="Christophe Lincoln">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.min.css">
 </head>
 <body>
 
-<!-- Header -->
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">
-			<img src="../images/network.png" alt="[ Home ]" /></a>
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
+<header>
+	<h1><a href="http://boot.slitaz.org/">Веб-загрузка SliTaz</a></h1>
+	<div class="network">
+		<a href="http://www.slitaz.org/" class="home"></a>
 		<a href="http://scn.slitaz.org/">Сообщество</a>
 		<a href="http://doc.slitaz.org/">Документация</a>
 		<a href="http://forum.slitaz.org/">Форум</a>
 		<a href="http://bugs.slitaz.org">Баг-трекер</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
-	<h1><a href="http://boot.slitaz.org/">Веб-загрузка SliTaz</a></h1>
-</div>
+</header>
 
 <!-- Block -->
-<div id="block">
+<div class="block"><div>
+
+	<!-- Information/image -->
+	<div class="block_info">
+		<header>Веб-загрузка</header>
+		<p>Добро пожаловать на хост загрузки <a href="http://www.slitaz.org/"
+			>SliTaz GNU/Linux</a>; boot.slitaz.org позволяет вам запустить
+			SliTaz из интернета, используя CD-ROM, USB-флешку или дискету.</p>
+		<p>
+			Быстрая загрузка:
+			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
+		</p>
+	</div>
+
 	<!-- Navigation -->
-	<div id="block_nav">
-		<h4><img src="../images/users.png" alt="*" />Сообщество</h4>
+	<nav>
+		<header>Сообщество</header>
 		<ul>
 			<li><a href="http://scn.slitaz.org/">Сеть сообщества</a></li>
 			<li><a href="http://pizza.slitaz.org/">Сборка LiveCD онлайн</a></li>
@@ -41,33 +53,22 @@
 				Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/en:handbook:genlivecd">LiveCD flavor howto</a></li>
 		</ul>
-	</div>
-	<!-- Information/image -->
-	<div id="block_info">
-		<h4>Веб-загрузка</h4>
-		<p>Добро пожаловать на хост загрузки <a href="http://www.slitaz.org/"
-			>SliTaz GNU/Linux</a>; boot.slitaz.org позволяет вам запустить
-			SliTaz из интернета, используя CD-ROM, USB-флешку или дискету.</p>
-		<div class="button" style="padding-top: 8px;">
-			Быстрая загрузка:
-			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
-		</div>
-	</div>
-</div>
+	</nav>
+</div></div>
+
+<!-- Content -->
+<main>
 
 <!-- Languages -->
-<div id="lang">
-	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="i18n" /></a>
+<div class="lang">
+	<a href="http://www.slitaz.org/i18n.php" class="locale"></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
 	<a href="../fr/">Français</a>
 	<a href="../pt/">Português</a>
-	<a href="../ru/">Русский</a>
+	<b>Русский</b>
 </div>
 
-<!-- Content -->
-<div id="content">
 
 <h2>Введение</h2>
 
@@ -127,27 +128,51 @@
 </ul>
 
 <!-- End of content -->
-</div>
+</main>
 
-<!-- Footer -->
-<div id="footer">
-	Copyright © <span class="year"></span>
-	<a href="http://www.slitaz.org/">SliTaz</a> — Сеть:
-	<a href="http://scn.slitaz.org/">Сообщество</a>
-	<a href="http://doc.slitaz.org/">Документация</a>
-	<a href="http://forum.slitaz.org/">Форум</a>
-	<a href="http://pkgs.slitaz.org/">Пакеты</a>
-	<a href="http://bugs.slitaz.org">Баг-трекер</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
-	<p>
+<script>
+	function QRCodePNG(str, obj) {
+		try {
+			obj.height = obj.width += 300;
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "/static/qrcode.min.js";
+			element.type = "text/javascript";
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}
+</script>
+
+<footer>
+	<div>
+		Copyright © <span class="year"></span>
+		<a href="http://www.slitaz.org/">SliTaz</a>
+	</div>
+	<div>
+		Сеть:
+		<a href="http://scn.slitaz.org/">Сообщество</a> ·
+		<a href="http://doc.slitaz.org/">Документация</a> ·
+		<a href="http://forum.slitaz.org/">Форум</a> ·
+		<a href="http://pkgs.slitaz.org/">Пакеты</a> ·
+		<a href="http://bugs.slitaz.org">Баг-трекер</a> ·
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
+	</div>
+	<div>
 		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a>
-		<a href="http://www.facebook.com/slitaz">Facebook</a>
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
-		<a href="http://ru.wikipedia.org/wiki/SliTaz">Википедия</a>
+		<a href="http://twitter.com/slitaz">Twitter</a> ·
+		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
+		<a href="http://ru.wikipedia.org/wiki/SliTaz">Википедия</a> ·
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
-	</p>
-</div>
+	</div>
+	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
+	onclick="this.src = QRCodePNG(location.href, this)"/>
+</footer>
 
 </body>
 </html>

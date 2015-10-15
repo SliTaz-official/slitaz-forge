@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Создание DVD/USB SliTaz</title>
+	<meta name="description" content="SliTaz DVD and USB key generator">
+	<meta name="robots" content="index, nofollow">
+	<meta name="author" content="SliTaz Contributors">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/static/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.min.css">
+	<style type="text/css">
+th:nth-child(2),th:nth-child(3),th:nth-child(4),th:nth-child(5),th:nth-child(6),th:nth-child(7),th:nth-child(8),
+td:nth-child(2),td:nth-child(3),td:nth-child(4),td:nth-child(5),td:nth-child(6),td:nth-child(7),td:nth-child(8) { text-align: right; }
+	</style>
+</head>
+<body>
+
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
+<header>
+	<h1><a href="http://www.slitaz.org/">Создание DVD и USB SliTaz</a></h1>
+	<div class="network">
+		<a href="http://www.slitaz.org/" class="home"></a>
+		<a href="http://scn.slitaz.org/">Сообщество</a>
+		<a href="http://doc.slitaz.org/">Документация</a>
+		<a href="http://forum.slitaz.org/">Форум</a>
+		<a href="http://bugs.slitaz.org/">Баг-трекер</a>
+		<a href="http://hg.slitaz.org/?sort=lastchanges">Hg</a>
+	</div>
+</header>
+
+<!-- Block -->
+<div class="block"><div>
+
+	<!-- Information/image -->
+	<div class="block_info">
+		<header>Генератор DVD и USB-флеш</header>
+		<p>Этот онлайн-инструмент создаст скрипт. Вы должны будете запустить этот скрипт
+			на вашем SliTaz, чтобы создать ISO-образ DVD. Вы сможете записать этот образ на
+			DVD при помощи <code>wodim</code> или на USB-флеш при помощи <code>tazusb geniso2usb</code>.
+		</p>
+		<p>Также доступны инструменты с GUI: <code>burnbox</code> и <code>tazusbbox</code>.</p>
+	</div>
+
+	<!-- Navigation -->
+	<nav>
+		<header>Уголок разработчика</header>
+		<ul>
+			<li><a href="http://www.slitaz.org/ru/devel/">Сайт разработчика</a></li>
+			<li><a href="http://cook.slitaz.org/">Сборочный бот</a></li>
+			<li><a href="http://pkgs.slitaz.org/">База данных пакетов</a></li>
+		</ul>
+		<p><strong>Онлайн-инструменты:</strong></p>
+		<ul>
+			<li><a href="http://pizza.slitaz.org/">Создание Live CD</a></li>
+			<li><a href="http://boot.slitaz.org/">Веб-загрузка</a></li>
+			<li><a href="http://mirror.slitaz.org/floppies/builder/">Дискеты</a></li>
+			<!-- li><a href="http://mirror.slitaz.org/packages/convert/">Конвертор пакетов</a></li -->
+		</ul>
+	</nav>
+</div></div>
+
+<!-- Content, from http://en.wikipedia.org/wiki/Miscellaneous_Symbols_Unicode_block -->
+<main>
+
+<!-- Languages -->
+<div class="lang">
+	<a href="../en/index.html">English</a>
+	<b>Русский</b>
+</div>
+
+<form method="post" enctype="multipart/form-data" action="../download.php">
+<input type="hidden" name="rsync" value="on" />
+<input type="hidden" name="filter" value="on" />
+<input type="hidden" id="size" name="size" value="0" />
+
+<table>
+	<thead>
+		<tr>
+			<th>Свойства</th>
+			<!-- th><label><input type="radio" name="version" value="4.0"/>stable 4.0</label></th -->
+			<th><label><input type="radio" name="version" value="cooking"/>cooking</label></th>
+			<th><label><input type="radio" name="version" value="4.0" checked="checked"/>4.0</label></th>
+			<th><label><input type="radio" name="version" value="3.0"/>3.0</label></th>
+			<th><label><input type="radio" name="version" value="2.0"/>2.0</label></th>
+			<th><label><input type="radio" name="version" value="1.0"/>1.0</label></th>
+			<!-- th><label><input type="radio" name="version" value="all"/>all</label></th -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" disabled="disabled" name="boot"/>загрузочный диск SliTaz</label></td>
+			<!-- td id="boot_stable">29 МБ</td -->
+			<td id="boot_cooking">35 МБ</td>
+			<td id="boot_4.0">35 МБ</td>
+			<td id="boot_3.0">29 МБ</td>
+			<td id="boot_2.0">28 МБ</td>
+			<td id="boot_1.0">24 МБ</td>
+			<!-- td id="boot_all">139 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="webboot"/>загружаться через интернет &#9786;</label></td>
+			<!-- td id="webboot_stable">196 КБ</td -->
+			<td id="webboot_cooking">196 КБ</td>
+			<td id="webboot_4.0">196 КБ</td>
+			<td id="webboot_3.0">196 КБ</td>
+			<td id="webboot_2.0">196 КБ</td>
+			<td id="webboot_1.0">196 КБ</td>
+			<!-- td id="webboot_all">196 КБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="website"/>сайт SliTaz</label></td>
+			<!-- td id="website_stable">23 МБ</td -->
+			<td id="website_cooking">23 МБ</td>
+			<td id="website_4.0">23 МБ</td>
+			<td id="website_3.0">23 МБ</td>
+			<td id="website_2.0">23 МБ</td>
+			<td id="website_1.0">23 МБ</td>
+			<!-- td id="website_all">23 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="doc"/>сайт документации SliTaz</label></td>
+			<!-- td id="doc_stable">85 МБ</td -->
+			<td id="doc_cooking">85 МБ</td>
+			<td id="doc_4.0">85 МБ</td>
+			<td id="doc_3.0">85 МБ</td>
+			<td id="doc_2.0">85 МБ</td>
+			<td id="doc_1.0">85 МБ</td>
+			<!-- td id="doc_all">85 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="tiny"/>сайт Tiny SliTaz</label></td>
+			<!-- td id="tiny_stable">15 МБ</td -->
+			<td id="tiny_cooking">15 МБ</td>
+			<td id="tiny_4.0">15 МБ</td>
+			<td id="tiny_3.0">15 МБ</td>
+			<td id="tiny_2.0">15 МБ</td>
+			<td id="tiny_1.0">15 МБ</td>
+			<!-- td id="tiny_all">15 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="pxe"/>сайт SliTaz PXE</label></td>
+			<!-- td id="pxe_stable">112 МБ</td -->
+			<td id="pxe_cooking">112 МБ</td>
+			<td id="pxe_4.0">112 МБ</td>
+			<td id="pxe_3.0">112 МБ</td>
+			<td id="pxe_2.0">82 МБ</td>
+			<td id="pxe_1.0">25 МБ</td>
+			<!-- td id="pxe_all">444 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="tools"/>онлайн-инструменты (pkgs, pizza, convert, floppy, dvd)</label></td>
+			<!-- td id="tools_stable">1 МБ</td -->
+			<td id="tools_cooking">1 МБ</td>
+			<td id="tools_4.0">1 МБ</td>
+			<td id="tools_3.0">1 МБ</td>
+			<td id="tools_2.0">1 МБ</td>
+			<td id="tools_1.0">1 МБ</td>
+			<!-- td id="tools_all">1 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="wok"/>wok SliTaz (правила создания пакетов)</label></td>
+			<!-- td id="wok_stable">87 МБ</td -->
+			<td id="wok_cooking">87 МБ</td>
+			<td id="wok_4.0">87 МБ</td>
+			<td id="wok_3.0">87 МБ</td>
+			<td id="wok_2.0">87 МБ</td>
+			<td id="wok_1.0">87 МБ</td>
+			<!-- td id="wok_all">87 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="hg"/>все репозитории Mercurial</label></td>
+			<!-- td id="hg_stable">250 МБ</td -->
+			<td id="hg_cooking">250 МБ</td>
+			<td id="hg_4.0">250 МБ</td>
+			<td id="hg_3.0">250 МБ</td>
+			<td id="hg_2.0">250 МБ</td>
+			<td id="hg_1.0">250 МБ</td>
+			<!-- td id="hg_all">250 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="packages"/>все пакеты и файлы редакций</label></td>
+			<!-- td id="packages_stable">2.6 ГБ</td -->
+			<td id="packages_cooking">2.6 ГБ</td>
+			<td id="packages_4.0">2.6 ГБ</td>
+			<td id="packages_3.0">1.4 ГБ</td>
+			<td id="packages_2.0">910 МБ</td>
+			<td id="packages_1.0">230 МБ</td>
+			<!-- td id="packages_all">5.1 ГБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="nonfree"/>несвободные &#9888; пакеты (из скриптов get-*) ¹</label></td>
+			<!-- td id="nonfree_stable">500 МБ</td -->
+			<td id="xnonfree_cooking">еще нет</td>
+			<td id="xnonfree_4.0">еще нет</td>
+			<td id="xnonfree_3.0">еще нет</td>
+			<td id="nonfree_2.0">200 МБ</td>
+			<td id="nonfree_1.0">50 МБ</td>
+			<!-- td id="nonfree_all">500 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="huge"/>огромные свободные пакеты (из скриптов get-*) ²</label></td>
+			<!-- td id="huge_stable">500 МБ</td -->
+			<td id="xhuge_cooking">еще нет</td>
+			<td id="xhuge_4.0">еще нет</td>
+			<td id="xhuge_3.0">еще нет</td>
+			<td id="huge_2.0">500 МБ</td>
+			<td id="xhuge_1.0">нет</td>
+			<!-- td id="huge_all">900 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="sources"/>файлы исходников ³</label></td>
+			<!-- td id="sources_stable">5.0 ГБ</td -->
+			<td id="sources_cooking">5.0 ГБ</td>
+			<td id="sources_4.0">5.0 ГБ</td>
+			<td id="sources_3.0">2.4 ГБ</td>
+			<td id="sources_2.0">1.5 ГБ</td>
+			<td id="sources_1.0">650 МБ</td>
+			<!-- td id="sources_all">9.6 ГБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="loram_detect"/>автоопределение loram &#9842;</label></td>
+			<!-- td id="loram_detect_stable">129 МБ</td -->
+			<td id="loram_detect_cooking">129 МБ</td>
+			<td id="loram_detect_4.0">132 МБ</td>
+			<td id="loram_detect_3.0">132 МБ</td>
+			<td id="loram_detect_2.0">99 МБ</td>
+			<td id="loram_detect_1.0">82 МБ</td>
+			<!-- td id="loram_detect_all">570 МБ</td -->
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" checked="checked" name="auto_install"/>авто-активация при загрузке (автономный режим)</label></td>
+			<!-- td id="auto_install_stable">2 КБ</td -->
+			<td id="auto_install_cooking">2 КБ</td>
+			<td id="auto_install_4.0">2 КБ</td>
+			<td id="auto_install_3.0">2 КБ</td>
+			<td id="auto_install_2.0">2 КБ</td>
+			<td id="auto_install_1.0">2 КБ</td>
+			<!-- td id="auto_install_all">2 КБ</td -->
+		</tr>
+	</tbody>
+</table>
+
+<hr>
+
+<p><input name="download" value="Загрузить" type="submit"/>
+скрипт, создающий образ ISO.</p>
+<p><span id="result"></span></p>
+</form>
+
+<script>
+function toKb(size) {
+	var divisor = 1, result = 0;
+	for (var i = 0; i < size.length; i++) {
+		switch (size.charAt(i)) {
+		case '.' : divisor = 10; continue;
+		case 'К' : return result/divisor;
+		case 'М' : return (1024*result)/divisor;
+		case 'Г' : return (1024*1024*result)/divisor;
+		case 'Т' : return (1024*1024*1024*result)/divisor;
+		}
+		if (size.charAt(i) >= '0' && size.charAt(i) <= '9') {
+			result *= 10
+			result += parseInt(size.charAt(i) - '0')
+		}
+	}
+	return result/divisor
+}
+
+function toHuman(size) {
+	var i;
+	for (size *= 10, i = 0; size > 10000; size /= 1024, i++);
+	if (size >= 100) size = parseInt(size / 10)
+	else size = parseInt(size / 10) + "." + parseInt(size % 10)
+	return size + " " + "КМГТ".charAt(i) + "Б"
+}
+
+function update_size() {
+	var total = 1024; // padding
+	for (var i = 0; i < document.getElementsByTagName("td").length; i++) {
+		var obj = document.getElementsByTagName("td")[i]
+		var reg = new RegExp("^[0-9\.]* [КМГТ]Б$")
+		if (!reg.test(obj.innerHTML)) continue
+		obj.style.fontWeight="normal"
+		obj.style.textDecoration="none"
+		obj.style.backgroundColor="inherit"
+	}
+	for (var i = 0; i < document.forms[0].elements.length; i++) {
+		var obj = document.forms[0].elements[i]
+		if (obj.checked == false) continue
+		var version = document.forms[0].version
+		for (j = 0; j < version.length; j++) {
+			if (version[j].checked) {
+				version = version[j].value
+				break
+			}
+		}
+		var size = document.getElementById(obj.name + "_" + version)
+		if (size == null) continue
+		size.style.fontWeight="bold"
+		//size.style.textDecoration="underline"
+		size.style.backgroundColor="#ccc"
+		total += parseInt(toKb(size.innerHTML))
+	}
+	var size = document.getElementById("size")
+	size.value = total
+	var result=document.getElementById("result")
+	result.innerHTML="Ожидаемый размер: <b>"+toHuman(total)+"</b>"+
+		" (&#10004; требуется "+toHuman(2*total)+" свободного места)."
+}
+
+function QRCodePNG(str, obj) {
+	try {
+		obj.height = obj.width += 200;
+		return QRCode.generatePNG(str, {ecclevel: 'H'});
+	}
+	catch (any) {
+		var element = document.createElement("script");
+		element.src = "/static/qrcode.min.js";
+		element.type = "text/javascript";
+		element.onload = function() {
+			obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+		};
+		document.body.appendChild(element);
+	}
+}
+
+update_size()
+window.onchange = update_size
+</script>
+
+<p>¹ SliTaz не предоставляет несвободное программное обеспечение. Многим людям
+нужны такие программы как <b>Opera</b>, <b>Skype &#9742;</b> или
+<b>flash-plugin</b>. SliTaz предлагает скрипты (<b>get-*</b>), при помощи
+которых вы сможете установить эти несвободные программы. Инструмент создания DVD
+запустит эти скрипты, упакует программы и сохранит пакеты в папке с другими
+пакетами.</p>
+
+<p>² Некоторые программы, такие как <b>OpenOffice</b> или <b>LibreOffice</b>
+настолько огромны, что не компилируются и не собираются на сборочном боте
+SliTaz. Инструмент создания DVD запустит скрипты <b>get-*</b> (см. выше) и
+сохранит эти пакеты в папке с другими пакетами. Скрипты загружают готовые
+пакеты, созданные для других дистрибутивов Linux.</p>
+
+<p>³ Оригинальные исходники. Установите <b>wok SliTaz</b>, чтобы получить патчи
+проекта SliTaz.</p>
+<!-- End of content -->
+</main>
+
+<footer>
+	<div>
+		Copyright © <span class="year"></span>
+		<a href="http://www.slitaz.org/">SliTaz</a>
+	</div>
+	<div>
+		Сеть:
+		<a href="http://scn.slitaz.org/">Сообщество</a> ·
+		<a href="http://doc.slitaz.org/">Документация</a> ·
+		<a href="http://forum.slitaz.org/">Форум</a> ·
+		<a href="http://pkgs.slitaz.org/">Пакеты</a> ·
+		<a href="http://bugs.slitaz.org/">Баг-трекер</a> ·
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
+	</div>
+	<div>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a> ·
+		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
+		<a href="http://ru.wikipedia.org/wiki/SliTaz">Википедия</a> ·
+		<a href="http://flattr.com/profile/slitaz">Flattr</a>
+	</div>
+	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
+	onclick="this.src=QRCodePNG(location.href, this)"/>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+The SliTaz project was originated by Christophe Lincoln and is developed by many contributors, see http://people.slitaz.org/
+

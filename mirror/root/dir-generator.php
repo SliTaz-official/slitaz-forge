@@ -126,7 +126,6 @@ $external_css = get_conf('dir-listing.external-css', '"', '"');
 $show_hidden_files = false;
 if (get_conf('dir-listing.hide-dotfile', '"', '"', 'disable') == "disable")
 	$show_hidden_files = true;
-
 // get_conf('dir-listing.exclude','\(','\)');
 // get_conf('dir-listing.set-footer','"','"');
 
@@ -186,7 +185,8 @@ if ($slitaz_style) {
 <head>
 	<title>Index of /$vpath</title>
 	<meta charset=\"UTF-8\">
-	<meta name=\"description\" content=\"Index of /$vpath\">"
+	<meta name=\"description\" content=\"Index of /$vpath\">
+";
 ?>
 	<meta name="robots" content="index, nofollow">
 	<meta name="author" content="SliTaz Contributors">
@@ -196,9 +196,11 @@ if ($slitaz_style) {
 </head>
 <body>
 
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
 <header>
 	<h1><a href="http://mirror1.slitaz.org/">SliTaz Mirror</a></h1>
-	<div id="network">
+	<div class="network">
 		<a class="home" href="http://www.slitaz.org/"></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
@@ -211,9 +213,9 @@ if ($slitaz_style) {
 	</div>
 </header>
 
-<div id="block"><div>
+<div class="block"><div>
 	<!-- Information/image -->
-	<div id="block_info">
+	<div class="block_info">
 		<header>Welcome to Open Source!</header>
 <?php
 
@@ -260,13 +262,9 @@ if ($slitaz_style) {
 			document.body.appendChild(element);
 		}
 	}
-
-	document.documentElement.className += (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
 </script>
 
-<!-- Content -->
-<div id="content">
-	<div id="mirrors">
+<div class="mirrors">
 <?php
 
 	// Mirror list
@@ -341,8 +339,10 @@ if ($slitaz_style) {
 
 
 
-print "	<div class='list'>
-		<div id='lang'>Path: /$vpath</div>
+print "<!-- Content -->
+<main>
+	<div class='list'>
+		<div class='lang'>Path: /$vpath</div>
 		<table>";
 
 
@@ -505,9 +505,9 @@ foreach($folderlist as $folder)
 // Print file information
 foreach($filelist as $file) {
 	$filename = $file['name'];
-	$url = addslashes($file['name']);
+	$url = addslashes($filename);
 
-	if (preg_match('/\.tazpkg$/', $filename))
+	if (preg_match('/\.(tazpkg|deb)$/', $filename))
 		$class = "pkg";
 	elseif (preg_match('/\.iso$/', $filename))
 		$class = "iso";
@@ -557,27 +557,32 @@ if ($slitaz_style) {
 ?>
 
 <!-- End of content -->
-</div>
+</main>
 
 <footer>
-	<p>Copyright &copy; <span class="year"></span> <a href="http://www.slitaz.org/">SliTaz</a></p>
-	<p>Network:
-		<a href="http://scn.slitaz.org/">Community</a>
-		<a href="http://doc.slitaz.org/">Doc</a>
-		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://pkgs.slitaz.org/">Packages</a>
-		<a href="http://bugs.slitaz.org">Bugs</a>
+	<div>
+		Copyright &copy; <span class="year"></span>
+		<a href="http://www.slitaz.org/">SliTaz</a>
+	</div>
+	<div>
+		Network:
+		<a href="http://scn.slitaz.org/">Community</a> ·
+		<a href="http://doc.slitaz.org/">Doc</a> ·
+		<a href="http://forum.slitaz.org/">Forum</a> ·
+		<a href="http://pkgs.slitaz.org/">Packages</a> ·
+		<a href="http://bugs.slitaz.org">Bugs</a> ·
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
-	</p>
-	<p>SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a>
-		<a href="http://www.facebook.com/slitaz">Facebook</a>
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+	</div>
+	<div>
+		SliTaz @
+		<a href="http://twitter.com/slitaz">Twitter</a> ·
+		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
-	</p>
+	</div>
 	<img src="static/qr.png" alt="#" onmouseover="this.title = location.href"
-			onclick="this.src = QRCodePNG(location.href, this)" />
+	onclick="this.src = QRCodePNG(location.href, this)"/>
 </footer>
 
 <?php

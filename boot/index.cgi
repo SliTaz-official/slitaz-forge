@@ -3,8 +3,7 @@
 #
 
 IFS=","
-for lang in $HTTP_ACCEPT_LANGUAGE
-do
+for lang in $HTTP_ACCEPT_LANGUAGE; do
 	lang=${lang%;*} lang=${lang# } lang=${lang%-*}
 	[ -d "$lang" ] &&  break
 done

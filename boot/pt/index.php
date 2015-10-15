@@ -1,75 +1,76 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-    <title>SliTaz Web Boot</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking" />
-    <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
-    <meta name="robots" content="index, follow, all" />
-    <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-    <meta name="author" content="Christophe Lincoln"/>
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="../slitaz.css" />
+	<meta charset="UTF-8">
+	<title>SliTaz Web Boot</title>
+	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
+	<meta name="robots" content="index, follow, all">
+	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
+	<meta name="author" content="Christophe Lincoln">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/slitaz.min.css">
 </head>
 <body>
 
-<!-- Header -->
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">
-			<img src="../images/network.png" alt="network.png" /></a>
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
+<header>
+	<h1><a href="http://boot.slitaz.org/">SliTaz Web Boot</a></h1>
+	<div class="network">
+		<a href="http://www.slitaz.org/" class="home"></a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
-	<h1><a href="http://boot.slitaz.org/">SliTaz Web Boot</a></h1>
-</div>
+</header>
 
 <!-- Block -->
-<div id="block">
-	<!-- Navigation -->
-	<div id="block_nav">
-		<h4><img src="../images/users.png" alt="users.png" />Community</h4>
-		<ul>
-			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
-			<li><a href="http://doc.slitaz.org/pt:cookbook:start">SliTaz Cookbook</a></li>
-			<li><a href="http://doc.slitaz.org/pt:handbook:genlivecd">LiveCD flavor howto</a></li>
-		</ul>
-	</div>
+<div class="block"><div>
+
 	<!-- Information/image -->
-	<div id="block_info">
-		<h4>Web Boot</h4>
+	<div class="block_info">
+		<header>Web Boot</header>
 		<p>
 			Bem vindo ao servidor de boot via rede do <a
 			href="http://www.slitaz.org/en/">SliTaz GNU/Linux</a>;
 			boot.slitaz.org permite a você inicializar o  SliTaz
 			a partir da web usando um cdrom, mídia USB ou disquete.
 		</p>
-		<div class="button" style="padding-top: 8px;">
+		<p>
 			Link para Download:
 			<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
-		</div>
+		</p>
 	</div>
-</div>
+
+	<!-- Navigation -->
+	<nav>
+		<header>Community</header>
+		<ul>
+			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
+			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
+			<li><a href="http://doc.slitaz.org/pt:cookbook:start">SliTaz Cookbook</a></li>
+			<li><a href="http://doc.slitaz.org/pt:handbook:genlivecd">LiveCD flavor howto</a></li>
+		</ul>
+	</nav>
+</div></div>
+
+<!-- Content -->
+<main>
 
 <!-- Languages -->
-<div id="lang">
-	<a href="http://www.slitaz.org/i18n.php">
-		<img src="../images/locale.png" alt="i18n" /></a>
+<div class="lang">
+	<a href="http://www.slitaz.org/i18n.php" class="locale"></a>
 	<a href="../de/">Deutsch</a>
 	<a href="../en/">English</a>
 	<a href="../fr/">Français</a>
-	<a href="../pt/">Português</a>
+	<b>Português</b>
 	<a href="../ru/">Русский</a>
 </div>
 
-<!-- Content -->
-<div id="content">
 
 <h2>Introdução</h2>
 
@@ -81,8 +82,9 @@
 	os protocolos PXE e HTTP.
 </p>
 
-<a name="guide"></a>
-<h2>Guia Rápido</h2>
+
+<h2 id="guide">Guia Rápido</h2>
+
 <p>
 Para inicializar a partir da internet você necessidade de um servidor DHCP,
 servidor DNS e uma rota para internet. Você já possui tudo isto caso use
@@ -94,7 +96,7 @@ um roteador para conexões de rede.
 	<li>SliTaz boot ISO: Baixe
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
-	e grave a imagem em um cdrom. Inicialize pelo dispositivo de cdrom
+	e grave a imagem em um CD ROM. Inicialize pelo dispositivo de CD ROM
 	e selecione gPXE. Esta imagem ISO também fornece o Memtest86 para
 	testar a memória do sistema.
 	</li>
@@ -114,14 +116,18 @@ label web
 	e selecione a entrada gPXE.</li>
 </ul>
 
+
 <h3>Tempo de boot</h3>
+
 <p>
 O tempo de boot depende de sua conexão de rede. Com uma conexão de 1MB
 na França, o boot leva 5 minutos. Caso deseje, você pode reportar o seu
 tempo de boot na lista de discussão ou no fórum.
 </p>
 
+
 <h3>Configuração requerida</h3>
+
 <p>
 A entrada padrão de boot necessidade de 160MB de memória RAM. Duas entradas
 estão disponíveis para boot com 24MB:
@@ -132,27 +138,51 @@ estão disponíveis para boot com 24MB:
 </ul>
 
 <!-- End of content -->
-</div>
+</main>
 
-<!-- Footer -->
-<div id="footer">
-	Copyright &copy; <span class="year"></span>
-	<a href="http://www.slitaz.org/">SliTaz</a> - Network:
-	<a href="http://scn.slitaz.org/">Community</a>
-	<a href="http://doc.slitaz.org/">Doc</a>
-	<a href="http://forum.slitaz.org/">Forum</a>
-	<a href="http://pkgs.slitaz.org/">Packages</a>
-	<a href="http://bugs.slitaz.org">Bugs</a>
-	<a href="http://hg.slitaz.org/">Hg</a>
-	<p>
+<script>
+	function QRCodePNG(str, obj) {
+		try {
+			obj.height = obj.width += 300;
+			return QRCode.generatePNG(str, {ecclevel: 'H'});
+		}
+		catch (any) {
+			var element = document.createElement("script");
+			element.src = "/static/qrcode.min.js";
+			element.type = "text/javascript";
+			element.onload = function() {
+				obj.src = QRCode.generatePNG(str, {ecclevel: 'H'});
+			};
+			document.body.appendChild(element);
+		}
+	}
+</script>
+
+<footer>
+	<div>
+		Copyright © <span class="year"></span>
+		<a href="http://www.slitaz.org/">SliTaz</a>
+	</div>
+	<div>
+		Network:
+		<a href="http://scn.slitaz.org/">Community</a> ·
+		<a href="http://doc.slitaz.org/">Doc</a> ·
+		<a href="http://forum.slitaz.org/">Forum</a> ·
+		<a href="http://pkgs.slitaz.org/">Packages</a> ·
+		<a href="http://bugs.slitaz.org">Bugs</a> ·
+		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
+	</div>
+	<div>
 		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a>
-		<a href="http://www.facebook.com/slitaz">Facebook</a>
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a>
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a>
+		<a href="http://twitter.com/slitaz">Twitter</a> ·
+		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
+		<a href="http://pt.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
-	</p>
-</div>
+	</div>
+	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
+	onclick="this.src = QRCodePNG(location.href, this)"/>
+</footer>
 
 </body>
 </html>
