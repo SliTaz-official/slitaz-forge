@@ -1,32 +1,39 @@
+# No need `<meta charset="UTF-8">` as we already have `Content-type: text/html; charset=UTF-8`.
+# The HTTP Content-Type header and any BOM elements have precedence over this element.
+# No need `<meta name="robots" content="index, follow, all">
+# As the default value is "index, follow"
+# No need to specify `type="text/css"` in the stylesheet link as html5 not required it.
+
 cat << _EOF_
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="${LANG%_*}">
 <head>
-	<meta charset="utf-8" />
-	<title>$(eval_gettext "SliTaz Packages - Search \$SEARCH")</title>
-	<meta name="description" content="slitaz packages search" />
-	<meta name="keywords" lang="en" content="SliTaz, Tazpkg" />
-	<meta name="robots" content="index, follow, all" />
-	<meta name="expires" content="never" />
-	<link rel="shortcut icon" href="style/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="style/slitaz.css" />
-	<link rel="stylesheet" type="text/css" href="pkgs.css" />
+	<title>$(eval_gettext 'SliTaz Packages - Search $SEARCH')</title>
+	<meta name="application-name" content="TazPkg">
+	<meta name="description" content="SliTaz packages search">
+	<meta name="keywords" content="SliTaz, TazPkg">
+	<meta name="expires" content="never">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="style/favicon.ico">
+	<link rel="stylesheet" href="style/slitaz.min.css">
+	<link rel="stylesheet" href="pkgs.css">
 </head>
 <body>
 
-<div id="header">
-	<div id="logo"></div>
-	<div id="network">
-		<a href="http://www.slitaz.org/">$(gettext Home)</a>
-		<a href="http://scn.slitaz.org/">$(gettext Community)</a>
-		<a href="http://doc.slitaz.org/">$(gettext Doc)</a>
-		<a href="http://forum.slitaz.org/">$(gettext Forum)</a>
-		<a href="http://slitaz.pro/">$(gettext Pro)</a>
-		<a href="http://shop.slitaz.org/">$(gettext Shop)</a>
-		<a href="http://bugs.slitaz.org/">$(gettext Bugs)</a>
-		<a href="http://hg.slitaz.org/?sort=lastchange">$(gettext Hg)</a>
+<script>de=document.documentElement;de.className+=(("ontouchstart" in de)?' touch':' no-touch');</script>
+
+<header>
+	<h1><a href="./">$(gettext 'SliTaz Packages')</a></h1>
+	<div class="network">
+		<a href="http://www.slitaz.org/" class="home" title="$(gettext 'Home')"></a>
+		<a href="http://scn.slitaz.org/">$(gettext 'Community')</a>
+		<a href="http://doc.slitaz.org/">$(gettext 'Doc')</a>
+		<a href="http://forum.slitaz.org/">$(gettext 'Forum')</a>
+		<a href="http://slitaz.pro/">$(gettext 'Pro')</a>
+		<a href="http://shop.slitaz.org/">$(gettext 'Shop')</a>
+		<a href="http://bugs.slitaz.org/">$(gettext 'Bugs')</a>
+		<a href="http://hg.slitaz.org/?sort=lastchange">$(gettext 'Hg')</a>
 	</div>
-	<h1><a href="./">$(gettext "SliTaz Packages")</a></h1>
-</div>
+</header>
 
 _EOF_

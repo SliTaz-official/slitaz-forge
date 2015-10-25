@@ -11,7 +11,8 @@ body {
 	box-sizing: border-box;
 	color: #222;
 	background: #FFF;
-	font: 13px Ubuntu, "Droid Sans", "DejaVu Sans", FreeSans, "Liberation Sans", sans-serif;
+	font-size: 90%;
+	font-family: Arimo, Ubuntu, "Droid Sans", "DejaVu Sans", FreeSans, "Liberation Sans", sans-serif;
 	-moz-hyphens: auto; -epub-hyphens: auto; -webkit-hyphens: auto; hyphens: auto;
 }
 code, pre, samp, kbd {
@@ -40,7 +41,7 @@ h2 {
 	border-bottom: 1px solid #CCC;
 }
 h3 {
-	color: #666;
+	color: #16A;
 	font-size: 19px;
 	font-weight: 300;
 	margin: 12px auto 0;
@@ -69,14 +70,15 @@ pre {
 
 body > header {
 	display: block;
-	background: #222;
+	background: #444;
 	text-align: justify;
 	line-height: 0;
+	box-shadow: 0 -8px 8px #333 inset;
 }
 h1 {
 	display: inline-block;
 	margin: auto 0;
-	line-height: 20px;
+	height: 40px;
 	white-space: nowrap;
 	vertical-align: middle;
 }
@@ -177,7 +179,7 @@ nav, .block_info {
 	margin: 0;
 	text-align: right;
 	padding: 6px;
-	font-size: 11px;
+	font-size: 0.9rem;
 }
 .lang a {
 	padding: 0 2px;
@@ -189,16 +191,17 @@ nav, .block_info {
 /* Main content block */
 
 main {
+	display: block;
 	max-width: 700px;
 	margin: 6px auto;
 	padding: 0 6px;
 	text-align: justify;
 	line-height: 1.5rem;
 }
-p, ul, ol, li, h2, h3, pre, table {
+p, ul, ol, h2, h3, pre, table {
 	max-width: 700px;
 }
-p, ul, ol, li, pre, table {
+p, ul, ol, pre, table {
 	margin: 6px auto;
 }
 p, ul, ol {
@@ -218,10 +221,16 @@ ul ul, ol ol, ul ol, ol ul {
 
 .br::before { content: url(BR.png); }
 .ch::before { content: url(CH.png); }
+.cn::before { content: url(CN.png); }
 .de::before { content: url(DE.png); }
+.es::before { content: url(ES.png); }
 .fr::before { content: url(FR.png); }
 .it::before { content: url(IT.png); }
 .pl::before { content: url(PL.png); }
+.ru::before { content: url(RU.png); }
+.se::before { content: url(SE.png); }
+.tw::before { content: url(TW.png); }
+.ua::before { content: url(UA.png); }
 .us::before { content: url(US.png); }
 
 
@@ -253,8 +262,8 @@ table {
 	border: 1px solid #DDD;
 	width: 100%;
 	margin-bottom: 20px;
-	padding: 6px;
-	border-collapse: collapse;
+	padding: 0;
+	border-spacing: 0;
 	line-height: 1;
 }
 caption {
@@ -268,8 +277,8 @@ thead tr{
 td {
 	text-align: left;
 }
-th {
-	padding: 4px 1px;
+td, th {
+	padding: 4px;
 }
 /* Zebra stripes */
 tbody tr:nth-child(odd) {
@@ -394,10 +403,11 @@ nav, pre, textarea, select, .box, .searchbox, .activity, .activity div, .twitter
 body > footer {
 	background: #F1F1F1;
 	text-align: center;
-	border-top: 1px solid #DDD;
+	border-top: 1px solid #CCC;
 	padding: 6px;
 	color: #666;
 	clear: both;
+	box-shadow: 0 4px 8px #CCC inset;
 }
 body > footer div {
 	margin: 12px;
@@ -428,9 +438,11 @@ body > footer div {
 .exe::before          { content: url(application-x-ms-dos-executable.png); }
 .rme::before          { content: url(text-x-readme.png); }
 .log::before          { content: url(text-x-changelog.png); }
+.x-flavor,
 .pkg::before          { content: url(package-x-generic.png); }
 .server::before       { content: url(network-server.png); }
-.locale::before       { content: url(preferences-desktop-locale.png); }
+.locale::before       { content: url(preferences-desktop-locale.png); display: inline-block; vertical-align: middle; }
+.locale2::before      { content: url(preferences-desktop-locale2.png); display: inline-block; vertical-align: middle; }
 
 
 
@@ -442,9 +454,10 @@ body > footer div {
 .touch td, .touch th {
 	padding: 6px;
 }
-.touch .network a, .touch nav a, .touch .mirrors a, .touch footer a {
+.touch .network a, .touch nav a, .touch .mirrors a, .touch footer a,
+.touch .info a {
 	display: inline-block;
-	padding: 6px;
+	padding: 0 12px 12px 0;
 }
 
 /* Full width for block_info and navigation */

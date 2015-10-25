@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: search.sh:222
-msgid "Package"
+msgid "Package name"
 msgstr "Pacote"
 
 #: search.sh:223
@@ -26,11 +26,11 @@ msgid "Description"
 msgstr "Descrição"
 
 #: search.sh:224
-msgid "Tags"
+msgid "Tag"
 msgstr "Tags"
 
 #: search.sh:225
-msgid "Arch"
+msgid "Architecture"
 msgstr "Arquitetura"
 
 #: search.sh:226 lib/header.sh:26
@@ -42,11 +42,11 @@ msgid "Receipt"
 msgstr "Receipt"
 
 #: search.sh:228
-msgid "Depends"
+msgid "Dependencies"
 msgstr "Dependências"
 
 #: search.sh:229
-msgid "Build depends"
+msgid "Build dependencies"
 msgstr "Dependências de compilação"
 
 #: search.sh:230
@@ -58,7 +58,7 @@ msgid "File list"
 msgstr "Lista de arquivos"
 
 #: search.sh:232
-msgid "common files"
+msgid "Common files"
 msgstr "Arquivos comuns"
 
 #: search.sh:233
@@ -93,86 +93,154 @@ msgstr "backports"
 msgid "Search"
 msgstr "Buscar"
 
+msgid "%s package"
+msgid_plural "%s packages"
+msgstr[0] "%s pacote"
+msgstr[1] "%s pacotes"
+
 #: search.sh:325 search.sh:327 search.sh:351 search.sh:353
 msgid "Cooker"
 msgstr "Cooker"
 
 #: search.sh:436
 msgid ""
-"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
-"\t<b>every</b> package is supposed to depend on them."
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
 msgstr ""
 "\tglibc-base e gcc-lib-base são dependências implícitas,\n"
 "\t<b>todo</b> pacote em princípio depende delas."
 
 #: search.sh:482
-#, sh-format
-msgid "No package $SEARCH"
-msgstr "Sem resultado: $SEARCH"
+#, c-format
+msgid "Package \"%s\" was not found"
+msgstr "Sem resultado: %s"
+
+msgid "%s category"
+msgid_plural "%s categories"
+msgstr[0] "%s categoria"
+msgstr[1] "%s categorias"
+
+msgid "base-system"
+msgstr "base-system"
+msgid "x-window"
+msgstr "x-window"
+msgid "utilities"
+msgstr "utilitários"
+msgid "network"
+msgstr "network"
+msgid "graphics"
+msgstr "gráficos"
+msgid "multimedia"
+msgstr "multimídia"
+msgid "office"
+msgstr "escritório"
+msgid "development"
+msgstr "desenvolvimento"
+msgid "system-tools"
+msgstr "ferramentas-do-sistema"
+msgid "security"
+msgstr "segurança"
+msgid "games"
+msgstr "jogos"
+msgid "misc"
+msgstr "misc"
+msgid "meta"
+msgstr "meta"
+msgid "non-free"
+msgstr "não-livre"
 
 #: search.sh:714
 msgid "Search for packages"
 msgstr "Busca pelos pacotes"
 
 #: search.sh:728
-msgid "Depends loops"
+msgid "Loop dependence"
 msgstr "Loops de dependência"
 
 #: search.sh:743
-#, sh-format
-msgid "Dependency tree for: $SEARCH"
-msgstr "Árvore de dependências para: $SEARCH"
+#, c-format
+msgid "Dependency tree for package \"%s\""
+msgstr "Árvore de dependências para: %s"
 
 #: search.sh:754
-#, sh-format
-msgid "Dependency tree for: $SEARCH (SUGGESTED)"
-msgstr "Árvore de dependências para: $SEARCH (SUGGESTED)"
+#, c-format
+msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+msgstr "Árvore de dependências para: %s (SUGGESTED)"
 
 #: search.sh:763
-#, sh-format
-msgid "Reverse dependency tree for: $SEARCH"
-msgstr "Árvore reversa de dependências para: $SEARCH"
+#, c-format
+msgid "Reverse dependency tree for package \"%s\""
+msgstr "Árvore reversa de dependências para: %s"
 
 #: search.sh:780
-msgid "Build depends loops"
+msgid "Loop dependence of build"
 msgstr "Loop de dependências de compilação"
 
 #: search.sh:796
-#, sh-format
-msgid "$SEARCH needs these packages to be built"
-msgstr "$SEARCH depende que estes pacotes sejam compilados"
+#, c-format
+msgid "Package \"%s\" requires next packages to be built"
+msgstr "%s depende que estes pacotes sejam compilados"
 
 #: search.sh:804
-#, sh-format
-msgid "Packages who need $SEARCH to be built"
-msgstr "Pacotes que necessitam de $SEARCH para serem compilados"
+#, c-format
+msgid "Next packages requires package \"%s\" to be built"
+msgstr "Pacotes que necessitam de %s para serem compilados"
 
 #: search.sh:821
-#, sh-format
-msgid "These packages may overload files of $SEARCH"
-msgstr "Estes pacotes talvez sobrecarreguem os arquivos de $SEARCH"
+#, c-format
+msgid "Next packages may overwrite files of package \"%s\""
+msgstr "Estes pacotes talvez sobrecarreguem os arquivos de %s"
 
 #: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
 #: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Resultado para : $SEARCH"
+#, c-format
+msgid "File names matching the \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "List of files in the package \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "Descriptions matching the \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "The list of packages of architecture \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "The list of packages that <%s> maintains"
+msgstr "Resultado para : %s"
+#, c-format
+msgid "Packages with \"%s\" license"
+msgstr "Resultado para : %s"
+#, c-format
+msgid "Packages of category \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "The list of packages tagged \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "Receipt for package \"%s\""
+msgstr "Resultado para : %s"
+#, c-format
+msgid "Package names matching the \"%s\""
+msgstr "Resultado para : %s"
 
 #: search.sh:897
-#, sh-format
-msgid "$filenb file"
-msgid_plural "$filenb files"
-msgstr[0] "$filenb arquivo"
-msgstr[1] "$filenb arquivos"
+#, c-format
+msgid "%s file"
+msgid_plural "%s files"
+msgstr[0] "%s arquivo"
+msgstr[1] "%s arquivos"
 
 #: search.sh:912
-#, sh-format
-msgid "Description of package: $SEARCH"
-msgstr "Descrição do pacote: $SEARCH"
+#, c-format
+msgid "Description of the package \"%s\""
+msgstr "Descrição do pacote: %s"
 
 #: search.sh:938
-#, sh-format
-msgid "Result for known bugs"
+msgid "Known bugs in the packages"
 msgstr "Resultado para bugs conhecidos"
 
 #: search.sh:1113
@@ -180,9 +248,9 @@ msgid "description"
 msgstr "descrição"
 
 #: search.sh:1124
-#, sh-format
-msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "Resultado para : $SEARCH (pacote fornece $vpkg)"
+#, c-format
+msgid "Packages providing the package \"%s\""
+msgstr "Resultado para : pacote fornece %s"
 
 #: lib/header.sh:6
 #, sh-format

@@ -1,0 +1,63 @@
+Packages icons
+--------------
+
+In this folder you'll find icons displayed for packages in the TazPkg-web
+interface available in http://pkgs.slitaz.org/
+
+Rules for icon displaying:
+
+  1. Default icon is 'package-x-generic'. It will displayed if no other icon
+     is found.
+
+  2. Icon for all *-dev packages is 'dev' (alias for 'applications-development').
+
+  3. Icon for CLI-applications (Command-Line Interface) is 'cli' (alias for
+     'utilities-terminal'), special list exists here 'packages-cli.icons' with one
+     package name per line.
+
+  4. Icon for i18n (Internationalization) packages is 'i18n' (alias for
+     'preferences-desktop-locale'), special list exists here 'packages-i18n.icons'
+     with one package name per line.
+
+  5. List of icons settings/substitutions 'packages.icons' in format:
+     `<package name><tab><icon name (without '.png')>` per line. This list is
+     useful when package name and icon name not matched and we need to specify
+     icon name for package, as well as many packages used the same icon.
+
+  6. Icons files in the png format and symlinks to these icons.
+
+
+How to add icons.
+
+First, if icon exists in the Faenza icon theme, copy it from there.
+
+Next, if you can't find icon in the Faenza, explore package source ('Cooker' ->
+'browse' -> looking 'source', then 'install' folder in FTP-aware web-browser).
+Icon name can match the package name or can be appended with '_32' or something
+else, or can be named as 'logo' or something else. Please, select the best
+matched icon to represent the package.
+
+And, if you can't find icon here, use the internet search...
+
+Ah, forget to mention: icon size is strictly 32x32 px in the png format! Please,
+convert it to png from xpm or other format, as well as shrink or enlarge to
+precise 32x32 px using mtPaint or GIMP.
+
+Compress icon size using OptiPng (with extreme settings):
+
+    optipng -strip all -o7 -zm1-9 ./*.png
+
+
+Final words.
+
+Please, add icons ONLY for packages with GUI (Graphical User Interface)!
+
+Add other packages names to the matched 'packages-*.icons' lists (for CLI, i18n,
+etc.)
+
+================================================================================
+
+Thanks,
+
+Aleksej Bobylev <al.bobylev@gmail.com>
+2015

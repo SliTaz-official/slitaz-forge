@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: search.sh:222
-msgid "Package"
+msgid "Package name"
 msgstr "Paket"
 
 #: search.sh:223
@@ -26,11 +26,11 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #: search.sh:224
-msgid "Tags"
+msgid "Tag"
 msgstr "Taggar"
 
 #: search.sh:225
-msgid "Arch"
+msgid "Architecture"
 msgstr ""
 
 #: search.sh:226 lib/header.sh:26
@@ -42,11 +42,11 @@ msgid "Receipt"
 msgstr "Recept"
 
 #: search.sh:228
-msgid "Depends"
+msgid "Dependencies"
 msgstr "Beror"
 
 #: search.sh:229
-msgid "Build depends"
+msgid "Build dependencies"
 msgstr "Bygget beror"
 
 #: search.sh:230
@@ -58,7 +58,7 @@ msgid "File list"
 msgstr "Fil lista"
 
 #: search.sh:232
-msgid "common files"
+msgid "Common files"
 msgstr "Vanliga filer"
 
 #: search.sh:233
@@ -99,80 +99,138 @@ msgstr ""
 
 #: search.sh:436
 msgid ""
-"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
-"\t<b>every</b> package is supposed to depend on them."
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
 msgstr ""
 "\tglibc-base och gcc-lib-base är underförstådda beroenden,\n"
 "\t<b>varje</b> paket är menade att bero på dem."
 
 #: search.sh:482
-#, sh-format
-msgid "No package $SEARCH"
-msgstr "Inget paket $SEARCH"
+#, c-format
+msgid "Package \"%s\" was not found"
+msgstr "Inget paket %s"
+
+msgid "base-system"
+msgstr "bas-system"
+msgid "x-window"
+msgstr "x-fönster"
+msgid "utilities"
+msgstr "verktyg"
+msgid "network"
+msgstr "nätverk"
+msgid "graphics"
+msgstr "grafik"
+msgid "multimedia"
+msgstr "multimedia"
+msgid "office"
+msgstr "kontor"
+msgid "development"
+msgstr "utveckling"
+msgid "system-tools"
+msgstr "system-verktyg"
+msgid "security"
+msgstr "säkerhet"
+msgid "games"
+msgstr "spel"
+msgid "misc"
+msgstr "diverse"
+msgid "meta"
+msgstr "meta"
+msgid "non-free"
+msgstr "icket-fria"
 
 #: search.sh:714
 msgid "Search for packages"
 msgstr "Sök efter paket"
 
 #: search.sh:728
-msgid "Depends loops"
+msgid "Loop dependence"
 msgstr "Beroenden upprepas"
 
 #: search.sh:743
-#, sh-format
-msgid "Dependency tree for: $SEARCH"
-msgstr "Beroendeträd för: $SEARCH"
+#, c-format
+msgid "Dependency tree for package \"%s\""
+msgstr "Beroendeträd för: %s"
 
 #: search.sh:754
-#, sh-format
-msgid "Dependency tree for: $SEARCH (SUGGESTED)"
-msgstr "Beroendeträd för: $SEARCH (SUGGESTED)"
+#, c-format
+msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+msgstr "Beroendeträd för: %s (SUGGESTED)"
 
 #: search.sh:763
-#, sh-format
-msgid "Reverse dependency tree for: $SEARCH"
-msgstr "Omvänt beroendeträd för: $SEARCH"
+#, c-format
+msgid "Reverse dependency tree for package \"%s\""
+msgstr "Omvänt beroendeträd för: %s"
 
 #: search.sh:780
-msgid "Build depends loops"
+msgid "Loop dependence of build"
 msgstr "Byggets beroenden upprepas"
 
 #: search.sh:796
-#, sh-format
-msgid "$SEARCH needs these packages to be built"
-msgstr "$SEARCH behöver att de här paketen byggs"
+#, c-format
+msgid "Package \"%s\" requires next packages to be built"
+msgstr "%s behöver att de här paketen byggs"
 
 #: search.sh:804
-#, sh-format
-msgid "Packages who need $SEARCH to be built"
-msgstr "Paket som behöver att $SEARCH byggs"
+#, c-format
+msgid "Next packages requires package \"%s\" to be built"
+msgstr "Paket som behöver att %s byggs"
 
 #: search.sh:821
-#, sh-format
-msgid "These packages may overload files of $SEARCH"
-msgstr "Dessa paket kan överskrida $SEARCH 's filer"
+#, c-format
+msgid "Next packages may overwrite files of package \"%s\""
+msgstr "Dessa paket kan överskrida %s 's filer"
 
 #: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
 #: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Resultatet av: $SEARCH"
+#, c-format
+msgid "File names matching the \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "List of files in the package \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "Descriptions matching the \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "The list of packages of architecture \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "The list of packages that <%s> maintains"
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "Packages with \"%s\" license"
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "Packages of category \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "The list of packages tagged \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "Receipt for package \"%s\""
+msgstr "Resultatet av: %s"
+#, c-format
+msgid "Package names matching the \"%s\""
+msgstr "Resultatet av: %s"
 
 #: search.sh:897
-#, sh-format
-msgid "$filenb file"
-msgid_plural "$filenb files"
-msgstr[0] "$filenb fil"
-msgstr[1] "$filenb filer"
+#, c-format
+msgid "%s file"
+msgid_plural "%s files"
+msgstr[0] "%s fil"
+msgstr[1] "%s filer"
 
 #: search.sh:912
-#, sh-format
-msgid "Description of package: $SEARCH"
-msgstr "Beskrivning av paket: $SEARCH"
+#, c-format
+msgid "Description of the package \"%s\""
+msgstr "Beskrivning av paket: %s"
 
 #: search.sh:938
-#, sh-format
-msgid "Result for known bugs"
+msgid "Known bugs in the packages"
 msgstr ""
 
 #: search.sh:1113
@@ -180,9 +238,9 @@ msgid "description"
 msgstr "beskrivning"
 
 #: search.sh:1124
-#, sh-format
-msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "Resultat av: $SEARCH (package providing $vpkg)"
+#, c-format
+msgid "Packages providing the package \"%s\""
+msgstr "Resultat av: package providing %s"
 
 #: lib/header.sh:6
 #, sh-format

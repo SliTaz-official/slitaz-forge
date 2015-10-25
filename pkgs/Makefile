@@ -2,7 +2,7 @@
 #
 
 PACKAGE="tazpkg-web"
-LINGUAS?=de es_AR fa fr pl pt_BR ru sv zh zh_CN zh_TW
+LINGUAS?=de es_AR fa fr pl pt_BR ru sv uk zh zh_CN zh_TW
 
 all: msgfmt
 
@@ -10,7 +10,7 @@ all: msgfmt
 
 pot:
 	xgettext -o po/$(PACKAGE).pot -L Shell \
-		--package-name="TazPkg Web" \
+		--package-name="TazPkg Web" -k_ -k_n -k_p:1,2 \
 		./search.sh ./lib/header.sh
 
 msgmerge:

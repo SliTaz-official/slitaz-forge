@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: lib\n"
 
 #: search.sh:222
-msgid "Package"
+msgid "Package name"
 msgstr "软件包："
 
 #: search.sh:223
@@ -31,11 +31,11 @@ msgid "Description"
 msgstr "描述"
 
 #: search.sh:224
-msgid "Tags"
+msgid "Tag"
 msgstr "标签"
 
 #: search.sh:225
-msgid "Arch"
+msgid "Architecture"
 msgstr ""
 
 #: search.sh:226 lib/header.sh:26
@@ -47,11 +47,11 @@ msgid "Receipt"
 msgstr ""
 
 #: search.sh:228
-msgid "Depends"
+msgid "Dependencies"
 msgstr "依赖"
 
 #: search.sh:229
-msgid "Build depends"
+msgid "Build dependencies"
 msgstr ""
 
 #: search.sh:230
@@ -63,7 +63,7 @@ msgid "File list"
 msgstr "文件列表"
 
 #: search.sh:232
-msgid "common files"
+msgid "Common files"
 msgstr ""
 
 #: search.sh:233
@@ -104,13 +104,13 @@ msgstr ""
 
 #: search.sh:436
 msgid ""
-"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
-"\t<b>every</b> package is supposed to depend on them."
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
 msgstr ""
 
 #: search.sh:482
-#, sh-format
-msgid "No package $SEARCH"
+#, c-format
+msgid "Package \"%s\" was not found"
 msgstr ""
 
 #: search.sh:714
@@ -118,41 +118,41 @@ msgid "Search for packages"
 msgstr ""
 
 #: search.sh:728
-msgid "Depends loops"
+msgid "Loop dependence"
 msgstr "依赖 loops"
 
 #: search.sh:743
-#, sh-format
-msgid "Dependency tree for: $SEARCH"
+#, c-format
+msgid "Dependency tree for package \"%s\""
 msgstr ""
 
 #: search.sh:754
-#, sh-format
-msgid "Dependency tree for: $SEARCH (SUGGESTED)"
+#, c-format
+msgid "Dependency tree for package \"%s\" (SUGGESTED)"
 msgstr ""
 
 #: search.sh:763
-#, sh-format
-msgid "Reverse dependency tree for: $SEARCH"
+#, c-format
+msgid "Reverse dependency tree for package \"%s\""
 msgstr ""
 
 #: search.sh:780
-msgid "Build depends loops"
+msgid "Loop dependence of build"
 msgstr ""
 
 #: search.sh:796
-#, sh-format
-msgid "$SEARCH needs these packages to be built"
+#, c-format
+msgid "Package \"%s\" requires next packages to be built"
 msgstr ""
 
 #: search.sh:804
-#, sh-format
-msgid "Packages who need $SEARCH to be built"
+#, c-format
+msgid "Next packages requires package \"%s\" to be built"
 msgstr ""
 
 #: search.sh:821
-#, sh-format
-msgid "These packages may overload files of $SEARCH"
+#, c-format
+msgid "Next packages may overwrite files of package \"%s\""
 msgstr ""
 
 #: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
@@ -160,21 +160,50 @@ msgstr ""
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr ""
+#, c-format
+msgid "File names matching the \"%s\""
+msgstr ""
+#, c-format
+msgid "List of files in the package \"%s\""
+msgstr ""
+#, c-format
+msgid "Descriptions matching the \"%s\""
+msgstr ""
+#, c-format
+msgid "The list of packages of architecture \"%s\""
+msgstr ""
+#, c-format
+msgid "The list of packages that <%s> maintains"
+msgstr ""
+#, c-format
+msgid "Packages with \"%s\" license"
+msgstr ""
+#, c-format
+msgid "Packages of category \"%s\""
+msgstr ""
+#, c-format
+msgid "The list of packages tagged \"%s\""
+msgstr ""
+#, c-format
+msgid "Receipt for package \"%s\""
+msgstr ""
+#, c-format
+msgid "Package names matching the \"%s\""
+msgstr ""
 
 #: search.sh:897
-#, sh-format
-msgid "$filenb file"
-msgid_plural "$filenb files"
+#, c-format
+msgid "%s file"
+msgid_plural "%s files"
 msgstr[0] ""
 
 #: search.sh:912
-#, sh-format
-msgid "Description of package: $SEARCH"
+#, c-format
+msgid "Description of the package \"%s\""
 msgstr ""
 
 #: search.sh:938
-#, sh-format
-msgid "Result for known bugs"
+msgid "Known bugs in the packages"
 msgstr ""
 
 #: search.sh:1113
@@ -182,8 +211,8 @@ msgid "description"
 msgstr ""
 
 #: search.sh:1124
-#, sh-format
-msgid "Result for: $SEARCH (package providing $vpkg)"
+#, c-format
+msgid "Packages providing the package \"%s\""
 msgstr ""
 
 #: lib/header.sh:6

@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: search.sh:222
-msgid "Package"
+msgid "Package name"
 msgstr "Pakiet"
 
 #: search.sh:223
@@ -30,11 +30,11 @@ msgid "Description"
 msgstr "Opis"
 
 #: search.sh:224
-msgid "Tags"
+msgid "Tag"
 msgstr "Tagi"
 
 #: search.sh:225
-msgid "Arch"
+msgid "Architecture"
 msgstr ""
 
 #: search.sh:226 lib/header.sh:26
@@ -46,11 +46,11 @@ msgid "Receipt"
 msgstr "Recepta"
 
 #: search.sh:228
-msgid "Depends"
+msgid "Dependencies"
 msgstr "Zależności"
 
 #: search.sh:229
-msgid "Build depends"
+msgid "Build dependencies"
 msgstr "Zależności przy budowaniu"
 
 #: search.sh:230
@@ -62,7 +62,7 @@ msgid "File list"
 msgstr "Lista plików"
 
 #: search.sh:232
-msgid "common files"
+msgid "Common files"
 msgstr "wspólne pliki"
 
 #: search.sh:233
@@ -97,87 +97,157 @@ msgstr ""
 msgid "Search"
 msgstr "Szukaj"
 
+msgid "%s package"
+msgid_plural "%s packages"
+msgstr[0] "%s pakiet"
+msgstr[1] "%s pakiety"
+msgstr[2] "%s pakietów"
+
 #: search.sh:325 search.sh:327 search.sh:351 search.sh:353
 msgid "Cooker"
 msgstr ""
 
 #: search.sh:436
 msgid ""
-"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
-"\t<b>every</b> package is supposed to depend on them."
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
 msgstr ""
 "\tpakiety glibc-base i gcc-lib-base są bezwarunkowymi zależnościami,\n"
 "\t<b>każdy</b> pakiet ma je domyślnie w zależnościach."
 
 #: search.sh:482
-#, sh-format
-msgid "No package $SEARCH"
-msgstr "Brak pakietu $SEARCH"
+#, c-format
+msgid "Package \"%s\" was not found"
+msgstr "Brak pakietu %s"
+
+msgid "%s category"
+msgid_plural "%s categories"
+msgstr[0] "%s kategoria"
+msgstr[1] "%s kategorie"
+msgstr[2] "%s kategorii"
+
+msgid "base-system"
+msgstr "podstawowy-system"
+msgid "x-window"
+msgstr "x-window"
+msgid "utilities"
+msgstr "narzędzia"
+msgid "network"
+msgstr "sieć"
+msgid "graphics"
+msgstr "grafika"
+msgid "multimedia"
+msgstr "multimedia"
+msgid "office"
+msgstr "biuro"
+msgid "development"
+msgstr "narzędzia-programistyczne"
+msgid "system-tools"
+msgstr "narzędzia-systemowe"
+msgid "security"
+msgstr "bezpieczeństwo"
+msgid "games"
+msgstr "gry"
+msgid "misc"
+msgstr "różne"
+msgid "meta"
+msgstr "meta-pakiety"
+msgid "non-free"
+msgstr "nie-wolne"
 
 #: search.sh:714
 msgid "Search for packages"
 msgstr "Szukaj pakietów"
 
 #: search.sh:728
-msgid "Depends loops"
+msgid "Loop dependence"
 msgstr "Pętla zależności"
 
 #: search.sh:743
-#, sh-format
-msgid "Dependency tree for: $SEARCH"
-msgstr "Drzewo zależności dla: $SEARCH"
+#, c-format
+msgid "Dependency tree for package \"%s\""
+msgstr "Drzewo zależności dla: %s"
 
 #: search.sh:754
-#, sh-format
-msgid "Dependency tree for: $SEARCH (SUGGESTED)"
-msgstr "Drzewo zależności dla: $SEARCH (SUGEROWANE)"
+#, c-format
+msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+msgstr "Drzewo zależności dla: %s (SUGEROWANE)"
 
 #: search.sh:763
-#, sh-format
-msgid "Reverse dependency tree for: $SEARCH"
-msgstr "Odwrotne drzewo zależności dla: $SEARCH"
+#, c-format
+msgid "Reverse dependency tree for package \"%s\""
+msgstr "Odwrotne drzewo zależności dla: %s"
 
 #: search.sh:780
-msgid "Build depends loops"
+msgid "Loop dependence of build"
 msgstr "Pętla zależności przy budowaniu"
 
 #: search.sh:796
-#, sh-format
-msgid "$SEARCH needs these packages to be built"
-msgstr "$SEARCH wymaga tych pakietów do budowania"
+#, c-format
+msgid "Package \"%s\" requires next packages to be built"
+msgstr "%s wymaga tych pakietów do budowania"
 
 #: search.sh:804
-#, sh-format
-msgid "Packages who need $SEARCH to be built"
-msgstr "Pakiety wymagające $SEARCH do budowania"
+#, c-format
+msgid "Next packages requires package \"%s\" to be built"
+msgstr "Pakiety wymagające %s do budowania"
 
 #: search.sh:821
-#, sh-format
-msgid "These packages may overload files of $SEARCH"
-msgstr "Poniższe pakiety mogą przeładować pliki z $SEARCH"
+#, c-format
+msgid "Next packages may overwrite files of package \"%s\""
+msgstr "Poniższe pakiety mogą przeładować pliki z %s"
 
 #: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
 #: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "Rezultat dla: $SEARCH"
+#, c-format
+msgid "File names matching the \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "List of files in the package \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "Descriptions matching the \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "The list of packages of architecture \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "The list of packages that <%s> maintains"
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "Packages with \"%s\" license"
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "Packages of category \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "The list of packages tagged \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "Receipt for package \"%s\""
+msgstr "Rezultat dla: %s"
+#, c-format
+msgid "Package names matching the \"%s\""
+msgstr "Rezultat dla: %s"
 
 #: search.sh:897
-#, sh-format
-msgid "$filenb file"
-msgid_plural "$filenb files"
-msgstr[0] "$filenb plik"
-msgstr[1] "$filenb pliki"
-msgstr[2] "$filenb plików"
+#, c-format
+msgid "%s file"
+msgid_plural "%s files"
+msgstr[0] "%s plik"
+msgstr[1] "%s pliki"
+msgstr[2] "%s plików"
 
 #: search.sh:912
-#, sh-format
-msgid "Description of package: $SEARCH"
-msgstr "Opis pakietu: $SEARCH"
+#, c-format
+msgid "Description of the package \"%s\""
+msgstr "Opis pakietu: %s"
 
 #: search.sh:938
-#, sh-format
-msgid "Result for known bugs"
+msgid "Known bugs in the packages"
 msgstr ""
 
 #: search.sh:1113
@@ -185,9 +255,9 @@ msgid "description"
 msgstr "opis"
 
 #: search.sh:1124
-#, sh-format
-msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "Rezultat dla: $SEARCH (pakiety dostarczające $vpkg)"
+#, c-format
+msgid "Packages providing the package \"%s\""
+msgstr "Rezultat dla: pakiety dostarczające %s"
 
 #: lib/header.sh:6
 #, sh-format

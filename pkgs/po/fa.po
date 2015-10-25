@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: search.sh:222
-msgid "Package"
+msgid "Package name"
 msgstr "پکیج"
 
 #: search.sh:223
@@ -28,11 +28,11 @@ msgid "Description"
 msgstr "توضیحات"
 
 #: search.sh:224
-msgid "Tags"
+msgid "Tag"
 msgstr "برچسب ها"
 
 #: search.sh:225
-msgid "Arch"
+msgid "Architecture"
 msgstr "اصلی"
 
 #: search.sh:226 lib/header.sh:26
@@ -44,11 +44,11 @@ msgid "Receipt"
 msgstr "دریافتی"
 
 #: search.sh:228
-msgid "Depends"
+msgid "Dependencies"
 msgstr "وابسته ها"
 
 #: search.sh:229
-msgid "Build depends"
+msgid "Build dependencies"
 msgstr "ساخت وابسته ها"
 
 #: search.sh:230
@@ -60,7 +60,7 @@ msgid "File list"
 msgstr "لیست فایل"
 
 #: search.sh:232
-msgid "common files"
+msgid "Common files"
 msgstr "فایل های عمومی"
 
 #: search.sh:233
@@ -101,79 +101,108 @@ msgstr "Cooker"
 
 #: search.sh:436
 msgid ""
-"\tglibc-base and gcc-lib-base are implicit dependencies,\n"
-"\t<b>every</b> package is supposed to depend on them."
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
 msgstr ""
 "وابسته های الزامی هستند gcc-lib-base و \tglibc-base\n"
 "\t<b>همه ی</b> پکیج ها آن دو را نیاز دارند."
 
 #: search.sh:482
-#, sh-format
-msgid "No package $SEARCH"
-msgstr "موجود نیست $SEARCH پکیج "
+#, c-format
+msgid "Package \"%s\" was not found"
+msgstr "موجود نیست %s پکیج "
 
 #: search.sh:714
 msgid "Search for packages"
 msgstr "جستجوی پکیج ها"
 
 #: search.sh:728
-msgid "Depends loops"
+msgid "Loop dependence"
 msgstr "حلقه های پکیج های وابسته"
 
 #: search.sh:743
-#, sh-format
-msgid "Dependency tree for: $SEARCH"
-msgstr "$SEARCH :درختواره وابسته های"
+#, c-format
+msgid "Dependency tree for package \"%s\""
+msgstr "%s :درختواره وابسته های"
 
 #: search.sh:754
-#, sh-format
-msgid "Dependency tree for: $SEARCH (SUGGESTED)"
-msgstr "(پیشنهاد شده) $SEARCH :درختواره وابسته های"
+#, c-format
+msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+msgstr "(پیشنهاد شده) %s :درختواره وابسته های"
 
 #: search.sh:763
-#, sh-format
-msgid "Reverse dependency tree for: $SEARCH"
-msgstr "$SEARCH :برگرداندن درختواره وابسته های "
+#, c-format
+msgid "Reverse dependency tree for package \"%s\""
+msgstr "%s :برگرداندن درختواره وابسته های "
 
 #: search.sh:780
-msgid "Build depends loops"
+msgid "Loop dependence of build"
 msgstr "حلقه های وابسته های ساخت"
 
 #: search.sh:796
-#, sh-format
-msgid "$SEARCH needs these packages to be built"
-msgstr "برای ساخته شدن به این پکیج ها نیازمند است $SEARCH"
+#, c-format
+msgid "Package \"%s\" requires next packages to be built"
+msgstr "برای ساخته شدن به این پکیج ها نیازمند است %s"
 
 #: search.sh:804
-#, sh-format
-msgid "Packages who need $SEARCH to be built"
-msgstr ".برای ساخته شدن نیازمندند $SEARCH پکیج هایی که به"
+#, c-format
+msgid "Next packages requires package \"%s\" to be built"
+msgstr ".برای ساخته شدن نیازمندند %s پکیج هایی که به"
 
 #: search.sh:821
-#, sh-format
-msgid "These packages may overload files of $SEARCH"
-msgstr ".لود کنند $SEARCH این پکیج ها ممکن است فایل های زیادی را از "
+#, c-format
+msgid "Next packages may overwrite files of package \"%s\""
+msgstr ".لود کنند %s این پکیج ها ممکن است فایل های زیادی را از "
 
 #: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
 #: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
 #, sh-format
 msgid "Result for: $SEARCH"
 msgstr "$SEARCH :نتایج برای"
+#, c-format
+msgid "File names matching the \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "List of files in the package \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "Descriptions matching the \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "The list of packages of architecture \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "The list of packages that <%s> maintains"
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "Packages with \"%s\" license"
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "Packages of category \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "The list of packages tagged \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "Receipt for package \"%s\""
+msgstr "%s :نتایج برای"
+#, c-format
+msgid "Package names matching the \"%s\""
+msgstr "%s :نتایج برای"
 
 #: search.sh:897
-#, sh-format
-msgid "$filenb file"
-msgid_plural "$filenb files"
-msgstr[0] "$filenb فایل"
+#, c-format
+msgid "%s file"
+msgid_plural "%s files"
+msgstr[0] "%s فایل"
 
 #: search.sh:912
-#, sh-format
-msgid "Description of package: $SEARCH"
-msgstr "$SEARCH :شرح پکیج"
+#, c-format
+msgid "Description of the package \"%s\""
+msgstr "%s :شرح پکیج"
 
 #: search.sh:938
-#, sh-format
-msgid "Result for known bugs"
+msgid "Known bugs in the packages"
 msgstr "نتایج برای باگ های شناخته شده"
 
 #: search.sh:1113
@@ -181,9 +210,9 @@ msgid "description"
 msgstr "شرح"
 
 #: search.sh:1124
-#, sh-format
-msgid "Result for: $SEARCH (package providing $vpkg)"
-msgstr "$SEARCH (package providing $vpkg) :نتایج جستجوی"
+#, c-format
+msgid "Packages providing the package \"%s\""
+msgstr "package providing %s :نتایج جستجوی"
 
 #: lib/header.sh:6
 #, sh-format
