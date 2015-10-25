@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-08 01:37+0800\n"
+"POT-Creation-Date: 2015-10-25 06:48+0200\n"
 "PO-Revision-Date: 2014-06-08 01:37+0800\n"
 "Last-Translator: <lunglungyu2004@gmail.com>\n"
 "Language-Team: \n"
@@ -17,87 +17,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: search.sh:222
-msgid "Package name"
-msgstr "包"
-
-#: search.sh:223
-msgid "Description"
-msgstr "描述"
-
-#: search.sh:224
-msgid "Tag"
-msgstr "標誌"
-
-#: search.sh:225
-msgid "Architecture"
-msgstr "構建"
-
-#: search.sh:226 lib/header.sh:26
-msgid "Bugs"
-msgstr "Bugs"
-
-#: search.sh:227 search.sh:334 search.sh:358
-msgid "Receipt"
-msgstr "清單"
-
-#: search.sh:228
-msgid "Dependencies"
-msgstr "依賴"
-
-#: search.sh:229
-msgid "Build dependencies"
-msgstr "編譯依賴"
-
-#: search.sh:230
-msgid "File"
-msgstr "文件"
-
-#: search.sh:231
-msgid "File list"
-msgstr "文件清單"
-
-#: search.sh:232
-msgid "Common files"
-msgstr "共用文件"
-
-#: search.sh:233
-msgid "Category"
-msgstr "分類"
-
-#: search.sh:234
-msgid "Maintainer"
-msgstr "維護者"
-
-#: search.sh:235
-msgid "License"
-msgstr "授權"
-
-#: search.sh:243
-msgid "cooking"
-msgstr "cooking"
-
-#: search.sh:248
-msgid "tiny"
-msgstr "tiny"
-
-#: search.sh:249
-msgid "undigest"
-msgstr "undigest"
-
-#: search.sh:250
-msgid "backports"
-msgstr "backports"
-
-#: search.sh:254
-msgid "Search"
-msgstr "搜索"
-
-#: search.sh:325 search.sh:327 search.sh:351 search.sh:353
+#: search.sh:146
 msgid "Cooker"
 msgstr "生成者"
 
-#: search.sh:436
+#: search.sh:147
+msgid "Download"
+msgstr ""
+
+#: search.sh:148 search.sh:257
+msgid "Receipt"
+msgstr "清單"
+
+#: search.sh:252
+msgid "Package name"
+msgstr "包"
+
+#: search.sh:253 search.sh:1034 search.sh:1139
+msgid "Description"
+msgstr "描述"
+
+#: search.sh:254
+msgid "Tag"
+msgstr "標誌"
+
+#: search.sh:255
+msgid "Architecture"
+msgstr "構建"
+
+#: search.sh:256 lib/header.sh:34
+msgid "Bugs"
+msgstr "Bugs"
+
+#: search.sh:258
+msgid "Dependencies"
+msgstr "依賴"
+
+#: search.sh:259
+msgid "Build dependencies"
+msgstr "編譯依賴"
+
+#: search.sh:260
+msgid "File"
+msgstr "文件"
+
+#: search.sh:261
+msgid "File list"
+msgstr "文件清單"
+
+#: search.sh:262
+msgid "Common files"
+msgstr "共用文件"
+
+#: search.sh:263 search.sh:1029
+msgid "Category"
+msgstr "分類"
+
+#: search.sh:264 search.sh:1040
+msgid "Maintainer"
+msgstr "維護者"
+
+#: search.sh:265 search.sh:1046
+msgid "License"
+msgstr "授權"
+
+#: search.sh:274
+#, fuzzy
+msgid "SliTaz version"
+msgstr "SliTaz 包"
+
+#: search.sh:275
+msgid "cooking"
+msgstr "cooking"
+
+#: search.sh:280
+msgid "tiny"
+msgstr "tiny"
+
+#: search.sh:281
+msgid "undigest"
+msgstr "undigest"
+
+#: search.sh:282
+msgid "backports"
+msgstr "backports"
+
+#: search.sh:286
+msgid "Search"
+msgstr "搜索"
+
+#: search.sh:342
+msgid "%s package"
+msgid_plural "%s packages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:344
+msgid " and %s file in %s database"
+msgid_plural " and %s files in %s database"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:362
+msgid "Page generated in %s second."
+msgid_plural "Page generated in %s seconds."
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:630
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
@@ -105,180 +132,296 @@ msgstr ""
 "\tglibc-base 和 gcc-lib-base 是隱性依賴,\n"
 "\t<b>每個</b> 包都需要該項依賴."
 
-#: search.sh:482
-#, c-format
+#: search.sh:677 search.sh:1361
+#, fuzzy
+msgid "Please specify name of the package."
+msgstr "包描述: %s"
+
+#: search.sh:692
 msgid "Package \"%s\" was not found"
 msgstr "沒有包 %s"
 
+#: search.sh:895
+#, fuzzy
+msgid "%s architecture"
+msgid_plural "%s architectures"
+msgstr[0] "構建"
+msgstr[1] "構建"
+
+#: search.sh:896
+#, fuzzy
+msgid "%s maintainer"
+msgid_plural "%s maintainers"
+msgstr[0] "維護者"
+msgstr[1] "維護者"
+
+#: search.sh:897
+#, fuzzy
+msgid "%s license"
+msgid_plural "%s licenses"
+msgstr[0] "授權"
+msgstr[1] "授權"
+
+#: search.sh:898
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "%s 個分類"
 
+#: search.sh:899
+msgid "%s tag"
+msgid_plural "%s tags"
+msgstr[0] ""
+msgstr[1] ""
+
+#: search.sh:1003
 msgid "base-system"
 msgstr "基本系統包"
+
+#: search.sh:1003
 msgid "x-window"
 msgstr "x-窗口"
+
+#: search.sh:1003
 msgid "utilities"
 msgstr "實用程式"
+
+#: search.sh:1003
 msgid "network"
 msgstr "網絡工具"
+
+#: search.sh:1003
 msgid "graphics"
 msgstr "圖像工具"
+
+#: search.sh:1004
 msgid "multimedia"
 msgstr "多媒體軟件"
+
+#: search.sh:1004
 msgid "office"
 msgstr "辦公室軟件"
+
+#: search.sh:1004
 msgid "development"
 msgstr "開發工具"
+
+#: search.sh:1004
 msgid "system-tools"
 msgstr "系統工具"
+
+#: search.sh:1004
 msgid "security"
 msgstr "安全工具"
+
+#: search.sh:1005
 msgid "games"
 msgstr "遊戲"
+
+#: search.sh:1005
 msgid "misc"
 msgstr "雜項"
+
+#: search.sh:1005
 msgid "meta"
 msgstr "元工具"
+
+#: search.sh:1005
 msgid "non-free"
 msgstr "非自由軟件"
 
-#: search.sh:714
-msgid "Search for packages"
-msgstr "搜索包"
+#: search.sh:1015
+msgid "Name"
+msgstr ""
 
-#: search.sh:728
+#: search.sh:1023
+msgid "Version"
+msgstr ""
+
+#: search.sh:1054
+msgid "Website"
+msgstr ""
+
+#: search.sh:1058
+msgid "Tags"
+msgstr ""
+
+#: search.sh:1063 search.sh:1070
+msgid "Sizes"
+msgstr ""
+
+#: search.sh:1076
+#, fuzzy
+msgid "Depends"
+msgstr "依賴"
+
+#: search.sh:1078
+msgid "Provide"
+msgstr ""
+
+#: search.sh:1080
+msgid "Suggested"
+msgstr ""
+
+#: search.sh:1091 search.sh:1093
+#, fuzzy
+msgid "Show cooking log"
+msgstr "cooking"
+
+#: search.sh:1095
+msgid "N/A"
+msgstr ""
+
+#: search.sh:1102
+msgid "Download package"
+msgstr ""
+
+#: search.sh:1112
+#, fuzzy
+msgid "Show receipt"
+msgstr "清單"
+
+#: search.sh:1124
+msgid "Install package"
+msgstr ""
+
+#: search.sh:1130
+msgid "Download and open (experimental)"
+msgstr ""
+
+#: search.sh:1148
+#, fuzzy
+msgid "Configuration files"
+msgstr "共用文件"
+
+#: search.sh:1175
 msgid "Loop dependence"
 msgstr "依賴循環"
 
-#: search.sh:743
-#, c-format
+#: search.sh:1188
 msgid "Dependency tree for package \"%s\""
 msgstr "%s 的依賴樹"
 
-#: search.sh:754
-#, c-format
-msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+#: search.sh:1199
+#, fuzzy
+msgid "Dependency tree for package \"%\" (SUGGESTED)"
 msgstr "%s (SUGGESTED) 的依賴樹"
 
-#: search.sh:763
-#, c-format
+#: search.sh:1208
 msgid "Reverse dependency tree for package \"%s\""
 msgstr "%s 的反向依賴樹"
 
-#: search.sh:780
+#: search.sh:1225
 msgid "Loop dependence of build"
 msgstr "編譯依賴循環"
 
-#: search.sh:796
-#, c-format
+#: search.sh:1239
 msgid "Package \"%s\" requires next packages to be built"
 msgstr "%s 需要以下包"
 
-#: search.sh:804
-#, c-format
+#: search.sh:1247
 msgid "Next packages requires package \"%s\" to be built"
 msgstr "以下包需要 %s "
 
-#: search.sh:821
-#, c-format
+#: search.sh:1265
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr "以下包可能會超載(overload) %s 的文件"
 
-#: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
-#: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
-#, sh-format
-msgid "Result for: $SEARCH"
-msgstr "$SEARCH 的結果"
-#, c-format
+#: search.sh:1294
 msgid "File names matching the \"%s\""
 msgstr "%s 的結果"
-#, c-format
+
+#: search.sh:1333
 msgid "List of files in the package \"%s\""
 msgstr "%s 的結果"
-#, c-format
-msgid "Descriptions matching the \"%s\""
-msgstr "%s 的結果"
-#, c-format
-msgid "The list of packages of architecture \"%s\""
-msgstr "%s 的結果"
-#, c-format
-msgid "The list of packages that <%s> maintains"
-msgstr "%s 的結果"
-#, c-format
-msgid "Packages with \"%s\" license"
-msgstr "%s 的結果"
-#, c-format
-msgid "Packages of category \"%s\""
-msgstr "%s 的結果"
-#, c-format
-msgid "The list of packages tagged \"%s\""
-msgstr "%s 的結果"
-#, c-format
-msgid "Receipt for package \"%s\""
-msgstr "%s 的結果"
-#, c-format
-msgid "Package names matching the \"%s\""
-msgstr "%s 的結果"
 
-#: search.sh:897
-#, c-format
+#: search.sh:1344
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s 文件"
 msgstr[1] "%s 文件"
 
-#: search.sh:912
-#, c-format
-msgid "Description of the package \"%s\""
-msgstr "包描述: %s"
+#: search.sh:1369
+msgid "Descriptions matching the \"%s\""
+msgstr "%s 的結果"
 
-#: search.sh:938
+#: search.sh:1392
 msgid "Known bugs in the packages"
 msgstr "已知Bugs :"
 
-#: search.sh:1113
-msgid "description"
-msgstr "描述"
+#: search.sh:1418
+msgid "The list of packages of architecture \"%s\""
+msgstr "%s 的結果"
 
-#: search.sh:1124
-#, c-format
+#: search.sh:1451
+msgid "The list of packages that <%s> maintains"
+msgstr "%s 的結果"
+
+#: search.sh:1481
+msgid "Packages with \"%s\" license"
+msgstr "%s 的結果"
+
+#: search.sh:1509
+msgid "Packages of category \"%s\""
+msgstr "%s 的結果"
+
+#: search.sh:1552
+msgid "The list of packages tagged \"%s\""
+msgstr "%s 的結果"
+
+#: search.sh:1596
+msgid "Receipt for package \"%s\""
+msgstr "%s 的結果"
+
+#: search.sh:1616
+msgid "Package names matching the \"%s\""
+msgstr "%s 的結果"
+
+#: search.sh:1634
 msgid "Packages providing the package \"%s\""
 msgstr "提供 %s 的包 的結果"
 
-#: lib/header.sh:6
+#: lib/header.sh:11
 #, sh-format
 msgid "SliTaz Packages - Search $SEARCH"
 msgstr "SliTaz 包 - 搜索 $SEARCH"
 
-#: lib/header.sh:20
+#: lib/header.sh:26
+msgid "SliTaz Packages"
+msgstr "SliTaz 包"
+
+#: lib/header.sh:28
 msgid "Home"
 msgstr "主目錄"
 
-#: lib/header.sh:21
+#: lib/header.sh:29
 msgid "Community"
 msgstr "社區"
 
-#: lib/header.sh:22
+#: lib/header.sh:30
 msgid "Doc"
 msgstr "文檔"
 
-#: lib/header.sh:23
+#: lib/header.sh:31
 msgid "Forum"
 msgstr "論壇"
 
-#: lib/header.sh:24
+#: lib/header.sh:32
 msgid "Pro"
 msgstr "專業支持"
 
-#: lib/header.sh:25
+#: lib/header.sh:33
 msgid "Shop"
 msgstr "商店"
 
-#: lib/header.sh:27
+#: lib/header.sh:35
 msgid "Hg"
 msgstr "Hg"
 
-#: lib/header.sh:29
-msgid "SliTaz Packages"
-msgstr "SliTaz 包"
+#~ msgid "Search for packages"
+#~ msgstr "搜索包"
+
+#~ msgid "Result for: $SEARCH"
+#~ msgstr "$SEARCH 的結果"
+
+#~ msgid "description"
+#~ msgstr "描述"

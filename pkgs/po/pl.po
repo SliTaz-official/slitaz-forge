@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-12 15:16+0300\n"
+"POT-Creation-Date: 2015-10-25 06:48+0200\n"
 "PO-Revision-Date: 2013-07-23 12:35+0100\n"
 "Last-Translator: Paweł Pyrczak <tkr.tkr.pl@gmail.com>\n"
 "Language-Team: Paweł Pyrczak <support@pyrczak.pl>\n"
@@ -21,93 +21,117 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: search.sh:222
-msgid "Package name"
-msgstr "Pakiet"
-
-#: search.sh:223
-msgid "Description"
-msgstr "Opis"
-
-#: search.sh:224
-msgid "Tag"
-msgstr "Tagi"
-
-#: search.sh:225
-msgid "Architecture"
+#: search.sh:146
+msgid "Cooker"
 msgstr ""
 
-#: search.sh:226 lib/header.sh:26
-msgid "Bugs"
-msgstr "Błędy"
+#: search.sh:147
+msgid "Download"
+msgstr ""
 
-#: search.sh:227 search.sh:334 search.sh:358
+#: search.sh:148 search.sh:257
 msgid "Receipt"
 msgstr "Recepta"
 
-#: search.sh:228
+#: search.sh:252
+msgid "Package name"
+msgstr "Pakiet"
+
+#: search.sh:253 search.sh:1034 search.sh:1139
+msgid "Description"
+msgstr "Opis"
+
+#: search.sh:254
+msgid "Tag"
+msgstr "Tagi"
+
+#: search.sh:255
+msgid "Architecture"
+msgstr ""
+
+#: search.sh:256 lib/header.sh:34
+msgid "Bugs"
+msgstr "Błędy"
+
+#: search.sh:258
 msgid "Dependencies"
 msgstr "Zależności"
 
-#: search.sh:229
+#: search.sh:259
 msgid "Build dependencies"
 msgstr "Zależności przy budowaniu"
 
-#: search.sh:230
+#: search.sh:260
 msgid "File"
 msgstr "Plik"
 
-#: search.sh:231
+#: search.sh:261
 msgid "File list"
 msgstr "Lista plików"
 
-#: search.sh:232
+#: search.sh:262
 msgid "Common files"
 msgstr "wspólne pliki"
 
-#: search.sh:233
+#: search.sh:263 search.sh:1029
 msgid "Category"
 msgstr ""
 
-#: search.sh:234
+#: search.sh:264 search.sh:1040
 msgid "Maintainer"
 msgstr ""
 
-#: search.sh:235
+#: search.sh:265 search.sh:1046
 msgid "License"
 msgstr ""
 
-#: search.sh:243
+#: search.sh:274
+#, fuzzy
+msgid "SliTaz version"
+msgstr "Pakiety SliTaz"
+
+#: search.sh:275
 msgid "cooking"
 msgstr "cooking"
 
-#: search.sh:248
+#: search.sh:280
 msgid "tiny"
 msgstr "tiny"
 
-#: search.sh:249
+#: search.sh:281
 msgid "undigest"
 msgstr "undigest"
 
-#: search.sh:250
+#: search.sh:282
 msgid "backports"
 msgstr ""
 
-#: search.sh:254
+#: search.sh:286
 msgid "Search"
 msgstr "Szukaj"
 
+#: search.sh:342
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] "%s pakiet"
 msgstr[1] "%s pakiety"
 msgstr[2] "%s pakietów"
 
-#: search.sh:325 search.sh:327 search.sh:351 search.sh:353
-msgid "Cooker"
-msgstr ""
+#: search.sh:344
+msgid " and %s file in %s database"
+msgid_plural " and %s files in %s database"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: search.sh:436
+#: search.sh:362
+msgid "Page generated in %s second."
+msgid_plural "Page generated in %s seconds."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search.sh:630
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
@@ -115,183 +139,302 @@ msgstr ""
 "\tpakiety glibc-base i gcc-lib-base są bezwarunkowymi zależnościami,\n"
 "\t<b>każdy</b> pakiet ma je domyślnie w zależnościach."
 
-#: search.sh:482
-#, c-format
+#: search.sh:677 search.sh:1361
+#, fuzzy
+msgid "Please specify name of the package."
+msgstr "Opis pakietu: %s"
+
+#: search.sh:692
 msgid "Package \"%s\" was not found"
 msgstr "Brak pakietu %s"
 
+#: search.sh:895
+msgid "%s architecture"
+msgid_plural "%s architectures"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search.sh:896
+msgid "%s maintainer"
+msgid_plural "%s maintainers"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search.sh:897
+msgid "%s license"
+msgid_plural "%s licenses"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search.sh:898
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "%s kategoria"
 msgstr[1] "%s kategorie"
 msgstr[2] "%s kategorii"
 
+#: search.sh:899
+msgid "%s tag"
+msgid_plural "%s tags"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search.sh:1003
 msgid "base-system"
 msgstr "podstawowy-system"
+
+#: search.sh:1003
 msgid "x-window"
 msgstr "x-window"
+
+#: search.sh:1003
 msgid "utilities"
 msgstr "narzędzia"
+
+#: search.sh:1003
 msgid "network"
 msgstr "sieć"
+
+#: search.sh:1003
 msgid "graphics"
 msgstr "grafika"
+
+#: search.sh:1004
 msgid "multimedia"
 msgstr "multimedia"
+
+#: search.sh:1004
 msgid "office"
 msgstr "biuro"
+
+#: search.sh:1004
 msgid "development"
 msgstr "narzędzia-programistyczne"
+
+#: search.sh:1004
 msgid "system-tools"
 msgstr "narzędzia-systemowe"
+
+#: search.sh:1004
 msgid "security"
 msgstr "bezpieczeństwo"
+
+#: search.sh:1005
 msgid "games"
 msgstr "gry"
+
+#: search.sh:1005
 msgid "misc"
 msgstr "różne"
+
+#: search.sh:1005
 msgid "meta"
 msgstr "meta-pakiety"
+
+#: search.sh:1005
 msgid "non-free"
 msgstr "nie-wolne"
 
-#: search.sh:714
-msgid "Search for packages"
-msgstr "Szukaj pakietów"
+#: search.sh:1015
+msgid "Name"
+msgstr ""
 
-#: search.sh:728
+#: search.sh:1023
+msgid "Version"
+msgstr ""
+
+#: search.sh:1054
+msgid "Website"
+msgstr ""
+
+#: search.sh:1058
+msgid "Tags"
+msgstr ""
+
+#: search.sh:1063 search.sh:1070
+msgid "Sizes"
+msgstr ""
+
+#: search.sh:1076
+#, fuzzy
+msgid "Depends"
+msgstr "Zależności"
+
+#: search.sh:1078
+msgid "Provide"
+msgstr ""
+
+#: search.sh:1080
+msgid "Suggested"
+msgstr ""
+
+#: search.sh:1091 search.sh:1093
+#, fuzzy
+msgid "Show cooking log"
+msgstr "cooking"
+
+#: search.sh:1095
+msgid "N/A"
+msgstr ""
+
+#: search.sh:1102
+#, fuzzy
+msgid "Download package"
+msgstr "%s pakiet"
+
+#: search.sh:1112
+#, fuzzy
+msgid "Show receipt"
+msgstr "Recepta"
+
+#: search.sh:1124
+#, fuzzy
+msgid "Install package"
+msgstr "%s pakiet"
+
+#: search.sh:1130
+msgid "Download and open (experimental)"
+msgstr ""
+
+#: search.sh:1148
+#, fuzzy
+msgid "Configuration files"
+msgstr "wspólne pliki"
+
+#: search.sh:1175
 msgid "Loop dependence"
 msgstr "Pętla zależności"
 
-#: search.sh:743
-#, c-format
+#: search.sh:1188
 msgid "Dependency tree for package \"%s\""
 msgstr "Drzewo zależności dla: %s"
 
-#: search.sh:754
-#, c-format
-msgid "Dependency tree for package \"%s\" (SUGGESTED)"
+#: search.sh:1199
+#, fuzzy
+msgid "Dependency tree for package \"%\" (SUGGESTED)"
 msgstr "Drzewo zależności dla: %s (SUGEROWANE)"
 
-#: search.sh:763
-#, c-format
+#: search.sh:1208
 msgid "Reverse dependency tree for package \"%s\""
 msgstr "Odwrotne drzewo zależności dla: %s"
 
-#: search.sh:780
+#: search.sh:1225
 msgid "Loop dependence of build"
 msgstr "Pętla zależności przy budowaniu"
 
-#: search.sh:796
-#, c-format
+#: search.sh:1239
 msgid "Package \"%s\" requires next packages to be built"
 msgstr "%s wymaga tych pakietów do budowania"
 
-#: search.sh:804
-#, c-format
+#: search.sh:1247
 msgid "Next packages requires package \"%s\" to be built"
 msgstr "Pakiety wymagające %s do budowania"
 
-#: search.sh:821
-#, c-format
+#: search.sh:1265
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr "Poniższe pakiety mogą przeładować pliki z %s"
 
-#: search.sh:849 search.sh:886 search.sh:920 search.sh:959 search.sh:980
-#: search.sh:1007 search.sh:1034 search.sh:1061 search.sh:1089 search.sh:1107
-#, sh-format
-msgid "Result for: $SEARCH"
-msgstr "Rezultat dla: $SEARCH"
-#, c-format
+#: search.sh:1294
 msgid "File names matching the \"%s\""
 msgstr "Rezultat dla: %s"
-#, c-format
+
+#: search.sh:1333
 msgid "List of files in the package \"%s\""
 msgstr "Rezultat dla: %s"
-#, c-format
-msgid "Descriptions matching the \"%s\""
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "The list of packages of architecture \"%s\""
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "The list of packages that <%s> maintains"
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "Packages with \"%s\" license"
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "Packages of category \"%s\""
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "The list of packages tagged \"%s\""
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "Receipt for package \"%s\""
-msgstr "Rezultat dla: %s"
-#, c-format
-msgid "Package names matching the \"%s\""
-msgstr "Rezultat dla: %s"
 
-#: search.sh:897
-#, c-format
+#: search.sh:1344
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s plik"
 msgstr[1] "%s pliki"
 msgstr[2] "%s plików"
 
-#: search.sh:912
-#, c-format
-msgid "Description of the package \"%s\""
-msgstr "Opis pakietu: %s"
+#: search.sh:1369
+msgid "Descriptions matching the \"%s\""
+msgstr "Rezultat dla: %s"
 
-#: search.sh:938
+#: search.sh:1392
 msgid "Known bugs in the packages"
 msgstr ""
 
-#: search.sh:1113
-msgid "description"
-msgstr "opis"
+#: search.sh:1418
+msgid "The list of packages of architecture \"%s\""
+msgstr "Rezultat dla: %s"
 
-#: search.sh:1124
-#, c-format
+#: search.sh:1451
+msgid "The list of packages that <%s> maintains"
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1481
+msgid "Packages with \"%s\" license"
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1509
+msgid "Packages of category \"%s\""
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1552
+msgid "The list of packages tagged \"%s\""
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1596
+msgid "Receipt for package \"%s\""
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1616
+msgid "Package names matching the \"%s\""
+msgstr "Rezultat dla: %s"
+
+#: search.sh:1634
 msgid "Packages providing the package \"%s\""
 msgstr "Rezultat dla: pakiety dostarczające %s"
 
-#: lib/header.sh:6
+#: lib/header.sh:11
 #, sh-format
 msgid "SliTaz Packages - Search $SEARCH"
 msgstr "Pakiety SliTaz - Szukaj $SEARCH"
 
-#: lib/header.sh:20
+#: lib/header.sh:26
+msgid "SliTaz Packages"
+msgstr "Pakiety SliTaz"
+
+#: lib/header.sh:28
 msgid "Home"
 msgstr "Start"
 
-#: lib/header.sh:21
+#: lib/header.sh:29
 msgid "Community"
 msgstr "Społeczność"
 
-#: lib/header.sh:22
+#: lib/header.sh:30
 msgid "Doc"
 msgstr "Dokumentacja"
 
-#: lib/header.sh:23
+#: lib/header.sh:31
 msgid "Forum"
 msgstr "Forum"
 
-#: lib/header.sh:24
+#: lib/header.sh:32
 msgid "Pro"
 msgstr "Pro"
 
-#: lib/header.sh:25
+#: lib/header.sh:33
 msgid "Shop"
 msgstr "Sklep"
 
-#: lib/header.sh:27
+#: lib/header.sh:35
 msgid "Hg"
 msgstr "Hg"
 
-#: lib/header.sh:29
-msgid "SliTaz Packages"
-msgstr "Pakiety SliTaz"
+#~ msgid "Search for packages"
+#~ msgstr "Szukaj pakietów"
+
+#~ msgid "Result for: $SEARCH"
+#~ msgstr "Rezultat dla: $SEARCH"
+
+#~ msgid "description"
+#~ msgstr "opis"

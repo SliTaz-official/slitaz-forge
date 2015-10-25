@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 03:13+0300\n"
+"POT-Creation-Date: 2015-10-25 06:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,351 +26,347 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: search.sh:148 search.sh:258
+#: search.sh:148 search.sh:257
 msgid "Receipt"
 msgstr ""
 
-#: search.sh:253
+#: search.sh:252
 msgid "Package name"
 msgstr ""
 
-#: search.sh:254 search.sh:1026 search.sh:1131
+#: search.sh:253 search.sh:1034 search.sh:1139
 msgid "Description"
 msgstr ""
 
-#: search.sh:255
+#: search.sh:254
 msgid "Tag"
 msgstr ""
 
-#: search.sh:256
+#: search.sh:255
 msgid "Architecture"
 msgstr ""
 
-#: search.sh:257 lib/header.sh:34
+#: search.sh:256 lib/header.sh:34
 msgid "Bugs"
 msgstr ""
 
-#: search.sh:259
+#: search.sh:258
 msgid "Dependencies"
 msgstr ""
 
-#: search.sh:260
+#: search.sh:259
 msgid "Build dependencies"
 msgstr ""
 
-#: search.sh:261
+#: search.sh:260
 msgid "File"
 msgstr ""
 
-#: search.sh:262
+#: search.sh:261
 msgid "File list"
 msgstr ""
 
-#: search.sh:263
+#: search.sh:262
 msgid "Common files"
 msgstr ""
 
-#: search.sh:264 search.sh:1021
+#: search.sh:263 search.sh:1029
 msgid "Category"
 msgstr ""
 
-#: search.sh:265 search.sh:1032
+#: search.sh:264 search.sh:1040
 msgid "Maintainer"
 msgstr ""
 
-#: search.sh:266 search.sh:1038
+#: search.sh:265 search.sh:1046
 msgid "License"
 msgstr ""
 
-#: search.sh:275
+#: search.sh:274
 msgid "SliTaz version"
 msgstr ""
 
-#: search.sh:276
+#: search.sh:275
 msgid "cooking"
 msgstr ""
 
-#: search.sh:281
+#: search.sh:280
 msgid "tiny"
 msgstr ""
 
-#: search.sh:282
+#: search.sh:281
 msgid "undigest"
 msgstr ""
 
-#: search.sh:283
+#: search.sh:282
 msgid "backports"
 msgstr ""
 
-#: search.sh:287
+#: search.sh:286
 msgid "Search"
 msgstr ""
 
-#: search.sh:343
+#: search.sh:342
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:345
+#: search.sh:344
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:363
+#: search.sh:362
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:624
+#: search.sh:630
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
 msgstr ""
 
-#: search.sh:671 search.sh:1354
+#: search.sh:677 search.sh:1361
 msgid "Please specify name of the package."
 msgstr ""
 
-#: search.sh:686
+#: search.sh:692
 msgid "Package \"%s\" was not found"
 msgstr ""
 
-#: search.sh:885
+#: search.sh:895
 msgid "%s architecture"
 msgid_plural "%s architectures"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:886
+#: search.sh:896
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:887
+#: search.sh:897
 msgid "%s license"
 msgid_plural "%s licenses"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:888
+#: search.sh:898
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:889
+#: search.sh:899
 msgid "%s tag"
 msgid_plural "%s tags"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:995
+#: search.sh:1003
 msgid "base-system"
 msgstr ""
 
-#: search.sh:995
+#: search.sh:1003
 msgid "x-window"
 msgstr ""
 
-#: search.sh:995
+#: search.sh:1003
 msgid "utilities"
 msgstr ""
 
-#: search.sh:995
+#: search.sh:1003
 msgid "network"
 msgstr ""
 
-#: search.sh:995
+#: search.sh:1003
 msgid "graphics"
 msgstr ""
 
-#: search.sh:996
+#: search.sh:1004
 msgid "multimedia"
 msgstr ""
 
-#: search.sh:996
+#: search.sh:1004
 msgid "office"
 msgstr ""
 
-#: search.sh:996
+#: search.sh:1004
 msgid "development"
 msgstr ""
 
-#: search.sh:996
+#: search.sh:1004
 msgid "system-tools"
 msgstr ""
 
-#: search.sh:996
+#: search.sh:1004
 msgid "security"
 msgstr ""
 
-#: search.sh:997
+#: search.sh:1005
 msgid "games"
 msgstr ""
 
-#: search.sh:997
+#: search.sh:1005
 msgid "misc"
 msgstr ""
 
-#: search.sh:997
+#: search.sh:1005
 msgid "meta"
 msgstr ""
 
-#: search.sh:997
+#: search.sh:1005
 msgid "non-free"
 msgstr ""
 
-#: search.sh:1007
+#: search.sh:1015
 msgid "Name"
 msgstr ""
 
-#: search.sh:1015
+#: search.sh:1023
 msgid "Version"
 msgstr ""
 
-#: search.sh:1046
+#: search.sh:1054
 msgid "Website"
 msgstr ""
 
-#: search.sh:1050
+#: search.sh:1058
 msgid "Tags"
 msgstr ""
 
-#: search.sh:1055 search.sh:1062
+#: search.sh:1063 search.sh:1070
 msgid "Sizes"
 msgstr ""
 
-#: search.sh:1068
+#: search.sh:1076
 msgid "Depends"
 msgstr ""
 
-#: search.sh:1070
+#: search.sh:1078
 msgid "Provide"
 msgstr ""
 
-#: search.sh:1072
+#: search.sh:1080
 msgid "Suggested"
 msgstr ""
 
-#: search.sh:1083 search.sh:1085
+#: search.sh:1091 search.sh:1093
 msgid "Show cooking log"
 msgstr ""
 
-#: search.sh:1087
+#: search.sh:1095
 msgid "N/A"
 msgstr ""
 
-#: search.sh:1094
+#: search.sh:1102
 msgid "Download package"
 msgstr ""
 
-#: search.sh:1104
+#: search.sh:1112
 msgid "Show receipt"
 msgstr ""
 
-#: search.sh:1116
+#: search.sh:1124
 msgid "Install package"
 msgstr ""
 
-#: search.sh:1122
+#: search.sh:1130
 msgid "Download and open (experimental)"
 msgstr ""
 
-#: search.sh:1140
+#: search.sh:1148
 msgid "Configuration files"
 msgstr ""
 
-#: search.sh:1167
+#: search.sh:1175
 msgid "Loop dependence"
 msgstr ""
 
-#: search.sh:1180
+#: search.sh:1188
 msgid "Dependency tree for package \"%s\""
 msgstr ""
 
-#: search.sh:1191
+#: search.sh:1199
 msgid "Dependency tree for package \"%\" (SUGGESTED)"
 msgstr ""
 
-#: search.sh:1200
+#: search.sh:1208
 msgid "Reverse dependency tree for package \"%s\""
 msgstr ""
 
-#: search.sh:1217
+#: search.sh:1225
 msgid "Loop dependence of build"
 msgstr ""
 
-#: search.sh:1231
+#: search.sh:1239
 msgid "Package \"%s\" requires next packages to be built"
 msgstr ""
 
-#: search.sh:1239
+#: search.sh:1247
 msgid "Next packages requires package \"%s\" to be built"
 msgstr ""
 
-#: search.sh:1257
+#: search.sh:1265
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr ""
 
-#: search.sh:1286
+#: search.sh:1294
 msgid "File names matching the \"%s\""
 msgstr ""
 
-#: search.sh:1326
+#: search.sh:1333
 msgid "List of files in the package \"%s\""
 msgstr ""
 
-#: search.sh:1337
+#: search.sh:1344
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:1364
-msgid "Description of the package \"%s\""
-msgstr ""
-
-#: search.sh:1373
+#: search.sh:1369
 msgid "Descriptions matching the \"%s\""
 msgstr ""
 
-#: search.sh:1393
+#: search.sh:1392
 msgid "Known bugs in the packages"
 msgstr ""
 
-#: search.sh:1419
+#: search.sh:1418
 msgid "The list of packages of architecture \"%s\""
 msgstr ""
 
-#: search.sh:1452
+#: search.sh:1451
 msgid "The list of packages that <%s> maintains"
 msgstr ""
 
-#: search.sh:1483
+#: search.sh:1481
 msgid "Packages with \"%s\" license"
 msgstr ""
 
-#: search.sh:1514
+#: search.sh:1509
 msgid "Packages of category \"%s\""
 msgstr ""
 
-#: search.sh:1556
+#: search.sh:1552
 msgid "The list of packages tagged \"%s\""
 msgstr ""
 
-#: search.sh:1606
+#: search.sh:1596
 msgid "Receipt for package \"%s\""
 msgstr ""
 
-#: search.sh:1627
+#: search.sh:1616
 msgid "Package names matching the \"%s\""
 msgstr ""
 
-#: search.sh:1646
+#: search.sh:1634
 msgid "Packages providing the package \"%s\""
 msgstr ""
 

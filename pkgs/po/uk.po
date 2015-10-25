@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 03:13+0300\n"
+"POT-Creation-Date: 2015-10-25 06:48+0200\n"
 "PO-Revision-Date: 2015-10-23 01:22+0300\n"
 "Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
 "Language-Team: \n"
@@ -15,7 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Language: Ukrainian\n"
@@ -31,108 +32,108 @@ msgstr "Cooker"
 msgid "Download"
 msgstr "Завантажити"
 
-#: search.sh:148 search.sh:258
+#: search.sh:148 search.sh:257
 msgid "Receipt"
 msgstr "Рецепт"
 
-#: search.sh:253
+#: search.sh:252
 msgid "Package name"
 msgstr "Назва пакету"
 
-#: search.sh:254 search.sh:1026 search.sh:1131
+#: search.sh:253 search.sh:1034 search.sh:1139
 msgid "Description"
 msgstr "Опис"
 
-#: search.sh:255
+#: search.sh:254
 msgid "Tag"
 msgstr "Ярлик"
 
-#: search.sh:256
+#: search.sh:255
 msgid "Architecture"
 msgstr "Архітектура"
 
-#: search.sh:257 lib/header.sh:34
+#: search.sh:256 lib/header.sh:34
 msgid "Bugs"
 msgstr "Баг-трекер"
 
-#: search.sh:259
+#: search.sh:258
 msgid "Dependencies"
 msgstr "Залежності"
 
-#: search.sh:260
+#: search.sh:259
 msgid "Build dependencies"
 msgstr "Залежності збірки"
 
-#: search.sh:261
+#: search.sh:260
 msgid "File"
 msgstr "Файл"
 
-#: search.sh:262
+#: search.sh:261
 msgid "File list"
 msgstr "Перелік файлів"
 
-#: search.sh:263
+#: search.sh:262
 msgid "Common files"
 msgstr "Спільні файли"
 
-#: search.sh:264 search.sh:1021
+#: search.sh:263 search.sh:1029
 msgid "Category"
 msgstr "Категорія"
 
-#: search.sh:265 search.sh:1032
+#: search.sh:264 search.sh:1040
 msgid "Maintainer"
 msgstr "Супроводжуючий"
 
-#: search.sh:266 search.sh:1038
+#: search.sh:265 search.sh:1046
 msgid "License"
 msgstr "Ліцензія"
 
-#: search.sh:275
+#: search.sh:274
 msgid "SliTaz version"
 msgstr "Версія SliTaz"
 
-#: search.sh:276
+#: search.sh:275
 msgid "cooking"
 msgstr "Cooking"
 
-#: search.sh:281
+#: search.sh:280
 msgid "tiny"
 msgstr "Tiny"
 
-#: search.sh:282
+#: search.sh:281
 msgid "undigest"
 msgstr "Неофіційний"
 
-#: search.sh:283
+#: search.sh:282
 msgid "backports"
 msgstr "Backports"
 
-#: search.sh:287
+#: search.sh:286
 msgid "Search"
 msgstr "Шукати"
 
-#: search.sh:343
+#: search.sh:342
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] "%s пакет"
 msgstr[1] "%s пакети"
 msgstr[2] "%s пакетів"
 
-#: search.sh:345
+#: search.sh:344
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
 msgstr[0] " та %s файл у базі даних %s"
 msgstr[1] " та %s файли в базі даних %s"
 msgstr[2] " та %s файлів у базі даних %s"
 
-#: search.sh:363
+#: search.sh:362
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
 msgstr[0] "Сторінка згенерована за %s секунду."
 msgstr[1] "Сторінка згенерована за %s секунди."
 msgstr[2] "Сторінка згенерована за %s секунд."
 
-#: search.sh:624
+#: search.sh:630
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
@@ -140,253 +141,249 @@ msgstr ""
 "«glibc-base» і «gcc-lib-base» є неявними залежностями <b>будь-якого</b> "
 "пакета."
 
-#: search.sh:671 search.sh:1354
+#: search.sh:677 search.sh:1361
 msgid "Please specify name of the package."
 msgstr "Будь ласка, вкажіть назву пакета."
 
-#: search.sh:686
+#: search.sh:692
 msgid "Package \"%s\" was not found"
 msgstr "Пакет «%s» не знайдений"
 
-#: search.sh:885
+#: search.sh:895
 msgid "%s architecture"
 msgid_plural "%s architectures"
 msgstr[0] "%s архітектура"
 msgstr[1] "%s архітектури"
 msgstr[2] "%s архітектур"
 
-#: search.sh:886
+#: search.sh:896
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
 msgstr[0] "%s супроводжуючий"
 msgstr[1] "%s супроводжуючих"
 msgstr[2] "%s супроводжуючих"
 
-#: search.sh:887
+#: search.sh:897
 msgid "%s license"
 msgid_plural "%s licenses"
 msgstr[0] "%s ліцензія"
 msgstr[1] "%s ліцензії"
 msgstr[2] "%s ліцензій"
 
-#: search.sh:888
+#: search.sh:898
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "%s категорія"
 msgstr[1] "%s категорії"
 msgstr[2] "%s категорій"
 
-#: search.sh:889
+#: search.sh:899
 msgid "%s tag"
 msgid_plural "%s tags"
 msgstr[0] "%s ярлик"
 msgstr[1] "%s ярлики"
 msgstr[2] "%s ярликів"
 
-#: search.sh:995
+#: search.sh:1003
 msgid "base-system"
 msgstr "базова система"
 
-#: search.sh:995
+#: search.sh:1003
 msgid "x-window"
 msgstr "X-window"
 
-#: search.sh:995
+#: search.sh:1003
 msgid "utilities"
 msgstr "утиліти"
 
-#: search.sh:995
+#: search.sh:1003
 msgid "network"
 msgstr "мережа"
 
-#: search.sh:995
+#: search.sh:1003
 msgid "graphics"
 msgstr "графіка"
 
-#: search.sh:996
+#: search.sh:1004
 msgid "multimedia"
 msgstr "мультимедіа"
 
-#: search.sh:996
+#: search.sh:1004
 msgid "office"
 msgstr "офіс"
 
-#: search.sh:996
+#: search.sh:1004
 msgid "development"
 msgstr "розробка"
 
-#: search.sh:996
+#: search.sh:1004
 msgid "system-tools"
 msgstr "системні інструменти"
 
-#: search.sh:996
+#: search.sh:1004
 msgid "security"
 msgstr "безпека"
 
-#: search.sh:997
+#: search.sh:1005
 msgid "games"
 msgstr "ігри"
 
-#: search.sh:997
+#: search.sh:1005
 msgid "misc"
 msgstr "різне"
 
-#: search.sh:997
+#: search.sh:1005
 msgid "meta"
 msgstr "мета"
 
-#: search.sh:997
+#: search.sh:1005
 msgid "non-free"
 msgstr "невільні"
 
-#: search.sh:1007
+#: search.sh:1015
 msgid "Name"
 msgstr "Назва"
 
-#: search.sh:1015
+#: search.sh:1023
 msgid "Version"
 msgstr "Версія"
 
-#: search.sh:1046
+#: search.sh:1054
 msgid "Website"
 msgstr "Сайт"
 
-#: search.sh:1050
+#: search.sh:1058
 msgid "Tags"
 msgstr "Ярлики"
 
-#: search.sh:1055 search.sh:1062
+#: search.sh:1063 search.sh:1070
 msgid "Sizes"
 msgstr "Розміри"
 
-#: search.sh:1068
+#: search.sh:1076
 msgid "Depends"
 msgstr "Залежності"
 
-#: search.sh:1070
+#: search.sh:1078
 msgid "Provide"
 msgstr "Замінює"
 
-#: search.sh:1072
+#: search.sh:1080
 msgid "Suggested"
 msgstr "Пропонує"
 
-#: search.sh:1083 search.sh:1085
+#: search.sh:1091 search.sh:1093
 msgid "Show cooking log"
 msgstr "Показати журнал Cooking"
 
-#: search.sh:1087
+#: search.sh:1095
 msgid "N/A"
 msgstr "недоступно"
 
-#: search.sh:1094
+#: search.sh:1102
 msgid "Download package"
 msgstr "Завантажити пакет"
 
-#: search.sh:1104
+#: search.sh:1112
 msgid "Show receipt"
 msgstr "Показати рецепт"
 
-#: search.sh:1116
+#: search.sh:1124
 msgid "Install package"
 msgstr "Встановити пакет"
 
-#: search.sh:1122
+#: search.sh:1130
 msgid "Download and open (experimental)"
 msgstr "Завантажити й відкрити (проба)"
 
-#: search.sh:1140
+#: search.sh:1148
 msgid "Configuration files"
 msgstr "Конфігураційні файли"
 
-#: search.sh:1167
+#: search.sh:1175
 msgid "Loop dependence"
 msgstr "Петлі залежностей"
 
-#: search.sh:1180
+#: search.sh:1188
 msgid "Dependency tree for package \"%s\""
 msgstr "Дерево залежностей пакета «%s»"
 
-#: search.sh:1191
+#: search.sh:1199
 msgid "Dependency tree for package \"%\" (SUGGESTED)"
 msgstr "Дерево необов'язкових залежностей пакета «%s»"
 
-#: search.sh:1200
+#: search.sh:1208
 msgid "Reverse dependency tree for package \"%s\""
 msgstr "Зворотне дерево залежностей пакета «%s»"
 
-#: search.sh:1217
+#: search.sh:1225
 msgid "Loop dependence of build"
 msgstr "Петлі залежностей збірки"
 
-#: search.sh:1231
+#: search.sh:1239
 msgid "Package \"%s\" requires next packages to be built"
 msgstr "Наступні пакети потрібні, щоб зібрати «%s»"
 
-#: search.sh:1239
+#: search.sh:1247
 msgid "Next packages requires package \"%s\" to be built"
 msgstr "Наступним пакетам потрібен пакет «%s» для збірки"
 
-#: search.sh:1257
+#: search.sh:1265
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr "Наступні пакети можуть замінити файли пакету «%s»"
 
-#: search.sh:1286
+#: search.sh:1294
 msgid "File names matching the \"%s\""
 msgstr "Назви файлів, відповідні «%s»"
 
-#: search.sh:1326
+#: search.sh:1333
 msgid "List of files in the package \"%s\""
 msgstr "Список файлів пакету «%s»"
 
-#: search.sh:1337
+#: search.sh:1344
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s файл"
 msgstr[1] "%s файли"
 msgstr[2] "%s файлів"
 
-#: search.sh:1364
-msgid "Description of the package \"%s\""
-msgstr "Опис пакета «%s»"
-
-#: search.sh:1373
+#: search.sh:1369
 msgid "Descriptions matching the \"%s\""
 msgstr "Описи, відповідні «%s»"
 
-#: search.sh:1393
+#: search.sh:1392
 msgid "Known bugs in the packages"
 msgstr "Відомі помилки в пакетах"
 
-#: search.sh:1419
+#: search.sh:1418
 msgid "The list of packages of architecture \"%s\""
 msgstr "Список пакетів архітектури «%s»"
 
-#: search.sh:1452
+#: search.sh:1451
 msgid "The list of packages that <%s> maintains"
 msgstr "Список пакетів, які супроводжує <%s>"
 
-#: search.sh:1483
+#: search.sh:1481
 msgid "Packages with \"%s\" license"
 msgstr "Пакети з ліцензією «%s»"
 
-#: search.sh:1514
+#: search.sh:1509
 msgid "Packages of category \"%s\""
 msgstr "Пакети категорії «%s»"
 
-#: search.sh:1556
+#: search.sh:1552
 msgid "The list of packages tagged \"%s\""
 msgstr "Список пакетів з ярликом «%s»"
 
-#: search.sh:1606
+#: search.sh:1596
 msgid "Receipt for package \"%s\""
 msgstr "Рецепт пакету «%s»"
 
-#: search.sh:1627
+#: search.sh:1616
 msgid "Package names matching the \"%s\""
 msgstr "Назви пакетів, відповідні «%s»"
 
-#: search.sh:1646
+#: search.sh:1634
 msgid "Packages providing the package \"%s\""
 msgstr "Пакети, що замінюють пакет «%s»"
 
@@ -427,3 +424,5 @@ msgstr "Магазин"
 msgid "Hg"
 msgstr "Hg"
 
+#~ msgid "Description of the package \"%s\""
+#~ msgstr "Опис пакета «%s»"
