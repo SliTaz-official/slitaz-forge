@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-25 06:48+0200\n"
+"POT-Creation-Date: 2015-11-03 03:46+0200\n"
 "PO-Revision-Date: 2014-06-14 21:31+0800\n"
 "Last-Translator: 张文宇 <jame987165702@gmail.com>\n"
 "Language-Team: 张文宇 <jame987165702@gmail.com>\n"
@@ -18,113 +18,117 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: search.sh:146
+#: search.sh:147
 msgid "Cooker"
 msgstr "生成者"
 
-#: search.sh:147
+#: search.sh:148
 msgid "Download"
 msgstr ""
 
-#: search.sh:148 search.sh:257
+#: search.sh:149 search.sh:273
 msgid "Receipt"
 msgstr "清单"
 
-#: search.sh:252
+#: search.sh:268
 msgid "Package name"
 msgstr "包"
 
-#: search.sh:253 search.sh:1034 search.sh:1139
+#: search.sh:269 search.sh:1097 search.sh:1218
 msgid "Description"
 msgstr "描述"
 
-#: search.sh:254
+#: search.sh:270
 msgid "Tag"
 msgstr "标志"
 
-#: search.sh:255
+#: search.sh:271
 msgid "Architecture"
 msgstr "构建"
 
-#: search.sh:256 lib/header.sh:34
+#: search.sh:272 lib/header.sh:34
 msgid "Bugs"
 msgstr "Bugs"
 
-#: search.sh:258
+#: search.sh:274
 msgid "Dependencies"
 msgstr "依赖"
 
-#: search.sh:259
+#: search.sh:275
 msgid "Build dependencies"
 msgstr "编译依赖"
 
-#: search.sh:260
+#: search.sh:276
 msgid "File"
 msgstr "文件"
 
-#: search.sh:261
+#: search.sh:277
 msgid "File list"
 msgstr "文件清单"
 
-#: search.sh:262
+#: search.sh:278
 msgid "Common files"
 msgstr "共用文件"
 
-#: search.sh:263 search.sh:1029
+#: search.sh:279 search.sh:1092
 msgid "Category"
 msgstr "分类"
 
-#: search.sh:264 search.sh:1040
+#: search.sh:280 search.sh:1103
 msgid "Maintainer"
 msgstr "維护者"
 
-#: search.sh:265 search.sh:1046
+#: search.sh:281 search.sh:1109
 msgid "License"
 msgstr "授权"
 
-#: search.sh:274
+#: search.sh:290
 #, fuzzy
 msgid "SliTaz version"
 msgstr "SliTaz 包"
 
-#: search.sh:275
+#: search.sh:291
 msgid "cooking"
 msgstr "cooking"
 
-#: search.sh:280
+#: search.sh:296
 msgid "tiny"
 msgstr "tiny"
 
-#: search.sh:281
+#: search.sh:297
 msgid "undigest"
 msgstr "undigest"
 
-#: search.sh:282
+#: search.sh:298
 msgid "backports"
 msgstr "backports"
 
-#: search.sh:286
+#: search.sh:302
 msgid "Search"
 msgstr "搜索"
 
-#: search.sh:342
+#: search.sh:358
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] "%s个软件包"
 
-#: search.sh:344
+#: search.sh:360
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:362
+#: search.sh:394
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:630
+#: search.sh:505
+msgid "Nothing found"
+msgstr ""
+
+#: search.sh:664
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
@@ -132,253 +136,258 @@ msgstr ""
 "\tglibc-base 和 gcc-lib-base 是隐性依赖,\n"
 "\t<b>每个</b> 包都需要该项依赖."
 
-#: search.sh:677 search.sh:1361
+#: search.sh:711 search.sh:1440
 #, fuzzy
 msgid "Please specify name of the package."
 msgstr "包描述: %s"
 
-#: search.sh:692
+#: search.sh:726
 msgid "Package \"%s\" was not found"
 msgstr "沒有包 %s"
 
-#: search.sh:895
+#: search.sh:924
 #, fuzzy
 msgid "%s architecture"
 msgid_plural "%s architectures"
 msgstr[0] "构建"
 msgstr[1] "构建"
 
-#: search.sh:896
+#: search.sh:925
 #, fuzzy
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
 msgstr[0] "維护者"
 msgstr[1] "維护者"
 
-#: search.sh:897
+#: search.sh:926
 #, fuzzy
 msgid "%s license"
 msgid_plural "%s licenses"
 msgstr[0] "授权"
 msgstr[1] "授权"
 
-#: search.sh:898
+#: search.sh:927
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "%s 个分类"
 
-#: search.sh:899
+#: search.sh:928
 msgid "%s tag"
 msgid_plural "%s tags"
 msgstr[0] ""
 msgstr[1] ""
 
-#: search.sh:1003
+#: search.sh:1065
 msgid "base-system"
 msgstr "基本系统软件包"
 
-#: search.sh:1003
+#: search.sh:1065
 msgid "x-window"
 msgstr "x-窗口"
 
-#: search.sh:1003
+#: search.sh:1065
 msgid "utilities"
 msgstr "实用程式"
 
-#: search.sh:1003
+#: search.sh:1065
 msgid "network"
 msgstr "网络工具"
 
-#: search.sh:1003
+#: search.sh:1065
 msgid "graphics"
 msgstr "图像工具"
 
-#: search.sh:1004
+#: search.sh:1066
 msgid "multimedia"
 msgstr "多媒体软件"
 
-#: search.sh:1004
+#: search.sh:1066
 msgid "office"
 msgstr "办公软件"
 
-#: search.sh:1004
+#: search.sh:1066
 msgid "development"
 msgstr "开发工具"
 
-#: search.sh:1004
+#: search.sh:1066
 msgid "system-tools"
 msgstr "系统工具"
 
-#: search.sh:1004
+#: search.sh:1066
 msgid "security"
 msgstr "安全工具"
 
-#: search.sh:1005
+#: search.sh:1067
 msgid "games"
 msgstr "游戏"
 
-#: search.sh:1005
+#: search.sh:1067
 msgid "misc"
 msgstr "杂项"
 
-#: search.sh:1005
+#: search.sh:1067
 msgid "meta"
 msgstr "元工具"
 
-#: search.sh:1005
+#: search.sh:1067
 msgid "non-free"
 msgstr "非自由软件"
 
-#: search.sh:1015
+#: search.sh:1078
 msgid "Name"
 msgstr ""
 
-#: search.sh:1023
+#: search.sh:1086
 msgid "Version"
 msgstr ""
 
-#: search.sh:1054
+#: search.sh:1118
 msgid "Website"
 msgstr ""
 
-#: search.sh:1058
+#: search.sh:1122
 msgid "Tags"
 msgstr ""
 
-#: search.sh:1063 search.sh:1070
+#: search.sh:1127 search.sh:1134
 msgid "Sizes"
 msgstr ""
 
-#: search.sh:1076
+#: search.sh:1140
 #, fuzzy
-msgid "Depends"
+msgid "Depends on"
 msgstr "依赖"
 
-#: search.sh:1078
-msgid "Provide"
+#: search.sh:1142
+msgid "Provides"
 msgstr ""
 
-#: search.sh:1080
+#: search.sh:1144
 msgid "Suggested"
 msgstr ""
 
-#: search.sh:1091 search.sh:1093
+#: search.sh:1155 search.sh:1157
 #, fuzzy
 msgid "Show cooking log"
 msgstr "cooking"
 
-#: search.sh:1095
+#: search.sh:1159
 msgid "N/A"
 msgstr ""
 
-#: search.sh:1102
+#: search.sh:1169
 #, fuzzy
 msgid "Download package"
 msgstr "%s个软件包"
 
-#: search.sh:1112
+#: search.sh:1176
 #, fuzzy
 msgid "Show receipt"
 msgstr "清单"
 
-#: search.sh:1124
+#: search.sh:1177
+#, fuzzy
+msgid "Show files list"
+msgstr "文件清单"
+
+#: search.sh:1182
 #, fuzzy
 msgid "Install package"
 msgstr "%s个软件包"
 
-#: search.sh:1130
-msgid "Download and open (experimental)"
-msgstr ""
+#: search.sh:1185
+#, fuzzy
+msgid "Remove package"
+msgstr "%s个软件包"
 
-#: search.sh:1148
+#: search.sh:1227
 #, fuzzy
 msgid "Configuration files"
 msgstr "共用文件"
 
-#: search.sh:1175
-msgid "Loop dependence"
+#: search.sh:1254
+msgid "Loop dependency"
 msgstr "依赖循环"
 
-#: search.sh:1188
+#: search.sh:1267
 msgid "Dependency tree for package \"%s\""
 msgstr "%s 的依赖树"
 
-#: search.sh:1199
-#, fuzzy
-msgid "Dependency tree for package \"%\" (SUGGESTED)"
+#: search.sh:1278
+msgid "Dependency tree for packages suggested by package \"%s\""
 msgstr "%s (SUGGESTED) 的依赖树"
 
-#: search.sh:1208
+#: search.sh:1287
 msgid "Reverse dependency tree for package \"%s\""
 msgstr "%s 的反向依赖树"
 
-#: search.sh:1225
-msgid "Loop dependence of build"
+#: search.sh:1304
+msgid "Loop dependency of build"
 msgstr "编译依赖循环"
 
-#: search.sh:1239
+#: search.sh:1318
 msgid "Package \"%s\" requires next packages to be built"
 msgstr "%s 需要以下包"
 
-#: search.sh:1247
-msgid "Next packages requires package \"%s\" to be built"
+#: search.sh:1326
+msgid "Next packages require package \"%s\" to be built"
 msgstr "以下包需要 %s "
 
-#: search.sh:1265
+#: search.sh:1344
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr "以下包可能会重载(overload) %s 的文件"
 
-#: search.sh:1294
-msgid "File names matching the \"%s\""
+#: search.sh:1373
+msgid "File names matching \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1333
+#: search.sh:1412
 msgid "List of files in the package \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1344
+#: search.sh:1423
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s 文件"
 msgstr[1] "%s 文件"
 
-#: search.sh:1369
-msgid "Descriptions matching the \"%s\""
+#: search.sh:1448
+msgid "Descriptions matching \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1392
+#: search.sh:1471
 msgid "Known bugs in the packages"
 msgstr "已知Bugs :"
 
-#: search.sh:1418
+#: search.sh:1497
 msgid "The list of packages of architecture \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1451
+#: search.sh:1530
 msgid "The list of packages that <%s> maintains"
 msgstr "%s 的結果"
 
-#: search.sh:1481
+#: search.sh:1560
 msgid "Packages with \"%s\" license"
 msgstr "%s 的結果"
 
-#: search.sh:1509
+#: search.sh:1588
 msgid "Packages of category \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1552
+#: search.sh:1631
 msgid "The list of packages tagged \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1596
+#: search.sh:1675
 msgid "Receipt for package \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1616
-msgid "Package names matching the \"%s\""
+#: search.sh:1695
+msgid "Package names matching \"%s\""
 msgstr "%s 的結果"
 
-#: search.sh:1634
+#: search.sh:1713
 msgid "Packages providing the package \"%s\""
 msgstr "提供 %s 的包 的结果"
 

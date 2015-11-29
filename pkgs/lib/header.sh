@@ -4,9 +4,14 @@
 # As the default value is "index, follow"
 # No need to specify `type="text/css"` in the stylesheet link as html5 not required it.
 
+case "${LANG%_*}" in
+	fa) dir='rtl';;
+	*)  dir='ltr';;
+esac
+
 cat << _EOF_
 <!DOCTYPE html>
-<html lang="${LANG%_*}">
+<html lang="${LANG%_*}" dir="$dir">
 <head>
 	<title>$(eval_gettext 'SliTaz Packages - Search $SEARCH')</title>
 	<meta name="application-name" content="TazPkg">

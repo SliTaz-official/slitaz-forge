@@ -38,8 +38,9 @@ user_lang() {
 			de) LANG='de_DE';;
 			en) LANG='en_US';;
 			es) LANG='es_ES';;
+			fa) LANG='fa_IR';;
 			fr) LANG='fr_FR';;
-			it) LANG='it_IT';;
+			#it) LANG='it_IT';;		# We haven't Italian translations
 			pl) LANG='pl_PL';;
 			pt) LANG='pt_BR';;
 			ru) LANG='ru_RU';;
@@ -152,6 +153,7 @@ a_rc="$(_ 'Receipt')"
 
 # Cache icons to fast search
 # Find the latest update in the "icons" folder
+unset ICONS_CACHE_REBUILDED
 iconslast="$cache/icons.$(date -u +%s -r /var/www/pkgs/icons/$(ls -t /var/www/pkgs/icons | head -n1))"
 
 if [ ! -f "$iconslast" ]; then
@@ -163,8 +165,12 @@ if [ ! -f "$iconslast" ]; then
 		awk '{printf "%s\tfont\n",$1}' icons/packages-font.icons
 		awk '{printf "%s\ti18n\n",$1}' icons/packages-i18n.icons
 		awk '{printf "%s\tthm\n",$1}'  icons/packages-thm.icons
+		awk '{printf "%s\tlib\n",$1}'  icons/packages-lib.icons
+		awk '{printf "%s\tpy\n",$1}'   icons/packages-py.icons
+		awk '{printf "%s\tperl\n",$1}' icons/packages-perl.icons
 		ls icons/*.png | awk -F/ '{sub(/\.png/,"",$2);printf "%s\t%s\n", $2, $2}'
 	) | sort > "$iconslast"
+	ICONS_CACHE_REBUILDED='yes'
 fi
 
 
@@ -202,6 +208,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 	esac
 done
 [ -z "$SLITAZ_VERSION" ] && SLITAZ_VERSION='cooking'
+addver=''; [ "$SLITAZ_VERSION" != 'cooking' ] && addver="&amp;version=$SLITAZ_VERSION"
 SEARCH="${SEARCH//%20/ }"
 
 #
@@ -233,6 +240,16 @@ pkglist="$pkgsrepo/packages.txt"
 equiv="$pkgsrepo/packages.equiv"
 pinfo="$pkgsrepo/packages.info"
 
+# Date of the last modification (both packages DB or icons DB)
+if [ -f "$pkgsrepo/ID" ]; then
+	if [ "$iconslast" -nt "$pkgsrepo/ID" ]; then
+		lastmod="$(date -Rur "$iconslast")"
+	else
+		lastmod="$(date -Rur "$pkgsrepo/ID")"
+	fi
+	lastmod="${lastmod/UTC/GMT}"
+fi
+
 
 
 
@@ -249,20 +266,20 @@ search_form() {
 <form id="s_form" name="s_form" method="post" action="$(ifdebug '?')">
 	<span class="small">
 		<select name="object">
-			<option value="Package">$(					_ 'Package name')</option>
-			<option $sel_desc value="Desc">$(			_ 'Description')</option>
-			<option $sel_tags value="Tags">$(			_ 'Tag')</option>
-			<option $sel_arch value="Arch">$(			_ 'Architecture')</option>
-			<option $sel_bugs value="Bugs">$(			_ 'Bugs')</option>
-			<option $sel_rcpt value="Receipt">$(		_ 'Receipt')</option>
-			<option $sel_deps value="Depends">$(		_ 'Dependencies')</option>
-			<option $sel_bdps value="BuildDepends">$(	_ 'Build dependencies')</option>
-			<option $sel_file value="File">$(			_ 'File')</option>
-			<option $sel_flst value="File_list">$(		_ 'File list')</option>
-			<option $sel_over value="FileOverlap">$(	_ 'Common files')</option>
-			<option $sel_catg value="Category">$(		_ 'Category')</option>
-			<option $sel_mtnr value="Maintainer">$(		_ 'Maintainer')</option>
-			<option $sel_lcns value="License">$(		_ 'License')</option>
+			<option value="Package" class="pkg">$(_ 'Package name')</option>
+			<option $sel_desc value="Desc" class="description">$(_ 'Description')</option>
+			<option $sel_tags value="Tags" class="tag">$(_ 'Tag')</option>
+			<option $sel_arch value="Arch" class="arch">$(_ 'Architecture')</option>
+			<option $sel_bugs value="Bugs" class="bugs">$(_ 'Bugs')</option>
+			<option $sel_rcpt value="Receipt" class="receipt">$(_ 'Receipt')</option>
+			<option $sel_deps value="Depends" class="dep">$(_ 'Dependencies')</option>
+			<option $sel_bdps value="BuildDepends" class="dep">$(_ 'Build dependencies')</option>
+			<option $sel_file value="File" class="file">$(_ 'File')</option>
+			<option $sel_flst value="File_list" class="files-list">$(_ 'File list')</option>
+			<option $sel_over value="FileOverlap" class="common">$(_ 'Common files')</option>
+			<option $sel_catg value="Category" class="category">$(_ 'Category')</option>
+			<option $sel_mtnr value="Maintainer" class="avatar">$(_ 'Maintainer')</option>
+			<option $sel_lcns value="License" class="license">$(_ 'License')</option>
 		</select>
 	</span>
 	<span class="stretch">
@@ -338,22 +355,38 @@ xhtml_footer() {
 
 	PKGS=$( cat "$cache/stat.p.$SLITAZ_VERSION.$repoid")
 	FILES=$(cat "$cache/stat.f.$SLITAZ_VERSION.$repoid")
-	echo -n '<div class="summary">'
+	echo -en '\n<div class="summary">'
 	_p '%s package' '%s packages' "$PKGS" \
 		"$PKGS"
 	_p ' and %s file in %s database' ' and %s files in %s database' "$FILES" \
 		"$FILES" "$SLITAZ_VERSION"
+
+	# Date of the last update...
+	echo -n ' ('
+	if [ -e "$pkgsrepo/IDs" ]; then
+		# ...based on the value inside IDs
+		date +"%c" -d@$(cut -d' ' -f2 "$pkgsrepo/IDs") | tr -d '\n'
+	elif [ -e "$pkgsrepo/ID" ]; then
+		# ...based on the date of ID
+		date +"%c" -r "$pkgsrepo/ID" | tr -d '\n'
+	else
+		# ...based on the date of the newest file
+		date +"%c" -r "$pkgsrepo/$(ls -Lt "$pkgsrepo" | head -n1)" | tr -d '\n'
+	fi
+	echo -n ')'
+
 	cat <<EOT
 </div>
 </main>
 
-<footer>
 EOT
 
 	local lang="${LANG%_*}"
 	if [ -e "lib/footer.$lang.sh" ]; then
+		echo '<footer>'
 		. lib/footer.$lang.sh
 	else
+		echo '<footer dir="ltr">'
 		. lib/footer.sh
 	fi
 
@@ -390,7 +423,7 @@ document.getElementById('ticker').style.visibility='hidden';
 </body>
 </html>
 EOT
-
+	exit 0
 }
 
 
@@ -437,24 +470,26 @@ package_entry() {
 		echo '<tr>'
 	fi
 
-	PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRA_VERSION.tazpkg"
+	PACKAGE_URL="$MIRROR_URL/packages/$SLITAZ_VERSION/$PACKAGE-$VERSION$EXTRAVERSION.tazpkg"
 
 	case "$SLITAZ_VERSION" in
 		cooking)
-			COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\" class=\"co\" title=\"$a_co\">$a_co</a>";;
+			COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\" class=\"co\" title=\"$a_co\">$a_co</a>"
+			;;
 		stable|undigest|backports)
-			COOKER="<a href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\" class=\"co\" title=\"$a_co\">$a_co</a>";;
+			COOKER="<a href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\" class=\"co\" title=\"$a_co\">$a_co</a>"
+			;;
 		*)
-			COOKER='';;
+			COOKER=''
+			;;
 	esac
 
 	cat <<EOT
-	<td class="first"><a href="?info=$PACKAGE&amp;version=$SLITAZ_VERSION"><img
-		src="$(package_icon $PACKAGE)"/></a></td>
+	<td class="first"><a href="?info=$PACKAGE$addver"><img src="$(package_icon $PACKAGE)" alt="$PACKAGE icon"/></a></td>
 	<td><b>$PACKAGE</b><br/>$SHORT_DESC</td>
 	<td class="last">
 		<a class="dl" href="$PACKAGE_URL" title="$a_dl">$a_dl</a>
-		<a class="rc" href="?receipt=$PACKAGE&amp;version=$SLITAZ_VERSION" title="$a_rc">$a_rc</a>
+		<a class="rc" href="?receipt=$PACKAGE$addver" title="$a_rc">$a_rc</a>
 		$COOKER
 	</td>
 </tr>
@@ -467,10 +502,12 @@ package_entries() {
 	#        $2 = query
 
 	awk -F$'\t' -vtype="$1" -vquery="$2" -vmurl="$MIRROR_URL" -vver="$SLITAZ_VERSION" \
-		-vaco="$a_co" -vadl="$a_dl" -varc="$a_rc" -viconslast="$iconslast" '
+		-vaco="$a_co" -vadl="$a_dl" -varc="$a_rc" -viconslast="$iconslast" \
+		-vnf="$(_ 'Nothing found')" -vaddver="$addver" '
 BEGIN {
 	IGNORECASE = 1;
 	print "<table class=\"list\">";
+	notfound = "y";
 }
 
 function cooker() {
@@ -491,22 +528,17 @@ function icon(pkg) {
 	return "pkg";
 }
 
-function addver() {
-	if (ver=="c" || ver=="cooking") return "";
-	return ("&amp;version=" ver);
-}
-
 function tabline() {
 	markname = $1; if (type=="name") gsub(query, "<mark>&</mark>", markname);
 	markdesc = $4; if (type=="desc") gsub(query, "<mark>&</mark>", markdesc);
 	printf "<tr>\n\t<td class=\"first\">"
-	printf "<a href=\"?info=%s%s\">", $1, addver();
-	printf "<img src=\"icons/%s.png\"/></a></td>\n", icon($1);
+	printf "<a href=\"?info=%s%s\">", gensub(/\+/, "%2B", "g", $1), addver;
+	printf "<img src=\"icons/%s.png\" alt=\"%s icon\"/></a></td>\n", icon($1), $1;
 	printf "\t<td><b>%s</b><br/>%s</td>\n", markname, markdesc;
 	printf "\t<td class=\"last\">\n";
 	printf "\t<a class=\"dl\" href=\"%s\" ", murl "/packages/" ver "/" $1 "-" $2 ".tazpkg";
 	printf "title=\"%s\">%s</a>\n", adl, adl;
-	printf "\t<a class=\"rc\" href=\"?receipt=%s%s\" ", $1, addver();
+	printf "\t<a class=\"rc\" href=\"?receipt=%s%s\" ", $1, addver;
 	printf "title=\"%s\">%s</a>\n", arc, arc;
 	cooker();
 	printf "</td>\n</tr>\n"
@@ -514,13 +546,16 @@ function tabline() {
 
 
 {
-	if (type=="name"     && match($1, query)) tabline();
-	if (type=="category" && $3==query)  tabline();
-	if (type=="desc"     && match($4, query)) tabline();
-	if (type=="tags"     && match(" "$6" ", " "query" ")) tabline();
+	if (type=="name"     && match($1, query)) { tabline(); notfound = ""; }
+	if (type=="category" && $3==query)        { tabline(); notfound = ""; }
+	if (type=="desc"     && match($4, query)) { tabline(); notfound = ""; }
+	if (type=="tags"     && match(" "$6" ", " "query" ")) { tabline(); notfound = ""; }
 }
 
-END { print "</table>"; }
+END {
+	if (notfound) printf "<tr><td class=\"first\"><img src=\"icons/notfound.png\" alt="Not found"/></td><td><b>%s</b></td></tr>", nf;
+	print "</table>";
+}
 ' "$pinfo";
 }
 
@@ -689,7 +724,7 @@ package_exist() {
 
 	if [ ! -f "$WOK/$1/receipt" ]; then
 		cat <<EOT
-<div class="err">$(_ 'Package "%s" was not found' "$SEARCH")</div>
+<div class="err">$(_ 'Package "%s" was not found' "$1")</div>
 <p> <br/> </p>
 EOT
 		return 1
@@ -855,11 +890,6 @@ add_url_links() {
 
 display_cloud() {
 	arg=$1
-	if [ "$SLITAZ_VERSION" == 'c' -o "$SLITAZ_VERSION" == 'cooking' ]; then
-		addver=''
-	else
-		addver="&amp;version=$SLITAZ_VERSION"
-	fi
 	awk '
 {
 	for (i = 1; $i != ""; i++)
@@ -887,7 +917,7 @@ END {
 			pct=$(((10000 - ((100 - $pct)**2))/100))
 			pct=$(((10000 - ((100 - $pct)**2))/100))
 			cat <<EOT
-<span class="tagn">$cnt</span><a href="?$arg=$tag$addver" class="taga tag$(($pct/10))">$tag</a>
+<span class="tagn">$cnt</span><a href="?$arg=$tag$addver" class="tag$(($pct/10))">$tag</a>
 EOT
 		done
 		echo -n '<hr/><p class="lang">'
@@ -907,12 +937,22 @@ EOT
 # page begins
 #
 
-header "HTTP/1.1 200 OK" "Content-type: text/html; charset=UTF-8"
+if [ -n "$HTTP_IF_MODIFIED_SINCE" -a "$HTTP_IF_MODIFIED_SINCE" == "$lastmod" ]; then
+	# When user agent asks if content modified since last seen and it is not modified
+	header "HTTP/1.1 304 Not Modified"
+	exit 0
+fi
+if [ -z "$lastmod" ]; then
+	# We don't know last modification date
+	header "HTTP/1.1 200 OK" "Content-type: text/html; charset=UTF-8"
+else
+	header "HTTP/1.1 200 OK" "Content-type: text/html; charset=UTF-8" "Last-Modified: $lastmod"
+fi
 xhtml_header
 
 
 #
-# language selector, if needed
+# Language selector
 #
 
 cat <<EOT
@@ -921,11 +961,12 @@ cat <<EOT
 target="_blank"></a><select form="s_form" name="lang" onchange="this.form.submit();">
 EOT
 
-for i in en de es fr it pl pt ru sv uk zh; do
+for i in en de es fa fr pl pt ru sv uk zh; do
 	case $i in
 		en) c='us'; l='English';;
 		de) c='de'; l='Deutsch';;
 		es) c='es'; l='Español';;
+		fa) c='ir'; l='فارسی';;
 		fr) c='fr'; l='Français';;
 		it) c='it'; l='Italiano';;
 		pl) c='pl'; l='Polski';;
@@ -959,12 +1000,17 @@ case " $(GET) " in
 
 <pre>$(httpinfo)</pre>
 
-<pre>LANG=$LANG;
-OBJECT=$OBJECT;
-SEARCH=$SEARCH;
-SLITAZ_VERSION=$SLITAZ_VERSION;
-WOK=$WOK;
-GET=$(GET);
+<pre>$(env)</pre>
+
+<pre>LANG="$LANG"
+OBJECT="$OBJECT"
+SEARCH="$SEARCH"
+SLITAZ_VERSION="$SLITAZ_VERSION"
+WOK="$WOK"
+GET="$(GET)"
+
+HTTP_IF_MODIFIED_SINCE="$HTTP_IF_MODIFIED_SINCE"
+lastmod               ="$lastmod"
 </pre>
 EOT
 	;;
@@ -976,7 +1022,7 @@ esac
 # Display search form and result if requested.
 
 cat <<EOT
-<div id="ticker"><!-- progress/ --><img src="loader.gif" alt="."/></div>
+<div id="ticker"><img src="loader.gif" alt="."/></div>
 EOT
 search_form
 
@@ -987,12 +1033,29 @@ search_form
 
 show_info_links() {
 	if [ -n "$1" ]; then
-		echo -n "<tr><td class=\"first\"><b>$2</b></td><td>"
+		echo -n "<tr><td class=\"first\"><b>$2</b></td><td class=\"spkg\">"
 
-		echo $1 | tr ' ' $'\n' | awk -vt="$3" -vv="$SLITAZ_VERSION" '{
-			printf "<a href=\"?%s=%s", t, gensub(/\+/, "%2B", "g", $1);
-			printf "&amp;version=%s\">%s</a> ", v, $1;
-		}'
+		echo $1 | tr ' ' $'\n' | awk -vt="$3" -vv="$addver" -viconslast="$iconslast" '
+function icon(pkg) {
+	i="";
+	if (pkg ~ /-dev$/) { return "dev"; }
+	if (pkg ~ /^linux(64)?-/) { return "linux"; }
+	if (pkg ~ /^xorg-/) { return "xorg"; }
+	"awk -vp=\"" pkg "\" \"BEGIN{FS=\\\"\t\\\"}\\\$1==p{print \\\$2;exit}\" " iconslast | getline i;
+	if (i) { return i; }
+	return "pkg";
+}
+function link(pkg) {
+		printf "<a href=\"?%s=%s%s\">", t, gensub(/\+/, "%2B", "g", pkg), v;
+		if (t!="tags") printf "<img src=\"icons-s/%s.png\" alt=\"%s icon\"/>", icon(pkg), pkg;
+		printf "%s</a>", pkg;
+}
+{
+	split($1, line, ":");
+	link(line[1]);
+	if (line[2]) { printf ":"; link(line[2]); }
+	printf "  ";
+}'
 		echo "</td></tr>"
 	fi
 }
@@ -1007,12 +1070,13 @@ noop() {
 
 case " $(GET) " in
 	*\ info\ *)
+		package_exist $(GET info) || xhtml_footer
 		. "$WOK/$(GET info)/receipt"
 
 		cat <<EOT
 <table class="info">
 	<tr>
-		<td class="first"><b>$(_ 'Name')</b></td>
+		<td class="first"><b>$(gettext 'Name')</b></td>
 		<td>$PACKAGE
 			<div class="appImg" style="background: url($(package_icon $PACKAGE 2))"></div>
 		</td>
@@ -1020,39 +1084,40 @@ case " $(GET) " in
 EOT
 		[ -n "$VERSION" ] && cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Version')</b></td>
+		<td class="first"><b>$(gettext 'Version')</b></td>
 		<td>$VERSION</td>
 	</tr>
 EOT
 		cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Category')</b></td>
-		<td><a href="?category=$CATEGORY&amp;version=$SLITAZ_VERSION">$(_n "$CATEGORY")</a></td>
+		<td class="first"><b>$(gettext 'Category')</b></td>
+		<td><a href="?category=$CATEGORY$addver">$(gettext "$CATEGORY")</a></td>
 	</tr>
 
 	<tr>
-		<td class="first"><b>$(_ 'Description')</b></td>
+		<td class="first"><b>$(gettext 'Description')</b></td>
 		<td>$(echo "$SHORT_DESC" | htmlize)</td>
 	</tr>
 EOT
 		[ -n "$MAINTAINER" ] && cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Maintainer')</b></td>
-		<td><a href="?maintainer=$MAINTAINER&amp;version=$SLITAZ_VERSION">$MAINTAINER</a></td>
+		<td class="first"><b>$(gettext 'Maintainer')</b></td>
+		<td><a href="?maintainer=$MAINTAINER$addver">${MAINTAINER/@/&#8203;@&#8203;}</a></td>
 	</tr>
 EOT
 		[ -n "$LICENSE" ] && cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'License')</b></td>
+		<td class="first"><b>$(gettext 'License')</b></td>
 		<td>$(for license in $LICENSE; do
-			echo "<a href=\"?license=$license&amp;version=$SLITAZ_VERSION\">$license</a> "
+			echo "<a href=\"?license=$license$addver\">$license</a> "
 		done)</td>
 	</tr>
 EOT
+		web_site="${WEB_SITE#http://}"
 		cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Website')</b></td>
-		<td><a href="$WEB_SITE" target="_blank">$WEB_SITE</a></td>
+		<td class="first"><b>$(gettext 'Website')</b></td>
+		<td><a href="$WEB_SITE" target="_blank">${web_site%/}</a></td>
 	</tr>
 EOT
 		show_info_links "$TAGS" "$(_ 'Tags')" 'tags'
@@ -1060,24 +1125,24 @@ EOT
 		if [ -n "$PACKED_SIZE" ]; then
 			cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Sizes')</b></td>
-		<td>${PACKED_SIZE/.0/}/${UNPACKED_SIZE/.0/}</td>
+		<td class="first"><b>$(gettext 'Sizes')</b></td>
+		<td>${PACKED_SIZE/.0/} / ${UNPACKED_SIZE/.0/}</td>
 	</tr>
 EOT
 		elif [ -f "$pinfo" ]; then
 			cat <<EOT
 	<tr>
-		<td class="first"><b>$(_ 'Sizes')</b></td>
-		<td>$(awk -F$'\t' -vp=$PACKAGE '$1==p{print $7}' "$pinfo" | tr ' ' '/')</td>
+		<td class="first"><b>$(gettext 'Sizes')</b></td>
+		<td>$(awk -F$'\t' -vp=$PACKAGE '$1==p{print $7}' "$pinfo" | sed 's| | / |')</td>
 	</tr>
 EOT
 		fi
 
-		show_info_links "$DEPENDS" "$(_ 'Depends')" 'info'
+		show_info_links "$DEPENDS" "$(gettext 'Depends on')" 'info'
 
-		show_info_links "$PROVIDE" "$(_ 'Provide')" 'info'
+		show_info_links "$PROVIDE" "$(gettext 'Provides')" 'info'
 
-		show_info_links "$SUGGESTED" "$(_ 'Suggested')" 'info'
+		show_info_links "$SUGGESTED" "$(gettext 'Suggested')" 'info'
 		cat <<EOT
 </table>
 
@@ -1088,55 +1153,70 @@ EOT
 		pkg_url="$MIRROR_URL/packages/$SLITAZ_VERSION/$pkg-$VERSION$EXTRA_VERSION.tazpkg"
 		case "$SLITAZ_VERSION" in
 			cooking)
-				COOKER="<a href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(_ 'Show cooking log')</a>";;
+				COOKER="<a class=\"cooker\" href=\"http://cook.slitaz.org/cooker.cgi?pkg=$PACKAGE\">$(gettext 'Show cooking log')</a>";;
 			stable|undigest|backports)
-				COOKER="<a href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">$(_ 'Show cooking log')</a>";;
+				COOKER="<a class=\"cooker\" href=\"http://cook.slitaz.org/$SLITAZ_VERSION/cooker.cgi?pkg=$PACKAGE\">$(gettext 'Show cooking log')</a>";;
 			*)
-				COOKER="$(_ 'N/A')";;
+				COOKER="<span class=\"cooker\">$(gettext 'N/A')</span>";;
 		esac
 		cat <<EOT
+<div class="sssb desc center">
+	<a href="http://screenshots.debian.net/package/$pkg" target="_blank"><img
+		src="http://screenshots.debian.net/thumbnail/$pkg" alt="$PACKAGE screenshot"/></a>
+</div>
+
 <table class="info">
-	<tr>
-		<td>
-			<span class="dl"></span>
-			<a href="$pkg_url">$(_ 'Download package')</a>
+	<tr><td><span class="download"></span>
+			<a href="$pkg_url">$(gettext 'Download package')</a>
 		</td>
-		<td rowspan="5" class="first">
+		<td rowspan="5" class="first hssc">
 			<a href="http://screenshots.debian.net/package/$pkg" target="_blank"><img
-				src="http://screenshots.debian.net/thumbnail/$pkg"/></a>
+				src="http://screenshots.debian.net/thumbnail/$pkg" alt="$PACKAGE screenshot"/></a>
 		</td>
 	</tr>
-	<tr>
+	<tr><td><a class="receipt" href="?receipt=$pkg$addver">$(gettext 'Show receipt')</a></td></tr>
+	<tr><td><a class="files-list" href="?filelist=$pkg$addver">$(gettext 'Show files list')</a></td></tr>
+	<tr><td>$COOKER</td></tr>
+	<tr id="tazpanelButtons" class="hidden">
 		<td>
-			<span class="rc"></span>
-			<a href="?receipt=$pkg&amp;version=$SLITAZ_VERSION">$(_ 'Show receipt')</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span class="co"></span>
-			$COOKER
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span class="dl"></span>
-			<a href="http://127.0.0.1:82/user/pkgs.cgi?do=Install&amp;pkg=$pkg" target="_blank">$(_ 'Install package')</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span class="dl"></span>
-			<a href="${pkg_url/http/tazpkg}">$(_ 'Download and open (experimental)')</a>
+			<span id="tazpaneli" class="hidden">
+				<a class="pkgi" href="http://127.0.0.1:82/user/pkgs.cgi?do=Install&amp;pkg=$pkg" target="_blank">$(gettext 'Install package')</a>
+			</span>
+			<span id="tazpanelr" class="hidden">
+				<a class="pkgr" href="http://127.0.0.1:82/user/pkgs.cgi?do=Remove&amp;pkg=$pkg" target="_blank">$(gettext 'Remove package')</a>
+			</span>
 		</td>
 	</tr>
 </table>
+
+<script>
+function ajaxTazPanel(pkg) {
+	var req = new XMLHttpRequest();
+	req.onreadystatechange = function() {
+		if (req.readyState == XMLHttpRequest.DONE) {
+			if (req.status == 200) {
+				if (req.responseText == 'i') {
+					// Package installed, allow to remove
+					document.getElementById('tazpanelr').className='';
+				} else {
+					// Package not installed, allow to install
+					document.getElementById('tazpaneli').className='';
+				}
+				document.getElementById('tazpanelButtons').className='';
+			}
+		}
+	}
+	req.open('GET', 'http://tazpanel:82/pkgs.cgi?status&web=y&pkg=' + pkg, true);
+	req.send();
+}
+ajaxTazPanel('$pkg');
+</script>
 EOT
 
 		# Description
 		if [ -f "$WOK/$PACKAGE/description.txt" ]; then
 			cat <<EOT
-<h3>$(_ 'Description')</h3>
+<h3>$(gettext 'Description')</h3>
 <table><tr><td>$(./sundown < "$WOK/$PACKAGE/description.txt")</td></tr></table>
 EOT
 		fi
@@ -1145,8 +1225,8 @@ EOT
 		if [ -n "$CONFIG_FILES" ]; then
 			cat <<EOT
 <div class="conf">
-	<h3>$(_ 'Configuration files')</h3>
-	<ul>
+	<h3>$(gettext 'Configuration files')</h3>
+	<table><tr><td><ul>
 EOT
 			for file in $CONFIG_FILES; do
 				cat <<EOT
@@ -1154,7 +1234,7 @@ EOT
 EOT
 			done
 			cat <<EOT
-	</ul>
+	</ul></td></tr></table>
 </div>
 EOT
 		fi
@@ -1172,7 +1252,7 @@ case "$OBJECT" in
 Depends)
 	if [ -z "$SEARCH" ]; then
 		cat <<EOT
-<h3>$(_ 'Loop dependence')</h3>
+<h3>$(_ 'Loop dependency')</h3>
 <pre class="hard">
 EOT
 		for i in $WOK/*/receipt; do
@@ -1196,7 +1276,7 @@ EOT
 
 		if [ -n "$SUGGESTED" ]; then
 			cat <<EOT
-<h3>$(_ 'Dependency tree for package "%" (SUGGESTED)' "$SEARCH")</h3>
+<h3>$(_ 'Dependency tree for packages suggested by package "%s"' "$SEARCH")</h3>
 <pre class="hard">
 EOT
 			unset ALL_DEPS
@@ -1222,7 +1302,7 @@ EOT
 BuildDepends)
 	if [ -z "$SEARCH" ]; then
 		cat <<EOT
-<h3>$(_ 'Loop dependence of build')</h3>
+<h3>$(_ 'Loop dependency of build')</h3>
 <pre class="hard">
 EOT
 		for i in $WOK/*/receipt; do
@@ -1244,7 +1324,7 @@ EOT
 		echo '</pre>'
 
 		cat <<EOT
-<h3>$(_ 'Next packages requires package "%s" to be built' "$SEARCH")</h3>
+<h3>$(_ 'Next packages require package "%s" to be built' "$SEARCH")</h3>
 <pre class="hard">
 EOT
 		unset ALL_DEPS
@@ -1291,7 +1371,7 @@ File)
 	if [ -n "$SEARCH" ]; then
 		cat <<EOT
 
-<h3>$(_ 'File names matching the "%s"' "$SEARCH")</h3>
+<h3>$(_ 'File names matching "%s"' "$SEARCH")</h3>
 <table class="list">
 EOT
 		unset last
@@ -1366,7 +1446,7 @@ EOT
 	fi
 
 	cat <<EOT
-<h3>$(_ 'Descriptions matching the "%s"' "$SEARCH")</h3>
+<h3>$(_ 'Descriptions matching "%s"' "$SEARCH")</h3>
 EOT
 	if [ -f "$pinfo" ]; then
 		package_entries desc "$SEARCH"
@@ -1523,12 +1603,12 @@ EOT
 	else
 		# Display category cloud
 		if [ -f "$pinfo" ]; then
-			TAGS="$(awk -F$'\t' '{if($3){print $3}}' "$pinfo" | tr ' ' $'\n' | sort | uniq -c)"
-			MAX="$(echo "$TAGS" | awk '{if ($1 > MAX) MAX = $1} END{print MAX}')"
-			echo "$TAGS" | awk -vMAX="$MAX" -vv="$SLITAZ_VERSION" '{
+			tags="$(awk -F$'\t' '{if($3){print $3}}' "$pinfo" | tr ' ' $'\n' | sort | uniq -c)"
+			max="$(echo "$tags" | awk '{if ($1 > MAX) MAX = $1} END{print MAX}')"
+			echo "$tags" | awk -vMAX="$max" -vaddver="$addver" '{
 				printf "<span class=\"tagn\">%s</span>", $1;
-				printf "<a class=\"taga tag%s\" ", int($1 * 10 / MAX + 1);
-				printf "href=\"?category=%s&amp;version=%s\">%s</a> ", $2, v, $2;
+				printf "<a class=\"tag%s\" ", int($1 * 10 / MAX + 1);
+				printf "href=\"?category=%s%s\">%s</a> ", $2, addver, $2;
 			}'
 		else
 			grep -l ^CATEGORY= $WOK/*/receipt | \
@@ -1568,10 +1648,10 @@ EOT
 		if [ -f "$pinfo" ]; then
 			TAGS="$(awk -F$'\t' '{if($6){print $6}}' "$pinfo" | tr ' ' $'\n' | sort | uniq -c)"
 			MAX="$(echo "$TAGS" | awk '{if ($1 > MAX) MAX = $1} END{print MAX}')"
-			echo "$TAGS" | awk -vMAX="$MAX" -vv="$SLITAZ_VERSION" '{
+			echo "$TAGS" | awk -vMAX="$MAX" -vv="$addver" '{
 				printf "<span class=\"tagn\">%s</span>", $1;
-				printf "<a class=\"taga tag%s\" ", int($1 * 10 / MAX + 1);
-				printf "href=\"?tags=%s&amp;version=%s\">%s</a> ", $2, v, $2;
+				printf "<a class=\"tag%s\" ", int($1 * 10 / MAX + 1);
+				printf "href=\"?tags=%s%s\">%s</a> ", $2, v, $2;
 			}'
 		else
 			grep -l ^TAGS= $WOK/*/receipt | \
@@ -1613,7 +1693,7 @@ EOT
 Package)
 	if check_n "$SEARCH"; then
 		cat <<EOT
-<h3>$(_ 'Package names matching the "%s"' "$SEARCH")</h3>
+<h3>$(_ 'Package names matching "%s"' "$SEARCH")</h3>
 EOT
 
 		if [ -f "$pinfo" ]; then
@@ -1627,7 +1707,7 @@ EOT
 			echo '</table>'
 		fi
 
-		vpkgs="$(cut -d= -f1 < $equiv | grep -i $SEARCH)"
+		vpkgs="$(cut -d= -f1 < $equiv | grep -i "$SEARCH")"
 		for vpkg in $vpkgs; do
 			cat <<EOT
 
@@ -1636,8 +1716,11 @@ EOT
 <table class="list">
 EOT
 			for pkg in $(grep $vpkg= $equiv | sed "s|$vpkg=||"); do
-				. $WOK/${pkg#*:}/receipt
-				package_entry
+				echo "		<!-- '$pkg' - '${pkg#*:}' -->"
+				if [ -e "$WOK/${pkg#*:}/receipt" ]; then
+					. $WOK/${pkg#*:}/receipt
+					package_entry
+				fi
 			done
 			echo '</table>'
 		done
