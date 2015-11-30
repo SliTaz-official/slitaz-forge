@@ -339,7 +339,7 @@ Outdated mirror:
 -->
 
 
-<h2 id="builds">Daily builds</h2>
+<h2 id="builds">Weekly builds</h2>
 
 <?php
 function display_log($file,$anchor,$url)
