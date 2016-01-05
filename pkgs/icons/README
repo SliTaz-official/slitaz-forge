@@ -18,6 +18,9 @@ Rules for icon displaying:
   4. Icon for i18n (Internationalization) packages is 'i18n' (alias for
      'preferences-desktop-locale'), special list exists here 'packages-i18n.icons'
      with one package name per line.
+     [note by Lucas Levrel:] See also: packages-font.icons packages-lib.icons
+     packages-perl.icons packages-py.icons packages-thm.icons (themes)
+     [edit by LL:] added: packages-doc.icons
 
   5. List of icons settings/substitutions 'packages.icons' in format:
      `<package name><tab><icon name (without '.png')>` per line. This list is

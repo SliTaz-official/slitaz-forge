@@ -162,6 +162,7 @@ if [ ! -f "$iconslast" ]; then
 	(
 		cat icons/packages.icons
 		awk '{printf "%s\tcli\n",$1}'  icons/packages-cli.icons
+		awk '{printf "%s\tdoc\n",$1}'  icons/packages-doc.icons
 		awk '{printf "%s\tfont\n",$1}' icons/packages-font.icons
 		awk '{printf "%s\ti18n\n",$1}' icons/packages-i18n.icons
 		awk '{printf "%s\tthm\n",$1}'  icons/packages-thm.icons

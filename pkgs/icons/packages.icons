@@ -8,6 +8,9 @@ alsa-tools-envy24control	audio-x-generic
 alsa-tools-hdsp	hdspmixer
 alsa-tools-rmedigicontrol	audio-x-generic
 alsa-utils	preferences-desktop-sound
+android-build-tools	android
+android-platform-tools	android
+android-sdk	android
 assaultcube-data	assaultcube
 aufs	linux
 backintime	deja-dup
