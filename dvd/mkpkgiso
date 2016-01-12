@@ -301,7 +301,7 @@ dd bs=512 seek=1 conv=notrunc of=$1 2>/dev/null <<EOT
 #@
 #!/bin/sh
  
-dev=\$({ blkid $1; blkid; } | sed '/$blkuuid/!d;s/:.*//')
+dev=\$({ blkid $1; blkid; } | sed '/$blkuuid/!d;s/:.*//;q')
  
 if [ -n "\$dev" ]; then
 	mkdir -p /mnt/packages
