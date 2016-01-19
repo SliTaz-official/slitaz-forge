@@ -708,6 +708,7 @@ mailsync
 masqmail
 mate-terminal
 mc
+megatools
 memtester
 microperl
 micropython
@@ -716,6 +717,7 @@ mingw32-gcc
 mingw32-gcc-c
 mjpegtools
 mktorrent
+mmv
 mrxvt
 mutagen
 nail
@@ -759,6 +761,7 @@ perl-thread
 perl-tk
 perltidy
 pflogsumm
+pilot-link
 pinentry
 pngcrush
 polkit
