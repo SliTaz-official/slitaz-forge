@@ -1,0 +1,108 @@
+#!ipxe
+
+set menu-timeout 3000
+#set mirror http://mirror.slitaz.org/
+#set mirror http://mirror1.slitaz.org/
+set mirror http://mirror2.slitaz.org/
+set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+#set mirror http://mirror3.slitaz.org/
+#set mirror http://download.tuxfamily.org/slitaz/
+
+console --picture /pxe/ipxe/slitaz.png
+
+:menu
+menu SliTaz Web boot
+item --key r rolling SliTaz rolling (last weekly build)
+item --key s stable SliTaz stable
+item allslitaz All SliTaz versions -->
+item --gap
+item --gap Web boot ring:
+item pxelinux SliTaz pxelinux web boot
+item bko http://boot.kernel.org/ [down]
+item netbootme http://www.netboot.me/ [hang]
+item salstar http://boot.salstar.sk/
+item netbootxyz http://netboot.xyz/ (more tools)
+item --gap
+item --gap Tools:
+item tazfd SliTaz boot floppy
+item localos Local disk OS
+item misc Third party tools -->
+item --gap
+item --gap Leave web boot:
+item local Boot from your hard disk
+item reboot Reboot
+choose --timeout ${menu-timeout} --default rolling target || goto exit
+set menu-timeout 0
+goto ${target}
+
+:exit
+help
+echo Type 'exit' to get back to the menu
+shell
+goto menu
+
+:rolling
+sanboot http://mirror1.slitaz.org/iso/rolling/slitaz-rolling.iso ||
+sanboot ${mirror}iso/rolling/slitaz-rolling.iso ||
+goto menu
+
+:stable
+sanboot ${mirror}iso/stable/slitaz-4.0.iso ||
+goto menu
+
+:allslitaz
+chain --autofree /pxe/ipxe/slitaz.ipxe
+goto menu
+
+:localos
+chain /pxe/grub.exe
+goto menu
+
+:pxelinux
+imgfree
+kernel /boot/gpxe url=${mirror}pxe/pxelinux.0,http://mirror.switch.ch/ftp/mirror/pxe/pxelinux.0,http://download.tuxfamily.org/slitaz/pxe/pxelinux.0
+boot
+goto menu
+
+:bko
+imgfree
+kernel /boot/gpxe url=http://boot.kernel.org/bko/pxelinux.0,http://boot.rit.edu/bko/pxelinux.0
+boot
+goto menu
+
+:netbootme
+imgfree
+kernel /pxe/netboot.me
+boot
+goto menu
+
+:salstar
+imgfree
+kernel http://boot.salstar.sk/ipxe/ipxe.lkrn
+boot
+goto menu
+
+:netbootxyz
+chain --autofree http://boot.netboot.xyz/menu.ipxe
+goto menu
+
+:tazfd
+imgfree
+kernel /pxe/memdisk
+initrd /boot/floppy-grub4dos
+boot
+goto menu
+
+:misc
+chain --autofree /pxe/ipxe/tools.ipxe
+goto menu
+
+:local
+imgfree
+kernel /pxe/grub.exe --config-file="chainloader (hd0)+1 || chainloader (hd1)+1"
+boot
+goto menu
+
+:reboot
+reboot ||
+goto menu

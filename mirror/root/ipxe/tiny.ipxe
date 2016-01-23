@@ -1,0 +1,39 @@
+#!ipxe
+
+set menu-timeout 3000
+
+:menu
+menu Tiny SliTaz Web boot (needs a 386sx with 8Mb)
+item --key q return ..
+item --gap
+item --key u tinyus Tiny Slitaz (us)
+item --key f tinyfr Tiny Slitaz (fr)
+item --key v tinyvnc Tiny VNC
+choose --timeout ${menu-timeout} target || goto exit
+set menu-timeout 0
+goto ${target}
+
+:tinyus
+imgfree
+kernel /pxe/tiny/bzImage.gz
+initrd /pxe/tiny/rootfs.gz
+boot
+goto menu
+
+:tinyfr
+imgfree
+kernel /pxe/tiny/bzImage.gz
+initrd /pxe/tiny/rootfs-fr.gz
+boot
+goto menu
+
+:tinyvnc
+imgfree
+kernel /pxe/tiny/vnc/bzImage.gz vga=ask
+initrd /pxe/tiny/vnc/rootfs.gz
+boot
+goto menu
+
+:return
+chain --autofree /pxe/ipxe/menu.ipxe
+goto menu

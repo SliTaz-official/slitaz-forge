@@ -1,0 +1,35 @@
+#!ipxe
+
+set menu-timeout 3000
+
+:menu
+menu SliTaz Web boot
+item --key q return ..
+item --gap
+item --gap Third party tools:
+item memtest Memtest86+
+item memtest4 Memtest86+ 4.20
+item ubcd535 Universal boot CD version 5.3.5
+choose --timeout ${menu-timeout} target || goto exit
+set menu-timeout 0
+goto ${target}
+
+:memtest4
+imgfree
+kernel /pxe/memtest-4.20
+boot
+goto menu
+
+:memtest
+imgfree
+kernel /pxe/memtest
+boot
+goto menu
+
+:ubcd535
+sanboot http://cdn.removed.us/ubcd/ubcd535.iso ||
+goto menu
+
+:return
+chain --autofree /pxe/ipxe/menu.ipxe
+goto menu

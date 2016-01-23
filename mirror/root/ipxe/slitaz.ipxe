@@ -1,0 +1,184 @@
+#!ipxe
+
+set menu-timeout 3000
+#set mirror http://mirror.slitaz.org/
+#set mirror http://mirror1.slitaz.org/
+set mirror http://mirror2.slitaz.org/
+set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+#set mirror http://mirror3.slitaz.org/
+#set mirror http://download.tuxfamily.org/slitaz/
+
+:menu
+menu SliTaz Web boot
+item --key q return ..
+item --gap
+item --gap Tiny SliTaz: see http://tiny.slitaz.org/
+item --key t tiny Tiny SliTaz -->
+item --gap
+item --gap SliTaz pre-1.0:
+item vintage SliTaz 04/12/2007
+item --gap
+item --gap SliTaz 1.0: released 22/03/2008
+item core1 Slitaz 1.0 standard
+item loram1 Slitaz 1.0 loram
+item tiny1 Slitaz 1.0 tiny
+item --gap
+item --gap SliTaz 2.0: released 16/04/2009
+item core2 Slitaz 2.0 standard
+item loram2 Slitaz 2.0 loram
+item tiny2 Slitaz 2.0 tiny
+item tinytext2 Slitaz 2.0 tiny text
+item --gap
+item --gap SliTaz 3.0: released 28/03/2010
+item core3 Slitaz 3.0 standard
+item loram3 Slitaz 3.0 loram
+item firefox3 Slitaz 3.0 firefox
+item tiny3 Slitaz 3.0 tiny
+item tinytext3 Slitaz 3.0 tiny text
+item --gap
+item --gap SliTaz 4.0: released 10/04/2012
+item core4 Slitaz 4.0 standard
+item loram4 Slitaz 4.0 loram
+item firefox4 Slitaz 4.0 firefox
+item kids4 Slitaz 4.0 kids
+item tiny4 Slitaz 4.0 tiny
+item tinytext4 Slitaz 4.0 tiny text
+item --gap
+item --gap SliTaz 5.0
+item core5RC1 Slitaz 5.0 RC1 02/05/2014
+item core5RC2 Slitaz 5.0 RC2 19/05/2014
+item core5RC3 Slitaz 5.0 RC3 20/05/2015
+item --gap
+item --gap SliTaz rolling
+item rolling10 Slitaz rolling 10in1 (autoselect 32bits or 64bits arch)
+item rolling64 Slitaz rolling 64 bits (no 32bits arch support)
+item rollingloram Slitaz rolling loram
+choose --timeout ${menu-timeout} target || goto exit
+set menu-timeout 0
+goto ${target}
+
+:return
+chain --autofree /pxe/ipxe/menu.ipxe
+
+:tiny
+chain --autofree /pxe/ipxe/tiny.ipxe
+goto menu
+
+:vintage
+sanboot ${mirror}iso/vintage/slitaz-cooking-20071204.iso ||
+goto menu
+
+:core1
+sanboot ${mirror}iso/1.0/flavors/slitaz-1.0-4in1.iso ||
+goto menu
+
+:loram1
+sanboot ${mirror}iso/1.0/flavors/slitaz-loram-1.0.iso ||
+goto menu
+
+:tiny1
+sanboot ${mirror}iso/1.0/flavors/slitaz-tiny-1.0.iso ||
+goto menu
+
+:core2
+sanboot ${mirror}iso/2.0/flavors/slitaz-2.0-3in1.iso ||
+goto menu
+
+:loram2
+sanboot ${mirror}iso/2.0/flavors/slitaz-loram.iso ||
+goto menu
+
+:tiny2
+imgfree
+kernel ${mirror}boot/2.0/bzImage rw root=/dev/null vga=normal autologin
+initrd ${mirror}boot/2.0/rootfs-tiny.gz
+boot
+goto menu
+
+:tinytext2
+imgfree
+kernel ${mirror}boot/2.0/bzImage rw root=/dev/null vga=normal screen=text
+initrd ${mirror}boot/2.0/rootfs-tiny.gz
+boot
+goto menu
+
+:core3
+sanboot ${mirror}iso/3.0/flavors/slitaz-3.0-3in1.iso ||
+goto menu
+
+:loram3
+sanboot ${mirror}iso/3.0/flavors/slitaz-3.0-loram.iso ||
+goto menu
+
+:firefox3
+sanboot ${mirror}iso/3.0/flavors/slitaz-3.0-firefox.iso ||
+goto menu
+
+:tiny3
+imgfree
+kernel ${mirror}boot/3.0/bzImage rw root=/dev/null vga=normal autologin
+initrd ${mirror}boot/3.0/rootfs-tiny.gz
+boot
+goto menu
+
+:tinytext3
+imgfree
+kernel ${mirror}boot/3.0/bzImage rw root=/dev/null vga=normal screen=text
+initrd ${mirror}boot/3.0/rootfs-tiny.gz
+boot
+goto menu
+
+:core4
+sanboot ${mirror}iso/4.0/slitaz-4.0.iso ||
+goto menu
+
+:loram4
+sanboot ${mirror}iso/4.0/flavors/slitaz-4.0-loram.iso ||
+goto menu
+
+:firefox4
+sanboot ${mirror}iso/4.0/flavors/slitaz-4.0-firefox.iso ||
+goto menu
+
+:kids4
+sanboot ${mirror}iso/4.0/flavors/slitaz-4.0-kids.iso ||
+goto menu
+
+:tiny4
+imgfree
+kernel ${mirror}boot/4.0/bzImage rw root=/dev/null vga=normal autologin
+initrd ${mirror}boot/4.0/rootfstiny.gz
+boot
+goto menu
+
+:tinytext4
+imgfree
+kernel ${mirror}boot/4.0/bzImage rw root=/dev/null vga=normal screen=text
+initrd ${mirror}boot/4.0/rootfstiny.gz
+boot
+goto menu
+
+:core5RC1
+sanboot ${mirror}iso/5.0/slitaz-5.0-rc1.iso ||
+goto menu
+
+:core5RC2
+sanboot ${mirror}iso/5.0/slitaz-5.0-rc2.iso ||
+goto menu
+
+:core5RC3
+sanboot ${mirror}iso/5.0/slitaz-5.0-rc3.iso ||
+goto menu
+
+:rolling10
+sanboot ${mirror}iso/rolling/slitaz-rolling-10in1.iso ||
+goto menu
+
+:rolling64
+sanboot ${mirror}iso/rolling/slitaz-rolling-core64.iso ||
+goto menu
+
+:rollingloram
+sanboot ${mirror}iso/rolling/slitaz-rolling-loram.iso ||
+goto menu
+
