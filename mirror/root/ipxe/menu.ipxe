@@ -17,7 +17,6 @@ item --key s stable SliTaz stable
 item allslitaz All SliTaz versions -->
 item --gap
 item --gap Web boot ring:
-item pxelinux SliTaz pxelinux web boot
 item bko http://boot.kernel.org/ [down]
 item netbootme http://www.netboot.me/ [hang]
 item salstar http://boot.salstar.sk/
@@ -56,12 +55,6 @@ goto menu
 
 :localos
 chain /pxe/grub.exe
-goto menu
-
-:pxelinux
-imgfree
-kernel /boot/gpxe url=${mirror}pxe/pxelinux.0,http://mirror.switch.ch/ftp/mirror/pxe/pxelinux.0,http://download.tuxfamily.org/slitaz/pxe/pxelinux.0
-boot
 goto menu
 
 :bko

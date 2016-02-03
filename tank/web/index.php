@@ -23,6 +23,7 @@
 			<ul>
 				<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 				<li><a href="http://mirror1.slitaz.org/">Main Mirror</a></li>
+				<li><a href="http://tank.slitaz.org:4200/">Console</a></li>
 			</ul>
 		</div>
 		<div class="left_box">
