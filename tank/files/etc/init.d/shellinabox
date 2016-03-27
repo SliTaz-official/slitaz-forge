@@ -41,7 +41,7 @@ start)
 	eval shellinaboxd --background=$pidfile --disable-ssl \
 		--css=/usr/share/shellinabox/object.css \
 		--user-css 10px:-/usr/share/shellinabox/10px.css,12px:-/usr/share/shellinabox/12px.css,14px:-/usr/share/shellinabox/14px.css,16px:+/usr/share/shellinabox/16px.css \
-		-s /login:LOGIN $(services_arg)
+		--localhost-only --no-beep -s /:LOGIN
 	;;
 stop)
 	[ -s $pidfile ] && kill $(cat $pidfile)
