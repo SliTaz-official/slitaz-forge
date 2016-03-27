@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-03 03:46+0200\n"
-"PO-Revision-Date: 2014-06-16 19:46-0300\n"
-"Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
+"PO-Revision-Date: 2016-03-27 00:43-0300\n"
+"Last-Translator: Leonardo Laporte <hackdorte@sapo.pt>\n"
 "Language-Team: Portuguese <i18n@slitaz.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: search.sh:147
 msgid "Cooker"
@@ -23,7 +24,7 @@ msgstr "Cooker"
 
 #: search.sh:148
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: search.sh:149 search.sh:273
 msgid "Receipt"
@@ -39,7 +40,7 @@ msgstr "Descrição"
 
 #: search.sh:270
 msgid "Tag"
-msgstr "Tags"
+msgstr "Etiqueta"
 
 #: search.sh:271
 msgid "Architecture"
@@ -82,9 +83,8 @@ msgid "License"
 msgstr "Licença"
 
 #: search.sh:290
-#, fuzzy
 msgid "SliTaz version"
-msgstr "Pacotes do SliTaz"
+msgstr "SliTaz versão"
 
 #: search.sh:291
 msgid "cooking"
@@ -115,18 +115,18 @@ msgstr[1] "%s pacotes"
 #: search.sh:360
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " e %s arquivo em %s bando de dados"
+msgstr[1] " e %s arquivos em %s bando de dados"
 
 #: search.sh:394
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Página gerada em %s segundo."
+msgstr[1] "Página gerada em %s segundos."
 
 #: search.sh:505
 msgid "Nothing found"
-msgstr ""
+msgstr "Não encontrado"
 
 #: search.sh:664
 msgid ""
@@ -137,34 +137,30 @@ msgstr ""
 "\t<b>todo</b> pacote em princípio depende delas."
 
 #: search.sh:711 search.sh:1440
-#, fuzzy
 msgid "Please specify name of the package."
-msgstr "Descrição do pacote: %s"
+msgstr "Por favor, especifique o nome do pacote."
 
 #: search.sh:726
 msgid "Package \"%s\" was not found"
-msgstr "Sem resultado: %s"
+msgstr "Pacote \"%s\" não foi localizado"
 
 #: search.sh:924
-#, fuzzy
 msgid "%s architecture"
 msgid_plural "%s architectures"
-msgstr[0] "Arquitetura"
-msgstr[1] "Arquitetura"
+msgstr[0] "%s arquitetura"
+msgstr[1] "%s arquiteturas"
 
 #: search.sh:925
-#, fuzzy
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
-msgstr[0] "Mantenedor"
-msgstr[1] "Mantenedor"
+msgstr[0] "%s mantenedor"
+msgstr[1] "%s mantenedores"
 
 #: search.sh:926
-#, fuzzy
 msgid "%s license"
 msgid_plural "%s licenses"
-msgstr[0] "Licença"
-msgstr[1] "Licença"
+msgstr[0] "%s  licença"
+msgstr[1] "%s  licenças"
 
 #: search.sh:927
 msgid "%s category"
@@ -175,12 +171,12 @@ msgstr[1] "%s categorias"
 #: search.sh:928
 msgid "%s tag"
 msgid_plural "%s tags"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s etiqueta"
+msgstr[1] "%s etiquetas"
 
 #: search.sh:1065
 msgid "base-system"
-msgstr "base-system"
+msgstr "base do sistema"
 
 #: search.sh:1065
 msgid "x-window"
@@ -192,7 +188,7 @@ msgstr "utilitários"
 
 #: search.sh:1065
 msgid "network"
-msgstr "network"
+msgstr "rede"
 
 #: search.sh:1065
 msgid "graphics"
@@ -212,7 +208,7 @@ msgstr "desenvolvimento"
 
 #: search.sh:1066
 msgid "system-tools"
-msgstr "ferramentas-do-sistema"
+msgstr "ferramentas"
 
 #: search.sh:1066
 msgid "security"
@@ -232,54 +228,51 @@ msgstr "meta"
 
 #: search.sh:1067
 msgid "non-free"
-msgstr "não-livre"
+msgstr "não livre"
 
 #: search.sh:1078
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: search.sh:1086
 msgid "Version"
-msgstr ""
+msgstr "Versão"
 
 #: search.sh:1118
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: search.sh:1122
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: search.sh:1127 search.sh:1134
 msgid "Sizes"
-msgstr ""
+msgstr "Tamanhos"
 
 #: search.sh:1140
-#, fuzzy
 msgid "Depends on"
 msgstr "Dependências"
 
 #: search.sh:1142
 msgid "Provides"
-msgstr ""
+msgstr "Oferece"
 
 #: search.sh:1144
 msgid "Suggested"
-msgstr ""
+msgstr "Sugestão"
 
 #: search.sh:1155 search.sh:1157
-#, fuzzy
 msgid "Show cooking log"
-msgstr "cooking"
+msgstr "Ver log"
 
 #: search.sh:1159
 msgid "N/A"
-msgstr ""
+msgstr "N/D"
 
 #: search.sh:1169
-#, fuzzy
 msgid "Download package"
-msgstr "%s pacote"
+msgstr "Baixar pacote"
 
 #: search.sh:1176
 msgid "Show receipt"
@@ -290,19 +283,16 @@ msgid "Show files list"
 msgstr "Lista de arquivos"
 
 #: search.sh:1182
-#, fuzzy
 msgid "Install package"
-msgstr "%s pacote"
+msgstr "Instalar pacote"
 
 #: search.sh:1185
-#, fuzzy
 msgid "Remove package"
-msgstr "%s pacote"
+msgstr "Remover pacote"
 
 #: search.sh:1227
-#, fuzzy
 msgid "Configuration files"
-msgstr "Arquivos comuns"
+msgstr "Arquivos de configuração"
 
 #: search.sh:1254
 msgid "Loop dependency"
