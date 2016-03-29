@@ -1,16 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SliTaz Pro</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Slitaz Professional Platform" />
-    <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
-    <meta name="robots" content="index, follow, all" />
-    <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-    <meta name="author" content="Christophe Lincoln"/>
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="../slitaz.css" />
+	<meta charset="UTF-8">
+	<title>SliTaz Pro</title>
+	<meta name="description" content="SliTaz Professional Platform">
+	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
+	<meta name="robots" content="index, follow, all">
+	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
+	<meta name="author" content="Christophe Lincoln">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../slitaz.css">
 </head>
 <body>
 
@@ -81,7 +80,7 @@
 
 <p>
 	The SliTaz association is a non profit base entity which can provide
-	paid services. We can employ a freelance Slitaz developer to work
+	paid services. We can employ a freelance SliTaz developer to work
 	for you. We can also help Schools, ONG and social projects with a
 	small budget. Please contact us for more information about this service.
 </p>
@@ -113,7 +112,7 @@
 </p>
 
 <p>
-	If you use Slitaz for business purposes, in University or if you just
+	If you use SliTaz for business purposes, in University or if you just
 	want to sponsor and get a logo-link-description on our main website,
 	please contact us. You can start sponsoring SliTaz from $40 a month.
 	A sponsorship contract is signed for one year, the visibility of your

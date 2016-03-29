@@ -1,16 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <title>SliTaz Pro</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Профессиональная платформа Slitaz" />
-    <meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS" />
-    <meta name="robots" content="index, follow, all" />
-    <meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>" />
-    <meta name="author" content="Christophe Lincoln"/>
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="../slitaz.css" />
+	<meta charset="UTF-8">
+	<title>SliTaz Pro</title>
+	<meta name="description" content="Профессиональная платформа SliTaz">
+	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
+	<meta name="robots" content="index, follow, all">
+	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
+	<meta name="author" content="Christophe Lincoln">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../slitaz.css">
 </head>
 <body>
 

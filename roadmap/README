@@ -2,7 +2,7 @@ SliTaz Roadmap
 ================================================================================
 
 
-SliTaz roadmap provides guidelines to the next Slitaz Stable release. We use
+SliTaz roadmap provides guidelines to the next SliTaz Stable release. We use
 our Mercurial repo to collaborate on the roadmap. All tasks are added and edited
 in releases/[slitaz-release] and then committed to Hg. Any tasks can have a wiki
 page link, description with HTML code, etc. Each release also has a goals.html

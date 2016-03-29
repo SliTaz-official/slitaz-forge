@@ -155,7 +155,7 @@ system("top -n1 -b");
 	</tr>
 	<tr>
 		<td class="server"><a href="https://ajaxterm.slitaz.org/">ajaxterm.slitaz.org</a></td>
-		<td>Slitaz Web Console</td>
+		<td>SliTaz Web Console</td>
 		<td><a href="http://mirror1.slitaz.org/awstats.pl?config=ajaxterm.slitaz.org" target="_blank">stats</a></td>
 	</tr>
 </table>

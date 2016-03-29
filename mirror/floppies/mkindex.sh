@@ -154,7 +154,7 @@ done
 <h2>$TITLE</h2>
 
 <p>
-This floppy set will boot a Slitaz stable$TYPE version. You can write floppies
+This floppy set will boot a SliTaz stable$TYPE version. You can write floppies
 with SliTaz <i>bootfloppybox</i>, 
 <a href="http://en.wikipedia.org/wiki/RaWrite">Windows rawrite</a> or simply dd:
 </p><pre># dd if=fd001.img of=/dev/fd0

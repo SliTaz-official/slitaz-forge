@@ -9,7 +9,7 @@ IP: 91.121.94.143
 
 Mixer install
 -------------
-We use a subroot install and all Slitaz files are in: /slitaz. A SliTaz 
+We use a subroot install and all SliTaz files are in: /slitaz. A SliTaz 
 cooking base is used. The initrd.gz is compressed with gzip and has a
 Pascal custom /init script to allow subroot boot.
 
