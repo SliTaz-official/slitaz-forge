@@ -81,6 +81,8 @@ locale-zh_CN-extra
 locale-zh_TW
 locale-zh_TW-extra
 lxterminal-locales
+lyx-locales
+poedit-i18n
 pulseaudio-locale
 qt-locale-cs
 qt-locale-da

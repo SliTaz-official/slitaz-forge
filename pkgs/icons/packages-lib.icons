@@ -58,12 +58,14 @@ cups-pdf
 dashel
 dbus-helper
 exempi
+freealut
 freeglut
 gamin
 gcc-lib-base
 gdbm
 gecko-mediaplayer
 get-libaacs
+gf2x
 glibc-extra-samba
 glibmm
 gmp
@@ -85,7 +87,9 @@ gvfs-smb
 gvfs-udisks2
 hal-cups-utils
 jbigkit
+kqoauth
 lcms
+lcms2
 libQtCore
 libQtGui
 libQtMimeTypes
@@ -108,6 +112,7 @@ libconfig
 libcrypto
 libcurl
 libdb
+libdb-cxx
 libdevmapper
 libdrm
 libedit
@@ -116,6 +121,7 @@ libexif
 libffi
 libfirefox
 libfm
+libform
 libgee
 libgio
 libgiomm
@@ -123,6 +129,7 @@ libglu-mesa
 libgnutls
 libgomp
 libgudev
+libguess
 libid3tag
 libjpeg
 libkrb5
