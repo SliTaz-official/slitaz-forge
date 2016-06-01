@@ -170,7 +170,7 @@ mark {
 
 /* Actions icons */
 
-.last { text-align: right; white-space: nowrap; }
+.last { text-align: right; white-space: nowrap; width: 1%; }
 
 .dl, .rc, .co {
 	height: 16px;

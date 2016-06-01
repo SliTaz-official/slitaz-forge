@@ -1170,7 +1170,7 @@ EOT
 	<tr><td><span class="download"></span>
 			<a href="$pkg_url">$(gettext 'Download package')</a>
 		</td>
-		<td rowspan="5" class="first hssc">
+		<td rowspan="5" class="last hssc">
 			<a href="http://screenshots.debian.net/package/$pkg" target="_blank"><img
 				src="http://screenshots.debian.net/thumbnail/$pkg" alt="$PACKAGE screenshot"/></a>
 		</td>
