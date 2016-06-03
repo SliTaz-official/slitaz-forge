@@ -1100,12 +1100,17 @@ EOT
 		<td>$(echo "$SHORT_DESC" | htmlize)</td>
 	</tr>
 EOT
-		[ -n "$MAINTAINER" ] && cat <<EOT
+		if [ -n "$MAINTAINER" ]; then
+			# For form "John Doe <jdoe@example.org>"
+			M="${MAINTAINER#*<}"; M="${M%>}" # extract address "jdoe@example.org"
+			MAINTAINER=$(echo $MAINTAINER | htmlize) # escape "<" and ">" for use in HTML
+			cat <<EOT
 	<tr>
 		<td class="first"><b>$(gettext 'Maintainer')</b></td>
-		<td><a href="?maintainer=$MAINTAINER$addver">${MAINTAINER/@/&#8203;@&#8203;}</a></td>
+		<td><a href="?maintainer=$M$addver">${MAINTAINER/@/&#8203;@&#8203;}</a></td>
 	</tr>
 EOT
+		fi
 		[ -n "$LICENSE" ] && cat <<EOT
 	<tr>
 		<td class="first"><b>$(gettext 'License')</b></td>
@@ -1546,7 +1551,11 @@ EOT
 		grep -l ^MAINTAINER= $WOK/*/receipt | while read file; do
 			MAINTAINER=
 			. $file
-			echo $MAINTAINER
+			case $MAINTAINER in
+				# For form "John Doe <jdoe@example.org>
+				*\<*) MAINTAINER="${MAINTAINER#*<}"; echo "${MAINTAINER%>}";;
+				*) echo $MAINTAINER;;
+			esac
 			done | display_cloud maintainer
 	fi
 	;;
