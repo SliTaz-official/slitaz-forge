@@ -185,6 +185,7 @@ lxrandr	video-display
 lxsession-edit	preferences-system-windows
 lxshortcut	lxde
 lxtask	utilities-system-monitor
+lyx-examples	lyx
 make-slitaz-icons	slitaz-icon
 mate-screensaver	preferences-desktop-screensaver
 mate-session-manager	mate-session-properties
@@ -284,6 +285,7 @@ tazpkg	slitaz-icon
 tazpkg-test	slitaz-icon
 tazpkg-desc-ru	i18n
 tazusb	slitaz-icon
+tazwikiss	slitaz-icon
 tazwok	slitaz-icon
 terminology	efl
 tp_smapi	linux
