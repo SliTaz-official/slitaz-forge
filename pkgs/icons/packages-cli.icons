@@ -598,6 +598,7 @@ iksemel
 imagemagick
 imlib2
 input-utils
+inxi
 iptables
 isync
 iw
@@ -773,6 +774,7 @@ srcpd
 stjerm-terminal
 streamripper
 stund
+sundown
 symlinks
 sysfsutils
 syslinux-extra
@@ -791,6 +793,8 @@ tcsh
 terminal
 tesseract-ocr
 texinfo
+tidy
+tidy-html5
 tilda
 tintin++
 tk

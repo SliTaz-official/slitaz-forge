@@ -117,6 +117,8 @@ get-eclipse-pdt	eclipse
 get-flash-plugin	flashplayer
 get-foxit-reader	foxit-reader
 get-msttcorefonts	application-x-msdownload
+get-msttcorefonts2	application-x-msdownload
+get-palemoon	palemoon
 get-playonlinux	playonlinux
 get-rar	application-x-rar
 get-skype	skype
@@ -152,6 +154,7 @@ gtk+3-demo	gtk
 gtk+3-widget-factory	gtk
 gtkballs	gnome-glines
 gtktetris	tetris
+gucharmap3	gucharmap
 gxine	xine
 httpfs-fuse-static	misc
 ibus-hangul	ibus
