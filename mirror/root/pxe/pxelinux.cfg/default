@@ -1,5 +1,0 @@
-default ipxe
-say Switching to IPXE configuration...
-
-label ipxe
-	kernel http://mirror1.slitaz.org/pxe/ipxe2016

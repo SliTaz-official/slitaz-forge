@@ -1,6 +1,12 @@
 #!ipxe
 
 set menu-timeout 3000
+#set mirror http://mirror.slitaz.org/
+#set mirror http://mirror1.slitaz.org/
+#set mirror http://mirror2.slitaz.org/
+set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+#set mirror http://mirror3.slitaz.org/
+#set mirror http://download.tuxfamily.org/slitaz/
 
 :menu
 menu SliTaz Web boot
@@ -10,19 +16,17 @@ item --gap Third party tools:
 item memtest Memtest86+
 item memtest4 Memtest86+ 4.20
 item ubcd535 Universal boot CD version 5.3.5
-choose --timeout ${menu-timeout} target || goto exit
+choose --timeout ${menu-timeout} target || goto return
 set menu-timeout 0
 goto ${target}
 
 :memtest4
-imgfree
-kernel /pxe/memtest-4.20
-boot
+chain ${mirror}pxe/memtest-4.20
 goto menu
 
 :memtest
 imgfree
-kernel /pxe/memtest
+kernel ${mirror}pxe/memtest
 boot
 goto menu
 
