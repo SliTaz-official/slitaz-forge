@@ -191,7 +191,7 @@ $(cat $DIR/description.html)
 	<p>The floppy image set above includes an embedded installer and can install
 	SliTaz on your hard disk.</p>
 
-	<p>Anyway you may want these ISO images to <a
+	<p>Anyhow you may want these ISO images to <a
 	href="http://doc.slitaz.org/en:guides:uncommoninst#floppy-install">install
 	SliTaz</a>
 
