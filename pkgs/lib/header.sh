@@ -34,7 +34,7 @@ cat << _EOF_
 		<a href="http://scn.slitaz.org/">$(gettext 'Community')</a>
 		<a href="http://doc.slitaz.org/">$(gettext 'Doc')</a>
 		<a href="http://forum.slitaz.org/">$(gettext 'Forum')</a>
-		<a href="http://slitaz.pro/">$(gettext 'Pro')</a>
+		<a href="http://pro.slitaz.org/">$(gettext 'Pro')</a>
 		<a href="http://shop.slitaz.org/">$(gettext 'Shop')</a>
 		<a href="http://bugs.slitaz.org/">$(gettext 'Bugs')</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">$(gettext 'Hg')</a>

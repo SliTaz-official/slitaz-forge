@@ -120,7 +120,7 @@ SliTaz.</p>
 <p>Хотите связаться с нами или получить более подробную информацию?
 Не стесняйтесь — обратитесь к нам по электронной или обычной почте.</p>
 
-<p class="box">Электронная почта: &lt;contact at slitaz.pro&gt;</p>
+<p class="box">Электронная почта: &lt;contact at slitaz.org&gt;</p>
 
 <p class="box">
 	Association SliTaz<br />

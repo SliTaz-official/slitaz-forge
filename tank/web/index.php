@@ -115,7 +115,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 </ul>
 
 <ul>
-	<li><a href="http://slitaz.pro">slitaz.pro</a> - SliTaz Professional services.
+	<li><a href="http://pro.slitaz.org">slitaz.pro</a> - SliTaz Professional services.
 	(<a href="/stats/awstats.pl?config=slitaz.pro">stats</a>)</li>
 	<li><a href="http://slitaz.me">slitaz.me</a> - 
 		Domain used for users services such as Pizza.</li>

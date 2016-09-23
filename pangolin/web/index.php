@@ -21,7 +21,7 @@
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://slitaz.pro/">Pro</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
 		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
@@ -138,7 +138,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.</li>
 	<li><a href="http://cook.slitaz.org/">cook.slitaz.org</a> - SliTaz Build Bot.</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.</li>
-	<li><a href="http://slitaz.pro/">slitaz.pro</a> - SliTaz Professional services.</li>
+	<li><a href="http://pro.slitaz.org/">slitaz.pro</a> - SliTaz Professional services.</li>
 	<!-- bb cloud ssfs stats store tank -->
 </ul>
     

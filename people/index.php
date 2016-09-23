@@ -46,7 +46,7 @@
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://slitaz.pro/">Pro</a>
+		<a href="http://pro.slitaz.org/">Pro</a>
 		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
