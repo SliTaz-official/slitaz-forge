@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
@@ -10,8 +10,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-03 03:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
-"Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: Vietnam\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,7 +130,7 @@ msgstr "Không thấy"
 
 #: search.sh:664
 msgid ""
-"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, &lt;b&gt;every&lt;/b&gt; "
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
 msgstr ""
 
@@ -351,8 +351,8 @@ msgid "The list of packages of architecture \"%s\""
 msgstr "Danh sách các gói kiến ​​trúc \"%s\""
 
 #: search.sh:1530
-msgid "The list of packages that &lt;%s&gt; maintains"
-msgstr "Danh sách các gói duy trì &lt;%s&gt;"
+msgid "The list of packages that <%s> maintains"
+msgstr "Danh sách các gói duy trì <%s>"
 
 #: search.sh:1560
 msgid "Packages with \"%s\" license"
@@ -414,3 +414,4 @@ msgstr "Cửa hàng"
 #: lib/header.sh:35
 msgid "Hg"
 msgstr ""
+
