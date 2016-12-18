@@ -1,8 +1,10 @@
 #!/bin/sh
 
-cd $(dirname $0)/rolling
-ISO=../../iso/rolling/slitaz-rolling.iso
-if [ ! -s fd001.img ] || [ $ISO -nt fd001.img ]; then
+WD=$(cd $(dirname $0); pwd)
+while read name iso; do
+    cd $WD/$name
+    ISO=../../$iso
+    if [ ! -s fd001.img ] || [ $ISO -nt fd001.img ]; then
 	rm -f fd* 2> /dev/null
 	taziso $ISO floppyset > /dev/null
 	md5sum fd* > md5sum
@@ -10,7 +12,8 @@ if [ ! -s fd001.img ] || [ $ISO -nt fd001.img ]; then
 	mkdir $mnt
 	mount -o loop,ro $ISO $mnt
 	mtime=$(stat -c %y $mnt/md5sum | sed 's/ .*//')
-	set -- $(sed '/ifmem/!d;s/.*ifmem //' $mnt/boot/isolinux/isolinux.cfg)
+	set -- $(sed '/ifmem/!d;s/.*ifmem //' $mnt/boot/isolinux/isolinux.cfg \
+		| sed 's|^|echo |;s|\([0-9][0-9]*\) |$((\1/1024))M |g' | sh)
 	umount $mnt
 	rmdir $mnt
 	echo "Built on $mtime, needs up to ${1}b of RAM" > title
@@ -55,6 +58,9 @@ floppy.</p>
 You can bypass this by using B to boot without loading extra floppies.</p>
 EOT
 	cd ..
-	./mkindex.sh rolling > index-rolling.html
-fi
-
+	./mkindex.sh $name > index-$name.html
+    fi
+done <<EOT
+rolling		iso/rolling/slitaz-rolling.iso
+loram-rolling	iso/rolling/slitaz-rolling-loram.iso
+EOT
