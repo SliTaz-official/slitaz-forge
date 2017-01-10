@@ -1,0 +1,411 @@
+# Japanese translations for the tazpkg-web package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the tazpkg-web package.
+# BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen AT gmail DOT com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TazPkg Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-02 19:04+0900\n"
+"PO-Revision-Date: 2017-01-05 22:44+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen　"
+"AT gmail DOT com>\n"
+"Language: ja_JP\n"
+
+#: search.sh:147
+msgid "Cooker"
+msgstr "Cooker"
+
+#: search.sh:148
+msgid "Download"
+msgstr "ダウンロード"
+
+#: search.sh:149 search.sh:273
+msgid "Receipt"
+msgstr "レシピ"
+
+#: search.sh:268
+msgid "Package name"
+msgstr "パッケージ名"
+
+#: search.sh:269 search.sh:1097 search.sh:1218
+msgid "Description"
+msgstr "説明"
+
+#: search.sh:270
+msgid "Tag"
+msgstr "タグ"
+
+#: search.sh:271
+msgid "Architecture"
+msgstr "アーキネクチャー"
+
+#: search.sh:272 lib/header.sh:34
+msgid "Bugs"
+msgstr "バグ"
+
+#: search.sh:274
+msgid "Dependencies"
+msgstr "依存"
+
+#: search.sh:275
+msgid "Build dependencies"
+msgstr "ビルドの依存"
+
+#: search.sh:276
+msgid "File"
+msgstr "ファイル"
+
+#: search.sh:277
+msgid "File list"
+msgstr "ファイル一覧"
+
+#: search.sh:278
+msgid "Common files"
+msgstr "共有ファイル"
+
+#: search.sh:279 search.sh:1092
+msgid "Category"
+msgstr "カテゴリ"
+
+#: search.sh:280 search.sh:1103
+msgid "Maintainer"
+msgstr "メンテナー"
+
+#: search.sh:281 search.sh:1109
+msgid "License"
+msgstr "ライセンス"
+
+#: search.sh:290
+msgid "SliTaz version"
+msgstr "SliTaz バージョン"
+
+#: search.sh:291
+msgid "cooking"
+msgstr "生成"
+
+#: search.sh:296
+msgid "tiny"
+msgstr "tiny"
+
+#: search.sh:297
+msgid "undigest"
+msgstr "undigest"
+
+#: search.sh:298
+msgid "backports"
+msgstr "backports"
+
+#: search.sh:302
+msgid "Search"
+msgstr "検索"
+
+#: search.sh:358
+msgid "%s package"
+msgid_plural "%s packages"
+msgstr[0] "%s パッケージ"
+
+#: search.sh:360
+msgid " and %s file in %s database"
+msgid_plural " and %s files in %s database"
+msgstr[0] " と %s ファイルが %s データーベースにあります"
+
+#: search.sh:394
+msgid "Page generated in %s second."
+msgid_plural "Page generated in %s seconds."
+msgstr[0] "ページ生成に %s 秒要しました。"
+
+#: search.sh:505
+msgid "Nothing found"
+msgstr "見つかりません"
+
+#: search.sh:664
+msgid ""
+"\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
+"package is supposed to depend on them."
+msgstr ""
+"110/5000\n"
+"\"glibc-base\" と \"gcc-lib-base\" は暗黙の依存関係であり、<b>常に</ b>パッ"
+"ケージは依存していると考えられます。"
+
+#: search.sh:711 search.sh:1440
+msgid "Please specify name of the package."
+msgstr "パッケージ名を明記してください。"
+
+#: search.sh:726
+msgid "Package \"%s\" was not found"
+msgstr "パッケージ \"%s\" は見つかりません"
+
+#: search.sh:924
+msgid "%s architecture"
+msgid_plural "%s architectures"
+msgstr[0] "%s アーキテクチャー"
+
+#: search.sh:925
+msgid "%s maintainer"
+msgid_plural "%s maintainers"
+msgstr[0] "%s メンテナー"
+
+#: search.sh:926
+msgid "%s license"
+msgid_plural "%s licenses"
+msgstr[0] "%s ライセンス"
+
+#: search.sh:927
+msgid "%s category"
+msgid_plural "%s categories"
+msgstr[0] "%s カテゴリ"
+
+#: search.sh:928
+msgid "%s tag"
+msgid_plural "%s tags"
+msgstr[0] "%s タグ"
+
+#: search.sh:1065
+msgid "base-system"
+msgstr "ベースシステム"
+
+#: search.sh:1065
+msgid "x-window"
+msgstr "X ウインドウ"
+
+#: search.sh:1065
+msgid "utilities"
+msgstr "ユーティリティ"
+
+#: search.sh:1065
+msgid "network"
+msgstr "ネットワーク"
+
+#: search.sh:1065
+msgid "graphics"
+msgstr "グラフィック"
+
+#: search.sh:1066
+msgid "multimedia"
+msgstr "マルチメディア"
+
+#: search.sh:1066
+msgid "office"
+msgstr "オフィス"
+
+#: search.sh:1066
+msgid "development"
+msgstr "開発"
+
+#: search.sh:1066
+msgid "system-tools"
+msgstr "システムツール"
+
+#: search.sh:1066
+msgid "security"
+msgstr "セキュリティ"
+
+#: search.sh:1067
+msgid "games"
+msgstr "ゲーム"
+
+#: search.sh:1067
+msgid "misc"
+msgstr "その他"
+
+#: search.sh:1067
+msgid "meta"
+msgstr "メタ"
+
+#: search.sh:1067
+msgid "non-free"
+msgstr "非フリー"
+
+#: search.sh:1078
+msgid "Name"
+msgstr "名前"
+
+#: search.sh:1086
+msgid "Version"
+msgstr "バージョン"
+
+#: search.sh:1118
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: search.sh:1122
+msgid "Tags"
+msgstr "タグ"
+
+#: search.sh:1127 search.sh:1134
+msgid "Sizes"
+msgstr "サイズ"
+
+#: search.sh:1140
+msgid "Depends on"
+msgstr "依存"
+
+#: search.sh:1142
+msgid "Provides"
+msgstr "提供"
+
+#: search.sh:1144
+msgid "Suggested"
+msgstr "提案"
+
+#: search.sh:1155 search.sh:1157
+msgid "Show cooking log"
+msgstr "生成ログを表示"
+
+#: search.sh:1159
+msgid "N/A"
+msgstr "不可"
+
+#: search.sh:1169
+msgid "Download package"
+msgstr "パッケージのダウンロード"
+
+#: search.sh:1176
+msgid "Show receipt"
+msgstr "生成状態を表示"
+
+#: search.sh:1177
+msgid "Show files list"
+msgstr "ファイル一覧を表示"
+
+#: search.sh:1182
+msgid "Install package"
+msgstr "パッケージのインストール"
+
+#: search.sh:1185
+msgid "Remove package"
+msgstr "パッケージの削除"
+
+#: search.sh:1227
+msgid "Configuration files"
+msgstr "設定ファイル"
+
+#: search.sh:1254
+msgid "Loop dependency"
+msgstr "依存関係のループ"
+
+#: search.sh:1267
+msgid "Dependency tree for package \"%s\""
+msgstr "パッケージ \"%s\" の依存ツリー"
+
+#: search.sh:1278
+msgid "Dependency tree for packages suggested by package \"%s\""
+msgstr "パッケージ \"%s\" 提案パッケージの依存ツリー"
+
+#: search.sh:1287
+msgid "Reverse dependency tree for package \"%s\""
+msgstr "パッケージ \"%s\" の依存逆ツリー"
+
+#: search.sh:1304
+msgid "Loop dependency of build"
+msgstr "ビルド依存関係のループ"
+
+#: search.sh:1318
+msgid "Package \"%s\" requires next packages to be built"
+msgstr "パッケージ \"%s\" は次のパッケージをビルドする必要があります"
+
+#: search.sh:1326
+msgid "Next packages require package \"%s\" to be built"
+msgstr "次のパッケージではパッケージ \"%s\" をビルドする必要があります"
+
+#: search.sh:1344
+msgid "Next packages may overwrite files of package \"%s\""
+msgstr "次のパッケージはパッケージ \"%s\" のファイルを上書きします"
+
+#: search.sh:1373
+msgid "File names matching \"%s\""
+msgstr "\"%s\" に一致するファイル名"
+
+#: search.sh:1412
+msgid "List of files in the package \"%s\""
+msgstr "パッケージ \"%s\" のファイル一覧"
+
+#: search.sh:1423
+msgid "%s file"
+msgid_plural "%s files"
+msgstr[0] "%s ファイル"
+
+#: search.sh:1448
+msgid "Descriptions matching \"%s\""
+msgstr "\"%s\" に一致する説明"
+
+#: search.sh:1471
+msgid "Known bugs in the packages"
+msgstr "パッケージの既知バグ"
+
+#: search.sh:1497
+msgid "The list of packages of architecture \"%s\""
+msgstr "アーキテクチャ \"%s\" のパッケージ一覧"
+
+#: search.sh:1530
+msgid "The list of packages that <%s> maintains"
+msgstr "<%s> が維持するパッケージ一覧"
+
+#: search.sh:1560
+msgid "Packages with \"%s\" license"
+msgstr "\"%s\" ライセンスのパッケージ"
+
+#: search.sh:1588
+msgid "Packages of category \"%s\""
+msgstr "カテゴリ \"%s\" のパッケージ"
+
+#: search.sh:1631
+msgid "The list of packages tagged \"%s\""
+msgstr "タグ \"%s\" のパッケージ一覧"
+
+#: search.sh:1675
+msgid "Receipt for package \"%s\""
+msgstr "パッケージ \"%s\" のレシピ"
+
+#: search.sh:1695
+msgid "Package names matching \"%s\""
+msgstr "\"%s\" に一致したパッケージ名"
+
+#: search.sh:1713
+msgid "Packages providing the package \"%s\""
+msgstr "パッケージ \"%s\" で提供されるパッケージ"
+
+#: lib/header.sh:11
+#, sh-format
+msgid "SliTaz Packages - Search $SEARCH"
+msgstr "SliTaz パッケージ - 検索 $SEARCH"
+
+#: lib/header.sh:26
+msgid "SliTaz Packages"
+msgstr "SliTaz パッケージ"
+
+#: lib/header.sh:28
+msgid "Home"
+msgstr "ホーム"
+
+#: lib/header.sh:29
+msgid "Community"
+msgstr "コミュニティ"
+
+#: lib/header.sh:30
+msgid "Doc"
+msgstr "文章"
+
+#: lib/header.sh:31
+msgid "Forum"
+msgstr "掲示板"
+
+#: lib/header.sh:32
+msgid "Pro"
+msgstr "Pro"
+
+#: lib/header.sh:33
+msgid "Shop"
+msgstr "ショップ"
+
+#: lib/header.sh:35
+msgid "Hg"
+msgstr "Hg"

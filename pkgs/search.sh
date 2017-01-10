@@ -962,7 +962,7 @@ cat <<EOT
 target="_blank"></a><select form="s_form" name="lang" onchange="this.form.submit();">
 EOT
 
-for i in en de es fa fr pl pt ru sv uk zh; do
+for i in en de es fa fr ja pl pt ru sv uk zh; do
 	case $i in
 		en) c='us'; l='English';;
 		de) c='de'; l='Deutsch';;
@@ -970,6 +970,7 @@ for i in en de es fa fr pl pt ru sv uk zh; do
 		fa) c='ir'; l='فارسی';;
 		fr) c='fr'; l='Français';;
 		it) c='it'; l='Italiano';;
+		ja) c='jp'; l='日本語';;
 		pl) c='pl'; l='Polski';;
 		pt) c='br'; l='Português';;
 		ru) c='ru'; l='Русский';;
