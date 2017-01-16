@@ -1,26 +1,26 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Vietnamese translations for the tazpkg-web package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the tazpkg-web package.
+# Anh Bình <tuananh88c25@gmail.com>, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-03 03:46+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: Vietnam\n"
+"PO-Revision-Date: 2017-01-16 11:28+0700\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: Anh Bình <tuananh88c25@gmail.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: search.sh:147
 msgid "Cooker"
-msgstr ""
+msgstr "Người làm"
 
 #: search.sh:148
 msgid "Download"
@@ -28,7 +28,7 @@ msgstr "Tải"
 
 #: search.sh:149 search.sh:273
 msgid "Receipt"
-msgstr ""
+msgstr "Tiếp nhận"
 
 #: search.sh:268
 msgid "Package name"
@@ -88,7 +88,7 @@ msgstr "Phiên bản SliTaz"
 
 #: search.sh:291
 msgid "cooking"
-msgstr ""
+msgstr "đang làm"
 
 #: search.sh:296
 msgid "tiny"
@@ -96,11 +96,11 @@ msgstr "nhỏ"
 
 #: search.sh:297
 msgid "undigest"
-msgstr ""
+msgstr "undigest"
 
 #: search.sh:298
 msgid "backports"
-msgstr ""
+msgstr "cổng sau"
 
 #: search.sh:302
 msgid "Search"
@@ -110,19 +110,16 @@ msgstr "Tìm kiếm"
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] "%s gói"
-msgstr[1] "%s gói"
 
 #: search.sh:360
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
 msgstr[0] "và %s tệp trong %s dữ liệu"
-msgstr[1] "và %s tệp trong %s dữ liệu"
 
 #: search.sh:394
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
 msgstr[0] "Trang tạo trong %s giây"
-msgstr[1] "Trang tạo trong %s giây"
 
 #: search.sh:505
 msgid "Nothing found"
@@ -133,6 +130,8 @@ msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
 msgstr ""
+"\"Glibc-base\" và \"gcc-lib-base\" có thể phụ thuộc, <b>mọi</ b> gói được "
+"cho là phụ thuộc vào chúng."
 
 #: search.sh:711 search.sh:1440
 msgid "Please specify name of the package."
@@ -146,31 +145,26 @@ msgstr "Gói \"%s\"  không thấy"
 msgid "%s architecture"
 msgid_plural "%s architectures"
 msgstr[0] "%s kiến trúc"
-msgstr[1] "%s kiến trúc"
 
 #: search.sh:925
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
 msgstr[0] "%s duy trì"
-msgstr[1] "%s duy trì"
 
 #: search.sh:926
 msgid "%s license"
 msgid_plural "%s licenses"
 msgstr[0] "%s giấy phép"
-msgstr[1] "%s giấy phép"
 
 #: search.sh:927
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "%s thể loại"
-msgstr[1] "%s thể loại"
 
 #: search.sh:928
 msgid "%s tag"
 msgid_plural "%s tags"
 msgstr[0] "%s thẻ"
-msgstr[1] "%s thẻ"
 
 #: search.sh:1065
 msgid "base-system"
@@ -178,7 +172,7 @@ msgstr "Cơ sở hệ thống"
 
 #: search.sh:1065
 msgid "x-window"
-msgstr ""
+msgstr "cửa sổ x"
 
 #: search.sh:1065
 msgid "utilities"
@@ -186,7 +180,7 @@ msgstr "tiện ích"
 
 #: search.sh:1065
 msgid "network"
-msgstr ""
+msgstr "Mạng lưới"
 
 #: search.sh:1065
 msgid "graphics"
@@ -218,11 +212,11 @@ msgstr "Trò chơi"
 
 #: search.sh:1067
 msgid "misc"
-msgstr ""
+msgstr "Linh tinh"
 
 #: search.sh:1067
 msgid "meta"
-msgstr ""
+msgstr "meta"
 
 #: search.sh:1067
 msgid "non-free"
@@ -238,7 +232,7 @@ msgstr "Phiên bản"
 
 #: search.sh:1118
 msgid "Website"
-msgstr ""
+msgstr "Trang chủ"
 
 #: search.sh:1122
 msgid "Tags"
@@ -266,7 +260,7 @@ msgstr "Hiện bản ghi cooking"
 
 #: search.sh:1159
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: search.sh:1169
 msgid "Download package"
@@ -310,7 +304,7 @@ msgstr "Đảo cây phụ thuộc gói \"%s\""
 
 #: search.sh:1304
 msgid "Loop dependency of build"
-msgstr ""
+msgstr "Vòng phụ thuộc vào xây dựng"
 
 #: search.sh:1318
 msgid "Package \"%s\" requires next packages to be built"
@@ -336,7 +330,6 @@ msgstr "Danh sách các tập tin trong gói \"%s\""
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s tệp"
-msgstr[1] "%s tệp"
 
 #: search.sh:1448
 msgid "Descriptions matching \"%s\""
@@ -405,7 +398,7 @@ msgstr "Diễn đàn"
 
 #: lib/header.sh:32
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: lib/header.sh:33
 msgid "Shop"
@@ -413,5 +406,4 @@ msgstr "Cửa hàng"
 
 #: lib/header.sh:35
 msgid "Hg"
-msgstr ""
-
+msgstr "Hg"
