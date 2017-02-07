@@ -7,16 +7,16 @@ rd()
 
 ds()
 {
-	set -- $1 ${2:-512}
-	dd count=$((($1*$2)/512)) bs=512 2>/dev/null
-	dd count=$(((($1*$2)%512)/$2)) bs=$2 2>/dev/null
+	set -- $1 ${2:-512} 512
+	dd count=$((($1*$2)/$3)) bs=$3 2>/dev/null
+	dd count=$(((($1*$2)%$3)/$2)) bs=$2 2>/dev/null
 }
 
 case "$1" in
 extract) (
 	ds 1
 	ds $(($(rd 0x1F1 1)-1))
-	[ $(rd 0x228 1) -le 128 ] || ds 1
+	[ $(rd 0x229 1) -le 128 ] || ds 1
 	[ $(rd 0x228) -ne 0 ] && ds 1 >cmdline$$
 	ds $(( ($(rd 0x1F4) +31) /32)) ) >kernel
 	if [ $(rd 0x21C) -ne 0 ]; then
