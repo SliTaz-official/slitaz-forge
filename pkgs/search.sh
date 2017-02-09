@@ -934,6 +934,13 @@ EOT
 }
 
 
+build_cloud() {
+	find $WOK/ -maxdepth 2 -name receipt -exec sed \
+	 "/^$1=/!d;s/.*['\"<]\\(..*\\)[>\"'].*/\\1/" {} \; | \
+		display_cloud $2
+}
+
+
 #
 # page begins
 #
@@ -1518,11 +1525,7 @@ EOT
 EOT
 	else
 		# Display arch cloud
-		grep -l ^HOST_ARCH= $WOK/*/receipt | while read file; do
-			HOST_ARCH=
-			. $file
-			echo $HOST_ARCH
-			done | display_cloud arch
+		build_cloud HOST_ARCH arch
 	fi
 	;;
 
@@ -1549,15 +1552,7 @@ EOT
 EOT
 	else
 		# Display maintainer cloud
-		grep -l ^MAINTAINER= $WOK/*/receipt | while read file; do
-			MAINTAINER=
-			. $file
-			case $MAINTAINER in
-				# For form "John Doe <jdoe@example.org>
-				*\<*) MAINTAINER="${MAINTAINER#*<}"; echo "${MAINTAINER%>}";;
-				*) echo $MAINTAINER;;
-			esac
-			done | display_cloud maintainer
+		build_cloud MAINTAINER maintainer
 	fi
 	;;
 
@@ -1581,11 +1576,7 @@ EOT
 		echo '</table>'
 	else
 		# Display license cloud
-		grep -l ^LICENSE= $WOK/*/receipt | while read file; do
-			LICENSE=
-			. $file
-			echo $LICENSE
-			done | display_cloud license
+		build_cloud LICENSE license
 	fi
 	;;
 
@@ -1622,12 +1613,7 @@ EOT
 				printf "href=\"?category=%s%s\">%s</a> ", $2, addver, $2;
 			}'
 		else
-			grep -l ^CATEGORY= $WOK/*/receipt | \
-			while read file; do
-				CATEGORY=
-				. $file
-				echo $CATEGORY
-			done | display_cloud category
+			build_cloud CATEGORY category
 		fi
 	fi
 	;;
@@ -1665,12 +1651,7 @@ EOT
 				printf "href=\"?tags=%s%s\">%s</a> ", $2, v, $2;
 			}'
 		else
-			grep -l ^TAGS= $WOK/*/receipt | \
-			while read file; do
-				TAGS=
-				. $file
-				echo $TAGS
-			done | display_cloud tags
+			build_cloud TAGS tags
 		fi
 	fi
 	;;
