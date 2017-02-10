@@ -891,7 +891,9 @@ add_url_links() {
 
 display_cloud() {
 	arg=$1
-	awk '
+	[ /tmp/cloud-$arg -nt $pkglist ] && cat /tmp/cloud-$arg ||
+	find $WOK/ -maxdepth 2 -name receipt -exec sed \
+	 "/^$1=/!d;s/.*['\"<]\\(..*\\)[>\"'].*/\\1/" {} \; | awk '
 {
 	for (i = 1; $i != ""; i++)
 		count[$i]++
@@ -923,21 +925,14 @@ EOT
 		done
 		echo -n '<hr/><p class="lang">'
 		case $arg in
-			arch)       _p '%s architecture' '%s architectures' "$count" "$count";;
-			maintainer) _p '%s maintainer'   '%s maintainers'   "$count" "$count";;
-			license)    _p '%s license'      '%s licenses'      "$count" "$count";;
-			category)   _p '%s category'     '%s categories'    "$count" "$count";;
-			tags)       _p '%s tag'          '%s tags'          "$count" "$count";;
+			HOST_ARCH)  _p '%s architecture' '%s architectures' "$count" "$count";;
+			MAINTAINER) _p '%s maintainer'   '%s maintainers'   "$count" "$count";;
+			LICENSE)    _p '%s license'      '%s licenses'      "$count" "$count";;
+			CATEGORY)   _p '%s category'     '%s categories'    "$count" "$count";;
+			TAGS)       _p '%s tag'          '%s tags'          "$count" "$count";;
 		esac
 		echo '</p>'
-	}
-}
-
-
-build_cloud() {
-	find $WOK/ -maxdepth 2 -name receipt -exec sed \
-	 "/^$1=/!d;s/.*['\"<]\\(..*\\)[>\"'].*/\\1/" {} \; | \
-		display_cloud $2
+	} | tee /tmp/cloud-$arg
 }
 
 
@@ -1525,7 +1520,7 @@ EOT
 EOT
 	else
 		# Display arch cloud
-		build_cloud HOST_ARCH arch
+		display_cloud HOST_ARCH
 	fi
 	;;
 
@@ -1552,7 +1547,7 @@ EOT
 EOT
 	else
 		# Display maintainer cloud
-		build_cloud MAINTAINER maintainer
+		display_cloud MAINTAINER
 	fi
 	;;
 
@@ -1576,7 +1571,7 @@ EOT
 		echo '</table>'
 	else
 		# Display license cloud
-		build_cloud LICENSE license
+		display_cloud LICENSE
 	fi
 	;;
 
@@ -1613,7 +1608,7 @@ EOT
 				printf "href=\"?category=%s%s\">%s</a> ", $2, addver, $2;
 			}'
 		else
-			build_cloud CATEGORY category
+			display_cloud CATEGORY
 		fi
 	fi
 	;;
@@ -1651,7 +1646,7 @@ EOT
 				printf "href=\"?tags=%s%s\">%s</a> ", $2, v, $2;
 			}'
 		else
-			build_cloud TAGS tags
+			display_cloud TAGS
 		fi
 	fi
 	;;
