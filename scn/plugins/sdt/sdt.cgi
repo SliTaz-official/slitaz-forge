@@ -8,6 +8,8 @@
 # sdt.txt & using | as separator for easy parsing.
 #
 
+sdtdb="$tiny/$content/sdt/sdt.txt"
+
 sdt_summary() {
 	cat << EOT
 <pre>
@@ -56,7 +58,6 @@ sdt_check_ua() {
 case " $(GET sdt) " in
 	*\ add\ *)
 		sdt_check_ua
-		sdtdb="../../content/sdt/sdt.txt"
 		date="$(date +%Y%m%d)"
 		user=$(GET user)
 		release=$(GET release)
@@ -93,7 +94,6 @@ EOT
 	
 	*\ sdt\ *)
 		d="SliTaz Distro Tracker"
-		sdtdb="$tiny/$content/sdt/sdt.txt"
 		header
 		html_header
 		user_box
@@ -114,7 +114,6 @@ EOT
 	
 	*\ raw\ *)
 		# Plain text stats
-		sdtdb="../../content/sdt/sdt.txt"
 		header "Content-Type: text/plain"
 		cat << EOT
 Server time      : $(date)
