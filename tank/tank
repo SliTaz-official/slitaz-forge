@@ -2,7 +2,7 @@
 #
 # Tank - Admin Tank, backup, update and give stats.
 #
-# (C) 2012-2014 SliTaz - GNU General Public License.
+# (C) 2012-2017 SliTaz - GNU General Public License.
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
 . /lib/libtaz.sh
@@ -33,7 +33,7 @@ Commands:
   up-bugs      Update http://bugs.slitaz.org/
   up-irc       Update http://irc.slitaz.org/
   up-arm       Update http://arm.slitaz.org/
-  up-piclass   Update http://piclass.org/
+  up-scn       Update http://scn.slitaz.org/
 
 EOT
 }
@@ -140,11 +140,17 @@ case "$1" in
 		echo "Updating: slitaz-arm Hg repo..."
 		cd $REPOS/slitaz-arm && hg pull -u
 		echo "" ;;
-	up-piclass)
-		# Update piclass.org
-		echo -e "\nUpdating: piclass.org..."
-		cd /home/piclass/website
-		git pull && echo "" ;;
+	up-scn)
+		# Update scn.slitaz.org
+		echo -e "\nUpdating: scn.slitaz.org..."
+		cd $REPOS/slitaz-forge && hg pull -u
+		cp -f scn/style* $WWW/scn
+		cp -f scn/header.html $WWW/scn/lib
+		cp -a scn/plugins $WWW/scn
+		# Use TinyCM cmdline tool
+		cd $REPOS/tinycm && hg pull -u
+		./tinycm up $WWW/scn
+		echo "" ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
 		date >> $LOGFILE

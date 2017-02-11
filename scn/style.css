@@ -264,7 +264,7 @@ select {
 /* Round corner */
 
 pre, .button, .pctbar, .box, #login, #account-info, #user, img,
-input, textarea, select, #tools a, nav a {
+input, textarea, select, #tools a, nav a, #cloud-upload, .wall-message {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
@@ -323,7 +323,56 @@ input, textarea, select, #tools a, nav a {
 
 /* Plugins CSS */
 
-.post-tools { border-bottom: 1px dotted #ccc; 
-	border-top: 1px dotted #ccc; padding: 4px 0;}
+/* Blog */
+.post-tools { 
+	border-top: 1px dotted #ddd;
+	border-bottom: 1px dotted #ddd;
+	padding: 4px 0; }
 .post-tools a { text-decoration: none; }
 .post-tools a:hover { text-decoration: underline; }
+
+/* Forum */
+#hashtags { font-size: 16px; font-weight: bold; }
+#hashtags a { text-decoration: none; padding: 0 4px; }
+.topic { padding: 6px; margin: 4px; }
+.topic span a { text-decoration: none; color: #666;
+	font-weight: bold; padding-left: 2px; }
+.forum-msg { background-color: #eee; padding: 10px; 
+		border: 2px solid #ddd; width: 98%;}
+
+/* Cloud */
+#cloud-upload { 
+	text-align: center;
+	color: #444444;
+	border: 1px solid #cccccc;
+	padding: 0px;
+	margin: 4px 0px;
+	background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-image: -moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+}
+
+#cloud-upload input[type="file"] {
+	border: 0px solid #cccccc;
+	width: 85%;
+	-webkit-appearance: none;
+	-webkit-padding-end: 0px;
+	-webkit-padding-start: 0px;
+}
+
+/* Community */
+#wall-form textarea { height: 50px; background: #f8f8f8; }
+.wall-message {
+	border: 1px solid #ddd;
+	background: #fafafa;
+	margin: 20px 0;
+	padding: 0;
+}
+.wall-message div {
+	padding: 10px 0 0 10px;
+}
+.wall-message p {
+	border-top: 1px solid #eee;
+	padding: 10px;
+}
+
+
