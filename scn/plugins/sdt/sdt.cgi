@@ -7,9 +7,8 @@
 # show where SliTaz OS's are in the world. DB is in the flat file: 
 # sdt.txt & using | as separator for easy parsing.
 #
-. /usr/lib/slitaz/httphelper.sh
 
-std_summary() {
+sdt_summary() {
 	cat << EOT
 <pre>
 DB file    : <a href="content/sdt/sdt.txt">sdt.txt</a>
@@ -19,7 +18,7 @@ Distro     : $(wc -l $sdtdb | cut -d " " -f 1)
 EOT
 }
 
-std_table() {
+sdt_table() {
 	cat << EOT
 <table>
 	<thead>
@@ -48,7 +47,7 @@ EOT
 	echo "</table>"
 }
 
-std_check_ua() {
+sdt_check_ua() {
 	if ! echo "$HTTP_USER_AGENT" | fgrep -q "SliTaz/SDT"; then
 		echo "Only SDT clients are accepted" && exit 1
 	fi
@@ -56,7 +55,7 @@ std_check_ua() {
 
 case " $(GET sdt) " in
 	*\ add\ *)
-		std_check_ua
+		sdt_check_ua
 		sdtdb="../../content/sdt/sdt.txt"
 		date="$(date +%Y%m%d)"
 		user=$(GET user)
@@ -105,17 +104,16 @@ EOT
 	<b>sdt send [username]</b>
 <p>
 EOT
-		std_summary
+		sdt_summary
 		echo "<h3>Distro's table</h3>"
 		echo "<pre>"
-		std_table
+		sdt_table
 		echo "</pre>"
 		html_footer
 		exit 0 ;;
 	
 	*\ raw\ *)
-		# Plain text stats if the script is called directly
-		. /usr/lib/slitaz/httphelper.sh
+		# Plain text stats
 		sdtdb="../../content/sdt/sdt.txt"
 		header "Content-Type: text/plain"
 		cat << EOT
