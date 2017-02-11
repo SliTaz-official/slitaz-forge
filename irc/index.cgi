@@ -2,7 +2,7 @@
 #
 # Small CGI example to display TazIRC Log Bot logs.
 #
-. /usr/lib/slitaz/httphelper
+. /usr/lib/slitaz/httphelper.sh
 
 host="irc.freenode.net"
 chan="slitaz"
