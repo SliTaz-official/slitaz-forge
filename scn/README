@@ -3,7 +3,7 @@ SCN is powered by TinyCM. This folder has the custom CSS style and
 header skeleton.
 
 plugins/
-	Is for custom TinyCM/SliTaz pluging such as SDT web interface
+	Is for custom TinyCM/SliTaz plugins such as SDT web interface
 
 receipts/
 	Is the custom packages receipts for the first wordpress SCN.

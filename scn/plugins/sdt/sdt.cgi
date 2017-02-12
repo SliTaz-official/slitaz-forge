@@ -2,7 +2,7 @@
 #
 # TinyCM Plugin - SliTaz Distro Tracker
 #
-# sdt.cgi: SliTaz Distro over the world. We dont track users
+# sdt.cgi: SliTaz Distros over the world. We don't track users
 # info, no mail or IP but the localization. The goal of Sdt is to help 
 # show where SliTaz OS's are in the world. DB is in the flat file: 
 # sdt.txt & using | as separator for easy parsing.
@@ -89,7 +89,7 @@ EOT
 		exit 0 ;;
 	
 	*\ country\ *) 
-		# Show distro's by country
+		# Show distros by country
 		;;
 	
 	*\ sdt\ *)
@@ -105,7 +105,7 @@ EOT
 <p>
 EOT
 		sdt_summary
-		echo "<h3>Distro's table</h3>"
+		echo "<h3>Distros table</h3>"
 		echo "<pre>"
 		sdt_table
 		echo "</pre>"
