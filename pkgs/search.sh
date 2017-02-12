@@ -891,7 +891,8 @@ add_url_links() {
 
 display_cloud() {
 	arg=$1
-	[ /tmp/cloud-$arg -nt $pkglist ] && cat /tmp/cloud-$arg ||
+	[ /tmp/cloud-$arg-$SLITAZ_VERSION -nt $pkglist ] &&
+	cat /tmp/cloud-$arg-$SLITAZ_VERSION ||
 	find $WOK/ -maxdepth 2 -name receipt -exec sed \
 	 "/^$1=/!d;s/.*['\"<]\\(..*\\)[>\"'].*/\\1/" {} \; | awk '
 {
@@ -932,7 +933,7 @@ EOT
 			TAGS)       _p '%s tag'          '%s tags'          "$count" "$count";;
 		esac
 		echo '</p>'
-	} | tee /tmp/cloud-$arg
+	} | tee /tmp/cloud-$arg-$SLITAZ_VERSION
 }
 
 
