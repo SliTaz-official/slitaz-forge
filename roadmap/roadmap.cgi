@@ -1,10 +1,10 @@
 #!/bin/sh
 #
-. /usr/lib/slitaz/httphelper
+. /usr/lib/slitaz/httphelper.sh
 header
 
 # Default to next stable release.
-rel="5.0"
+rel="6.0"
 [ -n "$(GET release)" ] && rel="$(GET release)"
 taskdir="releases/$rel"
 
