@@ -8,7 +8,7 @@ dependencies and more.
 IN THIS RELEASE
 ---------------
 
-	* Use GET so we can copy past urls from a browser
+	* Use GET so we can copy paste urls from a browser
 	* Gettextise the search engine and use PO files
 	* auto form focus
 	* CSS3 style effects
