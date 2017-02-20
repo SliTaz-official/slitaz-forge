@@ -97,7 +97,7 @@ if ($handle = opendir('/home')) {
 			$pub = "/home/$dir/Public";
 			$user = "$dir";
 			if (file_exists($pub)) {
-				echo "	<li><a href=\"/~$user/\">$user</a>\n";
+				echo "	<li><a href='/~$user/'>$user</a>\n";
 				if (file_exists("$pub/profile.php")) {
 					require_once("$pub/profile.php");
 					echo "<span>Name: $name";
@@ -105,7 +105,7 @@ if ($handle = opendir('/home')) {
 						echo " | Location: $location"; 
 					}
 					if (! empty($scn_user)) { 
-						echo " | <a href=\"$scn_url$scn_user/\">SCN activity</a>"; 
+						echo " | <a href='$scn_url$scn_user'>SCN Profile</a>"; 
 					}
 					if (! empty($skills)) { 
 						echo " | Skills: $skills"; 
