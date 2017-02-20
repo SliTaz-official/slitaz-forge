@@ -1,9 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>SliTaz People</title>
-	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 	<meta name="description" content="slitaz people" />
 	<meta name="keywords" lang="en" content="slitaz network, slitaz developers, slitaz contributors" />
 	<meta name="robots" content="index, follow, all" />
@@ -40,68 +39,59 @@
 <div id="header">
 	<div id="logo"></div>
 	<div id="network">
-		<a href="http://www.slitaz.org/">Home
-			<!-- <img src="images/home.png" alt="[ Home ]" />--></a>
+		<a href="http://www.slitaz.org/">Home</a>
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://pro.slitaz.org/">Pro</a>
 		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
-		<a href="http://cook.slitaz.org/">Cook</a>
 	</div>
 	<h1><a href="http://people.slitaz.org/">SliTaz People</a></h1>
 </div>
 
-<!-- Block -->
-<div id="block">
-	<!-- Navigation -->
-	<div id="block_nav">
-		<h4><img src="images/development.png" alt="development.png" />Developers Corner</h4>
-		<ul>
-			<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
-			<li><a href="http://pizza.slitaz.me">Pizza</a></li>
-			<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
-			<li><a href="http://roadmap.slitaz.org/">Roadmap</a></li>
-		</ul>
-	</div>
-	<!-- Information/image -->
-	<div id="block_info">
-		<h4>People</h4>
-		<p>
-			Each contributor who has access to the project main server,
-			code name <a href="http://tank.slitaz.org/">Tank</a> can 
-			have a public directory.
-		</p>
-		<p>
-			You can help us maintain and improve this service with a small
-			donation to the SliTaz association:
-		</p>
-		<!-- PayPal Button -->
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-			style="display: inline;">
-			<input type="hidden" name="cmd" value="_s-xclick" />
-			<input type="hidden" name="hosted_button_id" value="4885025" />
-			<input type="image" src="images/paypal.png" name="submit" 
-				alt="PayPal - The safer, easier way to pay online!" />
-		</form>
-		<!-- Flattr Button -->
-		<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
-			href="http://www.slitaz.org/"></a>
-	</div>
-</div>
+<!-- Navigation menu -->
+<nav id="nav" role="navigation" tabindex="0">
+	<ul>
+		<li><a class="nav1" href="http://cook.slitaz.org/">Cook</a></li>
+		<li><a class="nav2" href="http://scn.slitaz.org/?wall">SCN Wall</a></li>
+		<li><a class="nav1" href="http://roadmap.slitaz.org/">Roadmap</a></li>
+		<li><a class="nav2" href="http://tank.slitaz.org/">Tank</a></li>
+		<li><a class="nav1" href="http://www.slitaz.org/en/devel/">Development</a></li>
+	</ul>
+	<p>
+		SliTaz contributors public content (info, packages, code, ...)
+	</p>
+</nav>
 
 <!-- Content -->
-<div id="content">
+<section id="content">
 
-<h2>SliTaz people</h2>
+<h2>Help SliTaz people</h2>
+
+<p>
+	You can help us maintain and improve this service with a small
+	donation to the SliTaz association:
+</p>
+<!-- PayPal Button -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+	style="display: inline;">
+	<input type="hidden" name="cmd" value="_s-xclick" />
+	<input type="hidden" name="hosted_button_id" value="4885025" />
+	<input type="image" src="images/paypal.png" name="submit" 
+		alt="PayPal - The safer, easier way to pay online!" />
+</form>
+<!-- Flattr Button -->
+<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
+	href="http://www.slitaz.org/"></a>
+
+<h3>Contributors</h3>
 
 <ul>
 <?php
 if ($handle = opendir('/home')) {
-	$scn_url = 'http://scn.slitaz.org/members';
+	$scn_url = 'http://scn.slitaz.org/?user=';
 	while (false !== ($dir = readdir($handle))) {
 		if ($dir != "." && $dir != "..") {
 			$pub = "/home/$dir/Public";
@@ -115,7 +105,7 @@ if ($handle = opendir('/home')) {
 						echo " | Location: $location"; 
 					}
 					if (! empty($scn_user)) { 
-						echo " | <a href=\"$scn_url/$scn_user/\">SCN activity</a>"; 
+						echo " | <a href=\"$scn_url$scn_user/\">SCN activity</a>"; 
 					}
 					if (! empty($skills)) { 
 						echo " | Skills: $skills"; 
@@ -136,9 +126,9 @@ if ($handle = opendir('/home')) {
 </ul>
 
 <!-- End of content -->
-</div>
+</section>
 
-<div style="margin-top: 100px;"></div>
+<div style="margin-top: 60px;"></div>
 
 <!-- Footer -->
 <div id="footer">
