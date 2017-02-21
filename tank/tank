@@ -49,6 +49,12 @@ case "$1" in
 		[ "$2" == "--nohg" ] || hg pull -u
 		rm -rf $VHOST/*.* $VHOST/images
 		cp -a tank/web/* $VHOST
+		# Be sure we have last version of libtaz.sh httphelper.sh
+		echo "$(colorize 33 'Updating:') libtaz.sh && httphelper.sh"
+		cd $REPOS/slitaz-base-files
+		[ "$2" == "--nohg" ] || hg pull -u
+		cp -f rootfs/lib/libtaz.sh /lib
+		cp -f rootfs/usr/lib/slitaz/httphelper.sh /usr/lib/slitaz
 		echo "" ;;
 	up-people)
 		# Update People web interface
@@ -197,7 +203,9 @@ EOF
 		echo -e "Done\n" ;;
 	online)
 		echo -n "Bugs online users: "
-		colorize 34 "$(ls /tmp/bugs/sessions | wc -l)" ;;
+		colorize 34 "$(ls /tmp/bugs/sessions | wc -l)" 
+		echo -n "SCN online users: "
+		colorize 34 "$(ls /tmp/tinycm/sessions | wc -l)" ;;
 	*)
 		usage ;;
 esac
