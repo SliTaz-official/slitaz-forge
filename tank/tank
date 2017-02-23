@@ -156,8 +156,7 @@ case "$1" in
 		cp -a scn/plugins $WWW/scn
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
-		./tinycm up $WWW/scn
-		echo "" ;;
+		./tinycm up $WWW/scn ;;
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
 		date >> $LOGFILE
