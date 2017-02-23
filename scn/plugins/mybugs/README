@@ -1,0 +1,7 @@
+mybugs - TinyCM/SCN plugin
+--------------------------------------------------------------------------------
+
+user.sh is sourced in users profile page. The original script is in the
+tazbug Hg repository: web/plugins/mybugs
+
+bugdir.conf: set path to bug database. On Tank: /home/slitaz/www/bugs/bug

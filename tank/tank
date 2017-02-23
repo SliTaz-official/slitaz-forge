@@ -152,6 +152,7 @@ case "$1" in
 		cd $REPOS/slitaz-forge && hg pull -u
 		cp -f scn/style* $WWW/scn
 		cp -f scn/header.html $WWW/scn/lib
+		rm -rf $WWW/scn/images && cp -a scn/images $WWW/scn
 		cp -a scn/plugins $WWW/scn
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
