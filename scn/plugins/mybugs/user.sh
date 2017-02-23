@@ -39,8 +39,8 @@ if fgrep -q -l "USER=\"$user\"" ${bugdir}/*/*/msg.*; then
 		message="$(fgrep MSG= $msg | cut -d \" -f 2 | cut -c 1-40)"
 		cat << EOT
 <img src='images/bug.png' alt='' /> \
-<a href="?id=$id">Bug $id:</a> <span class="date">$DATE</span> \
-<a href="?id=$id#msg${msgid}">${message}...</a>
+<a href="${url}?id=$id">Bug $id:</a> <span class="date">$DATE</span> \
+<a href="${url}?id=$id#msg${msgid}">${message}...</a>
 EOT
 	done
 	echo "</pre>"
@@ -52,7 +52,7 @@ if [ "$show_more" ]; then
 		echo "<a href='?mybugs&user=$user'>$(gettext 'View all my bugs and messages')</a>"
 	else
 		echo "$(gettext 'View all my bugs and debug messages on:') "
-		echo "<a href='?mybugs&user=$user'>bugs.slitaz.org</a>"
+		echo "<a href='${url}?mybugs&user=$user'>bugs.slitaz.org</a>"
 	fi
 	echo "</p>"
 fi
