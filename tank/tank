@@ -42,6 +42,7 @@ case "$1" in
 	backup|-b)
 		# Backup config files and SQL db.
 		echo "TODO" ;;
+		
 	up-tank)
 		# Update Tank web interface
 		echo -e "\nUpdating: tank.slitaz.org..."
@@ -56,6 +57,7 @@ case "$1" in
 		#cp -f rootfs/lib/libtaz.sh /lib
 		#cp -f rootfs/usr/lib/slitaz/httphelper.sh /usr/lib/slitaz
 		echo "" ;;
+		
 	up-people)
 		# Update People web interface
 		echo -e "\nUpdating: people.slitaz.org..."
@@ -64,6 +66,7 @@ case "$1" in
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people
 		echo "" ;;
+		
 	up-pro)
 		# Update Pro website
 		echo -e "\nUpdating: pro.slitaz.org..."
@@ -72,6 +75,7 @@ case "$1" in
 		rm -rf $WWW/pro/web/*
 		cp -a pro/* $WWW/pro/web
 		echo "" ;;
+		
 	up-boot)
 		# Update Web Boot interface
 		echo -e "\nUpdating: boot.slitaz.org..."
@@ -80,6 +84,7 @@ case "$1" in
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot
 		echo "" ;;
+		
 	up-cook)
 		# Update Web Boot interface
 		echo -e "\nUpdating: cook.slitaz.org..."
@@ -113,6 +118,7 @@ case "$1" in
 			$WWW/cook/undigest/cookiso.cgi \
 			$WWW/cook/cross/arm/cookiso.cgi
 		echo "" ;;
+		
 	up-roadmap)
 		# Update Roadmap Web interface
 		echo -e "\nUpdating: roadmap.slitaz.org..."
@@ -120,6 +126,7 @@ case "$1" in
 		[ "$2" == "--nohg" ] || hg pull -u
 		cp -a roadmap/* $WWW/roadmap
 		echo "" ;;
+		
 	up-bugs)
 		# Update Bugs Web interface
 		bugs="$WWW/bugs"
@@ -130,6 +137,7 @@ case "$1" in
 		cp README ${bugs}
 		chown -R www.www ${bugs}
 		echo "" ;;
+		
 	up-irc)
 		# Update IRC interface
 		echo -e "\nUpdating: irc.slitaz.org..."
@@ -138,6 +146,7 @@ case "$1" in
 		rm -rf $WWW/irc/images $WWW/irc/lib
 		cp -a irc/* $WWW/irc
 		echo "" ;;
+		
 	up-arm)
 		# Update ARM Web interface
 		echo -e "\nUpdating: arm.slitaz.org..."
@@ -146,6 +155,7 @@ case "$1" in
 		echo "Updating: slitaz-arm Hg repo..."
 		cd $REPOS/slitaz-arm && hg pull -u
 		echo "" ;;
+		
 	up-scn)
 		# Update scn.slitaz.org
 		echo -e "\nUpdating: scn.slitaz.org..."
@@ -153,10 +163,14 @@ case "$1" in
 		cp -f scn/style* $WWW/scn
 		cp -f scn/header.html $WWW/scn/lib
 		cp -a scn/plugins $WWW/scn
+		cp -a scn/images $WWW/scn
+		# SUP plugin hg.slitaz.org/sup
+		cd $REPOS/sup && hg pull -u
+		cp -a server/sup $WWW/scn/plugins
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
-		./tinycm up $WWW/scn 
-		cp -a scn/images/* $WWW/scn/images ;;
+		./tinycm up $WWW/scn ;;
+		
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
 		date >> $LOGFILE
@@ -165,6 +179,7 @@ case "$1" in
 			/var/www/cgi-bin/awstats.pl \
 				-config=$vh.slitaz.org -update 2>&1 | tee -a $LOGFILE
 		done && echo "" ;;
+		
 	adduser)
 		echo ""
 		if [ -n "$2" ]; then
@@ -201,12 +216,14 @@ case "$1" in
 EOF
 		#chown -R $user.$user /home/$user
 		echo -e "Done\n" ;;
+		
 	online)
 		echo -n "Bugs online users: "
 		colorize 34 "$(ls /tmp/bugs/sessions | wc -l)" 
 		echo -n "SCN online users: "
 		colorize 34 "$(ls /tmp/tinycm/sessions | wc -l)" ;;
+		
 	*)
 		usage ;;
-esac
-exit 0
+		
+esac && exit 0
