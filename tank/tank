@@ -167,6 +167,7 @@ case "$1" in
 		# SUP plugin hg.slitaz.org/sup
 		cd $REPOS/sup && hg pull -u
 		cp -a server/sup $WWW/scn/plugins
+		cp -a wok/sup-demo $WWW/scn/content/sup/wok
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
 		./tinycm up $WWW/scn ;;
