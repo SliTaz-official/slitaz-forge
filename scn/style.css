@@ -322,18 +322,22 @@ input, textarea, select, #tools a, nav a, #cloud-upload, .wall-message {
 
 #footer a { padding: 0 2px; }
 
-/* Plugins CSS */
+/* 
+ * 
+ * Plugins CSS Styles
+ * 
+ */
 
 /* Blog */
 .post-tools { 
 	border-top: 1px dotted #ddd;
 	border-bottom: 1px dotted #ddd;
 	padding: 4px 0; }
-.post-tools a { text-decoration: none; }
+.post-tools a      { text-decoration: none; }
 .post-tools a:hover { text-decoration: underline; }
 
 /* Forum */
-#hashtags { font-size: 16px; font-weight: bold; }
+#hashtags   { font-size: 16px; font-weight: bold; }
 #hashtags a { text-decoration: none; padding: 0 4px; }
 .topic { padding: 6px; margin: 4px; }
 .topic span a { text-decoration: none; color: #666;
@@ -383,3 +387,14 @@ input, textarea, select, #tools a, nav a, #cloud-upload, .wall-message {
 	border-bottom: 1px solid #ddd; 
 }
 #users td, #plugins td { padding: 4px 0; }
+
+/*
+ * 
+ * SUP CSS Style with receip support, upload, confirm, pkg list, etc
+ * 
+ */
+
+.comment { color: #a00; }
+.value   { color: #e50; }
+.var     { color: #05a; }
+.color32 { color: green; }
