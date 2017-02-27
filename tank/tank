@@ -165,9 +165,9 @@ case "$1" in
 		cp -a scn/plugins $WWW/scn
 		cp -a scn/images $WWW/scn
 		# SUP plugin hg.slitaz.org/sup
+		colorize 36 "Updating SUP plugin..."
 		cd $REPOS/sup && hg pull -u
 		cp -a server/sup $WWW/scn/plugins
-		cp -a sup-demo $WWW/scn/content/sup/wok
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
 		./tinycm up $WWW/scn ;;
