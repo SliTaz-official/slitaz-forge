@@ -100,7 +100,7 @@ EOT
 		cat << EOT
 <h2>$d</h2>
 <p>
-	$(gettext "Add your SliTaz distro to the database to help know who use
+	$(gettext "Add your SliTaz distro to the database to help us to know who uses
 	SliTaz :-) Open a terminal and execute:") 
 	<b>sdt send [username]</b>
 <p>
