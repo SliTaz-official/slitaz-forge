@@ -59,7 +59,7 @@ EOT
 <div style="text-align: center;">
 	<iframe 
 		src="http://webchat.freenode.net?channels=%23slitaz&uio=OT10cnVlJjExPTI0Ng32"
-		width="647" height="400">
+		width="100%" height="480">
 	</iframe>
 </div>
 EOT
