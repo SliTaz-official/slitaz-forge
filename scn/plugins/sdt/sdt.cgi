@@ -84,8 +84,7 @@ EOT
 	*\ geoloc\ *) 
 		# Show IP and country
 		header "Content-Type: text/plain"
-		#echo "$REMOTE_ADDR"
-		echo "178.196.15.131" 
+		echo "$REMOTE_ADDR"
 		exit 0 ;;
 	
 	*\ country\ *) 
@@ -100,8 +99,7 @@ EOT
 		cat << EOT
 <h2>$d</h2>
 <p>
-	$(gettext "Add your SliTaz distro to the database to help us to know who uses
-	SliTaz :-) Open a terminal and execute:") 
+	$(gettext "Add your SliTaz distro to the database. Open a terminal and execute:") 
 	<b>sdt send [username]</b>
 <p>
 EOT
