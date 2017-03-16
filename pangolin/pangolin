@@ -100,10 +100,10 @@ case "$1" in
 		newline
 		boldify "Updating play.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg update
-		cp -rf play.slitaz.me/* ${www}/play.slitaz.org/public_html
+		cp -rf play.slitaz.me/* ${WWW}/play.slitaz.org/public_html
 		# Tazcraft
 		cd ${REPOS}/slitaz-dev-tools && hg update
-		cp -rf tazcraft/cgi-bin ${www}/play.slitaz.org/public_html/tazcraft
+		cp -rf tazcraft/cgi-bin ${WWW}/play.slitaz.org/public_html/tazcraft
 		newline ;;
 	
 	up-pangolin)
