@@ -79,16 +79,16 @@ case "$1" in
 		# Update hg.slitaz.org template
 		newline
 		boldify "Updating Mercurial template..."
-		cd $REPOS/slitaz-dev-tools && hg update 
-		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
-		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
+		cd ${REPOS}/slitaz-dev-tools && hg update 
+		cp -a slitaz-mercurial-style/* ${PYTHON_LIB}/site-packages/mercurial
+		chown -R root.root ${PYTHON_LIB}/site-packages/mercurial/templates
 		newline ;;
 		
 	up-pizza)
 		# Update pizza.slitaz.me
 		newline
 		boldify "Updating Pizza builder..."
-		cd $REPOS/slitaz-pizza && hg update
+		cd ${REPOS}/slitaz-pizza && hg update
 		cp /etc/slitaz/pizza.conf /etc/slitaz/pizza.conf.bak
 		make install; cd ..
 		cp -f /etc/slitaz/pizza.conf.bak /etc/slitaz/pizza.conf
@@ -112,7 +112,7 @@ case "$1" in
 		newline
 		boldify "Updating: pangolin.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg up
-		cp -a pangolin/web/* ${www}/pangolin.slitaz.org/public_html
+		cp -a pangolin/web/* ${WWW}/pangolin.slitaz.org/public_html
 		newline ;;
 	
 	adduser)
