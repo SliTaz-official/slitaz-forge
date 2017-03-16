@@ -104,7 +104,7 @@ case "$1" in
 		# Tazcraft
 		cd ${REPOS}/slitaz-dev-tools && hg update
 		rm -rf ${WWW}/play.slitaz.me/public_html/tazcraft
-		cp -rf tazcraft/cgi-bin/* ${WWW}/play.slitaz.me/public_html/tazcraft
+		cp -rf tazcraft/cgi-bin ${WWW}/play.slitaz.me/public_html/tazcraft
 		newline ;;
 	
 	up-pangolin)
