@@ -21,7 +21,6 @@
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://pro.slitaz.org/">Pro</a>
 		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
@@ -117,7 +116,6 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	<li><a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a> - previous SliTaz forum.</li>
 	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.</li>
 	<li><a href="http://pizza.slitaz.me/">pizza.slitaz.me</a> - SliTaz flavor builder.</li>
-	<li><a href="http://scn.slitaz.org/">scn.slitaz.org</a> - Community platform.</li>
 </ul>
 
 <h2><img
@@ -138,8 +136,9 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	<li><a href="http://boot.slitaz.org/">boot.slitaz.org</a> - gPXE Web boot.</li>
 	<li><a href="http://cook.slitaz.org/">cook.slitaz.org</a> - SliTaz Build Bot.</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.</li>
-	<li><a href="http://pro.slitaz.org/">slitaz.pro</a> - SliTaz Professional services.</li>
-	<!-- bb cloud ssfs stats store tank -->
+	<li><a href="http://pro.slitaz.org/">pro.slitaz.org</a> - SliTaz Professional services.</li>
+	<li><a href="http://scn.slitaz.org/">scn.slitaz.org</a> - Community platform.</li>
+	<!-- ssfs stats store tank -->
 </ul>
     
 <a name="mirrors"></a>

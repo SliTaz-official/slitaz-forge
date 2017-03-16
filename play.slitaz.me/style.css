@@ -1,7 +1,7 @@
-/* CSS style for SliTaz.me */
+/* CSS style for play.SliTaz.me */
 
 html { min-height: 102%; }
-body { font: 13px sans-serif, vernada, arial; margin: 0; }
+body { font-size: 90%; margin: 0; }
 h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
 h1 a { color: #fff; text-decoration: none; }
 h2 { color: #444; } h3 { color: #666; font-size: 140%; }
