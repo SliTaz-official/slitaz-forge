@@ -8,6 +8,10 @@ h2 { color: #444; } h3 { color: #666; font-size: 140%; }
 a { text-decoration: underline; color: #215090; }
 a:hover { text-decoration: none; }
 img { border: 0pt none; vertical-align: middle; }
+pre {
+	overflow: auto;
+	font-size: 110%;
+}
 
 /* Header */
 
