@@ -22,9 +22,10 @@ Commands:
   up-forum     Update forum.slitaz.org theme
   up-doc       Update doc.slitaz.org theme and configs
   up-hg        Update Hg web interface hg.slitaz.org
-  adduser      Add a user to Hg.
-  stats        Display some server stats.
-  backup       Backup MySQL DB and files.
+  up-pizza     Update Pizza web interface pizza.slitaz.me
+  up-pangolin  Update pangolin.slitaz.org virtual host
+  adduser      Add a new user to Hg
+  stats        Display some server stats
 
 EOT
 }
@@ -48,12 +49,14 @@ separator() {
 #
 
 case "$1" in
+
 	up-www)
 		# Update website from repo.
 		newline
 		boldify "Updating: www.slitaz.org..."
 		cd ${WEBSITE} && hg pull -u 
 		newline ;;
+	
 	up-forum)
 		# Update forum.slitaz.org theme
 		newline
@@ -61,6 +64,7 @@ case "$1" in
 		cd ${REPOS}/slitaz-forge && hg up
 		cp -a forum/my-templates ${WWW}/forum.slitaz.org/public_html 
 		newline ;;
+	
 	up-doc)
 		# Update doc.slitaz.org theme
 		newline
@@ -70,25 +74,48 @@ case "$1" in
 		chown www.www ${WWW}/doc.slitaz.org/public_html/conf
 		chown www.www ${WWW}/doc.slitaz.org/public_html/conf/local.php
 		newline ;;
+	
 	up-hg)
-		# Update hg.slitaz.org template.
+		# Update hg.slitaz.org template
 		newline
 		boldify "Updating Mercurial template..."
 		cd $REPOS/slitaz-dev-tools && hg update 
 		cp -a slitaz-mercurial-style/* $PYTHON_LIB/site-packages/mercurial
 		chown -R root.root $PYTHON_LIB/site-packages/mercurial/templates
 		newline ;;
+		
+	up-pizza)
+		# Update pizza.slitaz.me
+		newline
+		boldify "Updating Pizza builder..."
+		cd $REPOS/slitaz-pizza && hg update
+		cp /etc/slitaz/pizza.conf /etc/slitaz/pizza.conf.bak
+		make install; cd ..
+		cp -f /etc/slitaz/pizza.conf.bak /etc/slitaz/pizza.conf
+		pizza up-files
+		newline ;;
+	
+	up-play)
+		# Update play.slitaz.me
+		newline
+		boldify "Updating play.slitaz.org..."
+		cd $REPOS/slitaz-dev-tools && hg update
+		cp -rf play/web/* ${www}/play.slitaz.org/publc_html
+		newline ;;
+	
 	up-pangolin)
 		# Update pangolin.slitaz.org
 		newline
 		boldify "Updating: pangolin.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg up
-		cp -a pangolin/web/* $WWW/pangolin.slitaz.org/public_html
+		cp -a pangolin/web/* ${www}/pangolin.slitaz.org/public_html
 		newline ;;
+	
 	adduser)
 		[ ! "$2" ] && echo "Missing user name arg" && exit 0
 		[ ! "$3" ] && echo "Missing password arg" && exit 0
 		htpasswd -b ${HGUSERS} $2 $3 ;;
+	
 	stats)
 		# Echo some stats.
 		newline
@@ -102,8 +129,6 @@ case "$1" in
 		separator
 		who 
 		newline ;;
-	backup)
-		echo "TODO: backup MySQL, SCN files, etc" ;;
 	*)
 		usage ;;
 esac
