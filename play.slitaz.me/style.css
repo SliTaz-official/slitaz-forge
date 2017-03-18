@@ -13,6 +13,11 @@ pre {
 	font-size: 110%;
 }
 
+table { width: 100%; border-collapse: collapse; }
+thead { font-weight: bold; }
+tr { padding:.3em 1em; border-bottom: 1px solid #ddd; }
+td { padding: 4px 0; }
+
 /* Header */
 
 #header {
