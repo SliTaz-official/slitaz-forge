@@ -20,26 +20,26 @@ td { padding: 4px 0; }
 
 /* Header */
 
-#header {
+header {
 	background: #222;
 	height: 40px;
 	border-bottom: 4px solid #682368;
 }
 
-#header h1 {
+header h1 {
 	margin: 0;
 	padding: 8px 0 0 42px;
 	width: 250px;
 }
 
-#header h1 a { 
+header h1 a { 
 	color: white; 
 	text-decoration: none;
 	font-size: 20px;
 	font-style: italic;
 }
 
-#header h1 a:hover { 
+header h1 a:hover { 
 	color: #afafaf;
 }
 
