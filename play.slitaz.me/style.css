@@ -10,8 +10,12 @@ a:hover { text-decoration: none; }
 img { border: 0pt none; vertical-align: middle; }
 pre {
 	overflow: auto;
-	font-size: 110%;
+	font-size: 120%;
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: 10px;
 }
+pre img { margin: 4px 4px 4px 0px; }
 
 table { width: 100%; border-collapse: collapse; }
 thead { font-weight: bold; }
