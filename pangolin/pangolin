@@ -103,9 +103,10 @@ case "$1" in
 		cd ${REPOS}/slitaz-forge && hg update
 		cp -rf play.slitaz.me/* ${WWW}/play.slitaz.me/public_html
 		# Tazcraft
-		cd ${REPOS}/slitaz-dev-tools && hg update
+		cd ${REPOS}/tazcraft && hg update
 		rm -rf ${WWW}/play.slitaz.me/public_html/tazcraft
-		cp -rf tazcraft/cgi-bin ${WWW}/play.slitaz.me/public_html/tazcraft
+		cp -rf tazcraft/web ${WWW}/play.slitaz.me/public_html/tazcraft
+		make install-server
 		newline ;;
 	
 	up-pangolin)
