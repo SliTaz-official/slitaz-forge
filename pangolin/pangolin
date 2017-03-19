@@ -2,8 +2,7 @@
 #
 # Pangolin admin utility
 #
-# Copyright (C) 2012-2014 SliTaz GNU/Linux - BSD License
-#
+# Copyright (C) 2012-2017 SliTaz GNU/Linux - BSD License
 # Authors : Christophe Lincoln <pankso@slitaz.org>
 #
 
@@ -17,12 +16,14 @@ usage() {
 	cat << EOT
 
 Usage: $(basename $0) [command]
+
 Commands:
   up-www       Update website www.slitaz.org
   up-forum     Update forum.slitaz.org theme
   up-doc       Update doc.slitaz.org theme and configs
   up-hg        Update Hg web interface hg.slitaz.org
   up-pizza     Update Pizza web interface pizza.slitaz.me
+  up-play      Update Gamers web interface play.slitaz.me
   up-pangolin  Update pangolin.slitaz.org virtual host
   adduser      Add a new user to Hg
   stats        Display some server stats
@@ -108,7 +109,17 @@ case "$1" in
 		newline ;;
 	
 	up-pangolin)
-		# Update pangolin.slitaz.org
+		# Update pangolin.slitaz.org and tools
+		newline
+		boldify "Updating tool: pangolin"
+		cd ${REPOS}/slitaz-forge/pangolin && hg up
+		make install
+		
+		newline
+		boldify "Updating tool: slitaz-release"
+		cd ${REPOS}/slitaz-dev-tools/slitaz-release && hg up
+		make install
+		
 		newline
 		boldify "Updating: pangolin.slitaz.org..."
 		cd ${REPOS}/slitaz-forge && hg up
@@ -118,21 +129,22 @@ case "$1" in
 	adduser)
 		[ ! "$2" ] && echo "Missing user name arg" && exit 0
 		[ ! "$3" ] && echo "Missing password arg" && exit 0
-		htpasswd -b ${HGUSERS} $2 $3 ;;
+		htpasswd -b ${HGUSERS} "$2" "$3" ;;
 	
 	stats)
 		# Echo some stats.
 		newline
-		boldify "Disk usage"
-		separator
-		df -h | grep ^/dev
 		boldify "Memory usage"
 		separator
 		free -m | grep ^Mem
+		newline
 		boldify "Connected users"
 		separator
 		who 
-		newline ;;
+		newline
+		boldify "HG users"
+		cat ${HGUSERS} | wc -l ;;
+	
 	*)
 		usage ;;
 esac
