@@ -1,7 +1,7 @@
 /* CSS style for SliTaz Bugs/TinyCM */
 
 html { min-height: 102%; }
-body { font: 13px sans-serif, vernada, arial; margin: 0; }
+body { font: 100% sans-serif, vernada, arial; margin: 0; }
 h1 { margin: 0; padding: 8px; color: #fff; font-size: 20px; }
 h1 a { color: #fff; text-decoration: none; }
 h2 { color: #444; } h3 { color: #666; font-size: 140%; }
@@ -101,7 +101,6 @@ thead { font-weight: bold; }
 /* Navigation */
 
 nav {
-	font-size: 120%;
 	min-height: 54px;
 	background: #ddd; 
 	padding: 30px 6% 0;
@@ -127,7 +126,7 @@ nav a, nav form {
 	-webkit-transition: background-color 0.6s;
 	transition: background-color 0.6s;
 }
-nav p { padding: 8px; color: #333; font-size: 92%; }
+nav p { padding: 8px; color: #333; font-size: 90%; }
 
 nav input { padding: 0px;}
 .nav1 { background-color: #333; }
@@ -175,6 +174,7 @@ nav input { padding: 0px;}
 	padding: 0 20px;
 	text-align: justify;
 	max-width: 680px;
+	font: 100% sans-serif, vernada, arial;
 }
 
 #edit textarea { width: 100%; height: 240px; background: #f8f8f8; }
@@ -398,3 +398,4 @@ input, textarea, select, #tools a, nav a, #cloud-upload, .wall-message {
 .value   { color: #e50; }
 .var     { color: #05a; }
 .color32 { color: green; }
+.float-right { float: right; }
