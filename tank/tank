@@ -24,16 +24,17 @@ Commands:
   up-stats     Update Awstats statistics (run by cron)
   online       Show online users
 
-  up-tank      Update http://tank.slitaz.org/
-  up-people    Update http://people.slitaz.org/
-  up-pro       Update http://pro.slitaz.org/
-  up-boot      Update http://boot.slitaz.org/
-  up-cook      Update http://cook.slitaz.org/
-  up-roadmap   Update http://roadmap.slitaz.org/
-  up-bugs      Update http://bugs.slitaz.org/
-  up-irc       Update http://irc.slitaz.org/
-  up-arm       Update http://arm.slitaz.org/
-  up-scn       Update http://scn.slitaz.org/
+  up-tank      Update tank.slitaz.org
+  up-people    Update people.slitaz.org
+  up-pro       Update pro.slitaz.org
+  up-boot      Update boot.slitaz.org
+  up-cook      Update cook.slitaz.org
+  up-roadmap   Update roadmap.slitaz.org
+  up-bugs      Update bugs.slitaz.org
+  up-irc       Update irc.slitaz.org
+  up-arm       Update arm.slitaz.org
+  up-scn       Update scn.slitaz.org
+  up-seb       Update seb.slitaz.org
 
 EOT
 }
@@ -164,13 +165,30 @@ case "$1" in
 		cp -f scn/header.html $WWW/scn/lib
 		cp -a scn/plugins $WWW/scn
 		cp -a scn/images $WWW/scn
+		
 		# SUP plugin hg.slitaz.org/sup
 		colorize 36 "Updating SUP plugin..."
 		cd $REPOS/sup && hg pull -u
 		cp -a server/sup $WWW/scn/plugins
+		
 		# Use TinyCM cmdline tool
 		cd $REPOS/tinycm && hg pull -u
 		./tinycm up $WWW/scn ;;
+	
+	up-seb)
+		# Update seb.slitaz.org
+		echo -e "\nUpdating: seb.slitaz.org..."
+		cd $REPOS/slitaz-forge && hg pull -u
+		
+		cp -f seb/*.css $WWW/seb
+		cp -f seb/header.html $WWW/seb/lib
+		cp -f seb/footer.html $WWW/seb/lib
+		#cp -a seb/plugins $WWW/seb
+		cp -a seb/images $WWW/seb
+		
+		# Use TinyCM cmdline tool
+		cd $REPOS/tinycm && hg pull -u
+		./tinycm up $WWW/seb ;;
 		
 	up-stats)
 		echo -e "\nUpdating all awstats databases..." | tee -a $LOGFILE
