@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tazpkg Web\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-03 03:46+0200\n"
-"PO-Revision-Date: 2017-02-06 14:24+0100\n"
+"PO-Revision-Date: 2017-10-09 15:16+0100\n"
 "Last-Translator: Hans-Günter Theisgen\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -23,10 +23,9 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: lib\n"
 
-#, fuzzy
 #: search.sh:147
 msgid "Cooker"
-msgstr "Bearbeitung"
+msgstr "Paketerzeugung"
 
 #: search.sh:148
 msgid "Download"
@@ -115,8 +114,8 @@ msgstr "Suche"
 #: search.sh:358
 msgid "%s package"
 msgid_plural "%s packages"
-msgstr[0] "Paket"
-msgstr[1] "Pakete"
+msgstr[0] "%s Paket"
+msgstr[1] "%s Pakete"
 
 #: search.sh:360
 msgid " and %s file in %s database"
@@ -270,7 +269,7 @@ msgstr "Vorgeschlagen"
 
 #: search.sh:1155 search.sh:1157
 msgid "Show cooking log"
-msgstr "Bearbeitungsprotokoll zeigen"
+msgstr "Kompilierungsprotokoll zeigen"
 
 #: search.sh:1159
 msgid "N/A"
@@ -348,7 +347,7 @@ msgstr[1] "%s Dateien"
 
 #: search.sh:1448
 msgid "Descriptions matching \"%s\""
-msgstr "Auf %s passende Beschreibungen"
+msgstr "Auf \"%s\" passende Beschreibungen"
 
 #: search.sh:1471
 msgid "Known bugs in the packages"
@@ -382,10 +381,9 @@ msgstr "Rezept des Paketes \"%s\""
 msgid "Package names matching \"%s\""
 msgstr "Auf \"%s\" passende Paketnamen"
 
-#, fuzzy
 #: search.sh:1713
 msgid "Packages providing the package \"%s\""
-msgstr "Resultate für : package providing %s"
+msgstr "Pakete, die die Funktionalität des Paketes \"%s\" bieten"
 
 #: lib/header.sh:11
 #, sh-format
@@ -414,15 +412,12 @@ msgstr "Forum"
 
 #: lib/header.sh:32
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #: lib/header.sh:33
 msgid "Shop"
-msgstr ""
+msgstr "Laden"
 
 #: lib/header.sh:35
 msgid "Hg"
-msgstr ""
-
-#~ msgid "Result for: $SEARCH"
-#~ msgstr "Resultate für : $SEARCH"
+msgstr "Hg"
