@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TazPkg Web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 03:46+0200\n"
+"POT-Creation-Date: 2018-01-30 11:17+0200\n"
 "PO-Revision-Date: 2014-06-25 18:01+0400\n"
 "Last-Translator: Ali Rashidi <alirashidi17@yahoo.com>\n"
 "Language-Team: Ali Rashidi <alirashidi17@yahoo.com>\n"
@@ -27,107 +27,107 @@ msgstr "Cooker"
 msgid "Download"
 msgstr ""
 
-#: search.sh:149 search.sh:273
+#: search.sh:149 search.sh:275
 msgid "Receipt"
 msgstr "دریافتی"
 
-#: search.sh:268
+#: search.sh:270
 msgid "Package name"
 msgstr "پکیج"
 
-#: search.sh:269 search.sh:1097 search.sh:1218
+#: search.sh:271 search.sh:1104 search.sh:1230
 msgid "Description"
 msgstr "توضیحات"
 
-#: search.sh:270
+#: search.sh:272
 msgid "Tag"
 msgstr "برچسب ها"
 
-#: search.sh:271
+#: search.sh:273
 msgid "Architecture"
 msgstr "اصلی"
 
-#: search.sh:272 lib/header.sh:34
+#: search.sh:274 lib/header.sh:39
 msgid "Bugs"
 msgstr "باگ ها"
 
-#: search.sh:274
+#: search.sh:276
 msgid "Dependencies"
 msgstr "وابسته ها"
 
-#: search.sh:275
+#: search.sh:277
 msgid "Build dependencies"
 msgstr "ساخت وابسته ها"
 
-#: search.sh:276
+#: search.sh:278
 msgid "File"
 msgstr "فایل"
 
-#: search.sh:277
+#: search.sh:279
 msgid "File list"
 msgstr "لیست فایل"
 
-#: search.sh:278
+#: search.sh:280
 msgid "Common files"
 msgstr "فایل های عمومی"
 
-#: search.sh:279 search.sh:1092
+#: search.sh:281 search.sh:1099
 msgid "Category"
 msgstr "دسته بندی"
 
-#: search.sh:280 search.sh:1103
+#: search.sh:282 search.sh:1114
 msgid "Maintainer"
 msgstr "حامی"
 
-#: search.sh:281 search.sh:1109
+#: search.sh:283 search.sh:1121
 msgid "License"
 msgstr "مجوز"
 
-#: search.sh:290
+#: search.sh:292
 #, fuzzy
 msgid "SliTaz version"
 msgstr "SliTaz پکیج"
 
-#: search.sh:291
+#: search.sh:293
 msgid "cooking"
 msgstr "آشپزی"
 
-#: search.sh:296
+#: search.sh:298
 msgid "tiny"
 msgstr "کوچک"
 
-#: search.sh:297
+#: search.sh:299
 msgid "undigest"
 msgstr ""
 
-#: search.sh:298
+#: search.sh:300
 msgid "backports"
 msgstr ""
 
-#: search.sh:302
+#: search.sh:304
 msgid "Search"
 msgstr "جستجو"
 
-#: search.sh:358
+#: search.sh:360
 msgid "%s package"
 msgid_plural "%s packages"
 msgstr[0] ""
 
-#: search.sh:360
+#: search.sh:362
 msgid " and %s file in %s database"
 msgid_plural " and %s files in %s database"
 msgstr[0] ""
 
-#: search.sh:394
+#: search.sh:396
 msgid "Page generated in %s second."
 msgid_plural "Page generated in %s seconds."
 msgstr[0] ""
 
-#: search.sh:505
+#: search.sh:507
 msgid "Nothing found"
 msgstr ""
 
-#: search.sh:664
+#: search.sh:666
 msgid ""
 "\"glibc-base\" and \"gcc-lib-base\" are implicit dependencies, <b>every</b> "
 "package is supposed to depend on them."
@@ -135,232 +135,232 @@ msgstr ""
 "وابسته های الزامی هستند gcc-lib-base و \tglibc-base\n"
 "\t<b>همه ی</b> پکیج ها آن دو را نیاز دارند."
 
-#: search.sh:711 search.sh:1440
+#: search.sh:713 search.sh:1452
 #, fuzzy
 msgid "Please specify name of the package."
 msgstr "%s :شرح پکیج"
 
-#: search.sh:726
+#: search.sh:728
 msgid "Package \"%s\" was not found"
 msgstr "موجود نیست %s پکیج "
 
-#: search.sh:924
+#: search.sh:930
 #, fuzzy
 msgid "%s architecture"
 msgid_plural "%s architectures"
 msgstr[0] "اصلی"
 
-#: search.sh:925
+#: search.sh:931
 #, fuzzy
 msgid "%s maintainer"
 msgid_plural "%s maintainers"
 msgstr[0] "حامی"
 
-#: search.sh:926
+#: search.sh:932
 #, fuzzy
 msgid "%s license"
 msgid_plural "%s licenses"
 msgstr[0] "مجوز"
 
-#: search.sh:927
+#: search.sh:933
 #, fuzzy
 msgid "%s category"
 msgid_plural "%s categories"
 msgstr[0] "دسته بندی"
 
-#: search.sh:928
+#: search.sh:934
 msgid "%s tag"
 msgid_plural "%s tags"
 msgstr[0] ""
 
-#: search.sh:1065
+#: search.sh:1072
 msgid "base-system"
 msgstr ""
 
-#: search.sh:1065
+#: search.sh:1072
 msgid "x-window"
 msgstr ""
 
-#: search.sh:1065
+#: search.sh:1072
 msgid "utilities"
 msgstr ""
 
-#: search.sh:1065
+#: search.sh:1072
 msgid "network"
 msgstr ""
 
-#: search.sh:1065
+#: search.sh:1072
 msgid "graphics"
 msgstr ""
 
-#: search.sh:1066
+#: search.sh:1073
 msgid "multimedia"
 msgstr ""
 
-#: search.sh:1066
+#: search.sh:1073
 msgid "office"
 msgstr ""
 
-#: search.sh:1066
+#: search.sh:1073
 msgid "development"
 msgstr ""
 
-#: search.sh:1066
+#: search.sh:1073
 msgid "system-tools"
 msgstr ""
 
-#: search.sh:1066
+#: search.sh:1073
 msgid "security"
 msgstr ""
 
-#: search.sh:1067
+#: search.sh:1074
 msgid "games"
 msgstr ""
 
-#: search.sh:1067
+#: search.sh:1074
 msgid "misc"
 msgstr ""
 
-#: search.sh:1067
+#: search.sh:1074
 msgid "meta"
 msgstr ""
 
-#: search.sh:1067
+#: search.sh:1074
 msgid "non-free"
 msgstr ""
 
-#: search.sh:1078
+#: search.sh:1085
 msgid "Name"
 msgstr ""
 
-#: search.sh:1086
+#: search.sh:1093
 msgid "Version"
 msgstr ""
 
-#: search.sh:1118
+#: search.sh:1130
 msgid "Website"
 msgstr ""
 
-#: search.sh:1122
+#: search.sh:1134
 msgid "Tags"
 msgstr ""
 
-#: search.sh:1127 search.sh:1134
+#: search.sh:1139 search.sh:1146
 msgid "Sizes"
 msgstr ""
 
-#: search.sh:1140
+#: search.sh:1152
 #, fuzzy
 msgid "Depends on"
 msgstr "وابسته ها"
 
-#: search.sh:1142
+#: search.sh:1154
 msgid "Provides"
 msgstr ""
 
-#: search.sh:1144
+#: search.sh:1156
 msgid "Suggested"
 msgstr ""
 
-#: search.sh:1155 search.sh:1157
+#: search.sh:1167 search.sh:1169
 #, fuzzy
 msgid "Show cooking log"
 msgstr "آشپزی"
 
-#: search.sh:1159
+#: search.sh:1171
 msgid "N/A"
 msgstr ""
 
-#: search.sh:1169
+#: search.sh:1181
 msgid "Download package"
 msgstr ""
 
-#: search.sh:1176
+#: search.sh:1188
 #, fuzzy
 msgid "Show receipt"
 msgstr "دریافتی"
 
-#: search.sh:1177
+#: search.sh:1189
 #, fuzzy
 msgid "Show files list"
 msgstr "لیست فایل"
 
-#: search.sh:1182
+#: search.sh:1194
 msgid "Install package"
 msgstr ""
 
-#: search.sh:1185
+#: search.sh:1197
 #, fuzzy
 msgid "Remove package"
 msgstr "جستجوی پکیج ها"
 
-#: search.sh:1227
+#: search.sh:1239
 #, fuzzy
 msgid "Configuration files"
 msgstr "فایل های عمومی"
 
-#: search.sh:1254
+#: search.sh:1266
 msgid "Loop dependency"
 msgstr "حلقه های پکیج های وابسته"
 
-#: search.sh:1267
+#: search.sh:1279
 msgid "Dependency tree for package \"%s\""
 msgstr "%s :درختواره وابسته های"
 
-#: search.sh:1278
+#: search.sh:1290
 msgid "Dependency tree for packages suggested by package \"%s\""
 msgstr "(پیشنهاد شده) %s :درختواره وابسته های"
 
-#: search.sh:1287
+#: search.sh:1299
 msgid "Reverse dependency tree for package \"%s\""
 msgstr "%s :برگرداندن درختواره وابسته های "
 
-#: search.sh:1304
+#: search.sh:1316
 msgid "Loop dependency of build"
 msgstr "حلقه های وابسته های ساخت"
 
-#: search.sh:1318
+#: search.sh:1330
 msgid "Package \"%s\" requires next packages to be built"
 msgstr "برای ساخته شدن به این پکیج ها نیازمند است %s"
 
-#: search.sh:1326
+#: search.sh:1338
 msgid "Next packages require package \"%s\" to be built"
 msgstr ".برای ساخته شدن نیازمندند %s پکیج هایی که به"
 
-#: search.sh:1344
+#: search.sh:1356
 msgid "Next packages may overwrite files of package \"%s\""
 msgstr ".لود کنند %s این پکیج ها ممکن است فایل های زیادی را از "
 
-#: search.sh:1373
+#: search.sh:1385
 msgid "File names matching \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1412
+#: search.sh:1424
 msgid "List of files in the package \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1423
+#: search.sh:1435
 msgid "%s file"
 msgid_plural "%s files"
 msgstr[0] "%s فایل"
 
-#: search.sh:1448
+#: search.sh:1460
 msgid "Descriptions matching \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1471
+#: search.sh:1483
 msgid "Known bugs in the packages"
 msgstr "نتایج برای باگ های شناخته شده"
 
-#: search.sh:1497
+#: search.sh:1509
 msgid "The list of packages of architecture \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1530
+#: search.sh:1538
 msgid "The list of packages that <%s> maintains"
 msgstr "%s :نتایج برای"
 
-#: search.sh:1560
+#: search.sh:1564
 msgid "Packages with \"%s\" license"
 msgstr "%s :نتایج برای"
 
@@ -368,56 +368,56 @@ msgstr "%s :نتایج برای"
 msgid "Packages of category \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1631
+#: search.sh:1626
 msgid "The list of packages tagged \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1675
+#: search.sh:1665
 msgid "Receipt for package \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1695
+#: search.sh:1685
 msgid "Package names matching \"%s\""
 msgstr "%s :نتایج برای"
 
-#: search.sh:1713
+#: search.sh:1703
 msgid "Packages providing the package \"%s\""
 msgstr "package providing %s :نتایج جستجوی"
 
-#: lib/header.sh:11
+#: lib/header.sh:16
 #, sh-format
 msgid "SliTaz Packages - Search $SEARCH"
 msgstr "$SEARCH - جستجوی SliTaz پکیج های"
 
-#: lib/header.sh:26
+#: lib/header.sh:31
 msgid "SliTaz Packages"
 msgstr "SliTaz پکیج"
 
-#: lib/header.sh:28
+#: lib/header.sh:33
 msgid "Home"
 msgstr "خانه"
 
-#: lib/header.sh:29
+#: lib/header.sh:34
 msgid "Community"
 msgstr "انجمن"
 
-#: lib/header.sh:30
+#: lib/header.sh:35
 msgid "Doc"
 msgstr "سند"
 
-#: lib/header.sh:31
+#: lib/header.sh:36
 msgid "Forum"
 msgstr "انجمن گفتمان"
 
-#: lib/header.sh:32
+#: lib/header.sh:37
 msgid "Pro"
 msgstr "حرفه ای"
 
-#: lib/header.sh:33
+#: lib/header.sh:38
 msgid "Shop"
 msgstr "خرید"
 
-#: lib/header.sh:35
+#: lib/header.sh:40
 msgid "Hg"
 msgstr "Hg"
 

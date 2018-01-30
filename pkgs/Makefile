@@ -2,7 +2,7 @@
 #
 
 PACKAGE="tazpkg-web"
-LINGUAS?=de en es_AR fa fr ja pl pt_BR ru sv uk vi zh zh_CN zh_TW
+LINGUAS?=de en es_AR fa fr it ja pl pt_BR ru sv uk vi zh zh_CN zh_TW
 
 all: msgfmt
 
