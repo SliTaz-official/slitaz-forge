@@ -5,6 +5,7 @@
 
 OWNERFILE=name.users
 ip="$(GET ip)"
+[ "$ip" ] || ip=$HTTP_X_FORWARDED_FOR
 [ "$ip" ] || ip=$REMOTE_ADDR
 name="$(GET name)"
 name="${name%.by.slitaz.org}"
