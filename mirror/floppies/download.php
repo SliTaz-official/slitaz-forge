@@ -26,13 +26,17 @@ if (isset($_GET['file']))
 		basename($_GET['iso'],".iso").".*".
 		" | cpio -o -H newc | cat - /dev/zero ";
 	if ($_GET['file'] == "md5sum") {
-		$cmd .= "| for i in \$(seq 1 $max); do dd bs=$fdsz ".
-			"count=1 2> /dev/null | md5sum | ".
+		$cmd .= "| for i in \$(seq 1 $max); do dd conv=sync bs=4k ".
+			"count=".($fdsz/4096)." 2> /dev/null | md5sum | ".
 			"sed \"s/-\\\$/\$(printf 'fdiso%02d.img' \$i)/\"; done";
-		download("md5sum", 46 * $max, $cmd);
+		$len = 46 * $max;
+		$cmd .= "; md5sum ".basename($_GET['iso']);
+		$len += strlen(basename($_GET['iso'])) + 35;
+		download("md5sum", $len, $cmd);
 	}
 	else {
-		$cmd .= "| dd bs=".$fdsz." count=1 skip=".($_GET['file'] - 1)." "; 
+		$cmd .= "| dd bs=4k count=".($fdsz/4096)." conv=sync skip=".
+			(($_GET['file'] - 1)*($fdsz/4096))." "; 
 		download(sprintf("fdiso%02d.img",$_GET['file']), $fdsz, $cmd);
 	}
 }
@@ -81,8 +85,9 @@ pre, tt, code { font-size: 0.9rem; }
 for ($i = 1; file_exists("index-$i.0.html") ; $i++);
 while (--$i > 0) {
 	echo "			<li><a href=\"index-$i.0.html\">SliTaz $i.0</a>";
-	if (file_exists("index-loram-".$i.".0.html"))
-		echo "				· <a href=\"index-loram-$i.0.html\">loram</a>";
+	foreach (array("loram","web","mini") as $flavor)
+	    if (file_exists("index-".$flavor."-".$i.".0.html"))
+		echo "				&middot; <a href=\"index-".$flavor."-$i.0.html\">".$flavor."</a>";
 	echo "			</li>\n";
 }
 ?>
@@ -155,24 +160,24 @@ echo "				<td><a href=\"download.php?file=md5sum&amp;iso=".
 
 <footer>
 	<div>
-		Copyright © <span class="year"></span>
+		Copyright &copy; <span class="year"></span>
 		<a href="http://www.slitaz.org/">SliTaz</a>
 	</div>
 	<div>
 		Network:
-		<a href="http://scn.slitaz.org/">Community</a> ·
-		<a href="http://doc.slitaz.org/">Doc</a> ·
-		<a href="http://forum.slitaz.org/">Forum</a> ·
-		<a href="http://pkgs.slitaz.org/">Packages</a> ·
-		<a href="http://bugs.slitaz.org">Bugs</a> ·
+		<a href="http://scn.slitaz.org/">Community</a> &middot;
+		<a href="http://doc.slitaz.org/">Doc</a> &middot;
+		<a href="http://forum.slitaz.org/">Forum</a> &middot;
+		<a href="http://pkgs.slitaz.org/">Packages</a> &middot;
+		<a href="http://bugs.slitaz.org">Bugs</a> &middot;
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
 	<div>
 		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a> ·
-		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
+		<a href="http://twitter.com/slitaz">Twitter</a> &middot;
+		<a href="http://www.facebook.com/slitaz">Facebook</a> &middot;
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> &middot;
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> &middot;
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
 	</div>
 	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"

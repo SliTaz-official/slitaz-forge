@@ -1,7 +1,7 @@
 #!/bin/sh
 
 list_version() {
-	ls rolling ?.0 -dr | \
+	ls rolling next ?.0 -dr | \
 	while read dir; do
 		echo $dir
 		[ -d loram-$dir ] && echo loram-$dir
@@ -21,6 +21,7 @@ build_page() {
 		web*)	TYPE="&nbsp;web" ;;
 		mini*)	TYPE="&nbsp;mini" ;;
 		loram*)	TYPE="&nbsp;loram" ;;
+		next*)	TYPE="&nbsp;next" ;;
 		*)	TYPE=""
 	esac
 	TITLE="Floppy image set"
@@ -70,7 +71,7 @@ $(
 list_version | \
 while read dir; do
 	case "$dir" in
-	*-*)
+	*-*|next)
 		echo -n "					<li>"
 		text="${dir/-/ }";;
 	*)
@@ -83,7 +84,7 @@ while read dir; do
 	echo "						>$text</a>"
 
 	case "$dir" in
-	*-*)
+	*-*|next)
 		echo "					</li>";;
 	*)
 		echo "						<ul>"
@@ -123,9 +124,10 @@ tail=""
 list_version | \
 while read dir; do
 	case "$dir" in
-	web*)	echo -en "\n				· <a href=\"index-$dir.html\">web</a>" ;;
-	mini*)	echo -en "\n				· <a href=\"index-$dir.html\">mini</a>" ;;
-	loram*)	echo -en "\n				· <a href=\"index-$dir.html\">loram</a>" ;;
+	web*)	echo -en "\n				&middot; <a href=\"index-$dir.html\">web</a>" ;;
+	mini*)	echo -en "\n				&middot; <a href=\"index-$dir.html\">mini</a>" ;;
+	loram*)	echo -en "\n				&middot; <a href=\"index-$dir.html\">loram</a>" ;;
+	next*)	echo -en "\n				&middot; <a href=\"index-$dir.html\">next</a>" ;;
 	*)   	echo -en "$tail			<li><a href=\"index-$dir.html\">SliTaz $dir</a>" ;;
 	esac
 	tail="</li>\n"
@@ -171,7 +173,7 @@ or simply <code>dd</code>:</p>
 
 <pre># dd if=fd001.img of=/dev/fd0</pre>
 
-<p>If you have a CD-ROM, an USB port and an USB key or a network card, but you
+<p>If you have a CD-ROM, a USB port and a USB key or a network card, but you
 can't boot these devices directly, then try <a
 href="http://mirror.slitaz.org/boot/floppy-grub4dos" target="_blank"
 >floppy-grub4dos</a> first. This 1.44Mb floppy provides tiny programs to boot
@@ -259,24 +261,24 @@ done
 
 <footer>
 	<div>
-		Copyright © <span class="year"></span>
+		Copyright &copy; <span class="year"></span>
 		<a href="http://www.slitaz.org/">SliTaz</a>
 	</div>
 	<div>
 		Network:
-		<a href="http://scn.slitaz.org/">Community</a> ·
-		<a href="http://doc.slitaz.org/">Doc</a> ·
-		<a href="http://forum.slitaz.org/">Forum</a> ·
-		<a href="http://pkgs.slitaz.org/">Packages</a> ·
-		<a href="http://bugs.slitaz.org">Bugs</a> ·
+		<a href="http://scn.slitaz.org/">Community</a> &middot;
+		<a href="http://doc.slitaz.org/">Doc</a> &middot;
+		<a href="http://forum.slitaz.org/">Forum</a> &middot;
+		<a href="http://pkgs.slitaz.org/">Packages</a> &middot;
+		<a href="http://bugs.slitaz.org">Bugs</a> &middot;
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
 	<div>
 		SliTaz @
-		<a href="http://twitter.com/slitaz">Twitter</a> ·
-		<a href="http://www.facebook.com/slitaz">Facebook</a> ·
-		<a href="http://distrowatch.com/slitaz">Distrowatch</a> ·
-		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
+		<a href="http://twitter.com/slitaz">Twitter</a> &middot;
+		<a href="http://www.facebook.com/slitaz">Facebook</a> &middot;
+		<a href="http://distrowatch.com/slitaz">Distrowatch</a> &middot;
+		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> &middot;
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
 	</div>
 	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"

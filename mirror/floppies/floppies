@@ -7,9 +7,9 @@ rd()
 
 ds()
 {
-	set -- $1 ${2:-512} 512
-	dd count=$((($1*$2)/$3)) bs=$3 2>/dev/null
-	dd count=$(((($1*$2)%$3)/$2)) bs=$2 2>/dev/null
+	set -- $1 ${2:-512}
+	dd count=$((($1*$2)/512)) bs=512 2>/dev/null
+	dd count=$(((($1*$2)%512)/$2)) bs=$2 2>/dev/null
 }
 
 case "$1" in
@@ -17,23 +17,21 @@ extract) (
 	ds 1
 	ds $(($(rd 0x1F1 1)-1))
 	[ $(rd 0x229 1) -le 128 ] || ds 1
-	[ $(rd 0x228) -ne 0 ] && ds 1 >cmdline$$
+	[ $(rd 0x228) -ne 0 ] && ds 1 >cmd$$
 	ds $(( ($(rd 0x1F4) +31) /32)) ) >kernel
-	if [ $(rd 0x21C) -ne 0 ]; then
-		ds $(( ($(rd 0x21C) +3) /4)) 4 >rootfs
-	elif [ $(rd 0x218) -ne 0 ]; then
+	[ $(rd 0x21C) -ne 0 ] && ds $(( ($(rd 0x21C) +3) /4)) 4 >rootfs ||
+	if [ $(rd 0x218) -ne 0 ]; then
 		n=$(($(rd 0x1EE 2)%512))
 		i=0
+		[ $(rd $n 4 cmd$$) -eq 0 ] && ds 5000 >rootfs ||
 		while [ $(($n % 256)) -lt $(rd 0x1F0 1) ]; do
-			ds $(( ($(rd $n 4 cmdline$$) +3) /4)) 4 >rootfs$i
+			ds $(( ($(rd $n 4 cmd$$) +3) /4)) 4 >rootfs$i
 			n=$(($n+4))
 			i=$(($i+1))
 		done
 	fi
-	if [ -s cmdline$$ ]; then
-		strings <cmdline$$ | sed q >cmdline
-		rm -f cmdline$$
-	fi
+	[ -s cmd$$ ] && strings <cmd$$ | sed q >cmdline
+	rm -f cmd$$
 	;;
 *)	cat <<EOT
 usage: cat fd*.img | $0 extract  or
