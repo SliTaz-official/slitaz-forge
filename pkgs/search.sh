@@ -76,7 +76,7 @@ GETPOST() {
 
 nice_url() {
 	# if user submitted a form
-	if [ "$REQUEST_METHOD" == 'POST' -o -n "$(GET submit)" ]; then
+	if [ "$REQUEST_METHOD" = 'POST' -o -n "$(GET submit)" ]; then
 		OBJECT="$(GETPOST object)"
 		SEARCH="$(GETPOST query)"
 		case $OBJECT in
@@ -120,7 +120,7 @@ nice_url() {
 
 		# debug, if needed
 		debugq="$(GET debug)"
-		if [ -n "$debugq" -a "$debugq" == 'debug' ]; then
+		if [ -n "$debugq" -a "$debugq" = 'debug' ]; then
 			NICE="$NICE&debug"
 		fi
 
@@ -181,7 +181,7 @@ VERBOSE=0
 s='selected'
 for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 	case "$(echo $i | tr [A-Z] [a-z])" in
-		query=*|search=*)		[ ${i#*=} == Search ] || SEARCH=${i#*=};;
+		query=*|search=*)		[ ${i#*=} = Search ] || SEARCH=${i#*=};;
 		object=*)				OBJECT=${i#*=};;
 		verbose=*)				VERBOSE=${i#*=};;
 		lang=*)					LANG=${i#*=};;
@@ -228,7 +228,7 @@ export LANG LC_ALL=$LANG
 SEARCH="$(echo $SEARCH | sed 's|%2B|+|g; s|%3A|:|g; s|%2F|/|g')"
 
 SLITAZ_HOME="/home/slitaz"
-if [ "$SLITAZ_VERSION" == 'cooking' ]; then
+if [ "$SLITAZ_VERSION" = 'cooking' ]; then
 	WOK="$SLITAZ_HOME/wok"
 else
 	WOK="$SLITAZ_HOME/wok-$SLITAZ_VERSION"
@@ -942,7 +942,7 @@ EOT
 # page begins
 #
 
-if [ -n "$HTTP_IF_MODIFIED_SINCE" -a "$HTTP_IF_MODIFIED_SINCE" == "$lastmod" ]; then
+if [ -n "$HTTP_IF_MODIFIED_SINCE" -a "$HTTP_IF_MODIFIED_SINCE" = "$lastmod" ]; then
 	# When user agent asks if content modified since last seen and it is not modified
 	header "HTTP/1.1 304 Not Modified"
 	exit 0
@@ -984,7 +984,7 @@ for i in en de es fa fr ja pl pt ru sv uk zh; do
 	esac
 
 	echo -n "<option class=\"$c\" value=\"$i\""
-	[ "$i" == "${LANG%_*}" ] && echo -n " selected"
+	[ "$i" = "${LANG%_*}" ] && echo -n " selected"
 	echo ">$l</option>"
 done
 echo '</select></div>'

@@ -48,13 +48,13 @@ case "$1" in
 		# Update Tank web interface
 		echo -e "\nUpdating: tank.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		rm -rf $VHOST/*.* $VHOST/images
 		cp -a tank/web/* $VHOST
 		# Be sure we have last version of libtaz.sh httphelper.sh
 		#echo "$(colorize 33 'Updating:') libtaz.sh && httphelper.sh"
 		#cd $REPOS/slitaz-base-files
-		#[ "$2" == "--nohg" ] || hg pull -u
+		#[ "$2" = "--nohg" ] || hg pull -u
 		#cp -f rootfs/lib/libtaz.sh /lib
 		#cp -f rootfs/usr/lib/slitaz/httphelper.sh /usr/lib/slitaz
 		echo "" ;;
@@ -63,7 +63,7 @@ case "$1" in
 		# Update People web interface
 		echo -e "\nUpdating: people.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		rm -rf $WWW/people/*
 		cp -a people/* $WWW/people
 		echo "" ;;
@@ -72,7 +72,7 @@ case "$1" in
 		# Update Pro website
 		echo -e "\nUpdating: pro.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		rm -rf $WWW/pro/web/*
 		cp -a pro/* $WWW/pro/web
 		echo "" ;;
@@ -81,7 +81,7 @@ case "$1" in
 		# Update Web Boot interface
 		echo -e "\nUpdating: boot.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		rm -rf $WWW/boot/*
 		cp -a boot/* $WWW/boot
 		echo "" ;;
@@ -90,9 +90,9 @@ case "$1" in
 		# Update Web Boot interface
 		echo -e "\nUpdating: cook.slitaz.org..."
 		cd $REPOS/cookutils
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		cp -a cook/* $WWW/cook
 		# We use symlinks for cooker's
 		cd $WWW/cook && rm -f style.css
@@ -124,7 +124,7 @@ case "$1" in
 		# Update Roadmap Web interface
 		echo -e "\nUpdating: roadmap.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		cp -a roadmap/* $WWW/roadmap
 		echo "" ;;
 		
@@ -133,7 +133,7 @@ case "$1" in
 		bugs="$WWW/bugs"
 		echo -e "\nUpdating: bugs.slitaz.org..."
 		cd $REPOS/tazbug
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		cp -a web/* ${bugs}
 		cp README ${bugs}
 		chown -R www.www ${bugs}
@@ -143,7 +143,7 @@ case "$1" in
 		# Update IRC interface
 		echo -e "\nUpdating: irc.slitaz.org..."
 		cd $REPOS/slitaz-forge
-		[ "$2" == "--nohg" ] || hg pull -u
+		[ "$2" = "--nohg" ] || hg pull -u
 		rm -rf $WWW/irc/images $WWW/irc/lib
 		cp -a irc/* $WWW/irc
 		echo "" ;;

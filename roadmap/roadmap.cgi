@@ -36,13 +36,13 @@ list_tasks() {
 		for task in $(fgrep -H "$1" $taskdir/*.conf | cut -d ":" -f 1)
 		do
 			. $task
-			if [ "$PRIORITY" == "$pr" ]; then
+			if [ "$PRIORITY" = "$pr" ]; then
 				show_task
 			fi
 		done
 	done
-	[ "$1" == "TODO" ] && [ "$todo" == "0" ] && echo "All done."
-	[ "$1" == "DONE" ] && [ "$done" == "0" ] && echo "Nothing done."
+	[ "$1" = "TODO" ] && [ "$todo" = "0" ] && echo "All done."
+	[ "$1" = "DONE" ] && [ "$done" = "0" ] && echo "Nothing done."
 }
 
 # xHTML header.

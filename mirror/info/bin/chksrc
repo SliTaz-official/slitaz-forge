@@ -34,7 +34,7 @@ for i in $WOK/*/receipt ; do
 	. $i
 	[ -n "$WANTED" ] && continue
 	for a in $HOST_ARCH ; do
-		[ $a == i486 ] && continue
+		[ $a = i486 ] && continue
 		unset TARBALL EXTRA_SOURCE_FILES WGET_URL WANTED PACKAGE VERSION
 		SLITAZ_ARCH=$a
 		ARCH=$a
@@ -77,10 +77,10 @@ for i in $SRC/?/* ; do
 		grep -q ^$(basename $i)$ /tmp/tarball$$ && continue
 		;;
 	esac
-	echo $i && [ "$PURGE" == "yes" ] && \rm -i $i
+	echo $i && [ "$PURGE" = "yes" ] && \rm -i $i
 done
 rm -f /tmp/tarball$$ /tmp/wget_url$$
 for i in $SRC2/?/* ; do
 	[ $(stat -c "%h" $i) -eq 1 ] && echo $i &&
-	[ "$PURGE" == "yes" ] && echo "Purge $i" && rm -f $i
+	[ "$PURGE" = "yes" ] && echo "Purge $i" && rm -f $i
 done

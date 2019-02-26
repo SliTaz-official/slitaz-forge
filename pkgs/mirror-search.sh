@@ -123,7 +123,7 @@ VERBOSE=0
 for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 #	SLITAZ_VERSION=cooking
 	case "$(echo $i | tr [A-Z] [a-z])" in
-		query=*|search=*)		[ ${i#*=} == Search ] || SEARCH=${i#*=};;
+		query=*|search=*)		[ ${i#*=} = Search ] || SEARCH=${i#*=};;
 		object=*)				OBJECT=${i#*=};;
 		verbose=*)				VERBOSE=${i#*=};;
 		lang=*)					LANG=${i#*=};;
@@ -150,7 +150,7 @@ for i in $(echo $QUERY_STRING | sed 's/[?&]/ /g'); do
 done
 [ -z "$SLITAZ_VERSION" ] && SLITAZ_VERSION=cooking
 #[ -n "$SEARCH" ] && REQUEST_METHOD="POST"
-#[ "$SEARCH" == "." ] && SEARCH=
+#[ "$SEARCH" = "." ] && SEARCH=
 
 
 # Content negotiation for Gettext
@@ -945,7 +945,7 @@ _EOT_
 		. $WOK/$pkg/receipt
 		DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
 		[ -f $WOK/$pkg/description.txt ] || DESC=""
-		[ "$CATEGORY" == "$SEARCH" ] && cat << _EOT_
+		[ "$CATEGORY" = "$SEARCH" ] && cat << _EOT_
 $(package_entry)$DESC
 _EOT_
 	done
@@ -964,7 +964,7 @@ _EOT_
 		. $WOK/$pkg/receipt
 		DESC=" <a href=\"?object=Desc&query=$pkg&lang=$lang&version=$SLITAZ_VERSION&submit=go\">$(gettext description)</a>"
 		[ -f $WOK/$pkg/description.txt ] || DESC=""
-		[ "$MAINTAINER" == "$SEARCH" ] && cat << _EOT_
+		[ "$MAINTAINER" = "$SEARCH" ] && cat << _EOT_
 $(package_entry)$DESC
 _EOT_
 	done

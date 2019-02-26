@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$1" == "--stats" ]; then
+if [ "$1" = "--stats" ]; then
 	dir=$(dirname $0)/$2
 	if [ -n "$3" ]; then
 		sed 's/.*"\([0-9]* Gb\)".*/\1/' $dir/?/* | sort | awk '{

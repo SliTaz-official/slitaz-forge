@@ -10,7 +10,7 @@ for i in $(cd $PKG ; ls *.tazpkg); do
 		VERSION=
 		EXTRAVERSION=
 		. $j
-		[ "$i" == "$PACKAGE-$VERSION$EXTRAVERSION.tazpkg" ] && continue 2
+		[ "$i" = "$PACKAGE-$VERSION$EXTRAVERSION.tazpkg" ] && continue 2
 	done
 	echo "Rebuild $i"
 done

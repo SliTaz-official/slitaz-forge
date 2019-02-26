@@ -152,7 +152,7 @@ END { print max }' | sed 's/,/./'
 updatediskgraph() {
 	period=$1
 	extra="--logarithmic --lower-limit 1"
-	[ "$period" == "day" ] && maxdisk="$(getmax disk)" && extra=""
+	[ "$period" = "day" ] && maxdisk="$(getmax disk)" && extra=""
 	info="$(fdisk -l 2> /dev/null | sed '/dev/!d;s|.*: \(.*\), .*|\1|;q')"
 	[ -n "$info" ] && info="[ $info ]"
 	[ -r $2 ] &&
@@ -339,7 +339,7 @@ getdisk()
 	local i
 	d=$(stat -c %04D $1)
 	for i in /dev/* ; do 
-		[ $(stat -c "%02t%02T" $i) == $d ] || continue
+		[ $(stat -c "%02t%02T" $i) = $d ] || continue
 		echo $i
 		break
 	done
