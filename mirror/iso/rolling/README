@@ -1,0 +1,43 @@
+WARNING! Before using SliTaz - please read this post:
+http://forum.slitaz.org/topic/-important-info-about-meltdown-and-spectre-
+
+slitaz-rolling-core.iso
+    Full 32 bits desktop with 32 bits kernel.
+
+slitaz-rolling-core64.iso
+    Full 32 bits desktop with 64 bits kernel.
+
+slitaz-rolling.iso
+    Full 32 bits desktop with 32 bits kernel, with gtkonly, justx and base 
+    alternatives (4x), also known as rolling-4in1.iso, current preferred ISO 
+    to download.
+    The default boot selects the best flavor according the RAM size.
+
+slitaz-rolling-loram.iso
+    Full 32 bits desktop with 32 bits kernel, with gtkonly, justx, base and 
+    non-live (needs the CD-ROM) alternatives (5x). Spare up to 30% of the RAM 
+    size in live mode.
+    The default boot selects the best flavor according the RAM size.
+    Built with the following command line :
+    # tazlito build-loram slitaz-rolling.iso slitaz-rolling-loram.iso ram
+
+slitaz-rolling-core-5in1.iso
+    Full 32 bits desktop with gtkonly, justx and base alternatives, with 
+    32 bits kernel and 64 bits Kernel.
+    The default boot selects the best flavor according the RAM size. The Kernel
+    is selected according the processor type.
+
+slitaz-rolling-preinit.iso
+    Used to boot special configurations such as raid, lvm... with 32 bits
+    kernel and 64 bits kernel;
+    see http://doc.slitaz.org/en:guides:uncommoninst#lvm-install
+
+slitaz-rolling-core*.zip
+    Full 32 bits desktop with 32 bits kernel or 64 bits kernel pre-installed 
+    for DOS/Windows in the /slitaz directory. The boot instructions are in 
+    /slitaz/boot/install.txt ( built from slitaz-rolling-core.iso with
+    http://hg.slitaz.org/wok/raw-file/tip/syslinux/stuff/iso2exe/taziso ) :
+    # taziso slitaz-rolling-core.iso inst2zip batch
+
+Any iso image can boot a CD-ROM, a memory card or a USB key.
+The 64-bit kernel is needed to access more than 3 or 4 GB of RAM.

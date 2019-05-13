@@ -6,8 +6,8 @@ set menu-timeout 3000
 menu Tiny SliTaz Web boot (needs a 386sx with 8Mb)
 item --key q return ..
 item --gap
-item --key u tinyus Tiny SliTaz (us)
-item --key f tinyfr Tiny SliTaz (fr)
+item --key u tinyus Tiny Slitaz (us)
+item --key f tinyfr Tiny Slitaz (fr)
 item --key v tinyvnc Tiny VNC
 choose --timeout ${menu-timeout} target || goto exit
 set menu-timeout 0

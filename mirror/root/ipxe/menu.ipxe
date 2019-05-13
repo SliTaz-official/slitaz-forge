@@ -4,9 +4,8 @@ set menu-timeout 3000
 #set mirror http://mirror.slitaz.org/
 #set mirror http://mirror1.slitaz.org/
 set mirror http://mirror2.slitaz.org/
-set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+set mirror http://download.tuxfamily.org/slitaz/
 #set mirror http://mirror3.slitaz.org/
-#set mirror http://download.tuxfamily.org/slitaz/
 
 console --picture /pxe/ipxe/slitaz.png
 
@@ -21,6 +20,8 @@ item bko http://boot.kernel.org/ [down]
 item netbootme http://www.netboot.me/ [hang]
 item salstar http://boot.salstar.sk/
 item netbootxyz http://netboot.xyz/ (more tools)
+item ipxedemo http://boot.ipxe.org/
+item ritboot http://boot.rit.edu/bko/
 item --gap
 item --gap Tools:
 item tazfd SliTaz boot floppy
@@ -41,6 +42,7 @@ shell
 goto menu
 
 :rolling
+sanboot http://mirror1.slitaz.org/iso/rolling/slitaz-rolling-core-5in1.iso ||
 sanboot http://mirror1.slitaz.org/iso/rolling/slitaz-rolling.iso ||
 sanboot ${mirror}iso/rolling/slitaz-rolling.iso ||
 goto menu
@@ -71,13 +73,23 @@ goto menu
 
 :salstar
 imgfree
-kernel http://boot.salstar.sk/ipxe/ipxe.lkrn
+kernel http://boot.salstar.sk/menu.ipxe
 boot
 goto menu
 
 :netbootxyz
 chain --autofree http://boot.netboot.xyz/menu.ipxe
 goto menu
+
+:ipxedemo
+chain --autofree http://boot.ipxe.org/demo/boot.php
+goto menu
+
+:ritboot
+set 209:string pxelinux.cfg/default
+set 210:string http://boot.rit.edu/bko/
+chain http://boot.rit.edu/bko/pxelinux.0
+goto :menu
 
 :tazfd
 imgfree

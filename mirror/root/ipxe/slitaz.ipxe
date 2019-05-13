@@ -4,9 +4,8 @@ set menu-timeout 3000
 #set mirror http://mirror.slitaz.org/
 #set mirror http://mirror1.slitaz.org/
 set mirror http://mirror2.slitaz.org/
-set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+set mirror http://download.tuxfamily.org/slitaz/
 #set mirror http://mirror3.slitaz.org/
-#set mirror http://download.tuxfamily.org/slitaz/
 
 :menu
 menu SliTaz Web boot
@@ -19,40 +18,45 @@ item --gap SliTaz pre-1.0:
 item vintage SliTaz 04/12/2007
 item --gap
 item --gap SliTaz 1.0: released 22/03/2008
-item core1 SliTaz 1.0 standard
-item loram1 SliTaz 1.0 loram
-item tiny1 SliTaz 1.0 tiny
+item core1 Slitaz 1.0 standard
+item loram1 Slitaz 1.0 loram
+item tiny1 Slitaz 1.0 tiny
 item --gap
 item --gap SliTaz 2.0: released 16/04/2009
-item core2 SliTaz 2.0 standard
-item loram2 SliTaz 2.0 loram
-item tiny2 SliTaz 2.0 tiny
-item tinytext2 SliTaz 2.0 tiny text
+item core2 Slitaz 2.0 standard
+item loram2 Slitaz 2.0 loram
+item tiny2 Slitaz 2.0 tiny
+item tinytext2 Slitaz 2.0 tiny text
 item --gap
 item --gap SliTaz 3.0: released 28/03/2010
-item core3 SliTaz 3.0 standard
-item loram3 SliTaz 3.0 loram
-item firefox3 SliTaz 3.0 firefox
-item tiny3 SliTaz 3.0 tiny
-item tinytext3 SliTaz 3.0 tiny text
+item core3 Slitaz 3.0 standard
+item loram3 Slitaz 3.0 loram
+item firefox3 Slitaz 3.0 firefox
+item tiny3 Slitaz 3.0 tiny
+item tinytext3 Slitaz 3.0 tiny text
 item --gap
 item --gap SliTaz 4.0: released 10/04/2012
-item core4 SliTaz 4.0 standard
-item loram4 SliTaz 4.0 loram
-item firefox4 SliTaz 4.0 firefox
-item kids4 SliTaz 4.0 kids
-item tiny4 SliTaz 4.0 tiny
-item tinytext4 SliTaz 4.0 tiny text
+item core4 Slitaz 4.0 standard
+item loram4 Slitaz 4.0 loram
+item firefox4 Slitaz 4.0 firefox
+item kids4 Slitaz 4.0 kids
+item tiny4 Slitaz 4.0 tiny
+item tinytext4 Slitaz 4.0 tiny text
 item --gap
 item --gap SliTaz 5.0
-item core5RC1 SliTaz 5.0 RC1 02/05/2014
-item core5RC2 SliTaz 5.0 RC2 19/05/2014
-item core5RC3 SliTaz 5.0 RC3 20/05/2015
+item core5RC1 Slitaz 5.0 RC1 02/05/2014
+item core5RC2 Slitaz 5.0 RC2 19/05/2014
+item core5RC3 Slitaz 5.0 RC3 20/05/2015
 item --gap
-item --gap SliTaz rolling
-item rolling10 SliTaz rolling 10in1 (autoselect 32bits or 64bits arch)
-item rolling64 SliTaz rolling 64 bits (no 32bits arch support)
-item rollingloram SliTaz rolling loram
+item --gap SliTaz rolling (renewed every Sunday)
+item rolling5 Slitaz rolling 5in1 (autoselect 32bits or 64bits arch)
+item rolling64 Slitaz rolling 64 bits (no 32bits arch support)
+item rollingloram Slitaz rolling loram
+item --gap
+item --gap SliTaz next
+item next170915 Slitaz next 15/09/2017
+item next170930 Slitaz next 30/09/2017
+item next180107 Slitaz next lxqt 07/01/2018
 choose --timeout ${menu-timeout} target || goto exit
 set menu-timeout 0
 goto ${target}
@@ -170,8 +174,8 @@ goto menu
 sanboot ${mirror}iso/5.0/slitaz-5.0-rc3.iso ||
 goto menu
 
-:rolling10
-sanboot ${mirror}iso/rolling/slitaz-rolling-10in1.iso ||
+:rolling5
+sanboot ${mirror}iso/rolling/slitaz-rolling-core-5in1.iso ||
 goto menu
 
 :rolling64
@@ -180,5 +184,17 @@ goto menu
 
 :rollingloram
 sanboot ${mirror}iso/rolling/slitaz-rolling-loram.iso ||
+goto menu
+
+:next170915
+sanboot ${mirror}iso/next/slitaz-next-170915.iso ||
+goto menu
+
+:next170930
+sanboot ${mirror}iso/next/slitaz-next-170930.iso ||
+goto menu
+
+:next180107
+sanboot ${mirror}iso/next/slitaz-lxqt.iso ||
 goto menu
 

@@ -3,10 +3,9 @@
 set menu-timeout 3000
 #set mirror http://mirror.slitaz.org/
 #set mirror http://mirror1.slitaz.org/
-#set mirror http://mirror2.slitaz.org/
-set mirror http://mirror.switch.ch/ftp/mirror/slitaz/
+set mirror http://mirror2.slitaz.org/
+set mirror http://download.tuxfamily.org/slitaz/
 #set mirror http://mirror3.slitaz.org/
-#set mirror http://download.tuxfamily.org/slitaz/
 
 :menu
 menu SliTaz Web boot
@@ -14,26 +13,37 @@ item --key q return ..
 item --gap
 item --gap Third party tools:
 item memtest Memtest86+
-item memtest4 Memtest86+ 4.20
-item ubcd535 Universal boot CD version 5.3.5
+item ubcd Universal boot CD version 5.3.8
+item clonezilla Clonezilla 2.6.0-37
+item systemrescuecd SystemRescueCd 6.0.2 (x86_64)
 choose --timeout ${menu-timeout} target || goto return
 set menu-timeout 0
 goto ${target}
 
-:memtest4
-chain ${mirror}pxe/memtest-4.20
-goto menu
-
 :memtest
 imgfree
-kernel ${mirror}pxe/memtest
+kernel ${mirror}boot/memtest.exe
 boot
 goto menu
 
-:ubcd535
-sanboot http://cdn.removed.us/ubcd/ubcd535.iso ||
+:ubcd
+sanboot http://filemirror.hu/pub/ubcd/ubcd538.iso ||
+sanboot http://ftp.heikorichter.name/ultimatebootcd/ubcd538.iso ||
+sanboot https://appuals.com/ultimatebootcd/ubcd538.iso ||
+sanboot ftp://ftp.rnl.tecnico.ulisboa.pt/pub/UBCD/ubcd538.iso ||
+sanboot http://cdn.removed.us/ubcd/ubcd538.iso ||
 goto menu
 
 :return
 chain --autofree /pxe/ipxe/menu.ipxe
+goto menu
+
+:clonezilla
+sanboot http://rwthaachen.dl.osdn.jp/clonezilla/70505/clonezilla-live-2.6.0-37-i686.iso ||
+sanboot https://dotsrc.dl.osdn.net/osdn/clonezilla/70505/clonezilla-live-2.6.0-37-i686.iso ||
+goto menu
+#https://dotsrc.dl.osdn.net/osdn/clonezilla/70505/clonezilla-live-2.6.0-37-amd64.iso
+
+:systemrescuecd
+sanboo https://osdn.net/projects/systemrescuecd/storage/releases/6.0.2/systemrescuecd-6.0.2.iso ||
 goto menu
