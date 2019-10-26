@@ -4,9 +4,6 @@ ftp://ftp.gtlib.gatech.edu/pub/slitaz/
 http://download.tuxfamily.org/slitaz/
 ftp://download.tuxfamily.org/slitaz/
 http://slitaz.c3sl.ufpr.br/
-ftp://slitaz.c3sl.ufpr.br/slitaz/
-http://slitaz.mirror.garr.it/mirrors/slitaz/
-ftp://slitaz.mirror.garr.it/mirrors/slitaz/
 http://distro.ibiblio.org/slitaz/
 ftp://distro.ibiblio.org/slitaz/
 http://mirror.clarkson.edu/slitaz/
@@ -16,7 +13,7 @@ http://ftp.uni-stuttgart.de/slitaz/
 ftp://ftp.uni-stuttgart.de/slitaz/
 ftp://fb04272.mathematik.tu-darmstadt.de/pub/linux/distributions/slitaz/
 ftp://linux.mathematik.tu-darmstadt.de/pub/linux/distributions/misc/slitaz/
-ftp://ftp.rz.uni-kiel.de/pub2/linux/slitaz/
 ftp://ftp.icm.edu.pl/vol/rzm5/linux-ibiblio/distributions/slitaz/
-ftp://ftp.br.debian.org/slitaz/
-ftp://opensuse.c3sl.ufpr.br/slitaz/
+http://absinthe.tuxfamily.net/slitaz/
+http://mirror.math.princeton.edu/pub/slitaz/
+http://dl.aurorafoss.org/slitaz/
