@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="description" content="slitaz iPXE boot online your OS web-boot slitaz-cooking">
 	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
 	<meta name="robots" content="index, follow, all">
 	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
@@ -35,7 +35,7 @@
 	<div class="block_info">
 		<header>Démarrage via le réseau</header>
 		<p>
-			Bienvenue sur l'hôte de démarrage gPXE de
+			Bienvenue sur l'hôte de démarrage iPXE de
 			<a href="http://www.slitaz.org/fr/">SliTaz GNU/Linux</a>,
 			boot.slitaz.org vous permet de démarrer SliTaz depuis le
 			réseau en utilisant un CD-ROM, une clé USB ou une disquette
@@ -101,36 +101,36 @@ connexion réseau.
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
 	et gravez l'image sur un CD-ROM vierge. Démarrez depuis le CD-ROM et
-	choisissez l'option gPXE. Cette image ISO vous permet également de tester
+	choisissez l'option iPXE. Cette image ISO vous permet également de tester
 	la mémoire système avec Memtest86.</li>
 	<li>Média USB : Utilisez TazUSB pour générer un média USB amorçable.
-	Installez le paquet <code>gpxe</code>, copiez le répertoire /boot/gpxe
+	Installez le paquet <code>ipxe</code>, copiez le répertoire /boot/ipxe
 	dans le répertoire boot du média USB et ajoutez une entrée dans le
 	fichier de configuration de Syslinux <code>syslinux.cfg</code> :
 <pre>
 label web
-	kernel /boot/gpxe
+	kernel /boot/ipxe
 </pre></li>
 
 	<li>Image de disquette : Téléchargez le fichier
-	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
-	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	<a href="http://mirror.slitaz.org/boot/floppy-grub4dos">floppy-grub4dos</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub4dos.md5">md5</a>)
 	Transférez l'image sur une disquette vierge en utilisant la commande
-	suivant : <code>dd if=floppy-grub of=/dev/fd0</code>. Démarrez sur
-	la disquette et choisissez l'entrée gPXE.
+	suivant : <code>dd if=floppy-grub4dos of=/dev/fd0</code>. Démarrez sur
+	la disquette et choisissez l'entrée iPXE.
 	</li>
 	<li>Démarrage réseau : si vous pouvez modifier la configuration du server DHCP,
 	déclarez le serveur tftp <i>mirror.slitaz.org</i> et le fichier de boot
-	<i>gpxe.pxe</i> :
+	<i>ipxe.pxe</i> :
 	<ul>
 	<li>pour <b>udhcpd</b>
 	<pre>siaddr mirror.slitaz.org
-boot_file gpxe.pxe</pre></li>
+boot_file ipxe.pxe</pre></li>
 	<li>pour <b>dhcpd</b>
 	<pre>next-server "mirror.slitaz.org"
-filemane "gpxe.pxe"</pre></li>
+filemane "ipxe.pxe"</pre></li>
 	<li>pour <b>dnsmasq</b>
-	<pre>dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre></li>
+	<pre>dhcp-boot=ipxe.pxe,mirror.slitaz.org</pre></li>
 	</ul>
 	</li>
 </ul>

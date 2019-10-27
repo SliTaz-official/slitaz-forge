@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="description" content="slitaz iPXE boot online your OS web-boot slitaz-cooking">
 	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
 	<meta name="robots" content="index, follow, all">
 	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
@@ -97,23 +97,23 @@ um roteador para conexões de rede.
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
 	e grave a imagem em um CD ROM. Inicialize pelo dispositivo de CD ROM
-	e selecione gPXE. Esta imagem ISO também fornece o Memtest86 para
+	e selecione iPXE. Esta imagem ISO também fornece o Memtest86 para
 	testar a memória do sistema.
 	</li>
 	<li>Mídia USB: Use o TazUSB para gerar uma mídia USB inicializável.
-	Instale o pacote <code>gpxe</code>, copie /boot/gpxe no diretório
+	Instale o pacote <code>ipxe</code>, copie /boot/ipxe no diretório
 	de boot da mídia e adicione uma entrada no arquivo de configuração do
 	Syslinux <code>syslinux.cfg</code>:
 	<pre class="script">
 label web
-	kernel /boot/gpxe
+	kernel /boot/ipxe
 	</pre></li>
 	<li>Imagem de disquete: Baixe
-	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
-	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	<a href="http://mirror.slitaz.org/boot/floppy-grub4dos">floppy-grub4dos</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub4dos.md5">md5</a>)
 	e copie a imagem para um disquete usando o comando:
-	<code>dd if=floppy-grub of=/dev/fd0</code>. Inicialize pelo disquete
-	e selecione a entrada gPXE.</li>
+	<code>dd if=floppy-grub4dos of=/dev/fd0</code>. Inicialize pelo disquete
+	e selecione a entrada iPXE.</li>
 </ul>
 
 

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="description" content="slitaz iPXE boot online your OS web-boot slitaz-cooking">
 	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
 	<meta name="robots" content="index, follow, all">
 	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
@@ -35,7 +35,7 @@
 	<div class="block_info">
 		<header>Web Boot</header>
 		<p>
-			Willkommen am Start-Provider gPXE von
+			Willkommen am Start-Provider iPXE von
 			<a href="http://www.slitaz.org/de/">SliTaz GNU/Linux</a>,
 			boot.slitaz.org ermöglicht Ihnen, SliTaz aus dem Netzwerk
 			durch einfache benützung einer CD-ROM, eines USB-Sticks oder

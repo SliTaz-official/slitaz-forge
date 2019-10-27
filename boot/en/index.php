@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="description" content="slitaz iPXE boot online your OS web-boot slitaz-cooking">
 	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
 	<meta name="robots" content="index, follow, all">
 	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
@@ -36,7 +36,7 @@
 		<header>Web Boot</header>
 		<p>
 			Welcome to the <a href="http://www.slitaz.org/en/">SliTaz GNU/Linux</a>
-			gPXE boot host; boot.slitaz.org allows you to boot SliTaz from the Web
+			iPXE boot host; boot.slitaz.org allows you to boot SliTaz from the Web
 			using a cdrom, USB media or a floppy disk.
 		</p>
 		<p>
@@ -94,34 +94,34 @@ for network connection.
 	<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 	(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
 	and burn the image to a CD ROM. Boot from the CD ROM device and select
-	gPXE. This ISO image also provides Memtest86 to test system memory.
+	iPXE. This ISO image also provides Memtest86 to test system memory.
 	</li>
 	<li>USB media: Use TazUSB to generate bootable USB media. Install
-	the package <code>gpxe</code>, copy /boot/gpxe into the boot
+	the package <code>ipxe</code>, copy /boot/ipxe into the boot
 	directory of the USB media and add an entry to the Syslinux configuration
 	file <code>syslinux.cfg</code>:
 	<pre class="script">
 label web
-	kernel /boot/gpxe
+	kernel /boot/ipxe
 	</pre></li>
 	<li>Floppy image: Download
-	<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
-	(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+	<a href="http://mirror.slitaz.org/boot/floppy-grub4dos">floppy-grub4dos</a>
+	(<a href="http://mirror.slitaz.org/boot/floppy-grub4dos.md5">md5</a>)
 	and transfer the image to a blank floppy disk using the command:
-	<code>dd if=floppy-grub of=/dev/fd0</code>. Boot the floppy and select
-	gPXE entry.</li>
+	<code>dd if=floppy-grub4dos of=/dev/fd0</code>. Boot the floppy and select
+	iPXE entry.</li>
 	<li>Network boot: if you can modify your DHCP server configuration, declare
 	the tftp server <i>mirror.slitaz.org</i> and the boot file
-	<i>gpxe.pxe</i>:
+	<i>ipxe.pxe</i>:
 	<ul>
 	<li>for <b>udhcpd</b>
 	<pre>siaddr mirror.slitaz.org
-boot_file gpxe.pxe</pre></li>
+boot_file ipxe.pxe</pre></li>
 	<li>for <b>dhcpd</b>
 	<pre>next-server "mirror.slitaz.org"
-filemane "gpxe.pxe"</pre></li>
+filemane "ipxe.pxe"</pre></li>
 	<li>for <b>dnsmasq</b>
-	<pre>dhcp-boot=gpxe.pxe,mirror.slitaz.org</pre></li>
+	<pre>dhcp-boot=ipxe.pxe,mirror.slitaz.org</pre></li>
 	</ul>
 	</li>
 </ul>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SliTaz Web Boot</title>
-	<meta name="description" content="slitaz gPXE boot online your OS web-boot slitaz-cooking">
+	<meta name="description" content="slitaz iPXE boot online your OS web-boot slitaz-cooking">
 	<meta name="keywords" lang="en" content="slitaz, boot, pxe, web OS">
 	<meta name="robots" content="index, follow, all">
 	<meta name="modified" content="<?php echo (date( "Y-m-d H:i:s", getlastmod())); ?>">
@@ -92,21 +92,21 @@
 	<li>Загрузочные ISO-образы SliTaz: загрузите
 		<a href="http://mirror.slitaz.org/boot/slitaz-boot.iso">slitaz-boot.iso</a>
 		(<a href="http://mirror.slitaz.org/boot/slitaz-boot.md5">md5</a>)
-		и запишите образ на CD-ROM. Загрузитесь с CD-ROM и выберите gPXE.
+		и запишите образ на CD-ROM. Загрузитесь с CD-ROM и выберите iPXE.
 		В этом ISO-образе также содержится Memtest86 для проверки системной
 		памяти.</li>
 	<li>USB-флеш: Создайте загрузочную USB-флеш при помощи TazUSB. Установите
-		пакет <code>gpxe</code>, скопируйте <code>/boot/gpxe</code> в папку
+		пакет <code>ipxe</code>, скопируйте <code>/boot/ipxe</code> в папку
 		<code>boot</code> на USB-флеш и добавьте пункт в файл конфигурации
 		Syslinux — <code>syslinux.cfg</code>:
 	<pre class="script">label web
-	kernel /boot/gpxe</pre></li>
+	kernel /boot/ipxe</pre></li>
 	<li>Образ дискеты: Загрузите
-		<a href="http://mirror.slitaz.org/boot/floppy-grub">floppy-grub</a>
-		(<a href="http://mirror.slitaz.org/boot/floppy-grub.md5">md5</a>)
+		<a href="http://mirror.slitaz.org/boot/floppy-grub4dos">floppy-grub4dos</a>
+		(<a href="http://mirror.slitaz.org/boot/floppy-grub4dos.md5">md5</a>)
 		и перенесите образ на чистую дискету при помощи команды:
-		<code>dd if=floppy-grub of=/dev/fd0</code>. Загрузитесь с дискеты
-		и выберите пункт gPXE.</li>
+		<code>dd if=floppy-grub4dos of=/dev/fd0</code>. Загрузитесь с дискеты
+		и выберите пункт iPXE.</li>
 </ul>
 
 
