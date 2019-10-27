@@ -109,10 +109,13 @@ label web
 	(<a href="http://mirror.slitaz.org/boot/floppy-grub4dos.md5">md5</a>)
 	and transfer the image to a blank floppy disk using the command:
 	<code>dd if=floppy-grub4dos of=/dev/fd0</code>. Boot the floppy and select
-	iPXE entry.</li>
+	iPXE entry.
+	You can also create a <a href="http://mirror.slitaz.org/boot/ipxe">iPXE</a>
+	only boot floppy for a faster boot process using the command:
+	<code>dd if=ipxe of=/dev/fd0</code>.</li>
 	<li>Network boot: if you can modify your DHCP server configuration, declare
 	the tftp server <i>mirror.slitaz.org</i> and the boot file
-	<i>ipxe.pxe</i>:
+	<i><a href="http://mirror.slitaz.org/boot/ipxe.pxe">ipxe.pxe</a></i>:
 	<ul>
 	<li>for <b>udhcpd</b>
 	<pre>siaddr mirror.slitaz.org
@@ -123,6 +126,10 @@ filemane "ipxe.pxe"</pre></li>
 	<li>for <b>dnsmasq</b>
 	<pre>dhcp-boot=ipxe.pxe,mirror.slitaz.org</pre></li>
 	</ul>
+	</li>
+	<li>Starting <a href="http://mirror.slitaz.org/boot/ipxe">iPXE</a> from
+	DOS: renamed to ipxe.exe, it can be launched under DOS (Windows is not
+	supported).
 	</li>
 </ul>
 
@@ -135,17 +142,6 @@ connection in France, it takes 5 min. If you want, you can report the
 boot time on the Mailing list or the Forum.
 </p>
 
-
-<h3>Required configuration</h3>
-
-<p>
-The default boot entry needs 160 MB RAM. Two entries are available to
-boot with 24 MB:
-</p>
-<ul>
-	<li><code>tiny</code> starts in text mode.</li>
-	<li><code>loram</code> starts in graphical mode.</li>
-</ul>
 
 <!-- End of content -->
 </main>

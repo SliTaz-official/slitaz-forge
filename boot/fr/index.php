@@ -118,10 +118,13 @@ label web
 	Transférez l'image sur une disquette vierge en utilisant la commande
 	suivant : <code>dd if=floppy-grub4dos of=/dev/fd0</code>. Démarrez sur
 	la disquette et choisissez l'entrée iPXE.
+	Vous pouvez aussi créer une disquette uniquement pour
+	<a href="http://mirror.slitaz.org/boot/ipxe">iPXE</a> afin de
+	démarrer plus rapidement avec la commande: <code>dd if=ipxe of=/dev/fd0</code>.
 	</li>
 	<li>Démarrage réseau : si vous pouvez modifier la configuration du server DHCP,
 	déclarez le serveur tftp <i>mirror.slitaz.org</i> et le fichier de boot
-	<i>ipxe.pxe</i> :
+	<i><a href="http://mirror.slitaz.org/boot/ipxe.pxe">ipxe.pxe</a></i> :
 	<ul>
 	<li>pour <b>udhcpd</b>
 	<pre>siaddr mirror.slitaz.org
@@ -132,6 +135,10 @@ filemane "ipxe.pxe"</pre></li>
 	<li>pour <b>dnsmasq</b>
 	<pre>dhcp-boot=ipxe.pxe,mirror.slitaz.org</pre></li>
 	</ul>
+	</li>
+	<li>Démarrer <a href="http://mirror.slitaz.org/boot/ipxe">iPXE</a>
+	depuis DOS: renommé en ipxe.exe, il peut être lancé sous DOS
+	(Windows n'est pas supporté).
 	</li>
 </ul>
 
@@ -145,17 +152,6 @@ Vous pouvez poster vos retours d'expériences sur le Wiki, Forum ou la
 liste de diffusion.
 </p>
 
-
-<h3>Configuration minimum</h3>
-
-<p>
-L'entrée par défaut nécessite au moins 160 Mo de RAM. Deux autres sont
-disponibles pour démarrer avec 24 Mo ou plus :
-</p>
-<ul>
-	<li><code>tiny</code> démarre en mode texte.</li>
-	<li><code>loram</code> démarre en mode graphique.</li>
-</ul>
 
 <!-- End of content -->
 </main>
