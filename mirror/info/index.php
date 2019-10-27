@@ -225,14 +225,6 @@ system("top -n1 -b");
 		<td><a href="http://en.utrace.de/?query=mirror.slitaz.org">map</a></td>
 	</tr>
 	<tr>
-		<td class="ch">Swiss academia mirror</td>
-		<td>
-			<a href="http://mirror.switch.ch/ftp/mirror/slitaz/">http</a> ·
-			<a href="ftp://mirror.switch.ch/mirror/slitaz/">ftp</a>
-		</td>
-		<td><a href="http://en.utrace.de/?query=mirror.switch.ch">map</a></td>
-	</tr>
-	<tr>
 		<td class="us">Georgia Tech Software Library (GTlib) mirror</td>
 		<td>
 			<a href="http://www.gtlib.gatech.edu/pub/slitaz/">http</a> ·
@@ -242,7 +234,7 @@ system("top -n1 -b");
 		<td><a href="http://en.utrace.de/?query=www.gtlib.gatech.edu">map</a></td>
 	</tr>
 	<tr>
-		<td class="fr">TuxFamily mirror</td>
+		<td class="fr" rowspan="3">TuxFamily mirror</td>
 		<td>
 			<a href="http://download.tuxfamily.org/slitaz/">http</a> ·
 			<a href="ftp://download.tuxfamily.org/slitaz/">ftp</a> ·
@@ -251,24 +243,28 @@ system("top -n1 -b");
 		<td><a href="http://en.utrace.de/?query=download.tuxfamily.org">map</a></td>
 	</tr>
 	<tr>
+		<!-- td class="fr">TuxFamily mirror</td -->
+		<td>
+			<a href="http://malibu.tuxfamily.net/slitaz/">http</a> ·
+			<a href="ftp://malibu.tuxfamily.net/slitaz/">ftp</a>
+		</td>
+		<td><a href="http://en.utrace.de/?query=malibu.tuxfamily.net">map</a></td>
+	</tr>
+	<tr>
+		<!-- td class="fr">TuxFamily mirror</td -->
+		<td>
+			<a href="http://absinthe.tuxfamily.net/slitaz/">http</a> ·
+			<a href="ftp://absinthe.tuxfamily.net/slitaz/">ftp</a>
+		</td>
+		<td><a href="http://en.utrace.de/?query=absinthe.tuxfamily.net">map</a></td>
+	</tr>
+	<tr>
 		<td class="br">Federal University of Paraná (UFPR) mirror</td>
 		<td>
 			<a href="http://slitaz.c3sl.ufpr.br/">http</a> ·
-			<a href="ftp://slitaz.c3sl.ufpr.br/slitaz/">ftp</a> ·
-			<a href="ftp://opensuse.c3sl.ufpr.br/slitaz/">ftp</a> ·
-			<a href="ftp://ftp.br.debian.org/slitaz/">ftp</a> ·
 			<a href="rsync://slitaz.c3sl.ufpr.br/slitaz/">rsync</a>
 		</td>
 		<td><a href="http://en.utrace.de/?query=slitaz.c3sl.ufpr.br">map</a></td>
-	</tr>
-	<tr>
-		<td class="it">Italian Research &amp; Education Network (NREN) mirror</td>
-		<td>
-			<a href="http://slitaz.mirror.garr.it/mirrors/slitaz/">http</a> ·
-			<a href="ftp://slitaz.mirror.garr.it/mirrors/slitaz/">ftp</a> ·
-			<a href="rsync://slitaz.mirror.garr.it/mirrors/slitaz/">rsync</a>
-		</td>
-		<td><a href="http://en.utrace.de/?query=slitaz.mirror.garr.it">map</a></td>
 	</tr>
 	<tr>
 		<td class="us">University of North Carolina mirror</td>
@@ -284,14 +280,6 @@ system("top -n1 -b");
 			<a href="http://mirror.clarkson.edu/slitaz/">http</a>
 		</td>
 		<td><a href="http://en.utrace.de/?query=mirror.clarkson.edu">map</a></td>
-	</tr>
-	<tr>
-		<td class="fr">TuxFamily mirror</td>
-		<td>
-			<a href="http://malibu.tuxfamily.net/slitaz/">http</a> ·
-			<a href="ftp://malibu.tuxfamily.net/slitaz/">ftp</a>
-		</td>
-		<td><a href="http://en.utrace.de/?query=malibu.tuxfamily.net">map</a></td>
 	</tr>
 	<tr>
 		<td class="de">University of Stuttgart mirror</td>
@@ -310,18 +298,25 @@ system("top -n1 -b");
 		<td><a href="http://en.utrace.de/?query=linux.mathematik.tu-darmstadt.de">map</a></td>
 	</tr>
 	<tr>
-		<td class="de">Kiel University mirror</td>
-		<td>
-			<a href="ftp://ftp.rz.uni-kiel.de/pub2/linux/slitaz/">ftp</a>
-		</td>
-		<td><a href="http://en.utrace.de/?query=ftp.rz.uni-kiel.de">map</a></td>
-	</tr>
-	<tr>
 		<td class="pl">University of Warsaw mirror</td>
 		<td>
 			<a href="ftp://ftp.icm.edu.pl/vol/rzm5/linux-ibiblio/distributions/slitaz/">ftp</a>
 		</td>
 		<td><a href="http://en.utrace.de/?query=ftp.icm.edu.pl">map</a></td>
+	</tr>
+	<tr>
+		<td class="us">Princeton University mirror</td>
+		<td>
+			<a href="http://mirror.math.princeton.edu/pub/slitaz/">http</a>
+		</td>
+		<td><a href="http://en.utrace.de/?query=mirror.math.princeton.edu">map</a></td>
+	</tr>
+	<tr>
+		<td class="us">Aurora FOSS mirror</td>
+		<td>
+			<a href="http://dl.aurorafoss.org/slitaz/">http</a>
+		</td>
+		<td><a href="http://en.utrace.de/?query=dl.aurorafoss.org">map</a></td>
 	</tr>
 </table>
 <!--
@@ -333,6 +328,16 @@ Old mirrors:
 	http://ftp.nedit.org/ftp/ftp/pub/os/Linux/distr/slitaz/ (nl)
 	http://ftp.ch.xemacs.org/ftp/pool/2/mirror/slitaz/ (ch)
 	ftp://ftp.ch.xemacs.org/pool/2/mirror/slitaz/ (ch)
+	http://mirror.switch.ch/ftp/mirror/slitaz/ (ch)
+	ftp://mirror.switch.ch/mirror/slitaz/ (ch)
+	ftp://slitaz.c3sl.ufpr.br/slitaz/ (br)
+	ftp://opensuse.c3sl.ufpr.br/slitaz/ (br)
+	ftp://ftp.br.debian.org/slitaz/ (br)
+	http://slitaz.mirror.garr.it/mirrors/slitaz/ (it)
+	ftp://slitaz.mirror.garr.it/mirrors/slitaz/ (it)
+	rsync://slitaz.mirror.garr.it/mirrors/slitaz/ (it)
+	ftp://ftp.rz.uni-kiel.de/pub2/linux/slitaz/ (de)
+	http://f.archlinuxvn.org/slitaz/ (vi)
 
 Outdated mirror:
 	http://ftp.vim.org/ftp/os/Linux/distr/slitaz/ (2012)
