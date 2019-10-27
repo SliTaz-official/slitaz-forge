@@ -312,7 +312,7 @@ system("top -n1 -b");
 		<td><a href="http://en.utrace.de/?query=mirror.math.princeton.edu">map</a></td>
 	</tr>
 	<tr>
-		<td class="us">Aurora FOSS mirror</td>
+		<td class="fr">Aurora FOSS mirror</td>
 		<td>
 			<a href="http://dl.aurorafoss.org/slitaz/">http</a>
 		</td>
