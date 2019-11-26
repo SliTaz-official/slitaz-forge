@@ -74,13 +74,24 @@
 	You can help us maintain and improve this service with a small
 	donation to the SliTaz association:
 </p>
-<!-- PayPal Button -->
+<!-- PayPal Button (association) -->
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
 	style="display: inline;">
 	<input type="hidden" name="cmd" value="_s-xclick" />
 	<input type="hidden" name="hosted_button_id" value="4885025" />
 	<input type="image" src="images/paypal.png" name="submit" 
 		alt="PayPal - The safer, easier way to pay online!" />
+</form>
+<!-- PayPal Button (servers) -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+		style="display: inline;">
+	<input type="hidden" name="cmd" value="_s-xclick" />
+	<input type="hidden" name="hosted_button_id" value="G2C74XCZD7HUS" />
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+		 alt="Donate with PayPal button" name="submit"
+		 title="Donate for SliTaz servers with PayPal" border="0"/>
+	<img alt="" src="https://www.paypal.com/en_FR/i/scr/pixel.gif"
+		 width="1" height="1" border="0" />
 </form>
 <!-- Flattr Button -->
 <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;"
