@@ -237,7 +237,7 @@ if ($slitaz_style) {
 	<nav>
 		<header>Online Tools</header>
 		<ul>
-			<li><a href="http://pizza.slitaz.me/">Live ISO Builder</a></li>
+			<li><a href="http://mypizza.slitaz.org/">Live ISO Builder</a></li>
 			<li><a href="http://pizza.slitaz.org/">Live flavor Builder</a></li>
 			<li><a href="http://tiny.slitaz.org/">Tiny SliTaz Builder</a></li>
 			<li><a href="http://boot.slitaz.org/">Web Boot</a></li>

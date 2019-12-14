@@ -31,7 +31,7 @@
 				<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
 				<li><a href="http://people.slitaz.org/">SliTaz People</a></li>
 				<li><a href="http://cook.slitaz.org/">Cooker</a></li>
-				<li><a href="http://pizza.slitaz.me/">Pizza Builder</a></li>
+				<li><a href="http://mypizza.slitaz.org/">Pizza Builder</a></li>
 			</ul>
 		</div>
 	</div>

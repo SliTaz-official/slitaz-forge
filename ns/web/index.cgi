@@ -99,7 +99,7 @@ else
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://roadmap.slitaz.org/">Roadmap</a>
-		<a href="http://pizza.slitaz.me/">Pizza</a>
+		<a href="http://mypizza.slitaz.org/">Pizza</a>
 		<a href="http://tank.slitaz.org/">Tank</a>
 	</div>
 	<h1><a href="./">SliTaz Name Server</a></h1>

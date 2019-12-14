@@ -22,7 +22,7 @@ Commands:
   up-forum     Update forum.slitaz.org theme
   up-doc       Update doc.slitaz.org theme and configs
   up-hg        Update Hg web interface hg.slitaz.org
-  up-pizza     Update Pizza web interface pizza.slitaz.me
+  up-pizza     Update Pizza web interface mypizza.slitaz.org
   up-play      Update Gamers web interface play.slitaz.me
   up-pangolin  Update pangolin.slitaz.org virtual host
   adduser      Add a new user to Hg
@@ -86,7 +86,7 @@ case "$1" in
 		newline ;;
 		
 	up-pizza)
-		# Update pizza.slitaz.me
+		# Update mypizza.slitaz.org
 		newline
 		boldify "Updating Pizza builder..."
 		cd ${REPOS}/slitaz-pizza && hg update

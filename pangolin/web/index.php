@@ -45,7 +45,7 @@
 				<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
 				<li><a href="http://people.slitaz.org/">SliTaz People</a></li>
 				<li><a href="http://cook.slitaz.org/">Cooker</a></li>
-				<li><a href="http://pizza.slitaz.me/">Pizza Builder</a></li>
+				<li><a href="http://mypizza.slitaz.org/">Pizza Builder</a></li>
 			</ul>
 		</div>
 	</div>
@@ -115,7 +115,7 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	<li><a href="http://forum.slitaz.org/">forum.slitaz.org</a> - SliTaz support forum.</li>
 	<li><a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a> - previous SliTaz forum.</li>
 	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.</li>
-	<li><a href="http://pizza.slitaz.me/">pizza.slitaz.me</a> - SliTaz flavor builder.</li>
+	<li><a href="http://mypizza.slitaz.org/">mypizza.slitaz.org</a> - SliTaz flavor builder.</li>
 </ul>
 
 <h2><img
