@@ -52,7 +52,8 @@
 		<header>Community</header>
 		<ul>
 			<li><a href="http://scn.slitaz.org/">Community Network</a></li>
-			<li><a href="http://pizza.slitaz.org/">LiveCD Online Builder</a></li>
+			<li><a href="http://mypizza.slitaz.org/">Online ISO Builder</a></li>
+			<li><a href="http://pizza.slitaz.org/">Online flavor Builder</a></li>
 			<li><a href="http://doc.slitaz.org/en:cookbook:start">SliTaz Cookbook</a></li>
 			<li><a href="http://doc.slitaz.org/en:handbook:genlivecd">LiveCD flavor howto</a></li>
 		</ul>

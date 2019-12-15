@@ -48,6 +48,7 @@
 		<header>Сообщество</header>
 		<ul>
 			<li><a href="http://scn.slitaz.org/">Сеть сообщества</a></li>
+			<li><a href="http://mypizza.slitaz.org/">Сборка LiveCD ISO онлайн</a></li>
 			<li><a href="http://pizza.slitaz.org/">Сборка LiveCD онлайн</a></li>
 			<li><a href="http://doc.slitaz.org/en:cookbook:start">Книга SliTaz
 				Cookbook</a></li>
