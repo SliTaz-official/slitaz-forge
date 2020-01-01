@@ -37,7 +37,7 @@
 			<ul>
 				<li><a href="http://tank.slitaz.org/">Tank Server</a></li>
 				<li><a href="http://mirror1.slitaz.org/">Main Mirror</a></li>
-				<li><a href="http://pangolin.slitaz.org/console/">Console</a></li>
+				<li><a href="http://mypizza.slitaz.org/">Pizza Builder</a></li>
 			</ul>
 		</div>
 		<div class="left_box">
@@ -45,7 +45,6 @@
 				<li><a href="http://www.slitaz.org/en/devel/">Devel Doc</a></li>
 				<li><a href="http://people.slitaz.org/">SliTaz People</a></li>
 				<li><a href="http://cook.slitaz.org/">Cooker</a></li>
-				<li><a href="http://mypizza.slitaz.org/">Pizza Builder</a></li>
 			</ul>
 		</div>
 	</div>
@@ -111,11 +110,18 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 <ul>
 	<li><a href="http://www.slitaz.org/">www.slitaz.org</a> - SliTaz Website.
 	(<a href="/stats/awstats.pl?config=www.slitaz.org">stats</a>)</li>
-	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.</li>
-	<li><a href="http://forum.slitaz.org/">forum.slitaz.org</a> - SliTaz support forum.</li>
-	<li><a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a> - previous SliTaz forum.</li>
-	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.</li>
-	<li><a href="http://mypizza.slitaz.org/">mypizza.slitaz.org</a> - SliTaz flavor builder.</li>
+	<li><a href="http://doc.slitaz.org/">doc.slitaz.org</a> - Documentation platform.
+	(<a href="/stats/awstats.pl?config=doc.slitaz.org">stats</a>)</li>
+	<li><a href="http://forum.slitaz.org/">forum.slitaz.org</a> - SliTaz support forum.
+	(<a href="/stats/awstats.pl?config=forum.slitaz.org">stats</a>)</li>
+	<li><a href="http://vanilla.slitaz.org/">vanilla.slitaz.org</a> - previous SliTaz forum.
+	(<a href="/stats/awstats.pl?config=vanilla.slitaz.org">stats</a>)</li>
+	<li><a href="http://hg.slitaz.org/">hg.slitaz.org</a> - Mercurial repositories.
+	(<a href="/stats/awstats.pl?config=repos.slitaz.org">stats</a>)</li>
+	<li><a href="http://mypizza.slitaz.org/">mypizza.slitaz.org</a> - SliTaz flavor builder.
+	(<a href="/stats/awstats.pl?config=pizza.slitaz.me">stats</a>)
+	<li><a href="http://paste.slitaz.org/">paste.slitaz.org</a> - SliTaz encrypted paste tool.
+	(<a href="/stats/awstats.pl?config=paste.slitaz.org">stats</a>)
 </ul>
 
 <h2><img
@@ -194,9 +200,6 @@ if (! file_exists($mirrors_url_file)) {
 
 # Flags icons from http://www.famfamfam.com/lab/icons/flags/famfamfam_flag_icons.zip
 foreach (array(
-	array(	"flag"  => "ch",
-		"http"  => "http://mirror.switch.ch/ftp/mirror/slitaz/",
-		"ftp"   => "ftp://mirror.switch.ch/mirror/slitaz/"),
 	array(	"flag"  => "us",
 		"http"  => "http://www.gtlib.gatech.edu/pub/slitaz/",
 		"ftp"   => "ftp://ftp.gtlib.gatech.edu/pub/slitaz/",
@@ -213,12 +216,7 @@ foreach (array(
 		"http"  => "http://ks.lupaworld.com/slitaz/"),
 	array(	"flag"  => "br",
 		"http"  => "http://slitaz.c3sl.ufpr.br/",
-		"ftp"   => "ftp://slitaz.c3sl.ufpr.br/slitaz/",
 		"rsync" => "rsync://slitaz.c3sl.ufpr.br/slitaz/"),
-	array(	"flag"  => "it",
-		"http"  => "http://slitaz.mirror.garr.it/mirrors/slitaz/",
-		"ftp"   => "ftp://slitaz.mirror.garr.it/mirrors/slitaz/",
-		"rsync" => "rsync://slitaz.mirror.garr.it/mirrors/slitaz/"),
 	array(	"flag"  => "si",
 		"http"  => "http://mirror.drustvo-dns.si/slitaz/"),
 	array(	"flag"  => "si",
@@ -229,23 +227,11 @@ foreach (array(
 	array(	"flag"  => "nl",
 		"http"  => "http://ftp.vim.org/ftp/os/Linux/distr/slitaz/",
 		"ftp"   => "ftp://ftp.vim.org/mirror/os/Linux/distr/slitaz/"),
-	array(	"flag"  => "nl",
-		"http"  => "http://ftp.nedit.org/ftp/ftp/pub/os/Linux/distr/slitaz/",
-		"ftp"   => "ftp://ftp.nedit.org/ftp/ftp/pub/os/Linux/distr/slitaz/"),
-	array(	"flag"  => "ch",
-		"http"  => "http://ftp.ch.xemacs.org/ftp/pool/4/mirror/slitaz/",
-		"ftp"   => "ftp://ftp.ch.xemacs.org//pool/4/mirror/slitaz/"),
 	array(	"flag"  => "de",
 		"http"  => "http://ftp.uni-stuttgart.de/slitaz/",
 		"ftp"   => "ftp://ftp.uni-stuttgart.de/slitaz/"),
-	array(	"flag"  => "ro",
-		"http"  => "http://ftp.info.uvt.ro/pub/slitaz/",
-		"ftp"   => "ftp://ftp.info.uvt.ro/pub/slitaz/",
-		"rsync" => "rsync://ftp.info.uvt.ro/ftp/pub/slitaz/"),
 	array(	"flag"  => "au",
 		"http"  => "http://mirror.iprimus.com/slitaz/"),
-	array(	"flag"  => "au",
-		"http"  => "http://mirror01.ipgn.com.au/slitaz/"),
 	array(	"flag"  => "us",
 		"http"  => "http://mirror.clarkson.edu/slitaz/",
 		"rsync" => "rsync://mirror.clarkson.edu/slitaz/")) as $mirror) {
