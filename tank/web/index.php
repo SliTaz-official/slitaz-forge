@@ -103,22 +103,20 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 		(<a href="/stats/awstats.pl?config=cook.slitaz.org">stats</a>)</li>
 	<li><a href="http://people.slitaz.org/">people.slitaz.org</a> - SliTaz People stuff.
 		(<a href="/stats/awstats.pl?config=people.slitaz.org">stats</a>)</li>
-		<li><a href="http://roadmap.slitaz.org/">roadmap.slitaz.org</a> - 
+	<li><a href="http://roadmap.slitaz.org/">roadmap.slitaz.org</a> - 
 		SliTaz Roadmap.
 	(<a href="/stats/awstats.pl?config=roadmap.slitaz.org">stats</a>)</li>
 	<li><a href="http://bugs.slitaz.org/">bugs.slitaz.org</a> - 
-		SliTaz Bug Tracker.</li>
+		SliTaz Bug Tracker.
+		(<a href="/stats/awstats.pl?config=bugs.slitaz.org">stats</a>)</li>
 	<li><a href="http://irc.slitaz.org/">irc.slitaz.org</a> - 
-		SliTaz IRC logs and webchat.</li>
+		SliTaz IRC logs and webchat.
+		(<a href="/stats/awstats.pl?config=irc.slitaz.org">stats</a>)</li>
 	<li><a href="http://try.slitaz.org/">try.slitaz.org</a> - 
-		To try some CGI scripts and other web services.</li>
+		To try some CGI scripts and other web services.
+		(<a href="/stats/awstats.pl?config=try.slitaz.org">stats</a>)</li>
 </ul>
 
-<ul>
-	<li><a href="http://pro.slitaz.org">slitaz.pro</a> - SliTaz Professional services.
-	(<a href="/stats/awstats.pl?config=slitaz.pro">stats</a>)</li>
-	<li><a href="http://slitaz.me">slitaz.me</a> - 
-		Domain used for users services such as Pizza.</li>
 <h2>Tank Log</h2>
 
 <pre>
