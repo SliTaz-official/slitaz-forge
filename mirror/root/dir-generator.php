@@ -13,6 +13,7 @@ function redirect() {
 	<meta charset="UTF-8">
 	<meta name="description" content="slitaz mirror redirection">
 	<meta name="robots" content="index, nofollow">
+	<meta name="referrer" content="no-referrer">
 	<meta name="author" content="SliTaz Contributors">
 	<meta http-equiv="Refresh" content="0;url=http://mirror1.slitaz.org/">
 </head>
@@ -174,6 +175,7 @@ if ($slitaz_style) {
 		$fvalue = 'value="' . $_GET['f'] . '"';
 	header("Expires: " . $expires);
 	header("Last-Modified: " . $modified);
+	header('Referrer-policy: "no-referrer"');
 	header("Pragma: cache");
 	//	header("Cache-Control: public");
 	//	<meta http-equiv="cache-control" content="public" />
@@ -189,6 +191,7 @@ if ($slitaz_style) {
 ";
 ?>
 	<meta name="robots" content="index, nofollow">
+	<meta name="referrer" content="no-referrer">
 	<meta name="author" content="SliTaz Contributors">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="/static/favicon.ico">
