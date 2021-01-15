@@ -41,7 +41,7 @@ updatecpudata() {
 updatecpugraph() {
 	period=$1
 	info="$(sed '/cpuinfo=/!d;s/.*cpuinfo=\([^ ]*\).*/: \1/;s/_/ /g' /proc/cmdline)"
-	[ -n "$info" ] || info="$(grep '^model name' /proc/cpuinfo)"
+	[ -n "$info" ] || info="$(grep '^model name' /etc/cpuinfo)"
 	info="$(echo "$info" | cut -d: -f2 | sed 's/ * / /g' | head -1)"
 	rrdtool graph "$rrdgraph/cpu-$period.png" --start -1$period \
 		$rrdgraphargs -l 0 -u 100 -t "cpu usage per $period [$info ]" \
