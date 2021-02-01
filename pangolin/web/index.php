@@ -21,7 +21,6 @@
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
 		<a href="http://irc.slitaz.org/">IRC</a>
-		<a href="http://shop.slitaz.org/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 	</div>
@@ -54,11 +53,12 @@
 		<p>
 			This is the SliTaz GNU/Linux main server and build host. 
 			The server runs naturally SliTaz and provides some services
-			to all contributors.
+			to all contributors. The virtual machine provided by 
+			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
 		</p>
 		<p>
 			Pangolin CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .
-			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </etc/cpuinfo |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
 			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
@@ -230,8 +230,17 @@ foreach (array(
 	array(	"flag"  => "de",
 		"http"  => "http://ftp.uni-stuttgart.de/slitaz/",
 		"ftp"   => "ftp://ftp.uni-stuttgart.de/slitaz/"),
+	array(	"flag"  => "de",
+		"ftp"	=> "ftp://fb04272.mathematik.tu-darmstadt.de/pub/linux/distributions/slitaz/",
+		"ftp"	=> "ftp://linux.mathematik.tu-darmstadt.de/pub/linux/distributions/misc/slitaz/"),
+	array(	"flag"  => "pl",
+		"ftp"	=> "ftp://ftp.icm.edu.pl/vol/rzm5/linux-ibiblio/distributions/slitaz/"),
 	array(	"flag"  => "au",
 		"http"  => "http://mirror.iprimus.com/slitaz/"),
+	array(	"flag"  => "fr",
+		"http"	=> "https://dl.aurorafoss.org/slitaz/"),
+	array(	"flag"  => "us",
+		"http"	=> "http://mirror.math.princeton.edu/pub/slitaz/"),
 	array(	"flag"  => "us",
 		"http"  => "http://mirror.clarkson.edu/slitaz/",
 		"rsync" => "rsync://mirror.clarkson.edu/slitaz/")) as $mirror) {
@@ -240,8 +249,10 @@ foreach (array(
 	foreach(array("http", "ftp", "rsync") as $proto) {
 		if (!isset($mirror[$proto])) continue;
 		$link = $mirror[$proto];
-		if (!test_url($link, $proto)) continue;
 		$serveur = parse_url($link, PHP_URL_HOST);
+		if (!test_url($link, $proto)) continue;
+		#if (!test_url($link, $proto)) $link2 = "<del>".$link."</del>";
+		#else $link2 = $link;
 		if ($head) echo <<<EOT
 	<li><a href="http://en.utrace.de/?query=$serveur">
 		<img title="map" src="$flag" alt="map" /></a>

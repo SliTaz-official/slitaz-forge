@@ -24,8 +24,6 @@
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://pro.slitaz.org/">Pro</a>
-		<a href="http://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org/">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
@@ -38,15 +36,14 @@
 	<!-- Information/image -->
 	<div class="block_info">
 		<header>Codename: <?php echo $host; ?></header>
-		<p>
-			This is the SliTaz GNU/Linux main mirror. The server runs naturally SliTaz 
-			(stable) in an UML virtual machine provided by 
-			<a href="http://www.ads-lu.com/">Allied Data Sys. (ADS)</a>.
 		</p>
+			<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
+			SliTaz (stable) in a virtual machine provided by 
+			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.</p>
 		<p>
 			Mirror CPU is a <?php
 system("( sed '/cpuinfo=/!d;" .
-	"s/.*cpuinfo=\\([^ ]*\).*/: \\1/;s/_/ /g' /proc/cmdline ; grep '^model name' /proc/cpuinfo) | sed -e 's/.*Intel(R) //;" .
+	"s/.*cpuinfo=\\([^ ]*\).*/: \\1/;s/_/ /g' /proc/cmdline ; grep '^model name' /etc/cpuinfo) | sed -e 's/.*Intel(R) //;" .
 	"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //;q' |" .
 	" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 	"if (n == 4) printf \"quad \"; print s }' ")
@@ -54,8 +51,8 @@ system("( sed '/cpuinfo=/!d;" .
 system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
 	"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
 	"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")
-			?> - Located in France next to 
-			Roubaix. This page has real time statistics provided by PHP 
+			?> - Located in France.
+			This page has real time statistics provided by PHP 
 			<code>system()</code>.
 			Mirror is monitored by RRDtool which provides graphical stats.
 		</p>

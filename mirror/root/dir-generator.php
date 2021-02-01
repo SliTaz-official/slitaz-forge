@@ -165,6 +165,7 @@ function get_file_type($file) {
 //$slitaz_style = (dirname($_SERVER["PHP_SELF"]) == '/');
 //$slitaz_style = ($_SERVER["SERVER_NAME"] == "mirror1.slitaz.org");
 $slitaz_style = preg_match("/mirror1\.slitaz\./", $_SERVER["SERVER_NAME"]);
+if (!$slitaz_style) $slitaz_style = preg_match("/mirror\.slitaz\./", $_SERVER["SERVER_NAME"]);
 
 if ($slitaz_style) {
 	// SliTaz Style
@@ -208,8 +209,6 @@ if ($slitaz_style) {
 		<a href="http://scn.slitaz.org/">Community</a>
 		<a href="http://doc.slitaz.org/">Doc</a>
 		<a href="http://forum.slitaz.org/">Forum</a>
-		<a href="http://pro.slitaz.org/">Pro</a>
-		<a href="https://slitaz.spreadshirt.net/">Shop</a>
 		<a href="http://bugs.slitaz.org">Bugs</a>
 		<a href="http://hg.slitaz.org/?sort=lastchange">Hg</a>
 		<a href="http://cook.slitaz.org/">Cook</a>
@@ -225,9 +224,14 @@ if ($slitaz_style) {
 	if (preg_match("/mirror1\.slitaz\./", $_SERVER["SERVER_NAME"]))
 		{ ?>
 		<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
-		SliTaz (stable) in an uml virtual machine provided by 
-		<a href="http://www.ads-lu.com/">ADS</a> and is located in France.</p>
+		SliTaz (stable) in a virtual machine provided by 
+		<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>
+		and is located in France.</p>
 		<p><a href="/info/">Mirror info...</a></p>
+<?php
+	} else { ?>
+		<p>This is a SliTaz GNU/Linux mirror. The server is synchronized regularly
+		with the <a href="https://mirror1.slitaz.org/">Slitaz main mirror</a>
 <?php
 	}
 
@@ -498,7 +502,7 @@ if ($path != "./")
 
 // Print folder information
 foreach($folderlist as $folder)
-	print "<tr><td class='dir'><a href='" . addslashes($folder['name']). "'>" .
+	print "<tr><td class='dir'><a href='" . addslashes($folder['name']). "/'>" .
 		htmlentities($folder['name']) . "</a>/</td>" .
 		"<td>" . $folder['modtimeasc'] . "</td>" .
 		"<td>- &nbsp;</td></tr>\n";
@@ -584,7 +588,7 @@ if ($slitaz_style) {
 		<a href="http://en.wikipedia.org/wiki/SliTaz">Wikipedia</a> ·
 		<a href="http://flattr.com/profile/slitaz">Flattr</a>
 	</div>
-	<img src="static/qr.png" alt="#" onmouseover="this.title = location.href"
+	<img src="/static/qr.png" alt="#" onmouseover="this.title = location.href"
 	onclick="this.src = QRCodePNG(location.href, this)"/>
 </footer>
 

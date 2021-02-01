@@ -20,7 +20,7 @@
 	<div id="block_nav">
 		<h4><img src="images/server.png" alt="[ Server ]" />Project servers</h4>
 		<ul>
-			<li><a href="http://mirror.slitaz.org/">Mirror server</a></li>
+			<li><a href="http://mirror1.slitaz.org/">Mirror server</a></li>
 			<li><a href="http://pangolin.slitaz.org/">Pangolin server</a></li>
 		</ul>
 	</div>
@@ -31,16 +31,17 @@
 			This is the SliTaz GNU/Linux main server and build host. 
 			The server runs naturally SliTaz and provides some services
 			to all contributors such as: secure access, disk space, a 
-			public directory or cron jobs.
+			public directory or cron jobs. The virtual machine provided by 
+			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
 		</p>
 		<p>
 			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
-			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </proc/cpuinfo |" .
+			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </etc/cpuinfo |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
 			"if (n == 4) printf \"quad \"; print s }' ")?> -
 			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
 			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
-			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located in Gravelines,
+			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located in Paris,
 			France.
 		</p>
 	</div>
