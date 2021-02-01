@@ -224,7 +224,7 @@ if ($slitaz_style) {
 	if (preg_match("/mirror1\.slitaz\./", $_SERVER["SERVER_NAME"]))
 		{ ?>
 		<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
-		SliTaz (stable) in a virtual machine provided by 
+		SliTaz (stable) in a virtual machine gracefully hosted by 
 		<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>
 		and is located in France.</p>
 		<p><a href="/info/">Mirror info...</a></p>

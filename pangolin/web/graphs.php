@@ -49,7 +49,7 @@
 			This is the SliTaz GNU/Linux main server and build host. 
 			The server runs naturally SliTaz and provides some services
 			to all contributors such as: secure access, disk space, a 
-			public directory or cron jobs. The virtual machine provided by 
+			public directory or cron jobs. The virtual machine is gracefully hosted by 
 			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
 		</p>
 		<p>

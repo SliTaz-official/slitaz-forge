@@ -53,7 +53,7 @@
 		<p>
 			This is the SliTaz GNU/Linux main server and build host. 
 			The server runs naturally SliTaz and provides some services
-			to all contributors. The virtual machine provided by 
+			to all contributors. The virtual machine is gracefully hosted by 
 			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
 		</p>
 		<p>
