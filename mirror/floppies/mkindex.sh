@@ -12,6 +12,7 @@ list_version() {
 
 build_page() {
 	DIR=$1
+	SETS="$(echo $(./sets.sh $1))"
 	case "$DIR" in
 	*.*)	stable=stable;;
 	*)	stable=development;;
@@ -138,11 +139,12 @@ done
 
 	<!-- Navigation -->
 	<nav>
-		<header>1.44MB SliTaz$TYPE $VERSION floppy images</header>
-		<div class="large"><table>
+		<header><span id="format">1.44MB</span> SliTaz$TYPE $VERSION floppy images</header>
+			
+		<div class="large"><table id="floppies">
 $(
 n=0
-for f in $DIR/fd*img ; do
+for f in $DIR/fd???.img ; do
 	[ $n -eq 0 ] && echo "			<tr>"
 	echo "				<td><a href=\"$f\">$(basename $f .img)</a></td>"
 	n=$(( ($n+1)%6 ))
@@ -160,6 +162,16 @@ done
 	</nav>
 </div></div>
 
+EOT
+	[ -n "$SETS" ] && cat <<EOT
+<script type="text/javascript">
+var dir = "$VERSION";
+var sets = [${SETS// /,}];
+//-->
+</script>
+<script type="text/javascript" src="format.js"></script>
+EOT
+	cat <<EOT
 
 <!-- Content -->
 <main>

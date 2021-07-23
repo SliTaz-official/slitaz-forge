@@ -48,11 +48,9 @@
 			Tank CPU is a <?php system("sed -e '/^model name/!d;s/.*Intel(R) //;" .         
 			"s/@//;s/(.*)//;s/CPU //;s/.*AMD //;s/.*: //;s/Processor //' </etc/cpuinfo |" .
 			" awk '{ s=$0; n++ } END { if (n == 2) printf \"dual \";" .
-			"if (n == 4) printf \"quad \"; print s }' ")?> -
-			<?php system("free | awk '/Mem:/ { x=2*$2-1; while (x >= 1024) { x /= 1024; ".
-			"n++ }; y=1; while (x > 2) { x /= 2; y *= 2}; ".
-			"printf \"%d%cB RAM\",y,substr(\"MG\",n,1) }' ")?>  - Located in Paris,
-			France. Tank is also monitored by RRDtool which provides 
+			"if (n == 4) printf \"quad \"; if (n == 8) printf \"octo \"; print s }' ")?> -
+			<?php system("free -g | awk '/Mem:/ { print $2 \"GB RAM\" }'")?> -
+			Located in Paris, France. Tank is also monitored by RRDtool which provides 
 			<a href="graphs.php">graphical stats</a>.
 		</p>
 	</div>

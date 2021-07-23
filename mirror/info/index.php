@@ -40,10 +40,11 @@
 	<!-- Top block begin -->
 	<div class="block_info">
 		<header>Codename: <?php echo $host; ?></header>
-		</p>
-			<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
+		<p>
+			This is the SliTaz GNU/Linux main mirror. The server runs naturally 
 			SliTaz (stable) in a virtual machine gracefully hosted by 
-			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.</p>
+			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
+		</p>
 		<p>Mirror CPU is a <?php
 system("( sed '/cpuinfo=/!d;" .
 	"s/.*cpuinfo=\\([^ ]*\).*/: \\1/;s/_/ /g' /proc/cmdline ; grep '^model name' /etc/cpuinfo) | sed -e 's/.*Intel(R) //;" .

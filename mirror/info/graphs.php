@@ -36,10 +36,11 @@
 	<!-- Information/image -->
 	<div class="block_info">
 		<header>Codename: <?php echo $host; ?></header>
-		</p>
-			<p>This is the SliTaz GNU/Linux main mirror. The server runs naturally 
+		<p>
+			This is the SliTaz GNU/Linux main mirror. The server runs naturally 
 			SliTaz (stable) in a virtual machine gracefully hosted by 
-			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.</p>
+			<a href="https://www.linkedin.com/company/balinor-technologies/">balinor-technologies</a>.
+		</p>
 		<p>
 			Mirror CPU is a <?php
 system("( sed '/cpuinfo=/!d;" .

@@ -19,7 +19,7 @@ while read name iso; do
 		mtime=$(LC_ALL=C date '+%d %B %Y' -d $mtime)
 	set -- $(sed '/ifmem/!d;s/.*ifmem //' $mnt/boot/isolinux/isolinux.cfg \
 		| sed 's|^|echo |;s|\([0-9][0-9]*\) |$((\1/1024))M |g' | sh)
-	umount $mnt
+	umount $mnt 2> /dev/null || umount -l $mnt
 	rmdir $mnt
 		cat > description.html <<EOT
 <p>This floppy set uses the BIOS instead of the linux driver. You can boot
@@ -41,9 +41,9 @@ EOT
 			eval flavor=\$$((($n - $i)*2))
 			eval ram=\$$((($n - $i)*2 -1))
 			cat >> description.html <<EOT
-	<li><b>$flavor</b> needs ${ram}B of RAM and $(ls fd* | \
-		awk "/fd$(($i+1))/{q=1}{if(!q)n++}END{print n}") floppies:
-		<tt>fd001.img</tt> to <tt>$(ls -r fd${i}* | sed q)</tt>.<br>
+	<li><b>$flavor</b> needs ${ram}B of RAM and <span id="cnt$i">$(ls fd* | \
+		awk "/fd$(($i+1))/{q=1}{if(!q)n++}END{print n}")</span> floppies:
+		<tt>fd001.img</tt> to <tt>fd<span id="last$i">$(ls -r fd${i}* | sed 's|fd||;s|.img||;q')</span>.img</tt>.<br>
 		$flavor provides $(while read f d; do 
 			[ $f = $flavor ] && echo $d; done <<EOT
 base the minimum SliTaz distribution subset in text mode
