@@ -61,8 +61,7 @@ function format(size) {
 var e = document.getElementById('format');
 try {
 	var dummy = new Blob();
-	e.innerHTML="<select onChange='format(this.value)' style='background: #666; color: #FFF;'>" +
-		"<option value='368640' title='/dev/fd0h360 (2,20) or /dev/fd0d360 (2,4) 5¼'>360K</option>" +
+	e.innerHTML="<select onChange='format(this.value)' style='background: #666; color: #FFF;' title='80 tracks 2 sides floppy list'>" +
 		"<option value='737280' title='/dev/fd0u720 3½ DD (2,16)'>720K</option>" +
 		"<option value='819200' title='/dev/fd0u800 3½ DD (2,120)'>800K</option>" +
 		"<option value='1228800' title='/dev/fd0h1200 5¼ (2,8)'>1.2MB</option>" +

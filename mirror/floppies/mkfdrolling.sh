@@ -74,6 +74,8 @@ You can bypass this by using B to boot without loading extra floppies.</p>
 EOT
 	cd ..
 	./mkindex.sh $name > index-$name.html
+	[ -s $name/fd.img ] && rm $name/fd.img
+	./mkmdsum.sh set $name > /dev/null
     fi
 done <<EOT
 rolling		iso/rolling/slitaz-rolling.iso
