@@ -122,6 +122,8 @@ system("ifconfig eth0 | awk '{ if (/X packet/ || /X byte/) print }' | sed 's/^\s
 	(<a href="/stats/awstats.pl?config=pizza.slitaz.me">stats</a>)
 	<li><a href="http://paste.slitaz.org/">paste.slitaz.org</a> - SliTaz encrypted paste tool.
 	(<a href="/stats/awstats.pl?config=paste.slitaz.org">stats</a>)
+	<li><a href="http://games.slitaz.org/">games.slitaz.org</a> - Tiny javascript games.
+	(<a href="/stats/awstats.pl?config=games.slitaz.org">stats</a>)
 </ul>
 
 <h2><img
